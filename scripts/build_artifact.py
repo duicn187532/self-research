@@ -14,9 +14,12 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 def build(src: pathlib.Path) -> str:
     s = src.read_text(encoding="utf-8")
     css = (ROOT / "assets/site.css").read_text(encoding="utf-8")
-    js = (ROOT / "assets/site.js").read_text(encoding="utf-8")
     s = re.sub(r'<link rel="stylesheet" href="[./]*assets/site\.css">', lambda _: "<style>\n" + css + "</style>", s)
-    s = re.sub(r'<script src="[./]*assets/site\.js"></script>', lambda _: "<script>\n" + js + "</script>", s)
+    s = re.sub(
+        r'<script src="[./]*assets/([\w-]+\.js)"></script>',
+        lambda m: "<script>\n" + (ROOT / "assets" / m.group(1)).read_text(encoding="utf-8") + "</script>",
+        s,
+    )
     # The artifact host supplies its own document skeleton and charset/viewport metas.
     s = re.sub(r"<!doctype html>\s*", "", s, flags=re.I)
     s = re.sub(r"</?(html|head|body)[^>]*>\s*", "", s)

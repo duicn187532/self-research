@@ -280,3 +280,50 @@ dl.gloss dd { margin: 0; color: var(--ink); }
 p, li, dd { overflow-wrap: anywhere; }
 td { overflow-wrap: break-word; }
 table.results tbody td:first-child { white-space: nowrap; }
+
+/* ---------- step-by-step animations (assets/anim.js) ---------- */
+.anim { border: 1px solid var(--rule); border-radius: var(--radius); background: var(--surface); padding: 0.9rem 1rem; display: grid; gap: 0.75rem; }
+.anim-controls { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+.anim-controls .btn:disabled { opacity: 0.4; cursor: default; }
+.anim-count { font-family: var(--font-mono); font-size: var(--step--1); color: var(--muted); margin-left: auto; font-variant-numeric: tabular-nums; }
+.anim-stage { overflow-x: auto; }
+.anim-stage svg { display: block; width: 100%; min-width: 560px; height: auto; }
+.anim-caption { display: grid; gap: 0.3rem; min-height: 5.5em; border-top: 1px solid var(--rule); padding-top: 0.6rem; }
+.anim-step-title { font-weight: 700; color: var(--accent); }
+.anim-step-text { font-size: 0.9375rem; }
+.anim-note { font-size: var(--step--1); color: var(--muted); }
+.anim-stage svg * { transition: transform 0.6s ease, opacity 0.45s ease, fill 0.4s ease, stroke 0.4s ease; }
+.anim-stage svg .anim-leaving { opacity: 0 !important; }
+.anim-stage svg text { fill: var(--ink); font-family: var(--font-body); font-size: 12px; }
+.anim-stage svg text.a-small { font-size: 10.5px; fill: var(--muted); }
+.anim-stage svg text.a-mono { font-family: var(--font-mono); font-size: 10.5px; }
+.anim-stage svg text.a-head { font-weight: 700; font-size: 12.5px; }
+.anim-stage svg text.a-acc { fill: var(--accent); }
+.anim-stage svg text.a-sml { fill: var(--sml); }
+.anim-stage svg text.a-ok { fill: var(--ok); font-weight: 700; }
+.anim-stage svg text.a-bad { fill: var(--warn); font-weight: 700; }
+.anim-stage svg text.a-strike { text-decoration: line-through; fill: var(--muted); }
+.anim-stage svg .a-zone { fill: var(--paper); stroke: var(--rule); }
+.anim-stage svg .a-card { fill: var(--surface); stroke: var(--rule); }
+.anim-stage svg .a-card.lml { stroke: var(--accent); }
+.anim-stage svg .a-card.sml { stroke: var(--sml); }
+.anim-stage svg .a-card.hi { stroke: var(--accent); stroke-width: 2; fill: var(--accent-soft); }
+.anim-stage svg .a-card.warn { stroke: var(--warn); stroke-width: 2; fill: var(--warn-soft); }
+.anim-stage svg .a-card.ok { stroke: var(--ok); stroke-width: 2; fill: var(--ok-soft); }
+.anim-stage svg .a-card.dead { stroke: var(--rule); stroke-dasharray: 4 3; fill: var(--paper); }
+.anim-stage svg .a-track { fill: var(--rule); }
+.anim-stage svg .a-bar { fill: var(--accent); }
+.anim-stage svg .a-bar.sml { fill: var(--sml); }
+.anim-stage svg .a-bar.warn { fill: var(--warn); }
+.anim-stage svg .a-bar.ok { fill: var(--ok); }
+.anim-stage svg .a-line { stroke: var(--muted); stroke-width: 1.5; fill: none; }
+.anim-stage svg .a-line.acc { stroke: var(--accent); stroke-width: 2; }
+.anim-stage svg .a-line.dead { stroke: var(--rule); stroke-dasharray: 5 4; }
+.anim-stage svg .a-line.warn { stroke: var(--warn); stroke-width: 2; }
+.anim-stage svg .a-thresh { stroke: var(--muted); stroke-dasharray: 3 3; stroke-width: 1; }
+.anim-stage svg .a-node { fill: var(--surface); stroke: var(--accent); stroke-width: 1.5; }
+.anim-stage svg .a-node.ep { stroke: var(--muted); fill: var(--paper); }
+.anim-stage svg .a-node.comm { stroke: var(--sml); fill: var(--paper); stroke-dasharray: 5 3; }
+.anim-stage svg .a-node.hi { fill: var(--mark); }
+.anim-stage svg .a-mark { fill: var(--mark); }
+@media (prefers-reduced-motion: reduce) { .anim-stage svg * { transition: none !important; } }

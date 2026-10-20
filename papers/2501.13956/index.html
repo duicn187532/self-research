@@ -467,6 +467,18 @@ ENTITY_NAME: entity summary
       </div>
     </section>
 
+    <!-- ===================== animation ===================== -->
+    <section class="sec" id="s-anim" data-short="動畫：建圖與檢索">
+      <div class="sec-head"><span class="sec-num">07+</span><h2>動畫：三則訊息如何變成可檢索的圖</h2></div>
+      <p>把 03 到 07 串起來：訊息進來、擷取實體、實體解析、擷取事實與時間、讓舊邊失效、用標籤傳播分社群，最後跑一次 \(f(\alpha) = \chi(\rho(\varphi(\alpha)))\) 檢索。</p>
+      <div class="anim" id="anim-zep" data-label="Zep 建圖與檢索動畫"></div>
+      <p class="anim-note">流程與規則依原文 §2–§3 與附錄提示詞。訊息內容、社群劃分與各搜尋法的排名是示意 <span class="src src-mine">導讀補充</span>；RRF 的常數 \(k = 60\) 是 RRF 原論文的慣用值，Zep 論文沒有寫。</p>
+      <div class="desk-foot">
+        <div class="note"><label for="note-anim">筆記</label><textarea id="note-anim" data-note="s-anim"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-anim"> 讀完這節</label>
+      </div>
+    </section>
+
     <!-- ===================== 08 setup ===================== -->
     <section class="sec" id="s-setup" data-short="實驗設定">
       <div class="sec-head"><span class="sec-num">08</span><h2>實驗設定</h2></div>
@@ -733,6 +745,108 @@ ENTITY_NAME: entity summary
 </div>
 
 <script src="../../assets/site.js"></script>
+<script src="../../assets/anim.js"></script>
+<script>
+// Zep graph-construction and retrieval animation (section s-anim). Steps follow §2.1-§3 and Appendix 6.1.
+(function () {
+  "use strict";
+  var root = document.getElementById("anim-zep");
+  if (!root || !window.StudyAnim) return;
+  var POS = { user: [392, 170], a: [604, 92], a2: [520, 40], b: [612, 252], momo: [430, 300], c1: [262, 296] };
+  var EPS = [
+    { id: "e1", ref: "2024-01-10", l1: "User：我在 A 公司", l2: "當工程師。" },
+    { id: "e2", ref: "2024-03-05", l1: "User：我兩週前離開 A社，", l2: "轉職到 B 公司了。" },
+    { id: "e3", ref: "2024-04-01", l1: "User：我 2023 年開始養", l2: "一隻叫 Momo 的貓。" }
+  ];
+  function ep(s, n) { s.eps.push(EPS[n]); }
+  function node(s, id, label, cls) { s.nodes[id] = { id: id, label: label, cls: cls || "" }; }
+  function edge(s, id, a, b, rel, from, to) { s.edges[id] = { id: id, a: a, b: b, rel: rel, from: from, to: to || "present", dead: false }; }
+
+  var steps = [
+    { title: "1. Episode 進來", run: function (s) { ep(s, 0); s.hi = ["ep-e1"]; },
+      text: "原始訊息成為 episode 節點，附參考時間 \\(t_{\\text{ref}}\\)＝訊息送出的時間。episode 是不失真的資料存放處，後面所有擷取都可以追回這裡（§2.1）。" },
+    { title: "2. 實體擷取", run: function (s) { node(s, "user", "User"); node(s, "a", "A 公司"); s.epEdges = [["e1", "user"], ["e1", "a"]]; s.hi = ["n-user", "n-a"]; },
+      text: "LLM 讀目前訊息與前 4 則訊息，擷取實體。規則：說話者一律是第一個實體；不為日期、關係建立節點（附錄 6.1.1）。之後還有一個受 Reflexion 啟發的反思步驟，降低遺漏與幻覺。" },
+    { title: "3. 擷取事實與時間", run: function (s) { edge(s, "w1", "user", "a", "WORKS_FOR", "2024-01-10"); s.hi = ["e-w1"]; },
+      text: "實體之間的關係就是「事實」，邊上有全大寫的關係類型（附錄 6.1.3）。時間擷取規則 3：現在式的事實，\\(t_{\\text{valid}}\\) 取參考時間 2024-01-10（附錄 6.1.5）。" },
+    { title: "4. 第二則訊息進來", run: function (s) { ep(s, 1); s.hi = ["ep-e2"]; },
+      text: "新的 episode，\\(t_{\\text{ref}}\\) = 2024-03-05。注意這則訊息裡的「A社」和第一則的「A 公司」寫法不同。" },
+    { title: "5. 擷取到候選實體", run: function (s) { node(s, "a2", "A社", "cand"); node(s, "b", "B 公司"); s.epEdges.push(["e2", "user"], ["e2", "a2"], ["e2", "b"]); s.hi = ["n-a2", "n-b"]; },
+      text: "擷取出 User、「A社」、「B 公司」。User 已存在；另外兩個要先做實體解析，才知道是不是新實體。" },
+    { title: "6. 實體解析：A社 ＝ A 公司", run: function (s) {
+        delete s.nodes.a2; s.epEdges = s.epEdges.map(function (e) { return e[1] === "a2" ? [e[0], "a"] : e; }); s.hi = ["n-a"]; },
+      text: "實體名稱嵌入成 1024 維向量，用餘弦相似度找相近的既有實體；再對名稱與摘要做全文搜尋。候選交給 LLM 判斷，認定重複，合併成「最完整的全名」A 公司（§2.2.1、附錄 6.1.2）。B 公司沒有重複，成為新節點。" },
+    { title: "7. 新事實與去重", run: function (s) { edge(s, "w2", "user", "b", "WORKS_FOR", "2024-02-20"); s.hi = ["e-w2"]; },
+      text: "新事實 User —WORKS_FOR→ B 公司。去重只搜尋<b>同一對實體</b>之間的既有邊（User–B 之間沒有），所以新增。「兩週前」以 \\(t_{\\text{ref}}\\) 換算：\\(t_{\\text{valid}}\\) = 2024-02-20（§2.2.2、附錄 6.1.5 規則 6）。" },
+    { title: "8. 邊的失效：不刪除，只標記", run: function (s) { s.edges.w1.to = "2024-02-20"; s.edges.w1.dead = true; s.hi = ["e-w1"]; },
+      text: "LLM 比對新邊與語意相關的既有邊，發現「在 A 公司工作」與「在 B 公司工作」時間重疊且矛盾。舊邊的 \\(t_{\\text{invalid}}\\) 設成新邊的 \\(t_{\\text{valid}}\\) = 2024-02-20；系統時間軸上記 \\(t'_{\\text{expired}}\\) = 2024-03-05。舊邊保留，歷史仍可查（§2.2.3）。" },
+    { title: "9. 第三則訊息", run: function (s) { ep(s, 2); node(s, "momo", "Momo"); s.epEdges.push(["e3", "user"], ["e3", "momo"]); edge(s, "o1", "user", "momo", "OWNS", "2023-01-01"); s.hi = ["ep-e3", "n-momo", "e-o1"]; },
+      text: "擷取到新實體 Momo 與事實 OWNS。只提到年份，依規則 8 取該年 1 月 1 日：\\(t_{\\text{valid}}\\) = 2023-01-01。這筆事實的 \\(t_{\\text{valid}}\\) 比它被寫入系統的時間（2024-04-01）早了一年多，正是雙時間軸要分開記錄的情況。" },
+    { title: "10. 社群：標籤傳播的增量一步", run: function (s) { s.comm = ["user", "a", "b", "momo"]; s.hi = ["n-c1"]; },
+      text: "假設上次完整重算時 User 與 A 公司屬於社群 C1。新節點 B 公司、Momo 進來時，各自查看鄰居的社群，加入<b>多數鄰居</b>所屬的社群：兩者唯一的鄰居都是 User，所以都加入 C1，再更新社群摘要（§2.3）。增量結果會逐漸偏離完整重算，所以仍要定期刷新。" },
+    { title: "11. 檢索 φ：三種搜尋", run: function (s) {
+        s.query = "使用者現在在哪工作？"; s.hi = ["e-w1", "e-w2", "e-o1"];
+        s.panel = ["φ_cos（語意）：WORKS_FOR B、WORKS_FOR A、OWNS Momo", "φ_bm25（字詞）：WORKS_FOR A、WORKS_FOR B", "φ_bfs（從最近的 episode 出發 n 跳）：OWNS Momo、WORKS_FOR B"]; },
+      text: "查詢 \\(\\alpha\\) 進來。三種搜尋各自產生候選：餘弦相似度抓語意、BM25 抓字詞、BFS 從種子節點（例如最近的 episode）沿圖擴展。邊搜 fact 欄位、實體搜名稱、社群搜社群名稱（§3.1）。這裡的排名是示意。" },
+    { title: "12. 重排 ρ：RRF", run: function (s) {
+        s.hi = ["e-w2"];
+        s.panel = ["RRF 分數 = Σ 1/(60 + 名次)", "WORKS_FOR B：1/61 + 1/62 + 1/62 = 0.0487", "WORKS_FOR A：1/62 + 1/61 = 0.0325", "OWNS Momo：1/63 + 1/61 = 0.0323"]; },
+      text: "搜尋追求高召回，重排追求高精確。Reciprocal Rank Fusion 把多個排名合併：每份清單貢獻 \\(1/(k + \\text{名次})\\)。Zep 另有 MMR、episode 提及次數、節點距離與 cross-encoder 等重排器（§3.2）。" },
+    { title: "13. 組裝 χ：交給 LLM 的上下文", run: function (s) {
+        s.hi = [];
+        s.panel = ["<FACTS>", "User 轉職到 B 公司 (Date range: 2024-02-20 - present)", "User 在 A 公司當工程師 (Date range: 2024-01-10 - 2024-02-20)", "</FACTS>  …  <ENTITIES> User: …  B 公司: … </ENTITIES>"]; },
+      text: "Constructor 把邊輸出成「事實＋有效日期範圍」，實體輸出名稱與摘要（§3 範本）。原文沒有提到會先濾掉已失效的事實；範本的做法是把日期範圍一起交給 LLM，由 LLM 判斷「現在」該用哪一條 <span class=\"src src-mine\">導讀補充</span>。" }
+  ];
+
+  function mid(a, b) { return [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2]; }
+  StudyAnim(root, {
+    width: 720, height: 470,
+    init: function () { return { eps: [], nodes: {}, edges: {}, epEdges: [], comm: null, panel: null, query: null, hi: [] }; },
+    steps: steps,
+    draw: function (sc, s) {
+      sc.put("lines", "g", {}); sc.put("shapes", "g", {});
+      sc.put("h-ep", "text", { x: 16, y: 26, "class": "a-head" }, "Episodes（原始訊息）");
+      sc.put("h-g", "text", { x: 240, y: 26, "class": "a-head" }, "語意實體子圖與社群");
+      var hi = function (k) { return s.hi.indexOf(k) >= 0; };
+      s.eps.forEach(function (e, n) {
+        var y = 40 + n * 66;
+        sc.put("ep-" + e.id, "g", { pos: [16, y], enter: true }, null, "shapes");
+        sc.put("epr-" + e.id, "rect", { x: 0, y: 0, width: 200, height: 56, rx: 5, "class": "a-card" + (hi("ep-" + e.id) ? " hi" : "") }, null, "ep-" + e.id);
+        sc.put("ept1-" + e.id, "text", { x: 8, y: 17 }, e.l1, "ep-" + e.id);
+        sc.put("ept2-" + e.id, "text", { x: 8, y: 33 }, e.l2, "ep-" + e.id);
+        sc.put("ept3-" + e.id, "text", { x: 8, y: 49, "class": "a-mono" }, "t_ref " + e.ref, "ep-" + e.id);
+      });
+      s.epEdges.forEach(function (pair) {
+        var n = EPS.map(function (e) { return e.id; }).indexOf(pair[0]), p = POS[pair[1]];
+        sc.put("ee-" + pair[0] + pair[1], "line", { x1: 216, y1: 40 + n * 66 + 28, x2: p[0], y2: p[1], "class": "a-line dead", enter: true }, null, "lines");
+      });
+      Object.keys(s.edges).forEach(function (id) {
+        var e = s.edges[id], a = POS[e.a], b = POS[e.b], m = mid(a, b);
+        sc.put("e-" + id, "line", { x1: a[0], y1: a[1], x2: b[0], y2: b[1], "class": "a-line " + (e.dead ? "dead" : hi("e-" + id) ? "acc" : ""), enter: true }, null, "lines");
+        sc.put("el-" + id, "text", { x: m[0] + 6, y: m[1] - 6, "class": "a-mono" + (e.dead ? " a-strike" : ""), enter: true }, e.rel, "shapes");
+        sc.put("ed-" + id, "text", { x: m[0] + 6, y: m[1] + 8, "class": "a-small", enter: true }, e.from + " → " + e.to, "shapes");
+      });
+      if (s.comm) {
+        var c = POS.c1;
+        s.comm.forEach(function (n) { var p = POS[n]; sc.put("ce-" + n, "line", { x1: c[0], y1: c[1], x2: p[0], y2: p[1], "class": "a-thresh", enter: true }, null, "lines"); });
+        sc.put("n-c1", "circle", { cx: c[0], cy: c[1], r: 26, "class": "a-node comm" + (hi("n-c1") ? " hi" : ""), enter: true }, null, "shapes");
+        sc.put("nl-c1", "text", { x: c[0], y: c[1] + 4, "text-anchor": "middle" }, "C1", "shapes");
+        sc.put("ns-c1", "text", { x: c[0], y: c[1] + 42, "text-anchor": "middle", "class": "a-small" }, "社群：User 的工作與生活", "shapes");
+      }
+      Object.keys(s.nodes).forEach(function (id) {
+        var n = s.nodes[id], p = POS[id];
+        sc.put("n-" + id, "circle", { cx: p[0], cy: p[1], r: 28, "class": "a-node" + (n.cls === "cand" ? " comm" : "") + (hi("n-" + id) ? " hi" : ""), enter: true }, null, "shapes");
+        sc.put("nl-" + id, "text", { x: p[0], y: p[1] + 4, "text-anchor": "middle" }, n.label, "shapes");
+      });
+      if (s.panel) {
+        sc.put("pan", "rect", { x: 16, y: 354, width: 688, height: 110, rx: 6, "class": "a-zone", enter: true }, null, "shapes");
+        sc.put("pq", "text", { x: 28, y: 374, "class": "a-head a-acc" }, "查詢 α：" + s.query, "shapes");
+        s.panel.forEach(function (line, k) { sc.put("pl" + k, "text", { x: 28, y: 394 + k * 18, "class": "a-mono" }, line, "shapes"); });
+      }
+    }
+  });
+})();
+</script>
 <script>
 // Bi-temporal demo for section 05. Example data follows the paper's temporal-extraction rules (Appendix 6.1.5).
 (function () {

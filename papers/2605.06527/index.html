@@ -595,6 +595,18 @@
       </div>
     </section>
 
+    <!-- ===================== animation ===================== -->
+    <section class="sec" id="s-anim" data-short="動畫：兩種記憶對照">
+      <div class="sec-head"><span class="sec-num">10+</span><h2>動畫：同一個隱性衝突，兩種記憶怎麼處理</h2></div>
+      <p>用原文附錄 D.2 的範例（每天騎 10 英里上班 → 腿打石膏六週），對照 §4.4 診斷的「一般檢索式記憶」與 §5 的 CUPMem。左邊的行為依 LightMem 的診斷統計描繪，右邊依 CUPMem 的三個階段。</p>
+      <div class="anim" id="anim-stale" data-label="STALE 隱性衝突處理對照動畫"></div>
+      <p class="anim-note">動畫呈現的是兩種設計的<b>典型路徑</b>，不是每一題的必然結果 <span class="src src-mine">導讀補充</span>：LightMem 在 PR 上仍有約 1% 答對，CUPMem 在 IPA 上也只有 32.0%／43.0%。干擾 session 的內容與記憶條目文字是示意。</p>
+      <div class="desk-foot">
+        <div class="note"><label for="note-anim">筆記</label><textarea id="note-anim" data-note="s-anim"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-anim"> 讀完這節</label>
+      </div>
+    </section>
+
     <!-- ===================== 11 stats & robustness ===================== -->
     <section class="sec" id="s-stats" data-short="資料統計與穩健性">
       <div class="sec-head"><span class="sec-num">11</span><h2>資料統計與結果穩健性</h2></div>
@@ -760,6 +772,107 @@
 </div>
 
 <script src="../../assets/site.js"></script>
+<script src="../../assets/anim.js"></script>
+<script>
+// STALE side-by-side animation (section s-anim): retrieval-style memory vs CUPMem write-side adjudication.
+(function () {
+  "use strict";
+  var root = document.getElementById("anim-stale");
+  if (!root || !window.StudyAnim) return;
+  function mem(id, text, tag, status) { return { id: id, text: text, tag: tag || "", status: status || "" }; }
+  var steps = [
+    { title: "1. Session_o：建立舊信念", run: function (s) {
+        s.timeline = 1;
+        s.L.push(mem("l-bike", "使用者每天騎 10 英里的車去辦公室"));
+        s.R.push(mem("r-bike", "current_commute_mode = 騎車", "routine_and_transport", "ACTIVE"));
+        s.hi = ["l-bike", "r-bike"]; },
+      text: "使用者說：「我很喜歡每天騎 10 英里的車去辦公室。」左邊存成一筆文字記憶；右邊的 CUPMem 把它寫進 schema 的槽位 routine_and_transport.current_commute_mode，狀態 ACTIVE。" },
+    { title: "2. 草堆：大量無關對話", run: function (s) {
+        s.timeline = 2;
+        s.L.push(mem("l-d1", "喜歡日式料理"), mem("l-d2", "週末常去看展覽"));
+        s.R.push(mem("r-d1", "enduring_preference = 日式料理", "stable_preferences", "ACTIVE"));
+        s.hi = []; },
+      text: "每筆資料共 50 個 session、約 15 萬 tokens，真正有用的只有兩個 session。干擾 session 取自 LongMemEval，並過濾掉任何可能更新目標狀態的內容（§3.4、附錄 D.2）。" },
+    { title: "3. Session_n：隱性的新資訊", run: function (s) {
+        s.timeline = 3;
+        s.L.push(mem("l-cast", "醫生說腿上的石膏至少還要打六週"));
+        s.R.push(mem("r-cast", "functional_limitation = 腿打石膏", "health_and_mobility", "ACTIVE"));
+        s.hi = ["l-cast", "r-cast"]; s.note = { L: "寫入時召回前 3：與「腿打石膏」最相似的舊記憶不一定是騎車；就算召回到，也只有 3.3% 被判定需要更新", R: "抽出更新候選 δ：先落在 health_and_mobility（直接觸及的領域）" }; },
+      text: "使用者說：「好煩，醫生說這個腿上的石膏至少還要再打六週。」沒有提到騎車。這是 Type II 傳播衝突：更新的是健康，失效的是通勤方式。左邊新增一筆記憶後，新舊並存；§4.4 的統計是：寫入時前 3 召回有 60.5% 含舊證據，但其中只有 3.3% 被判定需要更新。" },
+    { title: "4. CUPMem：擴展到「受影響的狀態區域」", run: function (s) {
+        s.R.forEach(function (m) { if (m.id === "r-bike") m.status = "STALE"; });
+        s.R.push(mem("r-unk", "current_commute_mode → UNKNOWN_CURRENT", "routine_and_transport", "UNKNOWN"));
+        s.hi = ["r-bike", "r-unk"]; s.note = { L: "沒有裁決步驟：兩筆記憶都保持可被檢索", R: "R = direct ∪ affected ∪ global；affected 由常識推測：健康受限 → 日常與交通" }; },
+      text: "右邊的關鍵一步：候選範圍 \\(R_\\tau = R^{\\text{direct}} \\cup R^{\\text{affected}} \\cup R^{\\text{global}}\\)。affected 用常識推測「健康受限可能影響通勤」，把 routine_and_transport 也拉進來。LLM 裁決器判定舊的「騎車」不再安全：歸檔為 STALE；新的通勤方式還不知道，槽位標為 UNKNOWN_CURRENT（附錄 F.2）。" },
+    { title: "5. PR 陷阱題", run: function (s) {
+        s.query = "既然使用者喜歡每天騎 10 英里通勤，推薦一條明天上班的新風景路線？";
+        s.ans = { L: { rank: "檢索：舊證據排第 1，石膏那筆排更後", text: "推薦一條沿河的單車路線……", ok: false },
+          R: { rank: "π(q)：P_q=騎車 → V=OUTDATED", text: "使用者目前腿打石膏，近期不適合騎車……", ok: true } };
+        s.hi = ["l-bike", "r-bike"]; s.note = null; },
+      text: "PR 題預設了舊狀態，而且刻意不提新資訊的任何字眼。左邊：LightMem 在 PR 上舊證據排第一的比例是 84.5%，取回新證據仍答錯的比例高達 99.0%（Table 3）。右邊：受限讀出先解析查詢預設的前提，驗證器 \\(V(q, M)\\) 判定為 OUTDATED，擋下前提再回答（附錄 F.3）。" },
+    { title: "6. IPA 日常請求", run: function (s) {
+        s.query = "我明天早上要進辦公室開一個必到的會，怎麼去最好？";
+        s.ans = { L: { rank: "新舊都取回，但沒被當成依據", text: "騎車大約 40 分鐘，建議早點出門……", ok: false },
+          R: { rank: "現況：通勤未知＋腿打石膏", text: "腿還打著石膏，建議搭計程車或請人接送……", ok: true } };
+        s.hi = ["l-cast", "r-cast", "r-unk"]; },
+      text: "IPA 不提新舊任何一句，模型要自己想到腿的狀況。左邊：IPA 時舊證據排第一降到 25.5%，但取回新證據仍有 78.6% 答錯，代表光改善檢索不夠（§4.4）。右邊示範設計上的理想路徑；實際上 CUPMem 的 IPA 只有 32.0%／43.0%，低於 Gemini-3.1-pro 的 71.0%／55.0%（Table 2）。" },
+    { title: "7. 實際分數", run: function (s) {
+        s.query = null; s.ans = null; s.hi = []; s.score = true; },
+      text: "同樣用 GPT-4o-mini 當骨幹。CUPMem 在 PR 上從近乎 0 拉到 75–78%。把六欄相對 GPT-4o-mini 的提升加總，PR 約佔 43%、SR 約佔 40%、IPA 只佔約 18% <span class=\"src src-mine\">導讀補充</span>。核心結論：<b>問題不在找不到，而在找到了卻沒有被當成依據</b>，寫入時裁決是有效的方向。" }
+  ];
+
+  var lanes = { L: { x: 16, title: "一般檢索式記憶（依 LightMem 診斷）" }, R: { x: 368, title: "CUPMem：寫入時裁決" } };
+  StudyAnim(root, {
+    width: 720, height: 450, interval: 4200,
+    init: function () { return { timeline: 0, L: [], R: [], hi: [], note: null, query: null, ans: null, score: false }; },
+    steps: steps,
+    draw: function (sc, s) {
+      sc.put("bg", "g", {}); sc.put("fg", "g", {});
+      var tl = ["Session_o", "…48 個干擾 session…", "Session_n", "查詢"];
+      tl.forEach(function (t, k) {
+        var x = 16 + k * 172;
+        sc.put("tl" + k, "rect", { x: x, y: 10, width: 164, height: 26, rx: 13, "class": "a-card" + (s.timeline === k + 1 || (k === 3 && s.query) ? " hi" : "") }, null, "bg");
+        sc.put("tlt" + k, "text", { x: x + 82, y: 28, "text-anchor": "middle", "class": "a-small" }, t, "bg");
+      });
+      ["L", "R"].forEach(function (side) {
+        var z = lanes[side], list = s[side];
+        sc.put("lane" + side, "rect", { x: z.x, y: 46, width: 336, height: 396, rx: 6, "class": "a-zone" }, null, "bg");
+        sc.put("lt" + side, "text", { x: z.x + 12, y: 66, "class": "a-head " + (side === "R" ? "a-acc" : "") }, z.title, "bg");
+        if (!s.score) {
+          list.forEach(function (m, k) {
+            var y = 76 + k * 40;
+            var cls = "a-card" + (m.status === "STALE" ? " dead" : m.status === "UNKNOWN" ? " warn" : s.hi.indexOf(m.id) >= 0 ? " hi" : "");
+            sc.put("g" + m.id, "g", { pos: [z.x + 10, y], enter: true }, null, "fg");
+            sc.put("r" + m.id, "rect", { x: 0, y: 0, width: 316, height: 34, rx: 4, "class": cls }, null, "g" + m.id);
+            sc.put("t" + m.id, "text", { x: 8, y: m.tag ? 14 : 21, "class": m.status === "STALE" ? "a-strike" : "" }, m.text, "g" + m.id);
+            if (m.tag) sc.put("tg" + m.id, "text", { x: 8, y: 28, "class": "a-mono" }, m.tag + (m.status ? " · " + m.status : ""), "g" + m.id);
+          });
+          if (s.note) sc.put("nt" + side, "text", { x: z.x + 12, y: 330, "class": "a-small" }, s.note[side], "fg");
+        }
+        if (s.ans) {
+          var a = s.ans[side];
+          sc.put("qa" + side, "rect", { x: z.x + 10, y: 306, width: 316, height: 128, rx: 5, "class": "a-card " + (a.ok ? "ok" : "warn"), enter: true }, null, "fg");
+          sc.put("qq" + side, "text", { x: z.x + 20, y: 326, "class": "a-small" }, "Q：" + (s.query.length > 24 ? s.query.slice(0, 24) + "…" : s.query), "fg");
+          sc.put("qr" + side, "text", { x: z.x + 20, y: 350, "class": "a-mono" }, a.rank, "fg");
+          sc.put("qt" + side, "text", { x: z.x + 20, y: 378 }, "答：" + a.text, "fg");
+          sc.put("qv" + side, "text", { x: z.x + 20, y: 414, "class": a.ok ? "a-ok" : "a-bad" }, a.ok ? "✓ 依新狀態回答" : "✗ 順著過時前提", "fg");
+        }
+        if (s.score) {
+          var rows = side === "L"
+            ? [["", "Type I", "Type II"], ["SR", "52.5%", "21.5%"], ["PR", "1.0%", "0.5%"], ["IPA", "23.5%", "7.5%"], ["Overall", "17.8%", ""]]
+            : [["", "Type I", "Type II"], ["SR", "91.0%", "89.0%"], ["PR", "78.0%", "75.0%"], ["IPA", "32.0%", "43.0%"], ["Overall", "68.0%", ""]];
+          sc.put("sc-h" + side, "text", { x: z.x + 20, y: 96, "class": "a-small" }, side === "L" ? "LightMem（Table 2）" : "CUPMem（Table 2）", "fg");
+          rows.forEach(function (r, k) {
+            r.forEach(function (c, j) {
+              sc.put("sc" + side + k + "-" + j, "text", { x: z.x + 20 + j * 100, y: 124 + k * 30, "class": k === 0 || j === 0 ? "a-small" : "a-mono", enter: true }, c, "fg");
+            });
+          });
+        }
+      });
+    }
+  });
+})();
+</script>
 <script>
 // Table 2 (verbatim from the paper) rendered as a table and as a sortable bar chart for section 07.
 (function () {

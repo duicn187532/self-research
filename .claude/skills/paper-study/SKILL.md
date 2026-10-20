@@ -39,7 +39,18 @@ Never fill in an equation, number or hyperparameter that no source gave; write `
    `src-2nd` (secondary, unverified), `src-mine` (your own derivation or background knowledge).
 5. When a mechanism has a tunable curve or formula, add a small interactive figure
    (see the decay chart in `papers/2601.18642/index.html`): inline SVG, colors from CSS tokens.
-6. In the critique section, write real questions about fairness of baselines, hyperparameters,
+6. Whenever the paper has an algorithm, pipeline or protocol, add a step-by-step teaching animation
+   with `assets/anim.js` (load it after `site.js`): `StudyAnim(el, { width, height, init, steps, draw })`.
+   Each step has a `title`, a `text` caption citing the equation/section, and a `run(state)`; `draw`
+   upserts keyed SVG nodes with `scene.put(key, tag, attrs, text, parentKey)` (use `pos: [x, y]` to
+   animate movement, and draw backgrounds in a `bg` group before an `fg` group). Compute every number
+   shown from the paper's formulas; label parameters the paper does not give as 示意, and say in the
+   caption when the animation shows an idealised path rather than measured behaviour. Put it in its
+   own `.sec` (e.g. `id="s-anim"`) so it counts toward progress. Examples: FadeMem (full Eq.14 loop),
+   Zep (graph build + retrieval), STALE (two systems side by side), 2606.30306 (lifecycle, AOEP).
+7. Check numbers mechanically: extract every number from the page and confirm it appears in the
+   PDF text or is a derived value whose working is shown on the page.
+8. In the critique section, write real questions about fairness of baselines, hyperparameters,
    cost, and generalisation; not praise.
 
 ## 3. Register and check

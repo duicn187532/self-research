@@ -442,6 +442,18 @@
       </div>
     </section>
 
+    <!-- ===================== animation: full loop ===================== -->
+    <section class="sec" id="s-anim" data-short="動畫：完整流程">
+      <div class="sec-head"><span class="sec-num">07+</span><h2>動畫：一組記憶的三週</h2></div>
+      <p>把 03 到 07 的機制串成 Eq.14 的完整流程：寫入、衰減、存取強化與升級、遲滯、衝突解決、融合、刪除。每一步的數字都由原文公式即時算出。</p>
+      <div class="anim" id="anim-fademem" data-label="FadeMem 記憶流程動畫"></div>
+      <p class="anim-note">原文給定：\(\lambda_{\text{base}} = 0.1\)、\(\beta_i\) 為 0.8／1.2、\(\theta_{\text{promote}} = 0.7\)、\(\theta_{\text{demote}} = 0.3\)。以下為示意值（原文未提供）：\(\alpha, \beta, \gamma = 0.4, 0.3, 0.3\)；\(\delta = 0.05\)；\(\kappa = 0.1\)；\(\mu = 1\)；\(\Delta v = 0.3\)；\(N = 3\)；\(\rho = 1\)；\(W_{\text{age}} = 10\) 天；融合的 \(\epsilon = 0.5\)、log 取自然對數；\(\epsilon_{\text{prune}} = 0.1\)。另外兩個原文沒說的實作細節也是示意：新記憶一律先放 SML；Eq.7 的強化之後，Eq.4 以「從建立時間起算的累積衰減量差」逐日更新 <span class="src src-mine">導讀補充</span>。</p>
+      <div class="desk-foot">
+        <div class="note"><label for="note-anim">筆記</label><textarea id="note-anim" data-note="s-anim"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-anim"> 讀完這節</label>
+      </div>
+    </section>
+
     <!-- ===================== 08 setup ===================== -->
     <section class="sec" id="s-setup" data-short="實驗設定">
       <div class="sec-head"><span class="sec-num">08</span><h2>實驗設定</h2></div>
@@ -723,6 +735,139 @@
 </div>
 
 <script src="../../assets/site.js"></script>
+<script src="../../assets/anim.js"></script>
+<script>
+// FadeMem full-loop animation (section s-anim). Formulas follow Eq.2-14; parameters marked 示意 on the page.
+(function () {
+  "use strict";
+  var root = document.getElementById("anim-fademem");
+  if (!root || !window.StudyAnim) return;
+  var P = { lamBase: 0.1, mu: 1, a: 0.4, b: 0.3, g: 0.3, delta: 0.05, kappa: 0.1, dv: 0.3, N: 3,
+    rho: 1, Wage: 10, eps: 0.5, prune: 0.1, up: 0.7, down: 0.3, beta: { SML: 1.2, LML: 0.8 } };
+  function recency(m, t) { return Math.exp(-P.delta * (t - m.tau)); }
+  function fdec(m, t) { return m.acc.reduce(function (s, tj) { return s + Math.exp(-P.kappa * (t - tj)); }, 0); }
+  function imp(m, t) { var f = fdec(m, t); return P.a * m.rel + P.b * f / (1 + f) + P.g * recency(m, t); }
+  function lam(m, t) { return P.lamBase * (m.xi || 1) * Math.exp(-P.mu * imp(m, t)); }
+  function layerOf(m, t) { var I = imp(m, t); if (I >= P.up) return "LML"; if (I < P.down) return "SML"; return m.layer; }
+  function advance(s, t2) {
+    for (var t = s.t; t < t2; t += 1) {
+      var tn = Math.min(t + 1, t2);
+      s.mems.forEach(function (m) {
+        if (m.tau > t) return;
+        var bt = P.beta[m.layer], L = lam(m, t);
+        m.v *= Math.exp(-L * (Math.pow(tn - m.tau, bt) - Math.pow(Math.max(0, t - m.tau), bt)));
+        m.layer = layerOf(m, tn);
+      });
+    }
+    s.t = t2;
+  }
+  function mk(id, text, rel, tau) { return { id: id, text: text, rel: rel, tau: tau, v: 1, acc: [], layer: "SML" }; }
+  function find(s, id) { return s.mems.filter(function (m) { return m.id === id; })[0]; }
+  function f2(x) { return x.toFixed(2); }
+  function f3(x) { return x.toFixed(3); }
+
+  var steps = [
+    { title: "1. 寫入（第 0 天）", run: function (s) {
+        s.mems = [mk("m1", "我每天騎腳踏車上班", 0.6, 0), mk("m2", "我住在台北", 0.5, 0), mk("m3", "週一去游泳", 0.3, 0)];
+        s.focus = ["m1", "m2", "m3"];
+      }, text: function (s) {
+        var m = find(s, "m1");
+        return "三筆新記憶，強度 \\(v = 1\\)。以「騎腳踏車」為例，Eq.2：\\(I = 0.4 \\times 0.6 + 0.3 \\times 0 + 0.3 \\times 1 = " + f2(imp(m, 0)) + "\\)。介於兩個門檻之間，先放在 SML（原文沒說新記憶的初始層，這裡是示意）。";
+      } },
+    { title: "2. 時間過去（第 4 天）", run: function (s) {
+        s.mems.push(mk("m4", "週三去游泳", 0.3, 2));
+        s.mems.push(mk("m5", "週五去游泳", 0.3, 4));
+        advance(s, 4); s.focus = ["m1", "m2", "m3"];
+      }, text: function (s) {
+        var m = find(s, "m1");
+        return "Eq.4 讓每筆記憶衰減：\\(v = \\exp(-\\lambda (t-\\tau)^{1.2})\\)。新近程度下降使 \\(I\\) 變小、\\(\\lambda = 0.1\\,e^{-I}\\) 變大，衰減更快。「騎腳踏車」已降到 \\(v = " + f3(m.v) + "\\)。期間又寫入週三、週五的游泳紀錄。";
+      } },
+    { title: "3. 存取強化與升級", run: function (s) {
+        var m = find(s, "m1"); m.rel = 0.9;
+        [4, 4, 4].forEach(function (tj) {
+          var n = m.acc.filter(function (x) { return s.t - x <= 7; }).length;
+          m.v = m.v + P.dv * (1 - m.v) * Math.exp(-n / P.N); m.acc.push(tj);
+        });
+        m.layer = layerOf(m, s.t); s.focus = ["m1"];
+      }, text: function (s) {
+        var m = find(s, "m1");
+        return "使用者連問三次單車裝備。每次存取依 Eq.7 加強：\\(v \\leftarrow v + 0.3(1-v)e^{-n/3}\\)，\\(n\\) 越大加得越少，\\(v\\) 回到 " + f3(m.v) + "。頻率項與相關性上升，\\(I = " + f2(imp(m, s.t)) + " \\ge 0.7\\)，依 Eq.3 升到 LML，之後改用較慢的 \\(\\beta = 0.8\\)。";
+      } },
+    { title: "4. 遲滯：分數掉了也不急著降級（第 8 天）", run: function (s) {
+        advance(s, 8); find(s, "m1").rel = 0.4; s.focus = ["m1"];
+      }, text: function (s) {
+        var m = find(s, "m1");
+        return "話題轉開，相關性降到 0.4，\\(I = " + f2(imp(m, s.t)) + "\\)。它低於升級門檻 0.7，但沒有低於降級門檻 0.3，所以仍留在 LML。這就是 \\(\\theta_{\\text{promote}} &gt; \\theta_{\\text{demote}}\\) 帶來的遲滯，避免來回震盪。";
+      } },
+    { title: "5. 衝突解決：新資訊壓制舊資訊", run: function (s) {
+        var m = find(s, "m2"); s.before = m.v;
+        m.v *= Math.exp(-P.rho * Math.min(1, Math.max(0, (s.t - m.tau) / P.Wage)));
+        s.mems.push(mk("m6", "上週搬到台中了", 0.7, 8)); s.focus = ["m2", "m6"]; s.warn = ["m2"];
+      }, text: function (s) {
+        var m = find(s, "m2");
+        return "新記憶「上週搬到台中了」與「我住在台北」的相似度超過 \\(\\theta_{\\text{sim}}\\)（Eq.8），LLM 判定為矛盾。Eq.10：\\(v \\leftarrow v \\cdot \\exp(-\\rho \\cdot \\mathrm{clip}(8/10, 0, 1))\\)，舊記憶從 " + f3(s.before) + " 壓到 " + f3(m.v) + "。注意舊記憶沒有被刪，只是變弱，交給衰減處理。";
+      } },
+    { title: "6. 記憶融合", run: function (s) {
+        var cl = s.mems.filter(function (m) { return /游泳/.test(m.text); });
+        var vs = cl.map(function (m) { return m.v; });
+        var mean = vs.reduce(function (a, c) { return a + c; }, 0) / vs.length;
+        var vr = vs.reduce(function (a, c) { return a + (c - mean) * (c - mean); }, 0) / vs.length;
+        s.fuse = { vs: vs, vr: vr };
+        s.mems = s.mems.filter(function (m) { return !/游泳/.test(m.text); });
+        var f = mk("f1", "每週一三五去游泳（融合）", 0.3, s.t);
+        f.v = Math.min(1, Math.max.apply(null, vs) + P.eps * vr); f.xi = 1 / (1 + Math.log(3));
+        s.mems.push(f); s.focus = ["f1"]; s.warn = [];
+      }, text: function (s) {
+        var f = find(s, "f1");
+        return "三筆游泳紀錄語意相似（&gt; 0.75）且時間相近，形成群組 \\(C_k\\)（Eq.11），由 LLM 合併成一筆。Eq.12：\\(v = \\max(" + s.fuse.vs.map(f3).join(", ") + ") + 0.5 \\times " + s.fuse.vr.toFixed(4) + " = " + f3(f.v) + "\\)。Eq.13：衰減速率乘上 \\(1/(1+\\ln 3) \\approx 0.48\\)。三筆變一筆，而且忘得更慢。";
+      } },
+    { title: "7. 時間推進，低於門檻者刪除（第 16 天）", run: function (s) {
+        advance(s, 16); s.warn = s.mems.filter(function (m) { return m.v < P.prune; }).map(function (m) { return m.id; });
+        s.focus = s.warn.slice();
+      }, text: function (s) {
+        var m = find(s, "m2");
+        return "再過 8 天。被矛盾壓制過的「我住在台北」降到 \\(v = " + f3(m.v) + " &lt; \\epsilon_{\\text{prune}} = 0.1\\)，將被刪除。對照組：在 LML 的「騎腳踏車」因為衰減較慢，仍有 " + f3(find(s, "m1").v) + "。";
+      } },
+    { title: "8. 結果：寫入 6 筆，留下 3 筆", run: function (s) {
+        s.mems = s.mems.filter(function (m) { return m.v >= P.prune; }); s.pruned = 1; s.focus = []; s.warn = [];
+      }, text: "總共寫入 6 筆記憶：一筆因衝突與衰減被刪除，三筆被融合成一筆，最後剩 3 筆。這就是 FadeMem 降低儲存量的兩個來源：<b>刪除</b>與<b>融合</b>。消融實驗顯示融合對多跳推理貢獻最大（見 10）。" }
+  ];
+
+  var Z = { SML: { x: 16, title: "短期記憶層 SML · β = 1.2", cls: "sml" }, LML: { x: 368, title: "長期記憶層 LML · β = 0.8", cls: "lml" } };
+  StudyAnim(root, {
+    width: 720, height: 404,
+    init: function () { return { t: 0, mems: [], focus: [], warn: [], written: 0 }; },
+    steps: steps,
+    draw: function (sc, s, i) {
+      sc.put("bg", "g", {});
+      sc.put("fg", "g", {});
+      sc.put("day", "text", { x: 16, y: 26, "class": "a-head" }, "第 " + s.t + " 天");
+      sc.put("thr", "text", { x: 704, y: 26, "class": "a-small", "text-anchor": "end" }, "升級 I ≥ 0.7 · 降級 I < 0.3 · 刪除 v < 0.1");
+      ["SML", "LML"].forEach(function (L) {
+        var z = Z[L];
+        sc.put("zone-" + L, "rect", { x: z.x, y: 40, width: 336, height: 324, rx: 6, "class": "a-zone" }, null, "bg");
+        sc.put("zt-" + L, "text", { x: z.x + 12, y: 60, "class": "a-head " + (L === "LML" ? "a-acc" : "a-sml") }, z.title, "bg");
+        var row = 0;
+        s.mems.forEach(function (m) {
+          if (m.layer !== L) return;
+          var x = z.x + 10, y = 72 + row * 56; row += 1;
+          var cls = "a-card " + z.cls + (s.warn.indexOf(m.id) >= 0 ? " warn" : s.focus.indexOf(m.id) >= 0 ? " hi" : "");
+          sc.put("g-" + m.id, "g", { pos: [x, y], enter: true }, null, "fg");
+          sc.put("c-" + m.id, "rect", { x: 0, y: 0, width: 316, height: 48, rx: 5, "class": cls }, null, "g-" + m.id);
+          sc.put("t-" + m.id, "text", { x: 10, y: 19 }, m.text, "g-" + m.id);
+          sc.put("s-" + m.id, "text", { x: 10, y: 37, "class": "a-mono" }, "I " + f2(imp(m, s.t)) + "  λ " + lam(m, s.t).toFixed(3) + "  τ=" + m.tau, "g-" + m.id);
+          sc.put("vt-" + m.id, "text", { x: 196, y: 19, "class": "a-mono" }, "v " + f3(m.v), "g-" + m.id);
+          sc.put("tr-" + m.id, "rect", { x: 196, y: 28, width: 110, height: 8, rx: 2, "class": "a-track" }, null, "g-" + m.id);
+          sc.put("br-" + m.id, "rect", { x: 196, y: 28, width: Math.max(1, 110 * m.v).toFixed(1), height: 8, rx: 2, "class": "a-bar" + (L === "SML" ? " sml" : "") + (s.warn.indexOf(m.id) >= 0 ? " warn" : "") }, null, "g-" + m.id);
+          sc.put("pt-" + m.id, "rect", { x: 196 + 110 * P.prune, y: 25, width: 1, height: 14, "class": "a-thresh" }, null, "g-" + m.id);
+        });
+      });
+      var count = s.mems.length;
+      sc.put("foot", "text", { x: 16, y: 392, "class": "a-small" }, "目前儲存 " + count + " 筆記憶" + (i === steps.length - 1 ? " · 共寫入 6 筆" : "") + " · 參數為原文值與示意值混合（見下方說明）");
+    }
+  });
+})();
+</script>
 <script>
 // Interactive decay chart for section 04.
 (function () {

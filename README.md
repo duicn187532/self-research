@@ -9,6 +9,7 @@
 | [2601.18642](papers/2601.18642/index.html) | FadeMem: Biologically-Inspired Forgetting for Efficient Agent Memory | 已對照 v2 PDF 核對 |
 | [2501.13956](papers/2501.13956/index.html) | Zep: A Temporal Knowledge Graph Architecture for Agent Memory | 已對照 v1 PDF 核對 |
 | [2605.06527](papers/2605.06527/index.html) | STALE: Can LLM Agents Know When Their Memories Are No Longer Valid? | 已對照 v1 PDF 核對 |
+| [2606.30306](papers/2606.30306/index.html) | Always-On Agents: A Survey of Persistent Memory, State, and Governance in LLM Agents | 已對照 v1 PDF 核對 |
 
 ## 怎麼看
 
@@ -36,6 +37,7 @@ python3 -m http.server 8000
 ```
 index.html                 書架
 assets/site.css, site.js   共用樣式與互動（解釋深度切換、筆記、進度）
+assets/anim.js             逐步教學動畫播放器（上一步／下一步／自動播放）
 papers/<arxiv-id>/         每篇論文一頁
 papers/_template/          新論文模板
 scripts/                   抓論文、打包單檔
