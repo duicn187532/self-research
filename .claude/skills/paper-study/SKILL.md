@@ -1,0 +1,54 @@
+---
+name: paper-study
+description: "Add a new paper to the 論文精讀室 study site in this repo, or update an existing paper page after the user has checked it against the full text. Use when the user gives an arXiv link or paper and asks to add it, make a study/close-reading (精讀) page, or explain a paper; also when they paste exported notes from a paper page."
+---
+
+# 論文精讀室：新增或更新一篇論文
+
+The site is static HTML (no build step). Every paper is one page at `papers/<arxiv-id>/index.html`
+that reuses `assets/site.css` and `assets/site.js`. The reader is a graduate-level researcher who
+reads in Traditional Chinese (台灣用語); keep original English technical terms beside the Chinese.
+
+## 1. Get the full text first
+
+```bash
+python3 scripts/fetch_arxiv.py <id>v<N>        # writes _sources/<id>v<N>.txt
+```
+
+If arxiv.org is blocked, try the `web-fetch` agent, then ask the user to upload the PDF or allow
+arxiv.org in the environment's network settings. Search-result summaries are a last resort: mark
+every claim from them `二手・待核對` and add the yellow `.notice` box saying the page is unverified.
+Never fill in an equation, number or hyperparameter that no source gave; write `?` and a note instead.
+
+## 2. Build the page
+
+1. `cp -r papers/_template papers/<id>` and replace `ARXIV_ID`, `PAPER_SHORT` and the header fields.
+2. One `<section class="sec" id="s-..." data-short="...">` per idea the reader must understand,
+   in reading order: 閱讀路線, problem, each method component, results, ablation, related work,
+   critique, glossary, export. The outline and progress bar are generated from these sections.
+3. Each section carries, in this order where they apply:
+   - equations in `.eq` (MathJax, `\[ ... \]` / `\( ... \)`; escape `<` `>` as `&lt;` `&gt;`;
+     no CJK inside `\text{}`), followed by a symbol table;
+   - `.explain` with three `.lv` blocks written with the **eli5** skill
+     (`.claude/skills/eli5/SKILL.md`): `lv-kid` = Age 5, `lv-uni` = College Student,
+     `lv-grad` = Graduate school. Each starts with the "what", uses an analogy, ends with "so what";
+   - `.claim` paraphrasing what the paper itself says;
+   - `.check` with 1–3 self-test questions in `<details>`;
+   - `.desk-foot` with a notes textarea (`data-note`) and a done checkbox (`data-done`), same id as the section.
+4. Tag every factual claim with its provenance: `src-abs` (abstract / original text),
+   `src-2nd` (secondary, unverified), `src-mine` (your own derivation or background knowledge).
+5. When a mechanism has a tunable curve or formula, add a small interactive figure
+   (see the decay chart in `papers/2601.18642/index.html`): inline SVG, colors from CSS tokens.
+6. In the critique section, write real questions about fairness of baselines, hyperparameters,
+   cost, and generalisation; not praise.
+
+## 3. Register and check
+
+- Add a card to `index.html` with `data-progress-for="<id>"` and `data-total` = number of `data-done` boxes.
+- Preview: `python3 -m http.server` and open the page, or build a single file with
+  `python3 scripts/build_artifact.py papers/<id>/index.html dist/<id>.html` to publish as an Artifact.
+
+## Updating after the user reads the full text
+
+When the user pastes exported notes, apply their corrections, upgrade `src-2nd` tags to `src-abs`
+for anything they confirmed, fill `?` cells, and remove the `.notice` box once nothing unverified remains.

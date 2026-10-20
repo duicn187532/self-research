@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>論文精讀室</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<header class="toolbar gutter">
+  <div class="toolbar-inner">
+    <a class="home" href="index.html">論文精讀室</a>
+    <span class="crumb">書架</span>
+    <div class="levels" role="group" aria-label="預設解釋深度">
+      <span class="levels-label">預設解釋深度</span>
+      <div class="seg">
+        <button type="button" data-level-btn="kid" aria-pressed="false">五歲</button>
+        <button type="button" data-level-btn="uni" aria-pressed="true">大學生</button>
+        <button type="button" data-level-btn="grad" aria-pressed="false">研究生</button>
+        <button type="button" data-level-btn="all" aria-pressed="false">對照</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="gutter" style="max-width:76rem;margin:0 auto;padding-block:2.5rem 4rem;display:grid;gap:2.5rem">
+  <div class="shelf-head">
+    <h1>論文精讀室</h1>
+    <p>每篇論文一頁：同一段內容有五歲、大學生、研究生三種解釋深度，公式逐符號拆解，每節附自我檢測與筆記欄。標籤說明每個數字的出處，方便邊讀原文邊核對。</p>
+  </div>
+
+  <ul class="shelf">
+    <li>
+      <a class="card" href="papers/2601.18642/index.html">
+        <div class="meta"><span class="mono">arXiv 2601.18642</span><span>Agent 記憶</span><span class="src src-2nd">初稿・待核對全文</span></div>
+        <h2>FadeMem：仿生遺忘機制讓 Agent 記憶更有效率</h2>
+        <p class="gist">雙層記憶搭配重要性調節的衰減、LLM 衝突解決與記憶融合，儲存減少 45%。</p>
+        <div class="meta"><span data-progress-for="2601.18642" data-total="12"></span></div>
+      </a>
+    </li>
+  </ul>
+
+  <div class="method">
+    <h2>每篇的讀法</h2>
+    <ol>
+      <li><b>第一遍</b>：摘要、架構圖、結論。能一句話講出問題、方法、成果。</li>
+      <li><b>第二遍</b>：方法章節。每條公式的每個符號都說得出意思，互動圖自己調一次。</li>
+      <li><b>第三遍</b>：實驗與消融。挑毛病，把疑問寫進筆記，最後匯出。</li>
+    </ol>
+  </div>
+</main>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

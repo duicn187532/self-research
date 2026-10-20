@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PAPER_SHORT 精讀</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
+    svg: { fontCache: "global" }
+  };
+</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script>
+</head>
+<body>
+<div data-paper="ARXIV_ID">
+
+<header class="toolbar gutter">
+  <div class="toolbar-inner">
+    <a class="home" href="../../index.html">論文精讀室</a>
+    <span class="crumb">PAPER_SHORT · arXiv ARXIV_ID</span>
+    <div class="levels" role="group" aria-label="解釋深度">
+      <span class="levels-label">解釋深度</span>
+      <div class="seg">
+        <button type="button" data-level-btn="kid" aria-pressed="false">五歲</button>
+        <button type="button" data-level-btn="uni" aria-pressed="true">大學生</button>
+        <button type="button" data-level-btn="grad" aria-pressed="false">研究生</button>
+        <button type="button" data-level-btn="all" aria-pressed="false">對照</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="desk gutter">
+  <nav class="rail" aria-label="章節">
+    <details open>
+      <summary>章節 <span class="progress-text" id="progress-text">0 / 0</span></summary>
+      <div class="progress"><span id="progress-bar"></span></div>
+      <ol id="outline"></ol>
+    </details>
+  </nav>
+
+  <main class="column">
+
+    <div class="paper-head">
+      <div class="eyebrow"><span class="mono">arXiv ARXIV_ID</span><span>CATEGORIES</span><span>DATES</span></div>
+      <h1>中文標題</h1>
+      <p lang="en"><em>Original English Title</em></p>
+      <p class="authors">Authors · Affiliations</p>
+      <div class="links">
+        <a href="https://arxiv.org/abs/ARXIV_ID" target="_blank" rel="noopener">arXiv 摘要頁</a>
+        <a href="https://arxiv.org/pdf/ARXIV_ID" target="_blank" rel="noopener">PDF</a>
+      </div>
+      <div class="legend">
+        <span><span class="src src-abs">摘要</span> 論文摘要明確寫到</span>
+        <span><span class="src src-2nd">二手・待核對</span> 二手整理轉述</span>
+        <span><span class="src src-mine">導讀補充</span> 本頁的推導或背景知識</span>
+      </div>
+    </div>
+
+    <!-- Copy this block once per section. id must be unique; data-short is the outline label. -->
+    <section class="sec" id="s-problem" data-short="問題">
+      <div class="sec-head"><span class="sec-num">01</span><h2>節標題</h2></div>
+      <div class="eq">
+        <div class="eq-head"><span>公式名稱</span><span class="src src-abs">原文</span></div>
+        \[ y = f(x) \]
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid"><p>五歲版：一個生活化比喻，短句，零術語。</p></div>
+        <div class="lv lv-uni"><p>大學生版：術語附定義，講清楚機制與動機。</p></div>
+        <div class="lv lv-grad"><p>研究生版：設計取捨、與前人工作的差異、值得追問的地方。</p></div>
+      </div>
+      <div class="claim">
+        <span class="claim-label">論文怎麼說 <span class="src src-abs">原文</span></span>
+        <p>原文要點。</p>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>問題？</summary><div><p>答案。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-problem">筆記</label><textarea id="note-problem" data-note="s-problem"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-problem"> 讀完這節</label>
+      </div>
+    </section>
+
+    <section class="sec" id="s-export" data-short="匯出筆記">
+      <div class="sec-head"><span class="sec-num">附錄</span><h2>匯出我的筆記</h2></div>
+      <div class="btn-row"><button type="button" class="btn" id="export-notes">複製全部筆記</button><span class="toast" id="export-toast" role="status"></span></div>
+      <div class="note"><label for="export-box" class="sr-only">匯出內容</label><textarea id="export-box" rows="8" hidden readonly></textarea></div>
+    </section>
+
+  </main>
+</div>
+</div>
+
+<script src="../../assets/site.js"></script>
+</body>
+</html>

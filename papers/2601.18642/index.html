@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FadeMem 精讀</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="../../assets/site.css">
+<style>
+  .chart-box .grid line { stroke: var(--rule); stroke-width: 1; }
+  .chart-box .axis text { fill: var(--muted); font-size: 11px; font-family: var(--font-mono); }
+  .chart-box .axis-title { fill: var(--muted); font-size: 11px; font-family: var(--font-body); }
+  .chart-box .half { stroke: var(--muted); stroke-dasharray: 4 4; stroke-width: 1; fill: none; }
+  .chart-box .prune { stroke: var(--warn); stroke-dasharray: 2 3; stroke-width: 1.25; fill: none; }
+  .chart-box .prune-label { fill: var(--warn); font-size: 11px; font-family: var(--font-body); }
+  .chart-box .curve-lml { stroke: var(--accent); stroke-width: 2.5; fill: none; }
+  .chart-box .curve-sml { stroke: var(--sml); stroke-width: 2.5; fill: none; }
+  .chart-box .dot-lml { fill: var(--accent); }
+  .chart-box .dot-sml { fill: var(--sml); }
+  .chart-box .lbl-lml { fill: var(--accent); font-size: 12px; font-weight: 700; font-family: var(--font-body); }
+  .chart-box .lbl-sml { fill: var(--sml); font-size: 12px; font-weight: 700; font-family: var(--font-body); }
+  .controls select { font: inherit; color: var(--ink); background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 0.15rem 0.3rem; }
+</style>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
+    svg: { fontCache: "global" }
+  };
+</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script>
+</head>
+<body>
+<div data-paper="2601.18642">
+
+<header class="toolbar gutter">
+  <div class="toolbar-inner">
+    <a class="home" href="../../index.html">論文精讀室</a>
+    <span class="crumb">FadeMem · arXiv 2601.18642</span>
+    <div class="levels" role="group" aria-label="解釋深度">
+      <span class="levels-label">解釋深度</span>
+      <div class="seg">
+        <button type="button" data-level-btn="kid" aria-pressed="false">五歲</button>
+        <button type="button" data-level-btn="uni" aria-pressed="true">大學生</button>
+        <button type="button" data-level-btn="grad" aria-pressed="false">研究生</button>
+        <button type="button" data-level-btn="all" aria-pressed="false">對照</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="desk gutter">
+  <nav class="rail" aria-label="章節">
+    <details open>
+      <summary>章節 <span class="progress-text" id="progress-text">0 / 0</span></summary>
+      <div class="progress"><span id="progress-bar"></span></div>
+      <ol id="outline"></ol>
+    </details>
+  </nav>
+
+  <main class="column">
+
+    <!-- ===================== header ===================== -->
+    <div class="paper-head">
+      <div class="eyebrow"><span class="mono">arXiv 2601.18642v2</span><span>cs.AI · cs.CL</span><span>v1 2026-01-26 · v2 2026-02-06</span></div>
+      <h1>FadeMem：仿生遺忘機制讓 Agent 記憶更有效率</h1>
+      <p lang="en"><em>FadeMem: Biologically-Inspired Forgetting for Efficient Agent Memory</em></p>
+      <p class="authors">Lei Wei, Xiao Peng, Xu Dong, Niantao Xie, Bin Wang · Alibaba、北京大學（機構名稱取自二手來源）</p>
+      <div class="links">
+        <a href="https://arxiv.org/abs/2601.18642" target="_blank" rel="noopener">arXiv 摘要頁</a>
+        <a href="https://arxiv.org/html/2601.18642v2" target="_blank" rel="noopener">HTML 全文</a>
+        <a href="https://arxiv.org/pdf/2601.18642" target="_blank" rel="noopener">PDF</a>
+      </div>
+      <div class="notice" role="note">
+        <p><strong>核對狀態：初稿，尚未對照全文。</strong>建立本頁的環境無法連到 arxiv.org，內容來自論文摘要與數個二手整理（Moonlight 文獻回顧、Emergent Mind、alphaXiv 等）。公式與數字都標了出處等級，讀全文時請逐一打勾核對，有出入就寫進該節筆記。</p>
+        <div class="legend">
+          <span><span class="src src-abs">摘要</span> 論文摘要明確寫到</span>
+          <span><span class="src src-2nd">二手・待核對</span> 二手整理轉述</span>
+          <span><span class="src src-mine">導讀補充</span> 本頁的推導或背景知識</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== how to read ===================== -->
+    <section class="sec" id="s-route" data-short="閱讀路線">
+      <div class="sec-head"><span class="sec-num">00</span><h2>這篇怎麼讀</h2></div>
+      <div class="prose">
+        <p>用「三遍讀法」。每讀完一節就按節尾的「讀完這節」，左側進度會記住。</p>
+        <ol>
+          <li><b>第一遍（15 分鐘）</b>：讀摘要、圖 1、結論。目標是能用一句話說出「它在解決什麼、用什麼方法、贏了多少」。對應本頁 01、02、08。</li>
+          <li><b>第二遍（1 小時）</b>：讀方法章節，把每條公式的每個符號講得出意思。對應 03 到 07，搭配 04 的互動圖自己調參數。</li>
+          <li><b>第三遍（1–2 小時）</b>：讀實驗設定與消融，試著挑毛病：比較公平嗎？超參數怎麼來？換個場景還成立嗎？對應 08 到 11。</li>
+        </ol>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-route">筆記</label><textarea id="note-route" data-note="s-route" placeholder="例如：我讀這篇的目的、想回答的問題"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-route"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 01 problem ===================== -->
+    <section class="sec" id="s-problem" data-short="問題：為何要忘記">
+      <div class="sec-head"><span class="sec-num">01</span><h2>問題：Agent 為什麼需要「忘記」</h2></div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>想像你有一個超級大的玩具箱，每天都把新玩具丟進去，從來不整理。過了一陣子，你想找最喜歡的小汽車，卻被一堆壞掉的積木和舊貼紙擋住，翻半天都找不到。</p>
+          <p>AI 助理也有這種「記憶箱」。FadeMem 教它像人一樣，<mark>把不重要的東西慢慢忘掉</mark>，重要的東西留在好找的地方。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>大型語言模型的上下文視窗（context window）有限，所以長期對話的 agent 會把過去的資訊存在外部記憶裡，需要時再撈回來。現有做法大多「只存不刪」，帶來兩個問題：</p>
+          <ul>
+            <li><b>資訊過載</b>：記憶越來越多，檢索時被大量過時、瑣碎的內容干擾，真正重要的反而撈不到。</li>
+            <li><b>新舊矛盾</b>：使用者昨天說住台北、今天說搬到台中，兩筆都在，模型不知道該信哪一筆。</li>
+          </ul>
+          <p>作者的主張：<mark>主動遺忘不是缺陷，而是記憶系統該有的功能</mark>。人腦就是這樣運作，不常用、不重要的記憶會淡化。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>問題設定是長期互動 agent 的外部記憶管理。現有系統（MemGPT 的分頁式虛擬上下文、Mem0 的抽取與更新）主要處理「怎麼存、怎麼取」，對保留策略（retention policy）的處理偏二元：保留或被顯式覆寫刪除。結果是記憶庫單調成長，檢索的 precision 隨時間下降，矛盾事實並存。</p>
+          <p>FadeMem 把保留問題建模成連續的「記憶強度」隨時間衰減，衰減速率由重要性調節，並加上兩個 LLM 驅動的整理操作（衝突解決、融合）。要評估的是兩件事的 trade-off：<mark>儲存量減少多少，關鍵資訊與推理能力保留多少</mark>。</p>
+        </div>
+      </div>
+      <div class="claim">
+        <span class="claim-label">論文怎麼說 <span class="src src-abs">摘要</span></span>
+        <p>作者指出現有 agent 記憶缺少人類那種選擇性遺忘，提出以雙層記憶階層搭配不同衰減速率的架構；保留程度由自適應指數衰減函數決定，並受語意相關性、存取頻率、時間模式調節。</p>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>「只存不刪」的記憶系統，會在哪兩方面變差？</summary><div><p>一是檢索品質：雜訊越多，相關記憶越難排到前面。二是一致性：互相矛盾的舊事實和新事實並存。順帶還有儲存與檢索成本隨時間線性成長。</p></div></details>
+        <details><summary>這篇論文要證明的核心 trade-off 是什麼？</summary><div><p>少存很多（摘要說減少 45% 儲存），但關鍵事實保留率與多跳推理表現不輸、甚至勝過不刪除的基線。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-problem">筆記</label><textarea id="note-problem" data-note="s-problem" placeholder="讀全文時：作者舉了什麼 motivating example？"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-problem"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 02 architecture ===================== -->
+    <section class="sec" id="s-arch" data-short="雙層記憶架構">
+      <div class="sec-head"><span class="sec-num">02</span><h2>核心架構：雙層記憶</h2></div>
+      <figure class="figure" style="margin:0">
+        <div class="flow">
+          <div class="box sml"><b>短期記憶層 SML</b><small>Short-term Memory Layer</small><span>新進來、還沒證明重要的記憶。衰減快。</span></div>
+          <div class="box"><b>重要性分數 \(I_i(t)\)</b><small>相關性 + 存取頻率 + 新近程度</small><span>高於 \(\theta_{\text{promote}}\) 升到 LML；低於 \(\theta_{\text{demote}}\) 降回 SML。</span></div>
+          <div class="box lml"><b>長期記憶層 LML</b><small>Long-term Memory Layer</small><span>被反覆證明重要的記憶。衰減慢。</span></div>
+        </div>
+        <figcaption>本頁依二手描述畫的示意圖，不是論文原圖。另有兩個整理動作作用在整個記憶庫：衝突解決（06）與融合（07）。</figcaption>
+      </figure>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>FadeMem 的記憶有兩個抽屜。<b>上層小抽屜</b>放剛學到的事，東西很快就會不見。<b>下層大抽屜</b>放很重要、常常用到的事，東西會放很久。</p>
+          <p>有一位小管家會幫每件事打分數。分數高就搬到大抽屜，分數掉下去就搬回小抽屜。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>每筆記憶都有一個「強度」\(v_i(t)\)，隨時間下降。兩層的差別在於下降的<b>形狀</b>：LML 衰減慢、尾巴長，SML 衰減快。記憶在哪一層，由它的重要性分數 \(I_i(t)\) 決定，而且會隨時間重新評估，所以記憶可以在兩層之間移動。</p>
+          <p>這很像人的短期記憶與長期記憶：常被想起、跟目前任務相關的內容會被「鞏固」。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>設計上的關鍵是<b>差異化衰減</b>：同一套衰減函數，兩層用不同的形狀參數 \(\beta\)（二手來源：LML 0.8、SML 1.2），加上重要性調節的速率 \(\lambda_i\)。層級指派是 \(I_i(t)\) 的閾值函數，並用遲滯（hysteresis）避免在邊界附近來回震盪。</p>
+          <p>讀全文要確認：層級是否也影響檢索（例如只從 LML 檢索或加權），還是只影響衰減？兩層有沒有容量上限？</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>兩層記憶在數學上差在哪裡？</summary><div><p>同一個衰減函數，但形狀參數 \(\beta\) 不同（LML 小於 1，SML 大於 1），所以衰減曲線形狀不同 <span class="src src-2nd">二手・待核對</span>。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-arch">筆記</label><textarea id="note-arch" data-note="s-arch" placeholder="對照論文 Figure 1：架構圖裡有哪些元件是我這裡沒畫到的？"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-arch"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 03 importance ===================== -->
+    <section class="sec" id="s-importance" data-short="重要性分數">
+      <div class="sec-head"><span class="sec-num">03</span><h2>重要性分數 \(I_i(t)\)</h2></div>
+      <div class="eq">
+        <div class="eq-head"><span>重要性分數</span><span class="src src-2nd">二手・待核對</span></div>
+        \[ I_i(t) = \alpha \cdot \mathrm{rel}(c_i, Q_t) + \beta \cdot \frac{f_i}{1 + f_i} + \gamma \cdot \mathrm{recency}(\tau_i, t) \]
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>符號</th><th>意思</th></tr></thead>
+          <tbody>
+            <tr><td>\(c_i\)</td><td>第 \(i\) 筆記憶的內容</td></tr>
+            <tr><td>\(Q_t\)</td><td>時間 \(t\) 時最近的對話或查詢</td></tr>
+            <tr><td>\(\mathrm{rel}(c_i, Q_t)\)</td><td>記憶與目前對話的語意相關性（多半是 embedding 相似度，待確認）</td></tr>
+            <tr><td>\(f_i\)</td><td>存取頻率。二手來源說實作上用「隨時間衰減的存取率」而不是原始次數</td></tr>
+            <tr><td>\(\frac{f_i}{1+f_i}\)</td><td>飽和函數：0 次是 0，次數越多越接近 1，但永遠到不了</td></tr>
+            <tr><td>\(\tau_i\)</td><td>記憶建立的時間</td></tr>
+            <tr><td>\(\mathrm{recency}(\tau_i, t)\)</td><td>新近程度，隨 \(t - \tau_i\) 指數下降</td></tr>
+            <tr><td>\(\alpha, \beta, \gamma\)</td><td>三項的權重。論文給的數值未查到</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>小管家打分數只看三件事：<b>這件事跟現在聊的有沒有關係？</b>你是不是<b>常常想起它</b>？它是不是<b>最近才發生</b>？三個加起來，分數越高越重要。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>三項各管一件事：相關性回答「現在用不用得到」，頻率回答「過去常不常用」，新近程度回答「是不是新鮮事」。頻率用 \(f/(1+f)\) 而不是直接用次數，是為了避免某筆記憶被查了上百次後分數爆表、壓過其他所有因素。</p>
+          <p>小提醒：這裡的 \(\beta\) 是頻率權重，下一節衰減函數裡也有一個 \(\beta_i\) 是形狀參數。二手來源兩者都寫成 \(\beta\)，讀原文時確認作者是否用了不同符號。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>這個形式跟 Generative Agents（Park et al., 2023）的檢索分數 recency + importance + relevance 非常像 <span class="src src-mine">導讀補充</span>。差異在用途：Generative Agents 用它<b>排序檢索結果</b>，FadeMem 用它<b>調節衰減速率與層級</b>，也就是把檢索訊號回饋到保留策略。</p>
+          <p>值得追問：\(\mathrm{rel}(c_i, Q_t)\) 依賴當前查詢，所以 \(I_i(t)\) 是非平穩的。話題一轉，一筆長期重要的記憶（例如使用者的過敏原）可能暫時拿到低分。頻率與遲滯能抵銷多少？作者有沒有做「話題切換」的分析？</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>為什麼頻率項用 \(f/(1+f)\)？</summary><div><p>飽和。讓頻率的貢獻有上限 1，邊際效益遞減，避免單一因素主導分數。</p></div></details>
+        <details><summary>這個分數跟 Generative Agents 的檢索分數差在哪？</summary><div><p>組成很像，用途不同：一個拿來排序檢索，一個拿來決定記憶衰減得多快、放在哪一層。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-importance">筆記</label><textarea id="note-importance" data-note="s-importance" placeholder="核對：公式是否一致？α、β、γ 的值？rel 用什麼 embedding？"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-importance"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 04 decay ===================== -->
+    <section class="sec" id="s-decay" data-short="衰減函數（互動圖）">
+      <div class="sec-head"><span class="sec-num">04</span><h2>衰減函數：記憶如何淡出</h2></div>
+      <div class="eq">
+        <div class="eq-head"><span>記憶強度</span><span class="src src-2nd">二手・待核對</span></div>
+        \[ v_i(t) = v_i(0)\, \exp\!\big(-\lambda_i\, (t - \tau_i)^{\beta_i}\big) \]
+        \[ \lambda_i = \lambda_{\text{base}} \cdot \exp\!\big(-\mu \cdot I_i(t)\big), \qquad \beta_i = \begin{cases} 0.8 & \text{LML} \\ 1.2 & \text{SML} \end{cases} \]
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>每件記憶都像一杯冰淇淋，放著就會慢慢融化。越重要的冰淇淋，放在越冷的地方，融得越慢。大抽屜裡的冰淇淋融得慢，小抽屜裡的融得快。融到快沒有了，就丟掉。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>這是「伸展指數」（stretched exponential）衰減。兩個旋鈕：</p>
+          <ul>
+            <li><b>\(\lambda_i\) 速率</b>：越大忘越快。重要性 \(I_i\) 越高，\(\lambda_i\) 被 \(e^{-\mu I}\) 壓得越小，忘得越慢。\(\mu\) 決定「重要性有多大影響力」。</li>
+            <li><b>\(\beta_i\) 形狀</b>：\(\beta &lt; 1\) 時一開始掉得快、之後拖出長尾巴（LML，留得久）；\(\beta &gt; 1\) 時一開始撐得住、過一陣子急速崩落（SML）。</li>
+          </ul>
+          <p>下面的圖可以自己調參數看看。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>Kohlrausch 型衰減。\(\beta\) 的選擇同時影響尺度：\((t-\tau)^{\beta}\) 在 \(t-\tau &lt; 1\) 與 \(&gt; 1\) 兩側行為相反，所以<mark>結論依賴時間單位</mark>。若單位是「天」，在第一天內 SML 其實比 LML 衰減得<b>慢</b>，交叉點在 \(t-\tau = 1\)。這是讀全文時值得確認的細節：論文的時間單位是什麼？是牆鐘時間還是對話輪次？</p>
+          <p>另一點：\(\lambda_i\) 依賴 \(I_i(t)\)，而 \(I_i(t)\) 會變，所以嚴格說 \(v_i(t)\) 不是一條固定曲線。實作上應該是每步用當下的 \(\lambda_i\) 重算或增量更新，讀原文時看作者怎麼離散化。</p>
+        </div>
+      </div>
+
+      <figure class="figure" style="margin:0">
+        <div class="controls">
+          <label for="ctl-imp">重要性 \(I\) <output id="out-imp">0.00</output><input type="range" id="ctl-imp" min="0" max="1" step="0.05" value="0"></label>
+          <label for="ctl-mu">\(\mu\)（示意值）<output id="out-mu">1.0</output><input type="range" id="ctl-mu" min="0" max="3" step="0.1" value="1"></label>
+          <label for="ctl-lam">\(\lambda_{\text{base}}\) <output id="out-lam">0.100</output><input type="range" id="ctl-lam" min="0.02" max="0.3" step="0.005" value="0.1"></label>
+          <label for="ctl-eps">\(\varepsilon_{\text{prune}}\)（示意值）<output id="out-eps">0.10</output><input type="range" id="ctl-eps" min="0" max="0.5" step="0.01" value="0.1"></label>
+          <label for="ctl-range">時間範圍<select id="ctl-range"><option value="30">0–30 天</option><option value="3">0–3 天（看交叉點）</option></select></label>
+        </div>
+        <div class="chart-box"><svg id="decay-chart" viewBox="0 0 640 300" role="img" aria-label="LML 與 SML 記憶強度隨時間衰減的曲線"></svg></div>
+        <p class="readout" id="decay-readout"></p>
+        <figcaption>假設 \(v(0)=1\)、\(\tau=0\)、時間單位為天、\(I\) 固定不變。\(\mu\) 與 \(\varepsilon_{\text{prune}}\) 的論文數值未查到，是示意值。</figcaption>
+      </figure>
+
+      <div class="claim">
+        <span class="claim-label">從半衰期反推 \(\lambda_{\text{base}}\) <span class="src src-mine">導讀補充</span></span>
+        <p>令 \(v = 0.5\)，得半衰期 \(t_{1/2} = (\ln 2 / \lambda)^{1/\beta}\)。Emergent Mind 整理說 \(I=0\) 時 LML 與 SML 半衰期約 11.25 天與 5.02 天 <span class="src src-2nd">二手・待核對</span>。代入 \(\lambda_{\text{base}} = 0.1\)：LML 是 \(6.93^{1/0.8} \approx 11.25\)，SML 是 \(6.93^{1/1.2} \approx 5.02\)，兩個數字同時吻合。所以論文很可能用 \(\lambda_{\text{base}} = 0.1\)、時間單位為天。這是推論，請對照原文。</p>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>把 \(I\) 從 0 調到 1、\(\mu = 1\)，半衰期會變幾倍？</summary><div><p>\(\lambda\) 變成 \(e^{-1} \approx 0.37\) 倍。半衰期正比於 \(\lambda^{-1/\beta}\)，LML 變 \(e^{1/0.8} \approx 3.5\) 倍，SML 變 \(e^{1/1.2} \approx 2.3\) 倍。用上面的圖驗證看看。</p></div></details>
+        <details><summary>在什麼情況下 SML 會比 LML 忘得慢？</summary><div><p>當 \(t - \tau &lt; 1\)（一個時間單位內）且兩者 \(\lambda\) 相同。因為 \(x^{1.2} &lt; x^{0.8}\) 對 \(0 &lt; x &lt; 1\) 成立。把時間範圍切到 0–3 天就看得到交叉點。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-decay">筆記</label><textarea id="note-decay" data-note="s-decay" placeholder="核對：時間單位、λ_base、μ、v_i(0) 怎麼設定？"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-decay"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 05 migration & pruning ===================== -->
+    <section class="sec" id="s-migrate" data-short="層間遷移與刪除">
+      <div class="sec-head"><span class="sec-num">05</span><h2>層間遷移、遲滯與刪除</h2></div>
+      <div class="eq">
+        <div class="eq-head"><span>層級指派與刪除</span><span class="src src-2nd">二手・待核對</span></div>
+        \[ \text{layer}_i \leftarrow \begin{cases} \text{LML} & I_i(t) \ge \theta_{\text{promote}} \\ \text{SML} & I_i(t) &lt; \theta_{\text{demote}} \\ \text{unchanged} & \text{otherwise} \end{cases}, \qquad \theta_{\text{promote}} &gt; \theta_{\text{demote}} \]
+        \[ \text{prune } i \quad \text{if } v_i(t) &lt; \varepsilon_{\text{prune}} \ \text{or long dormancy} \]
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>要搬進大抽屜，分數要考到 80 分；要被趕回小抽屜，分數要掉到 60 分以下。中間 60 到 80 分的，就留在原本的抽屜。這樣東西才不會一下搬上去、一下搬下來，搬到累死。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>升級和降級用兩個不同的門檻，中間留一段「緩衝區」，這叫<b>遲滯</b>（hysteresis）。冷氣的溫控也是這樣：到 26 度才開、降到 24 度才關，避免在 25 度附近一直開開關關。</p>
+          <p>記憶強度掉到 \(\varepsilon_{\text{prune}}\) 以下，或很久沒被用到，就直接刪除。這是儲存量能降 45% 的主要來源之一。二手來源說門檻是在驗證資料上用 grid search 決定的。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>遲滯是控制論的標準手法，在這裡解決 \(I_i(t)\) 非平穩造成的層級抖動。代價是多兩個超參數，加上 \(\varepsilon_{\text{prune}}\)、\(\mu\)、\(\lambda_{\text{base}}\)、\(\alpha,\beta,\gamma\)，整個系統的可調參數不少。都在驗證集上 grid search 的話，要留意與測試集是否同分佈，以及換領域時的穩健性。</p>
+          <p>刪除是不可逆的。讀全文時看看有沒有「軟刪除」或歸檔機制，以及被錯刪的關鍵事實造成的錯誤有多少（LTI-Bench 的 17.9% 未保留部分是什麼？）。</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>如果 \(\theta_{\text{promote}} = \theta_{\text{demote}}\) 會發生什麼？</summary><div><p>分數在門檻附近小幅波動時，記憶會在兩層之間反覆遷移，衰減形狀跟著頻繁切換，行為不穩定。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-migrate">筆記</label><textarea id="note-migrate" data-note="s-migrate" placeholder="核對：θ 的數值、「長期未存取」怎麼定義、刪除是否可逆"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-migrate"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 06 conflict ===================== -->
+    <section class="sec" id="s-conflict" data-short="衝突解決">
+      <div class="sec-head"><span class="sec-num">06</span><h2>LLM 引導的衝突解決</h2></div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>你本來記得「小明最喜歡藍色」，今天小明說「我現在最喜歡紅色了」。這時候小管家會把兩句話拿來比一比，發現它們吵架了，就把舊的那句「藍色」變得很淡，快要忘掉。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>新記憶寫入時分兩步：</p>
+          <ol>
+            <li><b>粗篩</b>：用向量搜尋找出少數幾筆語意相近的舊記憶。</li>
+            <li><b>細判</b>：把新舊記憶交給 LLM 判斷兩者的關係。如果是矛盾，就<b>降低舊記憶的強度</b> \(v\)，讓它更快被遺忘。</li>
+          </ol>
+          <p>先粗篩再交給 LLM，是為了控制成本：只對一小部分候選呼叫 LLM。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>值得注意的設計選擇是：矛盾時<b>不直接刪除舊記憶，而是降低強度</b>，讓衰減機制接手。好處是保留「時間脈絡」的可能（使用者以前喜歡藍色也是事實），壞處是在舊記憶淡出前，檢索仍可能撈到它。</p>
+          <p>關係類別有哪些（例如相容、矛盾、補充、包含）、LLM 的 prompt 長怎樣、用哪個模型，二手來源都沒寫清楚，屬於讀全文必查項目。另有一份二手整理提到衝突解決的 macro-averaged accuracy 為 68.9% <span class="src src-2nd">二手・待核對</span>，只有單一來源，數字本身也不算高。</p>
+          <p>對照 Mem0 <span class="src src-mine">導讀補充</span>：Mem0 也用 LLM 決定 ADD / UPDATE / DELETE / NOOP，但動作是離散的；FadeMem 把它接到連續的強度上。</p>
+        </div>
+      </div>
+      <div class="claim">
+        <span class="claim-label">論文怎麼說 <span class="src src-abs">摘要</span></span>
+        <p>摘要提到透過 LLM 引導的衝突解決（LLM-guided conflict resolution）處理新舊資訊的矛盾。</p>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>為什麼不對每一筆舊記憶都呼叫 LLM 比對？</summary><div><p>成本與延遲。記憶庫有 N 筆，每次寫入就要 N 次 LLM 呼叫。先用向量搜尋取 top-k，成本變成常數 k。</p></div></details>
+        <details><summary>「降低強度」與「直接刪除」各有什麼利弊？</summary><div><p>降低強度較保守，可容錯（LLM 誤判時舊記憶還在），也保留歷史；但淡出前仍可能被檢索到造成混淆。直接刪除乾淨但不可逆。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-conflict">筆記</label><textarea id="note-conflict" data-note="s-conflict" placeholder="核對：關係類別、prompt、top-k、用哪個 LLM、強度降多少"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-conflict"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 07 fusion ===================== -->
+    <section class="sec" id="s-fusion" data-short="記憶融合">
+      <div class="sec-head"><span class="sec-num">07</span><h2>記憶融合</h2></div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>你記得「小明週一去游泳」「小明週三去游泳」「小明週五去游泳」。小管家說：這三張紙條可以合成一張「小明每週一三五游泳」。紙條變少了，事情也記得更清楚。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>系統找出<b>語意相近、時間也相近</b>的一群記憶，請 LLM 把它們合併成一筆濃縮版。合併後的記憶：</p>
+          <ul>
+            <li>衰減得更慢，而且群組越大，衰減速率降得越多（被多次提到代表重要）。</li>
+            <li>會再經過一次 LLM 驗證，確認沒有遺漏或扭曲原本的資訊。</li>
+          </ul>
+        </div>
+        <div class="lv lv-grad">
+          <p>融合等於對記憶庫做「語意壓縮」，同時是儲存減量的來源（N 筆變 1 筆）和品質提升的來源（散落的證據被聚合，有利多跳推理）。消融實驗也支持這點：拿掉融合後，LoCoMo multi-hop F1 從 29.43 掉到 13.63，是所有元件裡掉最多的 <span class="src src-2nd">二手・待核對</span>。</p>
+          <p>要查的細節：聚類用什麼相似度與時間窗？融合後衰減速率的確切公式（與群組大小的函數關係）？驗證失敗時怎麼處理？LLM 摘要可能「幻覺」出原本沒有的連結，驗證步驟的拒絕率是多少？</p>
+        </div>
+      </div>
+      <div class="claim">
+        <span class="claim-label">論文怎麼說 <span class="src src-abs">摘要</span></span>
+        <p>摘要提到智慧記憶融合（intelligent memory fusion）會合併相關資訊。</p>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>為什麼融合對「多跳推理」特別有幫助？</summary><div><p>多跳問題需要把好幾筆分散的事實串起來。檢索通常只取 top-k，分散的證據很容易缺一塊；融合後一筆記憶就帶著多個相關事實，一次檢索就拿到。</p></div></details>
+        <details><summary>融合的主要風險是什麼？</summary><div><p>LLM 合併時可能遺漏細節或捏造關聯（幻覺），而且原始記憶被取代後難以追溯。所以需要驗證步驟。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-fusion">筆記</label><textarea id="note-fusion" data-note="s-fusion" placeholder="核對：聚類條件、融合後 λ 的公式、驗證流程"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-fusion"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 08 results ===================== -->
+    <section class="sec" id="s-results" data-short="實驗結果">
+      <div class="sec-head"><span class="sec-num">08</span><h2>實驗結果</h2></div>
+      <div class="prose">
+        <p>三個評測 <span class="src src-abs">摘要</span>：<b>Multi-Session Chat</b>（MSC，多段對話）、<b>LoCoMo</b>（超長對話記憶問答）、<b>LTI-Bench</b>（長期資訊保留）。比較對象至少包含 Mem0 與 MemGPT。摘要的總結是：多跳推理與檢索表現較佳，同時<mark>減少 45% 儲存</mark>。</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <caption>LTI-Bench：關鍵事實保留率與相對儲存量 <span class="src src-2nd">二手・待核對</span>（Moonlight 與 Emergent Mind 一致）</caption>
+          <thead><tr><th>方法</th><th class="num">關鍵事實保留</th><th class="num">儲存量</th></tr></thead>
+          <tbody>
+            <tr class="ours"><td>FadeMem</td><td class="num">82.1%</td><td class="num">55.0%</td></tr>
+            <tr><td>Mem0</td><td class="num">78.4%</td><td class="num">100%</td></tr>
+            <tr><td>MemGPT</td><td class="num">75.6%</td><td class="num">85.3%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <caption>LoCoMo：multi-hop F1 <span class="src src-2nd">二手・待核對</span>（MemGPT 數字只有單一來源）</caption>
+          <thead><tr><th>方法</th><th class="num">Multi-hop F1</th></tr></thead>
+          <tbody>
+            <tr class="ours"><td>FadeMem</td><td class="num">29.43</td></tr>
+            <tr><td>Mem0</td><td class="num">28.37</td></tr>
+            <tr><td>MemGPT</td><td class="num">9.46</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>比賽結果：FadeMem 的抽屜只用了一半多一點的空間，卻比別人記得更多重要的事。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>45% 的儲存減少，對應 LTI-Bench 的 55.0% 儲存量（以 Mem0 的 100% 為基準）。在只存一半多的情況下，關鍵事實保留率還比 Mem0 高 3.7 個百分點。LoCoMo 多跳推理則小勝 Mem0（約 +1 F1），大勝 MemGPT。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>讀結果時要問的事 <span class="src src-mine">導讀補充</span>：</p>
+          <ul>
+            <li>LoCoMo 對 Mem0 的差距約 1.06 F1，有沒有多次執行的變異數或顯著性檢定？</li>
+            <li>LoCoMo 其他題型（single-hop、temporal、open-domain、adversarial）的結果呢？FadeMem 有沒有在某些題型輸？</li>
+            <li>LTI-Bench 是不是作者自建的？若是，任務設計是否天然有利於「會遺忘」的系統？</li>
+            <li>儲存量之外的成本：衝突解決與融合每次都要呼叫 LLM，token 成本與延遲有沒有報告？</li>
+            <li>MSC 上的結果與指標是什麼？二手來源都沒提到。</li>
+          </ul>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>「45% 儲存減少」和表中的「55.0%」是什麼關係？</summary><div><p>同一件事的兩種說法：相對於不刪除的基線（100%），FadeMem 只用 55% 的儲存，即減少 45%。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-results">筆記</label><textarea id="note-results" data-note="s-results" placeholder="核對所有數字；補上 MSC 與 LoCoMo 其他題型的結果"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-results"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 09 ablation ===================== -->
+    <section class="sec" id="s-ablation" data-short="消融實驗">
+      <div class="sec-head"><span class="sec-num">09</span><h2>消融實驗：哪個零件最重要</h2></div>
+      <div class="table-wrap">
+        <table>
+          <caption>LoCoMo 消融 <span class="src src-2nd">二手・待核對</span>。其他列的數字二手來源未提供，請讀全文補上</caption>
+          <thead><tr><th>變體</th><th class="num">Multi-hop F1</th><th>二手描述</th></tr></thead>
+          <tbody>
+            <tr class="ours"><td>FadeMem（完整）</td><td class="num">29.43</td><td>—</td></tr>
+            <tr><td>w/o fusion</td><td class="num">13.63</td><td>降幅最大</td></tr>
+            <tr><td>w/o LML-SML（單層）</td><td class="num">?</td><td>所有任務都明顯下降</td></tr>
+            <tr><td>w/o conflict resolution</td><td class="num">?</td><td>未查到</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>科學家把機器的零件一個一個拔掉，看哪個拔掉後機器壞得最嚴重。結果發現「把紙條合在一起」那個零件最重要。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>消融（ablation）就是每次拿掉一個元件，看效能掉多少，用來證明每個設計都有貢獻。拿掉融合後多跳 F1 掉了一半以上，表示 FadeMem 在多跳推理上的優勢主要來自融合，而不是衰減本身。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>有個值得深想的地方 <span class="src src-mine">導讀補充</span>：拿掉融合後的 13.63 遠低於 Mem0 的 28.37。也就是說，「只有衰減與分層、沒有融合」的 FadeMem 比不遺忘的 Mem0 差很多。這暗示<mark>單純遺忘本身可能有害</mark>，要靠融合把資訊先濃縮保存，遺忘才不會傷到推理。這跟論文「遺忘是功能」的敘事有張力，讀全文時看作者怎麼解釋。</p>
+        </div>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-ablation">筆記</label><textarea id="note-ablation" data-note="s-ablation" placeholder="補完消融表；作者怎麼解釋 w/o fusion 的大幅下降？"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-ablation"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 10 context ===================== -->
+    <section class="sec" id="s-context" data-short="前人工作脈絡">
+      <div class="sec-head"><span class="sec-num">10</span><h2>放進研究脈絡</h2></div>
+      <p>以下是導讀者整理的相關工作 <span class="src src-mine">導讀補充</span>，不代表論文的引用清單，讀 Related Work 時對照。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>工作</th><th>核心做法</th><th>和 FadeMem 的關係</th></tr></thead>
+          <tbody>
+            <tr><td>MemGPT（Packer et al., 2023）</td><td>把上下文當作業系統記憶體，主記憶與外部儲存之間分頁換入換出</td><td>實驗基線。有分層，但沒有連續衰減</td></tr>
+            <tr><td>Mem0（2025）</td><td>LLM 抽取事實，用 ADD / UPDATE / DELETE / NOOP 維護記憶</td><td>主要基線。離散更新 vs. FadeMem 的連續強度</td></tr>
+            <tr><td>MemoryBank（Zhong et al., 2023）</td><td>已用艾賓浩斯遺忘曲線更新 LLM 記憶強度</td><td>最直接的前身。讀全文看 FadeMem 怎麼和它區隔</td></tr>
+            <tr><td>Generative Agents（Park et al., 2023）</td><td>檢索分數 = recency + importance + relevance，加上反思（reflection）</td><td>重要性分數的形式很像；反思和「融合」也有相似之處</td></tr>
+            <tr><td>LoCoMo（Maharana et al., 2024）</td><td>超長多段對話的記憶評測，含單跳、多跳、時間推理等題型</td><td>評測資料集</td></tr>
+            <tr><td>MSC（Xu et al., 2022）</td><td>Multi-Session Chat，多段對話資料集</td><td>評測資料集</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>用一句話說出 FadeMem 相對 Mem0 的新意。</summary><div><p>Mem0 用 LLM 對記憶做離散的增刪改；FadeMem 讓每筆記憶有連續、受重要性調節的強度並分兩層衰減，再加上融合，讓遺忘成為常態而非例外。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-context">筆記</label><textarea id="note-context" data-note="s-context" placeholder="論文實際引用了哪些？有沒有提到 MemoryBank？"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-context"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 11 critique ===================== -->
+    <section class="sec" id="s-critique" data-short="批判性閱讀">
+      <div class="sec-head"><span class="sec-num">11</span><h2>批判性閱讀</h2></div>
+      <div class="prose">
+        <h3>優點</h3>
+        <ul>
+          <li>問題重要且直觀：長期 agent 的記憶膨脹是真實痛點。</li>
+          <li>機制可解釋：每筆記憶為什麼還在、為什麼被刪，都能用強度與分數說明。</li>
+          <li>同時報告效能與儲存，而不是只看準確率。</li>
+        </ul>
+        <h3>疑問</h3>
+        <ul>
+          <li>超參數多（\(\alpha,\beta,\gamma,\mu,\lambda_{\text{base}},\theta,\varepsilon\)），敏感度分析做了嗎？</li>
+          <li>時間單位與 \(\beta\) 的互動（見 04）。真實部署時對話密度差異很大，用牆鐘時間合理嗎？</li>
+          <li>「生物啟發」到什麼程度？艾賓浩斯曲線本身是指數還是冪律在心理學上仍有爭議。</li>
+          <li>不可逆刪除的風險：使用者明確要求記住的事（例如醫療資訊）會不會被忘掉？有沒有「釘選」機制？</li>
+          <li>LLM 呼叫成本沒有出現在「效率」的定義裡嗎？</li>
+        </ul>
+        <h3>可以延伸的方向</h3>
+        <ul>
+          <li>讓使用者或任務顯式標記重要性，作為 \(I_i\) 的一項。</li>
+          <li>把刪除改成歸檔到便宜的冷儲存，需要時再喚回。</li>
+          <li>用學習的方式取代手調的衰減函數。</li>
+        </ul>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-critique">筆記</label><textarea id="note-critique" data-note="s-critique" placeholder="我自己的評價：會不會引用它？能借用到我的研究嗎？"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-critique"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== glossary ===================== -->
+    <section class="sec" id="s-glossary" data-short="術語表">
+      <div class="sec-head"><span class="sec-num">附錄</span><h2>術語表</h2></div>
+      <dl class="gloss">
+        <dt>Agent memory</dt><dd>LLM agent 在上下文視窗之外保存的資訊，通常存在向量資料庫，需要時檢索回來。</dd>
+        <dt>Context window</dt><dd>模型一次能讀的 token 數上限。超過就必須取捨或外部化。</dd>
+        <dt>LML / SML</dt><dd>本文的長期記憶層與短期記憶層，差在衰減形狀。</dd>
+        <dt>艾賓浩斯遺忘曲線</dt><dd>Ebbinghaus forgetting curve。19 世紀心理學實驗：記憶保留率隨時間快速下降後趨緩。</dd>
+        <dt>伸展指數</dt><dd>Stretched exponential，\(e^{-\lambda t^{\beta}}\)。\(\beta=1\) 時是普通指數衰減。</dd>
+        <dt>遲滯</dt><dd>Hysteresis。上升與下降用不同門檻，避免在邊界附近來回切換。</dd>
+        <dt>多跳推理</dt><dd>Multi-hop reasoning。答案需要串起兩筆以上分散的事實。</dd>
+        <dt>F1</dt><dd>Precision 與 recall 的調和平均。LoCoMo 用 token 層級的 F1 比對答案。</dd>
+        <dt>消融實驗</dt><dd>Ablation study。逐一拿掉元件，衡量各元件的貢獻。</dd>
+        <dt>Grid search</dt><dd>對超參數的候選值做窮舉組合，挑驗證集表現最好的。</dd>
+      </dl>
+    </section>
+
+    <!-- ===================== export ===================== -->
+    <section class="sec" id="s-export" data-short="匯出筆記">
+      <div class="sec-head"><span class="sec-num">附錄</span><h2>匯出我的筆記</h2></div>
+      <p>筆記只存在這個瀏覽器裡。讀完後複製成 Markdown，可以貼回 repo 的 <code>papers/2601.18642/notes.md</code>，或貼給 Claude 請它根據你的核對結果更新本頁。</p>
+      <div class="btn-row"><button type="button" class="btn" id="export-notes">複製全部筆記</button><span class="toast" id="export-toast" role="status"></span></div>
+      <div class="note"><label for="export-box" class="sr-only">匯出內容</label><textarea id="export-box" rows="8" hidden readonly></textarea></div>
+      <p class="readout">來源：<a href="https://arxiv.org/abs/2601.18642" target="_blank" rel="noopener">arXiv 2601.18642</a> · <a href="https://www.themoonlight.io/en/review/fademem-biologically-inspired-forgetting-for-efficient-agent-memory" target="_blank" rel="noopener">Moonlight 文獻回顧</a> · <a href="https://www.emergentmind.com/topics/fademem" target="_blank" rel="noopener">Emergent Mind</a> · <a href="https://alphaxiv.org/resources/2601.18642" target="_blank" rel="noopener">alphaXiv</a></p>
+    </section>
+
+  </main>
+</div>
+</div>
+
+<script src="../../assets/site.js"></script>
+<script>
+// Interactive decay chart for section 04.
+(function () {
+  "use strict";
+  var svg = document.getElementById("decay-chart");
+  if (!svg) return;
+  var NS = "http://www.w3.org/2000/svg";
+  var W = 640, H = 300, m = { l: 48, r: 20, t: 16, b: 40 };
+  var pw = W - m.l - m.r, ph = H - m.t - m.b;
+  var ids = ["imp", "mu", "lam", "eps"];
+  var ctl = {};
+  ids.forEach(function (k) { ctl[k] = document.getElementById("ctl-" + k); });
+  var range = document.getElementById("ctl-range");
+  var readout = document.getElementById("decay-readout");
+
+  function el(tag, attrs, text) {
+    var e = document.createElementNS(NS, tag);
+    Object.keys(attrs).forEach(function (a) { e.setAttribute(a, attrs[a]); });
+    if (text != null) e.textContent = text;
+    return e;
+  }
+  function v(t, lam, beta) { return Math.exp(-lam * Math.pow(t, beta)); }
+  function tAt(level, lam, beta) { return level <= 0 ? Infinity : Math.pow(-Math.log(level) / lam, 1 / beta); }
+  function fmt(d) { return !isFinite(d) ? "∞" : d >= 100 ? d.toFixed(0) : d.toFixed(2); }
+
+  function draw() {
+    var I = +ctl.imp.value, mu = +ctl.mu.value, lb = +ctl.lam.value, eps = +ctl.eps.value;
+    var T = +range.value;
+    document.getElementById("out-imp").textContent = I.toFixed(2);
+    document.getElementById("out-mu").textContent = mu.toFixed(1);
+    document.getElementById("out-lam").textContent = lb.toFixed(3);
+    document.getElementById("out-eps").textContent = eps.toFixed(2);
+    var lam = lb * Math.exp(-mu * I);
+    var x = function (t) { return m.l + (t / T) * pw; };
+    var y = function (val) { return m.t + (1 - val) * ph; };
+
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    var grid = el("g", { "class": "grid" });
+    var axis = el("g", { "class": "axis" });
+    [0, 0.25, 0.5, 0.75, 1].forEach(function (g) {
+      grid.appendChild(el("line", { x1: m.l, x2: W - m.r, y1: y(g), y2: y(g) }));
+      axis.appendChild(el("text", { x: m.l - 8, y: y(g) + 4, "text-anchor": "end" }, g.toFixed(2)));
+    });
+    var step = T === 3 ? 0.5 : 5;
+    for (var t = 0; t <= T + 1e-9; t += step) {
+      grid.appendChild(el("line", { x1: x(t), x2: x(t), y1: m.t, y2: m.t + ph }));
+      axis.appendChild(el("text", { x: x(t), y: H - m.b + 16, "text-anchor": "middle" }, T === 3 ? t.toFixed(1) : String(t)));
+    }
+    svg.appendChild(grid);
+    svg.appendChild(axis);
+    svg.appendChild(el("text", { "class": "axis-title", x: m.l + pw / 2, y: H - 6, "text-anchor": "middle" }, "經過時間 t − τ（天）"));
+    svg.appendChild(el("text", { "class": "axis-title", x: 12, y: m.t + ph / 2, "text-anchor": "middle", transform: "rotate(-90 12 " + (m.t + ph / 2) + ")" }, "強度 v"));
+
+    svg.appendChild(el("line", { "class": "half", x1: m.l, x2: W - m.r, y1: y(0.5), y2: y(0.5) }));
+    if (eps > 0) {
+      svg.appendChild(el("line", { "class": "prune", x1: m.l, x2: W - m.r, y1: y(eps), y2: y(eps) }));
+      svg.appendChild(el("text", { "class": "prune-label", x: W - m.r - 4, y: y(eps) - 5, "text-anchor": "end" }, "刪除門檻 ε"));
+    }
+
+    var layers = [{ key: "lml", beta: 0.8, name: "LML β=0.8" }, { key: "sml", beta: 1.2, name: "SML β=1.2" }];
+    var out = [];
+    layers.forEach(function (L, i) {
+      var pts = [];
+      for (var k = 0; k <= 240; k++) {
+        var tt = (k / 240) * T;
+        pts.push(x(tt).toFixed(1) + "," + y(v(tt, lam, L.beta)).toFixed(1));
+      }
+      svg.appendChild(el("polyline", { "class": "curve-" + L.key, points: pts.join(" ") }));
+      var half = tAt(0.5, lam, L.beta), prune = tAt(eps, lam, L.beta);
+      if (half <= T) svg.appendChild(el("circle", { "class": "dot-" + L.key, cx: x(half), cy: y(0.5), r: 4 }));
+      var endV = v(T, lam, L.beta);
+      svg.appendChild(el("text", { "class": "lbl-" + L.key, x: W - m.r - 4, y: Math.max(m.t + 12, Math.min(m.t + ph - 6, y(endV) + (i === 0 ? -8 : 16))), "text-anchor": "end" }, L.name));
+      out.push(L.key.toUpperCase() + " 半衰期 " + fmt(half) + " 天，降到 ε 需 " + fmt(prune) + " 天");
+    });
+    readout.textContent = "λ = " + lam.toFixed(4) + "　·　" + out.join("　·　");
+  }
+  ids.forEach(function (k) { ctl[k].addEventListener("input", draw); });
+  range.addEventListener("change", draw);
+  draw();
+})();
+</script>
+</body>
+</html>
