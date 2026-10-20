@@ -1,0 +1,824 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zep 精讀</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="../../assets/site.css">
+<style>
+  .chart-box .grid line { stroke: var(--rule); stroke-width: 1; }
+  .chart-box .axis text { fill: var(--muted); font-size: 11px; font-family: var(--font-mono); }
+  .chart-box .row-label { fill: var(--ink); font-size: 12px; font-family: var(--font-body); }
+  .chart-box .bar-true { fill: var(--accent); }
+  .chart-box .bar-open { fill: none; stroke: var(--accent); stroke-width: 1.5; stroke-dasharray: 4 3; }
+  .chart-box .qline { stroke: var(--sml); stroke-width: 2; }
+  .chart-box .qlabel { fill: var(--sml); font-size: 11px; font-family: var(--font-body); font-weight: 700; }
+  .chart-box .unknown { fill: var(--muted); font-size: 11px; font-family: var(--font-body); font-style: italic; }
+  .ctx {
+    font-family: var(--font-mono); font-size: 0.8125rem; line-height: 1.6; white-space: pre-wrap; overflow-wrap: anywhere;
+    background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius); padding: 0.75rem; margin: 0;
+  }
+  .ctx .hit { background: var(--mark); color: var(--mark-ink); }
+  .episodes { display: grid; gap: 0.4rem; font-size: 0.9rem; margin: 0; padding-left: 1.2rem; }
+  .controls select { font: inherit; color: var(--ink); background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 0.15rem 0.3rem; }
+  pre.prompt { font-family: var(--font-mono); font-size: 0.8125rem; line-height: 1.6; white-space: pre-wrap; overflow-wrap: anywhere; margin: 0; }
+</style>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
+    svg: { fontCache: "global" }
+  };
+</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script>
+</head>
+<body>
+<div data-paper="2501.13956">
+
+<header class="toolbar gutter">
+  <div class="toolbar-inner">
+    <a class="home" href="../../index.html">論文精讀室</a>
+    <span class="crumb">Zep · arXiv 2501.13956</span>
+    <div class="levels" role="group" aria-label="解釋深度">
+      <span class="levels-label">解釋深度</span>
+      <div class="seg">
+        <button type="button" data-level-btn="kid" aria-pressed="false">五歲</button>
+        <button type="button" data-level-btn="uni" aria-pressed="true">大學生</button>
+        <button type="button" data-level-btn="grad" aria-pressed="false">研究生</button>
+        <button type="button" data-level-btn="all" aria-pressed="false">對照</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="desk gutter">
+  <nav class="rail" aria-label="章節">
+    <details open>
+      <summary>章節 <span class="progress-text" id="progress-text">0 / 0</span></summary>
+      <div class="progress"><span id="progress-bar"></span></div>
+      <ol id="outline"></ol>
+    </details>
+  </nav>
+
+  <main class="column">
+
+    <!-- ===================== header ===================== -->
+    <div class="paper-head">
+      <div class="eyebrow"><span class="mono">arXiv 2501.13956v1</span><span>cs.CL</span><span>v1 2025-01-20</span><span>12 頁（含附錄提示詞與參考文獻）</span></div>
+      <h1>Zep：用時序知識圖譜打造 Agent 記憶</h1>
+      <p lang="en"><em>Zep: A Temporal Knowledge Graph Architecture for Agent Memory</em></p>
+      <p class="authors">Preston Rasmussen、Pavlo Paliychuk、Travis Beauvais、Jack Ryan、Daniel Chalef<br>全部作者皆來自 Zep AI（Zep 是商業記憶服務，論文核心元件 Graphiti 為開源專案）</p>
+      <div class="links">
+        <a href="https://arxiv.org/abs/2501.13956" target="_blank" rel="noopener">arXiv 摘要頁</a>
+        <a href="https://arxiv.org/pdf/2501.13956v1" target="_blank" rel="noopener">PDF</a>
+        <a href="https://github.com/getzep/graphiti" target="_blank" rel="noopener">Graphiti（原文 [6]）</a>
+      </div>
+      <div class="claim" role="note">
+        <span class="claim-label">核對狀態</span>
+        <p>本頁已對照 arXiv v1 PDF 全文逐條核對。所有數字、定義、提示詞都標出在原文的位置。標「導讀補充」的是本頁的推導、背景知識、示範例子或評論。論文沒交代的細節一律寫「未說明」，不做猜測。</p>
+        <p>注意：PDF 本身有排版缺字。§2.2.1 開頭少了首字母（"ntity extraction"），<b>§2.2.2 Facts 第一段的開頭整句遺失</b>，直接從 "or each fact containing its key predicate" 開始；附錄 6.1.1 的第 6 條規則也在句中截斷。本頁不補寫這些缺漏，事實擷取的細節改以附錄 6.1.3 的提示詞為準。</p>
+        <div class="legend">
+          <span><span class="src src-abs">原文 §2.2.3</span> 出自論文，標明位置</span>
+          <span><span class="src src-mine">導讀補充</span> 本頁的推導、背景、例子或評論</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== 00 route ===================== -->
+    <section class="sec" id="s-route" data-short="閱讀路線">
+      <div class="sec-head"><span class="sec-num">00</span><h2>這篇怎麼讀</h2></div>
+      <div class="prose">
+        <p>這是一篇偏<b>系統描述</b>的論文：幾乎沒有數學推導，重點在資料怎麼進圖、怎麼從圖裡取出來。作者全是 Zep 公司的人，讀的時候要分清楚「設計描述」和「實驗證據」各支持了什麼。</p>
+        <ol>
+          <li><b>第一遍（10 分鐘）</b>：摘要、§1、§5 結論、Table 2。能說出 Zep 和一般 RAG 差在哪、贏了誰多少。對應本頁 01、02。</li>
+          <li><b>第二遍（1 小時）</b>：§2 建圖與 §3 檢索，搭配附錄提示詞。05 的互動時間軸一定要玩一次，雙時間軸是這篇最核心的概念。對應 02 到 07。</li>
+          <li><b>第三遍（40 分鐘）</b>：§4 實驗。重點是基線選了誰、沒選誰，以及數字怎麼算出來。對應 08 到 12。</li>
+        </ol>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-route">筆記</label><textarea id="note-route" data-note="s-route" placeholder="例如：我讀這篇的目的、想回答的問題"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-route"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 01 problem ===================== -->
+    <section class="sec" id="s-problem" data-short="問題：靜態 RAG 不夠">
+      <div class="sec-head"><span class="sec-num">01</span><h2>問題：為什麼靜態 RAG 不夠用</h2></div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>一般的 AI 查資料，像是在翻一本印好的百科全書，內容不會變。可是你的生活每天都在變：你換了學校、交了新朋友、喜歡的東西也會變。</p>
+          <p>Zep 給 AI 一本<mark>會自己更新的筆記本</mark>，而且每一條都記著「從什麼時候開始是真的、到什麼時候不再是真的」。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>LLM agent 受限於上下文視窗大小、上下文的有效利用、以及預訓練知識。RAG 用資訊檢索補上外部知識，但作者指出現有 RAG 多半假設<b>語料是靜態的</b>：文件放進去之後很少改。</p>
+          <p>Agent 的記憶不是這樣。它要處理<b>持續演變</b>的資料：使用者的對話、相關的商業資料、世界資訊。這些內容塞不進上下文視窗，又會隨時間改變，所以需要新的記憶架構。Zep 的答案是一個<mark>帶時間資訊的動態知識圖譜</mark>，引擎叫 Graphiti。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>問題設定是「agent memory 作為一個可服務化的層」，而不只是單一演算法。作者把關注點放在三件事：準確度、延遲、可擴展性，因為 Zep 是正式上線的產品（§1）。</p>
+          <p>和學術型記憶論文的差別值得注意：主要比較對象是 MemGPT 在 DMR 上的成績，再加上 LongMemEval 對全文上下文（full-context）基線。論文沒有和其他記憶系統在 LongMemEval 上正面比較（見 10、12）。</p>
+        </div>
+      </div>
+      <div class="claim">
+        <span class="claim-label">原文要點 <span class="src src-abs">原文 Abstract</span></span>
+        <p>Zep 是給 AI agent 用的記憶層服務，在 DMR 上勝過當時最先進的 MemGPT（94.8% vs 93.4%）。核心元件 Graphiti 是具時間感知的知識圖譜引擎，能同時整合非結構化的對話資料與結構化的商業資料，並保留歷史關係。在更困難的 LongMemEval 上，準確度最多提升 18.5%，回應延遲降低 90%。</p>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>作者認為現有 RAG 對 agent 記憶不適用的關鍵假設是什麼？</summary><div><p>語料大致是靜態的。Agent 記憶的資料（對話、商業資料）持續變動，而且事實本身有「有效期間」。</p></div></details>
+        <details><summary>摘要裡的「18.5%」是跟誰比？</summary><div><p>跟 LongMemEval 上的 full-context 基線比（把整段約 115k tokens 的對話直接塞進上下文），用 gpt-4o。不是跟其他記憶系統比。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-problem">筆記</label><textarea id="note-problem" data-note="s-problem"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-problem"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 02 graph ===================== -->
+    <section class="sec" id="s-graph" data-short="三層知識圖譜">
+      <div class="sec-head"><span class="sec-num">02</span><h2>三層知識圖譜</h2></div>
+      <div class="eq">
+        <div class="eq-head"><span>圖的定義與三個子圖</span><span class="src src-abs">原文 §2</span></div>
+        \[ \mathcal{G} = (\mathcal{N}, \mathcal{E}, \phi), \qquad \phi : \mathcal{E} \to \mathcal{N} \times \mathcal{N} \]
+        \[ \mathcal{E}_e \subseteq \phi^*(\mathcal{N}_e \times \mathcal{N}_s), \quad \mathcal{E}_s \subseteq \phi^*(\mathcal{N}_s \times \mathcal{N}_s), \quad \mathcal{E}_c \subseteq \phi^*(\mathcal{N}_c \times \mathcal{N}_s) \]
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>子圖</th><th>節點</th><th>邊</th></tr></thead>
+          <tbody>
+            <tr><td>Episode 子圖 \(\mathcal{G}_e\)</td><td>Episode：原始輸入（訊息、文字或 JSON），是不失真（non-lossy）的資料存放處</td><td>Episodic edge：episode → 它提到的實體</td></tr>
+            <tr><td>語意實體子圖 \(\mathcal{G}_s\)</td><td>Entity：從 episode 擷取、並與既有實體合併後的實體</td><td>Entity edge（semantic edge）：實體之間的關係，也就是「事實」</td></tr>
+            <tr><td>社群子圖 \(\mathcal{G}_c\)</td><td>Community：高度連結的實體群，帶高層摘要</td><td>Community edge：社群 → 它的成員實體</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <figure class="figure" style="margin:0">
+        <div class="flow">
+          <div class="box"><b>Episode</b><small>原始訊息，附發送時間 \(t_{\text{ref}}\)</small><span>「我兩週前轉職到 B 公司了」</span></div>
+          <div class="box lml"><b>實體與事實</b><small>節點 = 實體；邊 = 事實＋有效期間</small><span>User —WORKS_FOR→ B 公司</span></div>
+          <div class="box sml"><b>社群</b><small>標籤傳播分群＋摘要</small><span>「User 的工作與職涯」</span></div>
+        </div>
+        <figcaption>本頁依 §2 重畫的示意，例句為本頁示範，不是論文原圖。論文沒有架構圖。</figcaption>
+      </figure>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>想像一本有三層的剪貼簿。第一層把你說過的每句話原封不動貼上去。第二層畫一張人物關係圖：誰是誰、誰喜歡什麼。第三層把關係很近的人圈成一群，寫一句話介紹這一群。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>三層由下往上越來越抽象：原始對話 → 實體與事實 → 社群摘要。保留最底層的原始資料很重要，因為上面兩層都是 LLM 擷取出來的，可能出錯；有原文就能回頭查證。</p>
+          <p>作者把這對應到心理學的兩種記憶：<b>情節記憶</b>（episodic memory，記得某件事發生過）和<b>語意記憶</b>（semantic memory，記得概念之間的關聯）。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>設計來源都有明確引用：episodic／semantic 分離取自 AriGraph [9]，社群節點取自 GraphRAG [4]，整體階層延伸自階層式 RAG [10][11]（§2）。新意主要在兩處：雙時間軸（03、05），以及社群的增量更新（06）。</p>
+          <p>符號提醒 <span class="src src-mine">導讀補充</span>：\(\phi^*\) 原文沒有定義，從上下文看是「端點落在該節點對集合內的邊」。另外 §3 的搜尋函數用的是另一個字形 \(\varphi\)，不要和這裡的關聯函數 \(\phi\) 混在一起。</p>
+          <p>Episode 與 semantic edge 之間維護雙向索引，可以從事實追回出處，也能從 episode 找到相關事實。但原文明說這個功能沒有在實驗中檢驗（§2.1）。</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>為什麼要保留 episode 這層原始資料？</summary><div><p>它是不失真的資料存放處：實體和事實都是 LLM 擷取的，可能有錯或遺漏；保留原文才能引用、查證、重新擷取。</p></div></details>
+        <details><summary>三種邊分別連接哪些節點？</summary><div><p>Episodic edge：episode → 實體。Entity edge：實體 → 實體。Community edge：社群 → 實體。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-graph">筆記</label><textarea id="note-graph" data-note="s-graph"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-graph"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 03 episodes, bi-temporal ===================== -->
+    <section class="sec" id="s-episode" data-short="Episode 與雙時間軸">
+      <div class="sec-head"><span class="sec-num">03</span><h2>Episode 與雙時間軸</h2></div>
+      <div class="eq">
+        <div class="eq-head"><span>兩條時間軸、四個時間戳</span><span class="src src-abs">原文 §2.1、§2.2.3</span></div>
+        \[ T:\ \text{chronological order of events}, \qquad T':\ \text{transactional order of ingestion} \]
+        \[ t'_{\text{created}},\ t'_{\text{expired}} \in T', \qquad t_{\text{valid}},\ t_{\text{invalid}} \in T \]
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>符號</th><th>意思（原文）</th></tr></thead>
+          <tbody>
+            <tr><td>\(t_{\text{ref}}\)</td><td>訊息的參考時間戳，也就是訊息送出的時間。用來把「下週四」「兩週前」「去年夏天」這類相對或部分日期換成絕對時間</td></tr>
+            <tr><td>\(T\)</td><td>事件時間軸：事情在真實世界發生的先後</td></tr>
+            <tr><td>\(T'\)</td><td>交易時間軸：Zep 擷取資料的先後，作用類似資料庫稽核紀錄</td></tr>
+            <tr><td>\(t'_{\text{created}}, t'_{\text{expired}}\)</td><td>事實在系統中被建立、被判定失效的時間</td></tr>
+            <tr><td>\(t_{\text{valid}}, t_{\text{invalid}}\)</td><td>事實在真實世界中成立的期間</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>每張貼紙上要寫兩種日期。一種是「這件事是什麼時候發生的」，另一種是「我是什麼時候知道這件事的」。你今天才聽說小明上個月搬家了，那搬家的日期是上個月，你知道的日期是今天。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>Episode 有三種：訊息（message）、文字、JSON。論文的實驗只用訊息。每則訊息帶著說話者和送出時間 \(t_{\text{ref}}\)。</p>
+          <p><b>雙時間模型</b>（bi-temporal model）把兩件事分開：</p>
+          <ul>
+            <li>事實<b>在真實世界</b>什麼時候成立（\(T\) 軸）。</li>
+            <li>系統<b>什麼時候知道</b>這件事（\(T'\) 軸）。</li>
+          </ul>
+          <p>分開之後才能回答「三月時使用者在哪工作」和「系統在三月一號那天以為使用者在哪工作」這兩個不同的問題。05 的互動時間軸可以實際操作。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>雙時間模型在資料庫領域是成熟概念（valid time vs. transaction time）<span class="src src-mine">導讀補充</span>。原文宣稱把它用在 LLM 建構的知識圖譜是「新的進展」，也是 Zep 和先前圖譜式 RAG 最大的差異（§2.1）。</p>
+          <p>值得追問：實驗中有沒有用到 \(T'\)？§3 的 Constructor 只回傳事實與 \(t_{\text{valid}}, t_{\text{invalid}}\)，沒有提到 \(t'\) 欄位，所以 \(T'\) 在論文實驗裡主要是稽核用途，沒有被評估 <span class="src src-mine">導讀補充</span>。</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>\(t_{\text{valid}}\) 和 \(t'_{\text{created}}\) 有什麼不同？</summary><div><p>前者在事件時間軸 \(T\) 上，表示事實開始成立的時間；後者在交易時間軸 \(T'\) 上，表示 Zep 寫入這筆事實的時間。</p></div></details>
+        <details><summary>沒有 \(t_{\text{ref}}\) 的話，哪類資訊會處理不了？</summary><div><p>相對時間，例如「兩週前」「下週四」。必須知道訊息是何時說的，才能換算成絕對日期。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-episode">筆記</label><textarea id="note-episode" data-note="s-episode"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-episode"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 04 entities ===================== -->
+    <section class="sec" id="s-entity" data-short="實體擷取與解析">
+      <div class="sec-head"><span class="sec-num">04</span><h2>實體擷取與實體解析</h2></div>
+      <div class="table-wrap">
+        <table>
+          <caption>每則訊息進來後的實體處理流程 <span class="src src-abs">原文 §2.2.1、附錄 6.1.1–6.1.2</span></caption>
+          <thead><tr><th>步驟</th><th>做法</th></tr></thead>
+          <tbody>
+            <tr><td>1. 擷取</td><td>LLM 讀「目前訊息＋前 \(n\) 則訊息」做命名實體辨識。\(n = 4\)，也就是兩輪完整對話。說話者一律抽成實體</td></tr>
+            <tr><td>2. 反思</td><td>受 Reflexion [12] 啟發的反思步驟，降低幻覺、提高擷取覆蓋率</td></tr>
+            <tr><td>3. 摘要</td><td>為每個實體產生摘要，供後續解析與檢索</td></tr>
+            <tr><td>4. 找候選</td><td>實體名稱嵌入 1024 維向量，用餘弦相似度找相近的既有實體；另外對既有實體的名稱與摘要做全文搜尋</td></tr>
+            <tr><td>5. 解析</td><td>候選實體＋episode 上下文交給 LLM 判斷是否重複；重複就合併，並產生更新後的名稱與摘要</td></tr>
+            <tr><td>6. 寫入</td><td>用<b>預先定義的 Cypher 查詢</b>寫進圖資料庫，而不是讓 LLM 產生查詢，以維持 schema 一致、減少幻覺</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="claim">
+        <span class="claim-label">擷取提示詞的規則 <span class="src src-abs">原文 附錄 6.1.1</span></span>
+        <ul class="prose" style="margin:0;padding-left:1.2rem">
+          <li>永遠先把說話者抽成第一個節點（冒號前的部分）。</li>
+          <li>不要為關係或動作建立節點。</li>
+          <li>不要為日期、時間、年份建立節點，這些之後會放到邊上。</li>
+          <li>節點名稱盡量明確，使用全名。</li>
+        </ul>
+        <p class="readout">第 6 條規則在 PDF 中截斷於 "DO NOT extract entities mentioned only"，原文缺字。</p>
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>小幫手讀你說的話，把裡面的人、地方、東西圈出來。然後它會檢查：「這個『小明』是不是我之前認識的那個『王小明』？」是的話就把兩張名片合成一張，不會出現兩個小明。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>實體解析（entity resolution）解決「同一個東西有好多名字」的問題，例如「媽媽」「我媽」「林美玲」。做法是先用兩種搜尋（向量相似度與關鍵字）找候選，再請 LLM 下最後判斷。</p>
+          <p>寫入資料庫用固定的 Cypher 模板而不讓 LLM 自由寫查詢，是很實務的選擇：LLM 只負責「理解」，結構化的寫入交給確定性的程式。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>每則訊息要經過實體擷取、反思、實體解析等多個 LLM 步驟，事實那邊還有擷取、去重、時間擷取、失效判斷（見 05）。實驗用 gpt-4o-mini 建圖，但<b>建圖成本與耗時完全沒有報告</b>，Table 2 的延遲只算檢索與回答 <span class="src src-mine">導讀補充</span>。</p>
+          <p>1024 維應該對應實驗用的 BGE-m3 embedding（§4.1），但原文沒有把兩者直接連起來。擷取品質（實體召回率、解析正確率）也沒有獨立評估。</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>為什麼不讓 LLM 直接寫 Cypher 查詢？</summary><div><p>原文的理由：確保 schema 格式一致、降低幻覺的可能。</p></div></details>
+        <details><summary>擷取時為什麼要看前 4 則訊息？</summary><div><p>提供上下文給命名實體辨識，例如代名詞「他」指誰。4 則剛好是兩輪完整對話。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-entity">筆記</label><textarea id="note-entity" data-note="s-entity"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-entity"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 05 facts & invalidation ===================== -->
+    <section class="sec" id="s-fact" data-short="事實與時間失效（互動）">
+      <div class="sec-head"><span class="sec-num">05</span><h2>事實、時間擷取與邊的失效</h2></div>
+      <div class="prose">
+        <p><b>事實</b>是實體之間的邊，帶一個全大寫的關係類型（例如 LOVES、WORKS_FOR）和一句詳細描述（附錄 6.1.3）。同一個事實可以在不同實體對之間重複擷取，藉此表示牽涉多個實體的事實，原文稱為<b>超邊</b>（hyper-edge）的實作 <span class="src src-abs">原文 §2.2.2</span>。</p>
+        <p><b>去重</b>：新事實先嵌入，再用混合搜尋找重複，但<b>只在同一對實體之間的邊</b>裡找。這樣既避免把不同實體間的相似事實誤合併，也大幅縮小搜尋範圍 <span class="src src-abs">原文 §2.2.2</span>。</p>
+      </div>
+      <div class="eq">
+        <div class="eq-head"><span>邊的失效規則</span><span class="src src-abs">原文 §2.2.3（文字敘述，本頁寫成式子）</span></div>
+        \[ \text{if } e_{\text{new}} \text{ contradicts } e_{\text{old}} \text{ and they overlap in time:}\qquad t_{\text{invalid}}(e_{\text{old}}) \leftarrow t_{\text{valid}}(e_{\text{new}}) \]
+        <p>由 LLM 比對新邊與語意相關的既有邊，找出時間上重疊的矛盾。依交易時間軸 \(T'\)，Graphiti 一律優先採信新資訊。舊邊不刪除，只是設定失效時間，所以現況與歷史都保留。</p>
+      </div>
+      <div class="claim">
+        <span class="claim-label">時間擷取提示詞的規則（節錄） <span class="src src-abs">原文 附錄 6.1.5</span></span>
+        <ul class="prose" style="margin:0;padding-left:1.2rem">
+          <li>只擷取屬於該事實本身的時間；不要從相關事件推論日期。</li>
+          <li>相對時間（「10 年前」「2 分鐘前」）以參考時間戳換算。</li>
+          <li>事實以現在式描述時，\(t_{\text{valid}}\) 用參考時間戳。</li>
+          <li>只有日期沒有時刻，用當天 00:00:00；只有年份，用該年 1 月 1 日 00:00:00。</li>
+          <li>不是「持續一段期間」的關係，只設 valid_at。日期用 ISO 8601，一律帶時區（沒提到就用 Z）。</li>
+        </ul>
+      </div>
+
+      <figure class="figure" style="margin:0">
+        <p class="readout">示範情境 <span class="src src-mine">導讀補充</span>：三則訊息依序進來，日期與換算依上面的提示詞規則。假設每則訊息一送出就被擷取，所以 \(t'_{\text{created}} = t_{\text{ref}}\)。</p>
+        <ol class="episodes">
+          <li><span class="mono">2024-01-10</span>「我在 A 公司當工程師。」現在式，\(t_{\text{valid}}\) 取參考時間 2024-01-10。</li>
+          <li><span class="mono">2024-03-05</span>「我兩週前轉職到 B 公司了。」B 的 \(t_{\text{valid}}\) = 2024-02-20；與 A 矛盾且時間重疊，A 的 \(t_{\text{invalid}}\) 設為 2024-02-20。</li>
+          <li><span class="mono">2024-04-01</span>「我 2023 年開始養一隻叫 Momo 的貓。」只有年份，\(t_{\text{valid}}\) = 2023-01-01。</li>
+        </ol>
+        <div class="controls">
+          <label for="ctl-know">Zep 讀到哪一天（\(T'\)）<output id="out-know"></output><input type="range" id="ctl-know" min="0" max="180" step="1" value="180"></label>
+          <label for="ctl-query">問「那天什麼是真的」（\(T\)）<output id="out-query"></output><input type="range" id="ctl-query" min="0" max="546" step="1" value="380"></label>
+        </div>
+        <div class="chart-box"><svg id="bitemporal-chart" viewBox="0 0 640 210" role="img" aria-label="三筆事實在事件時間軸上的有效期間"></svg></div>
+        <p class="readout">Constructor 輸出的 FACTS 區塊（格式依原文 §3 範本），螢光標記的是在所選日期成立的事實：</p>
+        <pre class="ctx" id="ctx-out"></pre>
+        <figcaption>藍色實心條：在所選 \(T'\) 時系統已知、而且已有結束日期的期間；虛線框：系統已知、尚未失效。系統當時還不知道的事實以文字標示。把 \(T'\) 拉回 2024-03-01，可以看到系統還以為使用者在 A 公司。注意第 1 則的 2024-01-10 只是說話日期，不是真正入職日；這是規則 3 的副作用。</figcaption>
+      </figure>
+
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>你本來記得「哥哥在 A 公司上班」。後來哥哥說「我兩週前換到 B 公司了」。Zep 不會把 A 公司那張貼紙撕掉，而是在上面寫「到 2 月 20 日為止」。這樣它既知道哥哥現在在哪，也記得哥哥以前在哪。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>這是 Zep 和「直接覆蓋舊資料」最大的不同：<mark>不刪除，只標記失效時間</mark>。好處是能回答歷史問題（「他去年在哪工作？」），也能讓 LLM 看到變化的脈絡。</p>
+          <p>時間換算全靠 LLM 依提示詞規則完成。規則寫得很細，例如只有年份就取 1 月 1 日，就是為了讓結果一致、可預期。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>幾個值得追問的地方 <span class="src src-mine">導讀補充</span>：</p>
+          <ul>
+            <li>規則「現在式取參考時間」會把\(t_{\text{valid}}\)設成「第一次被提到的日子」而不是真正開始的日子，上面的例子就是這樣。這會影響 temporal-reasoning 題的正確性。</li>
+            <li>失效只處理「時間重疊的矛盾」，判斷交給 LLM。誤判會讓仍然成立的事實被標成失效，原文沒有評估失效判斷的準確率。</li>
+            <li>「依 \(T'\) 優先採信新資訊」代表較晚才被提到的舊事件也會壓過先前資訊。例如使用者回憶往事時，可能誤觸失效。</li>
+            <li>和上一篇 FadeMem 對照：FadeMem 讓矛盾的舊記憶強度衰減後刪除；Zep 永不刪除，只設失效時間。前者省空間，後者保留歷史。</li>
+          </ul>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>新事實與舊事實矛盾時，舊事實的哪個欄位會被改？改成什麼？</summary><div><p>\(t_{\text{invalid}}\)，改成新事實的 \(t_{\text{valid}}\)。舊事實本身不會被刪除。</p></div></details>
+        <details><summary>為什麼事實去重只在同一對實體之間的邊裡搜尋？</summary><div><p>避免把不同實體之間相似的事實誤合併，同時縮小搜尋空間、降低計算量。</p></div></details>
+        <details><summary>使用者說「我 2019 年搬到台中」，\(t_{\text{valid}}\) 會是什麼？</summary><div><p>依附錄 6.1.5 規則 8，只有年份時取 2019-01-01T00:00:00Z。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-fact">筆記</label><textarea id="note-fact" data-note="s-fact"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-fact"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 06 communities ===================== -->
+    <section class="sec" id="s-community" data-short="社群">
+      <div class="sec-head"><span class="sec-num">06</span><h2>社群：增量式的標籤傳播</h2></div>
+      <div class="table-wrap">
+        <table>
+          <caption>和 GraphRAG 的差異 <span class="src src-abs">原文 §2.3</span></caption>
+          <thead><tr><th>面向</th><th>GraphRAG [4]</th><th>Zep</th></tr></thead>
+          <tbody>
+            <tr><td>分群演算法</td><td>Leiden [14]</td><td>標籤傳播（label propagation）[13]</td></tr>
+            <tr><td>新資料進來</td><td>（原文未描述）</td><td>新實體加入鄰居中<b>多數</b>所屬的社群，再更新社群摘要；仍需定期整體重算</td></tr>
+            <tr><td>社群摘要</td><td>map-reduce 式迭代摘要</td><td>同樣做法</td></tr>
+            <tr><td>檢索方式</td><td>map-reduce</td><td>差異很大：從摘要產生含關鍵詞的社群名稱，嵌入後做餘弦搜尋</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>新同學轉進班上，要決定他加入哪個小團體。最簡單的方法：看他最常跟誰玩，那些朋友大多在哪一組，他就加入哪一組。過一陣子老師再重新分一次組，因為大家的朋友會變。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>選標籤傳播而不是 Leiden，原因是它很容易做<b>增量更新</b>：新節點只要看鄰居的社群標籤，取多數，就是標籤傳播的一個遞迴步驟。這比每次整張圖重新分群便宜很多，降低延遲與 LLM 摘要成本。代價是增量結果會逐漸偏離完整重算的結果，所以仍需定期刷新。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>這是典型的「近似換效率」取捨。原文沒有量化偏離程度，也沒說刷新頻率 <span class="src src-mine">導讀補充</span>。</p>
+          <p>更重要的是：§3 的 context 範本只有 FACTS 與 ENTITIES，§4 也說實驗取的是「邊（事實）與實體節點」。從這兩處看，<b>社群很可能沒有用在實驗中</b>，所以社群設計的效果在論文裡沒有證據支持 <span class="src src-mine">導讀補充</span>。原文 §4 也承認實驗只用到系統搜尋功能的一部分。</p>
+          <p>原文提到社群搜尋方式和 LightRAG [17] 的 high-level key 搜尋相似，兩者是各自獨立發展的。</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>Zep 為什麼選標籤傳播而不是 Leiden？</summary><div><p>標籤傳播有直接的動態延伸：新節點只要依鄰居多數決定社群，可以延後整體重算，降低延遲與 LLM 推論成本。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-community">筆記</label><textarea id="note-community" data-note="s-community"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-community"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 07 retrieval ===================== -->
+    <section class="sec" id="s-retrieval" data-short="檢索流程">
+      <div class="sec-head"><span class="sec-num">07</span><h2>檢索：搜尋、重排、組裝</h2></div>
+      <div class="eq">
+        <div class="eq-head"><span>檢索函數</span><span class="src src-abs">原文 §3</span></div>
+        \[ f(\alpha) = \chi\big(\rho(\varphi(\alpha))\big) = \beta, \qquad \alpha, \beta \in S \]
+        \[ \varphi : S \to \mathcal{E}_s^n \times \mathcal{N}_s^n \times \mathcal{N}_c^n, \qquad \rho : \varphi(\alpha), \ldots \to \mathcal{E}_s^n \times \mathcal{N}_s^n \times \mathcal{N}_c^n, \qquad \chi : \mathcal{E}_s^n \times \mathcal{N}_s^n \times \mathcal{N}_c^n \to S \]
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>符號</th><th>意思（原文 §3）</th></tr></thead>
+          <tbody>
+            <tr><td>\(S\)</td><td>文字字串的集合；\(\alpha\) 是查詢，\(\beta\) 是給 LLM 的上下文</td></tr>
+            <tr><td>\(\varphi\) Search</td><td>找候選：回傳語意邊、實體節點、社群節點三個清單</td></tr>
+            <tr><td>\(\rho\) Reranker</td><td>重新排序候選結果</td></tr>
+            <tr><td>\(\chi\) Constructor</td><td>組成文字：邊給事實與 \(t_{\text{valid}}, t_{\text{invalid}}\)；實體給名稱與摘要；社群給摘要</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <caption>三種搜尋與五種重排 <span class="src src-abs">原文 §3.1–3.2</span></caption>
+          <thead><tr><th>元件</th><th>做法</th><th>捕捉的相似性</th></tr></thead>
+          <tbody>
+            <tr><td>\(\varphi_{\cos}\)</td><td>餘弦語意相似度（Neo4j 的 Lucene 實作）</td><td>語意</td></tr>
+            <tr><td>\(\varphi_{\text{bm25}}\)</td><td>Okapi BM25 全文搜尋（同上）</td><td>字詞</td></tr>
+            <tr><td>\(\varphi_{\text{bfs}}\)</td><td>從種子節點做 \(n\) 跳廣度優先搜尋，可以拿最近的 episode 當種子</td><td>情境：圖上越近，越常出現在相似的對話情境</td></tr>
+            <tr><td>RRF / MMR</td><td>既有方法：Reciprocal Rank Fusion [20]、Maximal Marginal Relevance [21]</td><td>—</td></tr>
+            <tr><td>Episode-mentions</td><td>依實體或事實在對話中被提及的次數排序</td><td>—</td></tr>
+            <tr><td>Node distance</td><td>依與指定中心節點的圖距離排序</td><td>—</td></tr>
+            <tr><td>Cross-encoder</td><td>用 LLM 以 cross-attention 對查詢與節點／邊打相關分數，計算成本最高</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="readout">搜尋欄位：邊搜 fact 欄位，實體搜名稱，社群搜社群名稱。</p>
+      <div class="claim">
+        <span class="claim-label">Context 字串範本 <span class="src src-abs">原文 §3</span></span>
+        <pre class="prompt">FACTS and ENTITIES represent relevant context to the current conversation.
+These are the most relevant facts and their valid date ranges. If the fact is about an event, the event takes place during this time.
+format: FACT (Date range: from - to)
+&lt;FACTS&gt;
+{facts}
+&lt;/FACTS&gt;
+These are the most relevant entities
+ENTITY_NAME: entity summary
+&lt;ENTITIES&gt;
+{entities}
+&lt;/ENTITIES&gt;</pre>
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>你問 AI 一個問題，它要先去筆記本找答案。它用三種找法：找意思很像的、找字一樣的、找跟最近聊到的東西有關係的。找到一大堆後挑出最重要的幾條，整理成一張小抄交給 AI。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>這是常見的「高召回搜尋＋高精確重排」兩段式設計。三種搜尋互補：BM25 抓得到專有名詞，向量搜尋抓得到換句話說，BFS 抓得到「沒提到但有關聯」的東西。最後組成的小抄平均只有約 1.6k tokens（Table 2），而不是整段 115k tokens 的對話。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>符號提醒：§3 的 \(\alpha, \beta\) 是查詢與上下文字串，\(\rho\) 是重排器，和其他論文的常見用法不同 <span class="src src-mine">導讀補充</span>。</p>
+          <p>實驗具體用了哪些搜尋與重排的組合，原文沒有寫明。§4.1 只說重排與嵌入都用 BGE-m3 模型，§4 說實驗只示範了部分搜尋功能。BFS 是否啟用、種子怎麼選，都不清楚，因此無法判斷哪個元件貢獻了 LongMemEval 的提升 <span class="src src-mine">導讀補充</span>。</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>三種搜尋各自捕捉什麼樣的相似性？</summary><div><p>全文搜尋（BM25）：字詞；餘弦：語意；BFS：情境，也就是在圖上距離近、常在相似對話中一起出現。</p></div></details>
+        <details><summary>Constructor 對每條事實輸出什麼？</summary><div><p>事實文字與它的 \(t_{\text{valid}}\)、\(t_{\text{invalid}}\)，也就是有效日期範圍。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-retrieval">筆記</label><textarea id="note-retrieval" data-note="s-retrieval"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-retrieval"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 08 setup ===================== -->
+    <section class="sec" id="s-setup" data-short="實驗設定">
+      <div class="sec-head"><span class="sec-num">08</span><h2>實驗設定</h2></div>
+      <div class="table-wrap">
+        <table>
+          <caption>兩個評測 <span class="src src-abs">原文 §4、§4.2、§4.3</span></caption>
+          <thead><tr><th>評測</th><th>內容</th></tr></thead>
+          <tbody>
+            <tr><td>DMR（Deep Memory Retrieval）[3]</td><td>MemGPT 團隊提出。取自 Multi-Session Chat [22] 的 500 段對話，每段 5 個 session、每個 session 最多 12 則訊息，每段對話一組問答</td></tr>
+            <tr><td>LongMemEval<sub>s</sub> [7]</td><td>對話平均約 115,000 tokens；六種題型：single-session-user、single-session-assistant、single-session-preference、multi-session、knowledge-update、temporal-reasoning。題型分布不均，細節見 [7]</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <caption>模型與流程 <span class="src src-abs">原文 §4、§4.1、§4.3</span></caption>
+          <thead><tr><th>項目</th><th>設定</th></tr></thead>
+          <tbody>
+            <tr><td>建圖</td><td>gpt-4o-mini-2024-07-18</td></tr>
+            <tr><td>嵌入與重排</td><td>BAAI 的 BGE-m3 模型 [23][24]</td></tr>
+            <tr><td>回答</td><td>gpt-4o-mini-2024-07-18、gpt-4o-2024-11-20；DMR 另用 gpt-4-turbo-2024-04-09 以便和 MemGPT 直接比較</td></tr>
+            <tr><td>檢索量</td><td>§4：取最相關的 20 條邊（事實）與實體節點。§4.2（DMR）：取前 10 個最相關的節點與邊</td></tr>
+            <tr><td>評分</td><td>DMR：LLM 評審比對標準答案。LongMemEval：GPT-4o 搭配 [7] 提供的分題型提示詞（與人工評分高度相關）</td></tr>
+            <tr><td>環境</td><td>2024 年 12 月至 2025 年 1 月；在美國波士頓住宅區的消費級筆電上測試，連線到 AWS us-west-2 上的 Zep 服務。基線沒有這段網路延遲</td></tr>
+            <tr><td>程式碼</td><td>實驗 notebook「將會」公開在 GitHub（v1 撰寫時尚未公開）</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>考試有兩場。第一場比較簡單，題目都是「他說過他最喜歡喝什麼？」。第二場很難，對話超級長，還要算日期、記住改變過的事。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>兩個評測難度差很多：DMR 每段對話只有 60 則訊息，現在的 LLM 直接全部讀進去就能答；LongMemEval<sub>s</sub> 每段約 115k tokens，雖然還塞得進 gpt-4o 的上下文，但 LLM 表現會隨長度明顯下降，這正是記憶系統該發揮的地方。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>檢索量的描述前後不一致 <span class="src src-mine">導讀補充</span>：§4 說兩個實驗都取 20 條，§4.2 說 DMR 取前 10。可能是「10 個節點＋10 條邊」，但原文沒有說清楚。</p>
+          <p>延遲的測量環境偏向不利 Zep（多了跨州網路），但也很粗糙：消費級筆電、住宅網路，沒有重複次數或負載說明。LongMemEval 的題數沒有在本文寫出，要回到 [7] 查。</p>
+        </div>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-setup">筆記</label><textarea id="note-setup" data-note="s-setup"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-setup"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 09 DMR ===================== -->
+    <section class="sec" id="s-dmr" data-short="DMR 結果">
+      <div class="sec-head"><span class="sec-num">09</span><h2>DMR 結果與作者對 DMR 的批評</h2></div>
+      <div class="table-wrap">
+        <table class="results">
+          <caption>Table 1：Deep Memory Retrieval <span class="src src-abs">原文 Table 1</span>。† 為 MemGPT 論文 [3] 報告的數字</caption>
+          <thead><tr><th>記憶方式</th><th>模型</th><th class="num">分數</th></tr></thead>
+          <tbody>
+            <tr><td>Recursive Summarization †</td><td>gpt-4-turbo</td><td class="num">35.3%</td></tr>
+            <tr><td>Conversation Summaries</td><td>gpt-4-turbo</td><td class="num">78.6%</td></tr>
+            <tr><td>MemGPT †</td><td>gpt-4-turbo</td><td class="num">93.4%</td></tr>
+            <tr><td>Full-conversation</td><td>gpt-4-turbo</td><td class="num">94.4%</td></tr>
+            <tr class="ours"><td>Zep</td><td>gpt-4-turbo</td><td class="num">94.8%</td></tr>
+            <tr><td>Conversation Summaries</td><td>gpt-4o-mini</td><td class="num">88.0%</td></tr>
+            <tr><td>Full-conversation</td><td>gpt-4o-mini</td><td class="num">98.0%</td></tr>
+            <tr class="ours"><td>Zep</td><td>gpt-4o-mini</td><td class="num">98.2%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>第一場考試 Zep 考第一名，但只贏一點點。而且「把整本筆記都拿來看」的同學也考得幾乎一樣好，表示這場考試太簡單了，看不出誰的記憶方法比較厲害。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>Zep 比 MemGPT 高 1.4 個百分點，但比「把整段對話直接塞進去」只高 0.4（gpt-4-turbo）與 0.2（gpt-4o-mini）。作者自己也說要保守解讀，因為每段對話只有 60 則訊息。</p>
+          <p>作者對 DMR 的批評：</p>
+          <ul>
+            <li>只有單輪、找事實的題目，測不出複雜的記憶理解。</li>
+            <li>很多題目措辭模糊，例如問「放鬆時最愛的飲料」「奇怪的嗜好」，但對話裡沒有這樣明確描述。</li>
+            <li>不能代表企業的實際使用情境。</li>
+            <li>簡單的全文上下文做法就能拿高分，本身就說明這個評測不足。</li>
+          </ul>
+        </div>
+        <div class="lv lv-grad">
+          <p>摘要把「勝過 MemGPT（94.8% vs 93.4%）」放在第一句，但正文的分析其實削弱了這個結果的意義 <span class="src src-mine">導讀補充</span>。另外：</p>
+          <ul>
+            <li>MemGPT 的數字是引用 [3] 的報告值，不是同一環境重跑；作者說因為方法細節不足，無法用 gpt-4o-mini 重現。</li>
+            <li>沒有變異數、重複次數或顯著性檢定。0.2 到 0.4 個百分點在 500 題上大約是 1 到 2 題的差距。</li>
+          </ul>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>DMR 每段對話有幾則訊息？這代表什麼？</summary><div><p>5 個 session × 最多 12 則 = 最多 60 則。這很容易整個塞進現代 LLM 的上下文，所以記憶系統的優勢顯現不出來。</p></div></details>
+        <details><summary>500 題裡，0.4 個百分點大約是幾題？</summary><div><p>\(500 \times 0.004 = 2\) 題。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-dmr">筆記</label><textarea id="note-dmr" data-note="s-dmr"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-dmr"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 10 LME ===================== -->
+    <section class="sec" id="s-lme" data-short="LongMemEval 結果">
+      <div class="sec-head"><span class="sec-num">10</span><h2>LongMemEval 結果</h2></div>
+      <div class="table-wrap">
+        <table class="results">
+          <caption>Table 2：LongMemEval<sub>s</sub> <span class="src src-abs">原文 Table 2</span></caption>
+          <thead><tr><th>記憶方式</th><th>模型</th><th class="num">分數</th><th class="num">延遲</th><th class="num">延遲 IQR</th><th class="num">平均上下文 tokens</th></tr></thead>
+          <tbody>
+            <tr><td>Full-context</td><td>gpt-4o-mini</td><td class="num">55.4%</td><td class="num">31.3 s</td><td class="num">8.76 s</td><td class="num">115k</td></tr>
+            <tr class="ours"><td>Zep</td><td>gpt-4o-mini</td><td class="num">63.8%</td><td class="num">3.20 s</td><td class="num">1.31 s</td><td class="num">1.6k</td></tr>
+            <tr><td>Full-context</td><td>gpt-4o</td><td class="num">60.2%</td><td class="num">28.9 s</td><td class="num">6.01 s</td><td class="num">115k</td></tr>
+            <tr class="ours"><td>Zep</td><td>gpt-4o</td><td class="num">71.2%</td><td class="num">2.58 s</td><td class="num">0.684 s</td><td class="num">1.6k</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-wrap">
+        <table class="results">
+          <caption>Table 3：LongMemEval<sub>s</sub> 分題型 <span class="src src-abs">原文 Table 3</span>，最右欄為本頁重算 <span class="src src-mine">導讀補充</span></caption>
+          <thead><tr><th>題型</th><th>模型</th><th class="num">Full-context</th><th class="num">Zep</th><th class="num">原文 Delta</th><th class="num">重算（相對基線）</th></tr></thead>
+          <tbody>
+            <tr><td>single-session-preference</td><td>gpt-4o-mini</td><td class="num">30.0%</td><td class="num">53.3%</td><td class="num">77.7%↑</td><td class="num">+77.7%</td></tr>
+            <tr><td>single-session-assistant</td><td>gpt-4o-mini</td><td class="num">81.8%</td><td class="num">75.0%</td><td class="num">9.06%↓</td><td class="num">−8.3%</td></tr>
+            <tr><td>temporal-reasoning</td><td>gpt-4o-mini</td><td class="num">36.5%</td><td class="num">54.1%</td><td class="num">48.2%↑</td><td class="num">+48.2%</td></tr>
+            <tr><td>multi-session</td><td>gpt-4o-mini</td><td class="num">40.6%</td><td class="num">47.4%</td><td class="num">16.7%↑</td><td class="num">+16.7%</td></tr>
+            <tr><td>knowledge-update</td><td>gpt-4o-mini</td><td class="num">76.9%</td><td class="num">74.4%</td><td class="num">3.36%↓</td><td class="num">−3.3%</td></tr>
+            <tr><td>single-session-user</td><td>gpt-4o-mini</td><td class="num">81.4%</td><td class="num">92.9%</td><td class="num">14.1%↑</td><td class="num">+14.1%</td></tr>
+            <tr><td>single-session-preference</td><td>gpt-4o</td><td class="num">20.0%</td><td class="num">56.7%</td><td class="num">184%↑</td><td class="num">+183.5%</td></tr>
+            <tr><td>single-session-assistant</td><td>gpt-4o</td><td class="num">94.6%</td><td class="num">80.4%</td><td class="num">17.7%↓</td><td class="num">−15.0%</td></tr>
+            <tr><td>temporal-reasoning</td><td>gpt-4o</td><td class="num">45.1%</td><td class="num">62.4%</td><td class="num">38.4%↑</td><td class="num">+38.4%</td></tr>
+            <tr><td>multi-session</td><td>gpt-4o</td><td class="num">44.3%</td><td class="num">57.9%</td><td class="num">30.7%↑</td><td class="num">+30.7%</td></tr>
+            <tr><td>knowledge-update</td><td>gpt-4o</td><td class="num">78.2%</td><td class="num">83.3%</td><td class="num">6.52%↑</td><td class="num">+6.5%</td></tr>
+            <tr><td>single-session-user</td><td>gpt-4o</td><td class="num">81.4%</td><td class="num">92.9%</td><td class="num">14.1%↑</td><td class="num">+14.1%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="claim">
+        <span class="claim-label">驗算發現 <span class="src src-mine">導讀補充</span></span>
+        <ul class="prose" style="margin:0;padding-left:1.2rem">
+          <li><b>Delta 是相對變化，而且分母不一致。</b>上升用基線當分母：\((53.3 - 30.0)/30.0 = 77.7\%\)。下降卻用 Zep 當分母：\((81.8 - 75.0)/75.0 = 9.06\%\)，若以基線為分母應為 8.3%。三個下降值都是這樣算的，結果是下降幅度被<b>放大</b>了一點。</li>
+          <li><b>摘要的「最多提升 18.5%」重算是 18.3%</b>：\((71.2 - 60.2)/60.2 \approx 18.27\%\)。gpt-4o-mini 的 15.2% 則吻合：\((63.8 - 55.4)/55.4 \approx 15.16\%\)。換成絕對差距是 +11.0 與 +8.4 個百分點。</li>
+          <li><b>延遲「約 90%」吻合</b>：\(1 - 3.20/31.3 \approx 89.8\%\)，\(1 - 2.58/28.9 \approx 91.1\%\)。</li>
+          <li><b>single-session-user 兩個模型的數字完全相同</b>（81.4% → 92.9%）。巧合不是不可能，但值得對照原始資料確認。</li>
+        </ul>
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>第二場難的考試，Zep 幫 AI 多答對了不少題，而且回答速度快了大約 10 倍，因為它只需要看一張小抄，不用把整本超厚的筆記從頭讀到尾。不過有一種題目反而變差了：問「AI 自己之前說過什麼」的題目。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>上下文從 115k tokens 縮到 1.6k，同時準確度提升、延遲降約九成。進步最大的是困難題型：偏好推斷、跨 session、時間推理。gpt-4o-mini 在六類中進步四類；換成 gpt-4o 後 knowledge-update 也轉為進步，作者認為能力較弱的模型可能還不太會用 Zep 的時間資料。</p>
+          <p>明顯退步的是 <b>single-session-assistant</b>（問 assistant 自己說過的內容），作者承認需要更多研究與工程。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>對 single-session-assistant 退步的一個可能解釋 <span class="src src-mine">導讀補充</span>：擷取提示詞以實體與實體間的關係為中心（附錄 6.1.1、6.1.3），assistant 提供的建議、清單、程式碼這類內容不容易被表示成兩個實體之間的事實，在建圖時就流失了。這是假說，論文沒有分析。</p>
+          <p>更根本的問題是基線：LongMemEval 上只有 full-context 一個基線。MemGPT 嘗試過但跑不出結果（§4.3.1），沒有其他記憶系統，也<b>沒有最簡單的「切塊＋向量檢索 top-k」RAG 基線</b>。所以這張表能說明「檢索式記憶勝過長上下文」，卻不能說明「知識圖譜勝過一般檢索」。</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>gpt-4o 從 60.2% 進步到 71.2%，絕對與相對提升各是多少？</summary><div><p>絕對 +11.0 個百分點，相對 \(11.0/60.2 \approx 18.3\%\)。</p></div></details>
+        <details><summary>只靠 Table 2，能不能說「知識圖譜優於向量檢索」？</summary><div><p>不能。唯一的基線是把整段對話放進上下文；沒有一般 RAG 基線，也沒有拿掉圖結構的消融。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-lme">筆記</label><textarea id="note-lme" data-note="s-lme"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-lme"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 11 context ===================== -->
+    <section class="sec" id="s-context" data-short="研究脈絡">
+      <div class="sec-head"><span class="sec-num">11</span><h2>放進研究脈絡</h2></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>工作</th><th>在論文中的角色</th><th>來源</th></tr></thead>
+          <tbody>
+            <tr><td>MemGPT [3]</td><td>DMR 的提出者與主要比較對象</td><td><span class="src src-abs">原文</span></td></tr>
+            <tr><td>GraphRAG [4]</td><td>社群節點與 map-reduce 摘要的來源；Zep 改用標籤傳播與不同的檢索方式</td><td><span class="src src-abs">原文</span></td></tr>
+            <tr><td>AriGraph [9]</td><td>episodic／semantic 子圖分離的來源；也用 BFS 做圖上檢索</td><td><span class="src src-abs">原文</span></td></tr>
+            <tr><td>LightRAG [17]</td><td>社群搜尋方式與其 high-level key 搜尋相似；也是重視延遲指標的先例</td><td><span class="src src-abs">原文</span></td></tr>
+            <tr><td>Reflexion [12]</td><td>實體擷取後的反思步驟</td><td><span class="src src-abs">原文</span></td></tr>
+            <tr><td>LongMemEval [7]</td><td>主要評測與評分提示詞</td><td><span class="src src-abs">原文</span></td></tr>
+            <tr><td>Distill-SynthKG [19]、Triplex [25]</td><td>結論提到：微調模型做圖譜擷取可提升準確並降低成本</td><td><span class="src src-abs">原文</span></td></tr>
+            <tr><td>FadeMem（arXiv 2601.18642，本站上一篇）</td><td>一年後的工作。用強度衰減與刪除處理過時資訊，和 Zep 的「不刪除、標失效」正好相反；FadeMem 的基線不含 Zep</td><td><span class="src src-mine">導讀補充</span></td></tr>
+            <tr><td>Mem0（2025）</td><td>本文沒有比較。之後的 Mem0 論文把 Zep 列為基線之一</td><td><span class="src src-mine">導讀補充</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="prose">
+        <p>原文 §5 自述的未來方向：微調專用模型做 Graphiti 的擷取；引入領域本體（ontology）；需要更貼近商業應用（例如客服）的記憶評測，目前沒有評測能檢驗「對話＋結構化商業資料」的整合；用 [17][27][28] 的 RAG 評測檢驗 Zep 的傳統 RAG 能力。</p>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>Zep 和 FadeMem 處理「舊資訊被推翻」的方式差在哪？</summary><div><p>Zep：設定舊邊的 \(t_{\text{invalid}}\)，保留歷史，永不刪除。FadeMem：降低舊記憶的強度，讓它衰減到門檻以下後刪除。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-context">筆記</label><textarea id="note-context" data-note="s-context"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-context"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 12 critique ===================== -->
+    <section class="sec" id="s-critique" data-short="批判性閱讀">
+      <div class="sec-head"><span class="sec-num">12</span><h2>批判性閱讀</h2></div>
+      <p>以下是本頁的評論 <span class="src src-mine">導讀補充</span>，依據都在前面各節。</p>
+      <div class="prose">
+        <h3>優點</h3>
+        <ul>
+          <li>雙時間模型讓「事實何時成立」與「系統何時得知」分開，是很實用的設計，對 knowledge-update 與 temporal-reasoning 類問題有直接幫助。</li>
+          <li>工程細節透明：公開提示詞、時間換算規則，以及 Cypher 模板這類降低幻覺的作法。</li>
+          <li>同時報告延遲與上下文長度，而不只看準確度。作者也坦白指出 DMR 的不足與自己表現退步的題型。</li>
+        </ul>
+        <h3>疑問</h3>
+        <ul>
+          <li><b>利益衝突與重現性</b>：作者全來自 Zep 公司，評測的是自家商業服務；v1 時實驗 notebook 尚未公開。</li>
+          <li><b>基線太少</b>：LongMemEval 只對 full-context；沒有一般 RAG、Mem0 或其他圖譜式 RAG。</li>
+          <li><b>沒有消融</b>：社群、BFS、重排器、雙時間欄位各自的貢獻都無法得知；社群甚至可能沒用在實驗中。</li>
+          <li><b>成本只算一半</b>：延遲只計檢索與回答，建圖時每則訊息多次 LLM 呼叫的成本與耗時沒有報告。</li>
+          <li><b>擷取品質沒有評估</b>：實體解析、事實去重、時間擷取、失效判斷都靠 LLM，錯誤會累積在圖中，但沒有任何中間環節的準確率。</li>
+          <li><b>數字細節</b>：Delta 的分母不一致、18.5% 應為 18.3%、檢索量 10 與 20 的說法不一致、兩列數字完全相同。</li>
+          <li><b>統計</b>：沒有重複執行、信賴區間或顯著性檢定。</li>
+          <li><b>只增不減</b>：圖譜不失真、永不刪除，長期的儲存與檢索成本如何成長沒有討論。</li>
+        </ul>
+        <h3>可以延伸的方向</h3>
+        <ul>
+          <li>補上「同樣嵌入模型的切塊向量檢索」基線，分離圖結構本身的價值。</li>
+          <li>評估擷取管線每一步的準確率，特別是時間擷取與失效判斷。</li>
+          <li>結合 FadeMem 一類的遺忘或歸檔機制，處理圖譜無限成長的問題。</li>
+        </ul>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-critique">筆記</label><textarea id="note-critique" data-note="s-critique" placeholder="我自己的評價：會不會引用它？能借用到我的研究嗎？"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-critique"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== glossary ===================== -->
+    <section class="sec" id="s-glossary" data-short="術語表">
+      <div class="sec-head"><span class="sec-num">附錄</span><h2>術語表</h2></div>
+      <dl class="gloss">
+        <dt>知識圖譜</dt><dd>Knowledge graph：以節點表示實體、以邊表示實體間關係的資料結構。</dd>
+        <dt>Episode</dt><dd>Zep 的原始資料單位：一則訊息、一段文字或一份 JSON。</dd>
+        <dt>情節／語意記憶</dt><dd>Episodic memory 記得個別事件；semantic memory 記得概念與其關聯。</dd>
+        <dt>雙時間模型</dt><dd>Bi-temporal model：同時記錄事實在現實中成立的時間（\(T\)）與系統得知的時間（\(T'\)）。</dd>
+        <dt>實體解析</dt><dd>Entity resolution：判斷不同名稱是否指同一個實體並加以合併。</dd>
+        <dt>超邊</dt><dd>Hyper-edge：連接兩個以上節點的邊。Zep 以在多個實體對之間重複同一事實來實作。</dd>
+        <dt>Cypher</dt><dd>Neo4j 等圖資料庫使用的查詢語言。</dd>
+        <dt>標籤傳播</dt><dd>Label propagation：每個節點反覆採用鄰居中多數的標籤，直到收斂的分群演算法。</dd>
+        <dt>BM25</dt><dd>Okapi BM25：經典的關鍵字全文檢索排序函數。</dd>
+        <dt>RRF / MMR</dt><dd>Reciprocal Rank Fusion 合併多個排序結果；Maximal Marginal Relevance 在相關性與多樣性間取捨。</dd>
+        <dt>Cross-encoder</dt><dd>把查詢和候選一起輸入模型打分的重排器，準但慢。</dd>
+        <dt>IQR</dt><dd>四分位距，第 75 與第 25 百分位數之差，用來描述延遲的離散程度。</dd>
+      </dl>
+    </section>
+
+    <!-- ===================== export ===================== -->
+    <section class="sec" id="s-export" data-short="匯出筆記">
+      <div class="sec-head"><span class="sec-num">附錄</span><h2>匯出我的筆記</h2></div>
+      <p>筆記只存在這個瀏覽器裡。讀完後複製成 Markdown，可以存成 repo 的 <code>papers/2501.13956/notes.md</code>，或貼給 Claude 繼續討論。</p>
+      <div class="btn-row"><button type="button" class="btn" id="export-notes">複製全部筆記</button><span class="toast" id="export-toast" role="status"></span></div>
+      <div class="note"><label for="export-box" class="sr-only">匯出內容</label><textarea id="export-box" rows="8" hidden readonly></textarea></div>
+      <p class="readout">來源：Rasmussen et al., <a href="https://arxiv.org/abs/2501.13956" target="_blank" rel="noopener">arXiv:2501.13956v1</a>, 2025。本頁已對照 v1 PDF 核對。</p>
+    </section>
+
+  </main>
+</div>
+</div>
+
+<script src="../../assets/site.js"></script>
+<script>
+// Bi-temporal demo for section 05. Example data follows the paper's temporal-extraction rules (Appendix 6.1.5).
+(function () {
+  "use strict";
+  var svg = document.getElementById("bitemporal-chart");
+  if (!svg) return;
+  var NS = "http://www.w3.org/2000/svg";
+  var DAY = 86400000;
+  var AXIS0 = Date.UTC(2023, 0, 1), AXIS1 = Date.UTC(2024, 6, 1);
+  var KNOW0 = Date.UTC(2024, 0, 1);
+  function d(y, m, day) { return Date.UTC(y, m - 1, day); }
+  function iso(t) { return new Date(t).toISOString().slice(0, 10); }
+
+  // created: when Zep ingested the edge (T'); expired: when the invalidation was ingested (T').
+  var edges = [
+    { label: "WORKS_FOR A 公司", fact: "User 在 A 公司當工程師", valid: d(2024, 1, 10), invalid: d(2024, 2, 20), created: d(2024, 1, 10), expired: d(2024, 3, 5) },
+    { label: "WORKS_FOR B 公司", fact: "User 轉職到 B 公司", valid: d(2024, 2, 20), invalid: null, created: d(2024, 3, 5), expired: null },
+    { label: "OWNS 貓 Momo", fact: "User 養了一隻叫 Momo 的貓", valid: d(2023, 1, 1), invalid: null, created: d(2024, 4, 1), expired: null }
+  ];
+
+  var know = document.getElementById("ctl-know");
+  var query = document.getElementById("ctl-query");
+  var out = document.getElementById("ctx-out");
+  var W = 640, H = 210, m = { l: 128, r: 32, t: 26, b: 34 };
+  var pw = W - m.l - m.r, rowH = (H - m.t - m.b) / edges.length;
+  function x(t) { return m.l + ((t - AXIS0) / (AXIS1 - AXIS0)) * pw; }
+  function el(tag, attrs, text) {
+    var e = document.createElementNS(NS, tag);
+    Object.keys(attrs).forEach(function (a) { e.setAttribute(a, attrs[a]); });
+    if (text != null) e.textContent = text;
+    return e;
+  }
+
+  function draw() {
+    var K = KNOW0 + Number(know.value) * DAY;
+    var Q = AXIS0 + Number(query.value) * DAY;
+    document.getElementById("out-know").textContent = iso(K);
+    document.getElementById("out-query").textContent = iso(Q);
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+
+    var grid = el("g", { "class": "grid" }), axis = el("g", { "class": "axis" });
+    [d(2023, 1, 1), d(2023, 7, 1), d(2024, 1, 1), d(2024, 7, 1)].forEach(function (t) {
+      grid.appendChild(el("line", { x1: x(t), x2: x(t), y1: m.t, y2: H - m.b }));
+      axis.appendChild(el("text", { x: x(t), y: H - m.b + 16, "text-anchor": "middle" }, iso(t).slice(0, 7)));
+    });
+    svg.appendChild(grid);
+    svg.appendChild(axis);
+
+    var lines = [];
+    edges.forEach(function (e, i) {
+      var y = m.t + i * rowH + rowH * 0.25, h = rowH * 0.5;
+      svg.appendChild(el("text", { "class": "row-label", x: m.l - 8, y: y + h / 2 + 4, "text-anchor": "end" }, e.label));
+      if (e.created > K) {
+        svg.appendChild(el("text", { "class": "unknown", x: m.l + 6, y: y + h / 2 + 4 }, "系統尚未得知（" + iso(e.created) + " 才擷取）"));
+        return;
+      }
+      var inv = e.expired !== null && e.expired <= K ? e.invalid : null;
+      var end = inv === null ? AXIS1 : inv;
+      var trueAtQ = Q >= e.valid && (inv === null || Q < inv);
+      svg.appendChild(el("rect", {
+        "class": inv === null ? "bar-open" : "bar-true",
+        x: x(e.valid), y: y, width: Math.max(2, x(end) - x(e.valid)), height: h, rx: 3
+      }));
+      lines.push({ text: e.fact + " (Date range: " + iso(e.valid) + " - " + (inv === null ? "present" : iso(inv)) + ")", hit: trueAtQ });
+    });
+
+    svg.appendChild(el("line", { "class": "qline", x1: x(Q), x2: x(Q), y1: m.t - 6, y2: H - m.b }));
+    var anchor = x(Q) > W - 90 ? "end" : "start";
+    svg.appendChild(el("text", { "class": "qlabel", x: x(Q) + (anchor === "end" ? -4 : 4), y: m.t - 10, "text-anchor": anchor }, "問：" + iso(Q)));
+
+    out.textContent = "";
+    out.appendChild(document.createTextNode("<FACTS>\n"));
+    if (!lines.length) out.appendChild(document.createTextNode("（系統還沒有任何事實）\n"));
+    lines.forEach(function (l) {
+      var span = document.createElement("span");
+      if (l.hit) span.className = "hit";
+      span.textContent = l.text;
+      out.appendChild(span);
+      out.appendChild(document.createTextNode("\n"));
+    });
+    out.appendChild(document.createTextNode("</FACTS>"));
+  }
+  know.addEventListener("input", draw);
+  query.addEventListener("input", draw);
+  draw();
+})();
+</script>
+</body>
+</html>
