@@ -277,4 +277,6 @@ dl.gloss dd { margin: 0; color: var(--ink); }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .paper-head, .prose, .explain, .claim, .check, .eq, .method, .shelf-head { grid-template-columns: minmax(0, 1fr); }
-p, li, dd, td { overflow-wrap: anywhere; }
+p, li, dd { overflow-wrap: anywhere; }
+td { overflow-wrap: break-word; }
+table.results tbody td:first-child { white-space: nowrap; }

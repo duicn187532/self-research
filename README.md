@@ -6,7 +6,7 @@
 
 | arXiv | 論文 | 狀態 |
 |---|---|---|
-| [2601.18642](papers/2601.18642/index.html) | FadeMem: Biologically-Inspired Forgetting for Efficient Agent Memory | 初稿，待對照全文核對 |
+| [2601.18642](papers/2601.18642/index.html) | FadeMem: Biologically-Inspired Forgetting for Efficient Agent Memory | 已對照 v2 PDF 核對 |
 
 ## 怎麼看
 
