@@ -1,0 +1,857 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>STALE 精讀</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="../../assets/site.css">
+<style>
+  .chart-box .grid line { stroke: var(--rule); stroke-width: 1; }
+  .chart-box .axis text { fill: var(--muted); font-size: 11px; font-family: var(--font-mono); }
+  .chart-box .name { fill: var(--ink); font-size: 12px; font-family: var(--font-body); }
+  .chart-box .group { fill: var(--muted); font-size: 10px; font-family: var(--font-body); letter-spacing: 0.04em; }
+  .chart-box .val { fill: var(--ink); font-size: 11px; font-family: var(--font-mono); }
+  .chart-box .bar { fill: var(--accent); }
+  .chart-box .bar.ours { fill: var(--sml); }
+  .chart-box .hit { fill: transparent; }
+  .chart-box .row:hover .bar { opacity: 0.8; }
+  .controls select { font: inherit; color: var(--ink); background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 0.15rem 0.3rem; }
+  .chart-box svg#t2-chart { min-width: 540px; }
+  pre.prompt { font-family: var(--font-mono); font-size: 0.8125rem; line-height: 1.6; white-space: pre-wrap; overflow-wrap: anywhere; margin: 0; }
+  .probe { display: grid; gap: 0.6rem; }
+  .probe-item { display: grid; gap: 0.2rem; border-left: 3px solid var(--rule); padding-left: 0.75rem; }
+  .probe-item b { font-size: var(--step--1); letter-spacing: 0.04em; color: var(--muted); }
+</style>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
+    svg: { fontCache: "global" }
+  };
+</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script>
+</head>
+<body>
+<div data-paper="2605.06527">
+
+<header class="toolbar gutter">
+  <div class="toolbar-inner">
+    <a class="home" href="../../index.html">論文精讀室</a>
+    <span class="crumb">STALE · arXiv 2605.06527</span>
+    <div class="levels" role="group" aria-label="解釋深度">
+      <span class="levels-label">解釋深度</span>
+      <div class="seg">
+        <button type="button" data-level-btn="kid" aria-pressed="false">五歲</button>
+        <button type="button" data-level-btn="uni" aria-pressed="true">大學生</button>
+        <button type="button" data-level-btn="grad" aria-pressed="false">研究生</button>
+        <button type="button" data-level-btn="all" aria-pressed="false">對照</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="desk gutter">
+  <nav class="rail" aria-label="章節">
+    <details open>
+      <summary>章節 <span class="progress-text" id="progress-text">0 / 0</span></summary>
+      <div class="progress"><span id="progress-bar"></span></div>
+      <ol id="outline"></ol>
+    </details>
+  </nav>
+
+  <main class="column">
+
+    <!-- ===================== header ===================== -->
+    <div class="paper-head">
+      <div class="eyebrow"><span class="mono">arXiv 2605.06527v1</span><span>cs.CL</span><span>v1 2026-05-07</span><span>37 頁：正文 10 頁、附錄 A–H 24 頁</span></div>
+      <h1>STALE：LLM Agent 知道自己的記憶過期了嗎？</h1>
+      <p lang="en"><em>STALE: Can LLM Agents Know When Their Memories Are No Longer Valid?</em></p>
+      <p class="authors">Hanxiang Chao*、Yihan Bai*、Rui Sheng、Tianle Li、Yushi Sun（通訊作者）<br>武漢大學、香港中文大學、香港科技大學　<span class="mono">*</span> 同等貢獻</p>
+      <div class="links">
+        <a href="https://arxiv.org/abs/2605.06527" target="_blank" rel="noopener">arXiv 摘要頁</a>
+        <a href="https://arxiv.org/pdf/2605.06527v1" target="_blank" rel="noopener">PDF</a>
+        <a href="https://github.com/icedreamc/STALE" target="_blank" rel="noopener">程式碼（原文附錄 G）</a>
+        <a href="https://huggingface.co/datasets/STALEproj/STALE" target="_blank" rel="noopener">資料集</a>
+      </div>
+      <div class="claim" role="note">
+        <span class="claim-label">核對狀態</span>
+        <p>本頁已對照 arXiv v1 PDF 全文（含附錄 A–H）逐條核對。所有數字、定義、提示詞都標出在原文的位置，Table 2 的 Overall 欄已逐列驗算。標「導讀補充」的是本頁的推導、背景知識或評論。</p>
+        <div class="legend">
+          <span><span class="src src-abs">原文 §3.2</span> 出自論文，標明位置</span>
+          <span><span class="src src-mine">導讀補充</span> 本頁的推導、背景或評論</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== 00 route ===================== -->
+    <section class="sec" id="s-route" data-short="閱讀路線">
+      <div class="sec-head"><span class="sec-num">00</span><h2>這篇怎麼讀</h2></div>
+      <div class="prose">
+        <p>這是一篇<b>評測集（benchmark）論文</b>，附帶一個原型系統 CUPMem。和本站前兩篇（FadeMem、Zep）是同一個主題的另一面：前兩篇在「設計記憶系統」，這篇在「檢驗記憶系統會不會用過期的記憶」。Zep 也是這篇的受測對象之一。</p>
+        <ol>
+          <li><b>第一遍（15 分鐘）</b>：摘要、Figure 1、§4.2 的三個發現、Table 2。對應本頁 01、07。</li>
+          <li><b>第二遍（1 小時）</b>：§3 的定義與資料建構，搭配附錄 D 的提示詞看「題目怎麼出的」。對應 02 到 06。</li>
+          <li><b>第三遍（1 小時）</b>：§4.3–4.4 的診斷、§5 與附錄 F 的 CUPMem、附錄 C/E 的成本與評審可靠度。重點是「這個評測量到的是什麼」和「CUPMem 的提升從哪來」。對應 08 到 13。</li>
+        </ol>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-route">筆記</label><textarea id="note-route" data-note="s-route" placeholder="例如：我讀這篇的目的、想回答的問題"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-route"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 01 problem ===================== -->
+    <section class="sec" id="s-problem" data-short="問題：隱性衝突">
+      <div class="sec-head"><span class="sec-num">01</span><h2>問題：沒說出口的「過期」</h2></div>
+      <div class="claim">
+        <span class="claim-label">論文的開場例子 <span class="src src-abs">原文 §1</span></span>
+        <p>使用者先說：「我每天騎腳踏車上班，可以推薦一些裝備嗎？」幾個月後又說：「我昨天打籃球摔斷了腿，要怎麼恢復比較快？」第二句沒提到腳踏車，也沒有否定第一句，但之後使用者請助理規劃通勤時，助理不該再建議騎車。</p>
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>你記得好朋友每天騎腳踏車上學。後來他說他的腿受傷了，要打石膏。他沒有說「我不騎車了」，可是你應該自己想到：他這陣子沒辦法騎車。</p>
+          <p>這篇論文在考 AI：<mark>朋友沒有明講的時候，它能不能自己想到「以前記得的事已經不對了」</mark>。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>作者把這種情況叫<b>隱性衝突</b>（implicit conflict）：新的發言讓舊記憶失效，但兩者在字面上沒有矛盾，要靠上下文推理和常識才看得出來。分兩種：</p>
+          <ul>
+            <li><b>Type I 共指衝突</b>：新舊發言講的是同一件事，只是值變了。例如先說住西雅圖，後來說在波特蘭辦水電。</li>
+            <li><b>Type II 傳播衝突</b>：新發言改的是另一件事，影響連鎖傳到舊記憶。例如腿斷了（健康）→ 不能騎車通勤（通勤方式）。</li>
+          </ul>
+          <p>現有評測多半只考「能不能找回以前說過的話」，很少考「知不知道那句話已經不成立」。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>作者主張把對話記憶看成<b>潛在狀態追蹤</b>（latent state tracking），借用 HMM [34] 與 POMDP [18] 的觀點：使用者的狀態 \(S_t\) 不可直接觀測，每則訊息 \(m_t\) 只是部分、有雜訊的觀測。一般 RAG 依語意相似度取回記憶，偏好相似而非時間上有效，所以容易把「騎車通勤」的舊記憶取回來回答通勤問題（§1，引 [9]）。</p>
+          <p>和知識衝突研究的差別（§2）：不是在互相競爭的事實中二選一，也不是補上缺少的事實，而是判斷新觀測是否改變了潛在狀態，進而讓早期記憶衍生的假設失效。</p>
+        </div>
+      </div>
+      <div class="claim">
+        <span class="claim-label">原文要點 <span class="src src-abs">原文 Abstract</span></span>
+        <p>STALE 有 400 個經專家驗證的衝突情境，每個情境用三個維度探測，共 1,200 個評測查詢，涵蓋 100 多個日常主題，上下文最長約 150K tokens。最好的模型整體準確率也只有 55.2%。模型常接受查詢裡夾帶的過時假設，也難以意識到使用者某方面的改變應該讓相關記憶失效。作者另外提出原型系統 CUPMem 作為初步基線。</p>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>Type I 和 Type II 的關鍵差別是什麼？</summary><div><p>Type I：新舊發言針對同一個屬性，值不相容。Type II：新發言更新的是另一個屬性，透過因果或邏輯依賴，讓舊的、不同屬性的信念失效。</p></div></details>
+        <details><summary>為什麼一般 RAG 會在這類問題上出錯？</summary><div><p>它依語意相似度取回記憶。問通勤時，「騎車通勤」的舊記憶和查詢最相似，而「腿斷了」那則和通勤字面上無關，不一定會被取回，或取回了也不被當成決定性證據。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-problem">筆記</label><textarea id="note-problem" data-note="s-problem"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-problem"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 02 formal ===================== -->
+    <section class="sec" id="s-formal" data-short="形式化與兩條公理">
+      <div class="sec-head"><span class="sec-num">02</span><h2>形式化：潛在狀態與兩條公理</h2></div>
+      <div class="eq">
+        <div class="eq-head"><span>符號</span><span class="src src-abs">原文 §3.1</span></div>
+        \[ H = \{(m_t, r_t)\}, \qquad \mathcal{A} = \{a_1, \ldots, a_k\}, \qquad S_t = \{\, v_t(a) \mid a \in \mathcal{A} \,\} \]
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>符號</th><th>意思（原文 §3.1）</th></tr></thead>
+          <tbody>
+            <tr><td>\(U, G\)</td><td>使用者、LLM 助理</td></tr>
+            <tr><td>\(H\)</td><td>依時間排序的互動紀錄；\(m_t\) 是使用者訊息，\(r_t\) 是助理回覆</td></tr>
+            <tr><td>\(\mathcal{A}\)</td><td>有限的使用者屬性集合，例如健康狀態、通勤方式、居住地；每個屬性 \(a\) 的值域是 \(V_a\)</td></tr>
+            <tr><td>\(S_t\)</td><td>時間 \(t\) 的潛在使用者狀態，所有屬性目前值的集合，不可直接觀測</td></tr>
+            <tr><td>信念 \(v_t(a)\)</td><td>由觀測 \(m_t\) 支持的屬性值，也就是助理根據對話對屬性 \(a\) 的最佳理解</td></tr>
+            <tr><td>\(\mathcal{K}\)</td><td>世界知識（常識）</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="eq">
+        <div class="eq-head"><span>隱性衝突成立的充要條件</span><span class="src src-abs">原文 §3.2</span></div>
+        \[ \textbf{Axiom 1 (Belief Incompatibility):}\quad \exists\, o &lt; n,\ a \in \mathcal{A}:\quad m_n \models_{\mathcal{K}} \neg v_o(a) \]
+        \[ \textbf{Axiom 2 (Non-explicit Invalidation):}\quad \forall\, m_j \in \{m_{o+1}, \ldots, m_n\}:\ \neg\,\mathrm{ExplicitInv}\big(m_j, v_o(a)\big) \]
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>要算是「偷偷過期」，要同時符合兩個條件。第一，新的話一想就知道跟舊的事情不能同時成立。第二，從頭到尾沒有人明講「以前那樣已經不是了」。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p><b>公理 1（信念不相容）</b>：在常識 \(\mathcal{K}\) 之下，新觀測 \(m_n\) 推得出舊信念 \(v_o(a)\) 不成立。可以是直接給出不相容的新值，也可以是改變了相關屬性、進而排除舊值。</p>
+          <p><b>公理 2（非明示失效）</b>：從 \(m_o\) 之後到 \(m_n\)（含）為止，沒有任何一句話明說舊信念失效。「明說」包括字面否定（「我不再……」）、直接更正（「其實我現在……」）、或明確標註過時。間接暗示不算。</p>
+          <p>公理 2 同時保證兩件事：失效只能靠推理發現，而且衝突沒有在更早就被明白解決。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>\(\models_{\mathcal{K}}\) 讀作「在世界知識 \(\mathcal{K}\) 下蘊含」。這個定義把「常識推理」放進了蘊含關係，所以衝突是否成立本身依賴 \(\mathcal{K}\) 的邊界，例如「找到樹皮蠍＋乾熱」是否足以蘊含「不住波特蘭」 <span class="src src-mine">導讀補充</span>。實務上，這個判斷交給 LLM 品管（§3.4 Step 3）與人工審查（附錄 D.3），審查也會以「只靠鬆散的邏輯聯想」為由拒絕樣本。</p>
+          <p>\(\mathrm{ExplicitInv}\) 是表層語言的判斷，沒有形式定義；實際上由生成提示詞中「不得有明確語言否定、不得提及屬性名稱」等限制來保證（附錄 D.2）。</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>使用者說「我已經不騎車上班了，改搭捷運」，這算隱性衝突嗎？</summary><div><p>不算。這是明確的否定與更正，違反公理 2。</p></div></details>
+        <details><summary>公理 2 為什麼要涵蓋 \(m_n\) 本身？</summary><div><p>如果 \(m_n\) 自己就說了「我不再……」，衝突就變成明示的，不需要推理。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-formal">筆記</label><textarea id="note-formal" data-note="s-formal"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-formal"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 03 taxonomy ===================== -->
+    <section class="sec" id="s-taxonomy" data-short="Type I 與 Type II">
+      <div class="sec-head"><span class="sec-num">03</span><h2>兩種隱性衝突</h2></div>
+      <div class="eq">
+        <div class="eq-head"><span>Type I：共指衝突（co-referential）</span><span class="src src-abs">原文 §3.3</span></div>
+        \[ m_o \text{ supports } v_o(a),\quad m_n \text{ implies } v_n(a),\quad v_n(a) \models_{\mathcal{K}} \neg v_o(a),\quad m_n \text{ does not mention or negate } v_o(a) \]
+      </div>
+      <div class="eq">
+        <div class="eq-head"><span>Type II：傳播衝突（propagated）</span><span class="src src-abs">原文 §3.3</span></div>
+        \[ \exists\, a, b \in \mathcal{A},\ a \neq b:\quad b \xrightarrow{\ \mathcal{K}\ } a,\qquad v_o(b) \to v_n(b) \ \text{constrains } v_n(a) \text{ to be incompatible with } v_o(a) \]
+      </div>
+      <div class="table-wrap">
+        <table>
+          <caption>原文 §3.3 的兩個例子</caption>
+          <thead><tr><th>類型</th><th>舊觀測 \(m_o\)</th><th>新觀測 \(m_n\)</th><th>失效的信念</th></tr></thead>
+          <tbody>
+            <tr><td>Type I</td><td>住在西雅圖</td><td>在波特蘭的新公寓辦水電</td><td>居住地（同一屬性）</td></tr>
+            <tr><td>Type II</td><td>已經習慣波特蘭的生活步調</td><td>在靴子裡發現樹皮蠍，是被持續的乾熱逼進室內的</td><td>居住地，由「氣候與當地害蟲」傳播而來</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>第一種像是：你以前說最喜歡紅色，現在說最喜歡藍色。講的是同一件事，答案變了。</p>
+          <p>第二種比較難：你以前說每天去公園溜狗，現在說你對狗毛過敏得很嚴重。你沒提到溜狗，但聽的人要自己想到：你大概不能再每天溜狗了。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>Type II 比較難，因為中間有一條<b>沒說出來的依賴鏈</b>：新資訊改了 A，常識告訴我們 A 會影響 B，所以舊的 B 不成立。模型要自己補出這條鏈。實驗也證實 Type II 幾乎全面比 Type I 低分（見 07）。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>符號提醒 <span class="src src-mine">導讀補充</span>：§3.3 的形式定義把上游屬性記為 \(b\)、被失效的目標記為 \(a\)（\(b \to a\)）；但 §3.4 Step 2 和附錄的生成提示詞把上游記為 A、目標記為 B（A → B）。字母方向相反，讀的時候要對清楚。</p>
+          <p>兩類被定義為「互斥」。實際分類由生成流程指定，人工審查若發現分錯類會標為 WRONG TYPE 並改標籤（附錄 D.3），但沒有報告改標的比例。</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>「以前說在 A 公司上班，現在說每天到 B 公司打卡」是哪一型？</summary><div><p>Type I：同一個屬性（工作單位）的值改變。</p></div></details>
+        <details><summary>「以前說週末都去爬山，現在說剛動完膝蓋手術」是哪一型？</summary><div><p>Type II：新資訊更新的是健康狀態，透過常識依賴讓「週末爬山」這個例行活動的信念失效。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-taxonomy">筆記</label><textarea id="note-taxonomy" data-note="s-taxonomy"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-taxonomy"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 04 construction ===================== -->
+    <section class="sec" id="s-build" data-short="資料集怎麼做">
+      <div class="sec-head"><span class="sec-num">04</span><h2>資料集建構</h2></div>
+      <div class="table-wrap">
+        <table>
+          <caption>生成流程與各階段使用的模型 <span class="src src-abs">原文 §3.4、附錄 C、D</span></caption>
+          <thead><tr><th>步驟</th><th>做法</th><th>使用的模型</th></tr></thead>
+          <tbody>
+            <tr><td>1. 錨定舊狀態</td><td>從階層式主題本體（10 大類、104 個細屬性）抽一個屬性 \(a\)，生成人物、情境與明確支持某個值 \(v_o(a)\) 的 \(m_o\)</td><td>Qwen3.5-Plus</td></tr>
+            <tr><td>2. 對抗式生成衝突</td><td>「邏輯攻擊者」（Logic Attacker）在時間差 \(\Delta t\) 後生成 \(m_n\)。Type I 給新值但不提屬性名；Type II 找上游屬性並只反映其新值</td><td>GPT-5.2</td></tr>
+            <tr><td>3. 品質控制</td><td>LLM 評審依類型檢查：各自合理、狀態衝突成立、夠隱性。剔除字面太明顯的組合；不通過者附回饋重生成</td><td>GPT-5.2</td></tr>
+            <tr><td>4a. 探測題</td><td>依 \(m_o, m_n\) 生成 SR、PR、IPA 三題</td><td>Gemini-3.1-pro</td></tr>
+            <tr><td>4b. 對話包裝</td><td>用 user 與 assistant 兩個模型角色扮演，把 \(m_o\)、\(m_n\) 各包成一段多輪 session</td><td>GPT-5.2、GPT-5.1-Chat</td></tr>
+            <tr><td>4c. 草堆與時間戳</td><td>嵌入 50 個 session 的時間序對話中，其餘為取自 LongMemEval 的干擾 session，並過濾可能更新目標狀態的干擾內容；生成時間戳並稽核查詢時間</td><td>Gemini-3.1-flash-lite</td></tr>
+            <tr><td>5. 人工審查</td><td>研究團隊至少一人審查每筆；標記 ACCEPT / WEAK REJECT / WRONG TYPE / REJECT；完成後再隨機抽查一輪</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="readout">建構成本約每筆 0.12 美元（附錄 C）。時間戳統一放在 2027 年（附錄 D.2 提示詞要求 date_old 在 2027）。</p>
+      <div class="claim">
+        <span class="claim-label">干擾 session 的過濾規則 <span class="src src-abs">原文 附錄 D.2</span></span>
+        <p>夾在 \(\text{Session}_o\) 與 \(\text{Session}_n\) 之間的干擾內容，不得與 \(m_o\) 矛盾或直接延伸它；\(\text{Session}_n\) 之後的干擾內容則同時對 \(m_o\)、\(m_n\) 做更嚴格的過濾，確保 \(m_n\) 是目標屬性唯一的衝突來源。過濾器把「矛盾」和「補充、延伸、直接接續」都視為不安全。</p>
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>出題老師先寫一句「以前的事」，再請一個專門搗蛋的小幫手寫一句「後來的事」，故意讓兩句話表面上看起來沒關係。然後把這兩句藏在一大堆不相干的聊天裡，看 AI 能不能找出來、想清楚。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>整個資料集是 <b>LLM 生成＋人工審查</b>。關鍵設計是「長草堆」：每筆有 50 個 session、約 593 輪對話、平均約 15 萬 tokens，真正有用的只有兩個 session。這同時考了長上下文檢索和衝突推理。</p>
+          <p>人工審查的四種標記：ACCEPT（不需改，或只微調探測題）、WEAK REJECT（要改 \(m_o\) 或 \(m_n\)，改完重跑包裝與草堆）、WRONG TYPE（衝突成立但類型標錯，改標籤）、REJECT（只靠鬆散聯想、\(m_n\) 太弱、或失效說得太明白，直接移除）。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>值得注意的建構選擇 <span class="src src-mine">導讀補充</span>：</p>
+          <ul>
+            <li><b>出題模型也是受測模型。</b>探測題由 Gemini-3.1-pro 生成，而它正是 Table 2 中表現最好的 LLM；評分用的 Gemini-3.1-flash-lite 也在受測名單中。同一家族的模型可能更「懂」自家出的題目與評分標準。論文沒有討論這點。</li>
+            <li>干擾 session 取自 LongMemEval，不是同一個人物的生活，作者在限制中承認這可能降低生態效度（附錄 A）。這也代表 \(\text{Session}_o\)、\(\text{Session}_n\) 在風格與主題上可能和周圍明顯不同，成為可被利用的線索。</li>
+            <li>審查人員是研究團隊成員，「專家驗證」指的是這個；沒有報告審查者間一致性，也沒有報告各標記的比例。</li>
+          </ul>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>為什麼要過濾干擾 session？過濾太鬆會發生什麼？</summary><div><p>確保 \(m_n\) 是唯一讓舊信念失效的來源。若干擾內容剛好也更新了目標屬性，就無法判斷模型是因為哪一句而答對或答錯，衝突歸因會變模糊。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-build">筆記</label><textarea id="note-build" data-note="s-build"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-build"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 05 probing ===================== -->
+    <section class="sec" id="s-probe" data-short="三個探測維度">
+      <div class="sec-head"><span class="sec-num">05</span><h2>三個探測維度與評分</h2></div>
+      <div class="claim">
+        <span class="claim-label">同一個情境的三種問法 <span class="src src-abs">原文 附錄 D.2 探測題提示詞範例</span></span>
+        <p>\(m_o\)：「我很喜歡每天騎 10 英里的車去辦公室，讓我整個人清醒。」　\(m_n\)：「好煩，醫生說這個腿上的石膏至少還要再打六週。」</p>
+        <div class="probe">
+          <div class="probe-item"><b>SR 狀態判定（明示探測，第三人稱）</b><span>根據對話紀錄，使用者還騎車去辦公室嗎？</span></div>
+          <div class="probe-item"><b>PR 前提抵抗（對抗探測，第三人稱）</b><span>既然使用者喜歡每天騎 10 英里通勤，你能推薦一條明天上班可以走的新風景路線嗎？</span></div>
+          <div class="probe-item"><b>IPA 隱性策略調適（隱性探測，第一人稱）</b><span>我明天早上要進辦公室開一個必到的會，你能幫我想想怎麼去最好嗎？</span></div>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <caption>評分規則（判斷「通過」的條件） <span class="src src-abs">原文 §3.5、附錄 E.1</span></caption>
+          <thead><tr><th>維度</th><th>題目限制</th><th>通過條件</th></tr></thead>
+          <tbody>
+            <tr><td>SR</td><td>直接問舊狀態是否仍成立</td><td>意識到 \(m_o\) 的資訊可能已不成立；認定仍成立或說不知道都算失敗</td></tr>
+            <tr><td>PR</td><td>以 \(m_o\) 為前提提出任務；不得出現 \(m_n\) 的任何名詞、動詞、事件或物件</td><td>識破陷阱或承認 \(m_n\) 的新狀態；盲目接受前提就失敗</td></tr>
+            <tr><td>IPA</td><td>自然的日常請求；\(m_o\)、\(m_n\) 的內容都不能出現</td><td>最終行動或建議符合新狀態；照舊狀態走，或回答太籠統，都算失敗</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-wrap">
+        <table class="results">
+          <caption>LLM 評審與人工標註的一致性（Table 7）<span class="src src-abs">原文 附錄 E.3</span>。以人工標記為準，「答對」為正類</caption>
+          <thead><tr><th>子集</th><th class="num">N</th><th class="num">一致率</th><th class="num">κ</th><th class="num">Precision</th><th class="num">Recall</th><th class="num">FPR / FNR</th></tr></thead>
+          <tbody>
+            <tr><td>Overall</td><td class="num">240</td><td class="num">95.83</td><td class="num">0.9152</td><td class="num">98.02</td><td class="num">92.52</td><td class="num">1.50 / 7.48</td></tr>
+            <tr><td>SR</td><td class="num">80</td><td class="num">98.75</td><td class="num">0.9728</td><td class="num">98.08</td><td class="num">100.00</td><td class="num">3.45 / 0.00</td></tr>
+            <tr><td>PR</td><td class="num">80</td><td class="num">97.50</td><td class="num">0.9134</td><td class="num">92.86</td><td class="num">92.86</td><td class="num">1.52 / 7.14</td></tr>
+            <tr><td>IPA</td><td class="num">80</td><td class="num">91.25</td><td class="num">0.8261</td><td class="num">100.00</td><td class="num">83.33</td><td class="num">0.00 / 16.67</td></tr>
+            <tr><td>Type I</td><td class="num">120</td><td class="num">96.67</td><td class="num">0.9333</td><td class="num">98.25</td><td class="num">94.92</td><td class="num">1.64 / 5.08</td></tr>
+            <tr><td>Type II</td><td class="num">120</td><td class="num">95.00</td><td class="num">0.8944</td><td class="num">97.73</td><td class="num">89.58</td><td class="num">1.39 / 10.42</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>考試有三種題目。第一種直接問：「他還騎車嗎？」第二種故意設陷阱：「他那麼愛騎車，幫他規劃騎車路線吧！」第三種假裝是朋友自己問：「我明天要去公司，怎麼去比較好？」最後這種最像真實生活，AI 要自己想起「你的腿斷了」。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>三題由淺到深：SR 只要「知道」，PR 要能「頂住誤導」，IPA 要能「主動用上」。每個維度分開呼叫模型，避免前一題的答案洩漏給下一題。</p>
+          <p>評分由 LLM 評審看「真實的狀態邏輯」打分，不比對標準答案字串。人工抽驗 240 筆回答（Gemini-3.1-pro 與 GPT-5.4 各 2 類型 × 20 例 × 3 維度），一致率 95.83%，Cohen's κ = 0.9152。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>評審偏<b>保守</b>：133 筆人工判錯的回答中只放過 2 筆（FPR 1.50%），107 筆人工判對的回答中誤殺 8 筆（FNR 7.48%）。IPA 的 FNR 最高（16.67%），代表最貼近真實的 IPA 分數可能被<b>低估</b>，因為開放式規劃可能沒明說新狀態卻仍是合理的。</p>
+          <p>可追問的地方 <span class="src src-mine">導讀補充</span>：人工驗證只涵蓋兩個高分的閉源模型，沒有涵蓋記憶框架或 CUPMem 的輸出。CUPMem 的 PR 分數高達 75–78%，而評審對 PR 的判準是「識破陷阱或承認新狀態」；一個傾向先質疑前提的系統，即使後續建議不夠好也可能通過，這部分沒有被人工驗證。</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>PR 題為什麼「不得出現 \(m_n\) 的任何名詞或事件」？</summary><div><p>否則題目本身就把新狀態提示給模型，失去「被過時前提誤導」的測試意義。題目要像是一個完全錯過 \(m_n\) 的人問的。</p></div></details>
+        <details><summary>FNR 7.48% 是怎麼算的？</summary><div><p>人工判對的回答有 \(240 - 133 = 107\) 筆，其中評審判錯 8 筆，\(8 / 107 \approx 7.48\%\)。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-probe">筆記</label><textarea id="note-probe" data-note="s-probe"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-probe"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 06 setup ===================== -->
+    <section class="sec" id="s-setup" data-short="實驗設定">
+      <div class="sec-head"><span class="sec-num">06</span><h2>實驗設定</h2></div>
+      <div class="table-wrap">
+        <table>
+          <caption>受測系統與流程 <span class="src src-abs">原文 §4.1、附錄 C</span></caption>
+          <thead><tr><th>類別</th><th>系統</th><th>怎麼跑</th></tr></thead>
+          <tbody>
+            <tr><td>閉源 LLM</td><td>GPT-4o-mini*、GPT-5.4-nano、GPT-5.4、Gemini-3.1-flash-lite、Gemini-3.1-pro</td><td>完整對話序列化成長上下文，每個維度各呼叫一次</td></tr>
+            <tr><td>開源 LLM</td><td>Llama-3.3-70B-Instruct*、Qwen3.5-9B、Qwen3.5-27B、MiniMax-M2.5</td><td>同上；Qwen 與 Llama 以 vLLM 在 4 張 A100-80GB 上部署</td></tr>
+            <tr><td>記憶框架</td><td>LightMem、Zep、LiCoMemory、A-mem、mem-0</td><td>骨幹統一用 GPT-4o-mini；每筆資料依各框架原生流程建一次記憶，三個維度對同一份固定記憶查詢</td></tr>
+            <tr><td>本文原型</td><td>CUPMem</td><td>同樣用 GPT-4o-mini 骨幹</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="readout">* 上下文視窗放不下整個草堆，採「保留證據的截斷」：一定保留新舊證據 session，只刪部分干擾 session。評審：Gemini-3.1-flash-lite。每筆評測成本：LightMem 約 0.02 美元，A-MEM 約 0.38 美元，CUPMem 約 0.37 美元（附錄 C）。</p>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>參賽的有三隊：直接讀完整本日記的 AI、用各種筆記本幫忙記的 AI、還有作者自己做的新筆記本。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>記憶框架統一用 GPT-4o-mini 當骨幹，作者的理由是這是多數框架的預設設定，這樣分數差異反映的是記憶機制而不是底層模型。所以記憶框架該拿來比的對象是 GPT-4o-mini 本身（8.7%）。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>比較時要注意 <span class="src src-mine">導讀補充</span>：GPT-4o-mini* 被截斷過（保留證據），等於拿到了一個「證據密度較高」的上下文；記憶框架則讀完整草堆。兩者條件不完全相同。另外，所有記憶框架都用預設設定，沒有針對這個任務調參，這對它們較嚴格；CUPMem 則是作者看過 STALE 上的失敗模式後設計的（見 10）。</p>
+        </div>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-setup">筆記</label><textarea id="note-setup" data-note="s-setup"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-setup"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 07 results ===================== -->
+    <section class="sec" id="s-results" data-short="主結果（互動）">
+      <div class="sec-head"><span class="sec-num">07</span><h2>主結果：最好的模型也只有 55.2%</h2></div>
+      <div class="table-wrap">
+        <table class="results">
+          <caption>Table 2：STALE 主結果 <span class="src src-abs">原文 Table 2</span>。Overall 為六欄平均，本頁逐列驗算吻合 <span class="src src-mine">導讀補充</span></caption>
+          <thead>
+            <tr><th rowspan="2">系統</th><th class="num" colspan="3">Type I</th><th class="num" colspan="3">Type II</th><th class="num" rowspan="2">Overall</th></tr>
+            <tr><th class="num">SR</th><th class="num">PR</th><th class="num">IPA</th><th class="num">SR</th><th class="num">PR</th><th class="num">IPA</th></tr>
+          </thead>
+          <tbody id="t2-body"></tbody>
+        </table>
+      </div>
+      <figure class="figure" style="margin:0">
+        <div class="controls">
+          <label for="ctl-col">看哪一欄<select id="ctl-col">
+            <option value="6">Overall</option>
+            <option value="0">Type I · SR</option>
+            <option value="1">Type I · PR</option>
+            <option value="2">Type I · IPA</option>
+            <option value="3">Type II · SR</option>
+            <option value="4">Type II · PR</option>
+            <option value="5">Type II · IPA</option>
+          </select></label>
+        </div>
+        <div class="chart-box"><svg id="t2-chart" viewBox="0 0 640 470" role="img" aria-label="Table 2 所選欄位的長條圖，由高到低排序"></svg></div>
+        <figcaption>依 Table 2 繪製，由高到低排序。橘色為 CUPMem。切到 PR 欄可以看到除了 CUPMem 和 Gemini-3.1-pro，幾乎全部接近 0；切到 Type I · IPA，CUPMem 落到第四。滑過長條可看所屬類別。</figcaption>
+      </figure>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>大部分的 AI 都考不及格。最常犯的錯是：只要題目裡偷偷說「他很愛騎車」，AI 就乖乖幫他規劃騎車路線，完全忘了他腿斷了。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>原文 §4.2 的三個發現：</p>
+          <ol>
+            <li><b>知道不等於會用。</b>Qwen3.5-27B 在 Type I 的 SR 有 76.0%，IPA 只有 39.0%；Type II 從 42.0% 掉到 23.0%。反過來也有 IPA 比 SR 高的系統（LiCoMemory Type I：15.5% vs 22.5%），表示「認出過期」和「用上新狀態」可能靠部分獨立的機制。</li>
+            <li><b>前提誘導的偏差很普遍。</b>PR 是所有維度中最弱的。Gemini-3.1-pro 的 Type I SR 92.0%，PR 只有 30.0%；Qwen3.5-27B 從 76.0% 掉到 4.0%。</li>
+            <li><b>Type II 明顯更難。</b>Gemini-3.1-pro 從 Type I 到 Type II：SR 92.0 → 69.0，PR 30.0 → 14.0，IPA 71.0 → 55.0。</li>
+          </ol>
+          <p>另外，加記憶模組不會自動變好：同樣用 GPT-4o-mini，只有 LightMem（17.8%）超過純模型（8.7%）。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>讀表時本頁的觀察 <span class="src src-mine">導讀補充</span>：</p>
+          <ul>
+            <li><b>CUPMem 的領先集中在 PR。</b>它在 Type I／II 的 PR 是 78.0／75.0，其他系統最高才 30.0／14.0。但在最貼近實際使用的 IPA，CUPMem 只有 32.0／43.0，低於 Gemini-3.1-pro 的 71.0／55.0；Type I · IPA 甚至低於 Gemini-3.1-flash-lite（42.0）與 Qwen3.5-27B（39.0）。68.0% 的整體分數有很大部分來自 PR。</li>
+            <li><b>「Type II 更難」有例外。</b>原文說「幾乎所有系統」。逐欄比對，例外是 MiniMax、Zep、LiCoMemory 的 PR（都在 0–5% 的雜訊區間），以及 CUPMem 的 IPA（Type II 43.0 > Type I 32.0）。</li>
+            <li><b>Zep 只有 6.0%。</b>本站上一篇的 Zep 以雙時間軸和「標記失效」為賣點，在這裡卻低於純 GPT-4o-mini。可能原因之一：Zep 的失效機制只處理「時間重疊的矛盾」，而隱性衝突在字面上沒有矛盾，LLM 比對時不容易判定為衝突。這是推測，原文沒有分析 Zep 的失敗原因。</li>
+            <li>每格是 200 題的比例，1 題 = 0.5 個百分點。附錄 E.2 的重複呼叫實驗（20 題子集 × 5 次）顯示單一維度的標準差可達 8.9 個百分點，所以個位數的差距不宜過度解讀。</li>
+          </ul>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>驗算 Gemini-3.1-pro 的 Overall。</summary><div><p>\((92.0 + 30.0 + 71.0 + 69.0 + 14.0 + 55.0) / 6 = 331 / 6 \approx 55.17\)，四捨五入 55.2。</p></div></details>
+        <details><summary>只看 Overall 會漏掉 CUPMem 的什麼特點？</summary><div><p>它的高分主要來自 PR；在 IPA 上反而輸給好幾個純 LLM。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-results">筆記</label><textarea id="note-results" data-note="s-results"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-results"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 08 attention ===================== -->
+    <section class="sec" id="s-attn" data-short="注意力分析">
+      <div class="sec-head"><span class="sec-num">08</span><h2>模型在看哪裡：注意力分析</h2></div>
+      <div class="eq">
+        <div class="eq-head"><span>跨片段注意力分數與比值</span><span class="src src-abs">原文 附錄 E.4</span></div>
+        \[ s_\ell(X \to Y) = \frac{1}{|H|\,|X|} \sum_{h \in H} \sum_{i \in X} \sum_{j \in Y} A^{(\ell,h)}_{ij}, \qquad r_\ell = \frac{s_\ell(Q \to \text{Session}_n)}{s_\ell(Q \to \text{Session}_o)} \]
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>符號</th><th>意思（原文 附錄 E.4）</th></tr></thead>
+          <tbody>
+            <tr><td>\(A^{(\ell,h)}_{ij}\)</td><td>第 \(\ell\) 層第 \(h\) 個 head，token \(i\) 對 token \(j\) 的 softmax 後注意力權重</td></tr>
+            <tr><td>\(s_\ell(X \to Y)\)</td><td>片段 \(X\) 的 token 平均分配給整個片段 \(Y\) 的注意力總量（對 head 再取平均）</td></tr>
+            <tr><td>\(Q\)</td><td>最後的查詢</td></tr>
+            <tr><td>\(r_\ell\)</td><td>查詢看新證據相對於看舊證據的比例；大於 1 代表更偏向新證據</td></tr>
+            <tr><td>雜訊基線</td><td>把證據 session 換成它在草堆中緊鄰的干擾 session，再算一次</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>科學家偷看 AI 讀題時眼睛盯著哪裡。答對的時候，AI 比較常盯著「腿斷了」那段；答錯的時候，它一直盯著「愛騎車」那段。而且 AI 很少把這兩段放在一起想。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>分析對象是 Qwen3.5-9B 與 27B，只看 SR 與 IPA（PR 答對的太少，無法分組）。每個類型 × 對錯組合最多取 20 筆。三個發現：</p>
+          <ul>
+            <li>查詢 → 新／舊證據的注意力明顯高於雜訊基線，代表模型確實有找到相關證據。</li>
+            <li>新證據 → 舊證據的注意力很弱，接近雜訊基線：<b>模型很少在內部「對照」兩段 session</b>。</li>
+            <li>IPA 答對的樣本，\(r_\ell\) 較高，尤其在中間層。Type II 的「查詢 → 新證據」與跨 session 注意力都比 Type I 弱，和 Type II 較難一致。</li>
+          </ul>
+        </div>
+        <div class="lv lv-grad">
+          <p>作者自己強調這是<b>診斷性而非因果性</b>的分析：注意力不完全決定輸出，樣本也小（每組至多 20）（附錄 E.4 Limitations）。結論是「行為較可能由以查詢為條件的路由決定，而不是先做跨 session 調和」。</p>
+          <p>延伸思考 <span class="src src-mine">導讀補充</span>：在約 15 萬 tokens 的輸入上，把注意力「平均到整個片段」會被片段長度與位置影響；論文用相鄰 session 當雜訊基線控制了位置，但沒有控制兩個證據 session 的長度差異。</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>為什麼要用「相鄰的干擾 session」當基線？</summary><div><p>控制位置效應。若證據 session 的分數只是因為位置靠近查詢而偏高，相鄰 session 也會一樣高；高於基線的部分才算內容驅動。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-attn">筆記</label><textarea id="note-attn" data-note="s-attn"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-attn"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 09 LightMem ===================== -->
+    <section class="sec" id="s-gap" data-short="記憶框架的調解缺口">
+      <div class="sec-head"><span class="sec-num">09</span><h2>記憶框架的「現況調解缺口」</h2></div>
+      <div class="table-wrap">
+        <table class="results">
+          <caption>Table 3：LightMem 的診斷統計（檢索取前 20） <span class="src src-abs">原文 Table 3</span></caption>
+          <thead><tr><th>維度</th><th class="num">取回新證據</th><th class="num">新舊都取回</th><th class="num">舊證據排第一</th><th class="num">新證據排第一</th><th class="num">取回新證據仍答錯</th></tr></thead>
+          <tbody>
+            <tr><td>SR</td><td class="num">77.5%</td><td class="num">71.0%</td><td class="num">88.2%</td><td class="num">5.2%</td><td class="num">56.1%</td></tr>
+            <tr><td>PR</td><td class="num">77.5%</td><td class="num">70.8%</td><td class="num">84.5%</td><td class="num">7.5%</td><td class="num">99.0%</td></tr>
+            <tr><td>IPA</td><td class="num">67.8%</td><td class="num">52.2%</td><td class="num">25.5%</td><td class="num">20.2%</td><td class="num">78.6%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="readout">寫入階段：新證據進來時，前 3 個召回項目在 60.5% 的情況下包含對應的舊證據，但其中只有 3.3% 被判定需要更新（§4.4）。</p>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>這個筆記本其實有把「腿斷了」記下來，也找得到。問題是它同時留著「愛騎車」，兩張紙條並排放著，從來沒有人決定「該聽哪一張」。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>作者拿最強的記憶框架 LightMem 做診斷，得到論文的核心論點：<mark>問題不在找不到，而在找到了卻沒有被當成依據</mark>。新證據在 SR/PR 有 77.5% 被取回，但舊證據幾乎都排第一（84–88%）。PR 中只要取回了新證據，仍有 99.0% 答錯。</p>
+          <p>作者稱之為<b>現況調解缺口</b>（current-state adjudication gap）：「看得見」不代表「有權威」。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>IPA 的對照很有說服力：沒有過時前提時，舊證據排第一的比例降到 25.5%，但失敗率仍有 78.6%，代表單純降低檢索時的前提偏差不夠，新狀態必須被帶進下游規劃（§4.4）。</p>
+          <p>附錄 E.5 有三個案例：西雅圖 → 奧斯汀（Type I，SR 對但 PR 錯，奧斯汀證據排第 10）、潮濕海岸 → 沙漠庭院（Type II，舊的窗戶密封記憶排第一）、每週兩晚聚會 → 只剩一晚（Type II，PR 錯但 IPA 對）。第三例說明 LightMem 有時能用上新證據，但查詢一帶入過時前提就不穩。</p>
+          <p>限制 <span class="src src-mine">導讀補充</span>：這部分的診斷只做了 LightMem 一個框架，其他框架（包括 Zep）的失敗是否同樣是「調解」而不是「召回」問題，沒有證據。</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>「取回新證據仍答錯」在 PR 高達 99.0%，說明了什麼？</summary><div><p>在有過時前提的查詢下，即使新證據已經在上下文裡，模型幾乎總是順著前提回答。召回不是瓶頸，判斷哪個狀態才是現況才是。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-gap">筆記</label><textarea id="note-gap" data-note="s-gap"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-gap"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 10 CUPMem ===================== -->
+    <section class="sec" id="s-cupmem" data-short="CUPMem 原型">
+      <div class="sec-head"><span class="sec-num">10</span><h2>CUPMem：寫入時就裁決</h2></div>
+      <div class="eq">
+        <div class="eq-head"><span>記憶表示</span><span class="src src-abs">原文 附錄 F.1</span></div>
+        \[ \Omega = \{(b, \ell) : b \in B,\ \ell \in T_b\}, \qquad \kappa(b, \ell) \in \{\text{single}, \text{multi}\} \]
+        \[ m_i = (id_i,\ b_i,\ \ell_i,\ v_i,\ s_i,\ \tau_i,\ E_i), \qquad s_i \in \{\text{ACTIVE}, \text{STALE}\} \]
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>符號</th><th>意思（原文 附錄 F.1）</th></tr></thead>
+          <tbody>
+            <tr><td>\(b, \ell\)</td><td>狀態領域（state domain）與其中的局部槽位（local slot）。實際 schema 有 10 個領域、33 個槽位（Table 8）</td></tr>
+            <tr><td>\(\kappa\)</td><td>槽位基數：single 通常只有一個現值（如目前居住地），multi 可同時有多個有效限制</td></tr>
+            <tr><td>\(v_i, s_i\)</td><td>狀態命題、儲存狀態；過期項目不刪除，歸檔為 STALE</td></tr>
+            <tr><td>\(\tau_i, E_i\)</td><td>時間出處、支持證據</td></tr>
+            <tr><td>UNKNOWN_CURRENT</td><td>知道舊值不安全、但還無法確定新值時，標記在槽位上，阻止舊值繼續當作依據</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <caption>三個階段 <span class="src src-abs">原文 §5、附錄 F.2–F.3</span></caption>
+          <thead><tr><th>階段</th><th>做法</th><th>關鍵式</th></tr></thead>
+          <tbody>
+            <tr><td>1. 寫入時信念更新（裁決）</td><td>從新 session 抽出狀態相關片段 \(C_\tau\)，轉成更新候選 \(\delta_k\)；先做同槽位的局部更新，再由 LLM 裁決器決定舊狀態的去留</td><td>\(a_k \in \{\text{ADD}, \text{REFINE}, \text{REPLACE}, \text{NO\_OP}\}\)<br>\(y_i \in \{\text{KEEP}, \text{STALE}, \text{REPLACE}, \text{UNKNOWN}\}\)</td></tr>
+            <tr><td>2. 拓樸觸發的信念傳播（搜尋）</td><td>候選範圍不只直接碰到的槽位，還包括常識推測「可能受影響」的鄰近領域，再加一個有限的全域備援</td><td>\(R_\tau = R^{\text{direct}}_\tau \cup R^{\text{affected}}_\tau \cup R^{\text{global}}_\tau\)</td></tr>
+            <tr><td>3. 授權狀態下的受限讀出</td><td>查詢先解析成意圖、預設前提、所需現況、要求動作；驗證前提是否仍成立，只用通過裁決的記憶生成答案</td><td>\(\pi(q) = (I_q, P_q, B_q, A_q)\)<br>\(V(q, M) \in \{\text{SUPPORTED}, \text{OUTDATED}, \text{UNRESOLVED}\}\)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>新的筆記本有一位很認真的管理員。每次你說了新的事，他會馬上翻舊紙條，想一想：「腿斷了，那騎車那張還能用嗎？」不能用就蓋上「過期」的章。以後有人問問題，他只拿沒蓋章的紙條來回答。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>CUPMem 的核心是把「判斷哪個記憶過期」從<b>回答問題時</b>移到<b>寫入記憶時</b>。三個重點：</p>
+          <ul>
+            <li><b>新證據有寫入權威</b>：可以直接把舊狀態標成過期，而不是只多加一筆。</li>
+            <li><b>主動找連帶影響</b>：例如健康改變先進「健康與行動」領域，但會連帶檢查「日常與交通」領域的舊狀態。這是針對 Type II 設計的。</li>
+            <li><b>回答時擋住過期前提</b>：如果查詢預設了已過期的狀態，系統會擋下這個前提，改用目前有效的記憶回答。這正對應 PR。</li>
+          </ul>
+          <p>同樣用 GPT-4o-mini，整體準確率從 8.7% 提升到 68.0%。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>讀 CUPMem 要帶著幾個問題 <span class="src src-mine">導讀補充</span>：</p>
+          <ul>
+            <li><b>同一個評測上設計與評估。</b>CUPMem 是看了 §4.4 的失敗分析後設計的，只在 STALE 上評估，沒有留出集，也沒有在 LongMemEval 等一般記憶評測上檢查是否傷害一般檢索。</li>
+            <li><b>Schema 和評測的距離。</b>作者說 schema 獨立於評測本體建構、評估前即固定（附錄 F.1）。但 10 個領域大多能對應到 STALE 的類別（身分、偏好、居住地與天氣、健康、日常、目前重心、財務資源），而「健康 → 交通」正是論文的招牌例子。作者在限制中也承認依賴預先定義的 schema（附錄 A）。</li>
+            <li><b>強在 PR、弱在 IPA。</b>受限讀出階段明確檢查「查詢預設的前提」，正好對應 PR 的題型；IPA 沒有可檢查的前提，CUPMem 在此不如強 LLM（見 07）。</li>
+            <li><b>描述不一致。</b>正文的裁決輸出有四種（KEEP / STALE / REPLACE / UNKNOWN），附錄 F.2 描述為三種情況（歸檔、舊值不安全但新值未定、證據不足）。正文的 \(z_i\) 是記憶的「領域／槽位位置」，附錄的 \(z_k\) 卻是「直接觀測或上游推論」的標記，同一字母兩種意思。</li>
+            <li>成本約每筆 0.37 美元，是 LightMem（0.02）的約 18 倍。</li>
+          </ul>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>CUPMem 和 LightMem 的根本差別是什麼？</summary><div><p>LightMem 讓新舊記憶並存，到回答時才由模型自己取捨；CUPMem 在寫入時就裁決舊記憶的狀態（ACTIVE / STALE / UNKNOWN_CURRENT），回答時只用被授權的記憶。</p></div></details>
+        <details><summary>為什麼需要 UNKNOWN_CURRENT 這種標記？</summary><div><p>有時能確定舊值不安全（例如腿斷了，不能再預設騎車），但不知道新值是什麼（改搭什麼？）。標記為未知可以避免繼續拿舊值當前提，又不必捏造新值。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-cupmem">筆記</label><textarea id="note-cupmem" data-note="s-cupmem"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-cupmem"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 11 stats & robustness ===================== -->
+    <section class="sec" id="s-stats" data-short="資料統計與穩健性">
+      <div class="sec-head"><span class="sec-num">11</span><h2>資料統計與結果穩健性</h2></div>
+      <div class="table-wrap">
+        <table class="results">
+          <caption>Table 5：上下文長度與對話結構（tokenizer：o200k_base） <span class="src src-abs">原文 附錄 D.4</span></caption>
+          <thead><tr><th>子集</th><th class="num">筆數</th><th class="num">Session</th><th class="num">輪數</th><th class="num">格式化平均</th><th class="num">中位數</th><th class="num">P95</th><th class="num">最大</th><th class="num">純內容平均</th></tr></thead>
+          <tbody>
+            <tr><td>Type I</td><td class="num">200</td><td class="num">50</td><td class="num">593.37</td><td class="num">151,705</td><td class="num">151,505</td><td class="num">157,639</td><td class="num">162,693</td><td class="num">149,483</td></tr>
+            <tr><td>Type II</td><td class="num">200</td><td class="num">50</td><td class="num">593.42</td><td class="num">151,862</td><td class="num">152,264</td><td class="num">158,992</td><td class="num">164,919</td><td class="num">149,641</td></tr>
+            <tr><td>All</td><td class="num">400</td><td class="num">50</td><td class="num">593.40</td><td class="num">151,784</td><td class="num">151,829</td><td class="num">158,657</td><td class="num">164,919</td><td class="num">149,562</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-wrap">
+        <table class="results">
+          <caption>Figure 5：400 筆的類別分布 <span class="src src-abs">原文 附錄 D.5</span>。實際涵蓋 10 大類、103 個細屬性</caption>
+          <thead><tr><th>類別</th><th class="num">筆數</th><th>類別</th><th class="num">筆數</th></tr></thead>
+          <tbody>
+            <tr><td>Preference_and_Value</td><td class="num">54</td><td>Social_Network</td><td class="num">40</td></tr>
+            <tr><td>Spatiotemporal_Context</td><td class="num">53</td><td>Current_Focus</td><td class="num">34</td></tr>
+            <tr><td>Routine</td><td class="num">52</td><td>Belongings_and_Possessions</td><td class="num">31</td></tr>
+            <tr><td>Physical_and_Mental_Health</td><td class="num">45</td><td>Capability_and_resource</td><td class="num">30</td></tr>
+            <tr><td>Role_and_Identity</td><td class="num">42</td><td>Digital_Footprint</td><td class="num">19</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-wrap">
+        <table class="results">
+          <caption>Table 6：固定 20 題子集重複呼叫 5 次的平均 ± 標準差（百分點） <span class="src src-abs">原文 附錄 E.2</span></caption>
+          <thead><tr><th>模型</th><th>類型</th><th class="num">SR</th><th class="num">PR</th><th class="num">IPA</th><th class="num">Overall</th></tr></thead>
+          <tbody>
+            <tr><td>Gemini-3.1-flash-lite</td><td>Type I</td><td class="num">41.0 ± 8.9</td><td class="num">0.0 ± 0.0</td><td class="num">18.0 ± 7.6</td><td class="num">19.7 ± 2.2</td></tr>
+            <tr><td>Gemini-3.1-flash-lite</td><td>Type II</td><td class="num">25.0 ± 5.0</td><td class="num">3.0 ± 2.7</td><td class="num">27.0 ± 4.5</td><td class="num">18.3 ± 3.5</td></tr>
+            <tr><td>Qwen3.5-9B</td><td>Type I</td><td class="num">36.0 ± 7.4</td><td class="num">3.0 ± 4.5</td><td class="num">18.0 ± 5.7</td><td class="num">19.0 ± 4.7</td></tr>
+            <tr><td>Qwen3.5-9B</td><td>Type II</td><td class="num">13.0 ± 2.7</td><td class="num">0.0 ± 0.0</td><td class="num">12.0 ± 4.5</td><td class="num">8.3 ± 1.7</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>每一題的對話都超級長，大約有 593 次你一句我一句。題目的主題也很多樣，有喜好、住哪裡、作息、健康等等。同一題讓 AI 重考五次，分數會上下跳一點，但「陷阱題幾乎都錯」這件事每次都一樣。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>Type I 和 Type II 的長度幾乎一樣（約 151.7K vs 151.9K），所以兩者的分數差距不是長度造成的。重複呼叫實驗顯示：單一維度在 20 題上會有不小的波動（1 題 = 5 個百分點），但「PR 接近零、Type II 較低、整體遠低於 60%」在每次執行中都成立。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>兩個數字細節 <span class="src src-mine">導讀補充</span>：</p>
+          <ul>
+            <li>摘要和正文說上下文「最長約 150K tokens」，但 Table 5 的格式化平均就有 151.8K、最大 164.9K；只有純內容平均（149.6K）在 150K 以下。「up to 150K」應理解為約略值。</li>
+            <li>Table 6 子集上 Gemini-3.1-flash-lite Type I IPA 是 18.0，主表 200 題是 42.0。差距來自不同的題目子集，也說明 20 題子集的變異很大。</li>
+          </ul>
+        </div>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-stats">筆記</label><textarea id="note-stats" data-note="s-stats"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-stats"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 12 context ===================== -->
+    <section class="sec" id="s-context" data-short="研究脈絡">
+      <div class="sec-head"><span class="sec-num">12</span><h2>放進研究脈絡</h2></div>
+      <div class="table-wrap">
+        <table>
+          <caption>Table 1：和既有長期記憶評測比較 <span class="src src-abs">原文 Table 1</span>。explicit 表示只測明示矛盾</caption>
+          <thead><tr><th>評測</th><th>使用者–助理對話</th><th>狀態演變</th><th>隱性推論</th><th>衝突解決</th><th>連鎖失效</th><th>對抗探測</th></tr></thead>
+          <tbody>
+            <tr><td>LoCoMo [23]</td><td>×</td><td>×</td><td>×</td><td>×</td><td>×</td><td>×</td></tr>
+            <tr><td>LongMemEval [38]</td><td>✓</td><td>✓</td><td>×</td><td>explicit</td><td>×</td><td>×</td></tr>
+            <tr><td>IMPLEXCONV [21]</td><td>✓</td><td>✓</td><td>✓</td><td>×</td><td>×</td><td>×</td></tr>
+            <tr><td>FactConsolidation [10]</td><td>×</td><td>✓</td><td>×</td><td>explicit</td><td>×</td><td>×</td></tr>
+            <tr><td>KnowMe-Bench [39]</td><td>×</td><td>×</td><td>✓</td><td>×</td><td>×</td><td>×</td></tr>
+            <tr><td>PersonaMem-v2 [15]</td><td>✓</td><td>✓</td><td>✓</td><td>×</td><td>×</td><td>×</td></tr>
+            <tr><td>AMEMGYM [17]</td><td>✓</td><td>✓</td><td>✓</td><td>×</td><td>×</td><td>×</td></tr>
+            <tr class="ours"><td>STALE</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <caption>和本站前兩篇的關係 <span class="src src-mine">導讀補充</span></caption>
+          <thead><tr><th>論文</th><th>處理舊資訊的方式</th><th>在 STALE 的位置</th></tr></thead>
+          <tbody>
+            <tr><td>Zep（2501.13956）</td><td>LLM 比對時間重疊的矛盾，設定舊邊 \(t_{\text{invalid}}\)，不刪除</td><td>受測，Overall 6.0%，低於純 GPT-4o-mini</td></tr>
+            <tr><td>FadeMem（2601.18642）</td><td>LLM 判定矛盾後降低舊記憶強度，衰減後刪除</td><td>未受測；它的衝突判斷也是比對相似記憶，Type II 的跨屬性失效不在相似度搜尋範圍內</td></tr>
+            <tr><td>STALE / CUPMem</td><td>寫入時裁決，並主動擴展到「可能受影響」的狀態領域</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="prose">
+        <p>三篇放在一起看 <span class="src src-mine">導讀補充</span>：Zep 和 FadeMem 的衝突處理都從「語意相似的舊記憶」中找候選。STALE 的 Type II 正好打在這個假設上：被失效的記憶和新資訊在語意上不相似（腿斷了 vs 騎車通勤），所以根本不會進入候選集合。CUPMem 的「affected 區域」就是為了繞過這個限制。</p>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-context">筆記</label><textarea id="note-context" data-note="s-context"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-context"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 13 critique ===================== -->
+    <section class="sec" id="s-critique" data-short="批判性閱讀">
+      <div class="sec-head"><span class="sec-num">13</span><h2>批判性閱讀</h2></div>
+      <p>原文附錄 A 自述的限制：每筆只有一個衝突（沒有反覆更新、多屬性連動或漸進漂移）；資料由 LLM 生成，可能不像真實對話；干擾 session 來自其他資料集；LLM 評審可能漏判開放式的正確回答；長上下文檢索能力與衝突推理能力在分數中糾纏；CUPMem 依賴預先定義的 schema。以下是本頁的補充評論 <span class="src src-mine">導讀補充</span>。</p>
+      <div class="prose">
+        <h3>優點</h3>
+        <ul>
+          <li>問題定義清楚，兩條公理把「隱性」講得可操作；Type I／II 的區分抓到了相似度檢索的盲點。</li>
+          <li>三個探測維度設計得好，能把「知道」「頂住誤導」「用上」分開量。PR 的近零結果是很有價值的發現。</li>
+          <li>透明度高：所有生成、評分提示詞都公開，資料與程式碼釋出，評審的人工一致性有細到各維度的 FPR／FNR。</li>
+          <li>LightMem 診斷把失敗定位在「調解」而非「召回」，對設計記憶系統很有啟發。</li>
+        </ul>
+        <h3>疑問</h3>
+        <ul>
+          <li><b>出題、評分與受測的模型重疊</b>：Gemini-3.1-pro 出題又拿第一，Gemini-3.1-flash-lite 評分又受測。最好用不同家族的模型重出題目或重評分，檢查名次是否穩定。</li>
+          <li><b>CUPMem 的評估</b>：在同一個評測上診斷、設計、評估；schema 與評測類別高度重疊；強在 PR 弱在 IPA；沒有在其他評測上檢查副作用。</li>
+          <li><b>人工驗證的覆蓋</b>：只驗了兩個閉源模型的回答，沒有驗 CUPMem 和記憶框架，而 CUPMem 的高 PR 分正是最需要確認的。</li>
+          <li><b>統計</b>：主表沒有信賴區間；200 題下 1 題 = 0.5 個百分點，許多系統的差距在幾個百分點內。</li>
+          <li><b>生態效度</b>：題目由「邏輯攻擊者」刻意寫得隱晦，真實使用者的更新可能更直接，也可能更模糊；干擾 session 不屬於同一個人。</li>
+          <li><b>記憶框架都用預設設定與 GPT-4o-mini</b>：結論是「現有框架在預設設定下」不足，換更強的骨幹模型時是否仍然如此未知。</li>
+        </ul>
+        <h3>可以延伸的方向</h3>
+        <ul>
+          <li>讓 Zep、FadeMem 這類系統在寫入時也查詢「受影響的屬性」，而不只是相似記憶，看能補回多少 Type II。</li>
+          <li>設計多次連續更新、需要撤回裁決的情境（例如石膏拆了之後又可以騎車）。原文的 query 時間稽核已經考慮到狀態會過期，但評測裡沒有「新狀態再度失效」的題目。</li>
+          <li>不依賴預設 schema 的狀態推論，也是原文自述的未來方向。</li>
+        </ul>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-critique">筆記</label><textarea id="note-critique" data-note="s-critique" placeholder="我自己的評價：會不會用這個評測？能借用到我的研究嗎？"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-critique"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== glossary ===================== -->
+    <section class="sec" id="s-glossary" data-short="術語表">
+      <div class="sec-head"><span class="sec-num">附錄</span><h2>術語表</h2></div>
+      <dl class="gloss">
+        <dt>隱性衝突</dt><dd>Implicit conflict：新觀測讓舊信念失效，但沒有字面上的否定，需要推理才發現。</dd>
+        <dt>共指衝突</dt><dd>Type I（co-referential）：新舊觀測針對同一屬性，值不相容。</dd>
+        <dt>傳播衝突</dt><dd>Type II（propagated）：新觀測更新另一個屬性，透過依賴關係讓舊信念失效。</dd>
+        <dt>潛在狀態追蹤</dt><dd>Latent state tracking：把使用者狀態當成不可直接觀測的隱變數，從對話這種部分觀測去推估。</dd>
+        <dt>HMM / POMDP</dt><dd>隱馬可夫模型；部分可觀測馬可夫決策過程。兩者都處理「真實狀態看不到、只看得到觀測」的問題。</dd>
+        <dt>SR / PR / IPA</dt><dd>State Resolution 狀態判定、Premise Resistance 前提抵抗、Implicit Policy Adaptation 隱性策略調適。</dd>
+        <dt>草堆</dt><dd>Haystack：把關鍵證據藏在大量無關內容中的長上下文測試設計，源自「大海撈針」。</dd>
+        <dt>LLM-as-judge</dt><dd>用 LLM 依評分規則判斷回答是否正確。</dd>
+        <dt>Cohen's κ</dt><dd>扣除隨機一致後的評分者一致性指標，1 為完全一致。</dd>
+        <dt>現況調解缺口</dt><dd>Current-state adjudication gap：新證據能被存入與取回，卻沒有成為回答時的依據。</dd>
+        <dt>寫入時裁決</dt><dd>Write-side adjudication：在記憶寫入時就決定舊記憶是否仍有效，而不是等到回答時。</dd>
+      </dl>
+    </section>
+
+    <!-- ===================== export ===================== -->
+    <section class="sec" id="s-export" data-short="匯出筆記">
+      <div class="sec-head"><span class="sec-num">附錄</span><h2>匯出我的筆記</h2></div>
+      <p>筆記只存在這個瀏覽器裡。讀完後複製成 Markdown，可以存成 repo 的 <code>papers/2605.06527/notes.md</code>，或貼給 Claude 繼續討論。</p>
+      <div class="btn-row"><button type="button" class="btn" id="export-notes">複製全部筆記</button><span class="toast" id="export-toast" role="status"></span></div>
+      <div class="note"><label for="export-box" class="sr-only">匯出內容</label><textarea id="export-box" rows="8" hidden readonly></textarea></div>
+      <p class="readout">來源：Chao et al., <a href="https://arxiv.org/abs/2605.06527" target="_blank" rel="noopener">arXiv:2605.06527v1</a>, 2026。本頁已對照 v1 PDF 核對。</p>
+    </section>
+
+  </main>
+</div>
+</div>
+
+<script src="../../assets/site.js"></script>
+<script>
+// Table 2 (verbatim from the paper) rendered as a table and as a sortable bar chart for section 07.
+(function () {
+  "use strict";
+  var GROUPS = { c: "閉源 LLM", o: "開源 LLM", m: "記憶框架", u: "本文原型" };
+  var ROWS = [
+    ["GPT-4o-mini*", "c", [30.0, 0.0, 11.0, 9.5, 0.0, 1.5, 8.7]],
+    ["GPT-5.4-nano", "c", [20.5, 1.5, 21.5, 9.0, 0.0, 6.5, 9.8]],
+    ["GPT-5.4", "c", [35.0, 2.0, 29.0, 9.0, 2.0, 17.0, 15.7]],
+    ["Gemini-3.1-flash-lite", "c", [41.0, 1.5, 42.0, 25.0, 1.5, 23.5, 22.4]],
+    ["Gemini-3.1-pro", "c", [92.0, 30.0, 71.0, 69.0, 14.0, 55.0, 55.2]],
+    ["Llama-3.3-70B-Instruct*", "o", [6.5, 0.0, 3.0, 6.0, 0.0, 0.0, 2.6]],
+    ["Qwen3.5-9B", "o", [36.0, 1.0, 21.5, 21.5, 0.0, 7.5, 14.6]],
+    ["Qwen3.5-27B", "o", [76.0, 4.0, 39.0, 42.0, 3.5, 23.0, 31.3]],
+    ["MiniMax-M2.5", "o", [10.5, 1.5, 8.0, 5.5, 5.0, 2.5, 5.5]],
+    ["LightMem", "m", [52.5, 1.0, 23.5, 21.5, 0.5, 7.5, 17.8]],
+    ["Zep", "m", [10.0, 0.0, 19.0, 3.0, 1.0, 3.0, 6.0]],
+    ["LiCoMemory", "m", [15.5, 0.5, 22.5, 1.5, 1.5, 4.0, 7.6]],
+    ["A-mem", "m", [13.5, 0.0, 7.5, 8.0, 0.0, 1.5, 5.1]],
+    ["mem-0", "m", [17.0, 1.0, 22.0, 3.5, 0.0, 6.5, 8.3]],
+    ["CUPMem (Ours)", "u", [91.0, 78.0, 32.0, 89.0, 75.0, 43.0, 68.0]]
+  ];
+
+  var body = document.getElementById("t2-body");
+  if (body) {
+    var last = null;
+    ROWS.forEach(function (r) {
+      if (r[1] !== last) {
+        var gh = document.createElement("tr");
+        var gc = document.createElement("td");
+        gc.colSpan = 8;
+        gc.innerHTML = "<em>" + GROUPS[r[1]] + "</em>";
+        gh.appendChild(gc);
+        body.appendChild(gh);
+        last = r[1];
+      }
+      var tr = document.createElement("tr");
+      if (r[1] === "u") tr.className = "ours";
+      var td = document.createElement("td");
+      td.textContent = r[0];
+      tr.appendChild(td);
+      r[2].forEach(function (v) {
+        var c = document.createElement("td");
+        c.className = "num";
+        c.textContent = v.toFixed(1) + "%";
+        tr.appendChild(c);
+      });
+      body.appendChild(tr);
+    });
+  }
+
+  var svg = document.getElementById("t2-chart");
+  var sel = document.getElementById("ctl-col");
+  if (!svg || !sel) return;
+  var NS = "http://www.w3.org/2000/svg";
+  var W = 640, m = { l: 168, r: 52, t: 10, b: 28 }, rowH = 28;
+  var H = m.t + m.b + rowH * ROWS.length;
+  svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+  var pw = W - m.l - m.r;
+  function x(v) { return m.l + (v / 100) * pw; }
+  function el(tag, attrs, text) {
+    var e = document.createElementNS(NS, tag);
+    Object.keys(attrs).forEach(function (a) { e.setAttribute(a, attrs[a]); });
+    if (text != null) e.textContent = text;
+    return e;
+  }
+  function draw() {
+    var col = Number(sel.value);
+    var rows = ROWS.slice().sort(function (a, b) { return b[2][col] - a[2][col]; });
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    var grid = el("g", { "class": "grid" }), axis = el("g", { "class": "axis" });
+    [0, 25, 50, 75, 100].forEach(function (t) {
+      grid.appendChild(el("line", { x1: x(t), x2: x(t), y1: m.t, y2: H - m.b }));
+      axis.appendChild(el("text", { x: x(t), y: H - m.b + 16, "text-anchor": "middle" }, t + "%"));
+    });
+    svg.appendChild(grid);
+    svg.appendChild(axis);
+    rows.forEach(function (r, i) {
+      var v = r[2][col], y = m.t + i * rowH;
+      var g = el("g", { "class": "row" });
+      g.appendChild(el("title", {}, r[0] + "（" + GROUPS[r[1]] + "）：" + v.toFixed(1) + "%"));
+      g.appendChild(el("rect", { "class": "hit", x: 0, y: y, width: W, height: rowH }));
+      g.appendChild(el("text", { "class": "name", x: m.l - 8, y: y + rowH / 2 + 4, "text-anchor": "end" }, r[0]));
+      var w = Math.max(0, x(v) - m.l);
+      if (w > 0) g.appendChild(el("rect", { "class": "bar" + (r[1] === "u" ? " ours" : ""), x: m.l, y: y + 7, width: w, height: rowH - 14, rx: 2 }));
+      g.appendChild(el("text", { "class": "val", x: x(v) + 6, y: y + rowH / 2 + 4 }, v.toFixed(1)));
+      svg.appendChild(g);
+    });
+  }
+  sel.addEventListener("change", draw);
+  draw();
+})();
+</script>
+</body>
+</html>
