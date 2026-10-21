@@ -56,7 +56,16 @@ Henesys = `Back/grassySoil` + `Obj/acc1.img/grassySoil` + `Obj/houseGS` (+ `Tile
 ```
 python3 -I scripts/compose_scene.py ASSETS scene-day.jpg      # 1920x1080 Henesys backdrop
 python3 -I scripts/build_slices.py ASSETS slices/             # 9-slice sheets, HUD parts, buttons, digits
+python3 -I scripts/compose_login.py ASSETS scene-login.jpg     # the login screen's forest, for a title or index page
+python3 -I scripts/build_sprites.py ASSETS sprites/ SPEC.json  # mobs, NPCs, characters, pets as frame strips
 ```
+
+`build_sprites.py` lays each action's frames side by side, bottom-centred in equal cells (the
+exports lose the game's origin points; feet on one line keeps a sprite from hopping), and writes
+`sprites.js` with each strip's cell size and frame count. Play a strip with
+`background-position` stepped `steps(n)` over n×170ms. Sprites face left as exported; mirror with
+`scaleX(-1)` to walk right. Give each a `kind` (mob, elite, boss, npc, hero, pet) in the spec so
+the page can cast them; NPCs take a `role` for their name plate.
 
 `ASSETS` is the organised pack. Both scripts were checked to reproduce the approved design
 byte for byte. The pieces and how CSS uses them (`border-image: url(x) T R B L fill / Tpx Rpx Bpx Lpx stretch repeat`):
@@ -115,7 +124,20 @@ to publish the built pieces with the site (GitHub Pages); the full pack stays ou
   no images, so they show only the colour modes.
 - Images that are `<img>` elements (NPC portraits, LV digits) are added only after that check, so a
   page without the art never asks for them.
-- Self-check NPCs rotate `npc-1/2/3.png`; change the list in `scripts/setup_maple.py`.
+- The cast is `scripts/maple_sprites.json` (built into `assets/maple/spr-*.png` and `sprites.js`).
+  Each paper gets its own rotation from its id: a monster patrols the top of every section that can
+  be finished (an elite midway, a boss on the last) and is knocked down when the section is marked
+  read; eleven NPCs take turns in the self-check dialogs and switch to their talking frames while
+  an answer is open; a hero and a pet stand on the title window and change every visit. The shelf
+  has a party led by the hero marked `"lead": true` (殺人鯨, the owner's favourite) and a monster on
+  each group banner. All of it is `aria-hidden`, ignores clicks, stops when off screen and stands
+  still under reduced motion.
+- The shelf sits in the login-screen forest (`scene-login.jpg`) with wooden-sign group banners;
+  paper pages are in Henesys.
+- In this skin a paper is paged: one section at a time with 上一節 / 下一節 at its foot. The other
+  sections are `hidden="until-found"`, so find-in-page and `#id` links still reach them and turn to
+  their page. The chat line on the status bar cycles the current section's title, its 五歲
+  explanation's first sentence and its self-check question.
 
 ## 4. Things that will come up
 
