@@ -1,0 +1,1032 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ATMS 精讀</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="../../assets/site.css">
+<style>
+  .controls select { font: inherit; color: var(--ink); background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 0.15rem 0.3rem; }
+  .lattice svg { min-width: 640px; }
+  .lattice .edge { stroke: var(--rule); stroke-width: 1; }
+  .lattice .env rect { fill: var(--surface); stroke: var(--rule); cursor: pointer; }
+  .lattice .env text { font-family: var(--font-mono); font-size: 11px; fill: var(--ink); pointer-events: none; }
+  .lattice .env.ctx rect { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 2; }
+  .lattice .env.lab rect { stroke-width: 3; }
+  .lattice .env.dead rect { fill: var(--paper); stroke-dasharray: 4 3; }
+  .lattice .env.dead text { text-decoration: line-through; fill: var(--muted); }
+  .lattice .env.nog rect { stroke: var(--warn); stroke-width: 2; stroke-dasharray: none; }
+  .lattice .env:focus-visible rect { outline: none; stroke: var(--ink); stroke-width: 2; }
+  .labels-out { font-family: var(--font-mono); font-size: var(--step--1); display: grid; gap: 0.25rem; }
+  .theory { display: grid; gap: 0.5rem; }
+  .theory table td, .theory table th { font-family: var(--font-mono); }
+</style>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
+    svg: { fontCache: "global" }
+  };
+</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script>
+</head>
+<body>
+<div data-paper="dekleer-1986-atms">
+
+<header class="toolbar gutter">
+  <div class="toolbar-inner">
+    <a class="home" href="../../index.html">論文精讀室</a>
+    <span class="crumb">ATMS · de Kleer 1986</span>
+    <div class="levels" role="group" aria-label="解釋深度">
+      <span class="levels-label">解釋深度</span>
+      <div class="seg">
+        <button type="button" data-level-btn="kid" aria-pressed="false">五歲</button>
+        <button type="button" data-level-btn="uni" aria-pressed="true">大學生</button>
+        <button type="button" data-level-btn="grad" aria-pressed="false">研究生</button>
+        <button type="button" data-level-btn="all" aria-pressed="false">對照</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="desk gutter">
+  <nav class="rail" aria-label="章節">
+    <details open>
+      <summary>章節 <span class="progress-text" id="progress-text">0 / 0</span></summary>
+      <div class="progress"><span id="progress-bar"></span></div>
+      <ol id="outline"></ol>
+    </details>
+  </nav>
+
+  <main class="column">
+
+    <!-- ===================== header ===================== -->
+    <div class="paper-head">
+      <div class="eyebrow"><span class="mono">Artificial Intelligence 28 (1986) 127–162</span><span>經典論文</span><span>36 頁</span><span>1985 年 4 月收稿、9 月修訂</span></div>
+      <h1>以假設為基礎的真值維護系統（ATMS）</h1>
+      <p lang="en"><em>An Assumption-based TMS</em></p>
+      <p class="authors">Johan de Kleer<br>Xerox Palo Alto Research Center（PARC）Intelligent Systems Laboratory</p>
+      <div class="claim" role="note">
+        <span class="claim-label">核對狀態</span>
+        <p>本頁依使用者提供的掃描版 PDF 全文核對。PDF 的文字層是 OCR，公式、集合符號與第 135 頁（上下顛倒的掃描）辨識錯誤很多，所以所有公式、標籤、表格與 Fig. 2 都改對照頁面影像逐一確認。原文的四個標籤範例（§1.2、§4.5／4.7、§5 兩例）本頁用一個小型 ATMS 引擎重算，結果與原文一致；頁面上的互動圖與動畫就是用這個引擎即時計算。</p>
+        <div class="legend">
+          <span><span class="src src-abs">原文 §4.3</span> 出自論文，標明位置</span>
+          <span><span class="src src-mine">導讀補充</span> 本頁的推導、背景或評論</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== 00 route ===================== -->
+    <section class="sec" id="s-route" data-short="閱讀路線">
+      <div class="sec-head"><span class="sec-num">00</span><h2>這篇怎麼讀</h2></div>
+      <div class="prose">
+        <p>這是 1986 年的經典，和本站前面幾篇 LLM 記憶論文隔了四十年，問題卻是同一個：<b>資訊會互相矛盾、會被推翻，系統要怎麼記？</b>它的答案是：不要只記「現在相信什麼」，而是替每一筆資料記下「在哪些假設之下它成立」。讀完再回頭看 Zep 的有效時間、StateMem 的依賴圖、APEX-MEM 的只增不刪，會發現很多想法在這裡就有了。</p>
+        <ol>
+          <li><b>第一遍（20 分鐘）</b>：摘要、§1.1、§1.2 的預設理論例子、§5。對應本頁 01、04、10。</li>
+          <li><b>第二遍（1 小時）</b>：§2 的搜尋例子、§3 傳統 TMS 的六個限制、§4.2–4.5 的定義與環境格。動手玩第 08 節的環境格。對應 02、03、05–08。</li>
+          <li><b>第三遍（40 分鐘）</b>：§4.7 標籤更新演算法、§4.8–4.10、§6 實作。對應 09、11、12。</li>
+        </ol>
+      </div>
+      <div class="predict">
+        <b class="ptitle">讀之前先猜</b>
+        <p>把猜測寫進筆記，讀到對應章節再對答案。</p>
+        <ol>
+          <li>資料庫裡同時存在互相矛盾的資料，系統還能正常推論嗎？（答案在 04）</li>
+          <li>有 1000 個假設時，可能的組合是 \(2^{1000}\) 個。ATMS 要一個個檢查嗎？（答案在 08、12）</li>
+          <li>想「撤回」一條已經記下的推論，最好的做法是直接刪掉它嗎？（答案在 12）</li>
+        </ol>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-route">筆記</label><textarea id="note-route" data-note="s-route" placeholder="例如：三個猜測、我讀這篇的目的"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-route"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 01 TMS ===================== -->
+    <section class="sec" id="s-tms" data-short="問題解決器與 TMS">
+      <div class="sec-head"><span class="sec-num">01</span><h2>問題解決器與真值維護系統</h2></div>
+      <div class="claim">
+        <span class="claim-label">架構前提 <span class="src src-abs">原文 §1.1、§4.1、Fig. 1</span></span>
+        <p>推理系統分成兩塊：<b>問題解決器</b>（problem solver）負責領域知識與推論；<b>TMS</b> 只記錄推論（稱為 justification，理由）並決定目前相信什麼。同一個運算式，對問題解決器有內部結構，對 TMS 只是一個命題原子：問題解決器用 \(P(a)\) 和 \(\forall x\, P(x) \to Q(x)\) 推出 \(Q(a)\)，TMS 只記下「這三個符號之間有這條理由」。</p>
+        <p>傳統以理由為基礎的 TMS（Doyle 1979）有三個角色：一、當作所有推論的<b>快取</b>，做過的不用再做、發現過的矛盾以後避開；二、允許<b>非單調推論</b>（「除非有反證，否則推出 A」），因此需要約束滿足程序決定相信什麼；三、維持資料庫<b>無矛盾</b>，用依賴導向回溯找出要加哪些理由來消除矛盾。ATMS 擴充了第一點、簡化了第二點，並避開大部分的第三點。作者說 ATMS 可以看成一個聰明的快取，或非常原始的學習機制。</p>
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>想像一個偵探（問題解決器）和一個記事本（TMS）。偵探負責想；記事本只負責寫下「因為這個和那個，所以推出這個」。舊的記事本一次只能記一個版本的故事，故事出現矛盾就得撕掉重寫。新的記事本在每一行旁邊註明「這是在假設哪些事情成立時才對」，所以好幾個版本的故事可以同時寫在同一本裡。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>在傳統 TMS 裡，每筆資料只有一個狀態：<b>in</b>（相信）或 <b>out</b>（不相信）。所有 in 的資料構成「目前的情境」，所以一筆資料在哪些情境下成立是<b>隱含</b>的。這帶來三個後果：資料庫必須一直保持一致、無法直接指稱某個情境、換到搜尋空間的另一點就得重做真值維護與回溯（§1.1）。</p>
+          <p>ATMS 改成替每筆資料<b>標上</b>它成立所需的假設集合（代表情境）。假設是所有資料的源頭。操作假設集合，比操作它們所代表的資料集合方便得多；資料庫不必一致，指稱情境很容易，換情境幾乎不用工作。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p><b>空間隱喻</b>（§1.1）：假設是搜尋空間的維度，一個解是空間中的一點；一個以假設集合刻畫的情境，依其一般性是一個點、線、面或體。ATMS 記錄推論時盡量用最一般的形式，覆蓋最大的區域；記錄矛盾時也找最一般的形式，排除最多的空間。換情境時「舊情境的哪些信念能帶到新情境」是框架問題（frame problem）的一個實例；在 ATMS 中，這只是子集合檢驗。</p>
+          <p>作者也承認代價（§3）：傳統 TMS 擅長找一個解，要找很多解得額外付出；ATMS 擅長找全部的解，要少找一點反而得額外控制。同期的兩篇姊妹作 [7]「Extending the ATMS」處理預設推理與任意命題式，[8]「Problem solving with the ATMS」給出問題解決器與 TMS 的介面協定。</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>為什麼 TMS 把運算式當成「原子」？</summary><div><p>TMS 只根據已記錄的理由（命題公理）判斷什麼可以推出，不理解問題解決器的邏輯。推論的結構由問題解決器負責。</p></div></details>
+        <details><summary>傳統 TMS 的 in／out 狀態有什麼根本限制？</summary><div><p>一筆資料在哪些情境成立只是隱含的，因此一次只能描述一個一致的情境，換情境要重算。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-tms">筆記</label><textarea id="note-tms" data-note="s-tms"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-tms"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 02 search ===================== -->
+    <section class="sec" id="s-search" data-short="搜尋例子與四種浪費">
+      <div class="sec-head"><span class="sec-num">02</span><h2>一個刻意病態的搜尋例子</h2></div>
+      <div class="eq">
+        \[ (1)\ x \in \{0,1\},\quad (2)\ a = e_1(x),\quad (3)\ y \in \{0,1\},\quad (4)\ b = e_2(y), \]
+        \[ (5)\ z \in \{0,1\},\quad (6)\ c = e_3(z),\quad (7)\ b \neq c,\quad (8)\ a \neq b,\qquad e_i(x) = (x + 100000)! \]
+      </div>
+      <p>階乘代表很貴的計算 <span class="src src-abs">原文 §2.1–2.2</span>。目標是找出所有滿足約束的賦值。下面的動畫把三種做法放在一起：暴力列舉、時序回溯，以及 ATMS 的做法。</p>
+      <div class="anim" id="anim-search" data-label="搜尋例子：三種做法比較動畫"></div>
+      <p class="anim-note">暴力列舉與時序回溯的 14 步、昂貴計算次數與四種浪費出自原文 §2.2（第 134–136 頁）。最後三步用 ATMS 解同一題，原文沒有對這個例子示範 ATMS，是本頁依 §4 的定義推出 <span class="src src-mine">導讀補充</span>。</p>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>三個開關，每個可以開或關，共 8 種組合。最笨的方法是 8 種都試，每次都重算三次很貴的東西。聰明一點的方法是一個一個開關試、錯了就退回上一個。最聰明的方法是：每個很貴的東西只算一次，記下「這兩個開關同時這樣設就會出錯」，最後直接看哪些組合沒出錯。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>暴力列舉：\(2^3 = 8\) 組，每組 3 次昂貴計算，共 24 次。時序回溯（深度優先，錯了退回最近一個還有選項的選擇）只要 14 次。原文指出其中 8 次很容易省掉，對應四種浪費：</p>
+          <ul>
+            <li><b>無謂的回溯</b>：步驟 (4)、(14)。z 的選擇和步驟 (3)、(13) 的矛盾無關，應該退回真正造成矛盾的假設，而不是最近的那一個。</li>
+            <li><b>重新發現矛盾</b>：步驟 (10)、(14)。步驟 (3) 的矛盾只取決於 y = 0、z = 0，和 x 無關，所以 y、z 相同的步驟 (10) 根本不該試。</li>
+            <li><b>重新發現推論</b>：步驟 (6)、(7)、(9)–(14) 的階乘都算過了，回溯把結果丟掉了。若能快取，每個階乘只需算一次。</li>
+            <li><b>順序不佳</b>：步驟 (3)、(4)、(13)、(14)。把 \(a \neq b\) 移到算完 b 之後，就能省 4 次。</li>
+          </ul>
+          <p>TMS 靠依賴紀錄完全解決前三種，部分解決第四種；矛盾的假設集合被記成 <b>nogood</b>，以後避開（§2.2）。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p><b>原文內部的一處不一致</b> <span class="src src-mine">導讀補充</span>：步驟 (3) 是 x = 0、y = 0、z = 0。因為三個 \(e_i\) 是同一個函數，此時 a = b = c，<b>(7) 和 (8) 同時被違反</b>。原文在「重新發現矛盾」把步驟 (3) 的矛盾歸給 {y = 0, z = 0}（即 (7)），在「無謂的回溯」與第 136–137 頁介紹依賴導向回溯時，卻說是 x = 0、y = 0 造成、z = 0 無關（即 (8)）。兩種說法各自成立，但原文沒有說明步驟 (3) 先偵測到的是哪一條。</p>
+          <p>腳註 2 也提醒：數學分析可以做得更好。三個 \(e_i\) 是同一個函數，昂貴計算可以降到兩次；而且 \(e_i\) 是一對一函數，根本不用算任何階乘就能解出 x、y、z。這個例子是刻意病態的，目的是把搜尋控制的問題放到最清楚。</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>這題有幾組解？是哪幾組？</summary><div><p>兩組：{x = 0, y = 1, z = 0} 與 {x = 1, y = 0, z = 1}。因為 \(e_i\) 一對一，條件等價於 x ≠ y 且 y ≠ z。</p></div></details>
+        <details><summary>14 − 8 = 6 這個數字代表什麼？</summary><div><p>每個 \(e_i\) 對每個值只算一次：3 個函數 × 2 個值 = 6 次。這正是把「重新發現推論」完全消除後的下限（不用數學分析時）。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-search">筆記</label><textarea id="note-search" data-note="s-search"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-search"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 03 limits ===================== -->
+    <section class="sec" id="s-limits" data-short="傳統 TMS 的六個限制">
+      <div class="sec-head"><span class="sec-num">03</span><h2>傳統 TMS 的六個限制</h2></div>
+      <div class="claim">
+        <span class="claim-label">Doyle 的 TMS 速寫 <span class="src src-abs">原文 §3.1</span></span>
+        <p>每筆資料對應一個<b>節點</b>。最簡單的理由是 SL-justification，有一個 inlist 和一個 outlist：當 inlist 的節點都是 in、outlist 的節點都是 out，這條理由有效；節點有有效理由就是 in。真值維護要替每個節點指定 in／out，讓所有理由都滿足，而且支持必須有根據（well-founded），不能循環自證。節點被標為矛盾卻被相信時，依賴導向回溯找出相關的假設：在 Doyle 的定義裡，<b>假設是目前支持理由有非空 outlist 的節點</b>。挑一個當罪魁，替它 outlist 中的某個節點加上理由來消除矛盾。</p>
+      </div>
+      <div class="table-wrap">
+        <table class="results">
+          <caption>原文 §3.2 列出的限制，與 §5 中 ATMS 的對應解法 <span class="src src-abs">原文 §3.2、§5</span></caption>
+          <thead><tr><th>限制</th><th>傳統 TMS 的問題</th><th>ATMS 的處理</th></tr></thead>
+          <tbody>
+            <tr><td>單一狀態</td><td>一次只能看一個解，例如 {x=0, y=1, z=0} 與 {x=1, y=0, z=1} 無法同時檢視，難以做鑑別診斷。</td><td>沒有「目前的全域情境」，互相矛盾的多個解可以並存，比較很容易。</td></tr>
+            <tr><td>過度迴避矛盾</td><td>A 與 B 矛盾時，只能二選一地處理。</td><td>只排除同時依賴 A 和 B 的推論，A、B 各自的推論照做。nogood 資料庫等於把資料庫切成一致的解。</td></tr>
+            <tr><td>切換狀態困難</td><td>想暫時改一個假設，唯一直接的方法是製造矛盾，而且加了就撤不掉；也無法指定要切到哪個狀態，只能用快照。</td><td>狀態完全由假設集合決定，切換是瑣事；在一個狀態得到的資料自動帶到其他狀態。</td></tr>
+            <tr><td>理由主導</td><td>「假設」依目前的支持理由而定，會隨推理改變。</td><td>假設才是主要表示，資料背後的理由永遠不變；比較兩筆資料的假設集合很容易。</td></tr>
+            <tr><td>機制笨重</td><td>找滿足所有理由的狀態要全域約束滿足；偵測奇數個非單調理由的迴圈很貴；回溯可能引發新矛盾，資料在 in／out 間來回翻轉。</td><td>ATMS 內部完全沒有回溯；矛盾的假設直接可見；循環理由不需特別檢查。</td></tr>
+            <tr><td>Unouting（解除 out）</td><td>資料被撤回後又要恢復時，只看它以前的推論結果不夠：新情境下可能有舊情境推不出的結果。</td><td>需要全部解時，ATMS 同時探索所有解，沒有回溯、撤回與換情境，問題消失。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>舊的記事本像只有一頁的白板：要換一個故事版本，就得擦掉重寫；擦掉的東西想再拿回來，常常會漏掉，或得重算一遍。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p><b>Unouting 的例子</b>（§3.2，第 140 頁）：\(x \in \{1,2\}\)、\(y \in \{1,2\}\)、\(x \neq y \oplus x = y\)（⊕ 表示恰好一個成立），以及 \(z = (1000xy)!\)、\(r = (100xy)!\)。問題解決器先試 \(\{\Gamma_{x=1}, \Gamma_{y=1}, \Gamma_{x\neq y}\}\)。</p>
+          <ul>
+            <li>若先算 z = 1000!、再算 r = 100!、最後才發現 \(x \neq y\) 矛盾：兩個結果都依賴 \(\{\Gamma_{x=1}, \Gamma_{y=1}\}\)，之後探索 \(\{\Gamma_{x=1}, \Gamma_{y=1}, \Gamma_{x=y}\}\) 時直接恢復，不用重算。</li>
+            <li>若順序是 z、矛盾、r：r = 100! 從沒算過。切到新情境時 z 會被恢復，但 r 不會。什麼都不做就漏了 r；重新跑問題解決器又會把 z 算第二次。</li>
+          </ul>
+        </div>
+        <div class="lv lv-grad">
+          <p>原文列了四種當時的對策，都不完全令人滿意：讓矛盾後的計算繼續跑（可能浪費在無關的假設集上）、對問題解決器的待辦佇列存快照、從 \(\{\Gamma_{x=1}, \Gamma_{y=1}\}\) 重跑並檢查缺了哪些結果、或乾脆重跑但把昂貴步驟都記憶化（de Kleer 與 Sussman 用這招快取符號 GCD 計算）。作者在 [8] 給出一個介面協定，保證任何推論都不會做兩次。</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>為什麼「只看舊的推論結果能不能在新情境成立」不足以解決 unouting？</summary><div><p>新情境可能讓一些在舊情境中失敗或沒跑完的規則成功，產生舊情境從未推出過的結果，例如上例的 r = 100!。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-limits">筆記</label><textarea id="note-limits" data-note="s-limits"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-limits"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 04 inconsistency ===================== -->
+    <section class="sec" id="s-incons" data-short="與矛盾共處（互動）">
+      <div class="sec-head"><span class="sec-num">04</span><h2>與矛盾共處：一個預設理論的例子</h2></div>
+      <div class="prose">
+        <p>古典邏輯裡，只要有一個矛盾，任何命題都能證明。但實際的問題解決器不會因為一個矛盾就推出一切：不受矛盾影響的推論仍然有用，只該撤回直接受影響的部分。困難在於判斷哪些受影響很貴，所以傳統 TMS 乾脆要求一致。在 ATMS 中，受不受影響可以直接看出來 <span class="src src-abs">原文 §1.2</span>。</p>
+      </div>
+      <figure class="figure" style="margin:0">
+        <div class="theory" id="theory"></div>
+        <figcaption>理論：\(:MA/A,\ :MC/C,\ A \to b,\ C \to d,\ A \wedge C \to e\)。\(:M\) 是 Reiter 的預設運算子，\(:MA/A\) 表示「除非有反證，否則相信 A」（大寫字母代表預設）。勾選加入最後一條公理 \(b \wedge d \to \bot\)，看每個原子的標籤與延伸（extension）怎麼變。標籤由本頁的 ATMS 引擎即時計算。</figcaption>
+      </figure>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>你相信「今天會出太陽」也相信「今天會下雨」，各自推出一些事情。後來發現兩件事不能同時成立。舊方法會把所有東西都丟掉；新方法只丟掉「同時需要出太陽和下雨」才推得出的那件事，其他照留。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>同一組事實若寫成古典理論 \(a, c, a \to b, c \to d, a \wedge c \to e, b \wedge d \to \bot\)，它是不一致的，而且無法消除，某種意義上一切都受影響。改寫成預設理論後，加入 \(b \wedge d \to \bot\) 只直接影響 e：兩個預設不能同時成立，延伸從一個 \(\{A,b,C,d,e\}\) 分裂成兩個 \(\{A,b\}\) 和 \(\{C,d\}\)。</p>
+          <p>ATMS 的做法完全一樣：每筆資料標上推出它<b>實際用到</b>的一致預設集合。b 標 \(\{\{A\}\}\)、d 標 \(\{\{C\}\}\)；e 原本標 \(\{\{A,C\}\}\)，加入矛盾後 \(\{A,C\}\) 成為 nogood，e 的標籤變空。矛盾只是說「這組假設不一致，依賴它的資料受影響」。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>原文說 ATMS 在這點上和 Martins 的多信念空間系統、Williams 的 ART 相似（§1.2）。注意這裡的「延伸」是 Reiter 預設邏輯的概念；ATMS 本身只做命題 Horn 子句推導，[7]「Extending the ATMS」才把預設推理的多種風格接上來。本頁把延伸計算成「極大一致假設集合加上其可推出的原子」，這在這個小例子裡與原文列出的延伸相同 <span class="src src-mine">導讀補充</span>。</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>回到 00 的第一個猜測：資料庫裡有矛盾，ATMS 還能推論嗎？</summary><div><p>可以。矛盾只把某個假設集合標為 nogood，不依賴它的資料完全不受影響。</p></div></details>
+        <details><summary>加入 \(b \wedge d \to \bot\) 後，b 的標籤為什麼不變？</summary><div><p>b 只依賴 \(\{A\}\)，而 \(\{A\}\) 本身不是 nogood 的超集合；只有同時包含 A 和 C 的環境才失效。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-incons">筆記</label><textarea id="note-incons" data-note="s-incons"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-incons"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 05 definitions ===================== -->
+    <section class="sec" id="s-defs" data-short="基本定義">
+      <div class="sec-head"><span class="sec-num">05</span><h2>基本定義：假設、理由、環境、情境</h2></div>
+      <div class="eq">
+        \[ x_1, x_2, \ldots \Rightarrow n \quad\equiv\quad x_1 \wedge x_2 \wedge \cdots \to n \qquad\text{（命題 Horn 子句）} \]
+        \[ n \text{ holds in } E \iff E, J \vdash n, \qquad E \text{ is inconsistent} \iff E, J \vdash \bot \]
+      </div>
+      <dl class="gloss">
+        <dt>假設 assumption</dt><dd>「決定去假設」這個動作本身，不承諾假設的內容。被假設的那筆資料叫 <b>assumed datum</b>，兩者用理由連起來。若某個假設只對應一筆資料 x，記為 \(\Gamma_x\)。</dd>
+        <dt>節點 node</dt><dd>對應問題解決器的一筆資料。假設是特殊的節點。</dd>
+        <dt>理由 justification</dt><dd>三部分：被支持的節點（consequent）、前件節點列表（antecedents）、問題解決器對這次推論的描述（informant）。用 ⇒ 而不是 → 是因為 ATMS 不允許否定文字，對蘊涵的處理也不傳統。</dd>
+        <dt>環境 environment</dt><dd>一組假設；邏輯上是假設的合取。</dd>
+        <dt>\(J\)</dt><dd>目前所有理由的集合，被當成命題蘊涵。</dd>
+        <dt>情境 context</dt><dd>一個一致環境的假設，加上由它們推得出的所有節點。</dd>
+        <dt>刻畫環境</dt><dd>Characterizing environment：能推出情境中每個節點的一組假設。每個情境至少有一個；假設本身沒有理由時（通常如此）恰好一個。</dd>
+      </dl>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>「假設」就像在心裡說「我們先當作……」。把幾個「先當作」放在一起就是一個「環境」。從這些「先當作」出發，能推出來的所有事情合在一起，就是一個「情境」，像是故事的一個版本。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>區分「假設」和「被假設的資料」是 ATMS 的關鍵細節（§4.2）。假設是一切支持最終追溯到的基礎，直覺上不該再被推導；作者說這點引起相當大的爭議，所以 ATMS 仍允許假設被推導，但本文不使用。</p>
+          <p>ATMS 的任務是在給定假設與理由後，有效率地決定所有情境。兩個觀察讓它有效率：一、問題解決器一次給一條理由，所以 ATMS 是<b>增量</b>的，只更新改變的情境；二、問題解決器幾乎從不要求列出某個情境的全部內容，通常只問「這個情境是否變得不一致」以及「這個節點是否在這個情境成立」。所以 ATMS 不直接算情境，而是建一個中介結構，讓這兩個問題非常快。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>這個中介結構的關鍵是<b>反轉關聯方向</b>：通常是「情境 → 它包含的資料」，ATMS 改成「資料 → 它成立的所有情境的精簡描述」（§4.2）。這讓問題解決器同時在所有情境中工作非常方便。</p>
+          <p>因為理由是 Horn 子句、沒有否定，推導是單調的：環境越大，能推出的節點只會越多。這是後面「標籤只需記最小環境」的根本原因 <span class="src src-mine">導讀補充</span>。</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>為什麼原文建議用「假設—被假設節點」配對來建立可被推翻的資料？</summary><div><p>這樣就不用替假設本身加理由；要移除一個不必要的假設時，矛盾掉的是假設，而不是被假設的節點（§4.4）。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-defs">筆記</label><textarea id="note-defs" data-note="s-defs"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-defs"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 06 labels ===================== -->
+    <section class="sec" id="s-labels" data-short="標籤的四個性質">
+      <div class="sec-head"><span class="sec-num">06</span><h2>標籤：一致、可靠、完備、最小</h2></div>
+      <div class="eq">
+        \[ \text{label}(n) = \{E_1, E_2, \ldots\},\qquad \forall E_i:\ E_i, J \vdash n \ \ \text{（等價於}\ J \vdash E_i \to n\text{）} \]
+      </div>
+      <div class="table-wrap">
+        <table class="results">
+          <caption>ATMS 對每個節點標籤的保證 <span class="src src-abs">原文 §4.3、§7</span></caption>
+          <thead><tr><th>性質</th><th>定義</th><th>對問題解決器的意義（§7）</th></tr></thead>
+          <tbody>
+            <tr><td>一致 consistent</td><td>標籤中每個環境都一致。</td><td>所有不一致的環境都被找出，不會出現在任何標籤裡。</td></tr>
+            <tr><td>可靠 sound</td><td>n 可由標籤中每個環境 E 推出：\(J \vdash E \to n\)。</td><td>沒有情境會包含不該有的資料；在任何情境都不成立的節點標籤為空，問題解決器不會誤用。</td></tr>
+            <tr><td>完備 complete</td><td>每個能推出 n 的一致環境 E，都是標籤中某個 \(E'\) 的超集合：\(E' \subseteq E\)。</td><td>每個情境都包含該有的資料；在某個情境成立的節點標籤一定非空。</td></tr>
+            <tr><td>最小 minimal</td><td>標籤中沒有環境是另一個的超集合。</td><td>析取項最少、每個析取項的假設最少，所以改變標籤中任何假設都會影響節點狀態。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>每筆資料旁邊寫一張小卡：「只要有這幾個假設，我就成立」。卡上不寫多餘的東西，也不漏掉任何一種可能。要問「在這個故事版本裡它成立嗎？」，只要看版本裡有沒有包含卡上任何一組假設。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>四個性質合起來的結果（§4.3）：<b>n 可由環境 E 推出，若且唯若 E 是 n 標籤中某個環境的超集合</b>。所以「節點是否在某情境中」只是一個子集合檢驗。</p>
+          <p>節點依標籤分成四個互不重疊的集合：</p>
+          <ul>
+            <li><b>true</b>：在空環境成立，必然在每個一致情境成立；單調增長。</li>
+            <li><b>in</b>：標籤至少有一個非空環境；之後可能發現那些情境不一致，所以非單調。</li>
+            <li><b>out</b>：標籤為空，目前沒有已知的一致情境；新節點一律從這裡開始。</li>
+            <li><b>false</b>：在任何已有或將有的情境都不成立；單調增長。</li>
+          </ul>
+          <p>節點可以從 out、in 移到任何集合，但沒有任何問題解決動作能把節點移出 true 或 false。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>每個情境也把節點分成三類：必然存在、必然不存在，以及目前不在、但之後的理由可能讓它變成前兩者。<b>必然不存在</b>指加入它會推出 ⊥。對假設很好判斷：若某個 nogood 是情境假設的超集合，nogood 中情境沒提到的假設，其合取就不能一致地加入這個情境。其他節點較難判斷；但若一個必然不存在的假設只有一個 consequent，那個被假設的資料也必然不存在（§4.3）。</p>
+          <p>標籤在邏輯上是一個實質蘊涵：\(\langle n, \{\{A_1,A_2,\ldots\},\{B_1,B_2,\ldots\},\ldots\}, \ldots\rangle\) 表示 \((A_1 \wedge A_2 \wedge \cdots) \vee (B_1 \wedge B_2 \wedge \cdots) \vee \cdots \to n\)，也就是假設上的 DNF。理由則表示前件節點上的 DNF（§4.4）。</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>標籤 {{A,B},{B,C,D}}：在環境 {A,B,E} 下節點成立嗎？{B,C} 呢？</summary><div><p>{A,B,E} ⊇ {A,B}，成立（前提是 {A,B,E} 一致；在原文例子裡它正好是 nogood）。{B,C} 不是任何一個的超集合，不成立。</p></div></details>
+        <details><summary>為什麼 true 集合只會增長？</summary><div><p>空環境推得出的節點，加任何假設都推得出（Horn 子句推導是單調的）；除非空環境本身變得不一致，那是錯誤。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-labels">筆記</label><textarea id="note-labels" data-note="s-labels"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-labels"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 07 node types ===================== -->
+    <section class="sec" id="s-nodes" data-short="節點的四種型別">
+      <div class="sec-head"><span class="sec-num">07</span><h2>節點的資料結構與四種型別</h2></div>
+      <div class="eq">
+        \[ \gamma_{\text{datum}}: \langle \text{datum},\ \text{label},\ \text{justifications} \rangle \]
+      </div>
+      <div class="table-wrap">
+        <table class="results">
+          <caption>四種節點 <span class="src src-abs">原文 §4.4</span></caption>
+          <thead><tr><th>型別</th><th>例子</th><th>說明</th></tr></thead>
+          <tbody>
+            <tr><td>前提 premise</td><td class="mono">⟨p, {{}}, {()}⟩</td><td>有一條沒有前件的理由，普遍成立。之後加理由不會改變標籤，除非空環境變得不一致。</td></tr>
+            <tr><td>假設 assumption</td><td class="mono">⟨A, {{A}}, {(A)}⟩</td><td>標籤含有只提到自己的單元素環境。假設也可以被支持：⟨A, {{A},{B,C}}, {(A),(d)}⟩。</td></tr>
+            <tr><td>被假設節點 assumed</td><td class="mono">⟨a, {{A}}, {(A)}⟩</td><td>不是前提也不是假設，但有提到假設的理由。</td></tr>
+            <tr><td>推導節點 derived</td><td class="mono">⟨w=1, {{A,B},{C},{E}}, {(b),(c,d)}⟩</td><td>其他所有節點。這例表示 w = 1 可由 b、或由 c 和 d 推出，並在 {A,B}、{C}、{E} 下成立。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>每張資料卡有三格：寫什麼、在哪些假設下成立、是怎麼推出來的。第一格由偵探寫，第二格只能由記事本自己算，第三格偵探寫、記事本只看不改。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>分工很嚴格：<b>標籤</b>由 ATMS 計算，問題解決器不得修改；<b>資料</b>由問題解決器提供，ATMS 從不檢視；<b>理由</b>由問題解決器提供，ATMS 會檢視但從不修改（§4.4）。</p>
+          <p>特殊節點 \(\gamma_\bot: \langle \bot, \{\}, \{\ldots\} \rangle\) 代表矛盾。不一致的環境叫 <b>nogood</b>；如果不把不一致環境排除在標籤外，nogood 就是 \(\gamma_\bot\) 的標籤。給 \(\gamma_\bot\) 的理由表示某些節點的合取不一致：\((n_1 \wedge \cdots \wedge n_k \to \gamma_\bot) \equiv \neg(n_1 \wedge \cdots \wedge n_k)\)（§4.6）。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>out 集合的節點可以有理由，只是沒有理由在一致環境中成立。這種節點不能刪，因為未來的理由可能替它帶來一致環境（§4.4）。另外，為了效率，非假設節點不能變成假設，假設也不能變成別的型別；需要時用「假設—被假設節點」配對。</p>
+          <p>§4.6 強調一個常被忽略的前提：兩筆「相同」的資料必須對應到同一個 ATMS 節點，這要靠問題解決器內部的索引機制。如果每個新推出的資料都自動開新節點，ATMS 的許多好處就消失了。三個基本操作（建節點、建假設、加理由）中，只有加理由會造成可觀的計算；而且標籤與加入順序完全無關。</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>⟨w=1, {{A,B},{C},{E}}, {(b),(c,d)}⟩ 寫成邏輯式是什麼？</summary><div><p>標籤：\((A \wedge B) \vee C \vee E \to (w=1)\)；理由：\(b \vee (c \wedge d) \to (w=1)\)。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-nodes">筆記</label><textarea id="note-nodes" data-note="s-nodes"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-nodes"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 08 lattice ===================== -->
+    <section class="sec" id="s-lattice" data-short="環境格（互動）">
+      <div class="sec-head"><span class="sec-num">08</span><h2>環境格：把 Fig. 2 拿來玩</h2></div>
+      <p>五個假設 {A, B, C, D, E} 有 \(2^5 = 32\) 個環境，大小為 k 的有 \(\binom{5}{k}\) 個。往上的邊連到多一個元素的超集合，往下連到少一個元素的子集合 <span class="src src-abs">原文 §4.5、Fig. 2</span>。</p>
+      <figure class="figure lattice" style="margin:0">
+        <div class="controls">
+          <label for="ctl-node">看哪個節點的情境<select id="ctl-node">
+            <option value="x+y=1">x+y=1（原文的圓圈）</option>
+            <option value="x=1">x=1（原文的方框）</option>
+            <option value="y=0">y=0（兩者的交集）</option>
+          </select></label>
+          <button type="button" class="btn" id="lat-reset">恢復原文的 nogood</button>
+        </div>
+        <div class="chart-box"><svg id="lattice" viewBox="0 0 720 380" role="img" aria-label="五個假設的環境格"></svg></div>
+        <div class="labels-out" id="lat-out" aria-live="polite"></div>
+        <figcaption>點任一個環境，可以把它設為（或取消）nogood；被槓掉的是 nogood 及其所有超集合。藍底是所選節點成立的情境，粗框是標籤（藍色區域的最大下界）。理由與原文相同：x+y=1 由 {A,B} 或 {B,C,D} 推出，x=1 由 {A,C} 或 {D,E} 推出，y=0 由 x+y=1 與 x=1 推出。</figcaption>
+      </figure>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>這張圖像一座金字塔，最下面是「什麼都不假設」，最上面是「全部都假設」。一筆資料只要在某一格成立，往上所有格子都成立，所以只需要記它「最低」的那幾格。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>原文的 nogood 只有一個 {A, B, E}，但它的所有超集合也都是 nogood：{A,B,C,E}、{A,B,D,E}、{A,B,C,D,E}（§4.5）。一個節點若在某情境成立，就在每個（一致的）超集合情境成立；所以標籤只需記錄這些情境的<b>最大下界</b>（greatest lower bounds）。</p>
+          <p>試試看：選「y=0」，它的情境是 x+y=1 與 x=1 兩者情境的交集，標籤是 {{A,B,C},{B,C,D,E}}。再把 {B,C} 設成 nogood，看 y=0 的標籤怎麼變。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>效率的兩個來源（§4.8）：一、節點在超集合情境也成立，所以只需記最大下界（標籤）；同理只需記最小的 nogood。二、多數環境不一致時，這些不一致通常可以在小的假設子集中辨認，所以大部分格子根本不用檢查。因此<b>實際建出整個環境格永遠是壞主意</b>；ATMS 的效率直接正比於它被迫考慮的環境數。</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>回到 00 的第二個猜測：1000 個假設時要檢查 \(2^{1000}\) 個環境嗎？</summary><div><p>不用。ATMS 只記標籤與最小 nogood。要逼它考慮所有環境，得刻意構造讓每個環境都在某個時刻成為最小 nogood 或某個節點的最小環境的問題；原文說這不容易，通常要嘛建題本身就要 \(2^n\) 的工作，要嘛題目有 \(2^n\) 個解（§4.8）。</p></div></details>
+        <details><summary>為什麼 {A,B,D,E} 不在 y=0 的標籤裡？</summary><div><p>它是 {A,B}（來自 x+y=1）和 {D,E}（來自 x=1）的聯集，但包含 nogood {A,B,E}。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-lattice">筆記</label><textarea id="note-lattice" data-note="s-lattice"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-lattice"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 09 algorithm ===================== -->
+    <section class="sec" id="s-algo" data-short="動畫：標籤更新演算法">
+      <div class="sec-head"><span class="sec-num">09</span><h2>標籤更新演算法</h2></div>
+      <div class="eq">
+        \[ \text{label}(n) \supseteq \bigcup_k \Big\{\, x \;\Big|\; x = \bigcup_i x_i,\ x_i \in j_{ik} \Big\},\qquad\text{等價於把}\ \bigvee_k \bigwedge_i j_{ik}\ \text{化成 DNF} \]
+      </div>
+      <dl class="gloss">
+        <dt>\(j_{ik}\)</dt><dd>節點 n 的第 k 條理由中，第 i 個前件節點的標籤。</dd>
+        <dt>\(\bigcup_i x_i\)</dt><dd>從每個前件標籤各挑一個環境，取聯集。</dd>
+      </dl>
+      <div class="anim" id="anim-label" data-label="ATMS 標籤更新演算法動畫"></div>
+      <p class="anim-note">第 1–6 步依原文 §4.7 第 150–151 頁的例子；第 7 步是 §5 第 155 頁的循環理由例子，原文只說「假設 a 得到一個環境」，本頁指定為 {A}。</p>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>新的推論進來時，記事本做三件事：把所有可能的假設組合列出來、劃掉已知會出錯的組合、劃掉「比別人多帶東西」的組合。剩下的寫到新資料的卡上。如果卡片內容變了，就去更新依賴這張卡的其他卡。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>簡單的標籤更新演算法（§4.7），由問題解決器加入一條新理由觸發：</p>
+          <ol>
+            <li>假設每個前件都有可靠且完備的標籤，依上式算出 consequent 的新標籤；去掉不一致與被包含的環境後，它就可靠且最小。</li>
+            <li>若新標籤和舊的一樣，這個節點處理完畢。</li>
+            <li>若節點是 \(\gamma_\bot\)，標籤中每個環境加入 nogood 資料庫，並從<b>每個</b>節點的標籤移除所有不一致環境（它和它的超集合）。</li>
+            <li>否則，遞迴更新所有 consequent 節點（理由中提到這個節點的其他節點）。</li>
+          </ol>
+          <p>同一個節點可能被更新不只一次，但因為假設有限，過程必定終止。標籤只有在演算法結束時才保證一致且完備。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>以情境來看，新推出的資料不是放進「目前的」情境，而是放進它成立的<b>最一般的</b>情境（交集的最大下界），所以它會自動帶到許多其他情境（§4.7）。</p>
+          <p>實作上的最佳化：不必每次重算整個標籤，只要算新理由帶來的增量；若節點只有一條理由、且只提到一個標籤非空的節點，標籤直接往前複製即可。每個節點有五個欄位（資料、標籤、理由、consequents、矛盾位元），每個環境有三個（假設、提到它的節點、矛盾位元），每條理由有三個（informant、consequent、antecedents）。</p>
+          <p><b>循環不需特別處理</b>（§5）：只有 a ⇒ b、b ⇒ a 兩條理由時，兩個節點標籤都空，循環沒有作用。a 得到一個環境後會傳到 b、再傳回 a，但第二次更新不改變 a 的標籤，傳播就停了。迴圈再長也一樣：b 加給 a 的任何環境必然是 a 已有某個環境的超集合。</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>若 y=0 再多一條理由，前件標籤是 {{C}}，y=0 的新標籤是什麼？</summary><div><p>候選環境多了 {C}；它是 {A,B,C} 和 {B,C,D,E} 的子集合，所以兩者都被包含而刪除，新標籤是 {{C}}（前提是 {C} 不是 nogood）。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-algo">筆記</label><textarea id="note-algo" data-note="s-algo"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-algo"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 10 removed ===================== -->
+    <section class="sec" id="s-removed" data-short="限制如何消失">
+      <div class="sec-head"><span class="sec-num">10</span><h2>限制如何消失：再看 unouting</h2></div>
+      <div class="claim">
+        <span class="claim-label">第一個 unouting 例子在 ATMS 裡 <span class="src src-abs">原文 §5，第 155 頁</span></span>
+        <p>即使先算了 z、才發現矛盾：\(\{\Gamma_{x=1}, \Gamma_{y=1}, \Gamma_{x\neq y}\}\) 中的矛盾只表示這個狀態的探索停止，任何包含它的環境都被避開；\(\{\Gamma_{x=1}, \Gamma_{y=1}, \Gamma_{x=y}\}\) 的工作照常進行，彷彿矛盾從未發生。只依賴 \(\{\Gamma_{x=1}, \Gamma_{y=1}\}\) 的資料自動屬於每個超集合，所以也在新環境裡。完全沒有「要不要重跑規則」的問題。</p>
+      </div>
+      <div class="claim">
+        <span class="claim-label">第二個例子：隱性的情境切換 <span class="src src-abs">原文 §5，第 156 頁</span></span>
+        <p>資料庫狀態：x=1 標 {{A}}、y=−x 標 {{B}}、z=x 標 {{C}}，nogood {A,B}。問題解決器想把 x 代入 y=−x，但結果的環境 {A,B} 是 nogood，不允許。接著發現前提 z=1（標 {{}}），透過 z=x 得到 x=1 的第二條推導，x=1 的標籤變成 {{C},{A}}。現在 y=−1 可以推出，標籤 {{B,C}}。x=1 在原標籤下沒有可信的 consequent，在新標籤下卻有。問題是：找到第二條推導後，要不要再處理 x=1 一次？</p>
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>同一件事有了第二個理由時，要不要重新想一遍它會帶來什麼？如果新理由比舊的「更普遍」，就可能帶來以前推不出的新東西。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>de Kleer [5] 和 Williams 的 ART 用一個「不優雅」的方案：比較舊環境 \(E_{\text{old}}\) 與新環境 \(E_{\text{new}}\)。</p>
+          <ul>
+            <li>相同：成立的情境一模一樣，不用重看。</li>
+            <li>\(E_{\text{old}} \subset E_{\text{new}}\)：新的更特殊，成立情境是舊的子集，也可以忽略。</li>
+            <li>\(E_{\text{new}} \subset E_{\text{old}}\)：新的更一般，可能在更多情境成立。</li>
+            <li>互不包含：可能在舊的不成立的情境成立。</li>
+          </ul>
+          <p>後兩種情形都要重新呼叫問題解決器，重推所有 consequent 並補上新的，而且會遞迴，可能往下好幾層才出現真正的新工作（甚至永遠沒有）。原文說完整的解法在 [8] 的介面協定。本例中 {C} 與 {A} 互不包含，屬於第四種。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>§5 的「理由主導」解法也值得注意：要判斷資料 a 的存在是否蘊含 b 的存在，只要檢查 a 的每個環境是否都是 b 某個環境的超集合。這種「資料間的蘊含」在傳統 TMS 裡幾乎無法直接問。</p>
+          <p>本頁用 ATMS 引擎重算第二個例子（第 156 頁）：加入前提 z=1 與理由 z=x, z=1 ⇒ x=1 之後，x=1 為 {{A},{C}}、y=−1 為 {{B,C}}，與原文一致 <span class="src src-mine">導讀補充：驗算</span>。</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>為什麼 y=−1 的標籤是 {{B,C}} 而不是 {{A,B},{B,C}}？</summary><div><p>{A,B} 是 nogood，不一致的環境不能出現在標籤裡。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-removed">筆記</label><textarea id="note-removed" data-note="s-removed"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-removed"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 11 implementation ===================== -->
+    <section class="sec" id="s-impl" data-short="實作：位元向量與快取">
+      <div class="sec-head"><span class="sec-num">11</span><h2>實作：讓集合運算便宜</h2></div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>每個假設分配一個位置，一組假設就是一排 0 和 1。要合併兩組就把兩排疊起來，要問「這組是不是那組的一部分」也只要一個快速的位元運算。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>直接實作的 ATMS 會把時間都花在集合聯集與子集合檢驗上（§6）。兩個表示上的關鍵：</p>
+          <ul>
+            <li><b>位元向量</b>：每個假設一個位置。聯集是 OR；set1 ⊆ set2 若且唯若 set1 AND (NOT set2) 為 0。</li>
+            <li><b>每個環境唯一的資料結構</b>：用以位元向量為鍵的雜湊表，新環境是否含有矛盾只需檢查一次，而不是每次聯集都檢查。昂貴的操作只剩「建立新環境」和「發現新矛盾」。</li>
+          </ul>
+          <p>發現矛盾時，把 nogood 資料庫中它的超集合移除，讓資料庫盡量小。環境與 nogood 都依長度組織：新環境只需和比它小的 nogood 比，新矛盾只需和比它大的環境比。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p><b>小矛盾特別處理</b>：空環境矛盾表示錯誤，直接回報使用者；長度 1 的矛盾表示某個假設本身不一致，之後任何牽涉它的操作直接忽略；長度 2 的矛盾很常見，每個假設記一個「與它不相容的假設」位元向量，建立環境前先檢查。副作用是 oneof 析取（恰好一個成立）免費表示，否則大小 n 的 oneof 要 \(n^2\) 個 nogood。</p>
+          <p><b>加一個假設的最佳化</b>：多數聯集是「環境 + 一個假設」，用三個快取：每個假設所在的長度 ≥ 3 的最小 nogood、每個環境不相容的假設（位元向量）、每個環境「加某假設後得到的一致環境」。</p>
+          <p><b>垃圾回收</b>：假設佔用位元位置與雜湊表空間。若假設的所有 consequent 都是 true 或 false，或它的單元素環境已矛盾，就可回收；作者的經驗是通常約 30% 的假設可回收。只更新真與假節點的方式也不同：true 節點的標籤更新忽略，false 節點增量地直接加進 nogood 資料庫；矛盾也可往回推：若矛盾節點的前件只有一個不是 true，那一個必然為假。</p>
+          <p><b>試過不值得的做法</b>：快取所有子集合檢驗與聯集結果、用 DAG 表示所有子集合關係，維護成本都超過收益。<b>未嘗試的</b>：只記聯集產生的子集合連結（ART 採用）、為 nogood 建辨識網、只在節點被查詢時才更新標籤（但矛盾節點的標籤必須一直更新，否則會漏掉矛盾）。</p>
+          <p>本頁補充 <span class="src src-mine">導讀補充</span>：原文自己點出位元向量的代價，每次測試是「所有曾考慮過的假設數」的線性時間，所以潛在上是指數的；有序串列則是「環境大小」的線性時間。原文沒有提供任何執行時間或規模的量測數據。</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>用位元向量怎麼判斷 {A,C} ⊆ {A,B,C}？</summary><div><p>A,B,C 對應位元 1,2,3：{A,C} = 101，{A,B,C} = 111，NOT 111 = 000，101 AND 000 = 000，所以是子集合。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-impl">筆記</label><textarea id="note-impl" data-note="s-impl"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-impl"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 12 complexity ===================== -->
+    <section class="sec" id="s-retract" data-short="複雜度、撤回與類別">
+      <div class="sec-head"><span class="sec-num">12</span><h2>複雜度、撤回與類別</h2></div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>想收回一句話，最好的方法不是把它從記事本撕掉，而是當初寫的時候就加一個「這句話可以作廢」的假設；要作廢時，把這個假設標成矛盾就好。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p><b>撤回理由</b>（§4.9）：要讓一條理由可撤回，就把它和一個代表「可推翻性」的額外假設合取；撤回時，讓那個假設矛盾。原文說這是撤回理由<b>唯一</b>合理的方式。直接撤回對所有 TMS 都本質上沒效率（同構於 LISP 的垃圾回收）。ATMS 有一個正確但很慢的直接撤回演算法：讓所有 consequent 的標籤（遞迴地）失效再重算。真正的麻煩在於若某個 consequent 是 ⊥：nogood 可能得從資料庫移除，它原本包含的更特殊的 nogood 得放回去，每個節點的標籤都可能受影響。</p>
+          <p><b>複雜度</b>（§4.8）：即使 n 很大（例如 1000，空間大小 \(2^{1000}\)）ATMS 仍實用，理由見第 08 節。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p><b>類別</b>（§4.10）：把節點分組成集合，統一處理。這不是邏輯上必要的，但大幅簡化問題解決器與 ATMS 的互動。一個節點可屬於任意多個類別，類別也可有任意多成員；成員關係和節點是否成立無關；除非類別被關閉，隨時可加成員，但無法移除。</p>
+          <p>常見用法是把類別當<b>變數</b>、成員當<b>值</b>：例如 \(x \in \{1,2,3\}\) 建一個關閉的類別，三個節點 \(\gamma_{x=1}, \gamma_{x=2}, \gamma_{x=3}\) 兩兩標為不一致（如 \(\gamma_{x=1}, \gamma_{x=2} \Rightarrow \gamma_\bot\)），各由 \(\Gamma_{x=n} \Rightarrow \gamma_{x=n}\) 支持。和傳統約束語言不同，一個 cell 可以同時有很多值。類別也用來表示斷言語言中的模式：每個斷言是節點，每個規則前件模式是類別，同一個斷言可以符合多個模式。</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>回到 00 的第三個猜測：撤回推論最好的做法是直接刪掉嗎？</summary><div><p>不是。原文建議事先把理由和一個額外假設合取，撤回時讓那個假設矛盾。直接刪除在牽涉 nogood 時可能牽動整個資料庫。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-retract">筆記</label><textarea id="note-retract" data-note="s-retract"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-retract"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 13 context ===================== -->
+    <section class="sec" id="s-context" data-short="和本站其他論文">
+      <div class="sec-head"><span class="sec-num">13</span><h2>四十年後：ATMS 和 LLM 記憶論文的對照</h2></div>
+      <div class="table-wrap">
+        <table class="results">
+          <caption>同一組想法的再發現 <span class="src src-mine">導讀補充</span>（這些論文都沒有引用 ATMS，對照是本頁的整理）</caption>
+          <thead><tr><th>ATMS 的概念</th><th>本站論文中的對應</th><th>差別</th></tr></thead>
+          <tbody>
+            <tr><td>標籤：資料在哪些假設下成立</td><td><a href="../2501.13956/index.html">Zep</a> 的邊有效時間區間</td><td>Zep 只有「時間」一個維度；ATMS 的標籤是任意假設集合的 DNF。</td></tr>
+            <tr><td>理由的依賴、標籤沿 consequent 傳播</td><td><a href="../2608.19652/index.html">StateMem</a> 的 derived_from 依賴圖與 Rechecker</td><td>StateMem 只標記 needs_recheck，數值留給 LLM 重算；ATMS 的傳播在符號層面完整且可靠。</td></tr>
+            <tr><td>nogood：記住哪些假設組合矛盾</td><td><a href="../2605.06527/index.html">STALE</a> 的 CUPMem 把槽位標為 STALE／UNKNOWN</td><td>CUPMem 用 LLM 判斷衝突；ATMS 的矛盾由問題解決器明確給出。</td></tr>
+            <tr><td>不刪資料、同時保留多個情境</td><td><a href="../2604.14362/index.html">APEX-MEM</a> 的只增不刪與查詢時解析</td><td>APEX-MEM 保留全部歷史，但沒有標籤，「哪一版現在有效」由 LLM 代理在查詢時判斷。</td></tr>
+            <tr><td>撤回 = 讓額外假設矛盾，不直接刪</td><td><a href="../2606.30306/index.html">Always-On 綜述</a> 的可回復性軸、回滾</td><td>綜述統計 435 篇語料只有 27 篇做回滾；ATMS 在 1986 年就把「可撤回」設計進表示法。</td></tr>
+            <tr><td>不遺忘</td><td><a href="../2601.18642/index.html">FadeMem</a> 的衰減與刪除</td><td>方向相反：FadeMem 主動忘記以控制容量；ATMS 只回收「已確定恆真或恆假」的假設。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>現在的 AI 記憶系統想解決的問題，「舊消息被推翻了怎麼辦」，四十年前就有人很仔細地想過了，只是當時處理的是邏輯推理，不是聊天。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>最大的差別在於<b>誰提供依賴與矛盾</b>。ATMS 假設問題解決器會明確地告訴它「這個推出那個」「這幾個不能同時成立」，而且同一筆資料一定對應同一個節點。LLM 記憶系統最難的部分正是這些：從自然語言裡抽出依賴（StateMem）、察覺沒說出口的矛盾（STALE）、把同一個實體的不同說法對到一起（Zep、APEX-MEM 的實體解析）。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>一個值得追的方向：把 LLM 當成 ATMS 的「問題解決器」，負責抽取理由與 nogood，讓 ATMS 負責可靠、完備的情境管理。這樣「哪一版有效」可以變成可驗證的子集合檢驗，而不是交給 LLM 每次重判。代價是 ATMS 的 Horn 子句表示力有限（沒有否定，[7] 才擴充到任意命題式），而且需要可靠的實體對齊。</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>ATMS 的哪一個前提，在 LLM 記憶系統裡最難滿足？</summary><div><p>有幾個候選：相同的資料要對應到同一個節點（實體解析）、依賴與矛盾要被明確給出。本頁認為後者最難，因為自然語言中的衝突常常是隱性的。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-context">筆記</label><textarea id="note-context" data-note="s-context"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-context"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 14 critique ===================== -->
+    <section class="sec" id="s-critique" data-short="批判性閱讀">
+      <div class="sec-head"><span class="sec-num">14</span><h2>批判性閱讀</h2></div>
+      <div class="prose">
+        <h3>原文自己承認的</h3>
+        <ul>
+          <li>ATMS 不是萬靈丹，不適合所有任務：它偏向找出全部的解，只要少數解時反而得額外付出控制成本（§3）。</li>
+          <li>標籤的可靠與完備不保證節點「最終」相關或無關；每加一條理由，情境都可能改變（§7）。</li>
+          <li>Unouting 在一般情況（不是要全部解時）仍需要 [8] 的介面協定；本文只給「不優雅」的四分法（§5）。</li>
+          <li>直接撤回理由正確但非常沒效率（§4.9）。</li>
+        </ul>
+        <h3>本頁補充的問題 <span class="src src-mine">導讀補充</span></h3>
+        <ul>
+          <li><b>沒有實證評估。</b>全文沒有任何執行時間、記憶體或與其他 TMS 的量化比較；「對許多任務更有效率」的主張只靠論證與一個人工例子。唯一的數字是「通常約 30% 的假設可回收」，來源是作者的經驗。</li>
+          <li><b>最壞情況是指數的。</b>§4.8 的論證是「很難構造出逼 ATMS 考慮所有環境的問題」，這是經驗性的說法，不是複雜度界限。標籤本身可能很大（一個節點的最小環境數可以是指數個）。</li>
+          <li><b>表示力受限。</b>理由是沒有否定的 Horn 子句；析取、否定與預設推理要靠 [7] 的擴充，本文的 §1.2 例子其實預先借用了那篇的結果。</li>
+          <li><b>把困難推給問題解決器。</b>相同資料要對應相同節點、要決定哪些東西該當假設，原文都承認可能很難，但沒有提供方法。</li>
+          <li><b>§2.2 的一處不一致</b>：步驟 (3) 同時違反 (7) 和 (8)，原文兩處對它的歸因不同（見第 02 節）。</li>
+        </ul>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>若要替 ATMS 補一個實證評估，你會比較什麼？</summary><div><p>一個方向：在 §2 這類「要找全部解」的約束問題與只要一個解的問題上，比較 ATMS 與 Doyle 式 TMS 的昂貴計算次數、標籤大小與 nogood 數量，隨假設數增長的曲線。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-critique">筆記</label><textarea id="note-critique" data-note="s-critique" placeholder="你自己的質疑"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-critique"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== glossary ===================== -->
+    <section class="sec" id="s-glossary" data-short="術語表">
+      <div class="sec-head"><span class="sec-num">附錄</span><h2>術語表</h2></div>
+      <dl class="gloss">
+        <dt>TMS</dt><dd>Truth maintenance system，真值維護系統（也叫信念修正、理由維護系統）。</dd>
+        <dt>JTMS</dt><dd>以理由為基礎的 TMS，例如 Doyle 1979；每個節點只有 in／out 狀態。</dd>
+        <dt>ATMS</dt><dd>Assumption-based TMS：每個節點標上它成立的假設集合。</dd>
+        <dt>理由</dt><dd>Justification：前件節點 ⇒ consequent 節點，外加 informant。</dd>
+        <dt>假設</dt><dd>Assumption：決定去假設的動作；記為大寫字母或 \(\Gamma_x\)。</dd>
+        <dt>環境</dt><dd>Environment：一組假設。</dd>
+        <dt>情境</dt><dd>Context：一致環境加上它推得出的所有節點。</dd>
+        <dt>標籤</dt><dd>Label：節點成立的最小環境集合；一致、可靠、完備、最小。</dd>
+        <dt>nogood</dt><dd>不一致的環境。只需記最小的。</dd>
+        <dt>依賴導向回溯</dt><dd>Dependency-directed backtracking：矛盾時退回真正造成矛盾的選擇，而不是最近的選擇。</dd>
+        <dt>時序回溯</dt><dd>Chronological backtracking：退回最近一個還有選項的選擇；Prolog 的核心控制機制。</dd>
+        <dt>Unouting</dt><dd>恢復先前被撤回的資料時，判斷哪些結果該恢復、哪些該補算的問題。</dd>
+        <dt>oneof 析取</dt><dd>恰好一個析取項成立，記為 ⊕。</dd>
+        <dt>預設 :MA/A</dt><dd>Reiter 預設邏輯：除非有反證，否則相信 A。</dd>
+        <dt>延伸</dt><dd>Extension：預設理論的一個極大一致信念集合。</dd>
+      </dl>
+    </section>
+
+    <!-- ===================== export ===================== -->
+    <section class="sec" id="s-export" data-short="匯出筆記">
+      <div class="sec-head"><span class="sec-num">附錄</span><h2>匯出我的筆記</h2></div>
+      <p>筆記只存在這個瀏覽器裡。讀完後複製成 Markdown，可以存成 repo 的 <code>papers/dekleer-1986-atms/notes.md</code>，或貼給 Claude 繼續討論。</p>
+      <div class="btn-row"><button type="button" class="btn" id="export-notes">複製全部筆記</button><span class="toast" id="export-toast" role="status"></span></div>
+      <div class="note"><label for="export-box" class="sr-only">匯出內容</label><textarea id="export-box" rows="8" hidden readonly></textarea></div>
+      <p class="readout">來源：de Kleer, J., An assumption-based TMS, <i>Artificial Intelligence</i> 28 (1986) 127–162。本頁已對照掃描 PDF 頁面影像核對。</p>
+    </section>
+
+  </main>
+</div>
+</div>
+
+<script src="../../assets/site.js"></script>
+<script src="../../assets/anim.js"></script>
+<script>
+// A tiny ATMS: labels by fixpoint over Horn justifications. Environments are sorted arrays of assumption names.
+// Used by the default-theory widget, the lattice and the label-update animation.
+window.MiniATMS = (function () {
+  "use strict";
+  function key(e) { return e.join(","); }
+  function union(a, b) { var s = a.slice(); b.forEach(function (x) { if (s.indexOf(x) < 0) s.push(x); }); return s.sort(); }
+  function subset(a, b) { return a.every(function (x) { return b.indexOf(x) >= 0; }); }
+  function minimize(envs) {
+    var seen = {}, uniq = [];
+    envs.forEach(function (e) { if (!seen[key(e)]) { seen[key(e)] = 1; uniq.push(e); } });
+    return uniq.filter(function (e) { return !uniq.some(function (o) { return o.length < e.length && subset(o, e); }); });
+  }
+  function product(labs) {
+    var out = [[]];
+    labs.forEach(function (l) {
+      var next = [];
+      out.forEach(function (p) { l.forEach(function (e) { next.push(union(p, e)); }); });
+      out = next;
+    });
+    return out;
+  }
+  function same(a, b) {
+    if (a.length !== b.length) return false;
+    var ka = a.map(key).sort(), kb = b.map(key).sort();
+    return ka.every(function (k, i) { return k === kb[i]; });
+  }
+  function solve(assumptions, justs) {
+    var L = {};
+    assumptions.forEach(function (a) { L[a] = [[a]]; });
+    var changed = true, guard = 0;
+    while (changed && guard++ < 200) {
+      changed = false;
+      var nog = L["⊥"] || [];
+      justs.forEach(function (j) {
+        var labs = j.ants.map(function (a) { return L[a] || []; });
+        if (labs.some(function (l) { return !l.length; })) return;
+        var cand = product(labs), old = L[j.cons] || [];
+        var nw = minimize(old.concat(cand));
+        if (j.cons !== "⊥") nw = nw.filter(function (e) { return !nog.some(function (n) { return subset(n, e); }); });
+        if (!same(nw, old)) { L[j.cons] = nw; changed = true; }
+      });
+      nog = L["⊥"] || [];
+      Object.keys(L).forEach(function (k) {
+        if (k === "⊥") return;
+        var f = L[k].filter(function (e) { return !nog.some(function (n) { return subset(n, e); }); });
+        if (f.length !== L[k].length) { L[k] = f; changed = true; }
+      });
+    }
+    return L;
+  }
+  function fmt(label) {
+    if (!label || !label.length) return "{ }";
+    return "{" + label.map(function (e) { return "{" + e.join(",") + "}"; }).sort().join(", ") + "}";
+  }
+  return { solve: solve, fmt: fmt, subset: subset, union: union, minimize: minimize, key: key };
+})();
+</script>
+<script>
+// Default-theory widget (section s-incons), the example of section 1.2.
+(function () {
+  "use strict";
+  var root = document.getElementById("theory");
+  if (!root || !window.MiniATMS) return;
+  var M = window.MiniATMS;
+  root.innerHTML = '<label><input type="checkbox" id="th-ax"> 加入公理 <span class="mono">b ∧ d → ⊥</span></label><div class="table-wrap"><table class="results"><thead><tr><th>原子</th><th>ATMS 標籤</th></tr></thead><tbody id="th-body"></tbody></table></div><p class="readout" id="th-ext"></p>';
+  var box = document.getElementById("th-ax"), body = document.getElementById("th-body"), ext = document.getElementById("th-ext");
+  function draw() {
+    var J = [{ ants: ["A"], cons: "b" }, { ants: ["C"], cons: "d" }, { ants: ["A", "C"], cons: "e" }];
+    if (box.checked) J.push({ ants: ["b", "d"], cons: "⊥" });
+    var L = M.solve(["A", "C"], J);
+    body.innerHTML = "";
+    ["A", "C", "b", "d", "e"].forEach(function (n) {
+      var tr = document.createElement("tr");
+      tr.innerHTML = "<td>" + n + "</td><td>" + M.fmt(L[n]) + "</td>";
+      body.appendChild(tr);
+    });
+    var nog = L["⊥"] || [];
+    var cands = [["A", "C"], ["A"], ["C"]].filter(function (e) { return !nog.some(function (n) { return M.subset(n, e); }); });
+    var maximal = cands.filter(function (e) { return !cands.some(function (o) { return o.length > e.length && M.subset(e, o); }); });
+    var texts = maximal.map(function (e) {
+      var atoms = ["A", "b", "C", "d", "e"].filter(function (n) { return (L[n] || []).some(function (le) { return M.subset(le, e); }); });
+      return "{" + atoms.join(", ") + "}";
+    });
+    ext.textContent = "nogood：" + (nog.length ? M.fmt(nog) : "無") + "　·　延伸：" + texts.join("　");
+  }
+  box.addEventListener("change", draw);
+  draw();
+})();
+</script>
+<script>
+// Environment lattice (section s-lattice), Fig. 2 with clickable nogoods.
+(function () {
+  "use strict";
+  var svg = document.getElementById("lattice"), sel = document.getElementById("ctl-node"), out = document.getElementById("lat-out"), reset = document.getElementById("lat-reset");
+  if (!svg || !window.MiniATMS) return;
+  var M = window.MiniATMS, NS = "http://www.w3.org/2000/svg";
+  var AS = ["A", "B", "C", "D", "E"];
+  var envs = [];
+  for (var m = 0; m < 32; m++) envs.push(AS.filter(function (a, i) { return m & (1 << i); }));
+  var layers = [[], [], [], [], [], []];
+  envs.forEach(function (e) { layers[e.length].push(e); });
+  var pos = {};
+  layers.forEach(function (ly, k) {
+    var y = 350 - k * 66, gap = 720 / (ly.length + 1);
+    ly.forEach(function (e, i) { pos[M.key(e)] = [gap * (i + 1), y]; });
+  });
+  var userNogoods = [["A", "B", "E"]];
+  function el(tag, attrs, text) {
+    var e = document.createElementNS(NS, tag);
+    Object.keys(attrs).forEach(function (a) { e.setAttribute(a, attrs[a]); });
+    if (text != null) e.textContent = text;
+    return e;
+  }
+  function draw() {
+    var J = [
+      { ants: ["A", "B"], cons: "x+y=1" }, { ants: ["B", "C", "D"], cons: "x+y=1" },
+      { ants: ["A", "C"], cons: "x=1" }, { ants: ["D", "E"], cons: "x=1" },
+      { ants: ["x+y=1", "x=1"], cons: "y=0" }
+    ].concat(userNogoods.map(function (n) { return { ants: n.slice(), cons: "⊥" }; }));
+    var L = M.solve(AS, J), nog = L["⊥"] || [], node = sel.value, lab = L[node] || [];
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    envs.forEach(function (e) {
+      AS.forEach(function (a) {
+        if (e.indexOf(a) >= 0) return;
+        var s = M.union(e, [a]), p = pos[M.key(e)], q = pos[M.key(s)];
+        svg.appendChild(el("line", { "class": "edge", x1: p[0], y1: p[1] - 10, x2: q[0], y2: q[1] + 10 }));
+      });
+    });
+    envs.forEach(function (e) {
+      var k = M.key(e), p = pos[k];
+      var dead = nog.some(function (n) { return M.subset(n, e); });
+      var isNog = nog.some(function (n) { return M.key(n) === k; });
+      var ctx = !dead && lab.some(function (le) { return M.subset(le, e); });
+      var isLab = lab.some(function (le) { return M.key(le) === k; });
+      var txt = "{" + e.join(",") + "}";
+      var w = Math.max(26, txt.length * 6.6 + 10);
+      var g = el("g", { "class": "env" + (dead ? " dead" : "") + (isNog ? " nog" : "") + (ctx ? " ctx" : "") + (isLab ? " lab" : ""), tabindex: 0, role: "button", "aria-label": txt + (dead ? "，nogood" : "") + (ctx ? "，節點成立" : "") });
+      g.appendChild(el("rect", { x: p[0] - w / 2, y: p[1] - 10, width: w, height: 20, rx: isLab ? 10 : 3 }));
+      g.appendChild(el("text", { x: p[0], y: p[1] + 4, "text-anchor": "middle" }, txt));
+      function toggle() {
+        if (!e.length) return;
+        var i = userNogoods.map(M.key).indexOf(k);
+        if (i >= 0) userNogoods.splice(i, 1); else userNogoods.push(e.slice());
+        draw();
+      }
+      g.addEventListener("click", toggle);
+      g.addEventListener("keydown", function (ev) { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); toggle(); } });
+      svg.appendChild(g);
+    });
+    out.innerHTML = "<div>x+y=1：" + M.fmt(L["x+y=1"]) + "</div><div>x=1：" + M.fmt(L["x=1"]) + "</div><div>y=0：" + M.fmt(L["y=0"]) + "</div><div>最小 nogood：" + (nog.length ? M.fmt(nog) : "無") + "</div>";
+  }
+  sel.addEventListener("change", draw);
+  reset.addEventListener("click", function () { userNogoods = [["A", "B", "E"]]; draw(); });
+  draw();
+})();
+</script>
+<script>
+// Search example animation (section s-search): brute force, chronological backtracking, then the ATMS view.
+(function () {
+  "use strict";
+  var root = document.getElementById("anim-search");
+  if (!root || !window.StudyAnim) return;
+  // Chronological backtracking steps from p.135: [step, assignment, mark]; mark: "" partial, "x" contradiction, "*" solution.
+  var CH = [[1, "x=0", ""], [2, "x=0, y=0", ""], [3, "x=0, y=0, z=0", "x"], [4, "x=0, y=0, z=1", "x"], [5, "x=0, y=1", ""], [6, "x=0, y=1, z=0", "*"], [7, "x=0, y=1, z=1", "x"],
+            [8, "x=1", ""], [9, "x=1, y=0", ""], [10, "x=1, y=0, z=0", "x"], [11, "x=1, y=0, z=1", "*"], [12, "x=1, y=1", ""], [13, "x=1, y=1, z=0", "x"], [14, "x=1, y=1, z=1", "x"]];
+  var BF = [["0", "0", "0", "x"], ["0", "0", "1", "x"], ["0", "1", "0", "*"], ["0", "1", "1", "x"], ["1", "0", "0", "x"], ["1", "0", "1", "*"], ["1", "1", "0", "x"], ["1", "1", "1", "x"]];
+  var DEF = {
+    futile: { name: "無謂的回溯", steps: [4, 14] },
+    recon: { name: "重新發現矛盾", steps: [10, 14] },
+    reinf: { name: "重新發現推論", steps: [6, 7, 9, 10, 11, 12, 13, 14] },
+    order: { name: "順序不佳", steps: [3, 4, 13, 14] }
+  };
+  var steps = [
+    { title: "1. 題目", run: function (s) { s.mode = "q"; },
+      text: "三個二選一（x、y、z），三個昂貴函數 \\(e_i(x) = (x+100000)!\\)，兩個約束 \\(b \\neq c\\)、\\(a \\neq b\\)。<b>先猜：</b>有幾組解？暴力列舉要算幾次階乘？" },
+    { title: "2. 暴力列舉：24 次", run: function (s) { s.mode = "bf"; },
+      text: "8 組賦值，每組 3 次昂貴計算，共 24 次。兩組解（*）：{x=0, y=1, z=0} 與 {x=1, y=0, z=1}；其餘 6 組矛盾（●）（原文第 134–135 頁）。" },
+    { title: "3. 時序回溯：前 7 步", run: function (s) { s.mode = "ch"; s.upto = 7; },
+      text: "深度優先，依序處理運算式；遇到選擇就試第一個，矛盾就退回<b>最近一個</b>還有選項的選擇。每一列新指定一個變數，就要算一次對應的 \\(e_i\\)。" },
+    { title: "4. 時序回溯：共 14 次", run: function (s) { s.mode = "ch"; s.upto = 14; },
+      text: "14 步、14 次昂貴計算，比 24 次少，但仍有 8 次可以輕易省掉（§2.2）。<b>先猜：</b>哪幾步是浪費？" },
+    { title: "5. 浪費①②：回溯與矛盾", run: function (s) { s.mode = "ch"; s.upto = 14; s.hl = ["futile", "recon"]; },
+      text: "<b>無謂的回溯</b>（4）（14）：z 和步驟 (3)(13) 的矛盾無關，應退回真正的肇因。<b>重新發現矛盾</b>（10）（14）：步驟 (3) 的矛盾只靠 y=0、z=0，y、z 相同的 (10) 不該再試。" },
+    { title: "6. 浪費③④：推論與順序", run: function (s) { s.mode = "ch"; s.upto = 14; s.hl = ["reinf", "order"]; },
+      text: "<b>重新發現推論</b>（6）（7）（9）–（14）：這些階乘都算過，回溯把結果丟了；若有快取，每個階乘只算一次。<b>順序不佳</b>（3）（4）（13）（14）：把 \\(a \\neq b\\) 移到算完 b 之後可省 4 次。" },
+    { title: "7. ATMS：每個值只算一次", run: function (s) { s.mode = "atms"; s.phase = 1; },
+      text: "本頁補充：用 ATMS 解同一題。六個假設 \\(\\Gamma_{x=0}, \\Gamma_{x=1}, \\ldots\\)；同一變數的兩個值互斥（二元 nogood，oneof 免費表示）。每個 \\(e_i\\) 對每個值算一次，結果標上它依賴的假設：共 6 次。" },
+    { title: "8. ATMS：約束變成 nogood", run: function (s) { s.mode = "atms"; s.phase = 2; },
+      text: "\\(b \\neq c\\) 被違反的組合（b、c 值相同）給出 nogood {y=0, z=0}、{y=1, z=1}；\\(a \\neq b\\) 給出 {x=0, y=0}、{x=1, y=1}。矛盾記成最小的假設集合，x 或 z 無關的部分不會被牽連。" },
+    { title: "9. ATMS：兩個解同時存在", run: function (s) { s.mode = "atms"; s.phase = 3; },
+      text: "每個變數各選一個值、且不包含任何 nogood 的環境就是解：{x=0, y=1, z=0} 與 {x=1, y=0, z=1}。兩個解並存在同一個資料庫裡，沒有回溯，可以直接比較，這就是 §3.2「單一狀態」限制的解法。" }
+  ];
+  StudyAnim(root, {
+    width: 720, height: 440, interval: 4200,
+    init: function () { return { mode: "q", upto: 0, hl: [], phase: 0 }; },
+    steps: steps,
+    draw: function (sc, s) {
+      sc.put("bg", "g", {}); sc.put("fg", "g", {});
+      var eqs = ["(1) x ∈ {0,1}", "(2) a = e1(x)", "(3) y ∈ {0,1}", "(4) b = e2(y)", "(5) z ∈ {0,1}", "(6) c = e3(z)", "(7) b ≠ c", "(8) a ≠ b"];
+      sc.put("zq", "rect", { x: 16, y: 10, width: 688, height: 54, rx: 6, "class": "a-zone" }, null, "bg");
+      eqs.forEach(function (t, k) {
+        sc.put("eq" + k, "text", { x: 30 + (k % 4) * 170, y: 32 + Math.floor(k / 4) * 22, "class": "a-mono" }, t, "bg");
+      });
+      var count = 0;
+      if (s.mode === "bf") {
+        sc.put("bft", "text", { x: 24, y: 88, "class": "a-head" }, "暴力列舉：每組都算 a、b、c", "fg");
+        BF.forEach(function (r, k) {
+          var y = 100 + k * 36, ok = r[3] === "*";
+          sc.put("bfr" + k, "rect", { x: 24, y: y, width: 420, height: 30, rx: 4, "class": "a-card" + (ok ? " ok" : ""), enter: true }, null, "fg");
+          sc.put("bfx" + k, "text", { x: 36, y: y + 20, "class": "a-mono" }, "x=" + r[0] + ", y=" + r[1] + ", z=" + r[2] + "　" + (ok ? "* 解" : "● 矛盾"), "fg");
+          sc.put("bfc" + k, "text", { x: 330, y: y + 20, "class": "a-small" }, "累計 " + (k + 1) * 3 + " 次", "fg");
+        });
+        sc.put("bfsum", "text", { x: 470, y: 120, "class": "a-head" }, "共 24 次昂貴計算", "fg");
+      }
+      if (s.mode === "ch") {
+        sc.put("cht", "text", { x: 24, y: 88, "class": "a-head" }, "時序回溯（原文第 135 頁）", "fg");
+        var hlSteps = {};
+        s.hl.forEach(function (h) { DEF[h].steps.forEach(function (n) { hlSteps[n] = (hlSteps[n] || []).concat(h); }); });
+        CH.forEach(function (r, k) {
+          if (r[0] > s.upto) return;
+          var col = k < 7 ? 0 : 1, row = k % 7;
+          var x = 24 + col * 344, y = 98 + row * 40;
+          var hit = hlSteps[r[0]];
+          var cls = hit ? " warn" : r[2] === "*" ? " ok" : "";
+          sc.put("chr" + k, "rect", { x: x, y: y, width: 332, height: 34, rx: 4, "class": "a-card" + cls, enter: true }, null, "fg");
+          sc.put("cht" + k, "text", { x: x + 10, y: y + 15, "class": "a-mono" }, "(" + r[0] + ") " + r[1] + (r[2] === "x" ? "  ●" : r[2] === "*" ? "  *" : ""), "fg");
+          sc.put("chc" + k, "text", { x: x + 10, y: y + 29, "class": "a-small" }, hit ? hit.map(function (h) { return DEF[h].name; }).join("、") : "累計 " + r[0] + " 次", "fg");
+        });
+        sc.put("chsum", "text", { x: 24, y: 392, "class": "a-head" }, "昂貴計算：" + s.upto + " 次" + (s.upto === 14 ? "　（暴力列舉 24 次）" : ""), "fg");
+        if (s.hl.length) sc.put("chdef", "text", { x: 24, y: 418, "class": "a-small" }, "橘色：" + s.hl.map(function (h) { return DEF[h].name + " " + DEF[h].steps.map(function (n) { return "(" + n + ")"; }).join(""); }).join("　"), "fg");
+      }
+      if (s.mode === "atms") {
+        sc.put("att", "text", { x: 24, y: 88, "class": "a-head a-acc" }, "ATMS 的做法（本頁補充）", "fg");
+        var nodes = [["a=e1(0)", "{x=0}"], ["a=e1(1)", "{x=1}"], ["b=e2(0)", "{y=0}"], ["b=e2(1)", "{y=1}"], ["c=e3(0)", "{z=0}"], ["c=e3(1)", "{z=1}"]];
+        nodes.forEach(function (n, k) {
+          var x = 24 + (k % 2) * 220, y = 100 + Math.floor(k / 2) * 44;
+          sc.put("an" + k, "rect", { x: x, y: y, width: 208, height: 36, rx: 4, "class": "a-card hi", enter: true }, null, "fg");
+          sc.put("ant" + k, "text", { x: x + 10, y: y + 15, "class": "a-mono" }, n[0], "fg");
+          sc.put("anl" + k, "text", { x: x + 10, y: y + 30, "class": "a-small" }, "標籤 {" + n[1] + "}", "fg");
+        });
+        sc.put("acount", "text", { x: 24, y: 252, "class": "a-head" }, "昂貴計算：6 次（每個函數 × 每個值各一次）", "fg");
+        if (s.phase >= 2) {
+          var ng = [["{y=0, z=0}", "b ≠ c"], ["{y=1, z=1}", "b ≠ c"], ["{x=0, y=0}", "a ≠ b"], ["{x=1, y=1}", "a ≠ b"]];
+          sc.put("ngt", "text", { x: 480, y: 88, "class": "a-head" }, "nogood 資料庫", "fg");
+          ng.forEach(function (n, k) {
+            sc.put("ng" + k, "rect", { x: 480, y: 100 + k * 40, width: 220, height: 32, rx: 4, "class": "a-card warn", enter: true }, null, "fg");
+            sc.put("ngt" + k, "text", { x: 492, y: 121 + k * 40, "class": "a-mono" }, n[0] + "  ← " + n[1], "fg");
+          });
+          sc.put("ngo", "text", { x: 480, y: 270, "class": "a-small" }, "另有互斥：{x=0,x=1}、{y=0,y=1}、{z=0,z=1}", "fg");
+        }
+        if (s.phase >= 3) {
+          [["{x=0, y=1, z=0}", 0], ["{x=1, y=0, z=1}", 1]].forEach(function (r) {
+            var x = 24 + r[1] * 344;
+            sc.put("sol" + r[1], "rect", { x: x, y: 300, width: 332, height: 44, rx: 6, "class": "a-card ok", enter: true }, null, "fg");
+            sc.put("solt" + r[1], "text", { x: x + 14, y: 327, "class": "a-ok" }, "解 " + (r[1] + 1) + "：" + r[0], "fg");
+          });
+          sc.put("solnote", "text", { x: 24, y: 374, "class": "a-small" }, "兩個解同時存在於同一個資料庫，沒有回溯；換看另一個解不需要任何重算。", "fg");
+          sc.put("solnote2", "text", { x: 24, y: 396, "class": "a-small" }, "比較：暴力 24 次 · 時序回溯 14 次 · 有快取 6 次（腳註 2：用數學分析可降到 2 次，甚至 0 次）", "fg");
+        }
+      }
+    }
+  });
+})();
+</script>
+<script>
+// Label-update animation (section s-algo): the example of section 4.7, then the circular justification of section 5.
+(function () {
+  "use strict";
+  var root = document.getElementById("anim-label");
+  if (!root || !window.StudyAnim || !window.MiniATMS) return;
+  var M = window.MiniATMS;
+  var L = M.solve(["A", "B", "C", "D", "E"], [
+    { ants: ["A", "B"], cons: "x+y=1" }, { ants: ["B", "C", "D"], cons: "x+y=1" },
+    { ants: ["A", "C"], cons: "x=1" }, { ants: ["D", "E"], cons: "x=1" },
+    { ants: ["A", "B", "E"], cons: "⊥" }, { ants: ["x+y=1", "x=1"], cons: "y=0" }
+  ]);
+  var lab1 = L["x+y=1"], lab2 = L["x=1"];
+  var cands = [];
+  lab1.forEach(function (e1) { lab2.forEach(function (e2) { cands.push({ a: e1, b: e2, u: M.union(e1, e2) }); }); });
+  var nog = L["⊥"];
+  function str(e) { return "{" + e.join(",") + "}"; }
+  var steps = [
+    { title: "1. 加入理由之前", run: function (s) { s.phase = 0; },
+      text: "已有 \\(\\gamma_{x+y=1}\\) 標籤 {{A,B},{B,C,D}}、\\(\\gamma_{x=1}\\) 標籤 {{A,C},{D,E}}，\\(\\gamma_{y=0}\\) 標籤是空的，nogood 資料庫只有 {A,B,E}（原文第 150 頁）。" },
+    { title: "2. 問題解決器推出 y = 0", run: function (s) { s.phase = 1; },
+      text: "問題解決器從 x+y=1 和 x=1 推出 y=0，加入理由 \\(\\gamma_{x+y=1}, \\gamma_{x=1} \\Rightarrow \\gamma_{y=0}\\)。<b>先猜：</b>y=0 的新標籤是什麼？" },
+    { title: "3. 各挑一個環境取聯集", run: function (s) { s.phase = 2; },
+      text: "可靠且完備的一個標籤：從每個前件標籤各挑一個環境取聯集，2 × 2 = 4 個候選。" },
+    { title: "4. 刪掉含 nogood 的", run: function (s) { s.phase = 3; },
+      text: "{A,B,D,E} 包含 nogood {A,B,E}，不一致，不能留在標籤裡。" },
+    { title: "5. 刪掉被包含的", run: function (s) { s.phase = 4; },
+      text: "{A,B,C,D} 是 {A,B,C} 的超集合，凡是它成立的地方 {A,B,C} 都成立，所以它多餘。" },
+    { title: "6. 新標籤與傳播", run: function (s) { s.phase = 5; },
+      text: "\\(\\gamma_{y=0}\\)：⟨y=0, {{A,B,C},{B,C,D,E}}, {(\\gamma_{x+y=1}, \\gamma_{x=1})}⟩，與原文第 151 頁相同（本頁引擎即時算出）。標籤和舊的不同，所以演算法接著遞迴更新所有以 y=0 為前件的節點；若節點是 \\(\\gamma_\\bot\\)，則改為把環境加入 nogood、並從所有標籤移除。" },
+    { title: "7. 循環理由會停下來", run: function (s) { s.phase = 6; },
+      text: "§5 的例子：只有 a ⇒ b、b ⇒ a 時，兩個標籤都空，循環沒作用。讓 a 得到環境 {A}（本頁指定）：傳到 b 得 {{A}}，再傳回 a，候選 {A} 已在 a 的標籤裡，標籤不變，傳播停止。不需要另外偵測循環。" }
+  ];
+  StudyAnim(root, {
+    width: 720, height: 420, interval: 4200,
+    init: function () { return { phase: 0 }; },
+    steps: steps,
+    draw: function (sc, s) {
+      sc.put("bg", "g", {}); sc.put("fg", "g", {});
+      if (s.phase < 6) {
+        var nodes = [["γ x+y=1", M.fmt(lab1), 24], ["γ x=1", M.fmt(lab2), 260]];
+        nodes.forEach(function (n, k) {
+          sc.put("nd" + k, "rect", { x: n[2], y: 16, width: 224, height: 50, rx: 6, "class": "a-card" }, null, "bg");
+          sc.put("ndn" + k, "text", { x: n[2] + 12, y: 36, "class": "a-head" }, n[0], "bg");
+          sc.put("ndl" + k, "text", { x: n[2] + 12, y: 56, "class": "a-mono" }, n[1], "bg");
+        });
+        sc.put("ndg", "rect", { x: 500, y: 16, width: 200, height: 50, rx: 6, "class": "a-card warn" }, null, "bg");
+        sc.put("ndgn", "text", { x: 512, y: 36, "class": "a-head" }, "nogood 資料庫", "bg");
+        sc.put("ndgl", "text", { x: 512, y: 56, "class": "a-mono" }, nog.map(str).join(" "), "bg");
+        var yres = s.phase >= 5 ? M.fmt(L["y=0"]) : "{ }";
+        sc.put("ny", "rect", { x: 142, y: 334, width: 436, height: 64, rx: 6, "class": "a-card" + (s.phase >= 5 ? " ok" : s.phase >= 1 ? " hi" : "") }, null, "bg");
+        sc.put("nyn", "text", { x: 158, y: 358, "class": "a-head" }, "γ y=0" + (s.phase >= 1 ? "　← 理由 (γx+y=1, γx=1)" : ""), "bg");
+        sc.put("nyl", "text", { x: 158, y: 384, "class": "a-mono" }, "標籤 " + yres, "fg");
+        if (s.phase >= 1) {
+          sc.put("ar1", "line", { x1: 136, y1: 66, x2: 300, y2: 334, "class": "a-line acc" }, null, "bg");
+          sc.put("ar2", "line", { x1: 372, y1: 66, x2: 420, y2: 334, "class": "a-line acc" }, null, "bg");
+        }
+        if (s.phase >= 2) {
+          sc.put("ct", "text", { x: 456, y: 100, "class": "a-head" }, "候選環境 = 各挑一個取聯集", "fg");
+          cands.forEach(function (c, k) {
+            var y = 112 + k * 50;
+            var isNog = nog.some(function (n) { return M.subset(n, c.u); });
+            var isSub = cands.some(function (o) { return o.u.length < c.u.length && M.subset(o.u, c.u); });
+            var gone = (s.phase >= 3 && isNog) || (s.phase >= 4 && isSub);
+            var why = s.phase >= 3 && isNog ? "✗ 含 nogood {A,B,E}" : s.phase >= 4 && isSub ? "✗ 被 {A,B,C} 包含" : s.phase >= 4 ? "✓ 保留" : "";
+            var cls = gone ? " dead" : s.phase >= 4 ? " ok" : "";
+            sc.put("cd" + k, "rect", { x: 456, y: y, width: 248, height: 40, rx: 4, "class": "a-card" + cls, enter: true }, null, "fg");
+            sc.put("cdu" + k, "text", { x: 468, y: y + 17, "class": gone ? "a-strike" : "a-mono" }, str(c.a) + " ∪ " + str(c.b) + " = " + str(c.u), "fg");
+            sc.put("cdw" + k, "text", { x: 468, y: y + 33, "class": why.charAt(0) === "✗" ? "a-bad" : "a-ok" }, why, "fg");
+          });
+        }
+      } else {
+        var cyc = [["a", "{{A}}", 180], ["b", "{{A}}", 460]];
+        cyc.forEach(function (n, k) {
+          sc.put("cy" + k, "rect", { x: n[2], y: 120, width: 120, height: 64, rx: 32, "class": "a-card ok", enter: true }, null, "fg");
+          sc.put("cyn" + k, "text", { x: n[2] + 60, y: 146, "text-anchor": "middle", "class": "a-head" }, n[0], "fg");
+          sc.put("cyl" + k, "text", { x: n[2] + 60, y: 168, "text-anchor": "middle", "class": "a-mono" }, n[1], "fg");
+        });
+        sc.put("cyA", "rect", { x: 180, y: 30, width: 120, height: 40, rx: 6, "class": "a-card hi", enter: true }, null, "fg");
+        sc.put("cyAt", "text", { x: 240, y: 55, "text-anchor": "middle", "class": "a-mono" }, "假設 A ⇒ a", "fg");
+        sc.put("cye0", "line", { x1: 240, y1: 70, x2: 240, y2: 120, "class": "a-line acc" }, null, "fg");
+        sc.put("cye1", "line", { x1: 300, y1: 140, x2: 460, y2: 140, "class": "a-line acc" }, null, "fg");
+        sc.put("cye2", "line", { x1: 460, y1: 166, x2: 300, y2: 166, "class": "a-line" }, null, "fg");
+        sc.put("cyt1", "text", { x: 380, y: 132, "text-anchor": "middle", "class": "a-small" }, "a ⇒ b：b 得到 {A}", "fg");
+        sc.put("cyt2", "text", { x: 380, y: 184, "text-anchor": "middle", "class": "a-small" }, "b ⇒ a：候選 {A} 已存在", "fg");
+        sc.put("cyend", "text", { x: 360, y: 250, "text-anchor": "middle", "class": "a-ok" }, "a 的標籤沒變 → 傳播停止", "fg");
+        sc.put("cyend2", "text", { x: 360, y: 280, "text-anchor": "middle", "class": "a-small" }, "迴圈再長也一樣：繞回來的環境必然是 a 已有環境的超集合", "fg");
+      }
+    }
+  });
+})();
+</script>
+</body>
+</html>

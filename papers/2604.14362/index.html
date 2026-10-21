@@ -1,0 +1,960 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>APEX-MEM 精讀</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="../../assets/site.css">
+<style>
+  .chart-box .grid line { stroke: var(--rule); stroke-width: 1; }
+  .chart-box .axis text { fill: var(--muted); font-size: 11px; font-family: var(--font-mono); }
+  .chart-box .name { fill: var(--ink); font-size: 12px; font-family: var(--font-body); }
+  .chart-box .val { fill: var(--ink); font-size: 11px; font-family: var(--font-mono); }
+  .chart-box .bar { fill: var(--accent); }
+  .chart-box .bar.ours { fill: var(--sml); }
+  .chart-box .bar.rep { fill: var(--muted); }
+  .chart-box .bar.full { fill: var(--ok); }
+  .chart-box .hit { fill: transparent; }
+  .chart-box .row:hover .bar { opacity: 0.8; }
+  .chart-box svg#t1-chart { min-width: 560px; }
+  .controls select { font: inherit; color: var(--ink); background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 0.15rem 0.3rem; }
+  .key { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; font-size: var(--step--1); color: var(--muted); }
+  .key i { display: inline-block; width: 0.8rem; height: 0.8rem; border-radius: 2px; margin-right: 0.3rem; vertical-align: -0.1rem; }
+  .key .k-ours { background: var(--sml); } .key .k-mine { background: var(--accent); } .key .k-rep { background: var(--muted); } .key .k-full { background: var(--ok); }
+  pre.prompt { font-family: var(--font-mono); font-size: 0.8125rem; line-height: 1.6; white-space: pre-wrap; overflow-wrap: anywhere; margin: 0; }
+  .datecalc { display: grid; gap: 0.5rem; }
+  .datecalc input[type="date"] { font: inherit; color: var(--ink); background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 0.15rem 0.4rem; }
+  .datecalc .row { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: center; }
+</style>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
+    svg: { fontCache: "global" }
+  };
+</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script>
+</head>
+<body>
+<div data-paper="2604.14362">
+
+<header class="toolbar gutter">
+  <div class="toolbar-inner">
+    <a class="home" href="../../index.html">論文精讀室</a>
+    <span class="crumb">APEX-MEM · arXiv 2604.14362</span>
+    <div class="levels" role="group" aria-label="解釋深度">
+      <span class="levels-label">解釋深度</span>
+      <div class="seg">
+        <button type="button" data-level-btn="kid" aria-pressed="false">五歲</button>
+        <button type="button" data-level-btn="uni" aria-pressed="true">大學生</button>
+        <button type="button" data-level-btn="grad" aria-pressed="false">研究生</button>
+        <button type="button" data-level-btn="all" aria-pressed="false">對照</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="desk gutter">
+  <nav class="rail" aria-label="章節">
+    <details open>
+      <summary>章節 <span class="progress-text" id="progress-text">0 / 0</span></summary>
+      <div class="progress"><span id="progress-bar"></span></div>
+      <ol id="outline"></ol>
+    </details>
+  </nav>
+
+  <main class="column">
+
+    <!-- ===================== header ===================== -->
+    <div class="paper-head">
+      <div class="eyebrow"><span class="mono">arXiv 2604.14362v1</span><span>cs.CL</span><span>v1 2026-04-15</span><span>16 頁：正文約 8 頁、附錄 A–I</span></div>
+      <h1>APEX-MEM：只增不刪的半結構化記憶，加上時間推理</h1>
+      <p lang="en"><em>APEX-MEM: Agentic Semi-Structured Memory with Temporal Reasoning for Long-Term Conversational AI</em></p>
+      <p class="authors">Pratyay Banerjee、Masud Moshtaghi、Shivashankar Subramanian、Amita Misra、Ankit Chadha<br>Amazon AGI, Sunnyvale</p>
+      <div class="links">
+        <a href="https://arxiv.org/abs/2604.14362" target="_blank" rel="noopener">arXiv 摘要頁</a>
+        <a href="https://arxiv.org/pdf/2604.14362v1" target="_blank" rel="noopener">PDF</a>
+      </div>
+      <div class="claim" role="note">
+        <span class="claim-label">核對狀態</span>
+        <p>本頁已對照 arXiv v1 PDF 全文（含附錄）逐條核對，表格對照頁面影像確認。Table 1 的 APEX-MEM 五列，Overall 與 w/o Adv. 都能用 LoCoMo 各類題數（單跳 840、多跳 282、時間 321、開放領域 96、對抗 446，共 1,985 題）加權重現，本頁據此檢查其他表格。驗算發現原文多處數字彼此對不上，集中列在第 14 節。程式碼連結：原文未提供。</p>
+        <div class="legend">
+          <span><span class="src src-abs">原文 §3.1</span> 出自論文，標明位置</span>
+          <span><span class="src src-mine">導讀補充</span> 本頁的推導、背景或評論</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== 00 route ===================== -->
+    <section class="sec" id="s-route" data-short="閱讀路線">
+      <div class="sec-head"><span class="sec-num">00</span><h2>這篇怎麼讀</h2></div>
+      <div class="prose">
+        <p>這是一篇<b>系統論文</b>：用屬性圖存對話、資料只增不刪、回答時由一個會用工具的代理去查。它和本站的 Zep 是同一路線（Zep 也是它的比較對象），和 StateMem 的「回答時再解析狀態」想法相近，和 1986 年 ATMS 的「保留所有版本、需要時再判斷」一脈相承。</p>
+        <ol>
+          <li><b>第一遍（15 分鐘）</b>：摘要、§1 的三個貢獻、Table 1、Table 4。對應本頁 01、09、11。</li>
+          <li><b>第二遍（1 小時）</b>：§3 圖的建構、§4 四個工具，搭配附錄 E 的案例與 Table 8 的 SQL。對應 02 到 07。</li>
+          <li><b>第三遍（40 分鐘）</b>：§6 消融、附錄 A–D 的工具用量與成本。重點是「數字對不對得上」。對應 10、12、14。</li>
+        </ol>
+      </div>
+      <div class="predict">
+        <b class="ptitle">讀之前先猜</b>
+        <ol>
+          <li>舊的事實要覆寫掉，還是保留下來？哪一種比較利於回答「什麼時候改變的」？（答案在 04）</li>
+          <li>用同一個回答模型 GPT-4o，APEX-MEM 在 LoCoMo 上會贏過「把整段對話直接塞進去」嗎？（答案在 09）</li>
+          <li>回答一題要花的 token，大部分花在建圖、檢索，還是代理的工具迴圈？（答案在 12）</li>
+        </ol>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-route">筆記</label><textarea id="note-route" data-note="s-route" placeholder="例如：三個猜測、我讀這篇的目的"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-route"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 01 problem ===================== -->
+    <section class="sec" id="s-problem" data-short="問題與主張">
+      <div class="sec-head"><span class="sec-num">01</span><h2>問題：長上下文有雜訊，RAG 沒有結構</h2></div>
+      <div class="claim">
+        <span class="claim-label">原文主張 <span class="src src-abs">原文 Abstract、§1</span></span>
+        <p>單純加大 context 會把雜訊一起帶進來；RAG 把記憶當成無結構文字，無法維持標準化的實體、追蹤事實的演變、區分持久資訊與一次性的對話內容。既有的結構化記憶有兩個缺口：一、Mem0 這類以實體為中心的圖，實體類別有限、資訊主要存成實體之間的關係，難以表達細緻的屬性與時間演變；二、既有系統會<b>合併或覆寫</b>舊資訊，可能丟掉時間推理與衝突解決需要的上下文。</p>
+        <p>三個貢獻：一、結合實體中心與事件中心的混合本體，事件是一等公民；二、<b>只增不刪</b>（append-only）的事件儲存，事實錨定在有時間的事件上，保留矛盾與修正，<b>在檢索時</b>依時間有效性解析，而不是過早承諾單一現況；三、多工具檢索代理：實體連結（EntityLookup）、結構化圖查詢（GraphSQL）、混合檢索（Search），加上提供規劃指引的 SchemaViewer。</p>
+        <p>摘要報告：LoCoMo 問答 88.88%，LongMemEval 86.2%。</p>
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>有個小幫手幫你記朋友說過的話。它不把舊的筆記擦掉，而是每次都寫一張新卡片並標上日期。你問「她現在最喜歡哪家餐廳？」，它就把相關的卡片按日期排好，挑最新的那張回答。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>和本站 Zep 的差別：Zep 偵測到矛盾時把舊的邊標成失效（寫入時就決定），APEX-MEM 寫入時什麼都不決定，所有版本並存，查詢時才由代理判斷哪一版有效。和 StateMem 的 StateMemWrapper 很像，都是把「解析狀態」延到回答時做。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>相關研究段（§2）把 LoCoMo 上的歷史數字串成一條線：GPT-4-Turbo 128K context 51.6% F1、GPT-3.5-Turbo 16K 35.9%，對抗題掉到 15.7% F1；MemGPT 26.65% F1、ReadAgent 9.15%、MemoryBank 5.0%；Mem0 單跳 67.1%、多跳 51.2%；MIRIX 85.4%。注意這些數字混用了 F1 與 LLM-judge 準確率，不能直接排在同一條尺上比較 <span class="src src-mine">導讀補充</span>。</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>「寫入時解析」和「查詢時解析」各有什麼代價？</summary><div><p>寫入時解析（Zep、Mem0）讓查詢便宜，但判斷錯了就丟資訊；查詢時解析（APEX-MEM）保留全部，但每次回答都要花代理迴圈的成本，且判斷品質取決於回答模型。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-problem">筆記</label><textarea id="note-problem" data-note="s-problem"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-problem"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 02 graph ===================== -->
+    <section class="sec" id="s-graph" data-short="屬性圖與本體">
+      <div class="sec-head"><span class="sec-num">02</span><h2>屬性圖與時間事件本體</h2></div>
+      <div class="eq">
+        \[ G = (V, E, \Pi, \Lambda),\quad E \subseteq V \times V,\quad \Pi : V \cup E \to \mathcal{P}(K \times S),\quad \Lambda : V \cup E \to \mathcal{T} \]
+        \[ G^{(t+1)} \leftarrow \mathrm{Merge}\big(G^{(t)}, g_t\big),\qquad \mathrm{Merge}(G, g) := (V \cup V_g,\ E \cup E_g,\ \ldots) \]
+        \[ e = (n, \tau, \rho, \mathit{id}),\qquad f = (s, p, v, \delta, [t_{\text{from}}, t_{\text{to}}], c, \mathcal{E}),\qquad \varepsilon = (\mathit{type}, T, L, P, F, \mathcal{E}_\varepsilon) \]
+      </div>
+      <dl class="gloss">
+        <dt>\(\Pi\)</dt><dd>把每個節點或邊對應到一組鍵值屬性。</dd>
+        <dt>\(\Lambda\)</dt><dd>指定每個節點或邊的本體型別。</dd>
+        <dt>\(g_t\)</dt><dd>第 t 份來源文件誘導出的子圖，逐步合併；符合實體與屬性解析條件的候選節點會被融合。</dd>
+        <dt>\(e\)</dt><dd>實體：名稱 n、型別 τ（35 類之一）、對話角色 ρ ∈ {Speaker, Listener, Agent, Mentioned}、可選的外部識別碼。</dd>
+        <dt>\(f\)</dt><dd>事實：主詞 s、屬性 p、值 v（資料型別 δ）、有效區間 \([t_{\text{from}}, t_{\text{to}}]\)、信心 \(c \in [0,1]\)、證據集合。</dd>
+        <dt>\(\varepsilon\)</dt><dd>對話事件：類型、時間戳 T、地點 L、參與者 P、相關事實 F、支持的文字證據。所有事實都錨定在事件上。</dd>
+      </dl>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>每個人、地方、東西都是一個「點」，點上可以貼很多小標籤（像「最喜歡的餐廳：某某」），每張標籤都記著「從哪天開始」和「是哪句話說的」。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p><b>35 個實體類別</b>（§3.1），比照 YAGO 分類，涵蓋行動者（Person、Organization、Corporation）、生物（Animal、Plant、Taxonomy）、時空（Place、Event、Time）、實體物品（Product、Device、Vehicle）、數位物件（Software、Dataset、Service）、資訊資源（CreativeWork、Document、Message）、金融工具（Stock、Contract）、健康（Food、Medication、Disease）與抽象概念（Topic、Metric、Task）。屬性可以超出嚴格 schema 自由附加，方便換領域。</p>
+          <p>和 Mem0 的差別：屬性圖用豐富的鍵值表示「實體本身的資訊」與「它在對話中怎麼被提到」，Mem0 的對話則沒有本體化（§3）。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>實作上這張「圖」是一個 SQLite 資料庫，表格包括 entities、properties、facts、events、evidence、turns，以及詞彙搜尋用的 view（§4）。附錄 I 把架構分成五層：時間層（session、turn）、事件層（event、evidence）、知識層（fact、property）、實體層（entity）、語義層（型別分類）。Figure 4 的語義層只畫了 8 個型別並附括號數字（例如 CREATIVE_WORK (48)、PERSON (37)），括號數字的意義原文沒有說明，也和正文的「35 類」不是同一份清單 <span class="src src-mine">導讀補充</span>。</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="results">
+          <caption>Table 13 節錄：對話文字轉成圖 <span class="src src-abs">原文附錄 G、Table 13</span></caption>
+          <thead><tr><th>原文</th><th>實體（型別）</th><th>屬性 = 值（型別）</th></tr></thead>
+          <tbody>
+            <tr><td>"I went to a LGBTQ support group yesterday and it was so powerful."</td><td>Caroline (PERSON)<br>LGBTQ support group (EVENT)</td><td>attended_event = "LGBTQ support group" (str)<br>experience_description = "powerful" (str)<br>event_date = "2023-05-07" (date)</td></tr>
+            <tr><td>"I'm swamped with the kids &amp; work."</td><td>Melanie (PERSON)</td><td>has_children = true (bool)<br>employment_status = "working" (str)<br>emotional_state = "overwhelmed" (enum)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>事實為什麼錨定在「事件」上，而不是直接掛在實體上？</summary><div><p>事件帶時間戳、參與者與證據。事實掛在事件上，就能保留「何時、在哪段對話、由誰說」的脈絡，讓矛盾與修正並存，留給查詢時解析。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-graph">筆記</label><textarea id="note-graph" data-note="s-graph"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-graph"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 03 extraction ===================== -->
+    <section class="sec" id="s-extract" data-short="抽取與解析">
+      <div class="sec-head"><span class="sec-num">03</span><h2>事實抽取與實體／屬性解析</h2></div>
+      <div class="eq">
+        \[ u = (s, l, \mathit{text}, t_{\text{anchor}}, \mathit{ctx}) \ \longrightarrow\ \varepsilon = (\mathit{type}, T, L, P, F, \mathcal{E}) \]
+        \[ C = \{c_1, \ldots, c_k\},\ c_i = (\mathit{id}_i, \mathit{text}_i, s_i) \ \longrightarrow\ o = (d, \mathit{id}, n_{\text{norm}}, \tau, A, c, r),\quad d \in \{\texttt{choose\_existing}, \texttt{propose\_new}, \texttt{none}\} \]
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>小幫手讀到一句話，先挑出裡面的人和東西，再查查本子裡是不是已經有這個人（「小美」和「美美」是不是同一個？）。是的話就接到舊的那頁，不是就開新的一頁。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p><b>事實抽取</b>（§3.3）：每一輪對話 u 包含說話者 s、聽者 l、文字、錨定時間 \(t_{\text{anchor}}\)（對話本身的時間）與近期上下文。用少樣本提示的 LLM，在 schema 約束下產生事件 ε。輸出會被驗證：參與者型別要在 35 類內、角色要在 R 內、事實要指定資料型別、時間表達式依 \(t_{\text{anchor}}\) 正規化成 ISO 8601。每個事實都有信心分數與證據 \(\mathcal{E} = \{(e_{\text{text}}, e_{\text{turn}}, e_{\text{span}})\}\)。</p>
+          <p><b>實體解析</b>（§3.2）：對文中的提及 m，從密集向量索引用餘弦相似度取前 k 個已知實體候選，再由結構化 LLM 判斷：選既有的、提議新的、或都不是，並輸出正規化名稱、型別、別名、信心與理由。屬性解析流程相同，另外把屬性名稱正規化為 snake_case，推斷資料型別 δ ∈ {str, int, float, bool, date, datetime, enum, url, list}。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p><b>建構品質</b>（Table 2）：從 LoCoMo 與 LongMemEval 隨機取 500 輪，以 GPT5 當判定者。Claude Sonnet 4.5 抽取精確度 97.3%、schema 涵蓋 91.1%、實體解析 98.2%；GPT4o 的 schema 涵蓋只有 75.7%。正式系統用 Sonnet 4.5 抽取、Haiku 4.5（95.8%／90.3%／95.4%）做解析，以平衡成本（§6.2）。</p>
+          <p>本頁提醒 <span class="src src-mine">導讀補充</span>：「抽取精確度」量的是抽出來的事實對不對，不是有沒有漏抽；附錄 E 的失敗案例（巴黎的餐廳沒被連到巴黎）正是漏掉隱含關係，這類錯誤不會反映在精確度上。Schema 涵蓋率的「合理屬性」由誰定義，原文也沒有細說。</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="results">
+          <caption>Table 2：建構品質（500 輪，GPT5 判定）<span class="src src-abs">原文 Table 2</span></caption>
+          <thead><tr><th>模型</th><th class="num">事實抽取</th><th class="num">Schema 涵蓋</th><th class="num">實體／屬性解析</th></tr></thead>
+          <tbody>
+            <tr><td>GPT4o</td><td class="num">94.2%</td><td class="num">75.7%</td><td class="num">98.1%</td></tr>
+            <tr><td>Claude Sonnet 4.5</td><td class="num">97.3%</td><td class="num">91.1%</td><td class="num">98.2%</td></tr>
+            <tr><td>Claude Haiku 4.5</td><td class="num">95.8%</td><td class="num">90.3%</td><td class="num">95.4%</td></tr>
+            <tr><td>Qwen3-14B</td><td class="num">95.4%</td><td class="num">88.9%</td><td class="num">92.5%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>為什麼時間要依 \(t_{\text{anchor}}\) 正規化？</summary><div><p>對話裡的「昨天」「上個月」是相對時間，要換成絕對日期才能跨 session 比較與計算。Table 13 的 "yesterday" 就被轉成 2023-05-07。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-extract">筆記</label><textarea id="note-extract" data-note="s-extract"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-extract"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 04 build animation ===================== -->
+    <section class="sec" id="s-anim" data-short="動畫：只增不刪">
+      <div class="sec-head"><span class="sec-num">04</span><h2>動畫：只增不刪，查詢時再決定</h2></div>
+      <p>依原文附錄 E 的案例 1（Alice 最喜歡的餐廳），一步步看兩段對話怎麼被抽取、解析、寫入，最後怎麼回答「現在」和「什麼時候換的」。對照組是一個會覆寫舊值的記憶。</p>
+      <div class="anim" id="anim-build" data-label="APEX-MEM 只增不刪與查詢時解析動畫"></div>
+      <p class="anim-note">對話、兩筆事實與查詢結果出自附錄 E 案例 1。實體 id、信心值（原文未提供，標為 ?）、解析決策與「覆寫式記憶」對照組是示意 <span class="src src-mine">導讀補充</span>。</p>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>擦掉舊的筆記，你就只知道「現在是什麼」；留著舊的筆記，你還能知道「以前是什麼、什麼時候變的」。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>附錄 F 用各系統在 LoCoMo 時間題的分數當<b>間接證據</b>（Table 12）：APEX-MEM 90.63%，會合併的 Mem0 75.71%（−14.92）、狀態合併的 MIRIX 65.62%（−25.01）、部分保留的 Zep 76.60%（−14.03）。作者說這「強烈暗示」保留完整歷史有助時間推理。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>本頁認為這個證據很弱 <span class="src src-mine">導讀補充</span>：四個系統的抽取方式、回答模型、判定方式都不同，其他三個的數字還是轉引自別的論文；差距無法歸因到「只增不刪」這一個設計。真正需要的是同一個系統的消融：把 APEX-MEM 改成覆寫式，其他不變，看時間題掉多少。原文沒有做這個實驗。</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>回到 00 的第一個猜測：哪一種做法比較利於回答「什麼時候改變的」？</summary><div><p>只增不刪。覆寫後只剩最新值，沒有舊值和它的起始日期，就算不出改變的時間。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-anim">筆記</label><textarea id="note-anim" data-note="s-anim"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-anim"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 05 tools ===================== -->
+    <section class="sec" id="s-tools" data-short="代理與四個工具">
+      <div class="sec-head"><span class="sec-num">05</span><h2>圖代理：ReAct 加四個工具</h2></div>
+      <div class="eq">
+        \[ (r_t, a_t) \sim \pi_\theta(\cdot \mid x, h_t),\qquad h_{t+1} = h_t \cup \{(r_t, a_t, o_t)\},\qquad a_t = (T_t, z_t)\ \text{或}\ \textsc{Answer} \]
+        \[ T_{\text{schema}} : \{0,1\}^2 \to \mathcal{S},\quad T_{\text{ent}} : \mathcal{Q} \times \mathbb{N} \to \mathcal{D}_{\text{ent}},\quad T_{\text{sql}} : \mathcal{S}_{\text{sql}} \times \mathcal{P}_{\text{sql}} \to \mathcal{R}_{\text{sql}},\quad T_{\text{search}}(q) = (E_q, P_q, V_q, T_q) \]
+      </div>
+      <div class="table-wrap">
+        <table class="results">
+          <caption>四個工具 <span class="src src-abs">原文 §4.1–4.4</span></caption>
+          <thead><tr><th>工具</th><th>輸入 → 輸出</th><th>用途</th></tr></thead>
+          <tbody>
+            <tr><td>SchemaViewer</td><td>兩個布林旗標（含範例、含使用指南）→ 結構化 schema 視圖</td><td>看資料表結構，並取得查詢與工具使用建議（例如怎麼用 SQL 做時間推理）；作為後設層的規劃輔助。</td></tr>
+            <tr><td>EntityLookup</td><td>自由文字 q、預算 K → 前 K 份實體文件</td><td>先用混合索引（密集＋詞彙）找候選 id，再查圖組出文件 (id, name, type, latest, anchors, last_anchor, facts)；latest 和 facts 是近期屬性值的 markdown 表。把表面說法對到圖中的標準 id。</td></tr>
+            <tr><td>GraphSQL</td><td>唯讀的 SQLite SELECT（或 WITH … SELECT）＋具名參數 → 結果表</td><td>只能查白名單資料表，單一唯讀陳述，禁止更新與 DDL。用於 join、聚合、數學與以 anchor_datetime 為基礎的時間計算。</td></tr>
+            <tr><td>Search</td><td>查詢 q → 候選實體、屬性、事件／證據、對話輪</td><td>對整張圖做混合檢索，取回高相關子圖，再交給 GraphSQL 過濾或聚合。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <figure class="figure" style="margin:0">
+        <div class="datecalc" id="datecalc">
+          <div class="row">
+            <label>事實起始日 <input type="date" id="dc-start" value="2024-03-20"></label>
+            <label>提問日 <input type="date" id="dc-q" value="2024-06-01"></label>
+          </div>
+          <div class="readout" id="dc-out" aria-live="polite"></div>
+        </div>
+        <figcaption>重現 Table 8 的 TEMPORAL 查詢：days_difference = julianday(提問日) − julianday(起始日)；weeks_approx = CAST(天數 / 7 AS INTEGER)；months_approx = CAST(天數 / 30.44 AS INTEGER)。SQLite 的 CAST 成 INTEGER 是向零截斷 <span class="src src-mine">導讀補充</span>。試試看兩個日期差 59 或 60 天時，「約幾個月」是多少。</figcaption>
+      </figure>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>小幫手有四個工具：一張「書架地圖」、一本「人名索引」、一台「精確查詢機」、一個「關鍵字搜尋框」。它一邊想一邊挑工具用，想清楚了才回答。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>代理每一步產生一段推理 \(r_t\) 和一個動作 \(a_t\)：呼叫某個工具（帶結構化參數），或發出最終答案。工具輸出附加到歷史，讓推理與結構化存取交錯進行。代理會把每輪中的相對時間先解析成日期或日期範圍再呼叫工具。工具呼叫上限 40 次（§6.2）。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>Table 8 的時間查詢用 \(30.44\) 天當一個月（\(365.25/12 \approx 30.44\)）<span class="src src-mine">導讀補充：驗算</span>，而且取「最新建立的那一筆」事實（ORDER BY created_at DESC LIMIT 1）。這表示「哪一版有效」的判斷其實寫在代理產生的 SQL 裡：如果代理忘了排序，或用了 created_at（寫入時間）而不是事實的有效時間 \(t_{\text{from}}\)，同一張圖會給出不同答案。查詢時解析的品質完全取決於代理寫 SQL 的能力，§6.3 也承認 GPT4o 在產生 SQLite 查詢時錯誤率較高。</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>為什麼 GraphSQL 要限制成唯讀、單一陳述？</summary><div><p>代理寫的 SQL 不能修改記憶（保持只增不刪），也避免一次執行多段陳述帶來的安全與除錯問題。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-tools">筆記</label><textarea id="note-tools" data-note="s-tools"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-tools"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 06 agent animation ===================== -->
+    <section class="sec" id="s-agent" data-short="動畫：代理查一題">
+      <div class="sec-head"><span class="sec-num">06</span><h2>動畫：代理怎麼用工具回答一題</h2></div>
+      <p>同一個 Alice 的例子，換成問「她最喜歡的餐廳是什麼時候換的？」，看 ReAct 代理每一步的推理、工具呼叫與觀察。</p>
+      <div class="anim" id="anim-agent" data-label="APEX-MEM 圖代理工具呼叫動畫"></div>
+      <p class="anim-note">工具名稱、輸入輸出格式與 SQL 寫法依 §4 與 Table 8；這一題的實際推理軌跡原文沒有公開，動畫中的每一步推理、參數與觀察都是示意 <span class="src src-mine">導讀補充</span>。</p>
+      <div class="desk-foot">
+        <div class="note"><label for="note-agent">筆記</label><textarea id="note-agent" data-note="s-agent"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-agent"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 07 online ===================== -->
+    <section class="sec" id="s-online" data-short="線上建構">
+      <div class="sec-head"><span class="sec-num">07</span><h2>線上建構：先看問題，再建圖</h2></div>
+      <div class="claim">
+        <span class="claim-label">APEX-MEM Online <span class="src src-abs">原文 §5、§6.2</span></span>
+        <p>對話非常長、文件數量多一個數量級（\(>10^3\)）時，離線建出完整的圖既不可行也沒必要，因為很多內容和預期的問題無關。此時改為<b>線上</b>建構：給定文件集合 D 和問題 Q，用語義與詞彙搜尋判斷文件相關度，只對 \(\text{Relevance}(d_i \mid Q) > \Theta_{\text{rel}}\) 的文件子集依時間順序建圖。LongMemEval 與 SealQA 用這個模式，\(\Theta_{\text{rel}} > 0.2\)；LoCoMo 則對每段對話的所有 session 建圖。</p>
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>這就像考試前先偷看題目，再決定要把課本哪幾頁抄進筆記。這樣當然比較省力，但也不是一般「事先做好筆記」的情況了。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>這是一個重要的設定差異 <span class="src src-mine">導讀補充</span>：在 LongMemEval 上，APEX-MEM 的記憶是<b>看過問題之後</b>才建的，等於把檢索的第一步（挑相關 session）提前到建圖階段。Zep、Mem0 等記憶系統則是不知道問題就先建好記憶。Table 4 把兩者放在同一張表比較，原文沒有討論這個差異對公平性的影響。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>從工程角度這很合理：每個問題只為相關子集付建圖成本。但它也意味著同一段歷史面對不同問題會建出不同的圖，「記憶」變成了以問題為條件的檢索快取。若要和事先建好記憶的系統公平比較，應報告以完整歷史離線建圖的 LongMemEval 結果，或讓基線也能用同樣的問題導向過濾。原文也沒有說明用的是 LongMemEval 的哪個版本（S、M 或 oracle）。</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>線上建構在 LongMemEval 上給了 APEX-MEM 什麼額外資訊？</summary><div><p>問題本身。建圖前就用問題篩選相關文件，基線記憶系統則是在不知道問題的情況下建記憶。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-online">筆記</label><textarea id="note-online" data-note="s-online"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-online"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 08 setup ===================== -->
+    <section class="sec" id="s-setup" data-short="實驗設定">
+      <div class="sec-head"><span class="sec-num">08</span><h2>實驗設定</h2></div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>他們考了三種試：記得聊天內容的兩種（LoCoMo、LongMemEval），和一種「網路上資料很亂、還互相矛盾」的難題（SealQA）。</p>
+        </div>
+        <div class="lv lv-uni">
+          <ul>
+            <li><b>LoCoMo</b>：多 session 長期對話，題型分單跳、多跳、時間、開放領域、對抗（無法回答）。依 Mem0 的做法用 LLM-as-a-Judge 評。</li>
+            <li><b>LongMemEval</b>：極長輸入下的事實回想與跨段推理，用建議的 LLM 判定。</li>
+            <li><b>SealQA-Hard</b>：網路搜尋結果互相衝突或有雜訊的事實題，聊天模型（如 GPT-4.1）準確率接近零。每題 30 份網路文件，其中 1–2 份是 gold，位置未知。作者把文件依發布時間排序、每份當一次 agent 與世界的互動，以對齊記憶評測。</li>
+          </ul>
+          <p>建圖用 Sonnet 4.5 抽取、Haiku 4.5 解析；回答代理測了多個 Claude 與 GPT 模型；工具呼叫上限 40；溫度 0；每個 LLM 判定取 3 次平均，標準差 &lt; ±1。LoCoMo 基線重新實作以反映新版模型；LongMemEval 另做了一個較強的檢索基線（展開前 5 個相關 session）；其他評測引用既有論文報告的數字（§6.2）。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>本頁注意到的缺口 <span class="src src-mine">導讀補充</span>：問答的判定模型是哪一個，原文沒有寫（Table 2 的建構指標才寫 GPT5）。Table 1 的 MemInsight 與「Memory」兩組、Table 4 的 Memory 組、Table 5 的 AGENT 組都是轉引數字，判定模型、提示詞與回答模型都和 APEX-MEM 不同，所以只有作者自己重跑的 SimpleSearch 與 Full Context 是相對可比的基線。</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>Table 1 裡哪些列和 APEX-MEM 在同樣條件下評測？</summary><div><p>作者重新實作的 SimpleSearch 四列，以及 Full Context。其他基線引用自 MemInsight、SealQA、MIRIX 等論文。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-setup">筆記</label><textarea id="note-setup" data-note="s-setup"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-setup"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 09 locomo ===================== -->
+    <section class="sec" id="s-locomo" data-short="LoCoMo 結果（互動）">
+      <div class="sec-head"><span class="sec-num">09</span><h2>LoCoMo：88.88% 怎麼讀</h2></div>
+      <div class="predict">
+        <b class="ptitle">先猜再看</b>
+        <p>同樣用 GPT4o 回答，「整段對話塞進去」和 APEX-MEM 誰高？把欄位切到「w/o Adv.」再看。</p>
+      </div>
+      <figure class="figure" style="margin:0">
+        <div class="controls">
+          <label for="ctl-t1">欄位<select id="ctl-t1">
+            <option value="6">w/o Adv.（排除對抗題）</option>
+            <option value="5">Overall（APEX-MEM 與 SimpleSearch 含對抗題）</option>
+            <option value="0">Single-Hop</option>
+            <option value="1">Multi-Hop</option>
+            <option value="2">Temporal</option>
+            <option value="3">Open-Domain</option>
+            <option value="4">Adversarial</option>
+          </select></label>
+        </div>
+        <div class="key"><span><i class="k-ours"></i>APEX-MEM</span><span><i class="k-mine"></i>作者重跑的 SimpleSearch</span><span><i class="k-full"></i>Full Context（GPT4o）</span><span><i class="k-rep"></i>轉引自其他論文</span></div>
+        <div class="chart-box"><svg id="t1-chart" viewBox="0 0 640 640" role="img" aria-label="Table 1 所選欄位的長條圖"></svg></div>
+        <figcaption>依 Table 1 繪製；N/A 的格子不畫。SimpleSearch 列原文沒有報 w/o Adv.，本頁依題數加權補算並以斜體標出 <span class="src src-mine">導讀補充</span>。注意「Memory」組的 Overall 欄其實就是 w/o Adv.（沒有對抗題分數）。</figcaption>
+      </figure>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>APEX-MEM 考得最高，但比的對象有很多是別人考的、用不同老師改的。用同一個學生（GPT4o）來比，把整本日記直接給它看，反而稍微高一點。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>原文（§6.3）：APEX-MEM 搭 GPT5 達 88.88%，比先前最佳的 MIRIX 85.38% 高 3.50 個百分點；各類別：單跳 89.88%、多跳 86.29%、時間 90.63%、開放領域 91.68%、對抗 86.77%。換成 GPT4o 為 86.35%，GPT4o 的 SQLite 查詢與工具使用錯誤率較高。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>讀表時本頁的驗算 <span class="src src-mine">導讀補充</span>：</p>
+          <ul>
+            <li><b>Overall 定義不一致。</b>APEX-MEM 的 88.88% 包含對抗題，MIRIX 的 85.38% 沒有（Memory 組的對抗欄都是 N/A，Overall 等於 w/o Adv.）。同口徑比較是 89.49% 對 85.38%，差 4.11 個百分點，對 APEX-MEM 反而更有利。</li>
+            <li><b>同回答模型下，全文脈絡更高。</b>Full Context（GPT4o）w/o Adv. 為 87.52%，APEX-MEM（GPT4o）為 86.75%。按 Table 9，Full Context 每題約 25,000 tokens，APEX-MEM 約 30,000（Table 10 則是 81,604）。也就是在 LoCoMo 這種長度的對話上，同模型的全文脈絡更準也更省。原文沒有報告 GPT5 或 Sonnet 4.5 的全文脈絡基線。</li>
+            <li><b>SimpleSearch 的 Overall 無法重現。</b>APEX-MEM 五列都能用題數加權精確重現，但作者自己重跑的 SimpleSearch 四列算不回來：GPT5 列加權得 74.81%，表上 77.90%；GPT4 列 49.28% 對 60.67%；Sonnet 4.5 列 73.48% 對 76.79%；Sonnet 3.5 列 62.38% 對 70.90%。</li>
+            <li><b>「各類別差距小於 5 個百分點」</b>（RQ4）只對部分列成立：GPT5 列從 86.29% 到 91.68%，差 5.39；Haiku 列從 79.17% 到 89.18%，差 10.01。</li>
+          </ul>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>回到 00 的第二個猜測：同樣用 GPT4o，誰比較高？</summary><div><p>Full Context：87.52% 對 86.75%（都不含對抗題）。</p></div></details>
+        <details><summary>驗算 APEX-MEM（GPT5）的 Overall。</summary><div><p>\((89.88 \times 840 + 86.29 \times 282 + 90.63 \times 321 + 91.68 \times 96 + 86.77 \times 446) / 1985 \approx 88.88\)。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-locomo">筆記</label><textarea id="note-locomo" data-note="s-locomo"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-locomo"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 10 ablation ===================== -->
+    <section class="sec" id="s-ablation" data-short="工具消融與用量">
+      <div class="sec-head"><span class="sec-num">10</span><h2>工具消融：每個工具值多少</h2></div>
+      <div class="table-wrap">
+        <table class="results">
+          <caption>Table 3：工具消融（LoCoMo，回答代理 Claude 4.5 Haiku）<span class="src src-abs">原文 Table 3</span>；最右欄是本頁依題數加權重算 <span class="src src-mine">導讀補充</span></caption>
+          <thead><tr><th>工具組合</th><th class="num">單跳</th><th class="num">多跳</th><th class="num">時間</th><th class="num">開放</th><th class="num">對抗</th><th class="num">Overall（原文）</th><th class="num">Overall（重算）</th></tr></thead>
+          <tbody>
+            <tr><td>SchemaViewer, EntityLookUp</td><td class="num">80.85%</td><td class="num">76.64%</td><td class="num">72.92%</td><td class="num">76.34%</td><td class="num">77.80%</td><td class="num">77.19%</td><td class="num">78.07%</td></tr>
+            <tr><td>+ GraphSQL</td><td class="num">80.78%</td><td class="num">79.75%</td><td class="num">82.29%</td><td class="num">78.00%</td><td class="num">81.16%</td><td class="num">79.45%</td><td class="num">80.83%</td></tr>
+            <tr class="ours"><td>+ Search</td><td class="num">85.46%</td><td class="num">84.74%</td><td class="num">79.17%</td><td class="num">89.18%</td><td class="num">87.22%</td><td class="num">87.00%</td><td class="num">84.92%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>拿掉不同的工具，看小幫手考得怎樣。三個工具都有用，但論文算總分時好像算錯了，把加上搜尋框的進步算得比實際大。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>原文（§6.3）：只有 SchemaViewer 與 EntityLookUp 時 77.19%；加 GraphSQL 到 79.45%（+2.26），多跳與時間題進步最多；再加 Search 到 87%（+7.55），各類別都進步。附錄 A：GraphSQL-only 版本要 27,282 次 GraphSQL 呼叫才達 79.45%，是完整系統 8,260 次的 3.3 倍；時間題上 GraphSQL-only 反而較好（82.29% 對 79.17%）。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>本頁的驗算 <span class="src src-mine">導讀補充</span>：</p>
+          <ul>
+            <li><b>Table 3 的 Overall 和自己的分項對不上。</b>最後一列的五個類別數字與 Table 1 的 Haiku 列完全相同，而 Table 1 那一列的 Overall 是 84.92%（加權可精確重現），Table 3 卻寫 87.00%。依題數加權重算，三列是 78.07%、80.83%、84.92%：加 GraphSQL 約 +2.76，加 Search 約 +4.09，而不是原文的 +2.26 與 +7.55。附錄 A、B 與正文多處引用的「87%」都來自這一格。</li>
+            <li><b>「3.3 倍工具呼叫」只算了 GraphSQL。</b>Table 6 中完整系統的工具呼叫合計 29,624 次，GraphSQL-only 合計 41,466 次，總數只多 1.40 倍。</li>
+            <li><b>消融的工具集對不上。</b>Table 6「Entity」欄（只有 SchemaViewer 與 EntityLookUp 的消融）仍記錄了 1,058 次 Search 與 358 次 PropertySearch；PropertySearch 這個工具在 §4 的工具清單中根本沒有出現。</li>
+            <li><b>Table 7 的 SQL 類別數恰好是 Table 6 GraphSQL 呼叫數的一半</b>，三欄都是：4,130 對 8,260、13,641 對 27,282、3,584 對 7,168。原文說類別「不互斥」，但加總剛好一半更像是計數方式不同（例如每次呼叫記錄兩次），原文沒有說明。</li>
+          </ul>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="results">
+          <caption>Table 6：工具呼叫次數 <span class="src src-abs">原文 Table 6</span>；合計列為本頁加總 <span class="src src-mine">導讀補充</span></caption>
+          <thead><tr><th>工具</th><th class="num">Haiku（完整）</th><th class="num">Haiku: Entity</th><th class="num">Haiku: GraphSQL</th><th class="num">Sonnet 4.5（完整）</th></tr></thead>
+          <tbody>
+            <tr><td>EntityLookup</td><td class="num">5,160</td><td class="num">17,414</td><td class="num">5,546</td><td class="num">4,894</td></tr>
+            <tr><td>Search</td><td class="num">8,900</td><td class="num">1,058</td><td class="num">0</td><td class="num">10,544</td></tr>
+            <tr><td>PropertySearch</td><td class="num">3,346</td><td class="num">358</td><td class="num">5,016</td><td class="num">3,342</td></tr>
+            <tr><td>SchemaViewer</td><td class="num">3,958</td><td class="num">4,004</td><td class="num">3,622</td><td class="num">3,964</td></tr>
+            <tr><td>GraphSQL</td><td class="num">8,260</td><td class="num">0</td><td class="num">27,282</td><td class="num">7,168</td></tr>
+            <tr><td><em>合計</em></td><td class="num">29,624</td><td class="num">22,834</td><td class="num">41,466</td><td class="num">29,912</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>如果 Overall 改用重算值，Search 工具的貢獻還算大嗎？</summary><div><p>仍是三者中最大（約 +4.1 對 GraphSQL 的 +2.8），但只有原文宣稱的一半多。結論方向不變，幅度要打折。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-ablation">筆記</label><textarea id="note-ablation" data-note="s-ablation"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-ablation"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 11 LME & SealQA ===================== -->
+    <section class="sec" id="s-lme" data-short="LongMemEval 與 SealQA">
+      <div class="sec-head"><span class="sec-num">11</span><h2>LongMemEval 與 SealQA</h2></div>
+      <div class="table-wrap">
+        <table class="results">
+          <caption>Table 4：LongMemEval <span class="src src-abs">原文 Table 4</span></caption>
+          <thead><tr><th>方法</th><th>回答模型</th><th class="num">分數</th></tr></thead>
+          <tbody>
+            <tr class="ours"><td>APEX-MEM Online</td><td>Claude 4.5 Haiku</td><td class="num">82.8%</td></tr>
+            <tr class="ours"><td>APEX-MEM Online</td><td>Claude 4.5 Sonnet</td><td class="num"><b>86.2%</b></td></tr>
+            <tr class="ours"><td>APEX-MEM Online</td><td>Claude 4 Sonnet</td><td class="num">81.0%</td></tr>
+            <tr class="ours"><td>APEX-MEM Online</td><td>GPT5</td><td class="num">85.2%</td></tr>
+            <tr class="ours"><td>APEX-MEM Online</td><td>GPT4o</td><td class="num">75.0%</td></tr>
+            <tr><td>Full-Context</td><td>GPT4o</td><td class="num">60.2%</td></tr>
+            <tr><td>Full-Context</td><td>Claude 4.5 Sonnet</td><td class="num">62.2%</td></tr>
+            <tr><td>Full-Context + Chain-of-Note</td><td>Claude 4.5 Sonnet</td><td class="num">63.9%</td></tr>
+            <tr><td>SimpleSearch (K=V+fact)，前 5 + 展開 session</td><td>Claude 4.5 Sonnet</td><td class="num">72.5%</td></tr>
+            <tr><td>SimpleSearch (K=V+fact)</td><td>Mistral-Nemo-Instruct-2407</td><td class="num">66.6%</td></tr>
+            <tr><td>Zep／Mem0／A-Mem／Nemori</td><td>（轉引）</td><td class="num">71.2%／71.3%／59.3%／74.6%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-wrap">
+        <table class="results">
+          <caption>Table 5：SealQA-Hard <span class="src src-abs">原文 Table 5</span></caption>
+          <thead><tr><th>方法</th><th class="num">準確率</th></tr></thead>
+          <tbody>
+            <tr class="ours"><td>APEX-MEM Online · Claude 4 Sonnet／Claude 4.5 Sonnet／GPT5／GPT4o</td><td class="num">28.9%／35.2%／<b>40.1%</b>／19.0%</td></tr>
+            <tr><td>附網路搜尋工具的代理 · GPT4o／<b>GPT5</b>／O4-Mini-HIGH／O3／QWEN3-235B／DeepSeek-R1</td><td class="num">15%／<b>38.6%</b>／12%／34.6%／11.4%／15.4%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>在超長的聊天紀錄考試裡，小幫手贏很多。在「網路資料互相打架」的考試裡，它也贏，但只贏一點點，不是論文說的那麼多。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>原文（§6.3）：LongMemEval 上 Sonnet 4.5 版 86.2%，比最強基線 Nemori（74.6%）高 11.6，比會話感知 RAG 基線（72.5%）高 13.7。SealQA-Hard 上 GPT5 版 40.15%，比 O3（34.6%）高 5.55，作者說這顯示只增不刪的屬性圖與查詢時解析能處理矛盾與雜訊。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>本頁的驗算 <span class="src src-mine">導讀補充</span>：</p>
+          <ul>
+            <li><b>SealQA 的「最強基線」選錯了。</b>Table 5 中最強的基線是附搜尋工具的 GPT5，38.6%，不是 O3。同模型比較，APEX-MEM（GPT5）只高 \(40.1 - 38.6 = 1.5\) 個百分點；原文的 5.55 是和 O3 比的。表上寫 40.1%，正文寫 40.15%。</li>
+            <li><b>LongMemEval 的比較條件不同。</b>APEX-MEM 用線上建構（先看問題再建圖，見第 07 節）；Zep、Mem0、A-Mem、Nemori 是轉引數字，回答模型與判定方式都不同。比較乾淨的對照是作者自己跑的 Sonnet 4.5 檢索基線 72.5%：同一回答模型下 +13.7。</li>
+            <li>和 LoCoMo 相反，LongMemEval 上全文脈絡遠低於 APEX-MEM（Sonnet 4.5：62.2% 對 86.2%），符合「對話越長、全文脈絡雜訊越多」的直覺。</li>
+          </ul>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>SealQA 上 APEX-MEM 和同一個 GPT5 的差距是多少？</summary><div><p>40.1% 對 38.6%，約 1.5 個百分點。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-lme">筆記</label><textarea id="note-lme" data-note="s-lme"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-lme"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 12 cost ===================== -->
+    <section class="sec" id="s-cost" data-short="成本：token 花在哪">
+      <div class="sec-head"><span class="sec-num">12</span><h2>成本：token 花在哪裡</h2></div>
+      <div class="table-wrap">
+        <table class="results">
+          <caption>Table 10：APEX-MEM 每題 token 分解 <span class="src src-abs">原文 Table 10</span></caption>
+          <thead><tr><th>項目</th><th class="num">tokens／題</th><th class="num">%</th><th>來源</th></tr></thead>
+          <tbody>
+            <tr><td>建圖（攤提）</td><td class="num">13,557</td><td class="num">16.6</td><td>抽取、解析</td></tr>
+            <tr><td>系統提示</td><td class="num">7,854</td><td class="num">9.6</td><td>架構固定</td></tr>
+            <tr><td>記憶檢索</td><td class="num">21,745</td><td class="num">26.6</td><td>圖搜尋（top-k）</td></tr>
+            <tr><td>代理迴圈額外負擔</td><td class="num">16,174</td><td class="num">19.8</td><td>迴圈中先前的訊息</td></tr>
+            <tr><td>工具框架</td><td class="num">22,274</td><td class="num">27.3</td><td>工具呼叫／回應格式</td></tr>
+            <tr><td><b>平均合計</b></td><td class="num"><b>81,604</b></td><td class="num">100</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-wrap">
+        <table class="results">
+          <caption>Table 9 節錄：各方法每題 token <span class="src src-abs">原文 Table 9</span>（est. 為作者估計）</caption>
+          <thead><tr><th>方法</th><th class="num">建圖 tokens／對話</th><th class="num">攤提建圖／題</th><th class="num">合計／題</th><th class="num">準確率（w/o Adv）</th></tr></thead>
+          <tbody>
+            <tr><td>MIRIX (est.)</td><td class="num">~15.2M</td><td class="num">~98,750</td><td class="num">~112,000</td><td class="num">85.38%</td></tr>
+            <tr><td>Zep/Graphiti</td><td class="num">~9.4M</td><td class="num">~60,900</td><td class="num">~64,800</td><td class="num">75.14%</td></tr>
+            <tr><td>Mem0<sup>g</sup> (est.)</td><td class="num">~4.9M</td><td class="num">~31,882</td><td class="num">~37,200</td><td class="num">68.44%</td></tr>
+            <tr class="ours"><td>APEX-MEM</td><td class="num">2.69M</td><td class="num">13,557</td><td class="num">~30,000</td><td class="num">84–89%</td></tr>
+            <tr><td>Full Context</td><td class="num">0</td><td class="num">0</td><td class="num">~25,000</td><td class="num">87.52%</td></tr>
+            <tr><td>Mem0 (est.)</td><td class="num">~1.9M</td><td class="num">~12,409</td><td class="num">~15,900</td><td class="num">68.44%</td></tr>
+            <tr><td>Nemori (est.)</td><td class="num">~1.0M</td><td class="num">~6,422</td><td class="num">~10,900</td><td class="num">79.40%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>做筆記本身不貴，貴的是小幫手每次回答都要翻很多次、跟工具來回講很多話。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>原文（附錄 C）：建圖只佔 APEX-MEM 總成本的 16.6%，大部分花在工具存取與代理推理迴圈；每題 token 明顯低於 MIRIX（每次互動約 8 次 LLM 呼叫）。Table 10 中記憶檢索（26.6%）與工具框架（27.3%）佔最多。附錄 D：GraphSQL 執行成功率 Sonnet 4.5 為 97.6%，GPT-5 錯誤率 6.6%（主要是 SQLite 語法差異）；代理能從 87% 的 SQL 失敗中恢復（45% 靠重看 schema、28% 改用 EntityLookup、14% 改用 Search）。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>本頁的驗算 <span class="src src-mine">導讀補充</span>：</p>
+          <ul>
+            <li><b>兩張成本表互相矛盾。</b>Table 9 寫 APEX-MEM 每題約 30,000 tokens；Table 10 的分解平均是 81,604（五項加總吻合）。即使只把 Table 9 自己的三欄相加（13,557 + 8,000 + 16,000），也是 37,557，不是 30,000。若以 81,604 計，APEX-MEM 每題成本是全文脈絡（~25,000）的三倍多。</li>
+            <li><b>攤提的分母</b>：2.69M ÷ 13,557 ≈ 198，等於假設每段對話約 198 題；LoCoMo 共 10 段對話、約 1,985 題（每段約 199 題），大致吻合。對話一長、題目一少，攤提就會大幅上升。</li>
+            <li><b>Table 9 的 Mem0 與 Mem0<sup>g</sup> 準確率都是 68.44%</b>，也等於 Table 1 的「Mem0」列。兩個系統同一個數字，可能是轉引時混用了 Mem0 與 Mem0<sup>g</sup>。</li>
+            <li><b>Table 11 的小落差</b>：Sonnet 4.5 執行 3,659、成功 3,574，差 85，表上寫錯誤 87；「Sonnet (SQL)」成功 65,900／66,580 ≈ 98.98%，表上寫 98.8%，錯誤數也應是 680 而非 791。且附錄稱 GraphSQL-only 消融用 Haiku（Table 6：27,282 次），Table 11 卻標成 Sonnet、執行 66,580 次。</li>
+          </ul>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>回到 00 的第三個猜測：token 大部分花在哪？</summary><div><p>依 Table 10，代理相關的部分（記憶檢索 26.6%、工具框架 27.3%、迴圈額外負擔 19.8%）合計約 74%；建圖只佔 16.6%。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-cost">筆記</label><textarea id="note-cost" data-note="s-cost"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-cost"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 13 context ===================== -->
+    <section class="sec" id="s-context" data-short="和本站其他論文">
+      <div class="sec-head"><span class="sec-num">13</span><h2>和本站其他論文的關係</h2></div>
+      <div class="table-wrap">
+        <table class="results">
+          <caption>「舊值怎麼辦」的不同答案 <span class="src src-mine">導讀補充</span></caption>
+          <thead><tr><th>論文</th><th>何時決定哪一版有效</th><th>由誰決定</th><th>和 APEX-MEM 的關係</th></tr></thead>
+          <tbody>
+            <tr><td><a href="../dekleer-1986-atms/index.html">ATMS (1986)</a></td><td>隨時：每筆資料帶標籤，查詢是子集合檢驗</td><td>確定性的標籤傳播</td><td>同樣保留所有版本、不刪資料；但 ATMS 的「有效」可證明，APEX-MEM 靠代理判斷。</td></tr>
+            <tr><td><a href="../2501.13956/index.html">Zep</a></td><td>寫入時：矛盾時把舊邊標失效</td><td>LLM 比對</td><td>APEX-MEM 的比較對象之一；作者批評 Zep 過度依賴文字檢索。</td></tr>
+            <tr><td><a href="../2608.19652/index.html">StateMem</a></td><td>寫入時標記、回答時重算；包裝器版本完全在回答時</td><td>確定性旗標＋LLM</td><td>StateMemWrapper 與 APEX-MEM 都把解析延到回答時；StateMem 給回答模型明確的優先規則，APEX-MEM 讓代理自己寫 SQL。</td></tr>
+            <tr><td><a href="../2605.06527/index.html">STALE</a></td><td>寫入時：CUPMem 裁決</td><td>LLM 裁決器</td><td>APEX-MEM 的時間解析只處理明講的變化（「已經倒了，現在去 Sakura Sushi」）；STALE 的隱性衝突（腿斷了 → 不能騎車）不在它的設計範圍內。</td></tr>
+            <tr><td><a href="../2601.18642/index.html">FadeMem</a></td><td>持續：衰減與刪除</td><td>公式</td><td>方向相反：APEX-MEM 不忘；成本由查詢時的代理迴圈承擔。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>大家都在想同一個問題：舊消息被新消息推翻時怎麼辦。有人當場劃掉舊的，有人讓它慢慢淡掉，APEX-MEM 則是全部留著，等有人問了再翻。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>用 StateMemBench 的語言來說，APEX-MEM 的案例 1 是最簡單的 status 變化：新值明講、時間明確。StateMemBench 裡更難的 sequence（衍生值要重算）與 salience（安靜的事實被響亮的蓋過）模式，APEX-MEM 沒有專門機制；能不能處理取決於代理寫的 SQL 有沒有把依賴關係算進去。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>和 ATMS 的對照最有啟發：兩者都「不在寫入時做不可逆的決定」。ATMS 把有效性編碼成標籤，查詢時只要做子集合檢驗，結果有保證；APEX-MEM 把有效性留在事實的時間欄位，查詢時由 LLM 寫 SQL 解讀，結果沒有保證但表示力更彈性（自然語言、時間區間、信心值）。一個可能的混合：用時間區間當 ATMS 的假設，讓「在 t 時刻有效」變成可檢驗的標籤。</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>STALE 的「腿打石膏 → 不能騎車」例子，APEX-MEM 會怎麼處理？</summary><div><p>它會分別存「腿打石膏」與「騎車通勤」兩筆事實，兩者都不會被標記衝突（沒有明講的取代）。問通勤時，代理要自己想到去查健康狀況，否則會沿用騎車的舊事實。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-context">筆記</label><textarea id="note-context" data-note="s-context"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-context"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 14 critique ===================== -->
+    <section class="sec" id="s-critique" data-short="批判性閱讀">
+      <div class="sec-head"><span class="sec-num">14</span><h2>批判性閱讀</h2></div>
+      <div class="prose">
+        <h3>作者自己承認的限制</h3>
+        <ul>
+          <li>建圖成本高（實體解析與屬性抽取都靠 LLM），即時應用負擔大；解析錯誤會沿著圖傳播（Limitations）。</li>
+          <li>35 類本體不一定涵蓋所有領域；跨領域標準化本體仍困難。</li>
+          <li>效能取決於回答代理寫 SQLite 與用工具的能力：GPT4o 的查詢錯誤率很高，作者得在 GPT4o 的提示詞裡額外加入查詢錯誤範例才達到 86.35%。</li>
+          <li>SealQA-Hard 只有 40.15%；代理需要多次工具呼叫，影響延遲；目前只支援文字。</li>
+        </ul>
+        <h3>本頁補充的問題 <span class="src src-mine">導讀補充</span></h3>
+        <ul>
+          <li><b>核心設計沒有被直接驗證。</b>「只增不刪優於覆寫」只有跨系統的間接比較（Table 12），沒有同系統的覆寫式消融。</li>
+          <li><b>同模型全文脈絡在 LoCoMo 上更好也更便宜</b>（第 09、12 節）；原文沒有報告強模型（GPT5、Sonnet 4.5）的全文脈絡基線。</li>
+          <li><b>LongMemEval 用了看過問題才建的記憶</b>（第 07 節），也沒說明是哪個版本。</li>
+          <li><b>大量轉引基線</b>，判定模型與提示詞不同；問答判定模型是哪一個，原文沒寫。</li>
+          <li><b>沒有程式碼或圖資料可供檢查</b>，表格之間的不一致無法自行核對來源。</li>
+        </ul>
+        <h3>驗算時發現的原文不一致 <span class="src src-mine">導讀補充</span></h3>
+        <ol>
+          <li><b>Table 3 的 Overall 無法由分項重現</b>：最後一列分項與 Table 1 Haiku 列相同，Overall 卻是 87.00%（Table 1 為 84.92%）；重算三列為 78.07%、80.83%、84.92%，Search 的貢獻約 +4.1 而非 +7.55。</li>
+          <li><b>Table 1 的 Overall 口徑不一</b>：APEX-MEM 含對抗題，Memory 組不含；「贏 MIRIX 3.50」用的是不同口徑（同口徑為 4.11）。</li>
+          <li><b>SimpleSearch 四列的 Overall 無法由分項重現</b>（例如 GPT5：74.81% 對表上 77.90%），而這是作者自己重跑的基線。</li>
+          <li><b>SealQA 的最強基線</b>是 GPT5（38.6%）而非 O3，差距是 1.5 而非 5.55；40.1% 與 40.15% 兩種寫法並存。</li>
+          <li><b>「3.3 倍工具呼叫」只算 GraphSQL</b>，總呼叫數只多 1.40 倍。</li>
+          <li><b>消融的工具集</b>：只有 SchemaViewer 與 EntityLookUp 的消融仍有 Search 與 PropertySearch 呼叫；PropertySearch 未在方法中定義。</li>
+          <li><b>Table 7 的 SQL 類別加總恰為 Table 6 GraphSQL 呼叫數的一半</b>（三欄皆然），原因未說明。</li>
+          <li><b>Table 9 與 Table 10 的每題 token</b>：約 30,000 對 81,604；Table 9 自身三欄相加為 37,557。</li>
+          <li><b>Table 11</b>：錯誤數與成功率對不上（87 對 85、791 對 680、98.8% 對 98.98%），GraphSQL-only 消融在不同表標成 Haiku 與 Sonnet。</li>
+          <li><b>「各類別差距小於 5 個百分點」</b>對 GPT5 列（5.39）與 Haiku 列（10.01）不成立。</li>
+          <li><b>引用錯誤</b>：LongMemEval 被標成 arXiv:2504.19413（那是 Mem0 的編號）；A-MEM 以 2025a、2025b 重複列了兩次。</li>
+        </ol>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>若只能補一個實驗來支撐這篇的核心主張，你會補哪個？</summary><div><p>同系統的覆寫式消融：其他都不變，把寫入改成覆寫舊事實，比較時間題與整體準確率。這能直接檢驗「只增不刪」本身的價值。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-critique">筆記</label><textarea id="note-critique" data-note="s-critique" placeholder="你自己的質疑"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-critique"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== glossary ===================== -->
+    <section class="sec" id="s-glossary" data-short="術語表">
+      <div class="sec-head"><span class="sec-num">附錄</span><h2>術語表</h2></div>
+      <dl class="gloss">
+        <dt>屬性圖</dt><dd>Property graph：節點與邊都可以帶鍵值屬性的圖。</dd>
+        <dt>本體</dt><dd>Ontology：型別階層與關係的定義；本文有 35 個實體類別。</dd>
+        <dt>只增不刪</dt><dd>Append-only：新資訊一律新增，不覆寫、不刪除舊的。</dd>
+        <dt>查詢時解析</dt><dd>Retrieval-time resolution：回答問題時才判斷哪一版事實有效。</dd>
+        <dt>實體解析</dt><dd>Entity resolution：把不同說法對到同一個標準實體 id。</dd>
+        <dt>ReAct</dt><dd>交錯產生推理與行動（工具呼叫）的代理框架。</dd>
+        <dt>GraphSQL</dt><dd>本文對 SQLite 圖資料庫的唯讀 SQL 工具。</dd>
+        <dt>anchor 時間</dt><dd>對話發生的時間，用來把相對時間換成絕對日期。</dd>
+        <dt>線上建構</dt><dd>APEX-MEM Online：先依問題挑相關文件，再只對那些文件建圖。</dd>
+        <dt>w/o Adv.</dt><dd>LoCoMo 排除對抗（無法回答）題後的準確率。</dd>
+        <dt>LLM-as-a-Judge</dt><dd>用 LLM 判定答案是否正確。</dd>
+      </dl>
+    </section>
+
+    <!-- ===================== export ===================== -->
+    <section class="sec" id="s-export" data-short="匯出筆記">
+      <div class="sec-head"><span class="sec-num">附錄</span><h2>匯出我的筆記</h2></div>
+      <p>筆記只存在這個瀏覽器裡。讀完後複製成 Markdown，可以存成 repo 的 <code>papers/2604.14362/notes.md</code>，或貼給 Claude 繼續討論。</p>
+      <div class="btn-row"><button type="button" class="btn" id="export-notes">複製全部筆記</button><span class="toast" id="export-toast" role="status"></span></div>
+      <div class="note"><label for="export-box" class="sr-only">匯出內容</label><textarea id="export-box" rows="8" hidden readonly></textarea></div>
+      <p class="readout">來源：Banerjee et al., <a href="https://arxiv.org/abs/2604.14362" target="_blank" rel="noopener">arXiv:2604.14362v1</a>, 2026。本頁已對照 v1 PDF 核對。</p>
+    </section>
+
+  </main>
+</div>
+</div>
+
+<script src="../../assets/site.js"></script>
+<script src="../../assets/anim.js"></script>
+<script>
+// Date-difference widget (section s-tools), reproducing the TEMPORAL query of Table 8.
+(function () {
+  "use strict";
+  var a = document.getElementById("dc-start"), b = document.getElementById("dc-q"), out = document.getElementById("dc-out");
+  if (!a || !b || !out) return;
+  function jd(s) { var p = s.split("-").map(Number); return Date.UTC(p[0], p[1] - 1, p[2]) / 86400000; }
+  function update() {
+    if (!a.value || !b.value) { out.textContent = ""; return; }
+    var d = jd(b.value) - jd(a.value);
+    out.textContent = "days_difference = " + d + "　·　weeks_approx = " + Math.trunc(d / 7) + "　·　months_approx = " + Math.trunc(d / 30.44);
+  }
+  a.addEventListener("input", update);
+  b.addEventListener("input", update);
+  update();
+})();
+</script>
+<script>
+// Table 1 (verbatim) as a bar chart for section 09.
+(function () {
+  "use strict";
+  var W = [840, 282, 321, 96, 446];
+  // [name, kind, [single, multi, temporal, open, adversarial, overall, woAdv]] ; null = N/A
+  var ROWS = [
+    ["APEX-MEM · Claude 4.5 Haiku", "u", [85.46, 84.74, 79.17, 89.18, 87.22, 84.92, 84.25]],
+    ["APEX-MEM · Claude 4.5 Sonnet", "u", [89.36, 86.92, 90.63, 87.75, 86.10, 88.41, 89.08]],
+    ["APEX-MEM · Claude 3.5 Sonnet", "u", [87.58, 84.74, 87.50, 88.94, 86.10, 86.90, 87.13]],
+    ["APEX-MEM · GPT5", "u", [89.88, 86.29, 90.63, 91.68, 86.77, 88.88, 89.49]],
+    ["APEX-MEM · GPT4o", "u", [88.47, 85.46, 83.49, 86.46, 84.98, 86.35, 86.75]],
+    ["SimpleSearch · GPT5", "m", [76.60, 71.96, 72.92, 83.95, 72.65, 77.90, null]],
+    ["SimpleSearch · GPT4", "m", [46.10, 51.40, 37.50, 73.60, 57.17, 60.67, null]],
+    ["SimpleSearch · Claude 4.5 Sonnet", "m", [71.99, 73.52, 73.96, 81.33, 74.22, 76.79, null]],
+    ["SimpleSearch · Claude 3.5 Sonnet", "m", [55.32, 61.99, 61.46, 79.55, 72.87, 70.90, null]],
+    ["MemInsight + Attr. · C3.5 Sonnet", "r", [74.82, 74.45, 72.92, 80.02, 78.92, 77.79, null]],
+    ["MemInsight + RAG · C3.5 Sonnet", "r", [79.43, 82.55, 77.08, 75.15, 79.15, 77.95, null]],
+    ["MemInsight · LLamaV3", "r", [76.95, 81.31, 80.21, 76.93, 78.92, 78.25, null]],
+    ["MemInsight · Mistral", "r", [74.47, 82.55, 81.25, 78.60, 81.17, 79.36, null]],
+    ["OpenAI", "r", [63.79, 42.92, 62.29, 21.71, null, 52.90, 52.90]],
+    ["AMEM", "r", [39.79, 18.85, 54.05, 49.91, null, 48.38, 48.38]],
+    ["Zep", "r", [61.70, 41.35, 76.60, 49.31, null, 75.14, 75.14]],
+    ["MemGPT/LangMem", "r", [62.23, 47.92, 71.12, 23.43, null, 58.10, 58.10]],
+    ["Memory-R1", "r", [59.83, 53.01, 68.78, 51.55, null, null, null]],
+    ["Mem0", "r", [65.71, 47.19, 75.71, 58.13, null, 68.44, 68.44]],
+    ["Mnemosyne", "r", [62.78, 49.53, 60.42, 53.03, null, null, null]],
+    ["Nemori", "r", [84.9, 75.1, 77.60, 51.0, null, 79.4, 79.4]],
+    ["MIRIX", "r", [85.11, 83.70, 65.62, 88.39, null, 85.38, 85.38]],
+    ["Full Context · GPT4o", "f", [88.53, 77.70, 71.88, 92.70, null, 87.52, 87.52]]
+  ];
+  // Fill the w/o Adv. cell for SimpleSearch rows by weighting the four non-adversarial categories (marked as derived).
+  ROWS.forEach(function (r) {
+    if (r[1] === "m" && r[2][6] == null) {
+      var s = 0; for (var i = 0; i < 4; i++) s += r[2][i] * W[i];
+      r[2][6] = Math.round(s / (W[0] + W[1] + W[2] + W[3]) * 100) / 100;
+      r.derived = true;
+    }
+  });
+  var svg = document.getElementById("t1-chart"), sel = document.getElementById("ctl-t1");
+  if (!svg || !sel) return;
+  var NS = "http://www.w3.org/2000/svg";
+  function el(tag, attrs, text) {
+    var e = document.createElementNS(NS, tag);
+    Object.keys(attrs).forEach(function (a) { e.setAttribute(a, attrs[a]); });
+    if (text != null) e.textContent = text;
+    return e;
+  }
+  function draw() {
+    var col = Number(sel.value);
+    var rows = ROWS.filter(function (r) { return r[2][col] != null; }).sort(function (a, b) { return b[2][col] - a[2][col]; });
+    var Wd = 640, m = { l: 212, r: 56, t: 10, b: 28 }, rowH = 24;
+    var H = m.t + m.b + rowH * rows.length, pw = Wd - m.l - m.r;
+    function x(v) { return m.l + v / 100 * pw; }
+    svg.setAttribute("viewBox", "0 0 " + Wd + " " + H);
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    var grid = el("g", { "class": "grid" }), axis = el("g", { "class": "axis" });
+    [0, 25, 50, 75, 100].forEach(function (t) {
+      grid.appendChild(el("line", { x1: x(t), x2: x(t), y1: m.t, y2: H - m.b }));
+      axis.appendChild(el("text", { x: x(t), y: H - m.b + 16, "text-anchor": "middle" }, t + "%"));
+    });
+    svg.appendChild(grid);
+    svg.appendChild(axis);
+    rows.forEach(function (r, i) {
+      var v = r[2][col], y = m.t + i * rowH;
+      var cls = r[1] === "u" ? "bar ours" : r[1] === "m" ? "bar" : r[1] === "f" ? "bar full" : "bar rep";
+      var der = r.derived && col === 6;
+      var g = el("g", { "class": "row" });
+      g.appendChild(el("title", {}, r[0] + "：" + v.toFixed(2) + "%" + (der ? "（本頁補算）" : "")));
+      g.appendChild(el("rect", { "class": "hit", x: 0, y: y, width: Wd, height: rowH }));
+      g.appendChild(el("text", { "class": "name", x: m.l - 8, y: y + rowH / 2 + 4, "text-anchor": "end" }, r[0]));
+      g.appendChild(el("rect", { "class": cls, x: m.l, y: y + 5, width: Math.max(0, x(v) - m.l), height: rowH - 10, rx: 2 }));
+      var t = el("text", { "class": "val", x: x(v) + 6, y: y + rowH / 2 + 4 }, v.toFixed(2));
+      if (der) t.setAttribute("font-style", "italic");
+      g.appendChild(t);
+      svg.appendChild(g);
+    });
+  }
+  sel.addEventListener("change", draw);
+  draw();
+})();
+</script>
+<script>
+// Construction animation (section s-anim): Appendix E case 1, append-only store vs an overwrite store.
+(function () {
+  "use strict";
+  var root = document.getElementById("anim-build");
+  if (!root || !window.StudyAnim) return;
+  var steps = [
+    { title: "1. Session 1（2024-01-15）", run: function (s) {
+        s.turn = { t: "2024-01-15", txt: "Alice：「I love Italian Garden! Their pasta is the best in town.」" }; s.stage = "turn"; },
+      text: "一輪對話 \\(u = (s, l, \\mathit{text}, t_{\\text{anchor}}, \\mathit{ctx})\\)：說話者 Alice、錨定時間 2024-01-15。" },
+    { title: "2. 抽取事件與事實", run: function (s) {
+        s.stage = "extract"; },
+      text: "少樣本 LLM 依 schema 輸出事件 ε，事實 \\(f = (s, p, v, \\delta, [t_{\\text{from}}, t_{\\text{to}}], c, \\mathcal{E})\\)：(Alice, favorite_restaurant, \"Italian Garden\", str, from = 2024-01-15)。信心 c 原文案例沒給，記為 ?；證據連回這一輪。" },
+    { title: "3. 實體解析", run: function (s) {
+        s.stage = "resolve"; },
+      text: "提及「Alice」從向量索引取回候選，LLM 判定 choose_existing；「Italian Garden」沒有夠像的候選，判定 propose_new，給新 id、正規化名稱與型別（決策與 id 為示意）。屬性名正規化成 snake_case：favorite_restaurant。" },
+    { title: "4. 寫入", run: function (s) {
+        s.stage = "write1"; s.A.push(["f1", "Italian Garden", "2024-01-15"]); s.O = [["Italian Garden", "2024-01-15"]]; },
+      text: "兩種記憶都記下第一筆。左邊是 APEX-MEM 的只增不刪；右邊是一個會覆寫舊值的對照組（示意，代表 §1 批評的「合併或覆寫」做法）。" },
+    { title: "5. Session 5（2024-03-20）", run: function (s) {
+        s.turn = { t: "2024-03-20", txt: "Alice：「Italian Garden closed down last month. Now I go to Sakura Sushi every week instead.」" }; s.stage = "turn2"; },
+      text: "新的一輪推翻了舊的偏好。<b>先猜：</b>兩邊的儲存各會變成什麼樣子？" },
+    { title: "6. 只增不刪 vs 覆寫", run: function (s) {
+        s.stage = "write2"; s.A.push(["f2", "Sakura Sushi", "2024-03-20"]); s.O = [["Sakura Sushi", "2024-03-20"]]; },
+      text: "APEX-MEM 新增 (Alice, favorite_restaurant, \"Sakura Sushi\", from = 2024-03-20)，<b>不刪除</b>前一筆（附錄 E 原文：without deleting the previous fact）。覆寫式記憶只剩新值。" },
+    { title: "7. 問：現在最喜歡哪家？", run: function (s) {
+        s.stage = "q1"; s.q = "What is Alice's current favorite restaurant?"; s.ansA = "Sakura Sushi（依時間排序取最新）"; s.ansO = "Sakura Sushi"; },
+      text: "GraphSQL 的時間查詢把兩筆事實依時間排序，代理選最新的有效那筆：Sakura Sushi。這題兩種記憶都答得出來。" },
+    { title: "8. 追問：什麼時候換的？", run: function (s) {
+        s.stage = "q2"; s.q = "When did Alice's favorite restaurant change?"; s.ansA = "2024-03-20 的對話提到換成 Sakura Sushi"; s.ansO = "無法回答：舊值與它的時間已被覆寫"; },
+      text: "只有保留完整歷史的一方能回答。附錄 E 說只增不刪「讓這類追問成為可能」。嚴格說，原句「上個月倒了」只告訴我們換店發生在 2024-03-20 之前；能精確到哪一天，取決於抽取時有沒有把「last month」也解析成日期。" }
+  ];
+  StudyAnim(root, {
+    width: 720, height: 440, interval: 4200,
+    init: function () { return { turn: null, stage: "", A: [], O: [], q: null, ansA: null, ansO: null }; },
+    steps: steps,
+    draw: function (sc, s) {
+      sc.put("bg", "g", {}); sc.put("fg", "g", {});
+      if (s.turn) {
+        sc.put("tb", "rect", { x: 16, y: 10, width: 688, height: 44, rx: 6, "class": "a-card" + (s.stage === "turn" || s.stage === "turn2" ? " hi" : "") }, null, "bg");
+        sc.put("tt", "text", { x: 28, y: 28, "class": "a-small" }, "turn · t_anchor = " + s.turn.t, "bg");
+        sc.put("tx", "text", { x: 28, y: 46 }, s.turn.txt.length > 78 ? s.turn.txt.slice(0, 78) + "…" : s.turn.txt, "bg");
+      }
+      if (s.stage === "extract" || s.stage === "resolve") {
+        sc.put("ex", "rect", { x: 16, y: 66, width: 688, height: 120, rx: 6, "class": "a-zone" }, null, "bg");
+        sc.put("ext", "text", { x: 28, y: 86, "class": "a-head" }, s.stage === "extract" ? "抽取（Sonnet 4.5，schema 約束）" : "實體解析（Haiku 4.5，top-k 候選 + LLM 判斷）", "bg");
+        if (s.stage === "extract") {
+          sc.put("ex1", "text", { x: 28, y: 112, "class": "a-mono", enter: true }, "event ε: type=conversation, T=2024-01-15, P={Alice, Italian Garden}", "fg");
+          sc.put("ex2", "text", { x: 28, y: 136, "class": "a-mono", enter: true }, "fact f: (Alice, favorite_restaurant, \"Italian Garden\", str,", "fg");
+          sc.put("ex3", "text", { x: 28, y: 156, "class": "a-mono", enter: true }, "        [from=2024-01-15, to=–], c=?, E={turn, span})", "fg");
+        } else {
+          sc.put("rs1", "text", { x: 28, y: 112, "class": "a-mono", enter: true }, "m=\"Alice\"          → choose_existing  id=ent_alice", "fg");
+          sc.put("rs2", "text", { x: 28, y: 136, "class": "a-mono", enter: true }, "m=\"Italian Garden\" → propose_new      id=ent_ig  τ=Organization", "fg");
+          sc.put("rs3", "text", { x: 28, y: 160, "class": "a-small", enter: true }, "屬性 \"favorite restaurant\" → favorite_restaurant（snake_case），δ=str　（id 與型別為示意）", "fg");
+        }
+      }
+      var showStores = s.A.length > 0;
+      if (showStores) {
+        sc.put("za", "rect", { x: 16, y: 66, width: 400, height: 220, rx: 6, "class": "a-zone" }, null, "bg");
+        sc.put("zat", "text", { x: 28, y: 86, "class": "a-head a-acc" }, "APEX-MEM：facts 表（只增不刪）", "bg");
+        sc.put("zah", "text", { x: 28, y: 108, "class": "a-small" }, "subject · property · value · t_from", "bg");
+        s.A.forEach(function (f, k) {
+          var y = 118 + k * 46;
+          sc.put("fa" + k, "rect", { x: 28, y: y, width: 376, height: 38, rx: 4, "class": "a-card" + (k === s.A.length - 1 && (s.stage === "write1" || s.stage === "write2") ? " hi" : ""), enter: true }, null, "fg");
+          sc.put("fat" + k, "text", { x: 38, y: y + 16, "class": "a-mono" }, f[0] + " · Alice · favorite_restaurant", "fg");
+          sc.put("fav" + k, "text", { x: 38, y: y + 32 }, "\"" + f[1] + "\" · from " + f[2], "fg");
+        });
+        sc.put("zo", "rect", { x: 428, y: 66, width: 276, height: 220, rx: 6, "class": "a-zone" }, null, "bg");
+        sc.put("zot", "text", { x: 440, y: 86, "class": "a-head" }, "覆寫式記憶（示意）", "bg");
+        s.O.forEach(function (f, k) {
+          sc.put("fo", "rect", { x: 440, y: 118, width: 252, height: 38, rx: 4, "class": "a-card" + (s.stage === "write2" ? " warn" : ""), enter: true }, null, "fg");
+          sc.put("fot", "text", { x: 450, y: 134, "class": "a-mono" }, "Alice · favorite_restaurant", "fg");
+          sc.put("fov", "text", { x: 450, y: 150 }, "\"" + f[0] + "\"", "fg");
+        });
+        if (s.stage === "write2") sc.put("fox", "text", { x: 440, y: 180, "class": "a-bad" }, "Italian Garden 與它的日期已被覆寫", "fg");
+      }
+      if (s.q) {
+        sc.put("zq", "rect", { x: 16, y: 298, width: 688, height: 132, rx: 6, "class": "a-zone" }, null, "bg");
+        sc.put("zqt", "text", { x: 28, y: 320, "class": "a-head" }, "Q：" + s.q, "fg");
+        sc.put("sql", "text", { x: 28, y: 344, "class": "a-mono" }, "GraphSQL: SELECT value_json, t_from FROM facts WHERE subject=:alice", "fg");
+        sc.put("sql2", "text", { x: 28, y: 362, "class": "a-mono" }, "          AND property_name='favorite_restaurant' ORDER BY t_from　（示意）", "fg");
+        sc.put("aa", "text", { x: 28, y: 392, "class": "a-ok" }, "只增不刪 → " + s.ansA, "fg");
+        sc.put("ao", "text", { x: 28, y: 416, "class": s.stage === "q2" ? "a-bad" : "a-ok" }, "覆寫式 → " + s.ansO, "fg");
+      }
+    }
+  });
+})();
+</script>
+<script>
+// Agent animation (section s-agent): a ReAct trace with the four tools; every step is illustrative.
+(function () {
+  "use strict";
+  var root = document.getElementById("anim-agent");
+  if (!root || !window.StudyAnim) return;
+  function act(tool, arg, obs) { return { tool: tool, arg: arg, obs: obs }; }
+  var steps = [
+    { title: "1. 問題進來", run: function (s) { s.q = true; },
+      text: "問題 x：「Alice 最喜歡的餐廳是什麼時候換的？」歷史 \\(h_0\\) 為空。代理先把問題裡的相對時間解析成日期（這題沒有），再決定第一步。" },
+    { title: "2. SchemaViewer", run: function (s) {
+        s.trace.push(act("SchemaViewer", "(b_ex=1, b_guide=1)", "tables: entities, properties, facts, events, evidence, turns … ＋ 時間推理的 SQL 指南")); },
+      text: "\\(r_1\\)：「先確認有哪些表、怎麼做時間查詢。」\\(a_1\\) = SchemaViewer，回傳 schema 與使用建議。原文說它扮演後設層的規劃輔助。" },
+    { title: "3. EntityLookup", run: function (s) {
+        s.trace.push(act("EntityLookup", "(q=\"Alice\", K=3)", "id=ent_alice · latest: favorite_restaurant = Sakura Sushi · last_anchor 2024-03-20")); },
+      text: "\\(r_2\\)：「要把『Alice』對到圖中的 id。」EntityLookup 先用混合索引找候選，再組出實體文件；latest 是近期屬性值的快照，但不含歷史。" },
+    { title: "4. GraphSQL", run: function (s) {
+        s.trace.push(act("GraphSQL", "SELECT value_json, t_from FROM facts WHERE subject_id=:id AND property_name='favorite_restaurant' ORDER BY t_from", "Italian Garden · 2024-01-15 ／ Sakura Sushi · 2024-03-20")); },
+      text: "\\(r_3\\)：「latest 只有現在的值，要問『何時換的』得看歷史。」唯讀 SQL 取出同一屬性的所有版本，依時間排序。只增不刪讓兩筆都還在。" },
+    { title: "5. ANSWER", run: function (s) { s.answer = true; },
+      text: "\\(r_4\\)：「值在 2024-03-20 的對話中由 Italian Garden 變成 Sakura Sushi。」發出 Answer。共 3 次工具呼叫，上限是 40。<b>先猜：</b>如果代理在第 4 步忘了 ORDER BY，或用寫入時間 created_at 排序，會怎樣？" },
+    { title: "6. 查詢時解析的風險", run: function (s) { s.risk = true; },
+      text: "「哪一版有效」的判斷寫在代理產生的 SQL 裡。同一張圖，SQL 寫錯就會答錯；原文附錄 D 的 SQL 成功率在 93.4%–98.8% 之間，代理能從 87% 的失敗中恢復。這是把解析延到查詢時的代價。" }
+  ];
+  StudyAnim(root, {
+    width: 720, height: 440, interval: 4200,
+    init: function () { return { q: false, trace: [], answer: false, risk: false }; },
+    steps: steps,
+    draw: function (sc, s) {
+      sc.put("bg", "g", {}); sc.put("fg", "g", {});
+      sc.put("qb", "rect", { x: 16, y: 10, width: 688, height: 32, rx: 16, "class": "a-card hi" }, null, "bg");
+      sc.put("qt", "text", { x: 30, y: 31 }, "x：When did Alice's favorite restaurant change?", "bg");
+      sc.put("cnt", "text", { x: 600, y: 31, "class": "a-small" }, "工具呼叫 " + s.trace.length + " / 40", "bg");
+      s.trace.forEach(function (t, k) {
+        var y = 54 + k * 92;
+        sc.put("tr" + k, "rect", { x: 16, y: y, width: 688, height: 84, rx: 6, "class": "a-card" + (k === s.trace.length - 1 && !s.answer ? " hi" : ""), enter: true }, null, "fg");
+        sc.put("tn" + k, "text", { x: 28, y: y + 20, "class": "a-head a-acc" }, "a" + (k + 1) + " = " + t.tool, "fg");
+        var arg = t.arg.length > 92 ? t.arg.slice(0, 92) + "…" : t.arg;
+        sc.put("ta" + k, "text", { x: 28, y: y + 42, "class": "a-mono" }, arg, "fg");
+        sc.put("to" + k, "text", { x: 28, y: y + 66, "class": "a-small" }, "o" + (k + 1) + "：" + t.obs, "fg");
+      });
+      if (s.answer) {
+        sc.put("ans", "rect", { x: 16, y: 334, width: 688, height: 44, rx: 6, "class": "a-card ok", enter: true }, null, "fg");
+        sc.put("anst", "text", { x: 28, y: 361, "class": "a-ok" }, "ANSWER：2024-03-20 那次對話中，從 Italian Garden 換成 Sakura Sushi。", "fg");
+      }
+      if (s.risk) {
+        sc.put("rk", "text", { x: 28, y: 404, "class": "a-bad", enter: true }, "沒有 ORDER BY 或排錯欄位 → 可能把 Italian Garden 當成現況", "fg");
+        sc.put("rk2", "text", { x: 28, y: 426, "class": "a-small", enter: true }, "（示意）原文案例只說「GraphSQL 時間查詢依時間戳排序兩筆事實」", "fg");
+      }
+    }
+  });
+})();
+</script>
+</body>
+</html>
