@@ -7,7 +7,7 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
@@ -28,79 +28,117 @@
   </div>
 </header>
 
-<main class="gutter" style="max-width:76rem;margin:0 auto;padding-block:2.5rem 4rem;display:grid;gap:2.5rem">
+<main class="gutter">
+<div class="shelf-page">
   <div class="shelf-head">
     <h1>論文精讀室</h1>
-    <p>每篇論文一頁：同一段內容有五歲、大學生、研究生三種解釋深度，公式逐符號拆解，每節附自我檢測與筆記欄。標籤說明每個數字的出處，方便邊讀原文邊核對。</p>
+    <p>每篇論文一頁：同一段內容有五歲、大學生、研究生三種解釋深度，公式逐符號拆解，演算法做成逐步動畫，每節附自我檢測與筆記欄。每個數字都標出處，方便邊讀原文邊核對。</p>
+    <div class="tally" aria-label="閱讀統計">
+      <span><b>7</b>篇論文</span>
+      <span><b id="tally-started">0</b>篇已開始</span>
+      <span><b id="tally-done">0 / 104</b>節已讀</span>
+    </div>
   </div>
 
-  <ul class="shelf">
-    <li>
-      <a class="card" href="papers/2601.18642/index.html">
-        <div class="meta"><span class="mono">arXiv 2601.18642</span><span>Agent 記憶</span><span class="src src-abs">已對照全文</span></div>
-        <h2>FadeMem：仿生遺忘機制讓 Agent 記憶更有效率</h2>
-        <p class="gist">雙層記憶搭配重要性調節的衰減、LLM 衝突解決與記憶融合，LoCoMo 上減少 45% 儲存。</p>
-        <div class="meta"><span data-progress-for="2601.18642" data-total="14"></span></div>
-      </a>
-    </li>
-    <li>
-      <a class="card" href="papers/2501.13956/index.html">
-        <div class="meta"><span class="mono">arXiv 2501.13956</span><span>Agent 記憶</span><span class="src src-abs">已對照全文</span></div>
-        <h2>Zep：用時序知識圖譜打造 Agent 記憶</h2>
-        <p class="gist">三層知識圖譜搭配雙時間軸，事實被推翻時標記失效而不刪除；LongMemEval 上延遲降約 90%。</p>
-        <div class="meta"><span data-progress-for="2501.13956" data-total="14"></span></div>
-      </a>
-    </li>
-    <li>
-      <a class="card" href="papers/2605.06527/index.html">
-        <div class="meta"><span class="mono">arXiv 2605.06527</span><span>Agent 記憶評測</span><span class="src src-abs">已對照全文</span></div>
-        <h2>STALE：LLM Agent 知道自己的記憶過期了嗎？</h2>
-        <p class="gist">400 個隱性衝突情境、三種探測方式；最好的模型只有 55.2%，Zep 只有 6.0%。附原型系統 CUPMem。</p>
-        <div class="meta"><span data-progress-for="2605.06527" data-total="15"></span></div>
-      </a>
-    </li>
-    <li>
-      <a class="card" href="papers/2606.30306/index.html">
-        <div class="meta"><span class="mono">arXiv 2606.30306</span><span>綜述</span><span class="src src-abs">已對照全文</span></div>
-        <h2>永遠在線的 Agent：持久記憶、狀態與治理綜述</h2>
-        <p class="gist">把分析單位從記憶換成持久狀態：六個軸、十階段生命週期、五個不變量，435 篇語料顯示回滾只有 27 篇。附 AOEP 評測協議。</p>
-        <div class="meta"><span data-progress-for="2606.30306" data-total="15"></span></div>
-      </a>
-    </li>
-    <li>
-      <a class="card" href="papers/2608.19652/index.html">
-        <div class="meta"><span class="mono">arXiv 2608.19652</span><span>評測＋方法</span><span class="src src-abs">已對照全文</span></div>
-        <h2>StateMem：Agent 記憶系統追得上不斷變動的狀態嗎？</h2>
-        <p class="gist">找得到不等於用對版本。StateMemBench 用事件程式造出 234 個陷阱情境，StateMem 以依賴圖標記過期狀態；只改回答提示詞的包裝器就讓六個後端各進步 32–67 個百分點。</p>
-        <div class="meta"><span data-progress-for="2608.19652" data-total="16"></span></div>
-      </a>
-    </li>
-    <li>
-      <a class="card" href="papers/2604.14362/index.html">
-        <div class="meta"><span class="mono">arXiv 2604.14362</span><span>記憶系統</span><span class="src src-abs">已對照全文</span></div>
-        <h2>APEX-MEM：只增不刪的屬性圖記憶，查詢時再解析</h2>
-        <p class="gist">事實錨定在有時間的事件上、從不覆寫，回答時由會寫 SQL 的代理挑出有效版本。LoCoMo 88.88%、LongMemEval 86.2%；本頁驗算出多處表格對不上。</p>
-        <div class="meta"><span data-progress-for="2604.14362" data-total="15"></span></div>
-      </a>
-    </li>
-    <li>
-      <a class="card" href="papers/dekleer-1986-atms/index.html">
-        <div class="meta"><span class="mono">AI Journal 1986</span><span>經典</span><span class="src src-abs">已對照全文</span></div>
-        <h2>ATMS：以假設為基礎的真值維護系統</h2>
-        <p class="gist">de Kleer 1986。每筆資料標上「在哪些假設下成立」，矛盾只是一個 nogood，多個互斥的解可以並存。四十年後 LLM 記憶論文的許多想法都在這裡。</p>
-        <div class="meta"><span data-progress-for="dekleer-1986-atms" data-total="15"></span></div>
-      </a>
-    </li>
-  </ul>
-
-  <div class="method">
-    <h2>每篇的讀法</h2>
-    <ol>
-      <li><b>第一遍</b>：摘要、架構圖、結論。能一句話講出問題、方法、成果。</li>
-      <li><b>第二遍</b>：方法章節。每條公式的每個符號都說得出意思，互動圖自己調一次。</li>
-      <li><b>第三遍</b>：實驗與消融。挑毛病，把疑問寫進筆記，最後匯出。</li>
-    </ol>
+  <div class="shelf-groups">
+    <section class="shelf-group" aria-labelledby="g-0">
+      <h2 id="g-0">記憶系統設計<small>三種處理舊資訊的方式：標記失效、衰減遺忘、只增不刪</small></h2>
+      <ul class="shelf">
+      <li>
+        <a class="card" href="papers/2501.13956/index.html">
+          <div class="id"><span class="mono">arXiv 2501.13956</span><span>2025.01</span></div>
+          <h3>Zep：用時序知識圖譜打造 Agent 記憶</h3>
+          <p class="gist">三層知識圖譜搭配雙時間軸，事實被推翻時標記失效而不刪除；LongMemEval 上延遲降約 90%。</p>
+          <div class="meta"><span data-progress-for="2501.13956" data-total="14"></span><span class="src src-abs">已對照全文</span></div>
+        </a>
+      </li>
+      <li>
+        <a class="card" href="papers/2601.18642/index.html">
+          <div class="id"><span class="mono">arXiv 2601.18642</span><span>2026.01</span></div>
+          <h3>FadeMem：仿生遺忘機制讓 Agent 記憶更有效率</h3>
+          <p class="gist">雙層記憶搭配重要性調節的衰減、LLM 衝突解決與記憶融合，LoCoMo 上減少 45% 儲存。</p>
+          <div class="meta"><span data-progress-for="2601.18642" data-total="14"></span><span class="src src-abs">已對照全文</span></div>
+        </a>
+      </li>
+      <li>
+        <a class="card" href="papers/2604.14362/index.html">
+          <div class="id"><span class="mono">arXiv 2604.14362</span><span>2026.04</span></div>
+          <h3>APEX-MEM：只增不刪的屬性圖記憶，查詢時再解析</h3>
+          <p class="gist">事實錨定在有時間的事件上、從不覆寫，回答時由會寫 SQL 的代理挑出有效版本。LoCoMo 88.88%、LongMemEval 86.2%；本頁驗算出多處表格對不上。</p>
+          <div class="meta"><span data-progress-for="2604.14362" data-total="15"></span><span class="src src-abs">已對照全文</span></div>
+        </a>
+      </li>
+      </ul>
+    </section>
+    <section class="shelf-group" aria-labelledby="g-1">
+      <h2 id="g-1">評測與診斷<small>記憶系統會不會用到過期的資訊</small></h2>
+      <ul class="shelf">
+      <li>
+        <a class="card" href="papers/2605.06527/index.html">
+          <div class="id"><span class="mono">arXiv 2605.06527</span><span>2026.05</span></div>
+          <h3>STALE：LLM Agent 知道自己的記憶過期了嗎？</h3>
+          <p class="gist">400 個隱性衝突情境、三種探測方式；最好的模型只有 55.2%，Zep 只有 6.0%。附原型系統 CUPMem。</p>
+          <div class="meta"><span data-progress-for="2605.06527" data-total="15"></span><span class="src src-abs">已對照全文</span></div>
+        </a>
+      </li>
+      <li>
+        <a class="card" href="papers/2608.19652/index.html">
+          <div class="id"><span class="mono">arXiv 2608.19652</span><span>2026.08</span></div>
+          <h3>StateMem：Agent 記憶系統追得上不斷變動的狀態嗎？</h3>
+          <p class="gist">找得到不等於用對版本。StateMemBench 用事件程式造出 234 個陷阱情境，StateMem 以依賴圖標記過期狀態；只改回答提示詞的包裝器就讓六個後端各進步 32–67 個百分點。</p>
+          <div class="meta"><span data-progress-for="2608.19652" data-total="16"></span><span class="src src-abs">已對照全文</span></div>
+        </a>
+      </li>
+      </ul>
+    </section>
+    <section class="shelf-group" aria-labelledby="g-2">
+      <h2 id="g-2">綜述<small>把整個領域放到同一張地圖上</small></h2>
+      <ul class="shelf">
+      <li>
+        <a class="card" href="papers/2606.30306/index.html">
+          <div class="id"><span class="mono">arXiv 2606.30306</span><span>2026.06</span></div>
+          <h3>永遠在線的 Agent：持久記憶、狀態與治理綜述</h3>
+          <p class="gist">把分析單位從記憶換成持久狀態：六個軸、十階段生命週期、五個不變量，435 篇語料顯示回滾只有 27 篇。附 AOEP 評測協議。</p>
+          <div class="meta"><span data-progress-for="2606.30306" data-total="15"></span><span class="src src-abs">已對照全文</span></div>
+        </a>
+      </li>
+      </ul>
+    </section>
+    <section class="shelf-group" aria-labelledby="g-3">
+      <h2 id="g-3">經典<small>四十年前的源頭</small></h2>
+      <ul class="shelf">
+      <li>
+        <a class="card" href="papers/dekleer-1986-atms/index.html">
+          <div class="id"><span class="mono">AI Journal 28</span><span>1986</span></div>
+          <h3>ATMS：以假設為基礎的真值維護系統</h3>
+          <p class="gist">de Kleer 1986。每筆資料標上「在哪些假設下成立」，矛盾只是一個 nogood，多個互斥的解可以並存。四十年後 LLM 記憶論文的許多想法都在這裡。</p>
+          <div class="meta"><span data-progress-for="dekleer-1986-atms" data-total="15"></span><span class="src src-abs">已對照全文</span></div>
+        </a>
+      </li>
+      </ul>
+    </section>
   </div>
+
+  <aside class="shelf-aside">
+    <div class="method">
+      <h2>每篇的讀法</h2>
+      <ol>
+        <li><b>第一遍</b>：摘要、架構圖、結論。能一句話講出問題、方法、成果。</li>
+        <li><b>第二遍</b>：方法章節。每條公式的每個符號都說得出意思，互動圖和動畫自己操作一次。</li>
+        <li><b>第三遍</b>：實驗與消融。挑毛病，把疑問寫進筆記，最後匯出。</li>
+      </ol>
+    </div>
+    <div class="aside-legend">
+      <h2>頁面上的記號</h2>
+      <ul>
+        <li><span class="src src-abs">原文 §3</span> 出自論文，標明位置</li>
+        <li><span class="src src-mine">導讀補充</span> 本站的推導、背景或評論</li>
+        <li><span class="hand">楷體字</span>是給你的話：五歲版解釋、讀前先猜、自我檢測、你的筆記</li>
+        <li>頁首的「解釋深度」會套用到每一篇</li>
+      </ul>
+    </div>
+  </aside>
+</div>
 </main>
 
 <script src="assets/site.js"></script>

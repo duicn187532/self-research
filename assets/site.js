@@ -34,17 +34,37 @@
   });
   setLevel(store.get(LEVEL_KEY, "uni"));
 
-  // ---------- shelf: show progress for each paper ----------
+  // ---------- shelf: show progress for each paper, and the totals ----------
+  var sumDone = 0, sumTotal = 0, started = 0;
   document.querySelectorAll("[data-progress-for]").forEach(function (el) {
     var id = el.getAttribute("data-progress-for");
     var total = Number(el.getAttribute("data-total")) || 0;
-    var done = store.get("study:" + id + ":done", []).length;
-    el.textContent = total ? "已讀 " + Math.min(done, total) + " / " + total + " 節" : "";
+    var n = Math.min(store.get("study:" + id + ":done", []).length, total);
+    sumDone += n; sumTotal += total; if (n) started += 1;
+    if (!total) return;
+    el.textContent = "";
+    var meter = document.createElement("span");
+    meter.className = "meter";
+    meter.setAttribute("aria-hidden", "true");
+    var fill = document.createElement("i");
+    fill.style.width = (100 * n / total) + "%";
+    meter.appendChild(fill);
+    var txt = document.createElement("span");
+    txt.className = "meter-text";
+    txt.textContent = n === total ? "讀完 " + total + " 節" : "已讀 " + n + " / " + total + " 節";
+    el.appendChild(meter);
+    el.appendChild(txt);
   });
+  var tallyDone = document.getElementById("tally-done");
+  if (tallyDone) tallyDone.textContent = sumDone + " / " + sumTotal;
+  var tallyStarted = document.getElementById("tally-started");
+  if (tallyStarted) tallyStarted.textContent = String(started);
 
   if (!paper) return;
 
-  // ---------- outline rail ----------
+  // ---------- outline rail (collapsed on narrow screens so the text comes first) ----------
+  var railDetails = document.querySelector(".rail details");
+  if (railDetails && window.matchMedia && window.matchMedia("(max-width: 960px)").matches) railDetails.open = false;
   var sections = Array.prototype.slice.call(document.querySelectorAll("section.sec[id]"));
   var outline = document.getElementById("outline");
   var links = {};
