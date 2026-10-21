@@ -25,6 +25,18 @@ python3 -m http.server 8000
 
 筆記與進度存在瀏覽器的 localStorage。每頁最下方「複製全部筆記」會輸出 Markdown，可以存成 `papers/<id>/notes.md` 或貼給 Claude 更新頁面。
 
+右上角「外觀」可以切換淺色、深色或跟隨系統。
+
+### 楓葉冒險外觀（只在自己的電腦上）
+
+這個外觀用的是楓之谷的遊戲美術，素材不放進 repo，公開網站上也看不到這個選項。要在自己電腦上用：
+
+```bash
+python3 -I scripts/setup_maple.py 路徑/maple-assets.zip
+```
+
+它會把素材包轉成 `assets/maple/`（已列在 `.gitignore`），之後重新整理頁面，「外觀」裡就會出現「楓葉冒險」。做法和素材對照寫在 [`.claude/skills/maple-skin/SKILL.md`](.claude/skills/maple-skin/SKILL.md)。
+
 ## 新增一篇論文
 
 在 Claude Code 裡貼上 arXiv 連結，請它「加入精讀室」。流程寫在 [`.claude/skills/paper-study/SKILL.md`](.claude/skills/paper-study/SKILL.md)：

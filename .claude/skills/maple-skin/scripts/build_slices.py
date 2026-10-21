@@ -44,6 +44,11 @@ win = Image.new("RGBA", (16 + dlg.width - 141, dlg.height))
 win.alpha_composite(dlg.crop((0, 0, 16, dlg.height)), (0, 0))
 win.alpha_composite(dlg.crop((141, 0, dlg.width, dlg.height)), (16, 0))
 win.save(O + "/win9.png")
+# short window for boxes without buttons: drop the blue button band (rows 76..99), keep the bottom edge
+short = Image.new("RGBA", (win.width, win.height - 24))
+short.alpha_composite(win.crop((0, 0, win.width, 76)), (0, 0))
+short.alpha_composite(win.crop((0, 100, win.width, win.height)), (0, 76))
+short.save(O + "/win9s.png")
 
 grid(UI + "ChatBalloon.img/npc/", (6, 12, 6, 6, 14, 6), O + "/bal9.png")
 shutil.copy(UI + "ChatBalloon.img/npc/arrow.png", O + "/bal-arrow.png")

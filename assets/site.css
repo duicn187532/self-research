@@ -405,7 +405,7 @@ table.results tbody td:first-child { white-space: nowrap; }
 /* ---------- step-by-step animations (assets/anim.js) ---------- */
 .anim {
   border: 1px solid var(--rule); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow);
-  padding: 0.9rem 1.1rem; display: grid; gap: 0.75rem;
+  padding: 0.9rem 1.1rem; display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.75rem;
 }
 .anim-controls { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
 .anim-controls .btn:disabled { opacity: 0.4; cursor: default; }
@@ -414,9 +414,9 @@ table.results tbody td:first-child { white-space: nowrap; }
 .anim-count { font-family: var(--font-mono); font-size: var(--step--1); color: var(--muted); margin-left: auto; font-variant-numeric: tabular-nums; }
 .anim-stage { overflow-x: auto; }
 .anim-stage svg { display: block; width: 100%; min-width: 560px; height: auto; }
-.anim-caption { display: grid; gap: 0.3rem; min-height: 5.5em; padding-top: 0.2rem; }
+.anim-caption { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.3rem; min-height: 5.5em; padding-top: 0.2rem; }
 .anim-step-title { font-weight: 700; color: var(--accent); font-family: var(--font-display); }
-.anim-step-text { font-size: 0.9688rem; }
+.anim-step-text { font-size: 0.9688rem; overflow-wrap: anywhere; }
 .anim-note { font-size: var(--step--1); color: var(--muted); line-height: 1.7; }
 .anim-stage svg * { transition: transform 0.6s ease, opacity 0.45s ease, fill 0.4s ease, stroke 0.4s ease; }
 .anim-stage svg .anim-leaving { opacity: 0 !important; }
@@ -532,7 +532,7 @@ table.results tbody td:first-child { white-space: nowrap; }
   border: 1px solid var(--rule); border-radius: var(--radius); box-shadow: var(--shadow);
   padding: 0.9rem 1rem; display: grid; gap: 0.85rem; font-size: var(--step--1);
 }
-.appear-panel[hidden] { display: none; }
+.appear-panel[hidden], .appear-panel .row[hidden] { display: none; }
 .appear-panel .row { display: grid; gap: 0.35rem; }
 .appear-panel .row > span { font-weight: 700; letter-spacing: 0.08em; color: var(--muted); font-size: 0.75rem; }
 .appear-panel .seg { justify-self: start; flex-wrap: wrap; }
@@ -541,303 +541,225 @@ table.results tbody td:first-child { white-space: nowrap; }
 @media (max-width: 600px) { .appear-btn .t { display: none; } .appear-btn { padding: 0 0.55rem; } }
 
 /* =====================================================================
-   Experimental skin: "楓葉冒險", modelled on the pre-Big Bang client UI
-   (reference: in-game captures of the v83-era HUD; layout of the NPC
-   dialog from UIWindow.img/UtilDlgEx as drawn by HeavenClient's UINpcTalk).
-   - charcoal status bar with LV box and a yellow-green EXP gauge
-   - windows like the minimap: steel-blue frame, white title strip, white body
-   - self-checks as NPC dialogs: portrait + name bar on the left, text right,
-     buttons along the bottom edge
-   - "guess first" as a quick-slot panel, quoted claims as chat balloons
-   - blue glossy buttons (MENU), red for the one "finish" action (CASH SHOP)
-   Running text always sits on a solid white (or dark) window body.
+   Skin "楓葉冒險": the pre-Big Bang MapleStory client, built from the game's own art.
+   The images live in assets/maple/ (git-ignored, made by scripts/setup_maple.py), so this
+   skin only exists on a machine that has them; site.js offers it only when they load.
+   Every frame below is a real PNG stretched as a 9-slice; the slice numbers are documented
+   in .claude/skills/maple-skin/SKILL.md. Reading windows keep the game's light panels in
+   both colour modes: dark mode turns the scene to night instead.
    ===================================================================== */
+.hud, .npc-portrait, .mini-names { display: none; }
 :root[data-skin="maple"] {
-  --paper: #e3ecf1; --sky-top: #b9d8ea; --surface: #ffffff;
-  --ink: #1f262b; --muted: #4f5a62; --rule: #c9d3d9;
-  --accent: #1a609b; --accent-soft: #dcebf5; --mark: #f0d94e; --mark-soft: #fbf3c4; --mark-ink: #1f262b;
+  --paper: #eeeedd; --surface: #ffffff; --ink: #2b2b2b; --muted: #555d66; --rule: #c9c9b8;
+  --accent: #1d4f86; --accent-soft: #dde8f5; --mark: #f0d94e; --mark-soft: #fbf3c4; --mark-ink: #2b2b2b;
   --warn: #a8361a; --warn-soft: #fbe3da; --ok: #2f6f2a; --ok-soft: #e1f0d8; --mine: #6a3fa0; --mine-soft: #eee5f8; --sml: #b1501f;
-  --win: #99bcca; --win-edge: #7d929d; --win-ink: #14232b; --strip: #ffffff; --strip-ink: #4a5560;
-  --bar-a: #6b7378; --bar-b: #41484d; --bar-c: #31373b; --bar-line: #9aa3a8; --bar-ink: #ffffff; --bar-sub: #c9d0d4;
-  --lv-box: #242221; --lv-num: #f5d33a;
-  --blue-a: #2577b7; --blue-b: #1a5f9c; --blue-edge: #123f69;
-  --red-a: #e0283a; --red-b: #b0001b; --red-edge: #6e0011;
-  --gold-a: #ffe39a; --gold-b: #f2b13b; --gold-edge: #a8711a; --gold-ink: #3d2604;
-  --exp-a: #e2f25c; --exp-b: #9cc11a; --exp-track: #1c2024;
-  --balloon: #ffffff; --balloon-edge: #9fb0b8;
-  --dlg: #ffffff; --dlg-edge: #8fa3ad; --dlg-ink: #33393e; --portrait: #e3f0f7;
-  --tag-bg: rgba(18, 22, 26, 0.82); --tab: #2f5573;
-  --slot-frame: #59626a; --slot-frame-edge: #2e3438; --slot: #ffffff; --slot-key: #67727a; --slot-title: #eef2f4;
-  --chunk: rgba(30, 45, 55, 0.22);
-  --shadow: 0 4px 10px -4px var(--chunk);
+  --shadow: none;
   --font-display: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
   --font-hand: var(--font-display);
-  --font-pixel: "Silkscreen", "JetBrains Mono", ui-monospace, monospace;
-  --npc: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M12 47c0-10 5-14 12-14s12 4 12 14z' fill='%233d82c4' stroke='%231d3f66' stroke-width='1.5'/%3E%3Cpath d='M21 33l3 5 3-5' fill='%23fff' stroke='%231d3f66' stroke-width='1.2'/%3E%3Ccircle cx='24' cy='20' r='12.5' fill='%23ffe3c8' stroke='%235a3a22' stroke-width='1.5'/%3E%3Cpath d='M11.5 20c0-8 5.5-13 12.5-13s12.5 5 12.5 13c-3-4-7-6.5-12.5-6.5S14.5 16 11.5 20z' fill='%237a4a24' stroke='%235a3a22' stroke-width='1.5' stroke-linejoin='round'/%3E%3Cellipse cx='19.6' cy='21.5' rx='1.7' ry='2.5' fill='%232a1a10'/%3E%3Cellipse cx='28.4' cy='21.5' rx='1.7' ry='2.5' fill='%232a1a10'/%3E%3Ccircle cx='16.5' cy='25' r='1.6' fill='%23f7a9a0' opacity='.7'/%3E%3Ccircle cx='31.5' cy='25' r='1.6' fill='%23f7a9a0' opacity='.7'/%3E%3Cpath d='M22 26.5q2 1.6 4 0' stroke='%235a3a22' stroke-width='1.3' fill='none' stroke-linecap='round'/%3E%3Cpath d='M30 5l2.2 2.6 3.2-.9-1 3.1 2.6 2.1-3.3.4-.6 3.3-2-2.7-3.2.8 1.1-3.1-2.5-2.2 3.3-.3z' fill='%23e8692c' stroke='%238a3510' stroke-width='.8' stroke-linejoin='round'/%3E%3C/svg%3E");
+  --outline: -1px 0 #1a2a44, 1px 0 #1a2a44, 0 -1px #1a2a44, 0 1px #1a2a44, 1px 1px #1a2a44;
+  color-scheme: light;
 }
-@media (prefers-color-scheme: dark) {
-  :root[data-skin="maple"]:not([data-theme="light"]) {
-    --paper: #121a20; --sky-top: #0b1218; --surface: #1c252c;
-    --ink: #dfe6ea; --muted: #9fadb6; --rule: #33414b;
-    --accent: #7cc0ee; --accent-soft: #1d3242; --mark: #8a7414; --mark-soft: #2b2a1e; --mark-ink: #fff3c4;
-    --warn: #ff9d7a; --warn-soft: #3d2420; --ok: #8fd18a; --ok-soft: #1f3326; --mine: #cfa8f5; --mine-soft: #2e2546; --sml: #ff9a62;
-    --win: #2e4553; --win-edge: #4d6878; --win-ink: #e6f0f5; --strip: #23313a; --strip-ink: #b9c7cf;
-    --balloon: #222c33; --balloon-edge: #4d6070;
-    --dlg: #1f282f; --dlg-edge: #4d6878; --dlg-ink: #dde5ea; --portrait: #2a3a45;
-    --tab: #3c6a8e;
-    --slot-frame: #3a434a; --slot-frame-edge: #171b1e; --slot: #242d34; --slot-key: #8995a0; --slot-title: #dfe6ea;
-    --chunk: rgba(0, 0, 0, 0.5);
-    color-scheme: dark;
-  }
+:root[data-skin="maple"] body {
+  background: #3366cc url("maple/scene-day.jpg") center bottom / cover no-repeat fixed;
+  cursor: url("maple/cursor.png") 2 2, auto; padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px));
 }
-:root[data-skin="maple"][data-theme="dark"] {
-  --paper: #121a20; --sky-top: #0b1218; --surface: #1c252c;
-  --ink: #dfe6ea; --muted: #9fadb6; --rule: #33414b;
-  --accent: #7cc0ee; --accent-soft: #1d3242; --mark: #8a7414; --mark-soft: #2b2a1e; --mark-ink: #fff3c4;
-  --warn: #ff9d7a; --warn-soft: #3d2420; --ok: #8fd18a; --ok-soft: #1f3326; --mine: #cfa8f5; --mine-soft: #2e2546; --sml: #ff9a62;
-  --win: #2e4553; --win-edge: #4d6878; --win-ink: #e6f0f5; --strip: #23313a; --strip-ink: #b9c7cf;
-  --balloon: #222c33; --balloon-edge: #4d6070;
-  --dlg: #1f282f; --dlg-edge: #4d6878; --dlg-ink: #dde5ea; --portrait: #2a3a45;
-  --tab: #3c6a8e;
-  --slot-frame: #3a434a; --slot-frame-edge: #171b1e; --slot: #242d34; --slot-key: #8995a0; --slot-title: #dfe6ea;
-  --chunk: rgba(0, 0, 0, 0.5);
-  color-scheme: dark;
+:root[data-skin="maple"] :is(a, button, summary, label, input[type="checkbox"]) { cursor: url("maple/cursor.png") 2 2, pointer; }
+:root[data-skin="maple"] body::before { background: #3a4048; }
+/* night: the same scene under a navy sky */
+:root[data-skin="maple"] body::after {
+  content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none; display: none;
+  background: linear-gradient(rgba(8, 14, 48, 0.78), rgba(20, 26, 70, 0.55) 60%, rgba(10, 14, 40, 0.62));
 }
-:root[data-skin="maple"] body { background: linear-gradient(var(--sky-top), var(--paper) 22rem) no-repeat, var(--paper); padding-bottom: calc(3.25rem + env(safe-area-inset-bottom, 0px)); }
-:root[data-skin="maple"] body::before { background: var(--bar-c); }
-:root[data-skin="maple"] h1, :root[data-skin="maple"] h2, :root[data-skin="maple"] h3 { font-weight: 700; }
+:root[data-skin="maple"][data-theme="dark"] body::after { display: block; }
+@media (prefers-color-scheme: dark) { :root[data-skin="maple"]:not([data-theme="light"]) body::after { display: block; } }
+:root[data-skin="maple"] :is(.desk, .shelf-page) { position: relative; z-index: 1; }
+:root[data-skin="maple"] h1, :root[data-skin="maple"] h2, :root[data-skin="maple"] h3 { font-weight: 900; color: #1c2b44; }
+
+/* ---------- 9-slice frames ---------- */
+:root[data-skin="maple"] :is(.sec, .paper-head, .shelf-head, .shelf-aside > div, .card, .appear-panel) {
+  border-style: solid; border-width: 28px 22px 58px 24px; border-radius: 0; box-shadow: none; background: none;
+  border-image: url("maple/win9.png") 28 22 58 24 fill / 28px 22px 58px 24px stretch repeat;
+}
+:root[data-skin="maple"] :is(.paper-head, .shelf-head, .shelf-aside > div, .card, .appear-panel) {
+  border-width: 28px 22px 34px 24px; border-image: url("maple/win9s.png") 28 22 34 24 fill / 28px 22px 34px 24px stretch repeat;
+}
+
+/* ---------- top bar: the silver of the status bar, levels as window tabs ---------- */
+:root[data-skin="maple"] .toolbar { background: url("maple/hud-bg.png") 0 -1px / auto 71px repeat-x; border-bottom: 1px solid #5b6f86; }
+:root[data-skin="maple"] .toolbar .home { color: #1c2b44; font-weight: 900; }
+:root[data-skin="maple"] .toolbar .home::before { background: #242221; color: #ffd43b; border: 1px solid #000000; }
+:root[data-skin="maple"] .toolbar .crumb, :root[data-skin="maple"] .levels-label { color: #3b4b5e; }
+:root[data-skin="maple"] .seg { background: none; border: 0; padding: 0 0 0 4px; border-radius: 0; align-self: end; gap: 0; }
+:root[data-skin="maple"] .seg button {
+  height: 24px; padding: 0 4px; border-radius: 0; color: #41566e; font-weight: 700; background: none; margin-right: -6px;
+  border-style: solid; border-width: 0 12px 0 6px; border-image: url("maple/tab0.png") 0 12 0 6 fill / 0 12px 0 6px stretch;
+}
+:root[data-skin="maple"] .seg button[aria-pressed="true"] { border-image-source: url("maple/tab1.png"); color: #0f2c4f; background: none; position: relative; z-index: 1; }
+:root[data-skin="maple"] .seg button:hover { color: #0f2c4f; }
+:root[data-skin="maple"] .appear-btn {
+  width: 54px; height: 34px; padding: 0; border: 0; border-radius: 0; color: transparent; background: url("maple/bt-menu-normal.png") no-repeat;
+}
+:root[data-skin="maple"] .appear-btn:hover { background-image: url("maple/bt-menu-mouseOver.png"); }
+:root[data-skin="maple"] .appear-btn:active, :root[data-skin="maple"] .appear-btn[aria-expanded="true"] { background-image: url("maple/bt-menu-pressed.png"); }
+:root[data-skin="maple"] .appear-btn svg { display: none; }
+:root[data-skin="maple"] .appear-panel { padding: 2px 10px 8px; }
+:root[data-skin="maple"] .appear-panel .seg button { margin-right: -6px; }
+
+/* ---------- chapter list: the minimap window ---------- */
+:root[data-skin="maple"] .rail { max-height: calc(100vh - 10rem); }
+:root[data-skin="maple"] .rail details {
+  position: relative; padding: 0; background: none; border-radius: 0;
+  border-style: solid; border-width: 72px 6px 15px; border-image: url("maple/mini9.png") 72 6 15 6 fill / 72px 6px 15px stretch repeat;
+}
+:root[data-skin="maple"] .rail details::before { content: ""; position: absolute; left: 4px; top: -62px; width: 40px; height: 5px; background: url("maple/mini-title.png"); }
+:root[data-skin="maple"] .rail summary {
+  position: absolute; left: 2px; right: 2px; top: -50px; height: 44px; padding: 0 2px; margin: 0;
+  display: flex; align-items: center; gap: 8px; font-size: 0; color: #ffffff; background: none;
+}
+:root[data-skin="maple"] .rail summary::before {
+  content: "讀"; flex: none; width: 34px; height: 34px; display: grid; place-items: center; font-size: 15px; font-weight: 900;
+  color: #ffd43b; background: #2a3f63; border: 1px solid #0e1a2e; border-radius: 3px;
+}
+:root[data-skin="maple"] .mini-names { display: flex; flex-direction: column; line-height: 1.25; min-width: 0; font-size: 12px; font-weight: 700; color: #ffffff; text-shadow: var(--outline); }
+:root[data-skin="maple"] .mini-names span { font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+:root[data-skin="maple"] .rail .progress-text { font-size: 11px; margin-left: auto; color: #ffffff; text-shadow: var(--outline); font-family: var(--font-body); font-weight: 700; }
+:root[data-skin="maple"] .rail .progress-text::before { content: "EXP "; }
+:root[data-skin="maple"] .rail summary::after { font-size: 11px; font-weight: 700; color: #3d2604; background: linear-gradient(#ffe39a, #f2b13b); border: 1px solid #a8711a; border-radius: 2px; padding: 0 5px; line-height: 16px; }
+:root[data-skin="maple"] .progress { margin: 0; height: 6px; border-radius: 0; background: #1c2024; }
+:root[data-skin="maple"] .progress > span { background: linear-gradient(#e2f25c, #9cc11a); }
+:root[data-skin="maple"] .rail ol { margin: 0; padding: 6px 4px; border-left: 0; gap: 1px; background: rgba(255, 255, 255, 0.93); }
+:root[data-skin="maple"] .rail li a { border-left: 0; margin-left: 0; padding: 2px 6px; border-radius: 2px; color: #3b4652; display: flex; align-items: center; gap: 7px; }
+:root[data-skin="maple"] .rail li a::before { content: ""; width: 7px; height: 7px; border-radius: 50%; flex: none; background: #c7ced6; border: 1px solid #7d8994; }
+:root[data-skin="maple"] .rail li a.is-done::before { background: #5ad04a; border-color: #246b1a; }
+:root[data-skin="maple"] .rail li a.active::before { background: #ffe03c; border-color: #8a6a00; box-shadow: 0 0 0 2px rgba(255, 224, 60, 0.35); }
+:root[data-skin="maple"] .rail li a.active { background: #dde8f5; color: #173a66; font-weight: 700; }
+:root[data-skin="maple"] .rail li a:hover { background: #eef3f9; color: #173a66; }
+:root[data-skin="maple"] .rail li a .tick { display: none; }
+
+/* ---------- a section: a quest window ---------- */
+:root[data-skin="maple"] .column { counter-reset: quest -1; gap: 2.25rem; }
+:root[data-skin="maple"] .sec { position: relative; padding: 4px 14px 14px; counter-increment: quest; }
+:root[data-skin="maple"] .sec::after {
+  content: "QUEST " counter(quest, decimal-leading-zero); position: absolute; left: -10px; bottom: -46px;
+  font-size: 12px; font-weight: 900; letter-spacing: 0.06em; color: #ffffff; text-shadow: var(--outline); line-height: 20px;
+}
+:root[data-skin="maple"] .sec-head { display: block; position: static; border-top: 0; padding: 0 0 10px; border-bottom: 2px solid #c9302c; }
+:root[data-skin="maple"] .sec-head::before { content: ""; display: block; width: 123px; height: 15px; margin-bottom: 6px; background: url("maple/list0.png") no-repeat; }
+:root[data-skin="maple"] .sec:has(input[data-done]:checked) .sec-head::before { width: 179px; height: 14px; background-image: url("maple/list3.png"); }
+:root[data-skin="maple"] .sec-num { display: none; }
+:root[data-skin="maple"] .sec-head h2 { font-size: 1.375rem; line-height: 1.4; }
+:root[data-skin="maple"] .paper-head { padding: 6px 14px 4px; }
 :root[data-skin="maple"] .eyebrow .mono { color: var(--accent); }
 
-/* shared bits: glossy buttons */
-:root[data-skin="maple"] .btn,
-:root[data-skin="maple"] .appear-btn,
-:root[data-skin="maple"] .seg button {
-  color: #ffffff; font-weight: 700; text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35);
-  background: linear-gradient(var(--blue-a), var(--blue-b)); border: 1px solid var(--blue-edge); border-radius: 5px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 2px 0 var(--blue-edge);
-}
-:root[data-skin="maple"] .btn:hover, :root[data-skin="maple"] .appear-btn:hover, :root[data-skin="maple"] .seg button:hover {
-  color: #ffffff; filter: brightness(1.08); background: linear-gradient(var(--blue-a), var(--blue-b));
-}
-:root[data-skin="maple"] .btn:active, :root[data-skin="maple"] .seg button:active { transform: translateY(1px); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 1px 0 var(--blue-edge); }
-
-/* top bar: the same charcoal as the in-game status bar */
-:root[data-skin="maple"] .toolbar {
-  background: linear-gradient(var(--bar-a), var(--bar-b) 60%, var(--bar-c)); border-bottom: 1px solid #1a1e21;
-  box-shadow: inset 0 1px 0 var(--bar-line); color: var(--bar-ink);
-}
-:root[data-skin="maple"] .toolbar .home { color: var(--bar-ink); }
-:root[data-skin="maple"] .toolbar .home::before { background: var(--lv-box); color: var(--lv-num); border: 1px solid #000000; border-radius: 3px; }
-:root[data-skin="maple"] .toolbar .crumb, :root[data-skin="maple"] .levels-label { color: var(--bar-sub); }
-:root[data-skin="maple"] .seg { background: transparent; border: 0; padding: 0; gap: 3px; }
-:root[data-skin="maple"] .seg button[aria-pressed="true"] {
-  background: #ffffff; color: var(--blue-b); text-shadow: none; border-color: var(--blue-edge);
-  box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.12);
-}
-:root[data-skin="maple"] .appear-btn { padding: 0 0.6rem; }
-:root[data-skin="maple"] .appear-panel {
-  background: var(--surface); border: 5px solid var(--win); border-radius: 6px;
-  box-shadow: 0 0 0 1px var(--win-edge), inset 0 0 0 1px var(--win-edge), 0 6px 14px -4px var(--chunk);
-}
-:root[data-skin="maple"] .appear-panel .row > span { color: var(--muted); }
-
-/* bottom status bar (built by site.js; only shown in this skin) */
-.hud { display: none; }
-:root[data-skin="maple"] .hud {
-  display: flex; align-items: center; gap: 0.75rem; position: fixed; left: 0; right: 0; bottom: 0; z-index: 6;
-  padding: 0.35rem max(16px, env(safe-area-inset-right, 0px)) calc(0.35rem + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
-  background: linear-gradient(var(--bar-a), var(--bar-b) 55%, var(--bar-c)); border-top: 1px solid #1a1e21; box-shadow: inset 0 1px 0 var(--bar-line);
-  color: var(--bar-ink); font-size: 0.75rem; line-height: 1.3;
-}
-:root[data-skin="maple"] .hud-lv {
-  display: inline-flex; align-items: baseline; gap: 0.4rem; background: var(--lv-box); border: 1px solid #000000; border-radius: 3px;
-  padding: 0.3rem 0.6rem; font-weight: 700; flex: none;
-}
-:root[data-skin="maple"] .hud-lv b { font-size: 0.875rem; letter-spacing: 0.02em; }
-:root[data-skin="maple"] .hud-lv i { font-style: normal; color: var(--lv-num); font-size: 1rem; font-variant-numeric: tabular-nums; min-width: 1.4em; }
-:root[data-skin="maple"] .hud-name { display: grid; color: var(--bar-sub); min-width: 0; max-width: 14rem; flex: 0 1 auto; }
-:root[data-skin="maple"] .hud-name span { color: var(--bar-ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-:root[data-skin="maple"] .hud-exp { flex: 1 1 auto; display: grid; gap: 0.15rem; min-width: 0; max-width: 38rem; }
-:root[data-skin="maple"] .hud-exp > span:first-child { display: flex; gap: 0.5rem; align-items: baseline; }
-:root[data-skin="maple"] .hud-exp b { font-weight: 700; font-style: italic; }
-:root[data-skin="maple"] .hud-exp small { font-family: var(--font-mono); font-size: 0.6875rem; color: var(--bar-sub); font-variant-numeric: tabular-nums; }
-:root[data-skin="maple"] .hud-gauge { height: 0.6rem; background: var(--exp-track); border: 1px solid #0d0f11; border-radius: 2px; overflow: hidden; }
-:root[data-skin="maple"] .hud-gauge i { display: block; height: 100%; width: 0; background: linear-gradient(var(--exp-a), var(--exp-b)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55); transition: width 0.3s; }
-
-/* windows: the minimap frame (steel-blue border, white title strip, white body) */
-:root[data-skin="maple"] .paper-head,
-:root[data-skin="maple"] .sec,
-:root[data-skin="maple"] .rail details,
-:root[data-skin="maple"] .shelf-head,
-:root[data-skin="maple"] .shelf-aside > div {
-  background: var(--surface); border: 6px solid var(--win); border-radius: 7px;
-  box-shadow: 0 0 0 1px var(--win-edge), inset 0 0 0 1px var(--win-edge), var(--shadow);
-}
-:root[data-skin="maple"] .paper-head { padding: 1.1rem 1.3rem 1.3rem; }
-:root[data-skin="maple"] .sec { padding: 0 1.3rem 1.3rem; }
-:root[data-skin="maple"] .sec-head {
-  position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.35rem;
-  margin: 0 -1.3rem; padding: 0 1.3rem 0.6rem; border-top: 0; background: var(--win);
-}
-:root[data-skin="maple"] .sec-num {
-  position: static; min-width: 0; justify-self: stretch; text-align: left;
-  background: var(--strip); color: var(--strip-ink); border: 1px solid var(--win-edge); border-radius: 3px;
-  font-family: var(--font-pixel); font-size: 0.6875rem; line-height: 1.6; letter-spacing: 0.04em; padding: 0 0.4rem; margin-right: 4.2rem;
-}
-:root[data-skin="maple"] .sec-num::before { content: "QUEST "; }
-/* the two little title-strip buttons, as on the minimap */
-:root[data-skin="maple"] .sec-head::after {
-  content: ""; position: absolute; right: 1.3rem; top: 1px; width: 3.8rem; height: 1rem; border-radius: 3px;
-  background:
-    linear-gradient(var(--blue-a), var(--blue-b)) 0 0 / 1rem 100% no-repeat,
-    linear-gradient(var(--gold-a), var(--gold-b)) 100% 0 / 2.5rem 100% no-repeat;
-}
-:root[data-skin="maple"] .sec-head h2 { color: var(--win-ink); font-size: 1.3125rem; }
-
-/* chapter list: a small window with the EXP gauge under its title */
-:root[data-skin="maple"] .rail { max-height: calc(100vh - 9.5rem); }
-:root[data-skin="maple"] .rail details { overflow: hidden; padding: 0 0 0.5rem; }
-:root[data-skin="maple"] .rail summary { background: var(--win); color: var(--win-ink); padding: 0 0.6rem 0.4rem; font-weight: 700; }
-:root[data-skin="maple"] .rail summary::after { color: var(--gold-ink); background: linear-gradient(var(--gold-a), var(--gold-b)); border: 1px solid var(--gold-edge); border-radius: 3px; padding: 0 0.4rem; font-size: 0.75rem; font-weight: 700; }
-:root[data-skin="maple"] .rail .progress-text { color: var(--win-ink); }
-:root[data-skin="maple"] .rail .progress-text::before { content: "EXP "; font-family: var(--font-pixel); }
-:root[data-skin="maple"] .progress,
-:root[data-skin="maple"] .meter { height: 0.55rem; border-radius: 2px; border: 1px solid #0d0f11; background: var(--exp-track); }
-:root[data-skin="maple"] .progress { margin: 0; border-width: 0 0 1px; border-radius: 0; }
-:root[data-skin="maple"] .progress > span,
-:root[data-skin="maple"] .meter > i { background: linear-gradient(var(--exp-a), var(--exp-b)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55); }
-:root[data-skin="maple"] .rail ol { border-left: 0; margin: 0.4rem 0.4rem 0; gap: 1px; }
-:root[data-skin="maple"] .rail li a { border-left: 0; border-radius: 3px; margin-left: 0; padding-left: 0.55rem; }
-:root[data-skin="maple"] .rail li a:hover { background: var(--accent-soft); }
-:root[data-skin="maple"] .rail li a.active { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
-@media (max-width: 960px) {
-  :root[data-skin="maple"] .rail details { padding: 0; }
-  :root[data-skin="maple"] .rail details[open] { padding-bottom: 0.5rem; }
-  :root[data-skin="maple"] .rail summary { padding: 0.25rem 0.6rem; }
-}
-
-/* quoted claims: a chat balloon */
-:root[data-skin="maple"] .claim,
-:root[data-skin="maple"] .paper-head > .claim {
-  position: relative; background: var(--balloon); border: 1px solid var(--balloon-edge); border-radius: 10px;
-  box-shadow: 0 2px 0 var(--chunk); margin-bottom: 8px;
-}
-:root[data-skin="maple"] .claim::after {
-  content: ""; position: absolute; left: 1.6rem; bottom: -7px; width: 12px; height: 12px; background: var(--balloon);
-  border-right: 1px solid var(--balloon-edge); border-bottom: 1px solid var(--balloon-edge); transform: rotate(45deg);
-}
-
-/* guess-first: the quick-slot panel, one key per guess */
-:root[data-skin="maple"] .predict {
-  counter-reset: slot; background: var(--slot-frame); border: 1px solid var(--slot-frame-edge); border-radius: 6px;
-  padding: 0.5rem; gap: 4px; font-family: var(--font-body); font-size: 1rem;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), var(--shadow);
-}
-:root[data-skin="maple"] .predict b.ptitle { color: var(--slot-title); padding: 0 0.3rem; letter-spacing: 0.08em; }
-:root[data-skin="maple"] .predict b.ptitle::before { content: "QUICK SLOT · "; font-family: var(--font-pixel); font-weight: 400; }
-:root[data-skin="maple"] .predict ol { list-style: none; padding: 0; gap: 4px; }
-:root[data-skin="maple"] .predict > p,
-:root[data-skin="maple"] .predict li { background: var(--slot); color: var(--ink); border-radius: 3px; padding: 0.5rem 0.75rem; box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.08); }
-:root[data-skin="maple"] .predict li { position: relative; padding-left: 2.2rem; counter-increment: slot; }
-:root[data-skin="maple"] .predict li::before {
-  content: counter(slot); position: absolute; left: 0.5rem; top: 0.55rem; min-width: 1.15rem; text-align: center;
-  font-family: var(--font-pixel); font-size: 0.6875rem; line-height: 1.15rem; color: var(--slot-key);
-  border: 1px solid var(--slot-key); border-radius: 2px;
-}
-
-/* self-check: NPC dialogs (portrait and name bar on the left, buttons on the bottom edge) */
-:root[data-skin="maple"] .check { gap: 0.9rem; }
-:root[data-skin="maple"] .check-title {
-  justify-self: start; background: var(--tag-bg); color: #ffffff; border-radius: 3px; padding: 0 0.55rem; letter-spacing: 0.06em;
-}
-:root[data-skin="maple"] .check details {
-  position: relative; background: var(--dlg); color: var(--dlg-ink); border: 1px solid var(--dlg-edge); border-radius: 6px;
-  margin: 4px; padding: 0.85rem 1rem 3.1rem 6.6rem; min-height: 9.2rem;
-  box-shadow: 0 0 0 4px var(--win), 0 0 0 5px var(--win-edge), 0 6px 12px 2px var(--chunk);
-}
-:root[data-skin="maple"] .check details::before {
-  content: ""; position: absolute; left: 0.9rem; top: 0.85rem; width: 4.6rem; height: 4.6rem; border-radius: 4px;
-  background: var(--npc) center 70% / 88% no-repeat, var(--portrait); border: 1px solid var(--dlg-edge);
-}
-:root[data-skin="maple"] .check details::after {
-  content: "精讀導師"; position: absolute; left: 0.6rem; top: 5.85rem; width: 5.2rem; text-align: center;
-  background: var(--tag-bg); color: #ffffff; font-size: 0.75rem; line-height: 1.5; border-radius: 3px;
-}
-:root[data-skin="maple"] .check summary { position: static; padding: 0; font-family: var(--font-body); font-size: 1.0625rem; color: var(--dlg-ink); font-weight: 700; }
-:root[data-skin="maple"] .check summary::before { display: none; }
-:root[data-skin="maple"] .check summary::after {
-  content: "看答案 ▸"; position: absolute; right: 0.8rem; bottom: 0.7rem; font-size: 0.8125rem; line-height: 1.8; padding: 0 0.75rem;
-  color: #ffffff; font-weight: 700; text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35); border-radius: 4px;
-  background: linear-gradient(var(--blue-a), var(--blue-b)); border: 1px solid var(--blue-edge);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 2px 0 var(--blue-edge);
-}
-:root[data-skin="maple"] .check details[open] summary::after { content: "◂ 收起"; background: linear-gradient(#f4f6f7, #cfd6da); color: #2c3338; text-shadow: none; border-color: var(--win-edge); box-shadow: inset 0 1px 0 #ffffff, 0 2px 0 var(--win-edge); }
-:root[data-skin="maple"] .check details[open] summary { color: var(--dlg-ink); }
-:root[data-skin="maple"] .check details > div { padding: 0.6rem 0 0; margin-top: 0.6rem; border-top: 1px dashed var(--dlg-edge); color: var(--dlg-ink); }
-
-/* instruments */
-:root[data-skin="maple"] .figure,
-:root[data-skin="maple"] .anim { border: 4px solid var(--win); border-radius: 6px; box-shadow: 0 0 0 1px var(--win-edge), inset 0 0 0 1px var(--win-edge), var(--shadow); }
-:root[data-skin="maple"] .sec .table-wrap { --scroll-bg: var(--surface); }
-:root[data-skin="maple"] .eq { border-block: 1px dotted var(--win-edge); }
-:root[data-skin="maple"] table { border-top: 1px solid var(--win-edge); border-bottom: 1px solid var(--win-edge); }
-:root[data-skin="maple"] thead th { background: var(--win); color: var(--win-ink); border-bottom-color: var(--win-edge); }
-:root[data-skin="maple"] .anim-controls .btn:nth-child(4) {
-  background: linear-gradient(var(--gold-a), var(--gold-b)); border-color: var(--gold-edge); color: var(--gold-ink); text-shadow: none;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 2px 0 var(--gold-edge);
-}
-:root[data-skin="maple"] .anim-controls .btn:disabled { filter: grayscale(0.6); opacity: 0.55; }
-:root[data-skin="maple"] code { background: var(--accent-soft); border-color: var(--rule); }
-
-/* notes: the chat input strip with its little channel tab; finishing is the one red button */
-:root[data-skin="maple"] .desk-foot { border-top: 1px dashed var(--win-edge); }
-:root[data-skin="maple"] .note label { justify-self: start; background: var(--tab); color: #ffffff; border-radius: 3px 3px 0 0; padding: 0 0.6rem; letter-spacing: 0.06em; }
-:root[data-skin="maple"] .note textarea { border: 1px solid var(--win-edge); border-radius: 0 4px 4px 4px; font-family: var(--font-body); font-size: 1rem; }
+/* the one CSS button: finishing, in the dialog-button orange, sitting in the window's blue band */
 :root[data-skin="maple"] .done {
-  color: #ffffff; font-weight: 700; text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35); border-radius: 5px;
-  background: linear-gradient(var(--red-a), var(--red-b)); border: 1px solid var(--red-edge);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 2px 0 var(--red-edge);
+  position: absolute; right: -10px; bottom: -48px; margin: 0; min-height: 0; height: 22px; padding: 0 12px; gap: 0.35rem;
+  font-size: 12.5px; font-weight: 900; color: #ffffff; text-shadow: 0 1px 0 rgba(0, 0, 0, 0.45); border-radius: 3px;
+  border: 1px solid #7a3a00; background: linear-gradient(#ffd27a, #ff9a1e 55%, #f07a00); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
-:root[data-skin="maple"] .done input { accent-color: #ffffff; }
-:root[data-skin="maple"] .done:has(input:checked) {
-  color: #1f2a05; text-shadow: none; background: linear-gradient(var(--exp-a), var(--exp-b)); border-color: #55700a;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 2px 0 #55700a;
-}
-:root[data-skin="maple"] .done:has(input:checked)::after { content: "CLEAR"; font-family: var(--font-pixel); font-size: 0.6875rem; margin-left: 0.2rem; }
-:root[data-skin="maple"] .links a { border: 1px solid var(--win-edge); border-radius: 4px; color: var(--accent); background: var(--surface); box-shadow: 0 2px 0 var(--win-edge); }
+:root[data-skin="maple"] .done input { accent-color: #ffffff; margin: 0; }
+:root[data-skin="maple"] .done:has(input:checked) { color: #1f2a05; text-shadow: none; background: linear-gradient(#e8ffa0, #9edc2a 55%, #6fb800); border-color: #3c6a00; }
+:root[data-skin="maple"] .desk-foot { border-top: 1px dashed var(--rule); }
 
-/* shelf */
-:root[data-skin="maple"] .shelf-head,
-:root[data-skin="maple"] .shelf-aside > div { padding: 1.1rem 1.3rem; }
-:root[data-skin="maple"] .shelf-head { max-width: none; }
-:root[data-skin="maple"] .shelf-group > h2 {
-  background: var(--win); color: var(--win-ink); border: 1px solid var(--win-edge); border-radius: 5px; padding: 0.3rem 0.8rem;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+/* ---------- quoted claim: an NPC chat balloon ---------- */
+:root[data-skin="maple"] .claim {
+  position: relative; margin-bottom: 12px; border-radius: 0; background: none; padding: 8px 12px;
+  border-style: solid; border-width: 6px; border-image: url("maple/bal9.png") 6 fill / 6px repeat;
 }
-:root[data-skin="maple"] .shelf-group > h2 small { color: var(--win-ink); }
-:root[data-skin="maple"] .shelf { gap: 0.8rem; padding-top: 0.6rem; }
+:root[data-skin="maple"] .claim::after { content: ""; position: absolute; left: 22px; bottom: -18px; width: 13px; height: 13px; background: url("maple/bal-arrow.png"); }
+
+/* ---------- guess first: a list of available quests ---------- */
+:root[data-skin="maple"] .predict { background: #eeeedd; border: 1px solid #b9b9a4; box-shadow: inset 1px 1px 0 #ffffff; border-radius: 3px; font-family: var(--font-body); font-size: 1rem; }
+:root[data-skin="maple"] .predict b.ptitle { font-size: 0; }
+:root[data-skin="maple"] .predict b.ptitle::before { content: ""; display: block; width: 105px; height: 18px; background: url("maple/list1.png"); }
+:root[data-skin="maple"] .predict ol { list-style: none; padding-left: 0; }
+:root[data-skin="maple"] .predict li { position: relative; padding-left: 22px; }
+:root[data-skin="maple"] .predict li::before { content: ""; position: absolute; left: 0; top: 0.3em; width: 13px; height: 18px; background: url("maple/list1.png") 0 0 no-repeat; }
+
+/* ---------- self-check: NPC dialogs (UtilDlgEx as it is) ---------- */
+:root[data-skin="maple"] .check { gap: 12px; }
+:root[data-skin="maple"] .check-title { justify-self: start; width: 121px; height: 19px; line-height: 19px; text-align: center; color: #ffffff; text-shadow: var(--outline); background: url("maple/bar.png"); letter-spacing: 0.04em; }
+:root[data-skin="maple"] .check details {
+  position: relative; min-height: 190px; padding: 2px 10px 6px; border-radius: 0; background: none;
+  border-style: solid; border-width: 28px 22px 58px 150px; border-image: url("maple/dlg9.png") 28 22 58 150 fill / 28px 22px 58px 150px stretch repeat;
+}
+:root[data-skin="maple"] .npc-portrait {
+  display: flex; position: absolute; left: -140px; width: 120px; top: -14px; bottom: 0;
+  flex-direction: column; align-items: center; justify-content: flex-end; gap: 3px; pointer-events: none;
+}
+:root[data-skin="maple"] .npc-portrait img { display: block; max-width: 116px; max-height: 96px; object-fit: scale-down; image-rendering: pixelated; }
+:root[data-skin="maple"] .npc-portrait span { width: 121px; height: 19px; line-height: 19px; text-align: center; font-size: 12px; font-weight: 700; color: #ffffff; text-shadow: var(--outline); background: url("maple/bar.png"); }
+:root[data-skin="maple"] .check summary { position: static; padding: 0; font-family: var(--font-body); font-size: 1rem; font-weight: 700; color: #1c2b44; }
+:root[data-skin="maple"] .check details[open] summary { color: #1c2b44; }
+/* NEXT reveals the answer; BACK and END CHAT put it away. Both are parts of the summary, so a click toggles. */
+:root[data-skin="maple"] .check summary::after { content: ""; position: absolute; right: -16px; bottom: -48px; width: 46px; height: 18px; background: url("maple/btnext-normal.png"); }
+:root[data-skin="maple"] .check summary:hover::after { background-image: url("maple/btnext-mouseOver.png"); }
+:root[data-skin="maple"] .check details[open] summary::after { background-image: url("maple/btprev-normal.png"); }
+:root[data-skin="maple"] .check details[open] summary:hover::after { background-image: url("maple/btprev-mouseOver.png"); }
+:root[data-skin="maple"] .check summary::before { content: none; }
+:root[data-skin="maple"] .check details[open] summary::before { content: ""; position: absolute; left: -144px; top: auto; bottom: -48px; width: 85px; height: 18px; border-radius: 0; background: url("maple/btclose-normal.png"); }
+:root[data-skin="maple"] .check details > div { padding: 8px 0 0; margin-top: 8px; border-top: 1px dashed #b7b7a6; font-size: 1rem; color: #333333; }
+
+/* ---------- notes: the chat bar ---------- */
+:root[data-skin="maple"] .note label { justify-self: start; background: #335577; color: #ffffff; padding: 0 10px; border: 1px solid #1d3550; border-bottom: 0; border-radius: 3px 3px 0 0; line-height: 20px; letter-spacing: 0.04em; }
+:root[data-skin="maple"] .note { gap: 0; }
+:root[data-skin="maple"] .note textarea { border: 1px solid #556677; border-radius: 0; box-shadow: inset 1px 1px 0 #ccccdd; font-family: var(--font-body); font-size: 1rem; }
+
+/* ---------- instruments inside a window: inner panels ---------- */
+:root[data-skin="maple"] :is(.figure, .anim) { border: 1px solid #b9b9a4; border-radius: 3px; box-shadow: inset 1px 1px 0 #ffffff; background: #fbfbf5; }
+:root[data-skin="maple"] .sec .table-wrap { --scroll-bg: #ffffff; }
+:root[data-skin="maple"] thead th { background: #99bbcc; color: #14232b; }
+:root[data-skin="maple"] .btn { border-radius: 3px; border: 1px solid #123f69; color: #ffffff; font-weight: 700; text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35); background: linear-gradient(#5aa8e8, #2577b7 55%, #1a5f9c); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5); }
+:root[data-skin="maple"] .btn:hover { filter: brightness(1.08); background: linear-gradient(#5aa8e8, #2577b7 55%, #1a5f9c); }
+:root[data-skin="maple"] .anim-controls .btn:nth-child(4) { color: #ffffff; background: linear-gradient(#ffd27a, #ff9a1e 55%, #f07a00); border-color: #7a3a00; }
+:root[data-skin="maple"] .links a { border: 1px solid #556677; border-radius: 3px; background: #ffffff; }
+:root[data-skin="maple"] .lv-kid { font-family: var(--font-body); font-size: 1.0625rem; }
+
+/* ---------- shelf ---------- */
+:root[data-skin="maple"] .shelf-head { padding: 6px 14px 4px; max-width: none; }
+:root[data-skin="maple"] .shelf-aside > div { padding: 4px 10px 2px; }
+:root[data-skin="maple"] .shelf-group > h2 { border: 0; padding: 4px 10px; background: #2a3f63; border-radius: 3px; color: #ffffff; text-shadow: var(--outline); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25); }
+:root[data-skin="maple"] .shelf-group > h2 small { color: #e3ebf5; }
+:root[data-skin="maple"] .shelf { gap: 0.9rem; padding-top: 0.6rem; }
 :root[data-skin="maple"] .shelf > li + li { border-top: 0; }
-:root[data-skin="maple"] .card {
-  margin-inline: 0; padding: 1rem 1.1rem; background: var(--surface); border: 4px solid var(--win); border-radius: 6px;
-  box-shadow: 0 0 0 1px var(--win-edge), inset 0 0 0 1px var(--win-edge), var(--shadow);
-}
-:root[data-skin="maple"] .card:hover { transform: translateY(-2px); background: var(--surface); }
-:root[data-skin="maple"] .tally b { color: var(--accent); }
-:root[data-skin="maple"] .shelf-aside h2 { border-bottom-color: var(--win-edge); }
+:root[data-skin="maple"] .card { margin-inline: 0; padding: 2px 10px 0; }
+:root[data-skin="maple"] .card:hover { background: none; transform: translateY(-2px); }
+:root[data-skin="maple"] .meter { height: 6px; border-radius: 0; background: #1c2024; }
+:root[data-skin="maple"] .meter > i { background: linear-gradient(#e2f25c, #9cc11a); }
 
+/* ---------- status bar (built by site.js) ---------- */
+:root[data-skin="maple"] .hud { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; height: calc(71px + env(safe-area-inset-bottom, 0px)); background: url("maple/hud-bg.png") 0 0 / auto 71px repeat-x; image-rendering: pixelated; }
+:root[data-skin="maple"] .hud-chat { position: absolute; left: 0; top: 7px; width: min(566px, 100%); height: 22px; padding-left: 8px; background: url("maple/chat9.png") 0 0 / 100% 22px no-repeat; font-size: 12px; line-height: 22px; color: #333333; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; image-rendering: auto; }
+:root[data-skin="maple"] .hud-chat b { color: #d14a00; }
+:root[data-skin="maple"] .hud-row { position: absolute; left: 0; right: 0; top: 29px; height: 42px; display: flex; align-items: center; }
+:root[data-skin="maple"] .hud-left { position: relative; flex: none; width: 207px; height: 42px; background: url("maple/hud-left.png") no-repeat; }
+:root[data-skin="maple"] .hud-lv { position: absolute; left: 38px; top: 15px; display: flex; }
+:root[data-skin="maple"] .hud-lv img { display: block; width: 11px; height: 13px; }
+:root[data-skin="maple"] .hud-name { position: absolute; left: 84px; top: 4px; right: 6px; display: flex; flex-direction: column; font-size: 11.5px; line-height: 1.3; color: #dddddd; image-rendering: auto; }
+:root[data-skin="maple"] .hud-name b { color: #ffffff; font-size: 12.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+:root[data-skin="maple"] .hud-gp { flex: 1 1 auto; max-width: 520px; height: 42px; display: flex; align-items: center; padding: 0 6px; border-style: solid; border-width: 0 8px; border-image: url("maple/hud-gp9.png") 0 8 fill / 0 8px repeat; }
+:root[data-skin="maple"] .hud-exp { position: relative; flex: 1; height: 31px; border-style: solid; border-width: 14px 3px 2px 32px; border-image: url("maple/exp.png") 14 3 2 32 fill / 14px 3px 2px 32px stretch; }
+:root[data-skin="maple"] .hud-gray { position: absolute; top: 0; bottom: 0; right: 0; background: url("maple/exp-gray.png") 0 0 / 1px 100% repeat-x; }
+:root[data-skin="maple"] .hud-num { position: absolute; right: 2px; top: -14px; font-size: 11px; font-weight: 700; line-height: 13px; color: #ffffff; text-shadow: var(--outline); image-rendering: auto; }
+:root[data-skin="maple"] .hud-menu { margin-left: auto; margin-right: 10px; width: 54px; height: 34px; padding: 0; border: 0; background: url("maple/bt-menu-normal.png") no-repeat; }
+:root[data-skin="maple"] .hud-menu:hover { background-image: url("maple/bt-menu-mouseOver.png"); }
+:root[data-skin="maple"] .hud-menu:active { background-image: url("maple/bt-menu-pressed.png"); }
+
+@media (max-width: 960px) {
+  :root[data-skin="maple"] .rail details[open] { padding-bottom: 0; }
+}
 @media (max-width: 600px) {
-  :root[data-skin="maple"] .sec { padding: 0 1rem 1.1rem; border-width: 4px; }
-  :root[data-skin="maple"] .sec-head { margin: 0 -1rem; padding: 0 1rem 0.5rem; }
-  :root[data-skin="maple"] .sec-head::after { right: 1rem; }
-  :root[data-skin="maple"] .sec-head h2 { font-size: 1.1875rem; }
-  :root[data-skin="maple"] .paper-head { padding: 1rem; border-width: 4px; }
-  :root[data-skin="maple"] .column { gap: 1.75rem; }
-  :root[data-skin="maple"] .check details { padding: 0.75rem 0.85rem 3rem 4.9rem; min-height: 7.9rem; }
-  :root[data-skin="maple"] .check details::before { left: 0.7rem; top: 0.75rem; width: 3.5rem; height: 3.5rem; }
-  :root[data-skin="maple"] .check details::after { left: 0.45rem; top: 4.6rem; width: 4rem; font-size: 0.6875rem; content: "導師"; }
-  :root[data-skin="maple"] .check summary { font-size: 1rem; }
-  :root[data-skin="maple"] .hud { gap: 0.6rem; }
+  :root[data-skin="maple"] .sec { padding: 2px 4px 10px; }
+  :root[data-skin="maple"] .check details { border-width: 28px 14px 58px 104px; border-image-width: 28px 14px 58px 104px; min-height: 170px; }
+  :root[data-skin="maple"] .npc-portrait { left: -100px; width: 96px; }
+  :root[data-skin="maple"] .npc-portrait img { max-width: 92px; max-height: 80px; }
+  :root[data-skin="maple"] .npc-portrait span { width: 96px; background-size: 96px 19px; }
+  :root[data-skin="maple"] .check summary::after { right: -8px; }
+  :root[data-skin="maple"] .check details[open] summary::before { left: -98px; }
+  :root[data-skin="maple"] .hud-left { width: 80px; background-size: 207px 42px; }
   :root[data-skin="maple"] .hud-name { display: none; }
+  :root[data-skin="maple"] .appear-btn { width: 54px; }
+  :root[data-skin="maple"] .seg button { padding: 0 2px; font-size: 0.8125rem; }
 }
 @media (prefers-reduced-motion: reduce) { :root[data-skin="maple"] .card:hover { transform: none; } }
 

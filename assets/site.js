@@ -35,17 +35,24 @@
   setLevel(store.get(LEVEL_KEY, "uni"));
 
   // ---------- appearance: style (study / maple) and colour mode (system / light / dark) ----------
+  // The 楓葉冒險 skin is drawn with game art that is never committed: it sits in assets/maple/ on
+  // the reader's own machine (scripts/setup_maple.py). It is offered only when that art loads, so
+  // the public site shows just the colour modes.
   var SKIN_KEY = "study:skin", MODE_KEY = "study:mode";
+  var cssLink = document.querySelector('link[href$="assets/site.css"]');
+  var mapleBase = cssLink ? cssLink.getAttribute("href").replace(/site\.css$/, "maple/") : null;
+  var mapleReady = false, mapleHooks = [];
+  function whenMaple(fn) { if (mapleReady) fn(); else mapleHooks.push(fn); }
   var hostTheme = root.hasAttribute("data-host-theme") ? root.getAttribute("data-host-theme") : root.getAttribute("data-theme");
-  function applySkin(v) { if (v === "maple") root.setAttribute("data-skin", "maple"); else root.removeAttribute("data-skin"); }
+  function applySkin(v) { if (v === "maple" && mapleReady) root.setAttribute("data-skin", "maple"); else root.removeAttribute("data-skin"); }
   function applyMode(v) {
     if (v === "light" || v === "dark") root.setAttribute("data-theme", v);
     else if (hostTheme) root.setAttribute("data-theme", hostTheme);
     else root.removeAttribute("data-theme");
   }
   var skin = store.get(SKIN_KEY, "study"), mode = store.get(MODE_KEY, "system");
-  applySkin(skin);
   applyMode(mode);
+  var openAppear = null, skinRow = null;
   var bar = document.querySelector(".toolbar-inner");
   if (bar) {
     var wrap = document.createElement("div");
@@ -55,49 +62,82 @@
       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
       '<circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg><span class="t">外觀</span></button>' +
       '<div class="appear-panel" id="appear-panel" role="group" aria-label="外觀設定" hidden>' +
-      '<div class="row"><span>風格</span><div class="seg">' +
-      '<button type="button" data-skin-btn="study">精讀室</button><button type="button" data-skin-btn="maple">楓葉冒險</button></div></div>' +
+      '<div class="row row-skin" hidden><span>風格</span><div class="seg">' +
+      '<button type="button" data-skin-btn="study">精讀室</button><button type="button" data-skin-btn="maple">楓葉冒險</button></div>' +
+      '<p>「楓葉冒險」用的是你電腦上的楓之谷素材，內容與原本相同。</p></div>' +
       '<div class="row"><span>色彩</span><div class="seg">' +
       '<button type="button" data-mode-btn="system">跟隨系統</button><button type="button" data-mode-btn="light">淺色</button><button type="button" data-mode-btn="dark">深色</button></div></div>' +
-      '<p>「楓葉冒險」是實驗性的遊戲風格外觀，內容與原本相同。設定只存在這個瀏覽器。</p></div>';
+      '<p>設定只存在這個瀏覽器。</p></div>';
     bar.appendChild(wrap);
     var btn = wrap.querySelector(".appear-btn"), panel = wrap.querySelector(".appear-panel");
-    function sync() {
+    skinRow = wrap.querySelector(".row-skin");
+    var sync = function () {
       wrap.querySelectorAll("[data-skin-btn]").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-skin-btn") === skin)); });
       wrap.querySelectorAll("[data-mode-btn]").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-mode-btn") === mode)); });
-    }
-    function open(v) { panel.hidden = !v; btn.setAttribute("aria-expanded", String(v)); }
-    btn.addEventListener("click", function () { open(panel.hidden); });
+    };
+    openAppear = function (v) { panel.hidden = !v; btn.setAttribute("aria-expanded", String(v)); };
+    btn.addEventListener("click", function () { openAppear(panel.hidden); });
     wrap.querySelectorAll("[data-skin-btn]").forEach(function (b) {
       b.addEventListener("click", function () { skin = b.getAttribute("data-skin-btn"); applySkin(skin); store.set(SKIN_KEY, skin); sync(); });
     });
     wrap.querySelectorAll("[data-mode-btn]").forEach(function (b) {
       b.addEventListener("click", function () { mode = b.getAttribute("data-mode-btn"); applyMode(mode); store.set(MODE_KEY, mode); sync(); });
     });
-    document.addEventListener("click", function (e) { if (!panel.hidden && !wrap.contains(e.target)) open(false); });
-    panel.addEventListener("keydown", function (e) { if (e.key === "Escape") { open(false); btn.focus(); } });
-    btn.addEventListener("keydown", function (e) { if (e.key === "Escape") open(false); });
+    document.addEventListener("click", function (e) { if (!panel.hidden && !wrap.contains(e.target)) openAppear(false); });
+    panel.addEventListener("keydown", function (e) { if (e.key === "Escape") { openAppear(false); btn.focus(); } });
+    btn.addEventListener("keydown", function (e) { if (e.key === "Escape") openAppear(false); });
     sync();
+  }
+  // The head snippet may already have switched to maple from storage; that stands only if the art is here.
+  function setMapleReady(ok) {
+    mapleReady = ok;
+    applySkin(skin);
+    if (skinRow) skinRow.hidden = !ok;
+    if (ok) mapleHooks.splice(0).forEach(function (fn) { fn(); });
+  }
+  if (mapleBase) {
+    var probe = new Image();
+    probe.onload = function () { setMapleReady(true); };
+    probe.onerror = function () { setMapleReady(false); };
+    probe.src = mapleBase + "win9.png";
+  } else {
+    setMapleReady(false);
   }
 
   // ---------- status bar for the game skin: LV = sections finished, EXP = share of all sections ----------
-  // Decorative: the same numbers are in the rail or tally, so it is hidden from assistive tech.
-  function makeHud(job, name) {
+  // Decorative: the same numbers are in the rail or tally, so it is hidden from assistive tech, and its
+  // MENU button (a shortcut to the appearance panel) is left out of the tab order.
+  function makeHud(job, name, notice) {
     var hud = document.createElement("div");
     hud.className = "hud";
     hud.setAttribute("aria-hidden", "true");
-    hud.innerHTML = '<span class="hud-lv"><b>LV.</b><i></i></span>' +
-      '<span class="hud-name"><small></small><span></span></span>' +
-      '<span class="hud-exp"><span><b>EXP</b><small></small></span><span class="hud-gauge"><i></i></span></span>';
-    hud.querySelector(".hud-name small").textContent = job;
-    hud.querySelector(".hud-name span").textContent = name;
+    hud.innerHTML = '<div class="hud-chat"><b>[公告]</b> <span></span></div><div class="hud-row">' +
+      '<div class="hud-left"><span class="hud-lv"></span><span class="hud-name"><span></span><b></b></span></div>' +
+      '<div class="hud-gp"><div class="hud-exp"><span class="hud-gray"></span><span class="hud-num"></span></div></div>' +
+      '<button type="button" class="hud-menu" tabindex="-1"></button></div>';
+    hud.querySelector(".hud-chat span").textContent = notice;
+    hud.querySelector(".hud-name span").textContent = job;
+    hud.querySelector(".hud-name b").textContent = name;
+    hud.querySelector(".hud-menu").addEventListener("click", function (e) { e.stopPropagation(); if (openAppear) openAppear(true); });
     document.body.appendChild(hud);
-    return function (n, total) {
-      var pct = total ? (100 * n) / total : 0;
-      hud.querySelector(".hud-lv i").textContent = String(n);
-      hud.querySelector(".hud-exp small").textContent = n + " / " + total + " [" + pct.toFixed(2) + "%]";
-      hud.querySelector(".hud-gauge i").style.width = pct + "%";
-    };
+    var last = [0, 0];
+    function draw() {
+      var n = last[0], total = last[1], pct = total ? n / total : 0;
+      hud.querySelector(".hud-num").textContent = n + " / " + total + " [" + (pct * 100).toFixed(2) + "%]";
+      // the bar's coloured interior starts 25px left of the box, under the "EXP." label
+      hud.querySelector(".hud-gray").style.left = "calc(" + (pct * 100) + "% + " + (25 * pct - 25) + "px)";
+      if (!mapleReady) return;
+      var lv = hud.querySelector(".hud-lv");
+      lv.textContent = "";
+      String(n).split("").forEach(function (d) {
+        var img = document.createElement("img");
+        img.src = mapleBase + "lv" + d + ".png";
+        img.alt = "";
+        lv.appendChild(img);
+      });
+    }
+    whenMaple(draw);
+    return function (n, total) { last = [n, total]; draw(); };
   }
 
   // ---------- shelf: show progress for each paper, and the totals ----------
@@ -125,7 +165,7 @@
   if (tallyDone) tallyDone.textContent = sumDone + " / " + sumTotal;
   var tallyStarted = document.getElementById("tally-started");
   if (tallyStarted) tallyStarted.textContent = String(started);
-  if (tallyDone) makeHud("書架", "論文精讀室")(sumDone, sumTotal);
+  if (tallyDone) makeHud("書架", "論文精讀室", "歡迎來到論文精讀室。")(sumDone, sumTotal);
 
   if (!paper) return;
 
@@ -157,10 +197,34 @@
   var done = store.get(DONE_KEY, []);
   var countable = document.querySelectorAll("input[data-done]").length;
   var crumb = document.querySelector(".toolbar .crumb");
-  var hud = makeHud("精讀中", crumb ? crumb.textContent.split("·")[0].trim() : paper);
+  var shortName = crumb ? crumb.textContent.split("·")[0].trim() : paper;
+  var hud = makeHud("精讀中", shortName, "讀完一節就按「讀完這節」，EXP 會增加。");
+  // the minimap's name band: site name over the paper's short name
+  var railSummary = document.querySelector(".rail summary");
+  if (railSummary) {
+    var names = document.createElement("span");
+    names.className = "mini-names";
+    names.setAttribute("aria-hidden", "true");
+    names.innerHTML = "<b>論文精讀室</b><span></span>";
+    names.lastChild.textContent = shortName;
+    railSummary.insertBefore(names, railSummary.firstChild);
+  }
+  // NPCs take turns in the self-check dialogs; their sprites are game art, so only when it is here
+  whenMaple(function () {
+    document.querySelectorAll(".check details").forEach(function (d, i) {
+      var npc = document.createElement("span");
+      npc.className = "npc-portrait";
+      npc.setAttribute("aria-hidden", "true");
+      npc.innerHTML = '<img alt=""><span>精讀導師</span>';
+      npc.firstChild.addEventListener("error", function () { npc.firstChild.remove(); });
+      npc.firstChild.src = mapleBase + "npc-" + ((i % 3) + 1) + ".png";
+      d.appendChild(npc);
+    });
+  });
   function renderProgress() {
     Object.keys(links).forEach(function (id) {
       links[id].tick.textContent = done.indexOf(id) >= 0 ? "✓" : "";
+      links[id].a.classList.toggle("is-done", done.indexOf(id) >= 0);
     });
     var n = done.filter(function (id) { return document.querySelector('input[data-done="' + id + '"]'); }).length;
     var bar = document.getElementById("progress-bar");

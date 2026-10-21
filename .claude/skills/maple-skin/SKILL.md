@@ -63,6 +63,7 @@ byte for byte. The pieces and how CSS uses them (`border-image: url(x) T R B L f
 |---|---|---|---|
 | `dlg9.png` | UtilDlgEx `t`+`c`+`s` stacked (529 wide) | 28 22 58 150 | NPC dialog. The 150px left border is the beige portrait column; the bottom 58 includes the blue button band (rows 28–52) |
 | `win9.png` | dlg9 with x 16..140 cut out | 28 22 58 24 | every reading window (a section) |
+| `win9s.png` | win9 without the blue button band | 28 22 34 24 | windows with no buttons (paper header, shelf boxes, cards, the appearance panel) |
 | `mini9.png` | MiniMap/MaxMap nine pieces | 72 6 15 6 | chapter list. Rows 6–20 are the white title strip (`mini-title.png` = "MINI MAP"), 20–64 the steel-blue name band |
 | `bal9.png` + `bal-arrow.png` | ChatBalloon/npc | 6 6 6 6 | a quoted claim from the paper |
 | `tab0.png` / `tab1.png` | Basic Tab left+fill+right | 0 12 0 6 | explanation-level tabs (blank, so Chinese labels work) |
@@ -100,6 +101,19 @@ artboard with `@@name@@` placeholders for each image. On a canvas: upload each f
 and replace `@@name@@` with the returned `/_blob/<id>`; `@@digits@@` becomes a JSON array of the
 ten digit urls. To check it locally first:
 `python3 -I scripts/render_local.py references/page-template.dc.html out.html IMG_DIR`.
+
+## In this repo's site
+
+The skin is wired into `assets/site.css` (section "楓葉冒險") and `assets/site.js`, with the art kept
+off the public site:
+- `python3 -I scripts/setup_maple.py PATH/TO/maple-assets.zip` builds everything into `assets/maple/`,
+  which is git-ignored. CSS refers to `url("maple/<file>")`, relative to `site.css`.
+- `site.js` loads `assets/maple/win9.png` once; only if it loads does the appearance menu show the
+  style row and accept `data-skin="maple"`. The public site and the inlined Artifact builds have no
+  art, so they show only the colour modes.
+- Images that are `<img>` elements (NPC portraits, LV digits) are added only after that check, so a
+  page without the art never asks for them.
+- Self-check NPCs rotate `npc-1/2/3.png`; change the list in `scripts/setup_maple.py`.
 
 ## 4. Things that will come up
 
