@@ -388,7 +388,9 @@
       plate.textContent = window.MAPLE_SPRITES[name].role || "";
       npc.appendChild(fig);
       npc.appendChild(plate);
-      d.appendChild(npc);
+      // inside the summary, the one part of a closed <details> that is drawn; the summary is
+      // position: static here, so the portrait still places itself against the dialog
+      d.querySelector("summary").appendChild(npc);
       // the NPC talks while its answer is open
       d.addEventListener("toggle", function () { setAct(spr, name, d.open ? "say" : "stand"); });
     });
@@ -495,7 +497,9 @@
     if (kid) lines.push(["重點", firstSentence(kid)]);
     else if (claim) lines.push(["重點", firstSentence(claim)]);
     var q = s.querySelector(".check summary");
-    if (q) lines.push(["提問", q.textContent.trim()]);
+    // the question only: the NPC's name plate also sits inside the summary
+    if (q) lines.push(["提問", Array.prototype.filter.call(q.childNodes, function (n) { return !(n.classList && n.classList.contains("npc-portrait")); })
+      .map(function (n) { return n.textContent; }).join("").trim()]);
     lines.push(["提示", s.querySelector("input[data-done]") ? "讀完按「讀完這節」打倒怪物，再按「下一節」。" : "按「下一節」繼續。"]);
     return lines;
   }
