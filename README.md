@@ -27,15 +27,15 @@ python3 -m http.server 8000
 
 右上角「外觀」可以切換淺色、深色或跟隨系統。
 
-### 楓葉冒險外觀（只在自己的電腦上）
+### 楓葉冒險外觀
 
-這個外觀用的是楓之谷的遊戲美術，素材不放進 repo，公開網站上也看不到這個選項。要在自己電腦上用：
+「外觀」裡的「楓葉冒險」用楓之谷的遊戲美術（Nexon 所有）：視窗、NPC 對話框、狀態列、弓箭手村場景。網站用到的圖片在 `assets/maple/`，是從完整素材包挑出、切好的約 50 張；完整素材包不放進 repo。換了素材或 NPC 之後重新產生：
 
 ```bash
 python3 -I scripts/setup_maple.py 路徑/maple-assets.zip
 ```
 
-它會把素材包轉成 `assets/maple/`（已列在 `.gitignore`），之後重新整理頁面，「外觀」裡就會出現「楓葉冒險」。做法和素材對照寫在 [`.claude/skills/maple-skin/SKILL.md`](.claude/skills/maple-skin/SKILL.md)。
+做法和素材對照寫在 [`.claude/skills/maple-skin/SKILL.md`](.claude/skills/maple-skin/SKILL.md)。用 `build_artifact.py` 內嵌成單一檔案的版本不帶圖片，所以只有淺色、深色可選。
 
 ## 新增一篇論文
 

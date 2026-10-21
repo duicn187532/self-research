@@ -35,9 +35,9 @@
   setLevel(store.get(LEVEL_KEY, "uni"));
 
   // ---------- appearance: style (study / maple) and colour mode (system / light / dark) ----------
-  // The 楓葉冒險 skin is drawn with game art that is never committed: it sits in assets/maple/ on
-  // the reader's own machine (scripts/setup_maple.py). It is offered only when that art loads, so
-  // the public site shows just the colour modes.
+  // The 楓葉冒險 skin is drawn with game art in assets/maple/ (scripts/setup_maple.py builds it).
+  // It is offered only when that art loads, so the inlined single-file builds, which have no
+  // images, show just the colour modes.
   var SKIN_KEY = "study:skin", MODE_KEY = "study:mode";
   var cssLink = document.querySelector('link[href$="assets/site.css"]');
   var mapleBase = cssLink ? cssLink.getAttribute("href").replace(/site\.css$/, "maple/") : null;
@@ -64,7 +64,7 @@
       '<div class="appear-panel" id="appear-panel" role="group" aria-label="外觀設定" hidden>' +
       '<div class="row row-skin" hidden><span>風格</span><div class="seg">' +
       '<button type="button" data-skin-btn="study">精讀室</button><button type="button" data-skin-btn="maple">楓葉冒險</button></div>' +
-      '<p>「楓葉冒險」用的是你電腦上的楓之谷素材，內容與原本相同。</p></div>' +
+      '<p>「楓葉冒險」用楓之谷的遊戲美術，內容與原本相同。</p></div>' +
       '<div class="row"><span>色彩</span><div class="seg">' +
       '<button type="button" data-mode-btn="system">跟隨系統</button><button type="button" data-mode-btn="light">淺色</button><button type="button" data-mode-btn="dark">深色</button></div></div>' +
       '<p>設定只存在這個瀏覽器。</p></div>';
@@ -209,7 +209,7 @@
     names.lastChild.textContent = shortName;
     railSummary.insertBefore(names, railSummary.firstChild);
   }
-  // NPCs take turns in the self-check dialogs; their sprites are game art, so only when it is here
+  // NPCs take turns in the self-check dialogs; added only once the art has loaded
   whenMaple(function () {
     document.querySelectorAll(".check details").forEach(function (d, i) {
       var npc = document.createElement("span");

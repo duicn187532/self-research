@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Build the images for the 楓葉冒險 skin into assets/maple/ from your exported asset pack.
+"""Rebuild the images for the 楓葉冒險 skin in assets/maple/ from the exported asset pack.
 
-The game art stays on your machine: assets/maple/ is git-ignored, and the skin only shows
-up in the appearance menu when these files are present. The public site never has them.
+Only the pieces the site uses are written (about 50 files); the full pack stays out of the repo.
+Run it again after changing the pack or the NPC list below, then commit assets/maple/.
 
     python3 -I scripts/setup_maple.py PATH/TO/maple-assets.zip   (or the unzipped folder)
 
@@ -51,7 +51,7 @@ def main() -> int:
                 shutil.copy(pack / rel, OUT / name)
             else:
                 print(f"skipped {name}: {rel} is not in the pack")
-    print(f"wrote {OUT}; reload a page and pick 外觀 → 楓葉冒險")
+    print(f"wrote {OUT}")
     return 0
 
 

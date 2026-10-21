@@ -14,8 +14,10 @@ game has no image for (a button with a Chinese label, the dark name tag under a 
 ## 0. Assets and copyright first
 
 The art belongs to Nexon. Ask before anything is committed or published:
-- never put the PNGs (or anything built from them) in a public repo or a public page;
-- a private Design canvas, a private repo, or a local-only folder are the safe places;
+- by default keep the PNGs (and anything built from them) out of public repos and pages: a private
+  Design canvas, a private repo, or a local-only folder are the safe places;
+- if the owner decides to publish anyway (this repo's owner did), commit only the built pieces the
+  page uses, never the whole pack;
 - the skill's scripts and this file contain no art and can live in the repo.
 
 The user exports the PNGs (HaRepacker / WzComparerR2) and uploads zips. Treat them as
@@ -104,13 +106,13 @@ ten digit urls. To check it locally first:
 
 ## In this repo's site
 
-The skin is wired into `assets/site.css` (section "楓葉冒險") and `assets/site.js`, with the art kept
-off the public site:
-- `python3 -I scripts/setup_maple.py PATH/TO/maple-assets.zip` builds everything into `assets/maple/`,
-  which is git-ignored. CSS refers to `url("maple/<file>")`, relative to `site.css`.
+The skin is wired into `assets/site.css` (section "楓葉冒險") and `assets/site.js`. The owner chose
+to publish the built pieces with the site (GitHub Pages); the full pack stays out of the repo:
+- `python3 -I scripts/setup_maple.py PATH/TO/maple-assets.zip` builds the ~50 pieces the site uses
+  into `assets/maple/`, which is committed. CSS refers to `url("maple/<file>")`, relative to `site.css`.
 - `site.js` loads `assets/maple/win9.png` once; only if it loads does the appearance menu show the
-  style row and accept `data-skin="maple"`. The public site and the inlined Artifact builds have no
-  art, so they show only the colour modes.
+  style row and accept `data-skin="maple"`. The inlined single-file builds (`build_artifact.py`) carry
+  no images, so they show only the colour modes.
 - Images that are `<img>` elements (NPC portraits, LV digits) are added only after that check, so a
   page without the art never asks for them.
 - Self-check NPCs rotate `npc-1/2/3.png`; change the list in `scripts/setup_maple.py`.

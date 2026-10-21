@@ -542,8 +542,9 @@ table.results tbody td:first-child { white-space: nowrap; }
 
 /* =====================================================================
    Skin "楓葉冒險": the pre-Big Bang MapleStory client, built from the game's own art.
-   The images live in assets/maple/ (git-ignored, made by scripts/setup_maple.py), so this
-   skin only exists on a machine that has them; site.js offers it only when they load.
+   The images are in assets/maple/ (built from the exported pack by scripts/setup_maple.py).
+   site.js offers the skin only when they load, so the inlined single-file builds, which
+   carry no images, show just the colour modes.
    Every frame below is a real PNG stretched as a 9-slice; the slice numbers are documented
    in .claude/skills/maple-skin/SKILL.md. Reading windows keep the game's light panels in
    both colour modes: dark mode turns the scene to night instead.
