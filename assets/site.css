@@ -561,7 +561,7 @@ table.results tbody td:first-child { white-space: nowrap; }
   color-scheme: light;
 }
 :root[data-skin="maple"] body {
-  background: #3366cc; --scene: url("maple/scene-day.jpg");
+  background: #3366cc;
   cursor: url("maple/cursor.png") 2 2, auto; padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px));
 }
 :root[data-skin="maple"] :is(a, button, summary, label, input[type="checkbox"]) { cursor: url("maple/cursor.png") 2 2, pointer; }
@@ -569,20 +569,25 @@ table.results tbody td:first-child { white-space: nowrap; }
 /* The scene sits on its own fixed layer rather than a fixed body background: iOS ignores
    background-attachment: fixed and would stretch the picture over the whole page, and
    elsewhere a fixed background repaints on every scroll. 100lvh keeps it still while a
-   phone's address bar slides away. Night is the same scene under a navy sky. The shelf
-   stands in the forest of the game's login screen; a paper page, in Henesys. */
-:root[data-skin="maple"] body:has(.shelf-page) { --scene: url("maple/scene-login.jpg"); }
+   phone's address bar slides away. The shelf stands in the login screen's forest; a paper
+   page is in Henesys, or in Ellinia when its <div data-paper> says data-scene="ellinia".
+   Each picture is named here, in site.css, so its address resolves against this file
+   wherever the site is served from. Phones get a smaller copy of each. Night is the same
+   scene under a navy shade. */
 :root[data-skin="maple"] body::after {
   content: ""; position: fixed; left: 0; right: 0; top: 0; height: 100vh; height: 100lvh; z-index: 0; pointer-events: none;
-  background: var(--scene) center bottom / cover no-repeat;
+  background: url("maple/scene-day.jpg") center bottom / cover no-repeat;
 }
-:root[data-skin="maple"][data-theme="dark"] body::after {
-  background: linear-gradient(rgba(8, 14, 48, 0.78), rgba(20, 26, 70, 0.55) 60%, rgba(10, 14, 40, 0.62)), var(--scene) center bottom / cover no-repeat;
+:root[data-skin="maple"] body:has([data-scene="ellinia"])::after { background-image: url("maple/scene-ellinia.jpg"); }
+:root[data-skin="maple"] body:has(.shelf-page)::after { background-image: url("maple/scene-login.jpg"); }
+@media (max-width: 600px) {
+  :root[data-skin="maple"] body::after { background-image: url("maple/scene-day-sm.jpg"); }
+  :root[data-skin="maple"] body:has([data-scene="ellinia"])::after { background-image: url("maple/scene-ellinia-sm.jpg"); }
+  :root[data-skin="maple"] body:has(.shelf-page)::after { background-image: url("maple/scene-login-sm.jpg"); }
 }
+:root[data-skin="maple"][data-theme="dark"] body::after { box-shadow: inset 0 0 0 100vmax rgba(10, 16, 52, 0.68); }
 @media (prefers-color-scheme: dark) {
-  :root[data-skin="maple"]:not([data-theme="light"]) body::after {
-    background: linear-gradient(rgba(8, 14, 48, 0.78), rgba(20, 26, 70, 0.55) 60%, rgba(10, 14, 40, 0.62)), var(--scene) center bottom / cover no-repeat;
-  }
+  :root[data-skin="maple"]:not([data-theme="light"]) body::after { box-shadow: inset 0 0 0 100vmax rgba(10, 16, 52, 0.68); }
 }
 :root[data-skin="maple"] :is(.desk, .shelf-page) { position: relative; z-index: 1; }
 :root[data-skin="maple"] h1, :root[data-skin="maple"] h2, :root[data-skin="maple"] h3 { font-weight: 900; color: #1c2b44; }
@@ -660,7 +665,7 @@ table.results tbody td:first-child { white-space: nowrap; }
 :root[data-skin="maple"] .sec:has(input[data-done]:checked) .sec-head::before { width: 179px; height: 14px; background-image: url("maple/list3.png"); }
 :root[data-skin="maple"] .sec-num { display: none; }
 :root[data-skin="maple"] .sec-head h2 { font-size: 1.375rem; line-height: 1.4; }
-:root[data-skin="maple"] .paper-head { position: relative; padding: 6px 14px 4px; margin-top: 88px; }
+:root[data-skin="maple"] .paper-head { position: relative; padding: 6px 14px 4px; }
 :root[data-skin="maple"] .sec.has-big { margin-top: 3.5rem; }
 :root[data-skin="maple"] .eyebrow .mono { color: var(--accent); }
 
@@ -671,6 +676,8 @@ table.results tbody td:first-child { white-space: nowrap; }
   border: 1px solid #7a3a00; background: linear-gradient(#ffd27a, #ff9a1e 55%, #f07a00); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 :root[data-skin="maple"] .done input { accent-color: #ffffff; margin: 0; }
+/* the band is only 24px tall: reach past it so a thumb finds the button */
+:root[data-skin="maple"] .done::after { content: ""; position: absolute; inset: -12px -8px; }
 :root[data-skin="maple"] .done:has(input:checked) { color: #1f2a05; text-shadow: none; background: linear-gradient(#e8ffa0, #9edc2a 55%, #6fb800); border-color: #3c6a00; }
 :root[data-skin="maple"] .desk-foot { border-top: 1px dashed var(--rule); }
 
@@ -751,6 +758,8 @@ table.results tbody td:first-child { white-space: nowrap; }
 :root[data-skin="maple"] .shelf-head h1 { color: #4a2c0c; }
 /* the party stands on the scroll's rod, 30px below the top of the frame */
 :root[data-skin="maple"] .shelf-head > .perch { bottom: calc(100% + 75px); left: 40px; }
+/* the protagonist and pet stand on 上一節 */
+:root[data-skin="maple"] .pager > .perch { left: 10px; bottom: calc(100% - 4px); }
 :root[data-skin="maple"] .shelf-page :is(.card, .shelf-aside > div) {
   border-width: 16px 18px 12px 18px; padding: 4px 6px 2px;
   border-image: url("maple/parch9.png") 60 30 20 30 fill / 60px 30px 20px 30px stretch stretch;
@@ -772,6 +781,9 @@ table.results tbody td:first-child { white-space: nowrap; }
 /* ---------- one quest per page (site.js turns the pages) ---------- */
 :root[data-skin="maple"] .column.is-paged { display: block; }
 :root[data-skin="maple"] .column.is-paged > .paper-head:not([hidden]) { margin-bottom: 5rem; }
+/* past the first page the section is the top window: room above it for the protagonist and the monster */
+:root[data-skin="maple"] .column.is-paged > .paper-head[hidden] ~ .sec:not([hidden]) { margin-top: 96px; }
+:root[data-skin="maple"] .column.is-paged > .paper-head[hidden] ~ .sec.has-big:not([hidden]) { margin-top: 140px; }
 /* the sections on other pages stay in the document for find-in-page, folded to nothing */
 :root[data-skin="maple"] .column.is-paged > [hidden] { border: 0; padding: 0; margin: 0; }
 :root[data-skin="maple"] .pager:not([hidden]) {
@@ -798,30 +810,32 @@ table.results tbody td:first-child { white-space: nowrap; }
 :root[data-skin="maple"] .pg-at { font-size: 12px; font-weight: 900; letter-spacing: 0.06em; color: #ffffff; text-shadow: var(--outline); white-space: nowrap; }
 
 /* ---------- sprites (built by site.js from assets/maple/sprites.js) ---------- */
-/* a strip of equal frames, stepped through; --w --h --n are the cell size and frame count */
+/* a strip of equal frames; --w --h are the cell size, site.js steps background-position */
 :root[data-skin="maple"] .spr { display: block; width: calc(var(--w) * 1px); height: calc(var(--h) * 1px); background-repeat: no-repeat; image-rendering: pixelated; }
-:root[data-skin="maple"] .spr-anim { animation: spr-play calc(var(--n) * 170ms) steps(var(--n)) infinite; }
-:root[data-skin="maple"] .spr-once { animation-iteration-count: 1; animation-fill-mode: forwards; }
-@keyframes spr-play { from { background-position: 0 0; } to { background-position: calc(var(--w) * var(--n) * -1px) 0; } }
 /* standing on a window's top edge (the frame is 28px tall; feet sink 5px into it) */
 :root[data-skin="maple"] .perch { display: flex; align-items: flex-end; gap: 2px; position: absolute; z-index: 2; bottom: calc(100% + 23px); pointer-events: none; }
 :root[data-skin="maple"] .shelf-group > h2 .perch { bottom: calc(100% + 2px); }
 :root[data-skin="maple"] .perch-party { left: 6px; }
-:root[data-skin="maple"] .perch-party .spr { transform: scaleX(-1); }
+:root[data-skin="maple"] .perch-party .stander > .spr { transform: scaleX(-1); }
+:root[data-skin="maple"] .stander { position: relative; }
 :root[data-skin="maple"] .perch-walk { right: 16px; width: 170px; }
-:root[data-skin="maple"] .walker { position: absolute; left: 0; bottom: 0; animation: patrol 18s linear infinite; }
+:root[data-skin="maple"] .walker { position: absolute; left: 0; bottom: 0; }
 :root[data-skin="maple"] .perch-walk .stander { position: absolute; right: 0; bottom: 0; }
-@keyframes patrol {
-  0% { transform: translateX(0) scaleX(-1); } 46% { transform: translateX(var(--d)) scaleX(-1); }
-  50% { transform: translateX(var(--d)) scaleX(1); } 96% { transform: translateX(0) scaleX(1); } 100% { transform: translateX(0) scaleX(-1); }
 }
-:root[data-skin="maple"] .walker.is-hit, :root[data-skin="maple"] .perch.is-off :is(.walker, .spr) { animation-play-state: paused; }
 :root[data-skin="maple"] .perch.is-down { animation: perch-fade 1.3s ease-in forwards; }
 @keyframes perch-fade { 0%, 65% { opacity: 1; } 100% { opacity: 0; } }
 :root[data-skin="maple"] .exp-pop {
   position: absolute; left: 50%; bottom: 40px; transform: translateX(-50%); white-space: nowrap;
   font-size: 15px; font-weight: 900; color: #ffe94a; text-shadow: var(--outline); animation: exp-rise 1.3s ease-out forwards;
 }
+/* level up over the protagonist (BasicEff LevelUp: the light pillar, then the words above the head) */
+:root[data-skin="maple"] .fx-levelup { position: absolute; left: 50%; bottom: -6px; width: 0; height: 0; }
+:root[data-skin="maple"] .fx-levelup .spr { position: absolute; bottom: 0; left: calc(var(--w) * -0.5px); }
+:root[data-skin="maple"] .fx-levelup .fx-words { bottom: 64px; left: -48px; }
+/* the critical hit's number (BasicEff NoCri1), rising over the monster */
+:root[data-skin="maple"] .fx-damage { position: absolute; bottom: 30px; display: flex; transform: translateX(-50%); animation: dmg-rise 1.2s ease-out forwards; }
+:root[data-skin="maple"] .fx-damage .spr { margin-right: -10px; }
+@keyframes dmg-rise { from { opacity: 1; transform: translate(-50%, 0); } 70% { opacity: 1; } to { opacity: 0; transform: translate(-50%, -40px); } }
 @keyframes exp-rise { from { transform: translate(-50%, 10px); opacity: 0; } 20% { opacity: 1; } to { transform: translate(-50%, -26px); opacity: 1; } }
 
 /* ---------- status bar (built by site.js) ---------- */
@@ -840,13 +854,16 @@ table.results tbody td:first-child { white-space: nowrap; }
 :root[data-skin="maple"] .hud-num { position: absolute; right: 2px; top: -14px; font-size: 11px; font-weight: 700; line-height: 13px; color: #ffffff; text-shadow: var(--outline); image-rendering: auto; }
 
 @media (max-width: 960px) {
+  /* the minimap sits above the text here: let it grow with its list instead of scrolling inside */
+  :root[data-skin="maple"] .rail { max-height: none; overflow: visible; }
   :root[data-skin="maple"] .rail details[open] { padding-bottom: 0; }
+  :root[data-skin="maple"] .rail details:not([open]) { border-bottom-width: 8px; }
+  :root[data-skin="maple"] .rail li a { padding: 9px 8px; }
 }
 @media (max-width: 600px) {
   :root[data-skin="maple"] .sec { padding: 2px 4px 10px; }
   /* thick game frames: let the windows use the page gutter so the text column stays wide */
-  :root[data-skin="maple"] :is(.sec, .paper-head, .shelf-head, .shelf-aside > div, .card, .rail details) { margin-inline: -10px; }
-  :root[data-skin="maple"] .npc-portrait { min-height: 110px; }
+  :root[data-skin="maple"] :is(.sec, .paper-head, .shelf-head, .shelf-aside > div, .card) { margin-inline: -10px; }
   :root[data-skin="maple"] .perch-walk { width: 110px; right: 12px; }
   /* the shelf's party is drawn at random; on a phone two heroes and the pet always fit */
   :root[data-skin="maple"] .shelf-head > .perch-party .stander:nth-child(3) { display: none; }
@@ -855,12 +872,21 @@ table.results tbody td:first-child { white-space: nowrap; }
   :root[data-skin="maple"] .hud { height: calc(64px + env(safe-area-inset-bottom, 0px)); background-position: 0 -7px; }
   :root[data-skin="maple"] .hud-chat { top: 0; }
   :root[data-skin="maple"] .hud-row { top: 22px; }
-  :root[data-skin="maple"] .check details:has(.npc-portrait) { border-width: 28px 14px 58px 104px; border-image-width: 28px 14px 58px 104px; min-height: 170px; }
-  :root[data-skin="maple"] .npc-portrait { left: -100px; width: 96px; }
-  :root[data-skin="maple"] .npc-fig { --maxh: 80; height: 80px; }
-  :root[data-skin="maple"] .npc-name { width: 96px; background-size: 96px 19px; }
+  /* A phone has no room for the portrait column: the dialog keeps the full width for the question
+     and answer, and the NPC stands on its top edge with the name plate beside it. */
+  :root[data-skin="maple"] .check details:has(.npc-portrait) {
+    min-height: 0; margin-top: 70px; border-width: 28px 14px 58px 16px;
+    border-image: url("maple/win9.png") 28 22 58 24 fill / 28px 14px 58px 16px stretch repeat;
+  }
+  :root[data-skin="maple"] .npc-portrait {
+    left: -4px; top: auto; bottom: calc(100% + 24px); width: auto; min-height: 0;
+    flex-direction: row; align-items: flex-end; gap: 4px;
+  }
+  :root[data-skin="maple"] .npc-fig { --maxh: 64; height: 64px; width: auto; min-width: 44px; }
+  :root[data-skin="maple"] .npc-name { width: 96px; margin-bottom: 2px; background-size: 96px 19px; }
+  :root[data-skin="maple"] .npc-quest { right: auto; left: 30px; top: -24px; transform: scale(0.6); transform-origin: 0 0; }
   :root[data-skin="maple"] .check summary::after { right: -8px; }
-  :root[data-skin="maple"] .check details[open]:has(.npc-portrait) summary::before { left: -98px; }
+  :root[data-skin="maple"] .check details[open]:has(.npc-portrait) summary::before { left: -10px; }
   :root[data-skin="maple"] .hud-left { width: 80px; background-size: 207px 42px; }
   :root[data-skin="maple"] .hud-name { display: none; }
   :root[data-skin="maple"] .appear-btn { width: 54px; }

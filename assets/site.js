@@ -189,19 +189,42 @@
   function seedOf(str) { var h = 7; for (var i = 0; i < str.length; i++) h = (h * 31 + str.charCodeAt(i)) >>> 0; return h; }
   function rotate(list, k) { k = list.length ? k % list.length : 0; return list.slice(k).concat(list.slice(0, k)); }
   function shuffle(list) { return list.map(function (x) { return [Math.random(), x]; }).sort(function (a, b) { return a[0] - b[0]; }).map(function (p) { return p[1]; }); }
-  function setAct(el, name, act, once) {
+  // Frames are stepped by one shared timer rather than a CSS animation per sprite: a CSS loop makes
+  // the browser recompute styles every display frame, this writes only when a frame changes (about
+  // six times a second per sprite) and skips sprites out of view or in a hidden tab.
+  var live = [], clock = null, TICK = 60;
+  function tick() {
+    if (document.hidden) return;
+    live = live.filter(function (sp) {
+      var el = sp.el;
+      if (!el.isConnected) return false;
+      if (el.closest(".is-off")) return true;
+      sp.acc += TICK;
+      if (sp.acc < sp.ms) return true;
+      sp.acc = 0;
+      sp.i += 1;
+      if (sp.i >= sp.n) {
+        if (sp.once) return false;
+        sp.i = 0;
+      }
+      el.style.backgroundPosition = (-sp.w * sp.i) + "px 0";
+      return true;
+    });
+    if (!live.length) { clearInterval(clock); clock = null; }
+  }
+  // show one action; "once" plays it through and holds the last frame, ms is the time per frame
+  function setAct(el, name, act, once, ms) {
     var acts = window.MAPLE_SPRITES[name].acts;
     if (!acts[act]) act = "stand";
     var c = acts[act];
     el.style.backgroundImage = 'url("' + mapleUrl("spr-" + name + "-" + act + ".png") + '")';
+    el.style.backgroundPosition = "0 0";
     el.style.setProperty("--w", c[0]);
     el.style.setProperty("--h", c[1]);
-    el.style.setProperty("--n", c[2]);
-    // restart the frame loop, so a one-off action (a monster going down) plays from its first frame
-    el.classList.remove("spr-anim", "spr-once");
-    void el.offsetWidth;
-    if (c[2] > 1 && !reduceMotion) el.classList.add("spr-anim");
-    if (once) el.classList.add("spr-once");
+    live = live.filter(function (sp) { return sp.el !== el; });
+    if (c[2] < 2 || reduceMotion) return;
+    live.push({ el: el, w: c[0], n: c[2], i: 0, acc: 0, ms: ms || 170, once: !!once });
+    if (!clock) clock = setInterval(tick, TICK);
   }
   function spriteEl(name, act) {
     var el = document.createElement("span");
@@ -210,8 +233,16 @@
     return el;
   }
   // a sprite standing on top of a window; "walk" sends it back and forth along a short stretch
+  // Sprites out of view stop: their looping animations pause until they scroll back in.
   var offscreen = window.IntersectionObserver ? new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) { e.target.classList.toggle("is-off", !e.isIntersecting); });
+    entries.forEach(function (e) {
+      e.target.classList.toggle("is-off", !e.isIntersecting);
+      e.target.querySelectorAll(".walker").forEach(function (w) {
+        if (w.patrol && w.patrol.playState !== "finished" && !w.classList.contains("is-hit")) {
+          if (e.isIntersecting) w.patrol.play(); else w.patrol.pause();
+        }
+      });
+    });
   }, { rootMargin: "200px 0px" }) : null;
   function perch(host, names, where) {
     var wrap = document.createElement("span");
@@ -224,7 +255,15 @@
       var spr = spriteEl(name, walk ? "move" : "stand");
       walker.appendChild(spr);
       wrap.appendChild(walker);
-      if (walk) walker.style.setProperty("--d", Math.max(0, (where === "walk" && window.innerWidth < 600 ? 110 : 170) - spr.style.getPropertyValue("--w")) + "px");
+      // the patrol runs on the compositor: plain pixel values, no custom properties in the frames
+      if (walk && walker.animate) {
+        var d = Math.max(0, (window.innerWidth < 600 ? 110 : 170) - Number(spr.style.getPropertyValue("--w"))) + "px";
+        walker.patrol = walker.animate([
+          { transform: "translateX(0) scaleX(-1)", offset: 0 }, { transform: "translateX(" + d + ") scaleX(-1)", offset: 0.46 },
+          { transform: "translateX(" + d + ") scaleX(1)", offset: 0.5 }, { transform: "translateX(0) scaleX(1)", offset: 0.96 },
+          { transform: "translateX(0) scaleX(-1)", offset: 1 }
+        ], { duration: 18000, iterations: Infinity });
+      }
       return { name: name, spr: spr, walker: walker };
     });
     host.appendChild(wrap);
@@ -236,22 +275,44 @@
     var m = p.cast[0];
     if (reduceMotion) { p.wrap.hidden = true; return; }
     m.walker.classList.add("is-hit");
+    if (m.walker.patrol) m.walker.patrol.pause();
     setAct(m.spr, m.name, "hit");
+    // a critical hit's number over the monster, in the game's own digits
+    if (window.MAPLE_SPRITES["fx-digits"]) {
+      var dmg = document.createElement("span"), cell = window.MAPLE_SPRITES["fx-digits"].acts.stand;
+      dmg.className = "fx-damage";
+      String(1000 + Math.floor(Math.random() * 9000)).split("").forEach(function (d) {
+        var g = document.createElement("span");
+        g.className = "spr";
+        g.style.backgroundImage = 'url("' + mapleUrl("spr-fx-digits-stand.png") + '")';
+        g.style.setProperty("--w", cell[0]);
+        g.style.setProperty("--h", cell[1]);
+        g.style.backgroundPosition = (-cell[0] * Number(d)) + "px 0";
+        dmg.appendChild(g);
+      });
+      // placed in the perch rather than on the walker, whose mirroring would flip the digits
+      var wr = p.wrap.getBoundingClientRect(), mr = m.spr.getBoundingClientRect();
+      dmg.style.left = (mr.left + mr.width / 2 - wr.left) + "px";
+      p.wrap.appendChild(dmg);
+    }
     setTimeout(function () {
-      setAct(m.spr, m.name, "die", true);
+      setAct(m.spr, m.name, "die", true, 140);
       p.wrap.classList.add("is-down");
       var pop = document.createElement("span");
       pop.className = "exp-pop";
       pop.textContent = "EXP +1";
       p.wrap.appendChild(pop);
-      setTimeout(function () { p.wrap.hidden = true; pop.remove(); }, 1400);
+      p.timer = setTimeout(function () { p.wrap.hidden = true; pop.remove(); }, 1400);
     }, 260);
   }
   function respawn(p) {
     var m = p.cast[0];
+    clearTimeout(p.timer);
+    p.wrap.querySelectorAll(".fx-damage, .exp-pop").forEach(function (e) { e.remove(); });
     p.wrap.hidden = false;
     p.wrap.classList.remove("is-down");
     m.walker.classList.remove("is-hit");
+    if (m.walker.patrol) m.walker.patrol.play();
     setAct(m.spr, m.name, m.walker.className === "walker" ? "move" : "stand");
   }
 
@@ -295,10 +356,11 @@
     if (!window.MAPLE_SPRITES) return;
     // a party on the shelf's title window, and a different monster on each group's banner
     var head = document.querySelector(".shelf-head");
-    // the hero marked "lead" in the sprite list always heads it; two others join at random
-    var heroes = sprites("hero"), lead = heroes.filter(function (k) { return window.MAPLE_SPRITES[k].lead; });
-    var others = shuffle(heroes.filter(function (k) { return lead.indexOf(k) < 0; }));
-    var party = lead.slice(0, 1).concat(others).slice(0, 3).concat(shuffle(sprites("pet")).slice(0, 1));
+    // 殺人鯨 and 露希妲 (in an outfit picked at random) head it, and one other hero joins
+    var heroes = sprites("hero");
+    function one(family) { return shuffle(heroes.filter(function (k) { return window.MAPLE_SPRITES[k].family === family; }))[0]; }
+    var others = shuffle(heroes.filter(function (k) { return !window.MAPLE_SPRITES[k].family; }));
+    var party = [one("orca"), one("lucid"), others[0]].filter(Boolean).concat(shuffle(sprites("pet")).slice(0, 1));
     if (head && party.length) perch(head, party, "party");
     var mobs = shuffle(sprites("mob"));
     document.querySelectorAll(".shelf-group > h2").forEach(function (h, i) {
@@ -348,73 +410,114 @@
     names.lastChild.textContent = shortName;
     railSummary.insertBefore(names, railSummary.firstChild);
   }
-  // The cast for this paper, added once the art has loaded: a monster on each section that can be
-  // finished (one elite midway, a boss on the last), NPCs taking turns in the self-check dialogs,
-  // and the reader's hero and pet on the title window.
-  var mobOf = {};
+  // The cast for this paper, built a page at a time as you reach it, so a phone only fetches the
+  // sprites it shows: a monster on each section that can be finished (one elite midway, a boss on
+  // the last), NPCs taking turns in the self-check dialogs, and the protagonist with a pet, who
+  // goes with you from page to page. A paper's protagonist is 殺人鯨 or 露希妲, picked from its id
+  // (the outfit changes every visit); its monsters and NPCs are picked from the id too.
+  var seed = seedOf(paper), castDone = {}, party = null;
+  var quests = sections.filter(function (s) { return s.querySelector("input[data-done]"); });
+  var allDialogs = Array.prototype.slice.call(document.querySelectorAll(".check details"));
+  function mobFor(s) {
+    var i = quests.indexOf(s);
+    if (i < 0) return null;
+    var mobs = rotate(sprites("mob"), seed), elites = sprites("elite"), bosses = rotate(sprites("boss"), seed);
+    if (i === quests.length - 1 && bosses.length && quests.length > 1) return { name: bosses[0], big: true };
+    if (i === Math.floor(quests.length / 2) && elites.length && quests.length > 3) return { name: elites[seed % elites.length], big: true };
+    return mobs.length ? { name: mobs[i % mobs.length], big: false } : null;
+  }
+  function addMob(s) {
+    var m = mobFor(s);
+    if (!m) return;
+    s.classList.toggle("has-big", m.big);
+    var p = perch(s, [m.name], "walk");
+    var box = s.querySelector("input[data-done]");
+    if (box.checked) p.wrap.hidden = true;
+    box.addEventListener("change", function () {
+      if (!box.checked) { respawn(p); return; }
+      defeat(p);
+      cheer();
+      var foe = window.MAPLE_SPRITES[m.name].label || "怪物";
+      hud.chat([["系統", "打倒了" + foe + "，EXP +1。按「下一節」繼續任務。"]].concat(pageLines(sections.indexOf(s))));
+    });
+  }
+  function addNpc(d) {
+    var npcs = rotate(sprites("npc"), seed), name = npcs[allDialogs.indexOf(d) % npcs.length];
+    if (!name) return;
+    var npc = document.createElement("span");
+    npc.className = "npc-portrait";
+    npc.setAttribute("aria-hidden", "true");
+    var fig = document.createElement("span");
+    fig.className = "npc-fig";
+    var spr = spriteEl(name, "stand");
+    fig.appendChild(spr);
+    var plate = document.createElement("span");
+    plate.className = "npc-name";
+    plate.textContent = window.MAPLE_SPRITES[name].role || "";
+    npc.appendChild(fig);
+    npc.appendChild(plate);
+    // inside the summary, the one part of a closed <details> that is drawn; the summary is
+    // position: static here, so the portrait still places itself against the dialog
+    d.querySelector("summary").appendChild(npc);
+    // a quest mark over the NPC: a lightbulb before you ask, a book while the answer is open,
+    // the finished book once the section is read; the NPC talks while its answer is open
+    var mark = null, box = d.closest("section.sec") && d.closest("section.sec").querySelector("input[data-done]");
+    function markName() { return box && box.checked ? "quest-done" : d.open ? "quest-open" : "quest-new"; }
+    if (window.MAPLE_SPRITES["quest-new"]) {
+      mark = spriteEl(markName(), "stand");
+      mark.classList.add("npc-quest");
+      npc.appendChild(mark);
+      if (box) box.addEventListener("change", function () { setAct(mark, markName(), "stand"); });
+    }
+    d.addEventListener("toggle", function () {
+      setAct(spr, name, d.open ? "say" : "stand");
+      if (mark) setAct(mark, markName(), "stand");
+    });
+  }
+  function castFor(i) {
+    if (!window.MAPLE_SPRITES || castDone[i] || !sections[i]) return;
+    castDone[i] = true;
+    addMob(sections[i]);
+    sections[i].querySelectorAll(".check details").forEach(addNpc);
+  }
+  // The protagonist waits at the foot of every page, on 上一節, next to where you mark the section
+  // read and beside the portal that opens then, so the level-up plays where you are looking.
+  function placeParty() {
+    if (party && party.wrap.parentNode !== pager) pager.appendChild(party.wrap);
+  }
+  // finishing a section: the protagonist cheers and levels up (LV counts finished sections)
+  function cheer() {
+    if (!party || reduceMotion) return;
+    var hero = party.cast[0], acts = window.MAPLE_SPRITES[hero.name].acts;
+    if (acts.cheer) {
+      setAct(hero.spr, hero.name, "cheer");
+      setTimeout(function () { setAct(hero.spr, hero.name, "stand"); }, 1800);
+    }
+    if (!window.MAPLE_SPRITES["fx-levelup"]) return;
+    var fx = document.createElement("span");
+    fx.className = "fx-levelup";
+    var pillar = spriteEl("fx-levelup", "stand");
+    setAct(pillar, "fx-levelup", "stand", true, 110);
+    fx.appendChild(pillar);
+    hero.walker.appendChild(fx);
+    // the words rise once the pillar has flashed
+    setTimeout(function () {
+      var words = spriteEl("fx-levelup", "text");
+      words.classList.add("fx-words");
+      setAct(words, "fx-levelup", "text", true, 150);
+      fx.appendChild(words);
+    }, 900);
+    setTimeout(function () { fx.remove(); }, 2400);
+  }
   whenMaple(function () {
     if (!window.MAPLE_SPRITES) return;
-    var seed = seedOf(paper);
-    var quests = sections.filter(function (s) { return s.querySelector("input[data-done]"); });
-    var mobs = rotate(sprites("mob"), seed), elites = sprites("elite"), bosses = rotate(sprites("boss"), seed);
-    quests.forEach(function (s, i) {
-      var name = mobs[i % mobs.length], big = false;
-      if (i === quests.length - 1 && bosses.length && quests.length > 1) { name = bosses[0]; big = true; }
-      else if (i === Math.floor(quests.length / 2) && elites.length && quests.length > 3) { name = elites[seed % elites.length]; big = true; }
-      if (!name) return;
-      s.classList.toggle("has-big", big);
-      var p = perch(s, [name], "walk");
-      var box = s.querySelector("input[data-done]");
-      mobOf[box.getAttribute("data-done")] = p;
-      if (box.checked) p.wrap.hidden = true;
-      box.addEventListener("change", function () {
-        if (box.checked) {
-          defeat(p);
-          var foe = window.MAPLE_SPRITES[name].label || "怪物";
-          hud.chat([["系統", "打倒了" + foe + "，EXP +1。按「下一節」繼續任務。"]].concat(pageLines(sections.indexOf(s))));
-        }
-        else respawn(p);
-      });
-    });
-    var npcs = rotate(sprites("npc"), seed);
-    document.querySelectorAll(".check details").forEach(function (d, i) {
-      var name = npcs[i % npcs.length];
-      if (!name) return;
-      var npc = document.createElement("span");
-      npc.className = "npc-portrait";
-      npc.setAttribute("aria-hidden", "true");
-      var fig = document.createElement("span");
-      fig.className = "npc-fig";
-      var spr = spriteEl(name, "stand");
-      fig.appendChild(spr);
-      var plate = document.createElement("span");
-      plate.className = "npc-name";
-      plate.textContent = window.MAPLE_SPRITES[name].role || "";
-      npc.appendChild(fig);
-      npc.appendChild(plate);
-      // inside the summary, the one part of a closed <details> that is drawn; the summary is
-      // position: static here, so the portrait still places itself against the dialog
-      d.querySelector("summary").appendChild(npc);
-      // the NPC talks while its answer is open
-      // a quest mark over the NPC: a lightbulb before you ask, a book while the answer is open,
-      // the finished book once the section is read
-      var mark = null, box = d.closest("section.sec") && d.closest("section.sec").querySelector("input[data-done]");
-      function markName() { return box && box.checked ? "quest-done" : d.open ? "quest-open" : "quest-new"; }
-      if (window.MAPLE_SPRITES["quest-new"]) {
-        mark = spriteEl(markName(), "stand");
-        mark.classList.add("npc-quest");
-        npc.appendChild(mark);
-        if (box) box.addEventListener("change", function () { setAct(mark, markName(), "stand"); });
-      }
-      d.addEventListener("toggle", function () {
-        setAct(spr, name, d.open ? "say" : "stand");
-        if (mark) setAct(mark, markName(), "stand");
-      });
-    });
-    var head = document.querySelector(".paper-head");
-    var hero = shuffle(sprites("hero"))[0], pet = shuffle(sprites("pet"))[0];
-    // every other paper is read in Ellinia instead of Henesys
-    if (seed % 2) document.body.style.setProperty("--scene", 'url("' + mapleUrl("scene-ellinia.jpg") + '")');
+    var family = (seed >> 1) % 2 ? "lucid" : "orca";
+    var heroes = sprites("hero").filter(function (k) { return window.MAPLE_SPRITES[k].family === family; });
+    var hero = shuffle(heroes.length ? heroes : sprites("hero"))[0], pet = shuffle(sprites("pet"))[0];
+    if (hero) {
+      party = perch(document.createElement("span"), pet ? [hero, pet] : [hero], "party");
+      party.wrap.remove();
+    }
     // a portal by 下一節 once the section is finished
     if (window.MAPLE_SPRITES.portal) {
       var portal = spriteEl("portal", "stand");
@@ -422,7 +525,15 @@
       portal.setAttribute("aria-hidden", "true");
       pager.appendChild(portal);
     }
-    if (head && hero) perch(head, pet ? [hero, pet] : [hero], "party");
+    placeParty();
+    if (current >= 0) castFor(current);
+    // fetch the level-up and damage strips while idle, so the first finished section plays at once
+    var later = window.requestIdleCallback || function (fn) { setTimeout(fn, 2500); };
+    later(function () {
+      ["fx-levelup-stand", "fx-levelup-text", "fx-digits-stand"].forEach(function (f) {
+        if (window.MAPLE_SPRITES[f.replace(/-(stand|text)$/, "")]) new Image().src = mapleUrl("spr-" + f + ".png");
+      });
+    });
   });
   function renderProgress() {
     Object.keys(links).forEach(function (id) {
@@ -554,6 +665,7 @@
     sections.forEach(function (s, k) { if (k === i) s.removeAttribute("hidden"); else s.setAttribute("hidden", "until-found"); });
     if (head) { if (i === 0) head.removeAttribute("hidden"); else head.setAttribute("hidden", "until-found"); }
     drawPager();
+    castFor(i);
     if (changed) hud.chat(pageLines(i));
     if (scroll) window.scrollTo(0, i === 0 ? 0 : Math.max(0, sections[i].getBoundingClientRect().top + window.pageYOffset - 170));
   }

@@ -16,6 +16,8 @@ from PIL import Image
 A, O = sys.argv[1], sys.argv[2]
 os.makedirs(O, exist_ok=True)
 WS = A + "/ui/UI.wz/Login.img/WorldSelect/"
-Image.open(WS + "scroll/0/1.png").convert("RGBA").save(os.path.join(O, "scroll9.png"), optimize=True)
-Image.open(WS + "chBackgrn.png").convert("RGBA").save(os.path.join(O, "parch9.png"), optimize=True)
+# the painted paper loses nothing visible at 256 colours and drops to about a third of the bytes
+for src, out in [("scroll/0/1.png", "scroll9.png"), ("chBackgrn.png", "parch9.png")]:
+    im = Image.open(WS + src).convert("RGBA").quantize(256, method=Image.Quantize.FASTOCTREE)
+    im.save(os.path.join(O, out), optimize=True)
 Image.open(WS + "BtWorld/e/normal/0.png").convert("RGBA").rotate(90, expand=True).save(os.path.join(O, "plank9.png"), optimize=True)

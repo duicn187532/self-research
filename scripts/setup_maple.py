@@ -15,6 +15,8 @@ import subprocess
 import sys
 import tempfile
 
+from PIL import Image
+
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SKILL = ROOT / ".claude/skills/maple-skin/scripts"
 OUT = ROOT / "assets/maple"
@@ -46,6 +48,10 @@ def main() -> int:
         subprocess.run([sys.executable, "-I", str(SKILL / "compose_login.py"), str(pack), str(OUT / "scene-login.jpg")], check=True)
         subprocess.run([sys.executable, "-I", str(SKILL / "compose_ellinia.py"), str(pack), str(OUT / "scene-ellinia.jpg")], check=True)
         subprocess.run([sys.executable, "-I", str(SKILL / "build_login.py"), str(pack), str(OUT)], check=True)
+        # phones get each scene at 1280x720: a background behind the windows, a third of the bytes
+        for scene in ("scene-day", "scene-login", "scene-ellinia"):
+            with Image.open(OUT / f"{scene}.jpg") as im:
+                im.resize((1280, 720), Image.LANCZOS).save(OUT / f"{scene}-sm.jpg", quality=80, optimize=True, progressive=True)
         for old in OUT.glob("spr-*.png"):
             old.unlink()
         subprocess.run([sys.executable, "-I", str(SKILL / "build_sprites.py"), str(pack), str(OUT), str(SPRITES)], check=True)

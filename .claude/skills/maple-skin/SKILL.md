@@ -128,15 +128,21 @@ to publish the built pieces with the site (GitHub Pages); the full pack stays ou
   page without the art never asks for them.
 - The cast is `scripts/maple_sprites.json` (built into `assets/maple/spr-*.png` and `sprites.js`).
   Each paper gets its own rotation from its id: a monster patrols the top of every section that can
-  be finished (an elite midway, a boss on the last) and is knocked down when the section is marked
-  read; eleven NPCs take turns in the self-check dialogs and switch to their talking frames while
-  an answer is open; a hero and a pet stand on the title window and change every visit. The shelf
-  has a party led by the hero marked `"lead": true` (殺人鯨, the owner's favourite) and a monster on
-  each group banner. All of it is `aria-hidden`, ignores clicks, stops when off screen and stands
-  still under reduced motion.
+  be finished (an elite midway, a boss on the last); eleven NPCs take turns in the self-check
+  dialogs and switch to their talking frames while an answer is open. The protagonist is 殺人鯨 or
+  露希妲 (the owner's favourites; `"family"` in the list), picked per paper, in an outfit picked per
+  visit, and stands with a pet on 上一節 at the foot of every page. Marking a section read: the
+  monster takes a critical hit (BasicEff NoCri1 digits) and falls, the protagonist cheers and
+  levels up (BasicEff LevelUp), the portal opens. The shelf's party is both of them plus one other
+  hero and a pet, and a monster walks each group banner. The cast is built a page at a time, so a
+  phone fetches only what it shows. All of it is `aria-hidden`, ignores clicks, stops when off
+  screen and stands still under reduced motion.
 - The shelf is the login screen's world select: the forest (`scene-login.jpg`), the title on the
   open scroll, paper cards on the channel list's parchment, group banners on the blank world sign.
-  Paper pages are in Henesys or Ellinia, half each, picked from the paper id.
+  Paper pages are in Henesys, or in Ellinia when the paper's `<div data-paper>` carries
+  `data-scene="ellinia"`. Each scene is named in site.css (never through a custom property or an
+  inline style: a url() there resolves against a different base on GitHub Pages' /repo/ path and
+  404s). Phones load `scene-*-sm.jpg` (1280x720).
 - Over each NPC floats the UIWindow QuestIcon: lightbulb before the question is opened, open book
   while the answer shows, finished book once the section is marked read. The MapHelper portal
   (`portal/game/pv`) rises over the pager when the section is done.
