@@ -93,7 +93,11 @@
     mapleReady = ok;
     applySkin(skin);
     if (skinRow) skinRow.hidden = !ok;
-    if (ok) mapleHooks.splice(0).forEach(function (fn) { fn(); });
+    if (!ok) return;
+    mapleHooks.splice(0).forEach(function (fn) { fn(); });
+    // fetch the hover, pressed and opened states now, so a button never blinks empty on first use
+    ["bt-menu-mouseOver", "bt-menu-pressed", "btnext-mouseOver", "btprev-normal", "btprev-mouseOver", "btclose-normal", "tab1", "list3"]
+      .forEach(function (f) { new Image().src = mapleBase + f + ".png"; });
   }
   if (mapleBase) {
     var probe = new Image();
@@ -105,20 +109,17 @@
   }
 
   // ---------- status bar for the game skin: LV = sections finished, EXP = share of all sections ----------
-  // Decorative: the same numbers are in the rail or tally, so it is hidden from assistive tech, and its
-  // MENU button (a shortcut to the appearance panel) is left out of the tab order.
+  // Decorative: the same numbers are in the rail or tally, so it is hidden from assistive tech.
   function makeHud(job, name, notice) {
     var hud = document.createElement("div");
     hud.className = "hud";
     hud.setAttribute("aria-hidden", "true");
     hud.innerHTML = '<div class="hud-chat"><b>[公告]</b> <span></span></div><div class="hud-row">' +
       '<div class="hud-left"><span class="hud-lv"></span><span class="hud-name"><span></span><b></b></span></div>' +
-      '<div class="hud-gp"><div class="hud-exp"><span class="hud-gray"></span><span class="hud-num"></span></div></div>' +
-      '<button type="button" class="hud-menu" tabindex="-1"></button></div>';
+      '<div class="hud-gp"><div class="hud-exp"><span class="hud-gray"></span><span class="hud-num"></span></div></div></div>';
     hud.querySelector(".hud-chat span").textContent = notice;
     hud.querySelector(".hud-name span").textContent = job;
     hud.querySelector(".hud-name b").textContent = name;
-    hud.querySelector(".hud-menu").addEventListener("click", function (e) { e.stopPropagation(); if (openAppear) openAppear(true); });
     document.body.appendChild(hud);
     var last = [0, 0];
     function draw() {
