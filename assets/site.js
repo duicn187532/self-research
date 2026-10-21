@@ -34,6 +34,52 @@
   });
   setLevel(store.get(LEVEL_KEY, "uni"));
 
+  // ---------- appearance: style (study / maple) and colour mode (system / light / dark) ----------
+  var SKIN_KEY = "study:skin", MODE_KEY = "study:mode";
+  var hostTheme = root.hasAttribute("data-host-theme") ? root.getAttribute("data-host-theme") : root.getAttribute("data-theme");
+  function applySkin(v) { if (v === "maple") root.setAttribute("data-skin", "maple"); else root.removeAttribute("data-skin"); }
+  function applyMode(v) {
+    if (v === "light" || v === "dark") root.setAttribute("data-theme", v);
+    else if (hostTheme) root.setAttribute("data-theme", hostTheme);
+    else root.removeAttribute("data-theme");
+  }
+  var skin = store.get(SKIN_KEY, "study"), mode = store.get(MODE_KEY, "system");
+  applySkin(skin);
+  applyMode(mode);
+  var bar = document.querySelector(".toolbar-inner");
+  if (bar) {
+    var wrap = document.createElement("div");
+    wrap.className = "appear";
+    wrap.innerHTML =
+      '<button type="button" class="appear-btn" aria-expanded="false" aria-controls="appear-panel">' +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+      '<circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg><span class="t">外觀</span></button>' +
+      '<div class="appear-panel" id="appear-panel" role="group" aria-label="外觀設定" hidden>' +
+      '<div class="row"><span>風格</span><div class="seg">' +
+      '<button type="button" data-skin-btn="study">精讀室</button><button type="button" data-skin-btn="maple">楓葉冒險</button></div></div>' +
+      '<div class="row"><span>色彩</span><div class="seg">' +
+      '<button type="button" data-mode-btn="system">跟隨系統</button><button type="button" data-mode-btn="light">淺色</button><button type="button" data-mode-btn="dark">深色</button></div></div>' +
+      '<p>「楓葉冒險」是實驗性的遊戲風格外觀，內容與原本相同。設定只存在這個瀏覽器。</p></div>';
+    bar.appendChild(wrap);
+    var btn = wrap.querySelector(".appear-btn"), panel = wrap.querySelector(".appear-panel");
+    function sync() {
+      wrap.querySelectorAll("[data-skin-btn]").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-skin-btn") === skin)); });
+      wrap.querySelectorAll("[data-mode-btn]").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-mode-btn") === mode)); });
+    }
+    function open(v) { panel.hidden = !v; btn.setAttribute("aria-expanded", String(v)); }
+    btn.addEventListener("click", function () { open(panel.hidden); });
+    wrap.querySelectorAll("[data-skin-btn]").forEach(function (b) {
+      b.addEventListener("click", function () { skin = b.getAttribute("data-skin-btn"); applySkin(skin); store.set(SKIN_KEY, skin); sync(); });
+    });
+    wrap.querySelectorAll("[data-mode-btn]").forEach(function (b) {
+      b.addEventListener("click", function () { mode = b.getAttribute("data-mode-btn"); applyMode(mode); store.set(MODE_KEY, mode); sync(); });
+    });
+    document.addEventListener("click", function (e) { if (!panel.hidden && !wrap.contains(e.target)) open(false); });
+    panel.addEventListener("keydown", function (e) { if (e.key === "Escape") { open(false); btn.focus(); } });
+    btn.addEventListener("keydown", function (e) { if (e.key === "Escape") open(false); });
+    sync();
+  }
+
   // ---------- shelf: show progress for each paper, and the totals ----------
   var sumDone = 0, sumTotal = 0, started = 0;
   document.querySelectorAll("[data-progress-for]").forEach(function (el) {

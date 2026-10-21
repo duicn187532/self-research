@@ -481,7 +481,7 @@ table.results tbody td:first-child { white-space: nowrap; }
   .toolbar .home { font-size: 0.9375rem; white-space: nowrap; }
   .toolbar .home::before { width: 1.45rem; height: 1.45rem; font-size: 0.85rem; }
   .levels { margin-left: auto; }
-  .seg button { padding: 0 0.6rem; min-height: 2.25rem; }
+  .seg button { padding: 0 0.55rem; min-height: 2.25rem; white-space: nowrap; }
 
   .desk { padding-block: 0.9rem 3.5rem; }
   .column { gap: 3rem; }
@@ -515,4 +515,222 @@ table.results tbody td:first-child { white-space: nowrap; }
   .anim-step-text { font-size: 1rem; }
   .desk-foot { gap: 0.6rem; }
   .done { margin-bottom: 0; }
+}
+
+/* ---------- appearance menu (both skins): style and colour mode ---------- */
+.appear { position: static; }
+.appear-btn {
+  font: inherit; font-size: var(--step--1); display: inline-flex; align-items: center; gap: 0.35rem;
+  border: 1px solid var(--rule); background: var(--paper); color: var(--ink); border-radius: 999px;
+  padding: 0 0.8rem; min-height: 2.25rem; cursor: pointer;
+}
+.appear-btn svg { width: 1.05rem; height: 1.05rem; flex: none; }
+.appear-btn[aria-expanded="true"] { border-color: var(--accent); color: var(--accent); }
+.appear-panel {
+  position: absolute; top: 100%; right: max(16px, env(safe-area-inset-right, 0px)); margin-top: 0.4rem; z-index: 20;
+  width: min(21rem, calc(100vw - 32px)); background: var(--surface); color: var(--ink);
+  border: 1px solid var(--rule); border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: 0.9rem 1rem; display: grid; gap: 0.85rem; font-size: var(--step--1);
+}
+.appear-panel[hidden] { display: none; }
+.appear-panel .row { display: grid; gap: 0.35rem; }
+.appear-panel .row > span { font-weight: 700; letter-spacing: 0.08em; color: var(--muted); font-size: 0.75rem; }
+.appear-panel .seg { justify-self: start; flex-wrap: wrap; }
+.appear-panel .seg button { min-height: 2.25rem; }
+.appear-panel p { color: var(--muted); font-size: 0.75rem; line-height: 1.6; }
+@media (max-width: 600px) { .appear-btn .t { display: none; } .appear-btn { padding: 0 0.55rem; } }
+
+/* =====================================================================
+   Experimental skin: "楓葉冒險" (a bright side-scrolling RPG look).
+   Sky ground, framed quest windows with title bars, orange game buttons,
+   an EXP bar for progress. Running text always sits on a solid window body.
+   ===================================================================== */
+:root[data-skin="maple"] {
+  --paper: #cde6f5; --sky-top: #8fcdf0; --surface: #fffdf7; --parch: #fff4d9; --parch-edge: #c99a52;
+  --ink: #262b40; --muted: #565d78; --rule: #c5cde2;
+  --accent: #9a4508; --accent-soft: #ffe8c8; --mark: #f2cf3d; --mark-soft: #fff4d9; --mark-ink: #262b40;
+  --warn: #b23a12; --warn-soft: #fde3d6; --ok: #2c7330; --ok-soft: #dff0d8; --mine: #7238a8; --mine-soft: #efe3fa; --sml: #c4501a;
+  --frame: #34426c; --frame-hi: #7f93cf; --title-a: #4f63a3; --title-b: #3a4878;
+  --btn-a: #ffd57e; --btn-b: #f59a2a; --btn-edge: #a2560d; --btn-ink: #3d1f04;
+  --go-a: #d8f5a8; --go-b: #8fcb46; --go-edge: #3f6d12; --go-ink: #1f3a05;
+  --exp-a: #f9e05a; --exp-b: #9fd247; --exp-track: #2b3256;
+  --bar: #34426c; --bar-edge: #1d2747; --bar-ink: #ffffff; --bar-btn: #4b5b92; --bar-btn-ink: #e8ecff;
+  --chunk: rgba(20, 28, 60, 0.25);
+  --shadow: 0 4px 0 var(--chunk);
+  --font-display: "Huninn", "Noto Sans TC", "PingFang TC", sans-serif;
+  --font-hand: "Huninn", "Noto Sans TC", "PingFang TC", sans-serif;
+  --font-pixel: "Silkscreen", "JetBrains Mono", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root[data-skin="maple"]:not([data-theme="light"]) {
+    --paper: #12182f; --sky-top: #0b1024; --surface: #1d2443; --parch: #2b2a3d; --parch-edge: #8b6d35;
+    --ink: #e7eaf6; --muted: #a7aecb; --rule: #36406b;
+    --accent: #ffaf5f; --accent-soft: #3b2c1e; --mark: #8a6d17; --mark-soft: #2b2a3d; --mark-ink: #fff3c4;
+    --warn: #ff9d7a; --warn-soft: #3d2420; --ok: #86d28c; --ok-soft: #1f3326; --mine: #cfa8f5; --mine-soft: #2e2546; --sml: #ff9a62;
+    --frame: #c9a24a; --frame-hi: #6f5a2a; --title-a: #34418a; --title-b: #1f2856;
+    --exp-track: #0b1024; --bar: #1f2856; --bar-edge: #0b1024; --bar-ink: #f2f4fb; --bar-btn: #2a3570; --bar-btn-ink: #dfe5ff;
+    --chunk: rgba(0, 0, 0, 0.45);
+    color-scheme: dark;
+  }
+}
+:root[data-skin="maple"][data-theme="dark"] {
+  --paper: #12182f; --sky-top: #0b1024; --surface: #1d2443; --parch: #2b2a3d; --parch-edge: #8b6d35;
+  --ink: #e7eaf6; --muted: #a7aecb; --rule: #36406b;
+  --accent: #ffaf5f; --accent-soft: #3b2c1e; --mark: #8a6d17; --mark-soft: #2b2a3d; --mark-ink: #fff3c4;
+  --warn: #ff9d7a; --warn-soft: #3d2420; --ok: #86d28c; --ok-soft: #1f3326; --mine: #cfa8f5; --mine-soft: #2e2546; --sml: #ff9a62;
+  --frame: #c9a24a; --frame-hi: #6f5a2a; --title-a: #34418a; --title-b: #1f2856;
+  --exp-track: #0b1024; --bar: #1f2856; --bar-edge: #0b1024; --bar-ink: #f2f4fb; --bar-btn: #2a3570; --bar-btn-ink: #dfe5ff;
+  --chunk: rgba(0, 0, 0, 0.45);
+  color-scheme: dark;
+}
+:root[data-skin="maple"] body { background: linear-gradient(var(--sky-top), var(--paper) 26rem) no-repeat, var(--paper); }
+:root[data-skin="maple"] body::before { background: var(--bar); }
+
+/* top bar: the game's status bar */
+:root[data-skin="maple"] .toolbar { background: var(--bar); border-bottom: 3px solid var(--bar-edge); color: var(--bar-ink); }
+:root[data-skin="maple"] .toolbar .home { color: var(--bar-ink); font-family: var(--font-display); }
+:root[data-skin="maple"] .toolbar .home::before {
+  border-radius: 50%; background: linear-gradient(var(--btn-a), var(--btn-b)); color: var(--btn-ink); border: 2px solid var(--btn-edge);
+}
+:root[data-skin="maple"] .toolbar .crumb, :root[data-skin="maple"] .levels-label { color: color-mix(in srgb, var(--bar-ink) 78%, transparent); }
+:root[data-skin="maple"] .seg { background: var(--bar-edge); border: 2px solid var(--bar-edge); border-radius: 10px; }
+:root[data-skin="maple"] .seg button { color: var(--bar-btn-ink); border-radius: 7px; font-weight: 700; }
+:root[data-skin="maple"] .seg button:hover { color: #ffffff; }
+:root[data-skin="maple"] .seg button[aria-pressed="true"] {
+  background: linear-gradient(var(--btn-a), var(--btn-b)); color: var(--btn-ink); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+:root[data-skin="maple"] .appear-btn { background: var(--bar-btn); color: var(--bar-btn-ink); border: 2px solid var(--bar-edge); border-radius: 10px; font-weight: 700; }
+:root[data-skin="maple"] .appear-panel { border: 3px solid var(--frame); border-radius: 12px; box-shadow: inset 0 0 0 2px var(--frame-hi), 0 4px 0 var(--chunk); }
+:root[data-skin="maple"] .appear-panel .seg { background: var(--bar); border-color: var(--bar-edge); }
+
+/* windows: framed panels with a title bar */
+:root[data-skin="maple"] .paper-head,
+:root[data-skin="maple"] .sec {
+  background: var(--surface); border: 3px solid var(--frame); border-radius: 14px;
+  box-shadow: inset 0 0 0 2px var(--frame-hi), 0 5px 0 var(--chunk);
+}
+:root[data-skin="maple"] .paper-head { padding: 1.2rem 1.4rem 1.4rem; }
+:root[data-skin="maple"] .sec { padding: 0 1.4rem 1.4rem; }
+:root[data-skin="maple"] .sec-head {
+  margin: 0 -1.4rem; padding: 0.65rem 1.4rem; border-top: 0; border-radius: 10px 10px 0 0;
+  background: linear-gradient(var(--title-a), var(--title-b)); display: flex; align-items: center; gap: 0.75rem;
+  position: static; grid-template-columns: none;
+}
+:root[data-skin="maple"] .sec-head h2 { color: #ffffff; font-size: 1.375rem; text-shadow: 0 2px 0 rgba(0, 0, 0, 0.35); font-weight: 400; }
+:root[data-skin="maple"] .sec-num {
+  position: static; min-width: 0; flex: none; font-family: var(--font-pixel); font-size: 0.75rem; line-height: 1.5;
+  color: var(--btn-ink); background: linear-gradient(var(--btn-a), var(--btn-b)); border: 2px solid var(--btn-edge);
+  border-radius: 6px; padding: 0.05rem 0.45rem; text-align: center; font-weight: 700;
+}
+:root[data-skin="maple"] h1, :root[data-skin="maple"] h2, :root[data-skin="maple"] h3 { font-weight: 400; }
+:root[data-skin="maple"] .eyebrow .mono { color: var(--accent); }
+
+/* quest list + EXP bar */
+:root[data-skin="maple"] .rail details {
+  background: var(--surface); border: 3px solid var(--frame); border-radius: 12px; overflow: hidden; padding: 0 0 0.6rem;
+  box-shadow: inset 0 0 0 2px var(--frame-hi), 0 4px 0 var(--chunk);
+}
+:root[data-skin="maple"] .rail summary {
+  background: linear-gradient(var(--title-a), var(--title-b)); color: #ffffff; padding: 0.45rem 0.9rem; letter-spacing: 0.06em; font-size: 0.8125rem;
+}
+:root[data-skin="maple"] .rail summary::after { color: #ffe8a8; }
+:root[data-skin="maple"] .rail .progress-text { color: #ffffff; font-family: var(--font-pixel); }
+:root[data-skin="maple"] .rail .progress-text::before { content: "EXP "; color: var(--exp-a); }
+:root[data-skin="maple"] .progress,
+:root[data-skin="maple"] .meter {
+  height: 0.8rem; border-radius: 0.4rem; border: 2px solid var(--bar-edge); background: var(--exp-track);
+}
+:root[data-skin="maple"] .progress { margin: 0.6rem 0.9rem 0; }
+:root[data-skin="maple"] .progress > span,
+:root[data-skin="maple"] .meter > i { background: linear-gradient(var(--exp-a), var(--exp-b)); box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.5); }
+:root[data-skin="maple"] .rail ol { border-left: 0; margin: 0.5rem 0.5rem 0; gap: 1px; }
+:root[data-skin="maple"] .rail li a { border-left: 0; border-radius: 6px; margin-left: 0; padding-left: 0.6rem; }
+:root[data-skin="maple"] .rail li a:hover { background: var(--accent-soft); }
+:root[data-skin="maple"] .rail li a.active { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+@media (max-width: 960px) { :root[data-skin="maple"] .rail details { padding: 0; } :root[data-skin="maple"] .rail details[open] { padding-bottom: 0.6rem; } }
+
+/* item tooltip, quest scroll, NPC dialog */
+:root[data-skin="maple"] .claim { background: var(--parch); border: 2px solid var(--parch-edge); border-radius: 10px; }
+:root[data-skin="maple"] .predict {
+  background: var(--parch); border: 2px dashed var(--parch-edge); border-radius: 10px; position: relative; padding-left: 3.3rem;
+}
+:root[data-skin="maple"] .predict::before {
+  content: "!"; position: absolute; left: 0.85rem; top: 0.85rem; width: 1.8rem; height: 1.8rem; border-radius: 50%;
+  display: grid; place-items: center; font-family: var(--font-pixel); font-weight: 700; font-size: 1rem; color: #4a3000;
+  background: linear-gradient(#ffe86b, #f5b81b); border: 2px solid #9a6a06;
+}
+:root[data-skin="maple"] .check-title {
+  justify-self: start; background: linear-gradient(var(--title-a), var(--title-b)); color: #ffffff; border-radius: 6px; padding: 0 0.6rem; letter-spacing: 0.06em;
+}
+:root[data-skin="maple"] .check details { border: 2px solid var(--frame); border-radius: 12px; box-shadow: 0 3px 0 var(--chunk); }
+:root[data-skin="maple"] .check summary::before { border-radius: 50%; background: linear-gradient(var(--btn-a), var(--btn-b)); color: var(--btn-ink); border: 1px solid var(--btn-edge); }
+:root[data-skin="maple"] .check details[open] summary::before { background: linear-gradient(var(--go-a), var(--go-b)); color: var(--go-ink); border-color: var(--go-edge); }
+
+/* instruments */
+:root[data-skin="maple"] .figure,
+:root[data-skin="maple"] .anim { border: 3px solid var(--frame); border-radius: 12px; box-shadow: inset 0 0 0 2px var(--frame-hi), 0 4px 0 var(--chunk); }
+:root[data-skin="maple"] .sec .figure, :root[data-skin="maple"] .sec .anim { box-shadow: 0 3px 0 var(--chunk); border-width: 2px; }
+:root[data-skin="maple"] .sec .table-wrap { --scroll-bg: var(--surface); }
+:root[data-skin="maple"] .eq { border-block: 2px dotted var(--parch-edge); }
+:root[data-skin="maple"] table { border-top-color: var(--frame); border-bottom-color: var(--frame); border-top-width: 2px; border-bottom-width: 2px; }
+:root[data-skin="maple"] thead th { background: var(--accent-soft); color: var(--ink); border-bottom-color: var(--frame); }
+:root[data-skin="maple"] .anim-stage svg .a-zone { fill: var(--parch); }
+:root[data-skin="maple"] .anim-stage svg .a-card.dead { fill: var(--parch); }
+
+/* game buttons */
+:root[data-skin="maple"] .btn,
+:root[data-skin="maple"] .done {
+  border: 2px solid var(--btn-edge); border-radius: 8px; color: var(--btn-ink); font-weight: 700;
+  background: linear-gradient(var(--btn-a), var(--btn-b)); box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.55), 0 3px 0 var(--btn-edge);
+}
+:root[data-skin="maple"] .btn:hover { filter: brightness(1.05); background: linear-gradient(var(--btn-a), var(--btn-b)); }
+:root[data-skin="maple"] .btn:active { transform: translateY(2px); box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.55), 0 1px 0 var(--btn-edge); }
+:root[data-skin="maple"] .anim-controls .btn:nth-child(4),
+:root[data-skin="maple"] .done:has(input:checked) {
+  background: linear-gradient(var(--go-a), var(--go-b)); border-color: var(--go-edge); color: var(--go-ink);
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.55), 0 3px 0 var(--go-edge);
+}
+:root[data-skin="maple"] .anim-controls .btn:nth-child(4):disabled { background: linear-gradient(var(--btn-a), var(--btn-b)); border-color: var(--btn-edge); color: var(--btn-ink); }
+:root[data-skin="maple"] .done:has(input:checked)::after { content: "QUEST CLEAR"; font-family: var(--font-pixel); font-size: 0.6875rem; margin-left: 0.25rem; }
+:root[data-skin="maple"] .links a { border: 2px solid var(--frame); border-radius: 8px; color: var(--ink); background: var(--surface); }
+:root[data-skin="maple"] .note textarea { border: 2px solid var(--rule); border-radius: 10px; }
+:root[data-skin="maple"] .desk-foot { border-top: 2px dashed var(--parch-edge); }
+:root[data-skin="maple"] code { background: var(--parch); border-color: var(--parch-edge); }
+
+/* shelf */
+:root[data-skin="maple"] .shelf-head,
+:root[data-skin="maple"] .shelf-aside > div {
+  background: var(--surface); border: 3px solid var(--frame); border-radius: 14px; padding: 1.2rem 1.4rem;
+  box-shadow: inset 0 0 0 2px var(--frame-hi), 0 5px 0 var(--chunk);
+}
+:root[data-skin="maple"] .shelf-head { max-width: none; }
+:root[data-skin="maple"] .shelf-group > h2 {
+  border-bottom: 0; background: linear-gradient(var(--title-a), var(--title-b)); color: #ffffff; border-radius: 10px;
+  padding: 0.4rem 0.9rem; border: 3px solid var(--frame); font-weight: 700;
+}
+:root[data-skin="maple"] .shelf-group > h2 small { color: #e3e8ff; }
+:root[data-skin="maple"] .shelf { gap: 0.8rem; padding-top: 0.6rem; }
+:root[data-skin="maple"] .shelf > li + li { border-top: 0; }
+:root[data-skin="maple"] .card {
+  margin-inline: 0; padding: 1rem 1.1rem; background: var(--surface); border: 2px solid var(--frame); border-radius: 12px; box-shadow: 0 4px 0 var(--chunk);
+}
+:root[data-skin="maple"] .card:hover { transform: translateY(-2px); box-shadow: 0 6px 0 var(--chunk); background: var(--surface); }
+:root[data-skin="maple"] .tally b { color: var(--accent); }
+:root[data-skin="maple"] .shelf-aside h2 { border-bottom-color: var(--frame); }
+
+@media (max-width: 600px) {
+  :root[data-skin="maple"] .sec { padding: 0 1rem 1.1rem; }
+  :root[data-skin="maple"] .sec-head { margin: 0 -1rem; padding: 0.6rem 1rem; }
+  :root[data-skin="maple"] .sec-head h2 { font-size: 1.25rem; }
+  :root[data-skin="maple"] .paper-head { padding: 1rem; }
+  :root[data-skin="maple"] .column { gap: 1.75rem; }
+}
+@media (prefers-reduced-motion: reduce) { :root[data-skin="maple"] .card:hover { transform: none; } }
+
+.seg button { white-space: nowrap; }
+@media (max-width: 440px) {
+  /* keep the seal, drop the wordmark so the level switch and the appearance button fit on one row */
+  .toolbar .home { font-size: 0; gap: 0; }
+  .toolbar .home::before { font-size: 0.85rem; }
+  .seg button { padding: 0 0.5rem; }
 }
