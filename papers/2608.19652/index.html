@@ -1,0 +1,1451 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>StateMem 精讀</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="../../assets/site.css">
+<style>
+  .chart-box .grid line { stroke: var(--rule); stroke-width: 1; }
+  .chart-box .axis text { fill: var(--muted); font-size: 11px; font-family: var(--font-mono); }
+  .chart-box .name { fill: var(--ink); font-size: 12px; font-family: var(--font-body); }
+  .chart-box .group { fill: var(--muted); font-size: 11px; font-family: var(--font-body); }
+  .chart-box .val { fill: var(--ink); font-size: 11px; font-family: var(--font-mono); }
+  .chart-box .bar { fill: var(--accent); }
+  .chart-box .bar.ours { fill: var(--sml); }
+  .chart-box .bar.lc { fill: var(--muted); }
+  .chart-box .seg-ok { fill: var(--ok); }
+  .chart-box .seg-drift { fill: var(--warn); }
+  .chart-box .seg-other { fill: var(--accent); }
+  .chart-box .seg-off { fill: var(--rule); }
+  .chart-box .dot-alone { fill: var(--muted); }
+  .chart-box .dot-ctrl { fill: var(--sml); }
+  .chart-box .dot-smw { fill: var(--accent); }
+  .chart-box .span { stroke: var(--rule); stroke-width: 2; }
+  .chart-box .hit { fill: transparent; }
+  .chart-box .row:hover .bar { opacity: 0.8; }
+  .chart-box svg#t10-chart, .chart-box svg#pool-chart, .chart-box svg#t6-chart { min-width: 560px; }
+  .controls select { font: inherit; color: var(--ink); background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 0.15rem 0.3rem; }
+  .key { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; font-size: var(--step--1); color: var(--muted); }
+  .key i { display: inline-block; width: 0.8rem; height: 0.8rem; border-radius: 2px; margin-right: 0.3rem; vertical-align: -0.1rem; }
+  .key .k-ok { background: var(--ok); } .key .k-drift { background: var(--warn); } .key .k-other { background: var(--accent); } .key .k-off { background: var(--rule); }
+  .key .k-alone { background: var(--muted); border-radius: 50%; } .key .k-ctrl { background: var(--sml); border-radius: 50%; } .key .k-smw { background: var(--accent); border-radius: 50%; }
+  pre.prompt { font-family: var(--font-mono); font-size: 0.8125rem; line-height: 1.6; white-space: pre-wrap; overflow-wrap: anywhere; margin: 0; }
+  .dialog { display: grid; gap: 0.45rem; }
+  .dialog p { margin: 0; border-left: 3px solid var(--rule); padding-left: 0.75rem; }
+  .dialog p b { font-family: var(--font-mono); font-size: var(--step--1); color: var(--muted); margin-right: 0.35rem; }
+  .dialog p.probe { border-left-color: var(--accent); }
+  .tree { display: grid; gap: 0.6rem; }
+  .tree-q { font-weight: 500; }
+  .tree-path { font-size: var(--step--1); color: var(--muted); }
+  .tree-out { border-left: 3px solid var(--accent); padding-left: 0.75rem; }
+  .tier { display: grid; gap: 0.5rem; }
+  .tier input[type="number"] { font: inherit; width: 8rem; color: var(--ink); background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 0.15rem 0.4rem; }
+  .tier-bars { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; }
+  .tier-bars div { border: 1px solid var(--rule); border-radius: 4px; padding: 0.35rem 0.4rem; font-size: var(--step--1); min-width: 0; overflow-wrap: anywhere; }
+  .tier-bars div.on { border-color: var(--accent); background: var(--accent-soft); font-weight: 700; }
+  .anim-stage svg .a-arrow { fill: var(--muted); }
+  .anim-stage svg .a-arrow-acc { fill: var(--accent); }
+  .anim-stage svg .a-arrow-warn { fill: var(--warn); }
+</style>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
+    svg: { fontCache: "global" }
+  };
+</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script>
+</head>
+<body>
+<div data-paper="2608.19652">
+
+<header class="toolbar gutter">
+  <div class="toolbar-inner">
+    <a class="home" href="../../index.html">論文精讀室</a>
+    <span class="crumb">StateMem · arXiv 2608.19652</span>
+    <div class="levels" role="group" aria-label="解釋深度">
+      <span class="levels-label">解釋深度</span>
+      <div class="seg">
+        <button type="button" data-level-btn="kid" aria-pressed="false">五歲</button>
+        <button type="button" data-level-btn="uni" aria-pressed="true">大學生</button>
+        <button type="button" data-level-btn="grad" aria-pressed="false">研究生</button>
+        <button type="button" data-level-btn="all" aria-pressed="false">對照</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="desk gutter">
+  <nav class="rail" aria-label="章節">
+    <details open>
+      <summary>章節 <span class="progress-text" id="progress-text">0 / 0</span></summary>
+      <div class="progress"><span id="progress-bar"></span></div>
+      <ol id="outline"></ol>
+    </details>
+  </nav>
+
+  <main class="column">
+
+    <!-- ===================== header ===================== -->
+    <div class="paper-head">
+      <div class="eyebrow"><span class="mono">arXiv 2608.19652v1</span><span>cs.AI</span><span>v1 2026-08-20</span><span>23 頁：正文 7 頁、參考文獻 2 頁、附錄 A–I 14 頁</span></div>
+      <h1>Agent 記憶系統追得上不斷變動的狀態嗎？</h1>
+      <p lang="en"><em>Can Agent Memory Systems Track Evolving State?</em></p>
+      <p class="authors">Xinyi Fan*、Miri Liu*、Ruozhen Yang、Siru Ouyang、Jiawei Han<br>University of Illinois Urbana-Champaign　<span class="mono">*</span> 同等貢獻</p>
+      <div class="links">
+        <a href="https://arxiv.org/abs/2608.19652" target="_blank" rel="noopener">arXiv 摘要頁</a>
+        <a href="https://arxiv.org/pdf/2608.19652v1" target="_blank" rel="noopener">PDF</a>
+      </div>
+      <div class="claim" role="note">
+        <span class="claim-label">核對狀態</span>
+        <p>本頁已對照 arXiv v1 PDF 全文（含附錄 A–I）逐條核對。Table 10 每一列的 Overall 都用 horizon、類別、領域三種權重各驗算一次；Table 14／15 每列加總與 drift-rate 已驗算；Table 6 和 Table 13 的「修好 − 弄壞」已逐格對照。驗算時發現原文幾處數字對不上，集中列在第 15 節。原文說會釋出評測集與標註工具，但 PDF 裡沒有給連結（未提供）。</p>
+        <div class="legend">
+          <span><span class="src src-abs">原文 §3.2</span> 出自論文，標明位置</span>
+          <span><span class="src src-mine">導讀補充</span> 本頁的推導、背景或評論</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== 00 route ===================== -->
+    <section class="sec" id="s-route" data-short="閱讀路線">
+      <div class="sec-head"><span class="sec-num">00</span><h2>這篇怎麼讀</h2></div>
+      <div class="prose">
+        <p>這篇一次交出三樣東西：一個<b>評測集</b> StateMemBench、一個<b>記憶方法</b> StateMem，以及一個只改寫回答提示詞的<b>包裝器</b> StateMemWrapper。本站讀過的 Zep 和 STALE 都在它的相關研究裡被點名比較。</p>
+        <ol>
+          <li><b>第一遍（15 分鐘）</b>：摘要、Figure 1、§3.3 的 Table 1、§6.2 的 Table 3。對應本頁 01、08。</li>
+          <li><b>第二遍（1 小時）</b>：§4 搭配附錄 D 的三個範例看「陷阱怎麼造」；§5 搭配 Figure 2 與附錄 E 的提示詞看 StateMem。對應 04 到 07。</li>
+          <li><b>第三遍（1 小時）</b>：§6.3–6.4、附錄 A（標記程序）、F（包裝器）、G（基線與完整表格）。重點是「提升從哪來」和「這個評測量到的是什麼」。對應 02、03、09 到 15。</li>
+        </ol>
+      </div>
+      <div class="predict">
+        <b class="ptitle">讀之前先猜</b>
+        <p>先把你的猜測寫進下面的筆記欄，讀到對應章節再對答案。猜錯的地方通常就是這篇最值得讀的地方。</p>
+        <ol>
+          <li>把整段對話直接塞進 context（long-context），在這個評測上會是最強的嗎？（答案在 08）</li>
+          <li>打開模型的推理（thinking），能不能修好「用到舊值」的錯？（答案在 03）</li>
+          <li>不加任何 LLM 呼叫、只改寫最後那一次回答的提示詞，能讓既有記憶系統進步多少？（答案在 11）</li>
+        </ol>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-route">筆記</label><textarea id="note-route" data-note="s-route" placeholder="例如：三個猜測、我讀這篇的目的"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-route"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 01 problem ===================== -->
+    <section class="sec" id="s-problem" data-short="問題：狀態漂移">
+      <div class="sec-head"><span class="sec-num">01</span><h2>問題：找得到 ≠ 用對版本</h2></div>
+      <div class="claim">
+        <span class="claim-label">Figure 1 的兩個對照例子 <span class="src src-abs">原文 Figure 1</span></span>
+        <p><b>A. 回想能力</b>：使用者先說「我養了一隻貓叫 Smokey」，幾個 session 後說「想幫牠買刻名字縮寫的項圈」。系統 <code>retrieve("cat")</code> 取回 <code>{cat = Smokey}</code>，刻「S」，通過。</p>
+        <p><b>B. 狀態追蹤能力</b>：先說「我們有 1600 筆標註資料要分析，5 位標註員，總預算 $600」，系統記成三個互相牽動的衍生狀態（1600 pairs、5 annotators、$600 budget）。後來使用者說「其實改成 1200 筆」。再問「目前預算多少？」系統 <code>retrieve("budget")</code> 取回 <code>{budget = $600}</code> 並當成現況回答：<b>狀態漂移（state drift）</b>。</p>
+        <p>原文沒有寫出改成 1200 筆後的正確預算，只說系統不但要知道最新筆數是 1200，還要看出這個改變對其他狀態的影響（§1）。</p>
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>你跟朋友說「我要買 3 顆蘋果，每顆 10 元，總共 30 元」。後來你改口「買 2 顆就好」。朋友記得你說過的每一句話，結帳時卻還是說「30 元」。他沒有忘記，他只是沒把改變算進去。這篇論文就是在抓這種錯。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p><b>狀態漂移的定義</b>（§3）：先前對話建立或更新過的事實、限制或依賴關係<b>確實在組好的 context 裡</b>，但 agent 依據的是過期或不完整的版本，而不是決策當下有效的那一版。</p>
+          <p>這把「沒維護好狀態」和「沒取得資訊」分開。後者靠更好的檢索能修，前者不行：資料明明找到了，用錯的是版本。</p>
+          <p>論文的四個貢獻（§1）：</p>
+          <ol>
+            <li>把狀態追蹤定義成和回想（recall）不同的能力，並給出把漂移從其他錯誤中分離出來的標記程序（本頁 02、03）。</li>
+            <li>StateMemBench：234 個多 session 情境，三個領域、長短兩種對話長度（04、05）。</li>
+            <li>StateMem：以狀態為核心的記憶方法（06–10）。</li>
+            <li>證明狀態追蹤是可以單獨拆出來的一軸：同一套做法改成回答時的包裝器，對每個後端都有效，並用等長、等成本的對照組分離出「結構」本身的貢獻（11、12）。</li>
+          </ol>
+        </div>
+        <div class="lv lv-grad">
+          <p><b>和對話狀態追蹤（DST）的差別</b>（§2）：DST 規定狀態的表示法（領域本體上的 slot–value，或 schema-guided、open-vocabulary 的放寬版本），並直接評這個表示法。這篇不規定狀態長什麼樣，狀態就是「為了答對必須維護的東西」，評測純看行為。另外 DST 語料是合作式的，使用者目標在一段對話裡單調累積；StateMemBench 則刻意反覆修改事實和使用者或 agent 的決定。</p>
+          <p><b>和既有記憶研究的關係</b>：作者認為回想和狀態追蹤正交，就算檢索完美，系統仍要判斷取回的事實裡哪一個現在有效。Zep 對知識圖譜的邊加上有效時間區間、偵測到矛盾就讓舊邊失效，能追蹤<em>單一事實</em>的有效性；STALE 也處理狀態並傳播更新，但靠 LLM 裁決器在預先定義的 schema 上做，而 StateMem 用確定性、不呼叫 LLM 的依賴圖走訪。STALE 的衝突是隱性的（要常識推論才看得出來），StateMemBench 則明講衝突，把「維護」和「推論」分開（§2）。</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>為什麼更好的檢索修不好狀態漂移？</summary><div><p>定義上，漂移發生時正確的新值已經在 context 裡了。錯的是 agent 選了舊版本來用，問題出在「哪一版有效」的判斷，不在「找不找得到」。</p></div></details>
+        <details><summary>DST 和本文的「狀態」有哪兩點不同？</summary><div><p>一、DST 規定並直接評估狀態表示法，本文只看行為。二、DST 對話是合作、單調累積的，本文的情境會反覆推翻先前的事實與決定。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-problem">筆記</label><textarea id="note-problem" data-note="s-problem"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-problem"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 02 labeling ===================== -->
+    <section class="sec" id="s-label" data-short="怎麼判定是漂移">
+      <div class="sec-head"><span class="sec-num">02</span><h2>怎麼判定一個錯誤「是漂移」</h2></div>
+      <div class="prose">
+        <p>要說「漂移很常見」，先得有辦法把它和鄰近的錯誤分開。作者對每個確認的失敗點（一組 case、turn、slot）依序問五個問題，第一個符合的就停 <span class="src src-abs">原文 §3.1、附錄 A.1</span>。下面可以自己走一次。</p>
+      </div>
+      <figure class="figure" style="margin:0">
+        <div class="tree" id="tree" aria-live="polite"></div>
+        <figcaption>依附錄 A.1 的順序規則。Q2（gold 是否定義良好）在各評測都 ≤ 3%，未列入 Table 1。漂移的最後條件：輸出對應到一個<b>仍在 context 中、但已過期或範圍不對</b>的版本，而且那個事實從未被撤回；判定者必須引用證據說明新版本當時仍有效，所以 agent 跟著合法更新走時不會被算成漂移。無法歸類的點直接丟掉，不預設成漂移。</figcaption>
+      </figure>
+      <div class="table-wrap">
+        <table class="results">
+          <caption>Table 1：各評測確認失敗的分類比例（%）<span class="src src-abs">原文 Table 1</span></caption>
+          <thead><tr><th>評測</th><th class="num">n</th><th class="num">漂移</th><th class="num">檢索</th><th class="num">理解</th><th class="num">格式</th><th class="num">推理</th><th class="num">失敗棄答</th></tr></thead>
+          <tbody>
+            <tr><td colspan="8"><em>MemoryArena</em></td></tr>
+            <tr><td>Shopping</td><td class="num">200</td><td class="num"><b>63.5</b></td><td class="num">22.5</td><td class="num">2.5</td><td class="num">0.0</td><td class="num">9.5</td><td class="num">–</td></tr>
+            <tr><td>Search</td><td class="num">200</td><td class="num"><b>38.5</b></td><td class="num">25.5</td><td class="num">11.0</td><td class="num">17.5</td><td class="num">4.5</td><td class="num">–</td></tr>
+            <tr><td>Travel</td><td class="num">200</td><td class="num"><b>19.0</b></td><td class="num">11.0</td><td class="num">46.5</td><td class="num">21.0</td><td class="num">0.0</td><td class="num">–</td></tr>
+            <tr><td colspan="8"><em>LongMemEval oracle</em></td></tr>
+            <tr><td>LME</td><td class="num">36</td><td class="num"><b>44.4</b></td><td class="num">0.0</td><td class="num">0.0</td><td class="num">25.0</td><td class="num">2.8</td><td class="num">27.8</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>老師改考卷時，要先排除「沒看到題目」「看不懂題目」「答案對但寫錯格式」「算錯」，剩下的才算「用了舊答案」。這樣抓出來的才是真的那一種錯。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p><b>結果</b>（§3.3）：漂移在 MemoryArena 購物題佔 63.5%，是最大宗；在旅遊題只佔 19.0%，那裡理解失敗最多（46.5%）。τ²-bench 的子集 n 只有 16（10/16 是漂移），只作描述。</p>
+          <p><b>刻意保守</b>（附錄 A.2）：第二輪「對抗式過濾」會試著把每個漂移候選改判成別的類別，各評測有 32–47% 的候選被降級。LongMemEval 上再加一個不同家族的判定者（GPT-4o）：兩家都說是漂移才算。DeepSeek 判 63.9%、GPT-4o 判 55.6%，兩者都同意的是 44.4%（16/36），論文報告的是這個數字。</p>
+          <p><b>人類對照</b>（附錄 A.4）：兩位標註員在結構化協議下的判定，漂移比例（8.3%、25.0%）都低於判定模型（50.0%）。所以作者把這些比例稱為「上限」。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p><b>一致性怎麼讀</b>（附錄 A.3、Table 7）：MA-shopping 兩次解碼的原始一致率 91.6%，κ 卻只有 0.17。這不是不可靠，而是兩次都把 90% 以上判成漂移，類別極度不平衡時 κ 的機會校正會壓垮數值。所以另報 PABAK \(= 2P_a - 1\)，只用原始一致率就能重算：\(2 \times 0.916 - 1 = 0.832\)，表上寫 0.83 <span class="src src-mine">導讀補充：驗算</span>。</p>
+          <p><b>真正的動機在 κ<sub>mode</sub></b>：判定者對「是不是漂移」有中等以上的一致（LME κ = 0.67），但對「是哪一種漂移機制」（是更大聲的競爭者贏了，還是真的修改沒被套用）的一致性在每個評測都接近 0（0.00–0.09）。事後判讀分不出機制，所以要把機制<b>在建構時就固定下來</b>：這就是 StateMemBench 的設計理由（§3.3）。</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="results">
+          <caption>Table 7：漂移二元判定的判定者一致性 <span class="src src-abs">原文 Table 7</span>。上三列為同一 DeepSeek-V4 判定者兩次解碼，末列為 DeepSeek-V4 × GPT-4o 跨家族</caption>
+          <thead><tr><th>評測</th><th class="num">n</th><th class="num">一致率 %</th><th class="num">κ</th><th class="num">PABAK</th><th class="num">AC1</th><th class="num">κ<sub>mode</sub></th></tr></thead>
+          <tbody>
+            <tr><td>MA-shopping</td><td class="num">179</td><td class="num">91.6</td><td class="num">0.17</td><td class="num">0.83</td><td class="num">0.91</td><td class="num">0.00</td></tr>
+            <tr><td>MA-search</td><td class="num">110</td><td class="num">72.7</td><td class="num">0.31</td><td class="num">0.45</td><td class="num">0.55</td><td class="num">0.09</td></tr>
+            <tr><td>LME oracle</td><td class="num">36</td><td class="num">77.8</td><td class="num">0.67</td><td class="num">0.56</td><td class="num">0.56</td><td class="num">0.01</td></tr>
+            <tr><td>LME oracle（跨家族）</td><td class="num">36</td><td class="num">69.4</td><td class="num">0.37</td><td class="num">0.39</td><td class="num">—</td><td class="num">—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>為什麼 Table 1 的漂移比例是「上限」而不是估計值？</summary><div><p>它是 LLM 判定者的標記；兩位人類標註員在同一批（刻意挑難的）案例上判出的漂移都更少（8.3%、25.0% 對 50.0%）。</p></div></details>
+        <details><summary>κ = 0.17 但一致率 91.6%，哪個比較能代表可靠度？</summary><div><p>這裡是一致率（以及 PABAK 0.83、AC1 0.91）。κ 在類別極度不平衡時會被機會校正壓低，原文也明說這是唯一 κ 失真的一格。</p></div></details>
+        <details><summary>κ<sub>mode</sub> 接近 0 對研究設計有什麼影響？</summary><div><p>事後讀輸出無法可靠判斷漂移的機制，所以作者改成在情境生成時就指定機制，讓「是哪一種漂移」由建構決定，而不是靠判讀。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-label">筆記</label><textarea id="note-label" data-note="s-label"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-label"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 03 evidence ===================== -->
+    <section class="sec" id="s-evidence" data-short="檢索完美也會漂移">
+      <div class="sec-head"><span class="sec-num">03</span><h2>檢索完美、開了推理，還是會漂移</h2></div>
+      <div class="claim">
+        <span class="claim-label">完美檢索下的失敗 <span class="src src-abs">原文 §3.2、附錄 A.5</span></span>
+        <p>LongMemEval oracle 版把所有 gold 證據都放進 prompt，召回率依建構就是 1.0。作者只取三種跨 session 題型（multi-session、temporal-reasoning、knowledge-update），共 306 題。DeepSeek-V4-Flash 錯 36 題，其中 44.4%（16/36，Wilson 95% CI [30%, 60%]）經兩個模型家族確認是漂移，是最大的失敗類別。multi-session 題的失敗有 71.4%（10/14）是漂移，knowledge-update 只有 25.0%（2/8），接近三倍。</p>
+      </div>
+      <div class="table-wrap">
+        <table class="results">
+          <caption>Table 8：推理開關的配對實驗（LME multi-session oracle，n = 50）<span class="src src-abs">原文 Table 8</span></caption>
+          <thead><tr><th>條件</th><th class="num">答對</th><th class="num">比例</th></tr></thead>
+          <tbody>
+            <tr><td>thinking off</td><td class="num">42/50</td><td class="num">84.0%</td></tr>
+            <tr><td>thinking on</td><td class="num">38/50</td><td class="num">76.0%</td></tr>
+            <tr><td colspan="3"><em>逐題轉移</em>：off 錯 → on 對 3　·　off 對 → on 錯 7　·　都對 35　·　都錯 5</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>就算把所有筆記都攤在桌上，還叫 AI「慢慢想」，它還是會數錯魚缸。因為它一直盯著那個被講了很多次的大魚缸，忘了只被提過一次的小魚缸。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p><b>附錄 B 的魚缸案例</b>（case 46a3abf7）：</p>
+          <div class="dialog">
+            <p><b>5/21</b>在一段問植物溫度的對話中順帶一句：「我也在照顧一個幫朋友小孩設的 1 加侖小缸，裡面有幾隻孔雀魚……」之後再也沒提。</p>
+            <p><b>5/23</b>「我有一個 5 加侖的缸，養一隻叫 Finley 的鬥魚」；同一段又說「我後來新設了一個 20 加侖的混養缸」。</p>
+            <p><b>5/27</b>整段都在談那個 20 加侖、取名「Amazonia」的缸，十幾輪討論魚、飼料、藻類、水草、沉木。</p>
+            <p class="probe"><b>5/30 提問</b>「我現在總共有幾個缸，包括幫朋友小孩設的那個？」正確答案 3，agent 答 2。</p>
+          </div>
+          <p>問題本身就點名了那個安靜的事實，agent 還是沒算進去。作者逐一排除其他解讀：不是檢索（全部都在 prompt）、不是理解（答了格式正確的數字）、不是格式、也不是合法更新（沒有任何缸被送走）。剩下的是「顯著性」不對稱：20 加侖缸有名字、被談了兩個 session；1 加侖缸只在別的問題裡出現一個子句。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p><b>推理不是解藥</b>（附錄 A.6）：同一批 50 題、同樣 prompt、完整歷史都在 context 裡，只切換 DeepSeek-V4-Flash 的推理軌跡。正確率從 84.0% 掉到 76.0%：救回 3 題、弄壞 7 題，精確 McNemar p = 0.34。用二項分布驗算：10 個不一致對中 ≤ 3 個偏向一邊的雙尾機率是 \(2 \times \frac{1+10+45+120}{1024} \approx 0.344\) <span class="src src-mine">導讀補充：驗算</span>。上面的魚缸案例正好是「off 對 → on 錯」：不開推理答 3，開了反而答 2。</p>
+          <p>作者強調要看的是不對稱，而不是 −8 個百分點本身（方向不顯著）：推理讓失敗集合幾乎不動，而維護狀態的介入會動它。在同一題型和骨幹上，§6.4 的包裝器讓六個後端平均比各自單獨使用高 +20.9 個百分點。用 Table 6 的 LongMemEval／DeepSeek 欄驗算：\((15.0+20.0+31.7+30.0+25.0+3.4)/6 \approx 20.9\) <span class="src src-mine">導讀補充：驗算</span>。</p>
+          <p>本頁的提醒：n = 50 的配對實驗只能說「沒有證據顯示推理有幫助」，不能說「推理有害」。</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>回到 00 的第二個猜測：打開推理能修好漂移嗎？</summary><div><p>在這組實驗裡不能。正確率從 84.0% 到 76.0%，差異不顯著（p = 0.34），失敗集合幾乎沒變。</p></div></details>
+        <details><summary>為什麼要用 LongMemEval 的 oracle 版本做這個實驗？</summary><div><p>oracle 版保證所有證據都在 prompt 裡（召回 = 1.0），所以剩下的錯都不可能是檢索失敗偽裝的。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-evidence">筆記</label><textarea id="note-evidence" data-note="s-evidence"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-evidence"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 04 benchmark ===================== -->
+    <section class="sec" id="s-bench" data-short="StateMemBench 設計">
+      <div class="sec-head"><span class="sec-num">04</span><h2>StateMemBench：用程式造陷阱</h2></div>
+      <div class="claim">
+        <span class="claim-label">核心設計 <span class="src src-abs">原文 §4.1</span></span>
+        <p>失敗模式不是人工列分類表，而是<b>機械地定義</b>。每個情境先生成一個<b>符號事件程式</b>：一串有型別的狀態操作（宣告規則、更新值、有範圍的例外、承諾、撤回），作用在基礎、衍生、宣告三類狀態上。用確定性的評估器重播整個程式，得到探測題的正確答案。另外實作一組「偷懶讀者」策略，每一種模擬記憶系統的一種失敗：只信最近一次提到的值、只信最常出現的值、直接回報說過的數字而不重算、太急著丟掉先前錨定的決定。<b>只要有一個以上的策略和完整重播的答案不同，就是一個陷阱</b>；不同的那些策略構成這個情境的失敗模式簽章。</p>
+      </div>
+      <div class="table-wrap">
+        <table class="results">
+          <caption>五種失敗模式 <span class="src src-abs">原文 §4.1、Table 10 標題的 n</span></caption>
+          <thead><tr><th>模式</th><th>發生什麼</th><th class="num">探測題數</th></tr></thead>
+          <tbody>
+            <tr><td>Status 狀態</td><td>值變了（分級規則換了級距、有範圍的例外失效），讀者仍錨定在先前更響亮的承諾上，回答被取代的舊值。</td><td class="num">116</td></tr>
+            <tr><td>Salience 顯著性</td><td>有效值在，但一個被提更多次、更顯眼的競爭者贏了。和 status 不同，這裡沒有任何東西真的被取代。</td><td class="num">51</td></tr>
+            <tr><td>Sequence 序列</td><td>說過的衍生值在某個輸入改變後沒有重算，讀者回報舊的衍生結果。</td><td class="num">72</td></tr>
+            <tr><td>Compound 複合</td><td>多種機制交互作用。</td><td class="num">44</td></tr>
+            <tr><td>Anti-trap 反陷阱</td><td>反方向的對照：錨定的答案本來就是對的，只有太急著讓它失效的策略會答錯。用來懲罰「永遠選最新的」這種捷徑。</td><td class="num">39</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>出題老師先用電腦寫好「劇本」：誰在第幾天說了什麼、哪個數字是從哪個數字算出來的。電腦照劇本算出正確答案。再請幾個「偷懶的小朋友」照各自的壞習慣作答，只要有人答錯，這題就是好陷阱。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p><b>三個領域</b>（§4.2、附錄 D.5）：研究（多位具名合作者的專案狀態，題材取自真實論文的事實表）、購物（取自 Instacart 資料集的消費者人設）、個人理財（取自合成的信用卡交易資料集）。公開資料只提供表面素材，狀態值是獨立抽樣的，沒有任何一題能從素材本身答出來。</p>
+          <p><b>依賴關係明講</b>（§4.3）：例如「因為有 1600 筆，我們需要 5 位外部標註員」（原文寫「1600 annotators」，依 Figure 1 應是 1600 筆標註）。系統不用自己推論哪個事實影響哪個，只需要維護。這正是和 STALE（隱性衝突）的分工。</p>
+          <p><b>兩種長度</b>：Set A 有 190 個單一探測題的情境，每個 18 個 session（中位數 165 輪，約 3k tokens）；Set B 有 44 個情境，把三條不同模式的陷阱線融合成約 38 個 session 的長對話（中位數 599 輪，是 Set A 的 3.6 倍；約 7–15k tokens），用一個三部分的問題探測。合計 234 個情境、322 個評分探測題（\(190 + 44 \times 3\)）<span class="src src-mine">導讀補充：驗算</span>。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p><b>封閉選項池評分</b>（§4.3）：生成情境時就建好 3–4 個可能答案：gold、被瞄準的偷懶策略算出的漂移答案、相關的中性干擾項。作答時不顯示選項。所以每個答案可以歸入：答對、漂移、其他選項、池外（沒答出可辨識的選項）。一個確定性的詞界比對器處理 28% 只點名唯一選項的答案，與判定模型在這些答案上一致 94.1%；其餘交給判定模型對應（附錄 C）。</p>
+          <p><b>兩道驗證關卡</b>（附錄 D.6）：強讀者（sonnet-4.6）只看相關 session，至少 2/3 次取樣要答出 gold；弱讀者（haiku-4.5）看完整對話，至少 3/5 次要答出漂移答案（反陷阱題則要答出 gold）。作者提醒兩點：可答性門檻是 2/3 而不是 1，所以分數的天花板低於 1.0；而難度是對 LLM 讀者定義的，因為評測要量的就是記憶系統能不能保護讀者不掉進陷阱。</p>
+          <p><b>渲染</b>：sonnet-4.6 把事件程式寫成自然對話，只拿到「第 14 個 session 使用者要說收到 $7540 獎金」這類指示和禁用詞清單；之後程式檢查每個關鍵事實出現在指定 session、沒有禁用詞外漏，不通過就重寫。gold 與漂移答案在渲染前就算好，渲染者改不了陷阱語意。</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="results">
+          <caption>Table 2：與其他評測的比較 <span class="src src-abs">原文 Table 2、附錄 C</span>。◐ = 部分滿足</caption>
+          <thead><tr><th>評測</th><th>多 session 對話</th><th>規模</th><th>以更新為核心</th><th>取代</th><th>可驗證 gold</th><th>計分漂移</th><th>反更新對照</th><th>配對長度</th></tr></thead>
+          <tbody>
+            <tr><td>LoCoMo (2024)</td><td>✓</td><td>~300 輪</td><td>✗</td><td>✗</td><td>✗</td><td>✗</td><td>✗</td><td>✗</td></tr>
+            <tr><td>LongMemEval (2025)</td><td>✓</td><td>~40–80 session (S)</td><td>◐</td><td>◐</td><td>✗</td><td>✗</td><td>✗</td><td>✗</td></tr>
+            <tr><td>MemoryAgentBench (2025)</td><td>◐</td><td>不定</td><td>◐</td><td>◐</td><td>◐</td><td>✗</td><td>✗</td><td>✗</td></tr>
+            <tr><td>MemoryArena (2026)</td><td>◐</td><td>不定</td><td>✗</td><td>✗</td><td>✓</td><td>✗</td><td>✗</td><td>✗</td></tr>
+            <tr><td>STATE-Bench (2026)</td><td>✗</td><td>450 任務</td><td>✗</td><td>✗</td><td>◐</td><td>✗</td><td>◐</td><td>✗</td></tr>
+            <tr class="ours"><td>StateMemBench</td><td>✓</td><td>~600 輪</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>「陷阱」的正式條件是什麼？</summary><div><p>至少一個偷懶讀者策略的答案和完整重播事件程式的答案不同。</p></div></details>
+        <details><summary>為什麼需要反陷阱題？</summary><div><p>沒有它的話，「永遠相信最新提到的值」這種捷徑在其他四種模式上都能拿高分。反陷阱題給一個較新但沒有權威的提及，正確做法是保留舊值。</p></div></details>
+        <details><summary>封閉選項池比一般的對錯評分多提供了什麼？</summary><div><p>能把「答成被取代的舊值」（漂移）和「答成其他錯誤值」或「沒答出選項」分開計算，第 10 節的分析就靠這個。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-bench">筆記</label><textarea id="note-bench" data-note="s-bench"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-bench"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 05 trap animation ===================== -->
+    <section class="sec" id="s-trap" data-short="動畫：陷阱怎麼造">
+      <div class="sec-head"><span class="sec-num">05</span><h2>動畫：兩個陷阱是怎麼造出來的</h2></div>
+      <p>用原文附錄 D.3（購物，sequence 模式）和 D.4（理財，status 模式）的範例，一步步重播事件程式，再看偷懶讀者怎麼答錯。有「先猜」的步驟，先在心裡答完再按下一步。</p>
+      <div class="anim" id="anim-trap" data-label="StateMemBench 陷阱建構動畫"></div>
+      <p class="anim-note">對話內容、gold 與漂移答案都出自附錄 D.3／D.4。事件程式的寫法（<code>SET</code>、<code>DERIVE</code> 等）是本頁為了說明自訂的記法，原文沒有公開程式語法 <span class="src src-mine">導讀補充</span>。原文只說明每個範例被瞄準的那一個策略，其他策略在這兩題的答案未提供，動畫中以灰色表示。</p>
+      <figure class="figure" style="margin:0">
+        <div class="tier" id="tier">
+          <label for="tier-in">自己試：輸入一筆季獎金，規則會把它送到哪裡？</label>
+          <div><input type="number" id="tier-in" value="1517" min="0" step="1"> <span class="readout" id="tier-out"></span></div>
+          <div class="tier-bars" id="tier-bars"></div>
+        </div>
+        <figcaption>規則出自附錄 D.4 第 3.1 輪：低於 1900 留在支票帳戶；1900 到 4000 補旅遊預備金；4000 到 6200 還車貸；超過 6200 存滿 Roth。原文沒有說剛好等於 1900、4000、6200 時歸哪一級，輸入這三個值會顯示「未定義」。</figcaption>
+      </figure>
+      <div class="desk-foot">
+        <div class="note"><label for="note-trap">筆記</label><textarea id="note-trap" data-note="s-trap"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-trap"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 06 method ===================== -->
+    <section class="sec" id="s-method" data-short="StateMem 三階段">
+      <div class="sec-head"><span class="sec-num">06</span><h2>StateMem：寫入、更新、回答三階段</h2></div>
+      <div class="eq">
+        \[ u = (\mathit{id},\ \mathit{content},\ \mathit{priority},\ \mathit{source},\ \mathit{deps}),\qquad \mathit{priority} \in \{\text{hard}, \text{soft}\} \]
+        \[ G = (U, E),\quad (u_i, u_j) \in E \iff u_i \text{ depends on } u_j,\qquad \text{Rechecker cost} = O(|E|) \]
+      </div>
+      <dl class="gloss">
+        <dt>\(u\)</dt><dd>狀態單元（state unit），存在跨 session 的 StateStore 裡。</dd>
+        <dt>content</dt><dd>自由格式的內容，例如「實領薪水 $6000」。</dd>
+        <dt>priority</dt><dd>hard：已驗證的事實、有約束力的承諾、未完成的義務；soft：偏好、可以讓步的東西（附錄 E.1 提示詞）。</dd>
+        <dt>source</dt><dd>來源的輪次與說話者。</dd>
+        <dt>deps</dt><dd>有型別的連結：<code>derived_from</code>（值是從另一個單元算出來的）或 <code>coupled_with</code>（有效性取決於另一個單元的狀態，例如「Netflix 自動扣款綁在卡 3」依賴「卡 3 是否停用」）。</dd>
+        <dt>\(G\)</dt><dd>依賴圖；邊 \((u_i,u_j)\) 表示 \(u_i\) 依賴 \(u_j\)。</dd>
+      </dl>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>AI 有一本筆記本，每一行都寫「這是什麼」「重不重要」「誰說的」「跟哪幾行有關」。有人改口時，舊的那行劃掉但不撕掉；跟它有關的行旁邊貼上「要重算」的便利貼。要回答問題時，只看沒劃掉的行，貼了便利貼的就重新算一次。</p>
+        </div>
+        <div class="lv lv-uni">
+          <ol>
+            <li><b>寫入</b>（§5.1）：TurnEncoder 每一輪對話呼叫一次 LLM，把這一輪解析成零到多個狀態單元，並把目前所有有效單元的精簡版當 context。它也可以把既有單元標記為「可能被取代」並主動提出替代版本。有日期的資料，單元會蓋上該輪日期。</li>
+            <li><b>更新</b>（§5.2）：兩個動作。一、StateStore 套用標記的取代：被取代的單元狀態改為 <code>superseded</code>，替代版本以 active 新增。二、確定性的 Rechecker 走訪依賴圖：凡是有邊連到「狀態剛改變的單元」的 \(u_i\)，標成 <code>needs_recheck</code>。這一步是 \(O(|E|)\)，不呼叫 LLM。</li>
+            <li><b>回答</b>（§5.3）：StateStore 確定性地把所有 active 單元（包括 needs_recheck 的）組成結構化區塊 \(S\)，依優先度與來源分組，被標記的單元旁邊註明觸發原因。再用一次 LLM 呼叫，輸入 \(S\)、問題和「重算指引」來回答。</li>
+          </ol>
+          <p>被取代的單元留在庫裡供稽核，但不再送進回答階段；needs_recheck 的單元仍然有效，只是帶著旗標。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p><b>分工</b>：確定性的層決定哪些單元有效、哪些可能過期；LLM 只負責在這些旗標下重算答案（§5.3）。這和 STALE 的 CUPMem 用 LLM 裁決器判斷失效不同。</p>
+          <p><b>Rechecker 只走一跳</b>：正文寫的是「有邊連到狀態剛改變的單元」。多跳的連鎖由回答時的重算指引處理：「如果結果又餵給另一個 NEEDS RECHECK 單元，就用剛算出的值重算那一個，沿著鏈依序傳播後再回答」（附錄 E.3）。這是本頁對兩段文字的合讀 <span class="src src-mine">導讀補充</span>。</p>
+          <p><b>正文和提示詞的欄位不完全一樣</b>：正文的單元是五元組；附錄 E.1 的輸出格式還有 <code>type</code>、<code>scope</code>、<code>source_type</code>（user／action／tool_result）和 <code>triggers</code>（date_passed、entity_closed、supersession_announced、cascade）。PolicyEncoder 每個情境只跑一次，把政策文件拆成同樣格式的單元；在評測過的資料中只有 τ² 真的有政策文件（附錄 E.2）。</p>
+          <p><b>成本</b>：每一輪一次編碼呼叫，一個情境約 165–600 次（附錄 H）。作者在限制段落承認這比單純 long-context 耗費多得多。</p>
+        </div>
+      </div>
+      <div class="claim">
+        <span class="claim-label">回答時注入的狀態區塊格式 <span class="src src-abs">原文附錄 E.3</span></span>
+        <pre class="prompt">## BINDING -- THIS CONVERSATION
+- [&lt;type&gt;] &lt;unit content&gt;
+## BINDING -- POLICY RULES
+- [&lt;type&gt;] &lt;unit content&gt;
+## PREFERENCES (yield if necessary)
+- [&lt;type&gt;] &lt;unit content&gt;
+## ! NEEDS RECHECK -- may be stale due to recent events
+- [&lt;type&gt;] &lt;unit content&gt;
+  -&gt; trigger: &lt;reason&gt;</pre>
+        <p>重算指引的重點：標為 NEEDS RECHECK 的單元是過期的，<b>不要用它的數字</b>；取它寫明的推導式（例如 X = A × 2），代入目前 active 狀態中每個輸入的值重算；只重算問題路徑上的單元；硬限制（醫療、範圍限定）優先於最近的軟偏好。</p>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary><code>derived_from</code> 和 <code>coupled_with</code> 差在哪？</summary><div><p>前者是「值」從別的單元算出來（輸入變了要重算）；後者是「有效性」取決於別的單元的狀態（對方關閉或被取代，這條要重新評估）。</p></div></details>
+        <details><summary>superseded 和 needs_recheck 的單元，哪個會送進回答階段？</summary><div><p>只有 needs_recheck 的會，而且帶著旗標。superseded 的留著供稽核，但被排除。</p></div></details>
+        <details><summary>更新階段為什麼不需要 LLM？</summary><div><p>依賴關係在寫入時就記錄下來了，更新只是沿邊走訪、改狀態欄位，是 \(O(|E|)\) 的圖演算法。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-method">筆記</label><textarea id="note-method" data-note="s-method"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-method"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 07 StateMem animation ===================== -->
+    <section class="sec" id="s-anim" data-short="動畫：StateMem 跑一次">
+      <div class="sec-head"><span class="sec-num">07</span><h2>動畫：加薪之後，可支配預算是多少？</h2></div>
+      <p>依原文 Figure 2 的理財情境：實領 $6000、每月存 30%、剩下的自由支配，後來加薪到 $7500。看三個單元怎麼被寫入、標記、重算。</p>
+      <div class="anim" id="anim-statemem" data-label="StateMem 三階段動畫"></div>
+      <p class="anim-note">對話內容、單元編號與依賴關係依 Figure 2。金額由圖中三句話的規則算出：\(6000 \times 30\% = 1800\)、\(6000 - 1800 = 4200\)；加薪後 \(7500 \times 30\% = 2250\)、\(7500 - 2250 = 5250\)。Figure 2 印的是 $2400 與 $4950，無法由畫面上的規則推出（$2250 則吻合），見第 15 節 <span class="src src-mine">導讀補充</span>。單元的中文措辭與 priority 標註為示意。</p>
+      <div class="desk-foot">
+        <div class="note"><label for="note-anim">筆記</label><textarea id="note-anim" data-note="s-anim"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-anim"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 08 results ===================== -->
+    <section class="sec" id="s-results" data-short="主結果（互動）">
+      <div class="sec-head"><span class="sec-num">08</span><h2>主結果：long-context 不再是強基線</h2></div>
+      <div class="predict">
+        <b class="ptitle">先猜再看</b>
+        <p>在回想型評測（LongMemEval、LoCoMo）上，把整段對話塞進 context 通常是最強基線。在 StateMemBench 上，同骨幹的 long-context 會排在第幾？先在筆記寫下猜測，再切換下面的圖。</p>
+      </div>
+      <figure class="figure" style="margin:0">
+        <div class="controls">
+          <label for="ctl-panel">骨幹<select id="ctl-panel">
+            <option value="d">deepseek-v4-flash</option>
+            <option value="q">Qwen-3.5-9B</option>
+          </select></label>
+          <label for="ctl-col">欄位<select id="ctl-col">
+            <option value="2">Overall</option>
+            <option value="0">Short（Set A）</option>
+            <option value="1">Long（Set B）</option>
+            <option value="3">Status</option>
+            <option value="4">Sequence</option>
+            <option value="5">Salience</option>
+            <option value="6">Anti-trap</option>
+            <option value="7">Compound</option>
+            <option value="8">Finance</option>
+            <option value="9">Shopping</option>
+            <option value="10">Research</option>
+          </select></label>
+          <label><input type="checkbox" id="ctl-abl"> 顯示 StateMem 消融</label>
+        </div>
+        <div class="chart-box"><svg id="t10-chart" viewBox="0 0 640 520" role="img" aria-label="Table 10 所選骨幹與欄位的長條圖，由高到低排序"></svg></div>
+        <figcaption>依 Table 3／Table 10 繪製（gold 比例，n = 322；Short 190 題、Long 132 題）。灰色為四個 long-context 模型（各自就是骨幹本身，不分面板），橘色為 StateMem。每個數字都是單次執行、溫度 0、關閉推理。</figcaption>
+      </figure>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>把整本日記都塞給 AI 看，它還是會在這些陷阱題上犯錯，而且錯得很多。有一本「會劃掉舊資料」的筆記本的 AI 考得最好，但滿分 1 分也只拿到大約 0.36 分。</p>
+        </div>
+        <div class="lv lv-uni">
+          <ul>
+            <li><b>long-context 失靈</b>：最好的 GPT-5.4-Nano 只有 0.277；同骨幹的 long-context 在 DeepSeek 和 Qwen 上都只有 0.149（§6.2）。</li>
+            <li><b>DeepSeek 面板</b>：StateMem 0.363，是同骨幹 long-context 的 2.4 倍、最好的記憶系統 A-Mem（0.199）的 1.8 倍、最好的任何基線 Dense 檢索（0.205）的約 1.8 倍。摘要的「1.8×」指的是最後這個：\(0.363 / 0.205 \approx 1.77\) <span class="src src-mine">導讀補充：驗算</span>。</li>
+            <li><b>Qwen 面板</b>：StateMem 0.233，是最好的記憶系統 Mem0（0.149）的 1.6 倍，也勝過 long-context（0.149）。但 GraphRAG 0.224 和它在統計上打平（322 題配對 McNemar，不一致對 38 比 35，p = 0.82）。</li>
+            <li><b>類別</b>：反陷阱幾乎全部接近天花板（StateMem 在 DeepSeek 約 0.87），因為正確答案就是錨定值。基線在 salience、sequence、compound 上接近 0，StateMem 救回大部分 sequence 與 compound。salience 看起來是骨幹的極限：Qwen 上每一組都 ≤ 0.18，GPT-5.4-Nano 卻有 0.569。</li>
+          </ul>
+        </div>
+        <div class="lv lv-grad">
+          <p>讀表時本頁的觀察 <span class="src src-mine">導讀補充</span>：</p>
+          <ul>
+            <li><b>「1.6×」和「1.8×」的比較對象不同。</b>DeepSeek 的 1.8× 比的是「最強的同骨幹基線」，Qwen 的 1.6× 比的是「最強的記憶系統」。如果 Qwen 也比最強基線，對象是 GraphRAG，倍數只有 \(0.233/0.224 \approx 1.04\)，而且不顯著。</li>
+            <li><b>很多基線在長版本反而比較好。</b>例如 DeepSeek 的 BM25 從 Short 0.105 到 Long 0.197、HippoRAG 從 0.132 到 0.258；StateMem 則相反，從 0.411 掉到 0.295。原文沒有解釋這個方向差異。可能和 Set B 三部分問題的類別組成有關，但沒有按 Set 拆開的類別數字可以檢查。</li>
+            <li><b>Qwen 的 salience 上 StateMem 只有 0.020</b>（1/50），低於 long-context 的 0.098。原文把 salience 歸為骨幹限制；但同一面板的 GraphRAG 有 0.118，所以在 Qwen 上 StateMem 的狀態區塊可能讓顯著性問題更糟，這點原文沒有討論。</li>
+          </ul>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>回到 00 的第一個猜測：long-context 在這裡排第幾？</summary><div><p>DeepSeek 面板上同骨幹 long-context（0.149）低於 StateMem、Dense、A-Mem、HippoRAG、nano-graphrag、Mem0、GraphRAG，和 BM25（0.143）差不多。長上下文在回想題很強，在陷阱題上不是。</p></div></details>
+        <details><summary>驗算：StateMem（DeepSeek）的 Overall 是怎麼來的？</summary><div><p>依長度加權：\((0.411 \times 190 + 0.295 \times 132) / 322 \approx 0.363\)。依類別加權（116、72、51、39、44）也得到 0.364。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-results">筆記</label><textarea id="note-results" data-note="s-results"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-results"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 09 ablation ===================== -->
+    <section class="sec" id="s-ablation" data-short="消融：哪個元件有用">
+      <div class="sec-head"><span class="sec-num">09</span><h2>消融：哪個元件真的有用</h2></div>
+      <div class="table-wrap">
+        <table class="results">
+          <caption>StateMem 消融（Overall，gold 比例）<span class="src src-abs">原文 Table 3</span></caption>
+          <thead><tr><th>變體</th><th class="num">deepseek-v4-flash</th><th class="num">Qwen-3.5-9B</th></tr></thead>
+          <tbody>
+            <tr><td>只做抽取（extraction-only）</td><td class="num">0.174</td><td class="num">0.155</td></tr>
+            <tr><td>＋取代標記（+ supersession）</td><td class="num">0.298</td><td class="num">0.171</td></tr>
+            <tr class="ours"><td>完整 StateMem</td><td class="num">0.363</td><td class="num">0.233</td></tr>
+            <tr><td>去掉依賴傳播（w/o dep.-propagation）</td><td class="num">0.373</td><td class="num">0.222</td></tr>
+            <tr><td>去掉重算指引（w/o recompute-guid.）</td><td class="num">0.301</td><td class="num">0.208</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>拆開來看：光把話記下來幫助很小；學會「劃掉舊的」幫助最大；「提醒自己重算」也有用；「自動貼要重算的便利貼」反而有時候貼太多，害它把本來對的答案改錯。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>原文的讀法（§6.2）：只做抽取幫助很小；取代標記是最大的單一步驟（DeepSeek 0.174 → 0.298）；拿掉重算指引少 6 個百分點。依賴傳播對它瞄準的模式有幫助，但在 Set B 的反陷阱題上過度傳播（−12.5 個百分點），拿掉它 DeepSeek 反而稍好（0.373 對 0.363）。</p>
+          <p>作者自己也提醒：StateMem 的設計呼應了造陷阱的那組偷懶策略，所以在自家評測上的差距要當上限看，§6.1 的外部評測才是泛化檢驗。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>對照 Table 10 的分類別數字，「依賴傳播幫助它瞄準的模式」只在 Qwen 上成立 <span class="src src-mine">導讀補充</span>：</p>
+          <ul>
+            <li>Qwen：完整版 vs 去掉傳播，sequence 0.208 vs 0.139、status 0.181 vs 0.155，傳播有幫助。</li>
+            <li>DeepSeek：sequence 0.347 vs 0.375、status 0.302 vs 0.336，去掉傳播反而更好；只有 compound（0.273 vs 0.250）和 salience（0.216 vs 0.196）是完整版較好。</li>
+          </ul>
+          <p>也就是說，在較強的骨幹上，Rechecker 的旗標對 sequence 題不是必要的，重算指引加上取代標記就夠了。原文沒有說明各消融確切包含哪些元件（例如「＋取代標記」有沒有重算指引），本頁假設前兩列是逐步加上去的階梯。另外「−12.5 個百分點」只在正文出現，沒有按 Set 拆開的反陷阱數字可以核對。</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>哪一個元件貢獻最大？證據是哪兩個數字？</summary><div><p>取代標記。DeepSeek 上從只做抽取的 0.174 到 0.298，+12.4 個百分點。</p></div></details>
+        <details><summary>為什麼作者把自家評測上的差距稱為「上限」？</summary><div><p>造陷阱的偷懶策略家族，正是 StateMem 設計來對抗的那些失敗。方法和題目同源，外部評測才能檢驗泛化。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-ablation">筆記</label><textarea id="note-ablation" data-note="s-ablation"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-ablation"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 10 drift analysis ===================== -->
+    <section class="sec" id="s-drift" data-short="錯在哪：封閉選項池">
+      <div class="sec-head"><span class="sec-num">10</span><h2>錯在哪裡：選了舊值，還是根本沒作答</h2></div>
+      <figure class="figure" style="margin:0">
+        <div class="controls">
+          <label for="ctl-pool">骨幹<select id="ctl-pool">
+            <option value="d">DeepSeek-V4-Flash（Table 14）</option>
+            <option value="q">Qwen-3.5-9B（Table 15）</option>
+          </select></label>
+          <label for="ctl-sort">排序<select id="ctl-sort">
+            <option value="drift">drift-rate（原文定義）</option>
+            <option value="inpool">池內漂移比例（本頁補算）</option>
+            <option value="correct">答對數</option>
+          </select></label>
+        </div>
+        <div class="key"><span><i class="k-ok"></i>答對</span><span><i class="k-drift"></i>漂移（選了被取代的值）</span><span><i class="k-other"></i>其他選項</span><span><i class="k-off"></i>池外</span></div>
+        <div class="chart-box"><svg id="pool-chart" viewBox="0 0 640 560" role="img" aria-label="封閉選項池結果堆疊長條圖"></svg></div>
+        <figcaption>每一條是 322 題（少數為 320）的結果組成。右側數字：drift-rate = 漂移 ÷ 全部；括號內是本頁補算的「池內漂移比例」= 漂移 ÷（答對＋漂移＋其他選項），扣掉了沒作答的題目 <span class="src src-mine">導讀補充</span>。</figcaption>
+      </figure>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>有些 AI 考得「很少選錯答案」，其實是因為它大部分題目都交白卷。要公平比較，得先看它有沒有作答。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p><b>drift-rate</b> = 選了漂移目標的答案數 ÷ 全部 n，越低越好（§6.3）。但沒記憶、LightMem、MemoryOS 有 60–94% 的答案落在池外，drift-rate 低只是因為很少給出像樣的答案。所以原文同時報池內數（I-P）。</p>
+          <ul>
+            <li><b>Qwen（弱骨幹）</b>：long-context、Mem0、BM25、StateMem 的 drift-rate 都在 61–66%，記憶層幾乎不改變結果。</li>
+            <li><b>DeepSeek（強骨幹）</b>：StateMem 的 drift-rate 從 64.3% 降到 49.1%（−15 個百分點），答對數從 75 增到 117（+42）。long-context、Mem0、BM25 的 drift-rate 只動 1–3 個百分點，答對數動 0–9 題。</li>
+            <li>StateMem 在兩個骨幹上池外答案都最少（32、36），所以準確率不是靠多棄答換來的。</li>
+          </ul>
+        </div>
+        <div class="lv lv-grad">
+          <p>作者的解讀：要把明確的狀態表示轉成正確答案，需要一個夠強的回答模型；弱骨幹上記憶層的瓶頸在回答者，強骨幹上瓶頸在記憶層。</p>
+          <p>用「池內漂移比例」重看 <span class="src src-mine">導讀補充</span>：DeepSeek 上 StateMem 是 \(158/286 \approx 55.2\%\)，long-context 是 \(206/258 \approx 79.8\%\)；GraphRAG 的 drift-rate 和 StateMem 一樣是 49.1%，但它有 100 題在池外，池內漂移比例是 \(158/222 \approx 71.2\%\)。所以「drift-rate 一樣」並不代表抗漂移能力一樣，切換上面的排序可以看出差異。即使是 StateMem，在它有作答的題目裡仍有過半選了舊值。</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>為什麼 LightMem 在 DeepSeek 上 drift-rate 只有 14.9%，卻不算好？</summary><div><p>它 322 題裡有 270 題落在池外，只答對 4 題。drift-rate 低是因為幾乎不作答。</p></div></details>
+        <details><summary>弱骨幹與強骨幹的結果差異說明了什麼？</summary><div><p>狀態表示要有夠強的回答模型才能轉成正確答案。Qwen 上各方法的 drift-rate 都差不多；DeepSeek 上只有 StateMem 明顯下降。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-drift">筆記</label><textarea id="note-drift" data-note="s-drift"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-drift"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 11 wrapper ===================== -->
+    <section class="sec" id="s-wrapper" data-short="包裝器與對照組">
+      <div class="sec-head"><span class="sec-num">11</span><h2>StateMemWrapper：只改回答提示詞</h2></div>
+      <div class="claim">
+        <span class="claim-label">設計 <span class="src src-abs">原文 §6.4、附錄 F</span></span>
+        <p>把 StateMem 的三個解決原則（取代的優先順序、規則高於個例、衍生值重算）搬進一個回答時的提示詞。包裝器拿到完整對話、後端檢索到的片段和問題，<b>取代</b>後端本來就要做的那一次回答呼叫，所以不加任何 LLM 呼叫、不需要儲存、沒有逐輪處理。</p>
+        <p>這一次呼叫分兩段，依序完成：<b>Section 1 狀態軌跡（trace）</b>，250 字以內，依時間列出每一個建立、更新或取代問題相關實體的輪次（以 [turn N] 標註），包含管轄這個決定的常設規則和規則每個輸入的最新值，標出輸入後來改變過的衍生值，最後寫出每個相關實體目前運作中的值；<b>Section 2 解決並作答</b>，依序套用四條規則，最後輸出一行 <code>ANSWER:</code>。trace 必須在作答前寫完，避免事後合理化。</p>
+      </div>
+      <div class="table-wrap">
+        <table class="results">
+          <caption>Section 2 的四條優先規則 <span class="src src-abs">原文附錄 F.1 提示詞</span>；右欄對應是本頁的解讀 <span class="src src-mine">導讀補充</span></caption>
+          <thead><tr><th>#</th><th>規則</th><th>對應的失敗模式（本頁對照）</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>較晚的取代較早的</td><td>status</td></tr>
+            <tr><td>2</td><td>常設規則高於過去的單次個例：把規則套用到<b>目前的</b>輸入</td><td>status（錨定在響亮的承諾）</td></tr>
+            <tr><td>3</td><td>衍生值從目前輸入重算，絕不沿用過期的快取數字</td><td>sequence</td></tr>
+            <tr><td>4</td><td>只有真的被取代或到期，事實才退場</td><td>anti-trap（太急著失效）、salience（安靜的事實被忽略）</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>不換筆記本，只在考試前多貼一張小抄：「先照時間順序把相關的事列出來，再照四條規則想一遍才作答」。光這張小抄，每一種 AI 的分數都進步了。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p><b>對照組 wrapper-ctrl</b>（附錄 F.2）：同樣的系統提示、同樣兩段格式、同樣 250 字預算、同樣「先寫再答」、同樣的 ANSWER 行和 context；只是 Section 1 改成「摘要和問題相關的資訊」，沒有輪次、沒有值鏈、沒有現行狀態段落，Section 2 也沒有優先規則。兩者的差（+SMW − +Ctrl）因此只來自<b>結構</b>，不是多出來的文字量。</p>
+          <p><b>評測</b>（附錄 F.4）：每個基準各凍結 n = 60 的配對題組（StateMemBench：30 題 Set A 加 30 題 Set B，Set B 的 30 題來自 22 個長情境：16 個各出 1 題、4 個各 2 題、2 個各 3 題）。每個後端只寫入一次，同一個儲存庫回答三次（單獨、+Ctrl、+SMW），由同一個 deepseek-v4-pro 判定者一次評完。</p>
+          <ul>
+            <li><b>StateMemBench</b>：+SMW 比各後端單獨使用高 +31.7 到 +66.6 個百分點，其中結構貢獻 +15.0 到 +31.7；12 格全部顯著（配對 McNemar p ≤ 0.04），24 格中有 23 格勝過對照組。</li>
+            <li><b>LongMemEval</b>：Qwen 上結構貢獻 +11.7 到 +25.0，對照組本身常常有害；DeepSeek 上對照組就拿回大部分提升，結構只多 −5 到 +5。強的回答者比較不需要狀態結構。</li>
+            <li>不看問題寫的 250 字摘要，在兩個基準上都<b>低於</b>不加包裝的基線，而且漂移率是所有組別最高：問題導向很重要。</li>
+          </ul>
+        </div>
+        <div class="lv lv-grad">
+          <p><b>成本</b>（附錄 F.5）：155 個固定指令 tokens，加上上限 250 字、實測比對照組多 169–188 個輸出 tokens 的 trace，合計每題約 350 tokens，與對話長度、後端、基準都無關。包裝器的回答呼叫是整份對話那麼大（StateMemBench 中位數 8.6k tokens、LongMemEval 87k），但這是 long-context 本來就要付的成本；而後端單獨使用時只看檢索片段。</p>
+          <p><b>最反直覺的結果</b>：包裝器在同一批題目上勝過 StateMem 本身（Qwen：StateMem 0.283，+SMW 每個後端都 ≥ 0.567）。作者的解讀是：對話放得進 context 時，回答時再解決狀態就夠了；持久化的儲存庫在放不下時才有用（§6.4）。</p>
+          <p>讀表時本頁的觀察 <span class="src src-mine">導讀補充</span>：</p>
+          <ul>
+            <li>「單獨 → +Ctrl」的跳升，很大一部分來自<b>看到完整對話</b>（單獨使用時只有片段）。所以「+32 到 +67」不能全部算在狀態結構頭上，作者用 +Ctrl 切出 +15 到 +32 正是為了這點。</li>
+            <li>24 格中唯一輸給對照組的是 LongMemEval／DeepSeek 的 Dense：61.7 對 56.7。Table 13 也顯示它的 +SMW 修好 15 題、弄壞 13 題，幾乎打平。</li>
+            <li>這組 60 題的類別比例和完整評測不同（反陷阱偏多、status 偏少），所以絕對分數不能和 Table 3 直接比，只能看同一列內的差。</li>
+          </ul>
+        </div>
+      </div>
+      <figure class="figure" style="margin:0">
+        <div class="controls">
+          <label for="ctl-t6">基準與骨幹<select id="ctl-t6">
+            <option value="0">StateMemBench · Qwen-3.5-9B</option>
+            <option value="1">StateMemBench · deepseek-v4-flash</option>
+            <option value="2">LongMemEval · Qwen-3.5-9B</option>
+            <option value="3">LongMemEval · deepseek-v4-flash</option>
+          </select></label>
+        </div>
+        <div class="key"><span><i class="k-alone"></i>後端單獨</span><span><i class="k-ctrl"></i>+Ctrl（等長對照）</span><span><i class="k-smw"></i>+SMW（狀態軌跡）</span></div>
+        <div class="chart-box"><svg id="t6-chart" viewBox="0 0 640 260" role="img" aria-label="Table 6 三種回答條件的點圖"></svg></div>
+        <figcaption>依 Table 6 繪製（gold %，n = 60；LongMemEval 的 Dense／Qwen 為 n = 59）。右欄是本頁算的「結構貢獻」= +SMW − +Ctrl，以及 Table 13 的修好／弄壞題數（只有 LongMemEval 有）<span class="src src-mine">導讀補充</span>。</figcaption>
+      </figure>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>回到 00 的第三個猜測：只改回答提示詞能進步多少？</summary><div><p>StateMemBench 上 +31.7 到 +66.6 個百分點，其中歸給結構（扣掉等長對照）的是 +15.0 到 +31.7。</p></div></details>
+        <details><summary>為什麼需要 wrapper-ctrl？少了它會高估什麼？</summary><div><p>包裝器同時改了兩件事：看得到完整對話、多了結構化的推理步驟。對照組保留前者、拿掉後者，兩者之差才是結構本身的效果。</p></div></details>
+        <details><summary>驗算 Table 13：Mem0／Qwen 的 +SMW 修好 18 題、弄壞 12 題，對應 Table 6 的哪個變化？</summary><div><p>淨 +6 題 ÷ 60 = +10 個百分點，Table 6 從 38.3 到 48.3，吻合。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-wrapper">筆記</label><textarea id="note-wrapper" data-note="s-wrapper"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-wrapper"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 12 wrapper animation ===================== -->
+    <section class="sec" id="s-wanim" data-short="動畫：包裝器解一題">
+      <div class="sec-head"><span class="sec-num">12</span><h2>動畫：包裝器怎麼解附錄 D.4 那一題</h2></div>
+      <p>同一題理財 status 陷阱：使用者曾大聲宣布「這次獎金要存滿 Roth」，後來的獎金卻落在最低級距。看 trace 和四條規則怎麼一步步擋下漂移答案。</p>
+      <div class="anim" id="anim-wrapper" data-label="StateMemWrapper 解題動畫"></div>
+      <p class="anim-note">題目、輪次與正確答案出自附錄 D.4；提示詞結構出自附錄 F.1。trace 的中文措辭、檢索到哪些片段，以及對照組的輸出都是示意，原文沒有公開這一題的實際輸出 <span class="src src-mine">導讀補充</span>。</p>
+      <div class="desk-foot">
+        <div class="note"><label for="note-wanim">筆記</label><textarea id="note-wanim" data-note="s-wanim"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-wanim"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 13 recall ===================== -->
+    <section class="sec" id="s-recall" data-short="回想題會變差嗎">
+      <div class="sec-head"><span class="sec-num">13</span><h2>追蹤狀態會不會犧牲回想？</h2></div>
+      <div class="table-wrap">
+        <table class="results">
+          <caption>Table 4：回想型評測準確率 <span class="src src-abs">原文 Table 4</span>。LongMemEval 全集 n = 500、k = 20；LoCoMo n = 1,985</caption>
+          <thead><tr><th rowspan="2">方法</th><th class="num" colspan="2">LongMemEval</th><th class="num" colspan="2">LoCoMo</th></tr><tr><th class="num">Qwen-9B</th><th class="num">DS-V4</th><th class="num">Qwen-9B</th><th class="num">DS-V4</th></tr></thead>
+          <tbody>
+            <tr><td>Long context</td><td class="num">0.550</td><td class="num"><b>0.666</b></td><td class="num"><b>0.612</b></td><td class="num">0.587</td></tr>
+            <tr><td>No memory</td><td class="num">0.062</td><td class="num">0.056</td><td class="num">0.010</td><td class="num">0.005</td></tr>
+            <tr><td>Mem0</td><td class="num">0.566</td><td class="num">0.594</td><td class="num">0.481</td><td class="num">0.462</td></tr>
+            <tr><td>A-Mem</td><td class="num">0.520</td><td class="num">0.510</td><td class="num">0.266</td><td class="num">0.279</td></tr>
+            <tr><td>LightMem</td><td class="num">0.064</td><td class="num">0.056</td><td class="num">0.027</td><td class="num">0.020</td></tr>
+            <tr><td>MemoryOS</td><td class="num">0.080</td><td class="num">0.072</td><td class="num">0.040</td><td class="num">0.031</td></tr>
+            <tr class="ours"><td>StateMem</td><td class="num"><b>0.580</b></td><td class="num">0.656</td><td class="num">0.566</td><td class="num"><b>0.592</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>會劃掉舊資料的筆記本，在一般的「你記得我說過什麼嗎」考試裡也考得不錯，跟把整本日記都背下來的 AI 差不多。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p>原文的結論（§6.1）：StateMem 在兩個骨幹上都是 LongMemEval 最高的記憶系統（0.580、0.656，Mem0 次之 0.566、0.594），在 DeepSeek 上和 long-context（0.666）差一個百分點內；LoCoMo 上它領先所有記憶系統，在 DeepSeek 上和 long-context 打平（0.592 對 0.587）。</p>
+          <p>差距集中在需要追蹤更新的題型：LongMemEval 時間推理（DeepSeek 0.624 對 long-context 0.391；Qwen 0.398 對 0.248），知識更新 DeepSeek 0.795。作者因此說「追蹤狀態不犧牲回想」。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p>對照 Table 11 的題型細項，本頁認為這個結論要打折 <span class="src src-mine">導讀補充</span>：</p>
+          <ul>
+            <li><b>單 session 助理回想掉很多</b>：SS-assistant 題（56 題）long-context 是 0.946（Qwen）／1.000（DeepSeek），StateMem 只有 0.536／0.607。原文說單跳回想「只差幾個百分點」，這對 SS-user（0.871 對 0.900、0.943 對 0.957）成立，對 SS-assistant 不成立。合理的解釋是 TurnEncoder 偏重使用者的限制與承諾，助理自己說過的細節沒有存成單元。</li>
+            <li><b>LoCoMo 的時間推理在 Qwen 上反而輸</b>：原文把 LoCoMo 時間題列為「漂移型」子集，但 StateMem 在 Qwen 上只有 0.296，Mem0 是 0.595。</li>
+            <li>LoCoMo／Qwen 上 long-context 0.612 仍高於 StateMem 0.566，「領先所有記憶系統」成立，但不是領先所有方法。</li>
+          </ul>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>StateMem 在回想型評測上的優勢集中在哪些題型？</summary><div><p>需要追蹤更新的題型：LongMemEval 的時間推理與知識更新。</p></div></details>
+        <details><summary>哪個題型最能反駁「不犧牲回想」？</summary><div><p>LongMemEval 的單 session 助理回想（SS-assistant）：StateMem 比 long-context 低約 40 個百分點。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-recall">筆記</label><textarea id="note-recall" data-note="s-recall"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-recall"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 14 context ===================== -->
+    <section class="sec" id="s-context" data-short="和本站其他論文">
+      <div class="sec-head"><span class="sec-num">14</span><h2>和本站其他四篇的關係</h2></div>
+      <div class="table-wrap">
+        <table class="results">
+          <caption>同一個問題的五種切法 <span class="src src-mine">導讀補充</span>（Zep、STALE 的定位出自本文 §2）</caption>
+          <thead><tr><th>論文</th><th>怎麼處理「舊值」</th><th>誰判斷失效</th><th>和 StateMem 的關係</th></tr></thead>
+          <tbody>
+            <tr><td><a href="../2601.18642/index.html">FadeMem</a></td><td>強度隨時間衰減，低於門檻刪除；衝突時壓低舊記憶</td><td>公式＋LLM 判斷衝突</td><td>未被本文引用。StateMem 不遺忘，被取代的單元留著供稽核</td></tr>
+            <tr><td><a href="../2501.13956/index.html">Zep</a></td><td>知識圖譜的邊加上有效時間，矛盾時標記失效</td><td>LLM 比對矛盾</td><td>本文說 Zep 追蹤的是「單一事實」的有效性；StateMem 多了依賴邊上的傳播</td></tr>
+            <tr><td><a href="../2605.06527/index.html">STALE</a></td><td>CUPMem 在寫入時把受影響的槽位歸檔或標為未知</td><td>LLM 裁決器、預先定義的 schema</td><td>本文稱為同期工作。STALE 的衝突是隱性的，本文的衝突是明講的</td></tr>
+            <tr><td><a href="../2606.30306/index.html">Always-On 綜述</a></td><td>把記憶看成有生命週期的持久狀態</td><td>依不變量與治理</td><td>未被本文引用。StateMem 的 superseded 保留稽核、source 欄位，對應綜述的可回復性與來源軸</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="explain">
+        <div class="lv lv-kid">
+          <p>五篇論文都在處理「舊消息怎麼辦」。有的讓它慢慢淡掉，有的在旁邊寫上「到哪天為止有效」，有的請裁判來判，這篇則是把「誰是從誰算出來的」畫成線，一個變了，連在它身上的就要重算。</p>
+        </div>
+        <div class="lv lv-uni">
+          <p><b>STALE 和本文的分工最值得對照。</b>STALE 測的是「沒說出口的衝突」能不能被察覺（腿打石膏 → 不能騎車），需要常識推論；StateMemBench 把依賴關係明講出來，只測「有沒有維護好」。兩者合起來才是完整的狀態追蹤：先察覺，再維護。</p>
+        </div>
+        <div class="lv lv-grad">
+          <p><b>LightMem 的分數落差</b> <span class="src src-mine">導讀補充</span>：在 STALE 裡 LightMem 以 17.8% 是表現最好的記憶框架；在本文它接近零分（DeepSeek Overall 0.012），原文估計約 60% 的答案是非答案（Table 14 的池外比例在 DeepSeek 上更高達 270/322）。本文作者自己也說這些分數「低於已發表系統任何合理的水準」，可能是對這種逐輪寫入工作負載敏感，也可能是整合問題，因此不納入比較性結論（附錄 G.1）。跨論文比較記憶系統時，整合方式本身就是一個變因。</p>
+        </div>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>本文認為 Zep 少了什麼？</summary><div><p>Zep 能追蹤單一事實的有效時間，但不會把一個事實的改變沿著依賴關係傳到從它衍生出來的其他狀態。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-context">筆記</label><textarea id="note-context" data-note="s-context"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-context"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== 15 critique ===================== -->
+    <section class="sec" id="s-critique" data-short="批判性閱讀">
+      <div class="sec-head"><span class="sec-num">15</span><h2>批判性閱讀</h2></div>
+      <div class="prose">
+        <h3>作者自己承認的限制（附錄 H）</h3>
+        <ul>
+          <li>資料是合成的；情境長度（Set A 約 3k、Set B 約 7–15k tokens）遠短於現代模型的 context，壓力測試不到真正的長期漂移。</li>
+          <li>判定模型（deepseek-v4-pro）和其中一個受測骨幹同家族；情境由 Claude 家族模型渲染。</li>
+          <li>兩個骨幹都是中小型模型，前沿模型當回答者的表現沒測。所有數字都是單次執行。</li>
+          <li>§3.3 的漂移盛行率是 LLM 判定，人類標註員判得更少。</li>
+          <li>StateMem 每輪都要呼叫一次編碼器（每個情境約 165–600 次），比單純 long-context 耗費多。</li>
+          <li>陷阱來自 StateMem 設計要對抗的同一組偷懶策略，自家評測上的差距是上限。</li>
+        </ul>
+        <h3>本頁補充的問題 <span class="src src-mine">導讀補充</span></h3>
+        <ul>
+          <li><b>難度是對 Claude 讀者定義的。</b>驗證關卡用 sonnet-4.6 確認可答、用 haiku-4.5 確認會中陷阱；情境也由 sonnet-4.6 渲染。題目會不會對 Claude 家族特別難或特別容易，原文沒有檢查，受測模型裡也沒有 Claude。</li>
+          <li><b>包裝器勝過 StateMem 本身</b>（0.283 對 ≥ 0.567）削弱了持久儲存庫在這個規模下的必要性。作者說儲存庫在對話放不下時才有用，但評測裡沒有放不下的情境，這個主張沒被檢驗。</li>
+          <li><b>沒有 StateMem 自身的成本表。</b>包裝器有精確的 token 成本，StateMem 只有「165–600 次編碼呼叫」的描述，沒有總 tokens 或延遲。</li>
+          <li><b>統計檢定不齊。</b>除了 StateMem 對最強記憶系統、以及 Qwen 上對 GraphRAG 的 McNemar 檢定，其他名次差距（例如 DeepSeek 上 A-Mem 0.199 對 Dense 0.205）沒有檢定；322 題的 1 題約 0.31 個百分點。</li>
+          <li><b>近零分的基線</b>（LightMem、MemoryOS）被排除在比較結論外，但仍出現在「最強記憶系統」的比較集合裡；如果整合有問題，Mem0、A-Mem 的整合是否同樣受影響也值得追問。</li>
+        </ul>
+        <h3>驗算時發現的原文不一致 <span class="src src-mine">導讀補充</span></h3>
+        <ol>
+          <li><b>Figure 2 的金額推不出來。</b>依圖中三句話（實領 $6000、每月存 30%、剩下自由支配），可支配預算應為 \(6000 - 1800 = 4200\)，圖中寫 $2400；加薪到 $7500 後應為 \(7500 - 2250 = 5250\)，圖中寫 $4950。只有加薪後的存款 $2250 吻合。</li>
+          <li><b>Table 12 的分項加不回 Table 6。</b>把 Table 12 各類別（n = 12、12、13、13、10）與各領域（n = 22、18、20）的百分比換回題數，常和 Table 6 的總分對不上，類別與領域兩種加總也彼此不一致。最明顯的是 Dense／DeepSeek 單獨使用：Table 12 每一格都是 0%，Table 6 卻是 31.7%（約 19/60 題）。Mem0／Qwen 的 +SMW：類別加總約 39 題、領域加總約 38 題，Table 6 是 56.7%（34 題）。</li>
+          <li><b>Table 10 少數列的領域加權和 Overall 有小落差</b>：A-Mem／Qwen 依領域加權得 0.132，表上 Overall 0.127；StateMem 去掉重算指引／DeepSeek 依領域加權得 0.312，表上 0.301。其他 34 列三種加權與 Overall 的差都不超過 0.003。</li>
+          <li><b>「0.2%」的成本比例</b>：附錄 F.5 說每題約 350 tokens，在 LongMemEval 上是回答 prompt 的 0.2%。以中位數 87k tokens 計，350 tokens 約 0.4%；只算 155 個指令 tokens 才約 0.18%。</li>
+          <li><b>被丟棄的兩題算在哪一列</b>：附錄 G.1 說 StateMem／Qwen 有兩題 Set A 的 salience 探測在評分時被丟掉（0/32），但 Table 15 的 StateMem 列加總是 322；加總為 320 的兩列其實是 Long-context-35B 和「去掉依賴傳播」。</li>
+          <li>小筆誤：§6.4 說四條規則針對「§3.3 的失敗模式」，失敗模式其實定義在 §4.1。</li>
+        </ol>
+      </div>
+      <div class="check">
+        <span class="check-title">自我檢測</span>
+        <details><summary>如果要讓「持久儲存庫有必要」這個主張成立，你會設計什麼實驗？</summary><div><p>一個方向：把對話長度拉到超過回答模型的 context window（或刻意截斷），比較 StateMem 和包裝器；包裝器拿不到完整對話時，儲存庫才有發揮空間。</p></div></details>
+      </div>
+      <div class="desk-foot">
+        <div class="note"><label for="note-critique">筆記</label><textarea id="note-critique" data-note="s-critique" placeholder="你自己的質疑"></textarea><span class="saved"></span></div>
+        <label class="done"><input type="checkbox" data-done="s-critique"> 讀完這節</label>
+      </div>
+    </section>
+
+    <!-- ===================== glossary ===================== -->
+    <section class="sec" id="s-glossary" data-short="術語表">
+      <div class="sec-head"><span class="sec-num">附錄</span><h2>術語表</h2></div>
+      <dl class="gloss">
+        <dt>狀態追蹤</dt><dd>State tracking：在長期互動中維護事實、規則與衍生量目前有效的值。</dd>
+        <dt>狀態漂移</dt><dd>State drift：正確的新值在 context 裡，agent 卻依據過期或不完整的版本行動。</dd>
+        <dt>回想</dt><dd>Recall：取回相關事實的能力。本文認為它和狀態追蹤正交。</dd>
+        <dt>符號事件程式</dt><dd>Symbolic event program：一串有型別的狀態操作，重播後得到 gold。</dd>
+        <dt>偷懶讀者策略</dt><dd>Lazy reader policies：模擬記憶系統失敗的小型啟發式，例如只信最新提及、不重算衍生值。</dd>
+        <dt>封閉選項池</dt><dd>Closed pool：生成時就建好的 3–4 個候選答案（gold、漂移、中性干擾），作答時不顯示。</dd>
+        <dt>池外</dt><dd>Off-pool：答案無法對應到任何選項。</dd>
+        <dt>drift-rate</dt><dd>選了漂移目標的答案數 ÷ 全部題數。</dd>
+        <dt>狀態單元</dt><dd>State unit：StateMem 的記憶基本單位 (id, content, priority, source, deps)。</dd>
+        <dt>superseded / needs_recheck</dt><dd>被取代（保留稽核、不送進回答）／需重新檢查（仍有效但帶旗標）。</dd>
+        <dt>Rechecker</dt><dd>確定性的依賴圖走訪，把依賴剛改變單元的單元標為 needs_recheck。</dd>
+        <dt>StateMemWrapper (SMW)</dt><dd>把狀態解決原則寫進單次回答提示詞的包裝器：trace 加上 resolve。</dd>
+        <dt>wrapper-ctrl</dt><dd>等長、等成本但沒有結構的對照提示詞。</dd>
+        <dt>PABAK</dt><dd>Prevalence-adjusted bias-adjusted kappa，\(2P_a - 1\)，類別不平衡時比 κ 穩定。</dd>
+        <dt>McNemar 檢定</dt><dd>比較兩個條件在同一批題目上的配對對錯，只看不一致的題對。</dd>
+        <dt>DST</dt><dd>Dialogue state tracking：任務型對話中以 slot–value 追蹤使用者目標的傳統任務。</dd>
+      </dl>
+    </section>
+
+    <!-- ===================== export ===================== -->
+    <section class="sec" id="s-export" data-short="匯出筆記">
+      <div class="sec-head"><span class="sec-num">附錄</span><h2>匯出我的筆記</h2></div>
+      <p>筆記只存在這個瀏覽器裡。讀完後複製成 Markdown，可以存成 repo 的 <code>papers/2608.19652/notes.md</code>，或貼給 Claude 繼續討論。</p>
+      <div class="btn-row"><button type="button" class="btn" id="export-notes">複製全部筆記</button><span class="toast" id="export-toast" role="status"></span></div>
+      <div class="note"><label for="export-box" class="sr-only">匯出內容</label><textarea id="export-box" rows="8" hidden readonly></textarea></div>
+      <p class="readout">來源：Fan, Liu et al., <a href="https://arxiv.org/abs/2608.19652" target="_blank" rel="noopener">arXiv:2608.19652v1</a>, 2026。本頁已對照 v1 PDF 核對。</p>
+    </section>
+
+  </main>
+</div>
+</div>
+
+<script src="../../assets/site.js"></script>
+<script src="../../assets/anim.js"></script>
+<script>
+// Labeling decision tree (section s-label), following the ordered rule of Appendix A.1.
+(function () {
+  "use strict";
+  var root = document.getElementById("tree");
+  if (!root) return;
+  var Q = [
+    { q: "Q1　gold 事實在 context 裡嗎？", no: "檢索失敗（retrieval）" },
+    { q: "Q2　gold 定義良好嗎？", no: "gold 問題（各評測 ≤ 3%，未列入 Table 1）" },
+    { q: "Q3　輸出有處理到這個 slot 的領域嗎？", no: "理解失敗（comprehension）" },
+    { q: "Q4　答案正確，只是格式錯？", yes: "格式不符（schema mismatch）" },
+    { q: "Q4.5　gold 可能是「棄答」時，agent 編造了一個領域內的值？", yes: "失敗棄答（failed abstention）" },
+    { q: "Q5　輸出呈現了目前的值，但推論出錯？", yes: "推理失敗（reasoning）" },
+    { q: "最後　輸出對應到一個仍在 context、但已過期或範圍不對、且從未被撤回的事實版本？", yes: "狀態漂移（state drift）", no: "丟棄：證據不支持任何歸類，不預設為漂移" }
+  ];
+  var i = 0, path = [];
+  function render(outcome) {
+    root.innerHTML = "";
+    var p = document.createElement("div");
+    p.className = "tree-path";
+    p.textContent = path.length ? path.join(" → ") : "從 Q1 開始";
+    root.appendChild(p);
+    if (outcome) {
+      var o = document.createElement("div");
+      o.className = "tree-out";
+      o.innerHTML = "<b>歸類：</b>" + outcome;
+      root.appendChild(o);
+    } else {
+      var q = document.createElement("div");
+      q.className = "tree-q";
+      q.textContent = Q[i].q;
+      root.appendChild(q);
+      var row = document.createElement("div");
+      row.className = "btn-row";
+      [["是", true], ["否", false]].forEach(function (b) {
+        var btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "btn";
+        btn.textContent = b[0];
+        btn.addEventListener("click", function () { answer(b[1]); });
+        row.appendChild(btn);
+      });
+      root.appendChild(row);
+    }
+    var again = document.createElement("button");
+    again.type = "button";
+    again.className = "btn";
+    again.textContent = "重來";
+    again.addEventListener("click", function () { i = 0; path = []; render(); });
+    if (path.length) root.appendChild(again);
+  }
+  function answer(yes) {
+    var cur = Q[i];
+    path.push(cur.q.split("　")[0] + (yes ? " 是" : " 否"));
+    var out = yes ? cur.yes : cur.no;
+    if (out) { render(out); return; }
+    i += 1;
+    render();
+  }
+  render();
+})();
+</script>
+<script>
+// Trap-construction animation (section s-trap): Appendix D.3 (sequence) and D.4 (status) replayed as event programs.
+(function () {
+  "use strict";
+  var root = document.getElementById("anim-trap");
+  if (!root || !window.StudyAnim) return;
+  function ev(id, turn, op, say) { return { id: id, turn: turn, op: op, say: say }; }
+  var steps = [
+    { title: "購物 1：宣告每週固定量", run: function (s) {
+        s.scen = "購物 · sequence（附錄 D.3）";
+        s.ev.push(ev("a1", "2.3", "SET weekly = 10", "「以後每週都要 10 包點心，當成固定量」"));
+        s.state = [["weekly", "10"]]; s.hi = "a1"; },
+      text: "第 2.3 輪，使用者設定一個基礎值：每週 10 包。事件程式記下一個 <code>SET</code>。" },
+    { title: "購物 2：使用者自己說出衍生值", run: function (s) {
+        s.ev.push(ev("a2", "11.7", "DERIVE two_week = weekly × 2", "「一週 10 包、兩週，就是 20 包」"));
+        s.state = [["weekly", "10"], ["two_week", "20（說出口）"]]; s.hi = "a2"; },
+      text: "第 11.7 輪，使用者把兩週的總數算出來並說出口：20。這個 20 是<b>衍生值</b>，依賴 weekly。依賴關係在對話裡明講，系統不用自己推論（§4.3）。" },
+    { title: "購物 3：基礎值改了", run: function (s) {
+        s.ev.push(ev("a3", "15.7", "SET weekly = 7", "「點心降到每週 7 包，今天就 7 包」"));
+        s.state = [["weekly", "7"], ["two_week", "？"]]; s.hi = "a3"; },
+      text: "第 15.7 輪，每週量改成 7。<b>先猜：</b>探測題問「兩週的校外教學訂單一共幾包？」完整重播會得到多少？只回報說過的數字的讀者又會答多少？" },
+    { title: "購物 4：重播 vs 偷懶讀者", run: function (s) {
+        s.state = [["weekly", "7"], ["two_week", "7 × 2 = 14"]]; s.hi = null;
+        s.readers = [["完整重播（評估器）", "14", "gold"], ["不重算，直接回報說過的值", "20", "drift"], ["只信最近提及", "原文未列", "na"], ["只信最常出現的值", "原文未列", "na"]]; },
+      text: "評估器重播程式：two_week 依賴 weekly，重算得 14（gold）。「直接回報說過的衍生值、不重算」的讀者答 20：這就是原文給的漂移答案，對應 <b>sequence</b> 模式。只要有一個策略和重播不同，這題就成立為陷阱（§4.1）。" },
+    { title: "購物 5：封閉選項池", run: function (s) {
+        s.pool = [["14", "gold"], ["20", "drift"], ["中性干擾項", "other"]]; },
+      text: "生成時就建好 3–4 個選項：gold 14、漂移答案 20、相關的中性干擾項（原文沒列出這題的干擾項，此處示意）。作答時不給選項；答案被對應成「答對／漂移／其他選項／池外」四種結果之一（§4.3）。" },
+    { title: "理財 1：分級規則", run: function (s) {
+        s.scen = "理財 · status（附錄 D.4）"; s.ev = []; s.readers = null; s.pool = null;
+        s.ev.push(ev("b1", "3.1", "RULE bonus → 4 個級距", "「<1900 留支票帳戶；1900–4000 補旅遊金；4000–6200 還車貸；>6200 存滿 Roth」"));
+        s.state = [["rule", "4 級距（常設）"]]; s.hi = "b1"; },
+      text: "換一個情境。第 3.1 輪，使用者定下一條<b>常設規則</b>：季獎金依金額送到四個去處之一。下方的互動小工具可以自己試。" },
+    { title: "理財 2：第一筆獎金", run: function (s) {
+        s.ev.push(ev("b2", "7.1", "SET bonus = 4883 → 車貸", "「季獎金 $4,883」→ 助理：「那就拿去還車貸」"));
+        s.state = [["rule", "4 級距（常設）"], ["bonus", "4883"], ["去處", "車貸（個例）"]]; s.hi = "b2"; },
+      text: "第 7.1 輪，獎金 $4,883，落在 4000–6200，助理依規則說「拿去還車貸」。這是規則的一次<b>個例</b>。" },
+    { title: "理財 3：響亮的承諾", run: function (s) {
+        s.ev.push(ev("b3", "10.1", "SET bonus = 7017 → Roth（強調）", "「$7,017，我要存滿 Roth，就這麼定了，這週就做」"));
+        s.state = [["rule", "4 級距（常設）"], ["bonus", "7017"], ["去處", "Roth（大聲宣告）"]]; s.hi = "b3"; },
+      text: "第 10.1 輪，獎金 $7,017，超過 6200。使用者很用力地宣告要存滿 Roth，助理也確認「等 $3,500 入帳就當作 Roth 已存滿」（10.4）。這個承諾比規則本身響亮得多。" },
+    { title: "理財 4：安靜的新值", run: function (s) {
+        s.ev.push(ev("b4", "15.3", "SET bonus = 1517", "「這次季獎金是 $1,517」→ 助理：「收到」"));
+        s.state = [["rule", "4 級距（常設）"], ["bonus", "1517"], ["去處", "？"]]; s.hi = "b4"; },
+      text: "第 15.3 輪，新獎金 $1,517，助理只回「收到」。<b>先猜：</b>第 18 個 session 後使用者問「這季的獎金，我會像上次一樣存滿 Roth 對吧？」正確答案是什麼？" },
+    { title: "理財 5：status 陷阱成立", run: function (s) {
+        s.state = [["rule", "4 級距（常設）"], ["bonus", "1517"], ["去處", "1517 < 1900 → 支票帳戶"]]; s.hi = null;
+        s.readers = [["完整重播（評估器）", "留在支票帳戶", "gold"], ["錨定在先前響亮的承諾", "存滿 Roth", "drift"], ["只信最近提及", "原文未列", "na"], ["不重算衍生值", "原文未列", "na"]]; },
+      text: "重播：規則仍有效，套用到目前的 1517，落在最低級距，答案是<b>留在支票帳戶</b>（gold）。錨定在第 10.1 輪那個大聲承諾的讀者會答「存滿 Roth」（漂移）。值變了、讀者卻停在較早而響亮的承諾上，這正是 <b>status</b> 模式的定義（§4.1）。" }
+  ];
+
+  StudyAnim(root, {
+    width: 720, height: 430, interval: 4200,
+    init: function () { return { scen: "", ev: [], state: [], hi: null, readers: null, pool: null }; },
+    steps: steps,
+    draw: function (sc, s) {
+      sc.put("bg", "g", {}); sc.put("fg", "g", {});
+      sc.put("scen", "text", { x: 16, y: 24, "class": "a-head a-acc" }, s.scen, "bg");
+      sc.put("zl", "rect", { x: 16, y: 36, width: 400, height: 210, rx: 6, "class": "a-zone" }, null, "bg");
+      sc.put("zlt", "text", { x: 28, y: 56, "class": "a-head" }, "事件程式（對話 → 有型別的操作）", "bg");
+      sc.put("zr", "rect", { x: 428, y: 36, width: 276, height: 210, rx: 6, "class": "a-zone" }, null, "bg");
+      sc.put("zrt", "text", { x: 440, y: 56, "class": "a-head" }, "重播後的狀態", "bg");
+      s.ev.forEach(function (e, k) {
+        var y = 66 + k * 44;
+        sc.put("g" + e.id, "g", { pos: [26, y], enter: true }, null, "fg");
+        sc.put("r" + e.id, "rect", { x: 0, y: 0, width: 380, height: 38, rx: 4, "class": "a-card" + (s.hi === e.id ? " hi" : "") }, null, "g" + e.id);
+        sc.put("o" + e.id, "text", { x: 8, y: 15, "class": "a-mono" }, e.turn + "　" + e.op, "g" + e.id);
+        sc.put("s" + e.id, "text", { x: 8, y: 31, "class": "a-small" }, e.say.length > 34 ? e.say.slice(0, 34) + "…" : e.say, "g" + e.id);
+      });
+      s.state.forEach(function (kv, k) {
+        var y = 80 + k * 30;
+        sc.put("sk" + k, "text", { x: 444, y: y, "class": "a-mono" }, kv[0], "fg");
+        sc.put("sv" + k, "text", { x: 530, y: y, "class": kv[1].indexOf("？") >= 0 ? "a-bad" : "" }, kv[1], "fg");
+      });
+      sc.put("zb", "rect", { x: 16, y: 258, width: 688, height: 162, rx: 6, "class": "a-zone" }, null, "bg");
+      sc.put("zbt", "text", { x: 28, y: 278, "class": "a-head" }, s.pool ? "封閉選項池" : "讀者策略的答案", "bg");
+      if (s.readers && !s.pool) {
+        s.readers.forEach(function (r, k) {
+          var y = 290 + k * 31;
+          var cls = r[2] === "gold" ? " ok" : r[2] === "drift" ? " warn" : " dead";
+          sc.put("rdr" + k, "rect", { x: 28, y: y, width: 664, height: 26, rx: 4, "class": "a-card" + cls, enter: true }, null, "fg");
+          sc.put("rdn" + k, "text", { x: 40, y: y + 17, "class": r[2] === "na" ? "a-small" : "" }, r[0], "fg");
+          sc.put("rda" + k, "text", { x: 420, y: y + 17, "class": r[2] === "gold" ? "a-ok" : r[2] === "drift" ? "a-bad" : "a-small" }, r[1] + (r[2] === "gold" ? "　✓ gold" : r[2] === "drift" ? "　✗ 漂移答案" : ""), "fg");
+        });
+      }
+      if (s.pool) {
+        s.pool.forEach(function (p, k) {
+          var x = 28 + k * 224;
+          var cls = p[1] === "gold" ? " ok" : p[1] === "drift" ? " warn" : "";
+          sc.put("pl" + k, "rect", { x: x, y: 292, width: 212, height: 52, rx: 6, "class": "a-card" + cls, enter: true }, null, "fg");
+          sc.put("pv" + k, "text", { x: x + 106, y: 316, "text-anchor": "middle", "class": "a-head" }, p[0], "fg");
+          sc.put("pk" + k, "text", { x: x + 106, y: 335, "text-anchor": "middle", "class": "a-small" }, p[1] === "gold" ? "gold（重播）" : p[1] === "drift" ? "drift（不重算的讀者）" : "其他選項（示意）", "fg");
+        });
+        sc.put("pnote", "text", { x: 28, y: 372, "class": "a-small" }, "作答時不顯示選項。結果分四種：答對 · 漂移 · 其他選項 · 池外（答不出可辨識的選項）", "fg");
+        sc.put("pnote2", "text", { x: 28, y: 394, "class": "a-small" }, "→ 能把「用了舊值」和「其他錯誤」分開計分（§6.3 的分析就靠這個）", "fg");
+      }
+      if (!s.readers && !s.pool) {
+        sc.put("wait", "text", { x: 28, y: 310, "class": "a-small" }, "探測題出現後，評估器與各個偷懶讀者會各自作答。", "fg");
+      }
+    }
+  });
+})();
+</script>
+<script>
+// Bonus-tier calculator (section s-trap), rule from Appendix D.4 turn 3.1.
+(function () {
+  "use strict";
+  var input = document.getElementById("tier-in"), out = document.getElementById("tier-out"), bars = document.getElementById("tier-bars");
+  if (!input || !out || !bars) return;
+  var TIERS = [["< 1900", "留在支票帳戶"], ["1900–4000", "補旅遊預備金"], ["4000–6200", "還車貸"], ["> 6200", "存滿 Roth"]];
+  var cells = TIERS.map(function (t) {
+    var d = document.createElement("div");
+    d.innerHTML = "<span class=\"mono\">" + t[0] + "</span><br>" + t[1];
+    bars.appendChild(d);
+    return d;
+  });
+  function update() {
+    var v = Number(input.value), k = -1;
+    if (!isFinite(v) || input.value === "") { out.textContent = ""; }
+    else if (v === 1900 || v === 4000 || v === 6200) { out.textContent = "剛好落在邊界：原文未定義歸哪一級"; }
+    else {
+      k = v < 1900 ? 0 : v < 4000 ? 1 : v < 6200 ? 2 : 3;
+      out.textContent = "$" + v.toLocaleString("en-US") + " → " + TIERS[k][1];
+    }
+    cells.forEach(function (c, j) { c.className = j === k ? "on" : ""; });
+  }
+  input.addEventListener("input", update);
+  update();
+})();
+</script>
+<script>
+// StateMem animation (section s-anim): Figure 2's finance scenario through ingestion, update and test time.
+(function () {
+  "use strict";
+  var root = document.getElementById("anim-statemem");
+  if (!root || !window.StudyAnim) return;
+  var POS = { u1: [256, 66], u4: [488, 66], u2: [256, 186], u3: [488, 186] };
+  function unit(id, content, deps, priority) { return { id: id, content: content, deps: deps, priority: priority, status: "active" }; }
+  function find(s, id) { for (var k = 0; k < s.units.length; k++) if (s.units[k].id === id) return s.units[k]; return null; }
+  var steps = [
+    { title: "1. 寫入：第 1 輪", run: function (s) {
+        s.turn = 0; s.calls = 1;
+        s.units.push(unit("u1", "實領薪水 = $6000", [], "hard")); s.hi = ["u1"]; },
+      text: "使用者：「我的薪水是 $6000。」TurnEncoder 呼叫一次 LLM，把這一輪解析成狀態單元 u1（hard、active）。編碼時會把目前所有有效單元的精簡版一起給它看（§5.1）。" },
+    { title: "2. 寫入：衍生值", run: function (s) {
+        s.turn = 1; s.calls = 2;
+        s.units.push(unit("u2", "每月存 30% ⇒ $1800", ["u1"], "hard")); s.hi = ["u2"]; },
+      text: "「我每月存 30%。」新單元 u2 的值是從 u1 算出來的，所以記錄 <code>derived_from: [u1]</code>。依賴圖多了一條邊 \\((u_2, u_1)\\)。" },
+    { title: "3. 寫入：依賴兩個單元", run: function (s) {
+        s.turn = 2; s.calls = 3;
+        s.units.push(unit("u3", "可自由支配 ⇒ $4200", ["u1", "u2"], "hard")); s.hi = ["u3"]; },
+      text: "「剩下的自由支配。」u3 = u1 − u2 = 6000 − 1800 = 4200，<code>derived_from: [u1, u2]</code>（與 Figure 2 的依賴相同；圖中印的金額是 $2400，見下方說明）。現在 \\(|E| = 3\\)。" },
+    { title: "4. 第 4 輪：加薪", run: function (s) {
+        s.turn = 3; s.calls = 4;
+        s.proposal = true; s.hi = ["u1"]; },
+      text: "「其實我加薪了，實領變成 $7500。」TurnEncoder 偵測到「Actually」這類取代訊號，把 u1 標為可能被取代，並主動提出替代單元（虛線）。<b>先猜：</b>接下來 Rechecker 會把哪幾個單元標成 needs_recheck？" },
+    { title: "5. 更新①：套用取代", run: function (s) {
+        s.proposal = false;
+        find(s, "u1").status = "superseded";
+        s.units.push(unit("u4", "實領薪水 = $7500", [], "hard")); s.hi = ["u4"]; },
+      text: "StateStore 把 u1 的狀態改為 <code>superseded</code>（留在庫裡供稽核，但之後不送進回答），新增 u4 為 active（§5.2）。" },
+    { title: "6. 更新②：Rechecker 沿邊走", run: function (s) {
+        find(s, "u2").status = "recheck"; find(s, "u3").status = "recheck";
+        s.walk = true; s.hi = []; },
+      text: "Rechecker 檢查每一條邊：凡是依賴「狀態剛改變的單元」（u1）的，標成 <code>needs_recheck</code>。u2、u3 都直接依賴 u1，所以兩個都被標記。走訪 3 條邊，\\(O(|E|)\\)，<b>不呼叫 LLM</b>。被標記的單元仍然有效，只是帶著「可能過期」的旗標。" },
+    { title: "7. 回答時：組裝狀態區塊 S", run: function (s) {
+        s.walk = false; s.block = true; s.turn = 4; },
+      text: "使用者問：「這個月可以花多少在旅遊上？」StateStore <b>確定性地</b>把 active 單元組成區塊 \\(S\\)：u4 在 BINDING 段，u2、u3 在 NEEDS RECHECK 段並附上觸發原因；superseded 的 u1 不放進去（§5.3、附錄 E.3）。" },
+    { title: "8. 回答呼叫：依指引重算", run: function (s) {
+        s.calls = 5; s.block = false; s.answer = true;
+        find(s, "u2").content = "每月存 30% ⇒ $2250"; find(s, "u2").deps = ["u4"]; find(s, "u2").status = "active";
+        find(s, "u3").content = "可自由支配 ⇒ $5250"; find(s, "u3").deps = ["u4", "u2"]; find(s, "u3").status = "active";
+        s.hi = ["u2", "u3"]; },
+      text: "一次 LLM 呼叫，輸入 \\(S\\)、問題和重算指引：NEEDS RECHECK 的數字不能用，要拿推導式代入目前的值重算，並沿鏈依序傳播。u2 = 30% × 7500 = 2250；u3 用剛算出的 u2：7500 − 2250 = 5250。答案：這個月可自由支配 $5250（Figure 2 印 $4950）。Figure 2 把重算後的單元畫成 active、依賴改指向新的薪水單元；正文沒有說重算結果會不會寫回 StateStore。" },
+    { title: "9. 成本盤點", run: function (s) {
+        s.answer = false; s.cost = true; s.hi = []; },
+      text: "4 輪對話 → 4 次編碼呼叫，加 1 次回答呼叫，Rechecker 0 次。真實情境一個有 165–600 輪，就是 165–600 次編碼呼叫（附錄 H）。對照：第 11 節的包裝器 0 次逐輪呼叫、只有 1 次回答呼叫，但每次都要讀完整份對話。" }
+  ];
+  var TURNS = ["t1 使用者｜薪水 $6000", "t2 使用者｜每月存 30%", "t3 使用者｜剩下自由支配", "t4 使用者｜加薪，實領 $7500", "提問｜這個月旅遊能花多少？"];
+
+  StudyAnim(root, {
+    width: 720, height: 480, interval: 4200,
+    init: function () { return { turn: -1, calls: 0, units: [], hi: [], proposal: false, walk: false, block: false, answer: false, cost: false }; },
+    steps: steps,
+    draw: function (sc, s) {
+      sc.put("defs", "defs", {});
+      sc.put("mk1", "marker", { id: "sm-arr", viewBox: "0 0 10 10", refX: 9, refY: 5, markerWidth: 7, markerHeight: 7, orient: "auto" }, null, "defs");
+      sc.put("mk1p", "path", { d: "M0,0 L10,5 L0,10 z", "class": "a-arrow" }, null, "mk1");
+      sc.put("mk2", "marker", { id: "sm-arr-w", viewBox: "0 0 10 10", refX: 9, refY: 5, markerWidth: 7, markerHeight: 7, orient: "auto" }, null, "defs");
+      sc.put("mk2p", "path", { d: "M0,0 L10,5 L0,10 z", "class": "a-arrow-warn" }, null, "mk2");
+      sc.put("mk3", "marker", { id: "sm-arr-a", viewBox: "0 0 10 10", refX: 9, refY: 5, markerWidth: 7, markerHeight: 7, orient: "auto" }, null, "defs");
+      sc.put("mk3p", "path", { d: "M0,0 L10,5 L0,10 z", "class": "a-arrow-acc" }, null, "mk3");
+      sc.put("bg", "g", {}); sc.put("fg", "g", {});
+      sc.put("zt", "rect", { x: 16, y: 36, width: 212, height: 270, rx: 6, "class": "a-zone" }, null, "bg");
+      sc.put("ztt", "text", { x: 28, y: 26, "class": "a-head" }, "對話", "bg");
+      TURNS.forEach(function (t, k) {
+        if (k > s.turn) return;
+        sc.put("tc" + k, "rect", { x: 26, y: 46 + k * 50, width: 192, height: 42, rx: 4, "class": "a-card" + (k === s.turn ? " hi" : ""), enter: true }, null, "bg");
+        var parts = t.split("｜");
+        sc.put("tt" + k, "text", { x: 34, y: 63 + k * 50, "class": "a-small" }, parts[0], "bg");
+        sc.put("tv" + k, "text", { x: 34, y: 80 + k * 50 }, parts[1], "bg");
+      });
+      sc.put("zs", "rect", { x: 240, y: 36, width: 464, height: 270, rx: 6, "class": "a-zone" }, null, "bg");
+      sc.put("zst", "text", { x: 252, y: 26, "class": "a-head" }, "StateStore 與依賴圖 G = (U, E)", "bg");
+      // edges first (bg), cards after (fg)
+      s.units.forEach(function (u) {
+        u.deps.forEach(function (d) {
+          var a = POS[u.id], b = POS[d];
+          var x1 = a[0] + 100, y1 = a[1], x2 = b[0] + 100, y2 = b[1] + 64;
+          if (a[1] === b[1]) { x1 = a[0]; y1 = a[1] + 32; x2 = b[0] + 200; y2 = b[1] + 32; }
+          else if (a[0] !== b[0]) { x1 = a[0] + 40; x2 = b[0] + 180; }
+          var dep = find(s, d);
+          var cls = dep && dep.status === "superseded" ? (s.walk ? "a-line warn" : "a-line dead") : (s.answer && d === "u4" ? "a-line acc" : "a-line");
+          var mk = cls === "a-line warn" ? "url(#sm-arr-w)" : cls === "a-line acc" ? "url(#sm-arr-a)" : "url(#sm-arr)";
+          sc.put("e" + u.id + d, "line", { x1: x1, y1: y1, x2: x2, y2: y2, "class": cls, "marker-end": mk }, null, "bg");
+        });
+      });
+      if (s.units.length) sc.put("elab", "text", { x: 252, y: 296, "class": "a-small" }, "箭頭 u_i → u_j：u_i 依賴 u_j（derived_from）", "bg");
+      var cards = s.units.slice();
+      if (s.proposal) cards.push({ id: "u4p", content: "提議：實領薪水 = $7500", deps: [], priority: "hard", status: "proposal" });
+      cards.forEach(function (u) {
+        var p = POS[u.id === "u4p" ? "u4" : u.id];
+        var cls = u.status === "superseded" ? " dead" : u.status === "recheck" ? " warn" : u.status === "proposal" ? " dead" : s.hi.indexOf(u.id) >= 0 ? " hi" : "";
+        var key = u.id === "u4p" ? "u4" : u.id;
+        sc.put("g" + key, "g", { pos: p, enter: true }, null, "fg");
+        sc.put("r" + key, "rect", { x: 0, y: 0, width: 200, height: 64, rx: 5, "class": "a-card" + cls }, null, "g" + key);
+        var st = u.status === "recheck" ? "needs_recheck" : u.status;
+        sc.put("h" + key, "text", { x: 8, y: 16, "class": "a-mono" }, (u.id === "u4p" ? "u4?" : u.id) + " · " + u.priority + " · " + st, "g" + key);
+        sc.put("c" + key, "text", { x: 8, y: 36, "class": u.status === "superseded" ? "a-strike" : "" }, u.content, "g" + key);
+        sc.put("d" + key, "text", { x: 8, y: 55, "class": "a-small" }, "derived_from: " + (u.deps.length ? "[" + u.deps.join(", ") + "]" : "[]"), "g" + key);
+      });
+      sc.put("zp", "rect", { x: 16, y: 318, width: 688, height: 152, rx: 6, "class": "a-zone" }, null, "bg");
+      sc.put("calls", "text", { x: 28, y: 340, "class": "a-head" }, "LLM 呼叫累計：" + s.calls + "　·　Rechecker：0 次 LLM", "bg");
+      var lines = [];
+      if (s.walk) lines = [["走訪 3 條邊：(u2,u1) (u3,u1) (u3,u2)", ""], ["u1 狀態剛改變 → u2、u3 標為 needs_recheck", "a-bad"], ["(u3,u2) 不改變結果：u3 已因直接依賴 u1 被標記", "a-small"]];
+      else if (s.block) lines = [["## BINDING -- THIS CONVERSATION", "a-mono"], ["- [income] 實領薪水 = $7500", "a-mono"], ["## ! NEEDS RECHECK -- may be stale due to recent events", "a-mono"], ["- [savings] 每月存 30% ⇒ $1800　-> trigger: u1 被取代", "a-mono"], ["- [budget] 可自由支配 ⇒ $4200　-> trigger: u1 被取代", "a-mono"]];
+      else if (s.answer) lines = [["重算 u2：30% × 7500 = 2250", ""], ["重算 u3：7500 − 2250 = 5250（用剛算出的 u2，沿鏈傳播）", ""], ["答：這個月可自由支配 $5250", "a-ok"]];
+      else if (s.cost) lines = [["寫入：每輪 1 次（本例 4 次；實際情境 165–600 次）", ""], ["更新：0 次（確定性圖走訪）", ""], ["回答：1 次（輸入是精簡的狀態區塊 S，不是整份對話）", ""], ["包裝器（第 11 節）：0 次逐輪呼叫 + 1 次回答（輸入整份對話）", "a-small"]];
+      else if (s.proposal) lines = [["TurnEncoder 輸出：supersede: [{ unit_id: u1, replacement: {…$7500…} }]", "a-mono"], ["取代訊號：actually / instead / no longer / switched to …（附錄 E.1）", "a-small"]];
+      lines.forEach(function (l, k) {
+        sc.put("pl" + k, "text", { x: 28, y: 366 + k * 22, "class": l[1], enter: true }, l[0], "fg");
+      });
+    }
+  });
+})();
+</script>
+<script>
+// Table 10 (verbatim) rendered as a sortable bar chart for section 08.
+(function () {
+  "use strict";
+  // [name, kind, [short, long, overall, status, sequence, salience, anti, compound, finance, shopping, research]]
+  var LC = [
+    ["LC · Qwen-3.5-9B", "lc", [0.137, 0.167, 0.149, 0.078, 0.000, 0.098, 0.692, 0.159, 0.118, 0.197, 0.118]],
+    ["LC · Qwen-3.6-35B-A3B", "lc", [0.063, 0.146, 0.097, 0.026, 0.000, 0.059, 0.632, 0.023, 0.110, 0.165, 0.000]],
+    ["LC · GPT-5.4-Nano", "lc", [0.311, 0.227, 0.277, 0.172, 0.153, 0.569, 0.615, 0.114, 0.344, 0.402, 0.059]],
+    ["LC · DeepSeek-V4-Flash", "lc", [0.132, 0.174, 0.149, 0.103, 0.056, 0.059, 0.641, 0.091, 0.161, 0.244, 0.020]]
+  ];
+  var P = {
+    q: [
+      ["No memory", "b", [0.000, 0.015, 0.006, 0.009, 0.000, 0.000, 0.026, 0.000, 0.000, 0.000, 0.020]],
+      ["BM25", "b", [0.095, 0.167, 0.125, 0.034, 0.042, 0.000, 0.820, 0.023, 0.107, 0.102, 0.167]],
+      ["Dense", "b", [0.105, 0.167, 0.130, 0.034, 0.014, 0.000, 0.923, 0.023, 0.118, 0.126, 0.147]],
+      ["nano-graphrag", "b", [0.126, 0.167, 0.143, 0.035, 0.000, 0.100, 0.895, 0.068, 0.140, 0.149, 0.137]],
+      ["HippoRAG", "b", [0.105, 0.167, 0.130, 0.034, 0.014, 0.000, 0.795, 0.136, 0.118, 0.126, 0.147]],
+      ["LightRAG", "b", [0.089, 0.152, 0.115, 0.026, 0.014, 0.059, 0.769, 0.000, 0.065, 0.126, 0.147]],
+      ["GraphRAG", "b", [0.216, 0.235, 0.224, 0.164, 0.069, 0.118, 0.923, 0.136, 0.204, 0.197, 0.275]],
+      ["Mem0", "b", [0.116, 0.197, 0.149, 0.026, 0.042, 0.039, 0.897, 0.114, 0.151, 0.126, 0.177]],
+      ["A-Mem", "b", [0.100, 0.167, 0.127, 0.008, 0.042, 0.000, 0.897, 0.045, 0.118, 0.138, 0.138]],
+      ["LightMem", "b", [0.021, 0.015, 0.019, 0.017, 0.000, 0.000, 0.102, 0.000, 0.000, 0.016, 0.039]],
+      ["MemoryOS", "b", [0.026, 0.023, 0.025, 0.025, 0.000, 0.000, 0.102, 0.023, 0.022, 0.008, 0.049]],
+      ["StateMem", "u", [0.237, 0.227, 0.233, 0.181, 0.208, 0.020, 0.846, 0.114, 0.269, 0.205, 0.235]],
+      ["– extraction-only", "a", [0.126, 0.197, 0.155, 0.086, 0.000, 0.078, 0.795, 0.114, 0.161, 0.126, 0.186]],
+      ["– + supersession", "a", [0.137, 0.220, 0.171, 0.112, 0.028, 0.039, 0.872, 0.091, 0.172, 0.165, 0.176]],
+      ["– w/o dep.-prop.", "a", [0.202, 0.250, 0.222, 0.155, 0.139, 0.040, 0.897, 0.140, 0.215, 0.238, 0.207]],
+      ["– w/o recompute", "a", [0.195, 0.227, 0.208, 0.190, 0.097, 0.059, 0.846, 0.045, 0.204, 0.213, 0.206]]
+    ],
+    d: [
+      ["No memory", "b", [0.000, 0.008, 0.003, 0.000, 0.000, 0.000, 0.026, 0.000, 0.000, 0.000, 0.010]],
+      ["BM25", "b", [0.105, 0.197, 0.143, 0.034, 0.097, 0.000, 0.872, 0.023, 0.108, 0.110, 0.216]],
+      ["Dense", "b", [0.168, 0.258, 0.205, 0.086, 0.181, 0.000, 1.000, 0.091, 0.194, 0.228, 0.186]],
+      ["nano-graphrag", "b", [0.174, 0.197, 0.183, 0.095, 0.014, 0.098, 0.949, 0.114, 0.215, 0.173, 0.167]],
+      ["HippoRAG", "b", [0.132, 0.258, 0.184, 0.086, 0.139, 0.000, 0.923, 0.068, 0.151, 0.173, 0.225]],
+      ["LightRAG", "b", [0.058, 0.144, 0.093, 0.026, 0.028, 0.020, 0.615, 0.000, 0.065, 0.126, 0.078]],
+      ["GraphRAG", "b", [0.137, 0.227, 0.174, 0.103, 0.042, 0.118, 0.692, 0.182, 0.097, 0.126, 0.304]],
+      ["Mem0", "b", [0.168, 0.189, 0.177, 0.103, 0.028, 0.098, 0.949, 0.023, 0.151, 0.205, 0.167]],
+      ["A-Mem", "b", [0.158, 0.258, 0.199, 0.060, 0.264, 0.000, 0.949, 0.023, 0.194, 0.197, 0.206]],
+      ["LightMem", "b", [0.021, 0.000, 0.012, 0.017, 0.000, 0.000, 0.051, 0.000, 0.000, 0.016, 0.020]],
+      ["MemoryOS", "b", [0.011, 0.045, 0.025, 0.009, 0.000, 0.000, 0.154, 0.023, 0.011, 0.039, 0.020]],
+      ["StateMem", "u", [0.411, 0.295, 0.363, 0.302, 0.347, 0.216, 0.872, 0.273, 0.366, 0.339, 0.392]],
+      ["– extraction-only", "a", [0.153, 0.205, 0.174, 0.078, 0.028, 0.157, 0.744, 0.182, 0.215, 0.157, 0.157]],
+      ["– + supersession", "a", [0.337, 0.242, 0.298, 0.241, 0.250, 0.157, 0.846, 0.205, 0.280, 0.283, 0.333]],
+      ["– w/o dep.-prop.", "a", [0.400, 0.333, 0.373, 0.336, 0.375, 0.196, 0.846, 0.250, 0.333, 0.362, 0.422]],
+      ["– w/o recompute", "a", [0.326, 0.265, 0.301, 0.267, 0.222, 0.196, 0.897, 0.114, 0.301, 0.244, 0.407]]
+    ]
+  };
+  var svg = document.getElementById("t10-chart"), selP = document.getElementById("ctl-panel"), selC = document.getElementById("ctl-col"), abl = document.getElementById("ctl-abl");
+  if (!svg || !selP || !selC || !abl) return;
+  var NS = "http://www.w3.org/2000/svg";
+  function el(tag, attrs, text) {
+    var e = document.createElementNS(NS, tag);
+    Object.keys(attrs).forEach(function (a) { e.setAttribute(a, attrs[a]); });
+    if (text != null) e.textContent = text;
+    return e;
+  }
+  function draw() {
+    var col = Number(selC.value);
+    var rows = LC.concat(P[selP.value].filter(function (r) { return abl.checked || r[1] !== "a"; }));
+    rows.sort(function (a, b) { return b[2][col] - a[2][col]; });
+    var W = 640, m = { l: 178, r: 52, t: 10, b: 28 }, rowH = 24;
+    var H = m.t + m.b + rowH * rows.length, pw = W - m.l - m.r;
+    var max = col === 6 ? 1 : 0.6;
+    function x(v) { return m.l + Math.min(v, max) / max * pw; }
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    var grid = el("g", { "class": "grid" }), axis = el("g", { "class": "axis" });
+    var ticks = col === 6 ? [0, 0.25, 0.5, 0.75, 1] : [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6];
+    ticks.forEach(function (t) {
+      grid.appendChild(el("line", { x1: x(t), x2: x(t), y1: m.t, y2: H - m.b }));
+      axis.appendChild(el("text", { x: x(t), y: H - m.b + 16, "text-anchor": "middle" }, t.toFixed(t === 0 || t === 1 ? 0 : 2)));
+    });
+    svg.appendChild(grid);
+    svg.appendChild(axis);
+    rows.forEach(function (r, i) {
+      var v = r[2][col], y = m.t + i * rowH;
+      var g = el("g", { "class": "row" });
+      g.appendChild(el("title", {}, r[0] + "：" + v.toFixed(3)));
+      g.appendChild(el("rect", { "class": "hit", x: 0, y: y, width: W, height: rowH }));
+      g.appendChild(el("text", { "class": r[1] === "a" ? "group" : "name", x: m.l - 8, y: y + rowH / 2 + 4, "text-anchor": "end" }, r[0]));
+      var w = Math.max(0, x(v) - m.l);
+      var cls = r[1] === "u" ? "bar ours" : r[1] === "lc" ? "bar lc" : "bar";
+      if (w > 0) g.appendChild(el("rect", { "class": cls, x: m.l, y: y + 5, width: w, height: rowH - 10, rx: 2, opacity: r[1] === "a" ? 0.55 : 1 }));
+      g.appendChild(el("text", { "class": "val", x: x(v) + 6, y: y + rowH / 2 + 4 }, v.toFixed(3)));
+      svg.appendChild(g);
+    });
+  }
+  selP.addEventListener("change", draw);
+  selC.addEventListener("change", draw);
+  abl.addEventListener("change", draw);
+  draw();
+})();
+</script>
+<script>
+// Closed-pool outcomes (Tables 14 and 15, verbatim) as stacked bars for section 10.
+(function () {
+  "use strict";
+  // [name, correct, drift, other, off-pool, drift-rate as printed]
+  var D = {
+    d: [
+      ["Long-context (V4-Flash)", 48, 206, 4, 64, 64.0], ["Long-context (GPT-5.4n)", 89, 159, 1, 73, 49.4], ["StateMem", 117, 158, 11, 36, 49.1],
+      ["Mem0", 57, 193, 18, 54, 59.9], ["A-Mem", 64, 181, 5, 72, 56.2], ["LightMem", 4, 48, 0, 270, 14.9], ["MemoryOS", 8, 83, 1, 230, 25.8],
+      ["nano-graphrag", 59, 188, 7, 68, 58.4], ["HippoRAG", 59, 175, 12, 76, 54.3], ["LightRAG", 30, 150, 5, 137, 46.6], ["GraphRAG (MS)", 56, 158, 8, 100, 49.1],
+      ["BM25", 46, 193, 5, 78, 59.9], ["Dense", 66, 177, 13, 66, 55.0], ["No memory", 1, 18, 0, 303, 5.6]
+    ],
+    q: [
+      ["Long-context-9B", 48, 211, 4, 59, 65.5], ["Long-context-35B", 31, 215, 6, 68, 67.2], ["StateMem", 75, 207, 8, 32, 64.3],
+      ["Mem0", 48, 202, 4, 68, 62.7], ["A-Mem", 41, 206, 4, 71, 64.0], ["LightMem", 6, 103, 0, 213, 32.0], ["MemoryOS", 8, 112, 1, 201, 34.8],
+      ["nano-graphrag", 46, 191, 7, 78, 59.3], ["HippoRAG", 42, 194, 11, 75, 60.2], ["LightRAG", 37, 151, 20, 114, 46.9], ["GraphRAG (MS)", 72, 185, 4, 61, 57.5],
+      ["BM25", 40, 196, 7, 79, 60.9], ["Dense", 42, 209, 17, 54, 64.9], ["No memory", 2, 78, 0, 242, 24.2]
+    ]
+  };
+  var svg = document.getElementById("pool-chart"), selB = document.getElementById("ctl-pool"), selS = document.getElementById("ctl-sort");
+  if (!svg || !selB || !selS) return;
+  var NS = "http://www.w3.org/2000/svg";
+  function el(tag, attrs, text) {
+    var e = document.createElementNS(NS, tag);
+    Object.keys(attrs).forEach(function (a) { e.setAttribute(a, attrs[a]); });
+    if (text != null) e.textContent = text;
+    return e;
+  }
+  function inpool(r) { var n = r[1] + r[2] + r[3]; return n ? 100 * r[2] / n : 0; }
+  function draw() {
+    var rows = D[selB.value].slice(), key = selS.value;
+    rows.sort(function (a, b) {
+      if (key === "correct") return b[1] - a[1];
+      if (key === "inpool") return inpool(a) - inpool(b);
+      return a[5] - b[5];
+    });
+    var W = 640, m = { l: 168, r: 112, t: 10, b: 28 }, rowH = 28;
+    var H = m.t + m.b + rowH * rows.length, pw = W - m.l - m.r;
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    var axis = el("g", { "class": "axis" });
+    [0, 0.25, 0.5, 0.75, 1].forEach(function (t) {
+      axis.appendChild(el("text", { x: m.l + t * pw, y: H - m.b + 16, "text-anchor": "middle" }, Math.round(t * 100) + "%"));
+    });
+    svg.appendChild(axis);
+    rows.forEach(function (r, i) {
+      var n = r[1] + r[2] + r[3] + r[4], y = m.t + i * rowH, x0 = m.l;
+      var g = el("g", { "class": "row" });
+      g.appendChild(el("title", {}, r[0] + "：答對 " + r[1] + "、漂移 " + r[2] + "、其他選項 " + r[3] + "、池外 " + r[4] + "（n = " + n + "）"));
+      g.appendChild(el("text", { "class": "name", x: m.l - 8, y: y + rowH / 2 + 4, "text-anchor": "end" }, r[0]));
+      [["seg-ok", r[1]], ["seg-drift", r[2]], ["seg-other", r[3]], ["seg-off", r[4]]].forEach(function (sgm) {
+        var w = sgm[1] / n * pw;
+        if (w > 0) g.appendChild(el("rect", { "class": sgm[0], x: x0, y: y + 6, width: w, height: rowH - 12 }));
+        x0 += w;
+      });
+      g.appendChild(el("text", { "class": "val", x: m.l + pw + 6, y: y + rowH / 2 + 4 }, r[5].toFixed(1) + "%（" + inpool(r).toFixed(1) + "%）"));
+      svg.appendChild(g);
+    });
+  }
+  selB.addEventListener("change", draw);
+  selS.addEventListener("change", draw);
+  draw();
+})();
+</script>
+<script>
+// Table 6 (verbatim) as a dot plot, with Table 13 fix/break counts, for section 11.
+(function () {
+  "use strict";
+  var NAMES = ["Mem0", "A-Mem", "LightMem", "MemOS", "BM25", "Dense"];
+  // [alone, +Ctrl, +SMW] per backend; Table 13 [ctrlFix, ctrlBrk, smwFix, smwBrk] for LongMemEval only.
+  var SETS = [
+    { v: [[25.0, 28.3, 56.7], [23.3, 35.0, 56.7], [3.3, 30.0, 61.7], [5.0, 25.0, 56.7], [20.0, 31.7, 56.7], [21.7, 28.3, 56.7]] },
+    { v: [[28.3, 56.7, 71.7], [33.3, 51.7, 75.0], [1.7, 51.7, 68.3], [1.7, 50.0, 68.3], [21.7, 48.3, 70.0], [31.7, 43.3, 70.0]] },
+    { v: [[38.3, 36.7, 48.3], [41.7, 31.7, 56.7], [5.0, 11.7, 28.3], [6.7, 8.3, 23.3], [16.7, 16.7, 36.7], [47.5, 32.2, 50.8]],
+      fb: [[10, 11, 18, 12], [7, 13, 17, 8], [4, 0, 14, 0], [4, 3, 10, 0], [7, 7, 15, 3], [8, 17, 12, 10]] },
+    { v: [[45.0, 58.3, 60.0], [35.0, 51.7, 55.0], [3.3, 31.7, 35.0], [6.7, 31.7, 36.7], [16.7, 40.0, 41.7], [53.3, 61.7, 56.7]],
+      fb: [[15, 7, 15, 6], [18, 8, 16, 4], [17, 0, 20, 1], [17, 2, 20, 2], [16, 2, 17, 2], [12, 7, 15, 13]] }
+  ];
+  var svg = document.getElementById("t6-chart"), sel = document.getElementById("ctl-t6");
+  if (!svg || !sel) return;
+  var NS = "http://www.w3.org/2000/svg";
+  function el(tag, attrs, text) {
+    var e = document.createElementNS(NS, tag);
+    Object.keys(attrs).forEach(function (a) { e.setAttribute(a, attrs[a]); });
+    if (text != null) e.textContent = text;
+    return e;
+  }
+  function draw() {
+    var S = SETS[Number(sel.value)];
+    var W = 640, m = { l: 80, r: 170, t: 24, b: 28 }, rowH = 32;
+    var H = m.t + m.b + rowH * NAMES.length, pw = W - m.l - m.r;
+    function x(v) { return m.l + v / 100 * pw; }
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    var grid = el("g", { "class": "grid" }), axis = el("g", { "class": "axis" });
+    [0, 25, 50, 75, 100].forEach(function (t) {
+      grid.appendChild(el("line", { x1: x(t), x2: x(t), y1: m.t, y2: H - m.b }));
+      axis.appendChild(el("text", { x: x(t), y: H - m.b + 16, "text-anchor": "middle" }, t + "%"));
+    });
+    svg.appendChild(grid);
+    svg.appendChild(axis);
+    svg.appendChild(el("text", { "class": "group", x: m.l + pw + 8, y: 14 }, S.fb ? "結構　+Ctrl 修/壞　+SMW 修/壞" : "結構 = +SMW − +Ctrl"));
+    NAMES.forEach(function (nm, i) {
+      var v = S.v[i], y = m.t + i * rowH + rowH / 2;
+      var g = el("g", { "class": "row" });
+      g.appendChild(el("title", {}, nm + "：單獨 " + v[0] + "、+Ctrl " + v[1] + "、+SMW " + v[2]));
+      g.appendChild(el("text", { "class": "name", x: m.l - 8, y: y + 4, "text-anchor": "end" }, nm));
+      var lo = Math.min(v[0], v[1], v[2]), hi = Math.max(v[0], v[1], v[2]);
+      g.appendChild(el("line", { "class": "span", x1: x(lo), x2: x(hi), y1: y, y2: y }));
+      [["dot-alone", v[0]], ["dot-ctrl", v[1]], ["dot-smw", v[2]]].forEach(function (d) {
+        g.appendChild(el("circle", { "class": d[0], cx: x(d[1]), cy: y, r: 5.5 }));
+      });
+      var delta = v[2] - v[1];
+      var txt = (delta >= 0 ? "+" : "") + delta.toFixed(1);
+      if (S.fb) { var f = S.fb[i]; txt += "　" + f[0] + "/" + f[1] + "　" + f[2] + "/" + f[3]; }
+      g.appendChild(el("text", { "class": "val", x: m.l + pw + 8, y: y + 4 }, txt));
+      svg.appendChild(g);
+    });
+  }
+  sel.addEventListener("change", draw);
+  draw();
+})();
+</script>
+<script>
+// StateMemWrapper animation (section s-wanim): Appendix D.4 solved with the fused trace + resolve prompt of Appendix F.1.
+(function () {
+  "use strict";
+  var root = document.getElementById("anim-wrapper");
+  if (!root || !window.StudyAnim) return;
+  var steps = [
+    { title: "1. 問題進來，後端照常檢索", run: function (s) {
+        s.chunks = true; },
+      text: "問題：「這季的獎金，我會像上次一樣存滿 Roth 對吧？」後端用自己原本的管線檢索 top-k 片段（示意）。和問題最像的，正好是第 10.1／10.4 輪那段大聲的 Roth 承諾。只看片段，最順的答案就是漂移答案。包裝器拿到的是：完整對話＋這些片段＋問題，並取代後端本來的那一次回答呼叫。" },
+    { title: "2. Section 1 trace：先找常設規則", run: function (s) {
+        s.trace.push(["[turn 3.1] user：定下規則 <1900 支票／1900–4000 旅遊金／4000–6200 車貸／>6200 Roth", "rule"]); },
+      text: "提示詞要求依時間列出每個建立、更新或取代相關實體的輪次，並<b>包含管轄這個決定的常設規則</b>。" },
+    { title: "3. trace：值鏈", run: function (s) {
+        s.trace.push(["[turn 7.1] user：獎金 $4,883 → 車貸（個例）", ""]);
+        s.trace.push(["[turn 10.1] user：獎金 $7,017 → 存滿 Roth（個例，強調）", ""]);
+        s.trace.push(["[turn 15.3] user：獎金 $1,517（只提一次）", "latest"]); },
+      text: "再列出規則每個輸入的<b>最新陳述值</b>，「就算只在順帶時提過一次」也要掃到（提示詞原文：even if mentioned only once or in passing）。第 15.3 輪的 $1,517 正是那種安靜的一句。" },
+    { title: "4. trace 結尾：目前運作中的值", run: function (s) {
+        s.trace.push(["目前有效：規則 3.1（未撤回）；bonus = $1,517", "now"]); },
+      text: "trace 以「每個相關實體目前的運作值」結束，而且必須在作答前寫完，不能先答再找理由。整段不超過 250 字。<b>先猜：</b>接下來四條規則裡，哪一條直接擋下「存滿 Roth」？" },
+    { title: "5. Section 2：依序套用四條規則", run: function (s) {
+        s.rules = [
+          ["(1) 較晚的取代較早的", "bonus = $1,517（15.3 晚於 10.1）"],
+          ["(2) 常設規則高於過去個例", "10.1 的 Roth 是個例，不照抄；把規則套到目前輸入"],
+          ["(3) 衍生值重算", "去處 = 規則(1517) → 1517 < 1900 → 支票帳戶"],
+          ["(4) 只有被取代或到期才退場", "規則 3.1 沒被撤回，仍然有效"]
+        ]; s.hiRule = 1; },
+      text: "擋下漂移的是規則 (2)：第 10.1 輪的「存滿 Roth」只是規則的一次個例，不能套到新的獎金上。規則 (3) 把「去處」當成衍生值重新計算，規則 (4) 確認規則本身還在。" },
+    { title: "6. ANSWER", run: function (s) {
+        s.answer = true; s.hiRule = -1; },
+      text: "最後一行 <code>ANSWER:</code> 被解析成預測，與附錄 D.4 的 gold「留在支票帳戶」一致。整個過程只有<b>一次</b> LLM 呼叫，就是後端本來就要做的那一次。" },
+    { title: "7. 對照組：同樣長度，沒有結構", run: function (s) {
+        s.ctrl = true; },
+      text: "wrapper-ctrl 用同樣的格式與 250 字預算，但 Section 1 只「摘要相關資訊」：沒有輪次、沒有值鏈、沒有運作值，Section 2 沒有規則。摘要很容易寫出「使用者打算存滿 Roth」這句（示意）。兩者相差約 155 個輸入 tokens 和 180 個輸出 tokens，Table 6 中兩者的差就是結構的價值。" }
+  ];
+  StudyAnim(root, {
+    width: 720, height: 460, interval: 4400,
+    init: function () { return { chunks: false, trace: [], rules: null, hiRule: -1, answer: false, ctrl: false }; },
+    steps: steps,
+    draw: function (sc, s) {
+      sc.put("bg", "g", {}); sc.put("fg", "g", {});
+      sc.put("q", "rect", { x: 16, y: 10, width: 688, height: 30, rx: 15, "class": "a-card hi" }, null, "bg");
+      sc.put("qt", "text", { x: 30, y: 30 }, "Q（第 18 個 session 後）：這季的獎金，我會像上次一樣存滿 Roth 對吧？", "bg");
+      if (s.chunks && !s.trace.length) {
+        sc.put("ck", "rect", { x: 16, y: 52, width: 688, height: 120, rx: 6, "class": "a-zone" }, null, "bg");
+        sc.put("ckt", "text", { x: 28, y: 72, "class": "a-head" }, "後端檢索到的片段（示意）", "bg");
+        sc.put("ck1", "text", { x: 28, y: 98, "class": "a-mono", enter: true }, "[10.1] …$7,017. I'm maxing the Roth, that's the plan…", "fg");
+        sc.put("ck2", "text", { x: 28, y: 120, "class": "a-mono", enter: true }, "[10.4] …I'll treat the Roth as fully funded…", "fg");
+        sc.put("ck3", "text", { x: 28, y: 152, "class": "a-bad", enter: true }, "只看片段 → 「對，存滿 Roth」＝漂移答案", "fg");
+      }
+      if (s.trace.length) {
+        var left = s.ctrl ? 16 : 16, wL = s.ctrl ? 432 : 688;
+        sc.put("zt", "rect", { x: left, y: 52, width: wL, height: 186, rx: 6, "class": "a-zone" }, null, "bg");
+        sc.put("ztt", "text", { x: left + 12, y: 72, "class": "a-head a-acc" }, "Section 1 — 狀態軌跡（≤ 250 字，先寫完）", "bg");
+        s.trace.forEach(function (t, k) {
+          var cls = t[1] === "latest" ? "a-ok" : t[1] === "now" ? "a-head" : "";
+          var txt = s.ctrl && t[0].length > 34 ? t[0].slice(0, 34) + "…" : t[0];
+          sc.put("tr" + k, "text", { x: left + 12, y: 98 + k * 26, "class": cls, enter: true }, txt, "fg");
+        });
+      }
+      if (s.ctrl) {
+        sc.put("zc", "rect", { x: 460, y: 52, width: 244, height: 186, rx: 6, "class": "a-zone" }, null, "bg");
+        sc.put("zct", "text", { x: 472, y: 72, "class": "a-head" }, "wrapper-ctrl：Section 1", "bg");
+        sc.put("zc1", "text", { x: 472, y: 98, "class": "a-small" }, "「摘要和問題相關的資訊」", "fg");
+        sc.put("zc2", "text", { x: 472, y: 124 }, "使用者有獎金分配規則，", "fg");
+        sc.put("zc3", "text", { x: 472, y: 146 }, "上次決定存滿 Roth，", "fg");
+        sc.put("zc4", "text", { x: 472, y: 168 }, "最近一筆獎金 $1,517。", "fg");
+        sc.put("zc5", "text", { x: 472, y: 196, "class": "a-small" }, "無輪次、無值鏈、無規則（示意）", "fg");
+        sc.put("zc6", "text", { x: 472, y: 222, "class": "a-bad" }, "Section 2 沒有優先規則可用", "fg");
+      }
+      if (s.rules) {
+        sc.put("zr", "rect", { x: 16, y: 250, width: 688, height: 200, rx: 6, "class": "a-zone" }, null, "bg");
+        sc.put("zrt", "text", { x: 28, y: 270, "class": "a-head a-acc" }, "Section 2 — 解決並作答", "bg");
+        s.rules.forEach(function (r, k) {
+          var y = 280 + k * 34;
+          sc.put("rr" + k, "rect", { x: 28, y: y, width: 664, height: 28, rx: 4, "class": "a-card" + (s.hiRule === k ? " hi" : ""), enter: true }, null, "fg");
+          sc.put("rn" + k, "text", { x: 38, y: y + 19, "class": "a-head" }, r[0], "fg");
+          sc.put("rv" + k, "text", { x: 250, y: y + 19 }, r[1], "fg");
+        });
+        if (s.answer) sc.put("ans", "text", { x: 28, y: 438, "class": "a-ok", enter: true }, "ANSWER: 不會。這次 $1,517 低於 1900，依規則留在支票帳戶。", "fg");
+      }
+    }
+  });
+})();
+</script>
+</body>
+</html>

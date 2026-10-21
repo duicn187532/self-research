@@ -48,9 +48,12 @@ Never fill in an equation, number or hyperparameter that no source gave; write `
    caption when the animation shows an idealised path rather than measured behaviour. Put it in its
    own `.sec` (e.g. `id="s-anim"`) so it counts toward progress. Examples: FadeMem (full Eq.14 loop),
    Zep (graph build + retrieval), STALE (two systems side by side), 2606.30306 (lifecycle, AOEP).
-7. Check numbers mechanically: extract every number from the page and confirm it appears in the
+7. Add retrieval practice: a `.predict` box in 閱讀路線 with 2–3 questions the reader guesses before
+   reading (answered in later `.check` items), and 「先猜」 prompts in animation captions one step
+   before the answer is shown. Example: `papers/2608.19652/index.html`.
+8. Check numbers mechanically: extract every number from the page and confirm it appears in the
    PDF text or is a derived value whose working is shown on the page.
-8. In the critique section, write real questions about fairness of baselines, hyperparameters,
+9. In the critique section, write real questions about fairness of baselines, hyperparameters,
    cost, and generalisation; not praise.
 
 ## 3. Register and check

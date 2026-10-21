@@ -327,3 +327,8 @@ table.results tbody td:first-child { white-space: nowrap; }
 .anim-stage svg .a-node.hi { fill: var(--mark); }
 .anim-stage svg .a-mark { fill: var(--mark); }
 @media (prefers-reduced-motion: reduce) { .anim-stage svg * { transition: none !important; } }
+
+/* "guess before reading" prompt box */
+.predict { border: 1px dashed var(--accent); border-radius: var(--radius); padding: 0.75rem 1rem; display: grid; gap: 0.4rem; }
+.predict b.ptitle { color: var(--accent); }
+.predict p, .predict ol { margin: 0; }
