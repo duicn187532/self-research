@@ -541,189 +541,303 @@ table.results tbody td:first-child { white-space: nowrap; }
 @media (max-width: 600px) { .appear-btn .t { display: none; } .appear-btn { padding: 0 0.55rem; } }
 
 /* =====================================================================
-   Experimental skin: "楓葉冒險" (a bright side-scrolling RPG look).
-   Sky ground, framed quest windows with title bars, orange game buttons,
-   an EXP bar for progress. Running text always sits on a solid window body.
+   Experimental skin: "楓葉冒險", modelled on the pre-Big Bang client UI
+   (reference: in-game captures of the v83-era HUD; layout of the NPC
+   dialog from UIWindow.img/UtilDlgEx as drawn by HeavenClient's UINpcTalk).
+   - charcoal status bar with LV box and a yellow-green EXP gauge
+   - windows like the minimap: steel-blue frame, white title strip, white body
+   - self-checks as NPC dialogs: portrait + name bar on the left, text right,
+     buttons along the bottom edge
+   - "guess first" as a quick-slot panel, quoted claims as chat balloons
+   - blue glossy buttons (MENU), red for the one "finish" action (CASH SHOP)
+   Running text always sits on a solid white (or dark) window body.
    ===================================================================== */
 :root[data-skin="maple"] {
-  --paper: #cde6f5; --sky-top: #8fcdf0; --surface: #fffdf7; --parch: #fff4d9; --parch-edge: #c99a52;
-  --ink: #262b40; --muted: #565d78; --rule: #c5cde2;
-  --accent: #9a4508; --accent-soft: #ffe8c8; --mark: #f2cf3d; --mark-soft: #fff4d9; --mark-ink: #262b40;
-  --warn: #b23a12; --warn-soft: #fde3d6; --ok: #2c7330; --ok-soft: #dff0d8; --mine: #7238a8; --mine-soft: #efe3fa; --sml: #c4501a;
-  --frame: #34426c; --frame-hi: #7f93cf; --title-a: #4f63a3; --title-b: #3a4878;
-  --btn-a: #ffd57e; --btn-b: #f59a2a; --btn-edge: #a2560d; --btn-ink: #3d1f04;
-  --go-a: #d8f5a8; --go-b: #8fcb46; --go-edge: #3f6d12; --go-ink: #1f3a05;
-  --exp-a: #f9e05a; --exp-b: #9fd247; --exp-track: #2b3256;
-  --bar: #34426c; --bar-edge: #1d2747; --bar-ink: #ffffff; --bar-btn: #4b5b92; --bar-btn-ink: #e8ecff;
-  --chunk: rgba(20, 28, 60, 0.25);
-  --shadow: 0 4px 0 var(--chunk);
-  --font-display: "Huninn", "Noto Sans TC", "PingFang TC", sans-serif;
-  --font-hand: "Huninn", "Noto Sans TC", "PingFang TC", sans-serif;
+  --paper: #e3ecf1; --sky-top: #b9d8ea; --surface: #ffffff;
+  --ink: #1f262b; --muted: #4f5a62; --rule: #c9d3d9;
+  --accent: #1a609b; --accent-soft: #dcebf5; --mark: #f0d94e; --mark-soft: #fbf3c4; --mark-ink: #1f262b;
+  --warn: #a8361a; --warn-soft: #fbe3da; --ok: #2f6f2a; --ok-soft: #e1f0d8; --mine: #6a3fa0; --mine-soft: #eee5f8; --sml: #b1501f;
+  --win: #99bcca; --win-edge: #7d929d; --win-ink: #14232b; --strip: #ffffff; --strip-ink: #4a5560;
+  --bar-a: #6b7378; --bar-b: #41484d; --bar-c: #31373b; --bar-line: #9aa3a8; --bar-ink: #ffffff; --bar-sub: #c9d0d4;
+  --lv-box: #242221; --lv-num: #f5d33a;
+  --blue-a: #2577b7; --blue-b: #1a5f9c; --blue-edge: #123f69;
+  --red-a: #e0283a; --red-b: #b0001b; --red-edge: #6e0011;
+  --gold-a: #ffe39a; --gold-b: #f2b13b; --gold-edge: #a8711a; --gold-ink: #3d2604;
+  --exp-a: #e2f25c; --exp-b: #9cc11a; --exp-track: #1c2024;
+  --balloon: #ffffff; --balloon-edge: #9fb0b8;
+  --dlg: #ffffff; --dlg-edge: #8fa3ad; --dlg-ink: #33393e; --portrait: #e3f0f7;
+  --tag-bg: rgba(18, 22, 26, 0.82); --tab: #2f5573;
+  --slot-frame: #59626a; --slot-frame-edge: #2e3438; --slot: #ffffff; --slot-key: #67727a; --slot-title: #eef2f4;
+  --chunk: rgba(30, 45, 55, 0.22);
+  --shadow: 0 4px 10px -4px var(--chunk);
+  --font-display: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+  --font-hand: var(--font-display);
   --font-pixel: "Silkscreen", "JetBrains Mono", ui-monospace, monospace;
+  --npc: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M12 47c0-10 5-14 12-14s12 4 12 14z' fill='%233d82c4' stroke='%231d3f66' stroke-width='1.5'/%3E%3Cpath d='M21 33l3 5 3-5' fill='%23fff' stroke='%231d3f66' stroke-width='1.2'/%3E%3Ccircle cx='24' cy='20' r='12.5' fill='%23ffe3c8' stroke='%235a3a22' stroke-width='1.5'/%3E%3Cpath d='M11.5 20c0-8 5.5-13 12.5-13s12.5 5 12.5 13c-3-4-7-6.5-12.5-6.5S14.5 16 11.5 20z' fill='%237a4a24' stroke='%235a3a22' stroke-width='1.5' stroke-linejoin='round'/%3E%3Cellipse cx='19.6' cy='21.5' rx='1.7' ry='2.5' fill='%232a1a10'/%3E%3Cellipse cx='28.4' cy='21.5' rx='1.7' ry='2.5' fill='%232a1a10'/%3E%3Ccircle cx='16.5' cy='25' r='1.6' fill='%23f7a9a0' opacity='.7'/%3E%3Ccircle cx='31.5' cy='25' r='1.6' fill='%23f7a9a0' opacity='.7'/%3E%3Cpath d='M22 26.5q2 1.6 4 0' stroke='%235a3a22' stroke-width='1.3' fill='none' stroke-linecap='round'/%3E%3Cpath d='M30 5l2.2 2.6 3.2-.9-1 3.1 2.6 2.1-3.3.4-.6 3.3-2-2.7-3.2.8 1.1-3.1-2.5-2.2 3.3-.3z' fill='%23e8692c' stroke='%238a3510' stroke-width='.8' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 @media (prefers-color-scheme: dark) {
   :root[data-skin="maple"]:not([data-theme="light"]) {
-    --paper: #12182f; --sky-top: #0b1024; --surface: #1d2443; --parch: #2b2a3d; --parch-edge: #8b6d35;
-    --ink: #e7eaf6; --muted: #a7aecb; --rule: #36406b;
-    --accent: #ffaf5f; --accent-soft: #3b2c1e; --mark: #8a6d17; --mark-soft: #2b2a3d; --mark-ink: #fff3c4;
-    --warn: #ff9d7a; --warn-soft: #3d2420; --ok: #86d28c; --ok-soft: #1f3326; --mine: #cfa8f5; --mine-soft: #2e2546; --sml: #ff9a62;
-    --frame: #c9a24a; --frame-hi: #6f5a2a; --title-a: #34418a; --title-b: #1f2856;
-    --exp-track: #0b1024; --bar: #1f2856; --bar-edge: #0b1024; --bar-ink: #f2f4fb; --bar-btn: #2a3570; --bar-btn-ink: #dfe5ff;
-    --chunk: rgba(0, 0, 0, 0.45);
+    --paper: #121a20; --sky-top: #0b1218; --surface: #1c252c;
+    --ink: #dfe6ea; --muted: #9fadb6; --rule: #33414b;
+    --accent: #7cc0ee; --accent-soft: #1d3242; --mark: #8a7414; --mark-soft: #2b2a1e; --mark-ink: #fff3c4;
+    --warn: #ff9d7a; --warn-soft: #3d2420; --ok: #8fd18a; --ok-soft: #1f3326; --mine: #cfa8f5; --mine-soft: #2e2546; --sml: #ff9a62;
+    --win: #2e4553; --win-edge: #4d6878; --win-ink: #e6f0f5; --strip: #23313a; --strip-ink: #b9c7cf;
+    --balloon: #222c33; --balloon-edge: #4d6070;
+    --dlg: #1f282f; --dlg-edge: #4d6878; --dlg-ink: #dde5ea; --portrait: #2a3a45;
+    --tab: #3c6a8e;
+    --slot-frame: #3a434a; --slot-frame-edge: #171b1e; --slot: #242d34; --slot-key: #8995a0; --slot-title: #dfe6ea;
+    --chunk: rgba(0, 0, 0, 0.5);
     color-scheme: dark;
   }
 }
 :root[data-skin="maple"][data-theme="dark"] {
-  --paper: #12182f; --sky-top: #0b1024; --surface: #1d2443; --parch: #2b2a3d; --parch-edge: #8b6d35;
-  --ink: #e7eaf6; --muted: #a7aecb; --rule: #36406b;
-  --accent: #ffaf5f; --accent-soft: #3b2c1e; --mark: #8a6d17; --mark-soft: #2b2a3d; --mark-ink: #fff3c4;
-  --warn: #ff9d7a; --warn-soft: #3d2420; --ok: #86d28c; --ok-soft: #1f3326; --mine: #cfa8f5; --mine-soft: #2e2546; --sml: #ff9a62;
-  --frame: #c9a24a; --frame-hi: #6f5a2a; --title-a: #34418a; --title-b: #1f2856;
-  --exp-track: #0b1024; --bar: #1f2856; --bar-edge: #0b1024; --bar-ink: #f2f4fb; --bar-btn: #2a3570; --bar-btn-ink: #dfe5ff;
-  --chunk: rgba(0, 0, 0, 0.45);
+  --paper: #121a20; --sky-top: #0b1218; --surface: #1c252c;
+  --ink: #dfe6ea; --muted: #9fadb6; --rule: #33414b;
+  --accent: #7cc0ee; --accent-soft: #1d3242; --mark: #8a7414; --mark-soft: #2b2a1e; --mark-ink: #fff3c4;
+  --warn: #ff9d7a; --warn-soft: #3d2420; --ok: #8fd18a; --ok-soft: #1f3326; --mine: #cfa8f5; --mine-soft: #2e2546; --sml: #ff9a62;
+  --win: #2e4553; --win-edge: #4d6878; --win-ink: #e6f0f5; --strip: #23313a; --strip-ink: #b9c7cf;
+  --balloon: #222c33; --balloon-edge: #4d6070;
+  --dlg: #1f282f; --dlg-edge: #4d6878; --dlg-ink: #dde5ea; --portrait: #2a3a45;
+  --tab: #3c6a8e;
+  --slot-frame: #3a434a; --slot-frame-edge: #171b1e; --slot: #242d34; --slot-key: #8995a0; --slot-title: #dfe6ea;
+  --chunk: rgba(0, 0, 0, 0.5);
   color-scheme: dark;
 }
-:root[data-skin="maple"] body { background: linear-gradient(var(--sky-top), var(--paper) 26rem) no-repeat, var(--paper); }
-:root[data-skin="maple"] body::before { background: var(--bar); }
-
-/* top bar: the game's status bar */
-:root[data-skin="maple"] .toolbar { background: var(--bar); border-bottom: 3px solid var(--bar-edge); color: var(--bar-ink); }
-:root[data-skin="maple"] .toolbar .home { color: var(--bar-ink); font-family: var(--font-display); }
-:root[data-skin="maple"] .toolbar .home::before {
-  border-radius: 50%; background: linear-gradient(var(--btn-a), var(--btn-b)); color: var(--btn-ink); border: 2px solid var(--btn-edge);
-}
-:root[data-skin="maple"] .toolbar .crumb, :root[data-skin="maple"] .levels-label { color: color-mix(in srgb, var(--bar-ink) 78%, transparent); }
-:root[data-skin="maple"] .seg { background: var(--bar-edge); border: 2px solid var(--bar-edge); border-radius: 10px; }
-:root[data-skin="maple"] .seg button { color: var(--bar-btn-ink); border-radius: 7px; font-weight: 700; }
-:root[data-skin="maple"] .seg button:hover { color: #ffffff; }
-:root[data-skin="maple"] .seg button[aria-pressed="true"] {
-  background: linear-gradient(var(--btn-a), var(--btn-b)); color: var(--btn-ink); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
-}
-:root[data-skin="maple"] .appear-btn { background: var(--bar-btn); color: var(--bar-btn-ink); border: 2px solid var(--bar-edge); border-radius: 10px; font-weight: 700; }
-:root[data-skin="maple"] .appear-panel { border: 3px solid var(--frame); border-radius: 12px; box-shadow: inset 0 0 0 2px var(--frame-hi), 0 4px 0 var(--chunk); }
-:root[data-skin="maple"] .appear-panel .seg { background: var(--bar); border-color: var(--bar-edge); }
-
-/* windows: framed panels with a title bar */
-:root[data-skin="maple"] .paper-head,
-:root[data-skin="maple"] .sec {
-  background: var(--surface); border: 3px solid var(--frame); border-radius: 14px;
-  box-shadow: inset 0 0 0 2px var(--frame-hi), 0 5px 0 var(--chunk);
-}
-:root[data-skin="maple"] .paper-head { padding: 1.2rem 1.4rem 1.4rem; }
-:root[data-skin="maple"] .sec { padding: 0 1.4rem 1.4rem; }
-:root[data-skin="maple"] .sec-head {
-  margin: 0 -1.4rem; padding: 0.65rem 1.4rem; border-top: 0; border-radius: 10px 10px 0 0;
-  background: linear-gradient(var(--title-a), var(--title-b)); display: flex; align-items: center; gap: 0.75rem;
-  position: static; grid-template-columns: none;
-}
-:root[data-skin="maple"] .sec-head h2 { color: #ffffff; font-size: 1.375rem; text-shadow: 0 2px 0 rgba(0, 0, 0, 0.35); font-weight: 400; }
-:root[data-skin="maple"] .sec-num {
-  position: static; min-width: 0; flex: none; font-family: var(--font-pixel); font-size: 0.75rem; line-height: 1.5;
-  color: var(--btn-ink); background: linear-gradient(var(--btn-a), var(--btn-b)); border: 2px solid var(--btn-edge);
-  border-radius: 6px; padding: 0.05rem 0.45rem; text-align: center; font-weight: 700;
-}
-:root[data-skin="maple"] h1, :root[data-skin="maple"] h2, :root[data-skin="maple"] h3 { font-weight: 400; }
+:root[data-skin="maple"] body { background: linear-gradient(var(--sky-top), var(--paper) 22rem) no-repeat, var(--paper); padding-bottom: calc(3.25rem + env(safe-area-inset-bottom, 0px)); }
+:root[data-skin="maple"] body::before { background: var(--bar-c); }
+:root[data-skin="maple"] h1, :root[data-skin="maple"] h2, :root[data-skin="maple"] h3 { font-weight: 700; }
 :root[data-skin="maple"] .eyebrow .mono { color: var(--accent); }
 
-/* quest list + EXP bar */
-:root[data-skin="maple"] .rail details {
-  background: var(--surface); border: 3px solid var(--frame); border-radius: 12px; overflow: hidden; padding: 0 0 0.6rem;
-  box-shadow: inset 0 0 0 2px var(--frame-hi), 0 4px 0 var(--chunk);
+/* shared bits: glossy buttons */
+:root[data-skin="maple"] .btn,
+:root[data-skin="maple"] .appear-btn,
+:root[data-skin="maple"] .seg button {
+  color: #ffffff; font-weight: 700; text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35);
+  background: linear-gradient(var(--blue-a), var(--blue-b)); border: 1px solid var(--blue-edge); border-radius: 5px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 2px 0 var(--blue-edge);
 }
-:root[data-skin="maple"] .rail summary {
-  background: linear-gradient(var(--title-a), var(--title-b)); color: #ffffff; padding: 0.45rem 0.9rem; letter-spacing: 0.06em; font-size: 0.8125rem;
+:root[data-skin="maple"] .btn:hover, :root[data-skin="maple"] .appear-btn:hover, :root[data-skin="maple"] .seg button:hover {
+  color: #ffffff; filter: brightness(1.08); background: linear-gradient(var(--blue-a), var(--blue-b));
 }
-:root[data-skin="maple"] .rail summary::after { color: #ffe8a8; }
-:root[data-skin="maple"] .rail .progress-text { color: #ffffff; font-family: var(--font-pixel); }
-:root[data-skin="maple"] .rail .progress-text::before { content: "EXP "; color: var(--exp-a); }
+:root[data-skin="maple"] .btn:active, :root[data-skin="maple"] .seg button:active { transform: translateY(1px); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 1px 0 var(--blue-edge); }
+
+/* top bar: the same charcoal as the in-game status bar */
+:root[data-skin="maple"] .toolbar {
+  background: linear-gradient(var(--bar-a), var(--bar-b) 60%, var(--bar-c)); border-bottom: 1px solid #1a1e21;
+  box-shadow: inset 0 1px 0 var(--bar-line); color: var(--bar-ink);
+}
+:root[data-skin="maple"] .toolbar .home { color: var(--bar-ink); }
+:root[data-skin="maple"] .toolbar .home::before { background: var(--lv-box); color: var(--lv-num); border: 1px solid #000000; border-radius: 3px; }
+:root[data-skin="maple"] .toolbar .crumb, :root[data-skin="maple"] .levels-label { color: var(--bar-sub); }
+:root[data-skin="maple"] .seg { background: transparent; border: 0; padding: 0; gap: 3px; }
+:root[data-skin="maple"] .seg button[aria-pressed="true"] {
+  background: #ffffff; color: var(--blue-b); text-shadow: none; border-color: var(--blue-edge);
+  box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.12);
+}
+:root[data-skin="maple"] .appear-btn { padding: 0 0.6rem; }
+:root[data-skin="maple"] .appear-panel {
+  background: var(--surface); border: 5px solid var(--win); border-radius: 6px;
+  box-shadow: 0 0 0 1px var(--win-edge), inset 0 0 0 1px var(--win-edge), 0 6px 14px -4px var(--chunk);
+}
+:root[data-skin="maple"] .appear-panel .row > span { color: var(--muted); }
+
+/* bottom status bar (built by site.js; only shown in this skin) */
+.hud { display: none; }
+:root[data-skin="maple"] .hud {
+  display: flex; align-items: center; gap: 0.75rem; position: fixed; left: 0; right: 0; bottom: 0; z-index: 6;
+  padding: 0.35rem max(16px, env(safe-area-inset-right, 0px)) calc(0.35rem + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+  background: linear-gradient(var(--bar-a), var(--bar-b) 55%, var(--bar-c)); border-top: 1px solid #1a1e21; box-shadow: inset 0 1px 0 var(--bar-line);
+  color: var(--bar-ink); font-size: 0.75rem; line-height: 1.3;
+}
+:root[data-skin="maple"] .hud-lv {
+  display: inline-flex; align-items: baseline; gap: 0.4rem; background: var(--lv-box); border: 1px solid #000000; border-radius: 3px;
+  padding: 0.3rem 0.6rem; font-weight: 700; flex: none;
+}
+:root[data-skin="maple"] .hud-lv b { font-size: 0.875rem; letter-spacing: 0.02em; }
+:root[data-skin="maple"] .hud-lv i { font-style: normal; color: var(--lv-num); font-size: 1rem; font-variant-numeric: tabular-nums; min-width: 1.4em; }
+:root[data-skin="maple"] .hud-name { display: grid; color: var(--bar-sub); min-width: 0; max-width: 14rem; flex: 0 1 auto; }
+:root[data-skin="maple"] .hud-name span { color: var(--bar-ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+:root[data-skin="maple"] .hud-exp { flex: 1 1 auto; display: grid; gap: 0.15rem; min-width: 0; max-width: 38rem; }
+:root[data-skin="maple"] .hud-exp > span:first-child { display: flex; gap: 0.5rem; align-items: baseline; }
+:root[data-skin="maple"] .hud-exp b { font-weight: 700; font-style: italic; }
+:root[data-skin="maple"] .hud-exp small { font-family: var(--font-mono); font-size: 0.6875rem; color: var(--bar-sub); font-variant-numeric: tabular-nums; }
+:root[data-skin="maple"] .hud-gauge { height: 0.6rem; background: var(--exp-track); border: 1px solid #0d0f11; border-radius: 2px; overflow: hidden; }
+:root[data-skin="maple"] .hud-gauge i { display: block; height: 100%; width: 0; background: linear-gradient(var(--exp-a), var(--exp-b)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55); transition: width 0.3s; }
+
+/* windows: the minimap frame (steel-blue border, white title strip, white body) */
+:root[data-skin="maple"] .paper-head,
+:root[data-skin="maple"] .sec,
+:root[data-skin="maple"] .rail details,
+:root[data-skin="maple"] .shelf-head,
+:root[data-skin="maple"] .shelf-aside > div {
+  background: var(--surface); border: 6px solid var(--win); border-radius: 7px;
+  box-shadow: 0 0 0 1px var(--win-edge), inset 0 0 0 1px var(--win-edge), var(--shadow);
+}
+:root[data-skin="maple"] .paper-head { padding: 1.1rem 1.3rem 1.3rem; }
+:root[data-skin="maple"] .sec { padding: 0 1.3rem 1.3rem; }
+:root[data-skin="maple"] .sec-head {
+  position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.35rem;
+  margin: 0 -1.3rem; padding: 0 1.3rem 0.6rem; border-top: 0; background: var(--win);
+}
+:root[data-skin="maple"] .sec-num {
+  position: static; min-width: 0; justify-self: stretch; text-align: left;
+  background: var(--strip); color: var(--strip-ink); border: 1px solid var(--win-edge); border-radius: 3px;
+  font-family: var(--font-pixel); font-size: 0.6875rem; line-height: 1.6; letter-spacing: 0.04em; padding: 0 0.4rem; margin-right: 4.2rem;
+}
+:root[data-skin="maple"] .sec-num::before { content: "QUEST "; }
+/* the two little title-strip buttons, as on the minimap */
+:root[data-skin="maple"] .sec-head::after {
+  content: ""; position: absolute; right: 1.3rem; top: 1px; width: 3.8rem; height: 1rem; border-radius: 3px;
+  background:
+    linear-gradient(var(--blue-a), var(--blue-b)) 0 0 / 1rem 100% no-repeat,
+    linear-gradient(var(--gold-a), var(--gold-b)) 100% 0 / 2.5rem 100% no-repeat;
+}
+:root[data-skin="maple"] .sec-head h2 { color: var(--win-ink); font-size: 1.3125rem; }
+
+/* chapter list: a small window with the EXP gauge under its title */
+:root[data-skin="maple"] .rail { max-height: calc(100vh - 9.5rem); }
+:root[data-skin="maple"] .rail details { overflow: hidden; padding: 0 0 0.5rem; }
+:root[data-skin="maple"] .rail summary { background: var(--win); color: var(--win-ink); padding: 0 0.6rem 0.4rem; font-weight: 700; }
+:root[data-skin="maple"] .rail summary::after { color: var(--gold-ink); background: linear-gradient(var(--gold-a), var(--gold-b)); border: 1px solid var(--gold-edge); border-radius: 3px; padding: 0 0.4rem; font-size: 0.75rem; font-weight: 700; }
+:root[data-skin="maple"] .rail .progress-text { color: var(--win-ink); }
+:root[data-skin="maple"] .rail .progress-text::before { content: "EXP "; font-family: var(--font-pixel); }
 :root[data-skin="maple"] .progress,
-:root[data-skin="maple"] .meter {
-  height: 0.8rem; border-radius: 0.4rem; border: 2px solid var(--bar-edge); background: var(--exp-track);
-}
-:root[data-skin="maple"] .progress { margin: 0.6rem 0.9rem 0; }
+:root[data-skin="maple"] .meter { height: 0.55rem; border-radius: 2px; border: 1px solid #0d0f11; background: var(--exp-track); }
+:root[data-skin="maple"] .progress { margin: 0; border-width: 0 0 1px; border-radius: 0; }
 :root[data-skin="maple"] .progress > span,
-:root[data-skin="maple"] .meter > i { background: linear-gradient(var(--exp-a), var(--exp-b)); box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.5); }
-:root[data-skin="maple"] .rail ol { border-left: 0; margin: 0.5rem 0.5rem 0; gap: 1px; }
-:root[data-skin="maple"] .rail li a { border-left: 0; border-radius: 6px; margin-left: 0; padding-left: 0.6rem; }
+:root[data-skin="maple"] .meter > i { background: linear-gradient(var(--exp-a), var(--exp-b)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55); }
+:root[data-skin="maple"] .rail ol { border-left: 0; margin: 0.4rem 0.4rem 0; gap: 1px; }
+:root[data-skin="maple"] .rail li a { border-left: 0; border-radius: 3px; margin-left: 0; padding-left: 0.55rem; }
 :root[data-skin="maple"] .rail li a:hover { background: var(--accent-soft); }
 :root[data-skin="maple"] .rail li a.active { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
-@media (max-width: 960px) { :root[data-skin="maple"] .rail details { padding: 0; } :root[data-skin="maple"] .rail details[open] { padding-bottom: 0.6rem; } }
+@media (max-width: 960px) {
+  :root[data-skin="maple"] .rail details { padding: 0; }
+  :root[data-skin="maple"] .rail details[open] { padding-bottom: 0.5rem; }
+  :root[data-skin="maple"] .rail summary { padding: 0.25rem 0.6rem; }
+}
 
-/* item tooltip, quest scroll, NPC dialog */
-:root[data-skin="maple"] .claim { background: var(--parch); border: 2px solid var(--parch-edge); border-radius: 10px; }
+/* quoted claims: a chat balloon */
+:root[data-skin="maple"] .claim,
+:root[data-skin="maple"] .paper-head > .claim {
+  position: relative; background: var(--balloon); border: 1px solid var(--balloon-edge); border-radius: 10px;
+  box-shadow: 0 2px 0 var(--chunk); margin-bottom: 8px;
+}
+:root[data-skin="maple"] .claim::after {
+  content: ""; position: absolute; left: 1.6rem; bottom: -7px; width: 12px; height: 12px; background: var(--balloon);
+  border-right: 1px solid var(--balloon-edge); border-bottom: 1px solid var(--balloon-edge); transform: rotate(45deg);
+}
+
+/* guess-first: the quick-slot panel, one key per guess */
 :root[data-skin="maple"] .predict {
-  background: var(--parch); border: 2px dashed var(--parch-edge); border-radius: 10px; position: relative; padding-left: 3.3rem;
+  counter-reset: slot; background: var(--slot-frame); border: 1px solid var(--slot-frame-edge); border-radius: 6px;
+  padding: 0.5rem; gap: 4px; font-family: var(--font-body); font-size: 1rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), var(--shadow);
 }
-:root[data-skin="maple"] .predict::before {
-  content: "!"; position: absolute; left: 0.85rem; top: 0.85rem; width: 1.8rem; height: 1.8rem; border-radius: 50%;
-  display: grid; place-items: center; font-family: var(--font-pixel); font-weight: 700; font-size: 1rem; color: #4a3000;
-  background: linear-gradient(#ffe86b, #f5b81b); border: 2px solid #9a6a06;
+:root[data-skin="maple"] .predict b.ptitle { color: var(--slot-title); padding: 0 0.3rem; letter-spacing: 0.08em; }
+:root[data-skin="maple"] .predict b.ptitle::before { content: "QUICK SLOT · "; font-family: var(--font-pixel); font-weight: 400; }
+:root[data-skin="maple"] .predict ol { list-style: none; padding: 0; gap: 4px; }
+:root[data-skin="maple"] .predict > p,
+:root[data-skin="maple"] .predict li { background: var(--slot); color: var(--ink); border-radius: 3px; padding: 0.5rem 0.75rem; box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.08); }
+:root[data-skin="maple"] .predict li { position: relative; padding-left: 2.2rem; counter-increment: slot; }
+:root[data-skin="maple"] .predict li::before {
+  content: counter(slot); position: absolute; left: 0.5rem; top: 0.55rem; min-width: 1.15rem; text-align: center;
+  font-family: var(--font-pixel); font-size: 0.6875rem; line-height: 1.15rem; color: var(--slot-key);
+  border: 1px solid var(--slot-key); border-radius: 2px;
 }
+
+/* self-check: NPC dialogs (portrait and name bar on the left, buttons on the bottom edge) */
+:root[data-skin="maple"] .check { gap: 0.9rem; }
 :root[data-skin="maple"] .check-title {
-  justify-self: start; background: linear-gradient(var(--title-a), var(--title-b)); color: #ffffff; border-radius: 6px; padding: 0 0.6rem; letter-spacing: 0.06em;
+  justify-self: start; background: var(--tag-bg); color: #ffffff; border-radius: 3px; padding: 0 0.55rem; letter-spacing: 0.06em;
 }
-:root[data-skin="maple"] .check details { border: 2px solid var(--frame); border-radius: 12px; box-shadow: 0 3px 0 var(--chunk); }
-:root[data-skin="maple"] .check summary::before { border-radius: 50%; background: linear-gradient(var(--btn-a), var(--btn-b)); color: var(--btn-ink); border: 1px solid var(--btn-edge); }
-:root[data-skin="maple"] .check details[open] summary::before { background: linear-gradient(var(--go-a), var(--go-b)); color: var(--go-ink); border-color: var(--go-edge); }
+:root[data-skin="maple"] .check details {
+  position: relative; background: var(--dlg); color: var(--dlg-ink); border: 1px solid var(--dlg-edge); border-radius: 6px;
+  margin: 4px; padding: 0.85rem 1rem 3.1rem 6.6rem; min-height: 9.2rem;
+  box-shadow: 0 0 0 4px var(--win), 0 0 0 5px var(--win-edge), 0 6px 12px 2px var(--chunk);
+}
+:root[data-skin="maple"] .check details::before {
+  content: ""; position: absolute; left: 0.9rem; top: 0.85rem; width: 4.6rem; height: 4.6rem; border-radius: 4px;
+  background: var(--npc) center 70% / 88% no-repeat, var(--portrait); border: 1px solid var(--dlg-edge);
+}
+:root[data-skin="maple"] .check details::after {
+  content: "精讀導師"; position: absolute; left: 0.6rem; top: 5.85rem; width: 5.2rem; text-align: center;
+  background: var(--tag-bg); color: #ffffff; font-size: 0.75rem; line-height: 1.5; border-radius: 3px;
+}
+:root[data-skin="maple"] .check summary { position: static; padding: 0; font-family: var(--font-body); font-size: 1.0625rem; color: var(--dlg-ink); font-weight: 700; }
+:root[data-skin="maple"] .check summary::before { display: none; }
+:root[data-skin="maple"] .check summary::after {
+  content: "看答案 ▸"; position: absolute; right: 0.8rem; bottom: 0.7rem; font-size: 0.8125rem; line-height: 1.8; padding: 0 0.75rem;
+  color: #ffffff; font-weight: 700; text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35); border-radius: 4px;
+  background: linear-gradient(var(--blue-a), var(--blue-b)); border: 1px solid var(--blue-edge);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 2px 0 var(--blue-edge);
+}
+:root[data-skin="maple"] .check details[open] summary::after { content: "◂ 收起"; background: linear-gradient(#f4f6f7, #cfd6da); color: #2c3338; text-shadow: none; border-color: var(--win-edge); box-shadow: inset 0 1px 0 #ffffff, 0 2px 0 var(--win-edge); }
+:root[data-skin="maple"] .check details[open] summary { color: var(--dlg-ink); }
+:root[data-skin="maple"] .check details > div { padding: 0.6rem 0 0; margin-top: 0.6rem; border-top: 1px dashed var(--dlg-edge); color: var(--dlg-ink); }
 
 /* instruments */
 :root[data-skin="maple"] .figure,
-:root[data-skin="maple"] .anim { border: 3px solid var(--frame); border-radius: 12px; box-shadow: inset 0 0 0 2px var(--frame-hi), 0 4px 0 var(--chunk); }
-:root[data-skin="maple"] .sec .figure, :root[data-skin="maple"] .sec .anim { box-shadow: 0 3px 0 var(--chunk); border-width: 2px; }
+:root[data-skin="maple"] .anim { border: 4px solid var(--win); border-radius: 6px; box-shadow: 0 0 0 1px var(--win-edge), inset 0 0 0 1px var(--win-edge), var(--shadow); }
 :root[data-skin="maple"] .sec .table-wrap { --scroll-bg: var(--surface); }
-:root[data-skin="maple"] .eq { border-block: 2px dotted var(--parch-edge); }
-:root[data-skin="maple"] table { border-top-color: var(--frame); border-bottom-color: var(--frame); border-top-width: 2px; border-bottom-width: 2px; }
-:root[data-skin="maple"] thead th { background: var(--accent-soft); color: var(--ink); border-bottom-color: var(--frame); }
-:root[data-skin="maple"] .anim-stage svg .a-zone { fill: var(--parch); }
-:root[data-skin="maple"] .anim-stage svg .a-card.dead { fill: var(--parch); }
+:root[data-skin="maple"] .eq { border-block: 1px dotted var(--win-edge); }
+:root[data-skin="maple"] table { border-top: 1px solid var(--win-edge); border-bottom: 1px solid var(--win-edge); }
+:root[data-skin="maple"] thead th { background: var(--win); color: var(--win-ink); border-bottom-color: var(--win-edge); }
+:root[data-skin="maple"] .anim-controls .btn:nth-child(4) {
+  background: linear-gradient(var(--gold-a), var(--gold-b)); border-color: var(--gold-edge); color: var(--gold-ink); text-shadow: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 2px 0 var(--gold-edge);
+}
+:root[data-skin="maple"] .anim-controls .btn:disabled { filter: grayscale(0.6); opacity: 0.55; }
+:root[data-skin="maple"] code { background: var(--accent-soft); border-color: var(--rule); }
 
-/* game buttons */
-:root[data-skin="maple"] .btn,
+/* notes: the chat input strip with its little channel tab; finishing is the one red button */
+:root[data-skin="maple"] .desk-foot { border-top: 1px dashed var(--win-edge); }
+:root[data-skin="maple"] .note label { justify-self: start; background: var(--tab); color: #ffffff; border-radius: 3px 3px 0 0; padding: 0 0.6rem; letter-spacing: 0.06em; }
+:root[data-skin="maple"] .note textarea { border: 1px solid var(--win-edge); border-radius: 0 4px 4px 4px; font-family: var(--font-body); font-size: 1rem; }
 :root[data-skin="maple"] .done {
-  border: 2px solid var(--btn-edge); border-radius: 8px; color: var(--btn-ink); font-weight: 700;
-  background: linear-gradient(var(--btn-a), var(--btn-b)); box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.55), 0 3px 0 var(--btn-edge);
+  color: #ffffff; font-weight: 700; text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35); border-radius: 5px;
+  background: linear-gradient(var(--red-a), var(--red-b)); border: 1px solid var(--red-edge);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 2px 0 var(--red-edge);
 }
-:root[data-skin="maple"] .btn:hover { filter: brightness(1.05); background: linear-gradient(var(--btn-a), var(--btn-b)); }
-:root[data-skin="maple"] .btn:active { transform: translateY(2px); box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.55), 0 1px 0 var(--btn-edge); }
-:root[data-skin="maple"] .anim-controls .btn:nth-child(4),
+:root[data-skin="maple"] .done input { accent-color: #ffffff; }
 :root[data-skin="maple"] .done:has(input:checked) {
-  background: linear-gradient(var(--go-a), var(--go-b)); border-color: var(--go-edge); color: var(--go-ink);
-  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.55), 0 3px 0 var(--go-edge);
+  color: #1f2a05; text-shadow: none; background: linear-gradient(var(--exp-a), var(--exp-b)); border-color: #55700a;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 2px 0 #55700a;
 }
-:root[data-skin="maple"] .anim-controls .btn:nth-child(4):disabled { background: linear-gradient(var(--btn-a), var(--btn-b)); border-color: var(--btn-edge); color: var(--btn-ink); }
-:root[data-skin="maple"] .done:has(input:checked)::after { content: "QUEST CLEAR"; font-family: var(--font-pixel); font-size: 0.6875rem; margin-left: 0.25rem; }
-:root[data-skin="maple"] .links a { border: 2px solid var(--frame); border-radius: 8px; color: var(--ink); background: var(--surface); }
-:root[data-skin="maple"] .note textarea { border: 2px solid var(--rule); border-radius: 10px; }
-:root[data-skin="maple"] .desk-foot { border-top: 2px dashed var(--parch-edge); }
-:root[data-skin="maple"] code { background: var(--parch); border-color: var(--parch-edge); }
+:root[data-skin="maple"] .done:has(input:checked)::after { content: "CLEAR"; font-family: var(--font-pixel); font-size: 0.6875rem; margin-left: 0.2rem; }
+:root[data-skin="maple"] .links a { border: 1px solid var(--win-edge); border-radius: 4px; color: var(--accent); background: var(--surface); box-shadow: 0 2px 0 var(--win-edge); }
 
 /* shelf */
 :root[data-skin="maple"] .shelf-head,
-:root[data-skin="maple"] .shelf-aside > div {
-  background: var(--surface); border: 3px solid var(--frame); border-radius: 14px; padding: 1.2rem 1.4rem;
-  box-shadow: inset 0 0 0 2px var(--frame-hi), 0 5px 0 var(--chunk);
-}
+:root[data-skin="maple"] .shelf-aside > div { padding: 1.1rem 1.3rem; }
 :root[data-skin="maple"] .shelf-head { max-width: none; }
 :root[data-skin="maple"] .shelf-group > h2 {
-  border-bottom: 0; background: linear-gradient(var(--title-a), var(--title-b)); color: #ffffff; border-radius: 10px;
-  padding: 0.4rem 0.9rem; border: 3px solid var(--frame); font-weight: 700;
+  background: var(--win); color: var(--win-ink); border: 1px solid var(--win-edge); border-radius: 5px; padding: 0.3rem 0.8rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
-:root[data-skin="maple"] .shelf-group > h2 small { color: #e3e8ff; }
+:root[data-skin="maple"] .shelf-group > h2 small { color: var(--win-ink); }
 :root[data-skin="maple"] .shelf { gap: 0.8rem; padding-top: 0.6rem; }
 :root[data-skin="maple"] .shelf > li + li { border-top: 0; }
 :root[data-skin="maple"] .card {
-  margin-inline: 0; padding: 1rem 1.1rem; background: var(--surface); border: 2px solid var(--frame); border-radius: 12px; box-shadow: 0 4px 0 var(--chunk);
+  margin-inline: 0; padding: 1rem 1.1rem; background: var(--surface); border: 4px solid var(--win); border-radius: 6px;
+  box-shadow: 0 0 0 1px var(--win-edge), inset 0 0 0 1px var(--win-edge), var(--shadow);
 }
-:root[data-skin="maple"] .card:hover { transform: translateY(-2px); box-shadow: 0 6px 0 var(--chunk); background: var(--surface); }
+:root[data-skin="maple"] .card:hover { transform: translateY(-2px); background: var(--surface); }
 :root[data-skin="maple"] .tally b { color: var(--accent); }
-:root[data-skin="maple"] .shelf-aside h2 { border-bottom-color: var(--frame); }
+:root[data-skin="maple"] .shelf-aside h2 { border-bottom-color: var(--win-edge); }
 
 @media (max-width: 600px) {
-  :root[data-skin="maple"] .sec { padding: 0 1rem 1.1rem; }
-  :root[data-skin="maple"] .sec-head { margin: 0 -1rem; padding: 0.6rem 1rem; }
-  :root[data-skin="maple"] .sec-head h2 { font-size: 1.25rem; }
-  :root[data-skin="maple"] .paper-head { padding: 1rem; }
+  :root[data-skin="maple"] .sec { padding: 0 1rem 1.1rem; border-width: 4px; }
+  :root[data-skin="maple"] .sec-head { margin: 0 -1rem; padding: 0 1rem 0.5rem; }
+  :root[data-skin="maple"] .sec-head::after { right: 1rem; }
+  :root[data-skin="maple"] .sec-head h2 { font-size: 1.1875rem; }
+  :root[data-skin="maple"] .paper-head { padding: 1rem; border-width: 4px; }
   :root[data-skin="maple"] .column { gap: 1.75rem; }
+  :root[data-skin="maple"] .check details { padding: 0.75rem 0.85rem 3rem 4.9rem; min-height: 7.9rem; }
+  :root[data-skin="maple"] .check details::before { left: 0.7rem; top: 0.75rem; width: 3.5rem; height: 3.5rem; }
+  :root[data-skin="maple"] .check details::after { left: 0.45rem; top: 4.6rem; width: 4rem; font-size: 0.6875rem; content: "導師"; }
+  :root[data-skin="maple"] .check summary { font-size: 1rem; }
+  :root[data-skin="maple"] .hud { gap: 0.6rem; }
+  :root[data-skin="maple"] .hud-name { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { :root[data-skin="maple"] .card:hover { transform: none; } }
 

@@ -80,6 +80,26 @@
     sync();
   }
 
+  // ---------- status bar for the game skin: LV = sections finished, EXP = share of all sections ----------
+  // Decorative: the same numbers are in the rail or tally, so it is hidden from assistive tech.
+  function makeHud(job, name) {
+    var hud = document.createElement("div");
+    hud.className = "hud";
+    hud.setAttribute("aria-hidden", "true");
+    hud.innerHTML = '<span class="hud-lv"><b>LV.</b><i></i></span>' +
+      '<span class="hud-name"><small></small><span></span></span>' +
+      '<span class="hud-exp"><span><b>EXP</b><small></small></span><span class="hud-gauge"><i></i></span></span>';
+    hud.querySelector(".hud-name small").textContent = job;
+    hud.querySelector(".hud-name span").textContent = name;
+    document.body.appendChild(hud);
+    return function (n, total) {
+      var pct = total ? (100 * n) / total : 0;
+      hud.querySelector(".hud-lv i").textContent = String(n);
+      hud.querySelector(".hud-exp small").textContent = n + " / " + total + " [" + pct.toFixed(2) + "%]";
+      hud.querySelector(".hud-gauge i").style.width = pct + "%";
+    };
+  }
+
   // ---------- shelf: show progress for each paper, and the totals ----------
   var sumDone = 0, sumTotal = 0, started = 0;
   document.querySelectorAll("[data-progress-for]").forEach(function (el) {
@@ -105,6 +125,7 @@
   if (tallyDone) tallyDone.textContent = sumDone + " / " + sumTotal;
   var tallyStarted = document.getElementById("tally-started");
   if (tallyStarted) tallyStarted.textContent = String(started);
+  if (tallyDone) makeHud("書架", "論文精讀室")(sumDone, sumTotal);
 
   if (!paper) return;
 
@@ -135,6 +156,8 @@
   var DONE_KEY = "study:" + paper + ":done";
   var done = store.get(DONE_KEY, []);
   var countable = document.querySelectorAll("input[data-done]").length;
+  var crumb = document.querySelector(".toolbar .crumb");
+  var hud = makeHud("精讀中", crumb ? crumb.textContent.split("·")[0].trim() : paper);
   function renderProgress() {
     Object.keys(links).forEach(function (id) {
       links[id].tick.textContent = done.indexOf(id) >= 0 ? "✓" : "";
@@ -144,6 +167,7 @@
     var txt = document.getElementById("progress-text");
     if (bar) bar.style.width = (countable ? (100 * n) / countable : 0) + "%";
     if (txt) txt.textContent = n + " / " + countable;
+    hud(n, countable);
   }
   document.querySelectorAll("input[data-done]").forEach(function (box) {
     var id = box.getAttribute("data-done");
