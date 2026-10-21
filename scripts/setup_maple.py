@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Rebuild the images for the 楓葉冒險 skin in assets/maple/ from the exported asset pack.
 
-Only the pieces the site uses are written: frames, buttons, the two scenes and the sprite strips
-listed in scripts/maple_sprites.json. The full pack stays out of the repo. Run it again after
-changing the pack or that list, then commit assets/maple/.
+Only the pieces the site uses are written: frames, buttons, the login screen's scroll, parchment
+and sign, the three scenes and the sprite strips listed in scripts/maple_sprites.json. The full
+pack stays out of the repo. Run it again after changing the pack or that list, then run
+scripts/stamp_assets.py and commit assets/maple/.
 
     python3 -I scripts/setup_maple.py PATH/TO/maple-assets.zip   (or the unzipped folder)
 
@@ -43,6 +44,8 @@ def main() -> int:
         subprocess.run([sys.executable, "-I", str(SKILL / "build_slices.py"), str(pack), str(OUT)], check=True, stdout=subprocess.DEVNULL)
         subprocess.run([sys.executable, "-I", str(SKILL / "compose_scene.py"), str(pack), str(OUT / "scene-day.jpg")], check=True)
         subprocess.run([sys.executable, "-I", str(SKILL / "compose_login.py"), str(pack), str(OUT / "scene-login.jpg")], check=True)
+        subprocess.run([sys.executable, "-I", str(SKILL / "compose_ellinia.py"), str(pack), str(OUT / "scene-ellinia.jpg")], check=True)
+        subprocess.run([sys.executable, "-I", str(SKILL / "build_login.py"), str(pack), str(OUT)], check=True)
         for old in OUT.glob("spr-*.png"):
             old.unlink()
         subprocess.run([sys.executable, "-I", str(SKILL / "build_sprites.py"), str(pack), str(OUT), str(SPRITES)], check=True)

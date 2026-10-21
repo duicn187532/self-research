@@ -368,7 +368,11 @@
       mobOf[box.getAttribute("data-done")] = p;
       if (box.checked) p.wrap.hidden = true;
       box.addEventListener("change", function () {
-        if (box.checked) { defeat(p); hud.chat([["系統", "打倒了怪物，EXP +1。按「下一節」繼續任務。"]].concat(pageLines(sections.indexOf(s)))); }
+        if (box.checked) {
+          defeat(p);
+          var foe = window.MAPLE_SPRITES[name].label || "怪物";
+          hud.chat([["系統", "打倒了" + foe + "，EXP +1。按「下一節」繼續任務。"]].concat(pageLines(sections.indexOf(s))));
+        }
         else respawn(p);
       });
     });
@@ -392,10 +396,32 @@
       // position: static here, so the portrait still places itself against the dialog
       d.querySelector("summary").appendChild(npc);
       // the NPC talks while its answer is open
-      d.addEventListener("toggle", function () { setAct(spr, name, d.open ? "say" : "stand"); });
+      // a quest mark over the NPC: a lightbulb before you ask, a book while the answer is open,
+      // the finished book once the section is read
+      var mark = null, box = d.closest("section.sec") && d.closest("section.sec").querySelector("input[data-done]");
+      function markName() { return box && box.checked ? "quest-done" : d.open ? "quest-open" : "quest-new"; }
+      if (window.MAPLE_SPRITES["quest-new"]) {
+        mark = spriteEl(markName(), "stand");
+        mark.classList.add("npc-quest");
+        npc.appendChild(mark);
+        if (box) box.addEventListener("change", function () { setAct(mark, markName(), "stand"); });
+      }
+      d.addEventListener("toggle", function () {
+        setAct(spr, name, d.open ? "say" : "stand");
+        if (mark) setAct(mark, markName(), "stand");
+      });
     });
     var head = document.querySelector(".paper-head");
     var hero = shuffle(sprites("hero"))[0], pet = shuffle(sprites("pet"))[0];
+    // every other paper is read in Ellinia instead of Henesys
+    if (seed % 2) document.body.style.setProperty("--scene", 'url("' + mapleUrl("scene-ellinia.jpg") + '")');
+    // a portal by 下一節 once the section is finished
+    if (window.MAPLE_SPRITES.portal) {
+      var portal = spriteEl("portal", "stand");
+      portal.classList.add("pg-portal");
+      portal.setAttribute("aria-hidden", "true");
+      pager.appendChild(portal);
+    }
     if (head && hero) perch(head, pet ? [hero, pet] : [hero], "party");
   });
   function renderProgress() {
@@ -519,7 +545,7 @@
     nextBtn.querySelector("small").textContent = i < last ? titleOf(i + 1) : "已是最後一節";
     pager.querySelector(".pg-at").textContent = "QUEST " + pad(i) + " / " + pad(last);
     var box = sections[i] && sections[i].querySelector("input[data-done]");
-    nextBtn.classList.toggle("is-ready", !!(box && box.checked));
+    nextBtn.classList.toggle("is-ready", !box || box.checked);
   }
   function turnTo(i, scroll) {
     if (!paged || i < 0 || i >= sections.length) return;

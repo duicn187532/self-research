@@ -57,6 +57,8 @@ Henesys = `Back/grassySoil` + `Obj/acc1.img/grassySoil` + `Obj/houseGS` (+ `Tile
 python3 -I scripts/compose_scene.py ASSETS scene-day.jpg      # 1920x1080 Henesys backdrop
 python3 -I scripts/build_slices.py ASSETS slices/             # 9-slice sheets, HUD parts, buttons, digits
 python3 -I scripts/compose_login.py ASSETS scene-login.jpg     # the login screen's forest, for a title or index page
+python3 -I scripts/compose_ellinia.py ASSETS scene-ellinia.jpg # Ellinia (Back/shineWood), a second town
+python3 -I scripts/build_login.py ASSETS slices/               # world-select scroll, parchment and sign (slices in its docstring)
 python3 -I scripts/build_sprites.py ASSETS sprites/ SPEC.json  # mobs, NPCs, characters, pets as frame strips
 ```
 
@@ -132,8 +134,15 @@ to publish the built pieces with the site (GitHub Pages); the full pack stays ou
   has a party led by the hero marked `"lead": true` (殺人鯨, the owner's favourite) and a monster on
   each group banner. All of it is `aria-hidden`, ignores clicks, stops when off screen and stands
   still under reduced motion.
-- The shelf sits in the login-screen forest (`scene-login.jpg`) with wooden-sign group banners;
-  paper pages are in Henesys.
+- The shelf is the login screen's world select: the forest (`scene-login.jpg`), the title on the
+  open scroll, paper cards on the channel list's parchment, group banners on the blank world sign.
+  Paper pages are in Henesys or Ellinia, half each, picked from the paper id.
+- Over each NPC floats the UIWindow QuestIcon: lightbulb before the question is opened, open book
+  while the answer shows, finished book once the section is marked read. The MapHelper portal
+  (`portal/game/pv`) rises over the pager when the section is done.
+- Names on NPC plates and in the chat line are the Taiwan client's (漢斯, 赫麗娜, 那因哈特, 米哈逸,
+  奧茲, 伊麗娜, 伊卡勒特, 鷹眼; 藍寶, 綠水靈, 綠菇菇, 緞帶肥肥, 菇菇寶貝, 藍水靈, 雪吉拉). Npc 0002002,
+  1052103 and the 村長 screenshot are not identified yet, so they carry descriptive plates.
 - In this skin a paper is paged: one section at a time with 上一節 / 下一節 at its foot. The other
   sections are `hidden="until-found"`, so find-in-page and `#id` links still reach them and turn to
   their page. The chat line on the status bar cycles the current section's title, its 五歲
