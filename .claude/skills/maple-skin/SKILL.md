@@ -130,8 +130,8 @@ to publish the built pieces with the site (GitHub Pages); the full pack stays ou
   Each paper gets its own rotation from its id: a monster patrols the top of every section that can
   be finished (an elite midway, a boss on the last); eleven NPCs take turns in the self-check
   dialogs and switch to their talking frames while an answer is open. The protagonist is 殺人鯨 or
-  露希妲 (the owner's favourites; `"family"` in the list), picked per paper, in an outfit picked per
-  visit, and stands with a pet on 上一節 at the foot of every page. Marking a section read: the
+  露希妲 (the owner's favourites; `"family"` in the list), picked per paper; each page turn dresses them in
+  the next of their outfits (all in the list are used), and they stand with a pet on 上一節 at the foot of every page. Marking a section read: the
   monster takes a critical hit (BasicEff NoCri1 digits) and falls, the protagonist cheers and
   levels up (BasicEff LevelUp), the portal opens. The shelf's party is both of them plus one other
   hero and a pet, and a monster walks each group banner. The cast is built a page at a time, so a

@@ -415,7 +415,7 @@
   // the last), NPCs taking turns in the self-check dialogs, and the protagonist with a pet, who
   // goes with you from page to page. A paper's protagonist is 殺人鯨 or 露希妲, picked from its id
   // (the outfit changes every visit); its monsters and NPCs are picked from the id too.
-  var seed = seedOf(paper), castDone = {}, party = null;
+  var seed = seedOf(paper), castDone = {}, party = null, outfits = [];
   var quests = sections.filter(function (s) { return s.querySelector("input[data-done]"); });
   var allDialogs = Array.prototype.slice.call(document.querySelectorAll(".check details"));
   function mobFor(s) {
@@ -485,6 +485,14 @@
   function placeParty() {
     if (party && party.wrap.parentNode !== pager) pager.appendChild(party.wrap);
   }
+  // each page dresses the protagonist in the next of their outfits, so a read shows all of them
+  function dress(i) {
+    if (!party || outfits.length < 2) return;
+    var hero = party.cast[0], name = outfits[i % outfits.length];
+    if (name === hero.name) return;
+    hero.name = name;
+    setAct(hero.spr, name, "stand");
+  }
   // finishing a section: the protagonist cheers and levels up (LV counts finished sections)
   function cheer() {
     if (!party || reduceMotion) return;
@@ -513,7 +521,8 @@
     if (!window.MAPLE_SPRITES) return;
     var family = (seed >> 1) % 2 ? "lucid" : "orca";
     var heroes = sprites("hero").filter(function (k) { return window.MAPLE_SPRITES[k].family === family; });
-    var hero = shuffle(heroes.length ? heroes : sprites("hero"))[0], pet = shuffle(sprites("pet"))[0];
+    outfits = shuffle(heroes.length ? heroes : sprites("hero"));
+    var hero = outfits[0], pet = shuffle(sprites("pet"))[0];
     if (hero) {
       party = perch(document.createElement("span"), pet ? [hero, pet] : [hero], "party");
       party.wrap.remove();
@@ -526,7 +535,7 @@
       pager.appendChild(portal);
     }
     placeParty();
-    if (current >= 0) castFor(current);
+    if (current >= 0) { castFor(current); dress(current); }
     // fetch the level-up and damage strips while idle, so the first finished section plays at once
     var later = window.requestIdleCallback || function (fn) { setTimeout(fn, 2500); };
     later(function () {
@@ -666,6 +675,7 @@
     if (head) { if (i === 0) head.removeAttribute("hidden"); else head.setAttribute("hidden", "until-found"); }
     drawPager();
     castFor(i);
+    dress(i);
     if (changed) hud.chat(pageLines(i));
     if (scroll) window.scrollTo(0, i === 0 ? 0 : Math.max(0, sections[i].getBoundingClientRect().top + window.pageYOffset - 170));
   }
