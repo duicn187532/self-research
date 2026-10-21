@@ -59,6 +59,9 @@ Never fill in an equation, number or hyperparameter that no source gave; write `
 ## 3. Register and check
 
 - Add a card to `index.html` with `data-progress-for="<id>"` and `data-total` = number of `data-done` boxes.
+- Run `python3 scripts/stamp_assets.py` so the new page links the current `site.css`/`site.js`/`anim.js`
+  stamps (`?v=...`). Run it again whenever `assets/` changes; otherwise browsers on GitHub Pages can
+  pair a new page with an old cached script.
 - Preview: `python3 -m http.server` and open the page, or build a single file with
   `python3 scripts/build_artifact.py papers/<id>/index.html dist/<id>.html` to publish as an Artifact.
 

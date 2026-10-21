@@ -14,9 +14,9 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 def build(src: pathlib.Path) -> str:
     s = src.read_text(encoding="utf-8")
     css = (ROOT / "assets/site.css").read_text(encoding="utf-8")
-    s = re.sub(r'<link rel="stylesheet" href="[./]*assets/site\.css">', lambda _: "<style>\n" + css + "</style>", s)
+    s = re.sub(r'<link rel="stylesheet" href="[./]*assets/site\.css(?:\?v=\w+)?">', lambda _: "<style>\n" + css + "</style>", s)
     s = re.sub(
-        r'<script src="[./]*assets/([\w-]+\.js)"></script>',
+        r'<script src="[./]*assets/([\w-]+\.js)(?:\?v=\w+)?"></script>',
         lambda m: "<script>\n" + (ROOT / "assets" / m.group(1)).read_text(encoding="utf-8") + "</script>",
         s,
     )

@@ -33,6 +33,7 @@ python3 -m http.server 8000
 
 ```bash
 python3 -I scripts/setup_maple.py 路徑/maple-assets.zip
+python3 scripts/stamp_assets.py
 ```
 
 做法和素材對照寫在 [`.claude/skills/maple-skin/SKILL.md`](.claude/skills/maple-skin/SKILL.md)。用 `build_artifact.py` 內嵌成單一檔案的版本不帶圖片，所以只有淺色、深色可選。
@@ -44,6 +45,8 @@ python3 -I scripts/setup_maple.py 路徑/maple-assets.zip
 1. `python3 scripts/fetch_arxiv.py <id>` 抓全文成純文字（存到 `_sources/`，不進 git）
 2. 複製 `papers/_template/` 成 `papers/<id>/`，逐節填入三層解釋、公式、自我檢測
 3. 在 `index.html` 的書架加一張卡片
+
+每個頁面連到共用 CSS/JS 時都帶著版本號（`site.css?v=...`）。改過 `assets/` 裡任何檔案，或新增頁面後，跑一次 `python3 scripts/stamp_assets.py` 再 commit，GitHub Pages 上的瀏覽器才不會拿舊的快取配新頁面。
 
 `python3 scripts/build_artifact.py papers/<id>/index.html dist/<id>.html` 會把共用 CSS/JS 內嵌成單一檔案，方便分享。
 

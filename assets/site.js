@@ -39,8 +39,13 @@
   // It is offered only when that art loads, so the inlined single-file builds, which have no
   // images, show just the colour modes.
   var SKIN_KEY = "study:skin", MODE_KEY = "study:mode";
-  var cssLink = document.querySelector('link[href$="assets/site.css"]');
-  var mapleBase = cssLink ? cssLink.getAttribute("href").replace(/site\.css$/, "maple/") : null;
+  // The pages link site.css?v=<stamp> (scripts/stamp_assets.py), and the files this script builds
+  // URLs for carry the same stamp, so a browser holding an older copy fetches the new one.
+  var cssLink = document.querySelector('link[href*="assets/site.css"]');
+  var cssHref = cssLink ? cssLink.getAttribute("href") : "";
+  var mapleBase = cssLink ? cssHref.replace(/site\.css(\?.*)?$/, "maple/") : null;
+  var stamp = (cssHref.match(/[?&]v=(\w+)/) || [])[1];
+  function mapleUrl(file) { return mapleBase + file + (stamp ? "?v=" + stamp : ""); }
   var mapleReady = false, mapleHooks = [];
   function whenMaple(fn) { if (mapleReady) fn(); else mapleHooks.push(fn); }
   var hostTheme = root.hasAttribute("data-host-theme") ? root.getAttribute("data-host-theme") : root.getAttribute("data-theme");
@@ -101,7 +106,7 @@
     // the sprite table comes with the art; the skin still works if it is missing
     var table = document.createElement("script");
     table.onload = table.onerror = function () { mapleHooks.splice(0).forEach(function (fn) { fn(); }); };
-    table.src = mapleBase + "sprites.js";
+    table.src = mapleUrl("sprites.js");
     document.head.appendChild(table);
     // fetch the hover, pressed and opened states now, so a button never blinks empty on first use
     ["bt-menu-mouseOver", "bt-menu-pressed", "btnext-mouseOver", "btprev-normal", "btprev-mouseOver", "btclose-normal", "tab1", "list3"]
@@ -141,7 +146,7 @@
       lv.textContent = "";
       String(n).split("").forEach(function (d) {
         var img = document.createElement("img");
-        img.src = mapleBase + "lv" + d + ".png";
+        img.src = mapleUrl("lv" + d + ".png");
         img.alt = "";
         lv.appendChild(img);
       });
@@ -188,7 +193,7 @@
     var acts = window.MAPLE_SPRITES[name].acts;
     if (!acts[act]) act = "stand";
     var c = acts[act];
-    el.style.backgroundImage = 'url("' + mapleBase + "spr-" + name + "-" + act + '.png")';
+    el.style.backgroundImage = 'url("' + mapleUrl("spr-" + name + "-" + act + ".png") + '")';
     el.style.setProperty("--w", c[0]);
     el.style.setProperty("--h", c[1]);
     el.style.setProperty("--n", c[2]);

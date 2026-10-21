@@ -693,8 +693,12 @@ table.results tbody td:first-child { white-space: nowrap; }
 :root[data-skin="maple"] .check { gap: 12px; }
 :root[data-skin="maple"] .check-title { justify-self: start; width: 121px; height: 19px; line-height: 19px; text-align: center; color: #ffffff; text-shadow: var(--outline); background: url("maple/bar.png"); letter-spacing: 0.04em; }
 :root[data-skin="maple"] .check details {
-  position: relative; min-height: 190px; padding: 2px 10px 6px; border-radius: 0; background: none;
-  border-style: solid; border-width: 28px 22px 58px 150px; border-image: url("maple/dlg9.png") 28 22 58 150 fill / 28px 22px 58px 150px stretch repeat;
+  position: relative; padding: 2px 10px 6px; border-radius: 0; background: none;
+  border-style: solid; border-width: 28px 22px 58px 24px; border-image: url("maple/win9.png") 28 22 58 24 fill / 28px 22px 58px 24px stretch repeat;
+}
+/* the portrait column only when an NPC is standing in it (site.js adds one once the sprites load) */
+:root[data-skin="maple"] .check details:has(.npc-portrait) {
+  min-height: 190px; border-width: 28px 22px 58px 150px; border-image: url("maple/dlg9.png") 28 22 58 150 fill / 28px 22px 58px 150px stretch repeat;
 }
 :root[data-skin="maple"] .npc-portrait {
   display: flex; position: absolute; left: -140px; width: 120px; top: 0; min-height: 132px;
@@ -712,7 +716,8 @@ table.results tbody td:first-child { white-space: nowrap; }
 :root[data-skin="maple"] .check details[open] summary::after { background-image: url("maple/btprev-normal.png"); }
 :root[data-skin="maple"] .check details[open] summary:hover::after { background-image: url("maple/btprev-mouseOver.png"); }
 :root[data-skin="maple"] .check summary::before { content: none; }
-:root[data-skin="maple"] .check details[open] summary::before { content: ""; position: absolute; left: -144px; top: auto; bottom: -48px; width: 85px; height: 18px; border-radius: 0; background: url("maple/btclose-normal.png"); }
+:root[data-skin="maple"] .check details[open] summary::before { content: ""; position: absolute; left: -18px; top: auto; bottom: -48px; width: 85px; height: 18px; border-radius: 0; background: url("maple/btclose-normal.png"); }
+:root[data-skin="maple"] .check details[open]:has(.npc-portrait) summary::before { left: -144px; }
 :root[data-skin="maple"] .check details > div { padding: 8px 0 0; margin-top: 8px; border-top: 1px dashed #b7b7a6; font-size: 1rem; color: #333333; }
 
 /* ---------- notes: the chat bar ---------- */
@@ -831,12 +836,12 @@ table.results tbody td:first-child { white-space: nowrap; }
   :root[data-skin="maple"] .hud { height: calc(64px + env(safe-area-inset-bottom, 0px)); background-position: 0 -7px; }
   :root[data-skin="maple"] .hud-chat { top: 0; }
   :root[data-skin="maple"] .hud-row { top: 22px; }
-  :root[data-skin="maple"] .check details { border-width: 28px 14px 58px 104px; border-image-width: 28px 14px 58px 104px; min-height: 170px; }
+  :root[data-skin="maple"] .check details:has(.npc-portrait) { border-width: 28px 14px 58px 104px; border-image-width: 28px 14px 58px 104px; min-height: 170px; }
   :root[data-skin="maple"] .npc-portrait { left: -100px; width: 96px; }
   :root[data-skin="maple"] .npc-fig { --maxh: 80; height: 80px; }
   :root[data-skin="maple"] .npc-name { width: 96px; background-size: 96px 19px; }
   :root[data-skin="maple"] .check summary::after { right: -8px; }
-  :root[data-skin="maple"] .check details[open] summary::before { left: -98px; }
+  :root[data-skin="maple"] .check details[open]:has(.npc-portrait) summary::before { left: -98px; }
   :root[data-skin="maple"] .hud-left { width: 80px; background-size: 207px 42px; }
   :root[data-skin="maple"] .hud-name { display: none; }
   :root[data-skin="maple"] .appear-btn { width: 54px; }
