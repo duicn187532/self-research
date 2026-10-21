@@ -49,6 +49,7 @@
     bar.appendChild(count);
 
     root.appendChild(bar);
+    root.appendChild(el("div", "anim-hint", "畫面比螢幕寬時，可以左右滑動看完整動畫"));
     root.appendChild(stage);
     root.appendChild(cap);
 
