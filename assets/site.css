@@ -685,7 +685,7 @@ table.bench-tbl th[scope="rowgroup"], table.bench-tbl th[scope="row"] { color: v
 }
 :root[data-skin="maple"] body {
   background: #3366cc;
-  cursor: url("maple/cursor.png") 2 2, auto; padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+  cursor: url("maple/cursor.png") 2 2, auto; padding-bottom: 80px;
 }
 :root[data-skin="maple"] :is(a, button, summary, label, input[type="checkbox"]) { cursor: url("maple/cursor.png") 2 2, pointer; }
 :root[data-skin="maple"] body::before { background: #3a4048; }
@@ -977,8 +977,11 @@ table.bench-tbl th[scope="rowgroup"], table.bench-tbl th[scope="row"] { color: v
 @keyframes dmg-rise { from { opacity: 1; transform: translate(-50%, 0); } 70% { opacity: 1; } to { opacity: 0; transform: translate(-50%, -40px); } }
 @keyframes exp-rise { from { transform: translate(-50%, 10px); opacity: 0; } 20% { opacity: 1; } to { transform: translate(-50%, -26px); opacity: 1; } }
 
-/* ---------- status bar (built by site.js) ---------- */
-:root[data-skin="maple"] .hud { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; height: calc(71px + env(safe-area-inset-bottom, 0px)); background: url("maple/hud-bg.png") 0 0 / auto 71px repeat-x #88aabb; image-rendering: pixelated; }
+/* ---------- status bar (built by site.js) ----------
+   It sits on the screen's bottom edge at its own height, as in the game; on a phone without a
+   home button the home indicator floats over its lowest pixels rather than pushing it up or
+   leaving a band of colour under it. */
+:root[data-skin="maple"] .hud { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; height: 71px; background: url("maple/hud-bg.png") 0 0 / auto 71px repeat-x #88aabb; image-rendering: pixelated; }
 :root[data-skin="maple"] .hud::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 200px; background: #88aabb; }
 :root[data-skin="maple"] .hud-chat { position: absolute; left: 0; top: 7px; width: min(760px, 100%); height: 22px; padding-left: 8px; background: url("maple/chat9.png") 0 0 / 100% 22px no-repeat; font-size: 12px; line-height: 22px; color: #333333; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; image-rendering: auto; }
 :root[data-skin="maple"] .hud-chat b { color: #d14a00; }
@@ -1028,8 +1031,8 @@ table.bench-tbl th[scope="rowgroup"], table.bench-tbl th[scope="row"] { color: v
   /* the shelf's party is drawn at random; on a phone two heroes and the pet always fit */
   :root[data-skin="maple"] .shelf-head > .perch-party .stander:nth-child(3) { display: none; }
   /* a phone keeps the chat line (it carries the section's key points) on top of the bar's bottom row */
-  :root[data-skin="maple"] body { padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
-  :root[data-skin="maple"] .hud { height: calc(64px + env(safe-area-inset-bottom, 0px)); background-position: 0 -7px; }
+  :root[data-skin="maple"] body { padding-bottom: 76px; }
+  :root[data-skin="maple"] .hud { height: 64px; background-position: 0 -7px; }
   :root[data-skin="maple"] .hud-chat { top: 0; }
   :root[data-skin="maple"] .hud-row { top: 22px; }
   /* A phone has no room for the portrait column: the dialog keeps the full width for the question
