@@ -54,7 +54,7 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-padding-top: 4.5rem; }
+html { scroll-padding-top: calc(4.5rem + env(safe-area-inset-top, 0px)); }
 body {
   margin: 0;
   background: var(--paper);
@@ -64,9 +64,15 @@ body {
   line-height: 1.85;
   -webkit-text-size-adjust: 100%;
 }
+/* Opened from the home screen, the page runs under a translucent status bar (the
+   black-translucent meta in each page), so it fills the screen and the bottom bar sits on the
+   screen's edge. The top inset is then the status bar's height: the page starts below it, and
+   this strip paints it dark enough for the bar's white clock. In a browser tab the inset is 0
+   and none of this shows. */
+body { padding-top: env(safe-area-inset-top, 0px); }
 body::before {
   content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
-  z-index: 10; background: var(--surface);
+  z-index: 10; background: #20252b;
 }
 a { color: var(--accent); text-underline-offset: 3px; text-decoration-thickness: 1px; }
 a:hover { text-decoration-thickness: 2px; }
@@ -470,7 +476,7 @@ table.results tbody td:first-child { white-space: nowrap; }
 
 /* ---------- phones: one compact toolbar row, larger tap targets, calmer spacing ---------- */
 @media (max-width: 600px) {
-  html { scroll-padding-top: 3.75rem; }
+  html { scroll-padding-top: calc(3.75rem + env(safe-area-inset-top, 0px)); }
   body { line-height: 1.9; }
   .gutter {
     padding-left: max(18px, env(safe-area-inset-left, 0px));
@@ -972,7 +978,7 @@ table.bench-tbl th[scope="rowgroup"], table.bench-tbl th[scope="row"] { color: v
 @keyframes exp-rise { from { transform: translate(-50%, 10px); opacity: 0; } 20% { opacity: 1; } to { transform: translate(-50%, -26px); opacity: 1; } }
 
 /* ---------- status bar (built by site.js) ---------- */
-:root[data-skin="maple"] .hud { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; height: calc(71px + env(safe-area-inset-bottom, 0px)); background: url("maple/hud-bg.png") 0 0 / auto 71px repeat-x; image-rendering: pixelated; }
+:root[data-skin="maple"] .hud { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; height: calc(71px + env(safe-area-inset-bottom, 0px)); background: url("maple/hud-bg.png") 0 0 / auto 71px repeat-x #88aabb; image-rendering: pixelated; }
 :root[data-skin="maple"] .hud::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 200px; background: #88aabb; }
 :root[data-skin="maple"] .hud-chat { position: absolute; left: 0; top: 7px; width: min(760px, 100%); height: 22px; padding-left: 8px; background: url("maple/chat9.png") 0 0 / 100% 22px no-repeat; font-size: 12px; line-height: 22px; color: #333333; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; image-rendering: auto; }
 :root[data-skin="maple"] .hud-chat b { color: #d14a00; }
