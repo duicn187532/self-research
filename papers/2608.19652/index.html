@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
-<link rel="stylesheet" href="../../assets/site.css?v=3aaeaccacb">
+<link rel="stylesheet" href="../../assets/site.css?v=f627d819c8">
 <script>try{var r=document.documentElement;r.setAttribute("data-host-theme",r.getAttribute("data-theme")||"");if(JSON.parse(localStorage.getItem("study:skin"))!=="study")r.setAttribute("data-skin","maple");var m=JSON.parse(localStorage.getItem("study:mode"));if(m==="light"||m==="dark")r.setAttribute("data-theme",m);}catch(e){}</script>
 
 <style>
@@ -799,6 +799,81 @@
       </div>
     </section>
 
+    <!-- ===================== researcher analysis ===================== -->
+    <section class="sec sec-research" id="s-research" data-short="研究者進階分析">
+      <div class="sec-head"><span class="sec-num">R</span><h2>研究者進階分析</h2></div>
+      <p class="research-lede">給要重建 StateMem 或包裝器、使用 StateMemBench、或研究「狀態追蹤」的讀者。依據是本頁前 15 節（已對照 v1 PDF 與附錄 A–I），以及 2026-10-22 透過 alphaXiv 補讀 §5–§6、附錄 E、F、G.1 確認的設定。三個階段已在 <a href="#s-method">06</a> 說明，這裡補上執行順序、旗標的生命週期與還不確定的地方。 這篇和其他六篇的對照，見<a href="../../compare/index.html">研究工作台</a>。</p>
+<details class="rblock" id="r-statemem-a"><summary><span class="rk">A</span>方法重建<small>輸入輸出、狀態、步驟順序與每一步的出處</small></summary><div class="rbody">
+<p>StateMem 的提示詞全文都在附錄 E，是七篇中最容易照著實作的方法之一。仍不明確的是：needs_recheck 旗標何時清除、Rechecker 只走一跳時多跳的連鎖怎麼保證完整。</p>
+<div class="legend-r"><span><span class="tag tag-orig">原文</span> 原論文明確定義</span><span><span class="tag tag-derived">推導</span> 可由原文合理推導</span><span><span class="tag tag-assume">本站假設</span> 本站為了能實作而補的假設</span><span><span class="tag tag-unknown">原文未提供</span> 原文沒有交代，無法確定</span></div>
+<div class="rcard"><dl><dt>輸入</dt><dd>對話的每一輪（逐輪處理）；回答時是問題與選擇性的「今天」日期（§5.1、§5.3）。</dd><dt>輸出</dt><dd>一次 LLM 呼叫給出的答案（§5.3）。</dd><dt>關鍵狀態</dt><dd>StateStore 中的狀態單元 \(u = (\mathit{id}, \mathit{content}, \mathit{priority}, \mathit{source}, \mathit{deps})\)，狀態為 active、superseded 或 needs_recheck；依賴圖 \(G = (U, E)\)，邊型別 derived_from 或 coupled_with（§5.1–5.2）。</dd></dl></div>
+<h4>寫入一輪：INGEST(turn t)</h4>
+<ol class="pseudo">
+<li><code>S_active ← 目前所有 active 單元的精簡呈現</code><span class="tag tag-orig">原文 §5.1</span></li>
+<li><code>Δ ← TurnEncoder(S_active, turn)</code>：一次 LLM 呼叫，輸出 ADD、SUPERSEDE（附被取代的 id）、進度追蹤<span class="tag tag-orig">原文 §5.1、附錄 E.1</span></li>
+<li class="ind1">TurnEncoder 用的是各面板的骨幹模型（Qwen-3.5-9B 或 DeepSeek-V4-Flash）<span class="tag tag-derived">推導 §6 說所有記憶系統「在各骨幹上執行」</span></li>
+<li class="ind1">溫度 0、關閉推理<span class="tag tag-orig">原文 §6</span></li>
+<li>有日期的資料，新單元蓋上該輪日期<span class="tag tag-orig">原文 §5.1</span></li>
+</ol>
+<h4>更新：UPDATE(Δ)</h4>
+<ol class="pseudo">
+<li>被標記取代的單元改為 superseded；替代版本以 active 新增<span class="tag tag-orig">原文 §5.2</span></li>
+<li>Rechecker：凡有邊連到「狀態剛改變的單元」的單元，標為 needs_recheck<span class="tag tag-orig">原文 §5.2</span></li>
+<li class="ind1">只走一跳；鏈上更遠的單元靠回答時的重算指引依序傳播<span class="tag tag-derived">推導 §5.2 與附錄 E.3 合讀，見 06</span></li>
+<li class="ind1">needs_recheck 被標記後何時清除（重算後？下一次取代時？）<span class="tag tag-unknown">原文未提供</span></li>
+<li>整步 \(O(|E|)\)，不呼叫 LLM<span class="tag tag-orig">原文 §5.2</span></li>
+</ol>
+<h4>回答：ANSWER(q)</h4>
+<ol class="pseudo">
+<li>把所有 active（含 needs_recheck）單元依 priority 與來源分組，旗標單元附上觸發原因<span class="tag tag-orig">原文 §5.3、附錄 E.3</span></li>
+<li>superseded 單元留在庫中供稽核，不送進回答<span class="tag tag-orig">原文 §5.2</span></li>
+<li>一次 LLM 呼叫：狀態區塊 + 問題 + 重算指引<span class="tag tag-orig">原文 §5.3</span></li>
+</ol>
+<h4>包裝器：StateMemWrapper(q, transcript, chunks)</h4>
+<ol class="pseudo">
+<li>取代後端原本的那一次回答呼叫，不增加 LLM 呼叫、不需儲存<span class="tag tag-orig">原文 §6.4</span></li>
+<li>Section 1：250 字以內的狀態軌跡（輪次、值鏈、規則的最新輸入、現行值），先寫完再作答<span class="tag tag-orig">原文 附錄 F.1</span></li>
+<li>Section 2：依序套四條規則，輸出一行 ANSWER<span class="tag tag-orig">原文 附錄 F.1</span></li>
+<li>對話以編號輪次呈現，尾端保留 40 萬字元以放進兩個骨幹的視窗<span class="tag tag-orig">原文 附錄 F.3</span></li>
+</ol>
+<h4>複雜度與成本（有證據的部分）</h4>
+<ul><li>StateMem：每輪一次編碼呼叫（每個情境約 165–600 次），回答一次 <span class="tag tag-orig">原文 §5、附錄 H</span>；總 token 與延遲沒有報告 <span class="tag tag-unknown">原文未提供</span>。</li><li>狀態區塊會隨情境成長；原文說可以換成「切片檢索」以控制大小，但實驗中沒有用到 <span class="tag tag-orig">原文 §5.1</span>。</li><li>包裝器：固定 155 個指令 tokens，軌跡比對照組多 169–188 個輸出 tokens（附錄 F.5）。</li></ul>
+<h4>實作會踩到的邊界條件</h4>
+<ul><li><b>隱性依賴</b>：評測刻意把依賴關係講明（§4.3）；依賴沒說出口時，TurnEncoder 要自己推，這部分未測。</li><li><b>助理說過的內容</b>：TurnEncoder 偏重使用者的限制與承諾，LongMemEval 單 session 助理回想題大幅掉分（<a href="#s-recall">13</a>）。</li><li><b>過度傳播</b>：依賴傳播在反陷阱題上會誤觸發，DeepSeek 上拿掉它反而稍好（<a href="#s-ablation">09</a>）。</li></ul>
+</div></details>
+<details class="rblock" id="r-statemem-b"><summary><span class="rk">B</span>可重現性審查<small>九個維度逐項標示，並區分「重算表格」與「重跑實驗」</small></summary><div class="rbody">
+<p>附錄提供了全部提示詞原文、後端介面與基線設定，連 top-k 的選擇都做了掃描說明。缺的是程式碼與資料的取得連結。</p>
+<div class="legend-r"><span class="st st-yes">已提供</span><span class="st st-part">部分提供</span><span class="st st-no">未提供</span><span class="st st-na">不適用</span><span><span class="st st-check">待核對</span> 本站尚未在原文中確認，不代表原文沒有</span></div>
+<div class="table-wrap"><table class="repro"><thead><tr><th>維度</th><th>狀態</th><th>依據與位置</th></tr></thead><tbody><tr><td>Data 資料</td><td><span class="st st-part">部分提供</span></td><td>StateMemBench：原文寫「我們釋出」，標註工具也隨評測釋出（§4、附錄 A.4），但 PDF 中沒有給連結。外部評測（LongMemEval、LoCoMo、MemoryArena、τ²）公開。</td></tr><tr><td>Code 程式碼</td><td><span class="st st-part">部分提供</span></td><td>提示詞逐字公開（附錄 E、F.1），後端介面以兩個方法定義（附錄 F.3）；沒有程式碼連結。</td></tr><tr><td>Model 模型</td><td><span class="st st-yes">已提供</span></td><td>骨幹 Qwen-3.5-9B、DeepSeek-V4-Flash（關閉推理），評審 deepseek-v4-pro，渲染 sonnet-4.6，驗證 haiku-4.5，嵌入 text-embedding-3-small；全部溫度 0（§6、附錄 G.1）。API 模型會隨時間更新。</td></tr><tr><td>Prompt 提示詞</td><td><span class="st st-yes">已提供</span></td><td>TurnEncoder（附錄 E.1）、回答與重算指引（E.3）、包裝器與對照組（F.1）都逐字公開。</td></tr><tr><td>Parameters 參數</td><td><span class="st st-yes">已提供</span></td><td>StateMemBench 取 k = 10，LoCoMo 與 LongMemEval 取 k = 20；作者對檢索基線掃描 k ∈ {5, 10, 20, 40}，StateMemBench 上分數平坦，LongMemEval 上 k 越大越好，所以 k = 20 對基線較有利（附錄 G.1）。</td></tr><tr><td>Metrics 指標</td><td><span class="st st-yes">已提供</span></td><td>封閉選項池、drift-rate、池內數（§4.3、§6.3）；詞界比對器與評審在可比對答案上一致 94.1%（附錄 C）。</td></tr><tr><td>Baseline 基線</td><td><span class="st st-yes">已提供</span></td><td>各基線的安裝來源與設定（PyPI 套件、官方 repo、預設檢索器）都有寫（附錄 G.1）。LightMem 與 MemoryOS 接近零分，作者明說不納入比較性結論。</td></tr><tr><td>Statistics 統計</td><td><span class="st st-part">部分提供</span></td><td>每個設定單次執行（§6）；主結果與包裝器有配對 McNemar 檢定，包裝器另有 bootstrap 信賴區間；LongMemEval 漂移比例有 Wilson 信賴區間。沒有多種子重複。</td></tr><tr><td>Cost 成本</td><td><span class="st st-part">部分提供</span></td><td>包裝器的 token 成本精確（附錄 F.5）；StateMem 只有呼叫次數。</td></tr></tbody></table></div>
+<h4>可以重算的（只用論文數字）</h4>
+<ul><li>Table 10 的三種加權（本頁已驗算）、McNemar 的二項機率、PABAK（<a href="#s-label">02</a>、<a href="#s-evidence">03</a>）。</li><li>Figure 2 的金額推不出來（<a href="#s-critique">15</a>）。</li></ul>
+<h4>可以重跑的</h4>
+<ul><li>提示詞與設定完整，StateMem 與包裝器都可以照附錄重新實作，套到任何有 <code>ingest</code>／<code>search</code> 介面的後端。</li><li>主實驗需要 StateMemBench；PDF 沒有連結，取得途徑待核對。</li></ul>
+<h4>阻礙重現的關鍵缺口</h4>
+<p>評測資料與程式碼的連結；needs_recheck 旗標的清除規則；單次執行（沒有種子間變異）。</p>
+</div></details>
+<details class="rblock" id="r-statemem-c"><summary><span class="rk">C</span>主張與證據<small>作者主張了什麼、證據測到了多少</small></summary><div class="rbody">
+<p>評語只針對證據強度。</p>
+<div class="rcards">
+<div class="rcard"><b>主張一：狀態漂移和檢索失敗不同，在完美檢索下仍存在（§3.2）。</b><dl><dt>支持證據</dt><dd>LongMemEval oracle：36 個失敗中 16 個經兩個模型家族確認為漂移（44.4%，Wilson 95% CI [30%, 60%]）。</dd><dt>其他解釋</dt><dd>漂移比例是 LLM 判定，人工標註判出的漂移較少（8.3%、25.0% 對 50.0%）；作者因此稱這些比例為上限。</dd><dt>直接測到嗎</dt><dd>「存在」直接測到；「有多普遍」只有上限估計。</dd><dt>未測的邊界</dt><dd>只用 DeepSeek-V4-Flash 一個模型；只看三種跨 session 題型。</dd><dt>評語</dt><dd><span class="str str-part">部分支持</span> 現象存在有證據，盛行率不確定。</dd></dl></div>
+<div class="rcard"><b>主張二：StateMem 比最強的同骨幹基線高 1.8 倍（DeepSeek：0.205 → 0.363）。</b><dl><dt>支持證據</dt><dd>Table 3；對最強記憶基線的配對 McNemar 檢定 p &lt; 0.001。</dd><dt>其他解釋</dt><dd>陷阱由 StateMem 設計要對抗的同一組偷懶策略產生，作者自己稱自家評測的差距是上限；Qwen 上對 GraphRAG 不顯著（p = 0.82）。</dd><dt>直接測到嗎</dt><dd>直接測到。</dd><dt>未測的邊界</dt><dd>情境很短（約 3k 與 7–15k tokens），沒有放不下 context 的情境；只有兩個中小型骨幹。</dd><dt>評語</dt><dd><span class="str str-part">部分支持</span> 在 StateMemBench 與 DeepSeek 上成立；在較弱骨幹與一般情境上證據有限。</dd></dl></div>
+<div class="rcard"><b>主張三：追蹤狀態不犧牲回想（§6.1）。</b><dl><dt>支持證據</dt><dd>Table 4：LongMemEval 上 StateMem 是最高的記憶系統，DeepSeek 上與 long-context 差一個百分點內。</dd><dt>其他解釋</dt><dd>Table 11 細項：單 session 助理回想（56 題）掉約 40 個百分點；LoCoMo 時間題在 Qwen 上輸給 Mem0。</dd><dt>直接測到嗎</dt><dd>總分直接測到；細項顯示代價存在。</dd><dt>未測的邊界</dt><dd>只看兩個骨幹。</dd><dt>評語</dt><dd><span class="str str-part">部分支持</span> 總分層面成立，題型層面有明確反例。</dd></dl></div>
+<div class="rcard"><b>主張四：狀態追蹤是可以單獨拆出的一軸，包裝器對每個後端都有效，結構本身貢獻 +15 到 +32 個百分點（§6.4）。</b><dl><dt>支持證據</dt><dd>Table 6：12 格全部顯著（McNemar p ≤ 0.04），24 格中有 23 格勝過等長對照組。</dd><dt>其他解釋</dt><dd>等長對照組已控制「看得到完整對話」與「多寫一段文字」兩個混淆。剩下的可能混淆是：60 題的類別比例和完整評測不同。</dd><dt>直接測到嗎</dt><dd>直接測到，且有配對對照組。</dd><dt>未測的邊界</dt><dd>LongMemEval 上 DeepSeek 的結構貢獻只有 −5 到 +5；只有兩個骨幹。</dd><dt>評語</dt><dd><span class="str str-strong">充分支持</span> 在 StateMemBench 的 60 題凍結集上，設計（等長對照組）能把效果歸給結構；推廣到強回答模型時效果變小。</dd></dl></div>
+<div class="rcard"><b>主張五：漂移不是推理能力不足（附錄 A.6）。</b><dl><dt>支持證據</dt><dd>開關推理的配對實驗：84.0% → 76.0%，McNemar p = 0.34。</dd><dt>其他解釋</dt><dd>n = 50 的檢定力很低；只測了一個模型的一種推理開關。</dd><dt>直接測到嗎</dt><dd>測到「這個設定下開推理沒有幫助」。</dd><dt>未測的邊界</dt><dd>更強的推理模型、更多題數未測。</dd><dt>評語</dt><dd><span class="str str-weak">證據不足</span> 只能說「沒有證據顯示推理有幫助」，不足以支持一般性的「不是推理問題」。</dd></dl></div>
+</div>
+</div></details>
+<details class="rblock" id="r-statemem-d"><summary><span class="rk">D</span>研究延伸：可否證的假說<small>研究構想，不是已驗證的貢獻</small></summary><div class="rbody">
+<p>以下是研究構想，尚未被驗證。</p>
+<div class="rcards">
+<div class="rcard"><b>假說一：持久儲存庫什麼時候才必要？</b><dl><dt>研究問題</dt><dd>包裝器在同一批題目上勝過 StateMem 本身（Qwen：0.283 對 ≥ 0.567）。對話放不進 context 時，StateMem 的儲存庫是否會反超？</dd><dt>可否證的假說</dt><dd>當對話長度超過回答模型可用的 context（或被截斷到固定預算），包裝器的準確率下降幅度會大於 StateMem；交叉點出現在 context 預算小於對話長度的某個比例。</dd><dt>實驗情境</dt><dd>以 Set B 情境為底，插入干擾 session 放大到 2、4、8 倍，或把 context 截到 4k、8k、16k；比較各方法。</dd><dt>比較基線</dt><dd>StateMem、包裝器、long-context、Dense 檢索加包裝器。</dd><dt>控制變因</dt><dd>同一骨幹、溫度 0、同一評審；每個設定 3 次執行。</dd><dt>評估指標</dt><dd>gold 比例、drift-rate、池外比例、每題總 tokens。</dd><dt>能分辨什麼</dt><dd>「回答時解析就夠了」對「需要持久化的狀態」。</dd><dt>可能失敗的條件</dt><dd>若 TurnEncoder 的錯誤也隨對話長度累積，StateMem 會一起退化，看不出交叉點。</dd></dl></div>
+<div class="rcard"><b>假說二：助理回想的掉分來自 TurnEncoder 的偏重嗎？</b><dl><dt>研究問題</dt><dd>LongMemEval 單 session 助理回想題掉約 40 個百分點，是不是因為 TurnEncoder 沒把助理說過的內容存成單元？</dd><dt>可否證的假說</dt><dd>在 TurnEncoder 提示詞加入「助理提供的內容與承諾」這類單元後，助理回想題至少收回一半差距，而 StateMemBench 分數不下降。</dd><dt>實驗情境</dt><dd>只改 TurnEncoder 提示詞一處，其他不變；跑 LongMemEval 全集與 StateMemBench。</dd><dt>比較基線</dt><dd>原版 StateMem、long-context。</dd><dt>控制變因</dt><dd>同一骨幹、k、評審、溫度。</dd><dt>評估指標</dt><dd>LongMemEval 分題型準確率（特別是 56 題 SS-assistant）、StateMemBench gold 比例與 salience 類分數、狀態區塊長度。</dd><dt>能分辨什麼</dt><dd>掉分是「沒存」造成，還是「存了但回答時沒用上」。</dd><dt>可能失敗的條件</dt><dd>狀態區塊變長可能讓 salience 類更差，需要同時觀察。</dd></dl></div>
+</div>
+</div></details>
+      <div class="desk-foot">
+        <div class="note"><label for="note-research">筆記</label><textarea id="note-research" data-note="s-research" placeholder="你要重建的部分、想追的缺口、實驗構想"></textarea><span class="saved"></span></div>
+      </div>
+    </section>
+
     <!-- ===================== glossary ===================== -->
     <section class="sec" id="s-glossary" data-short="術語表">
       <div class="sec-head"><span class="sec-num">附錄</span><h2>術語表</h2></div>
@@ -835,7 +910,7 @@
 </div>
 </div>
 
-<script src="../../assets/site.js?v=c9b9523df1"></script>
+<script src="../../assets/site.js?v=a40663c2e8"></script>
 <script src="../../assets/anim.js?v=c9faccbc5c"></script>
 <script>
 // Labeling decision tree (section s-label), following the ordered rule of Appendix A.1.

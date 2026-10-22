@@ -52,6 +52,21 @@ python3 scripts/stamp_assets.py
 
 做法和素材對照寫在 [`.claude/skills/maple-skin/SKILL.md`](.claude/skills/maple-skin/SKILL.md)。用 `build_artifact.py` 內嵌成單一檔案的版本不帶圖片，所以只有淺色、深色可選。
 
+## 研究者進階分析與研究工作台
+
+給研究生的部分，和閱讀進度分開，不影響已讀節數：
+
+- **每篇的「研究者進階分析」**（每頁術語表前的 R 節，四個可收合的區塊）：A 方法重建（輸入輸出、狀態、偽程式碼，每一步標「原文／推導／本站假設／原文未提供」）、B 可重現性審查（資料、程式碼、模型、提示詞、參數、指標、基線、統計、成本九項，標「已提供／部分提供／未提供／不適用／待核對」，並分開「重算論文表格」與「重跑原始實驗」）、C 主張與證據（證據、替代解釋、是否直接檢驗、未測邊界、支持強度與理由）、D 可否證的研究假說（研究構想，不是論文貢獻）。
+- **研究工作台** [`compare/index.html`](compare/index.html)（書架標題下的按鈕）：七篇並排的 13 維方法矩陣、同名評測的不同數字（只並排、不排名）、六個跨論文研究問題、分五類的研究缺口地圖。每一格都連回精讀頁的章節；「未提及」不等於「不支援」，缺口只在本站七篇的範圍內成立，不是新穎性主張。
+
+內容的來源是 `scripts/research/` 裡的資料檔，改完重新產生：
+
+```bash
+python3 scripts/research/run.py            # 每篇的 R 節（rd_<paper>.py → 頁面）
+python3 scripts/research/build_compare.py  # 研究工作台
+python3 scripts/stamp_assets.py
+```
+
 ## 新增一篇論文
 
 在 Claude Code 裡貼上 arXiv 連結，請它「加入精讀室」。流程寫在 [`.claude/skills/paper-study/SKILL.md`](.claude/skills/paper-study/SKILL.md)：
@@ -62,16 +77,20 @@ python3 scripts/stamp_assets.py
 
 每個頁面連到共用 CSS/JS 時都帶著版本號（`site.css?v=...`）。改過 `assets/` 裡任何檔案，或新增頁面後，跑一次 `python3 scripts/stamp_assets.py` 再 commit，GitHub Pages 上的瀏覽器才不會拿舊的快取配新頁面。
 
+`python3 scripts/check_links.py` 檢查站內每個連結與 `#錨點` 都對得到（不需要瀏覽器）。
+
 `python3 scripts/build_artifact.py papers/<id>/index.html dist/<id>.html` 會把共用 CSS/JS 內嵌成單一檔案，方便分享。
 
 ## 結構
 
 ```
 index.html                 書架
+compare/index.html         研究工作台（跨論文比較）
 assets/site.css, site.js   共用樣式與互動（解釋深度切換、筆記、進度）
 assets/anim.js             逐步教學動畫播放器（上一步／下一步／自動播放）
 papers/<arxiv-id>/         每篇論文一頁
 papers/_template/          新論文模板
-scripts/                   抓論文、打包單檔
+scripts/                   抓論文、打包單檔、蓋版本號
+scripts/research/          研究者進階分析與研究工作台的資料與產生器
 .claude/skills/            eli5（解釋深度）與 paper-study（新增流程）
 ```

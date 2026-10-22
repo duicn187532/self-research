@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
-<link rel="stylesheet" href="../../assets/site.css?v=3aaeaccacb">
+<link rel="stylesheet" href="../../assets/site.css?v=f627d819c8">
 <script>try{var r=document.documentElement;r.setAttribute("data-host-theme",r.getAttribute("data-theme")||"");if(JSON.parse(localStorage.getItem("study:skin"))!=="study")r.setAttribute("data-skin","maple");var m=JSON.parse(localStorage.getItem("study:mode"));if(m==="light"||m==="dark")r.setAttribute("data-theme",m);}catch(e){}</script>
 
 <style>
@@ -636,6 +636,71 @@
       </div>
     </section>
 
+    <!-- ===================== researcher analysis ===================== -->
+    <section class="sec sec-research" id="s-research" data-short="研究者進階分析">
+      <div class="sec-head"><span class="sec-num">R</span><h2>研究者進階分析</h2></div>
+      <p class="research-lede">給要實作 ATMS、把它接到 LLM 記憶系統、或檢驗它的效率主張的讀者。依據是本頁前 14 節（依使用者提供的掃描 PDF 頁面影像核對），本頁的互動圖與動畫用一個小型 ATMS 引擎重算了原文的四個標籤範例。這篇不在 arXiv，沒有用 alphaXiv 補讀。 這篇和其他六篇的對照，見<a href="../../compare/index.html">研究工作台</a>。</p>
+<details class="rblock" id="r-atms-a"><summary><span class="rk">A</span>方法重建<small>輸入輸出、狀態、步驟順序與每一步的出處</small></summary><div class="rbody">
+<p>標籤更新演算法在 <a href="#s-algo">09</a> 用文字說明，資料結構在 <a href="#s-impl">11</a>。這裡把它寫成偽程式碼，方便對照實作，並補上原文沒有給的複雜度界限。</p>
+<div class="legend-r"><span><span class="tag tag-orig">原文</span> 原論文明確定義</span><span><span class="tag tag-derived">推導</span> 可由原文合理推導</span><span><span class="tag tag-assume">本站假設</span> 本站為了能實作而補的假設</span><span><span class="tag tag-unknown">原文未提供</span> 原文沒有交代，無法確定</span></div>
+<div class="rcard"><dl><dt>輸入</dt><dd>問題解決器一次加入一條理由 \(x_1, \ldots, x_k \Rightarrow n\)（命題 Horn 子句），或宣告一個假設、或給 \(\gamma_\bot\) 一條理由（§4.4、§4.6）。</dd><dt>輸出</dt><dd>每個節點的標籤：一致、可靠、完備、最小的環境集合；以及最小 nogood 資料庫（§4.3）。</dd><dt>關鍵狀態</dt><dd>節點（資料、標籤、理由、consequents、矛盾位元）、環境（假設、提到它的節點、矛盾位元）、理由（informant、consequent、antecedents）（§4.7）。</dd><dt>分工</dt><dd>標籤由 ATMS 算、問題解決器不得改；資料由問題解決器提供、ATMS 不看；理由由問題解決器提供、ATMS 會看但不改（§4.4）。</dd></dl></div>
+<h4>加入一條理由：ADD-JUSTIFICATION(a_1, …, a_k ⇒ n)</h4>
+<ol class="pseudo">
+<li><code>L ← { x_1 ∪ … ∪ x_k | x_i ∈ label(a_i) }</code>（把各前件標籤的環境兩兩取聯集）<span class="tag tag-orig">原文 §4.7</span></li>
+<li>去掉不一致的環境（是 nogood 或 nogood 的超集合）<span class="tag tag-orig">原文 §4.7</span></li>
+<li><code>L ← minimal(L ∪ label(n))</code>，刪掉被包含的超集合<span class="tag tag-orig">原文 §4.3、§4.7</span></li>
+<li>若 <code>L = label(n)</code>：結束<span class="tag tag-orig">原文 §4.7</span></li>
+<li>若 <code>n = ⊥</code>：L 中每個環境加入 nogood 資料庫，並從所有節點標籤移除它及其超集合<span class="tag tag-orig">原文 §4.7</span></li>
+<li class="ind1">nogood 資料庫只保留最小的：新 nogood 的超集合被移除<span class="tag tag-orig">原文 §6</span></li>
+<li>否則 <code>label(n) ← L</code>，對 n 的每個 consequent 遞迴更新<span class="tag tag-orig">原文 §4.7</span></li>
+<li>增量版：只計算新理由帶來的部分，不重算整個標籤<span class="tag tag-orig">原文 §4.7 最佳化</span></li>
+<li class="ind1">增量版的確切程式<span class="tag tag-unknown">原文未提供 原文只描述原則</span></li>
+</ol>
+<h4>撤回一條理由（原文建議的做法）</h4>
+<ol class="pseudo">
+<li>加入理由時就和一個代表「可推翻性」的額外假設 \(\Gamma_j\) 合取<span class="tag tag-orig">原文 §4.9</span></li>
+<li>要撤回時，加入 <code>Γ_j ⇒ ⊥</code>，讓該假設成為 nogood<span class="tag tag-orig">原文 §4.9</span></li>
+<li>直接撤回：讓所有 consequent 的標籤遞迴失效再重算；若牽涉 \(\bot\)，要把被它包含的較特殊 nogood 放回<span class="tag tag-orig">原文 §4.9，原文說正確但很慢</span></li>
+</ol>
+<h4>資料結構（原文 §6）</h4>
+<ul><li>環境以位元向量表示：聯集是 OR，子集合檢驗是 <code>set1 AND (NOT set2) = 0</code>。</li><li>以位元向量為鍵的雜湊表讓每個環境只有一份；環境與 nogood 依長度組織。</li><li>長度 2 的 nogood 存成每個假設的「不相容假設」位元向量，順便免費表示 oneof 析取。</li></ul>
+<h4>複雜度（原文沒有給界限，以下為本站推導）</h4>
+<ul><li>\(n\) 個假設有 \(2^n\) 個環境；一個節點的最小環境數最壞可達 \(\binom{n}{\lfloor n/2 \rfloor}\)（反鏈的最大大小，Sperner 定理）<span class="tag tag-derived">推導</span>。</li><li>聯集步驟是各前件標籤大小的乘積，最壞是指數 <span class="tag tag-derived">推導</span>。</li><li>位元向量的單次子集合檢驗與「曾出現過的假設總數」成正比（原文 §6 自己指出）<span class="tag tag-orig">原文</span>。</li><li>原文 §4.8 的論證是「很難構造出逼 ATMS 考慮所有環境的問題」，這是經驗性說法，不是界限 <span class="tag tag-orig">原文</span>。</li></ul>
+<h4>實作會踩到的邊界條件</h4>
+<ul><li><b>節點同一性</b>：兩筆相同的資料必須對到同一個節點，這靠問題解決器的索引（§4.6）；接到 LLM 記憶時，這就是實體解析問題。</li><li><b>假設的選擇</b>：哪些東西該當假設，原文承認可能很難，但沒有方法（<a href="#s-critique">14</a>）。</li><li><b>表示力</b>：沒有否定的 Horn 子句；數值規則（例如「低於 1900 留在支票帳戶」）要由問題解決器算好再以理由告訴 ATMS。</li></ul>
+</div></details>
+<details class="rblock" id="r-atms-b"><summary><span class="rk">B</span>可重現性審查<small>九個維度逐項標示，並區分「重算表格」與「重跑實驗」</small></summary><div class="rbody">
+<p>這是 1986 年的演算法論文，沒有資料集、模型或提示詞。可重現性的問題變成：演算法是否描述到可以實作，以及效率主張有沒有可以重做的量測。</p>
+<div class="legend-r"><span class="st st-yes">已提供</span><span class="st st-part">部分提供</span><span class="st st-no">未提供</span><span class="st st-na">不適用</span><span><span class="st st-check">待核對</span> 本站尚未在原文中確認，不代表原文沒有</span></div>
+<div class="table-wrap"><table class="repro"><thead><tr><th>維度</th><th>狀態</th><th>依據與位置</th></tr></thead><tbody><tr><td>Data 資料</td><td><span class="st st-na">不適用</span></td><td>沒有資料集；有四個手算的標籤範例（§1.2、§4.5／4.7、§5 兩例）。</td></tr><tr><td>Code 程式碼</td><td><span class="st st-no">未提供</span></td><td>原文沒有提供程式。本站依 §4 自行實作了一個小型引擎，四個範例的結果與原文一致（<a href="#s-lattice">08</a>、<a href="#s-algo">09</a>、<a href="#s-removed">10</a>）。</td></tr><tr><td>Model 模型</td><td><span class="st st-na">不適用</span></td><td>—</td></tr><tr><td>Prompt 提示詞</td><td><span class="st st-na">不適用</span></td><td>—</td></tr><tr><td>Parameters 參數</td><td><span class="st st-na">不適用</span></td><td>演算法沒有可調參數；實作選擇（位元向量、雜湊表、依長度排序）有寫（§6）。</td></tr><tr><td>Metrics 指標</td><td><span class="st st-no">未提供</span></td><td>「對許多任務更有效率」沒有定義量測方式。</td></tr><tr><td>Baseline 基線</td><td><span class="st st-no">未提供</span></td><td>沒有和 Doyle 式 TMS 的量化比較，只有 §2 的人工例子（昂貴計算次數 24、14 與理論下限 6）。</td></tr><tr><td>Statistics 統計</td><td><span class="st st-na">不適用</span></td><td>—</td></tr><tr><td>Cost 成本</td><td><span class="st st-no">未提供</span></td><td>沒有執行時間或記憶體量測；唯一的數字是「通常約 30% 的假設可回收」，來源是作者經驗（§6）。</td></tr></tbody></table></div>
+<h4>可以重做的</h4>
+<ul><li>四個標籤範例：本站已用引擎重算，與原文一致。</li><li>§2 的搜尋例子：24、14、6 次昂貴計算可以照步驟重數（<a href="#s-search">02</a>）。</li></ul>
+<h4>無法重做的</h4>
+<ul><li>效率主張：原文沒有任何可重做的量測。</li></ul>
+<h4>阻礙重現的關鍵缺口</h4>
+<p>效率的實驗證據，以及增量更新與介面協定（姊妹作 [8]）的細節。</p>
+</div></details>
+<details class="rblock" id="r-atms-c"><summary><span class="rk">C</span>主張與證據<small>作者主張了什麼、證據測到了多少</small></summary><div class="rbody">
+<p>這篇的主張分兩類：表示上的性質（可以用定義與論證檢查），和效率上的主張（需要量測）。</p>
+<div class="rcards">
+<div class="rcard"><b>主張一：ATMS 的標籤一致、可靠、完備、最小；節點在某環境成立若且唯若該環境是其標籤中某環境的超集合（§4.3）。</b><dl><dt>支持證據</dt><dd>定義與 §4.7 演算法的論證；Horn 子句推導是單調的。</dd><dt>其他解釋</dt><dd>—</dd><dt>直接測到嗎</dt><dd>以論證支持；本站在四個範例上驗證一致。</dd><dt>未測的邊界</dt><dd>原文沒有給形式證明；標籤只在演算法結束時才保證一致且完備（§4.7）。</dd><dt>評語</dt><dd><span class="str str-part">部分支持</span> 論證清楚、與單調推導相容，範例也吻合，但沒有形式證明，本站不把它當定理。</dd></dl></div>
+<div class="rcard"><b>主張二：對許多任務，ATMS 比傳統 TMS 更有效率（摘要、§3）。</b><dl><dt>支持證據</dt><dd>§2 的病態搜尋例子與 §3 的六個限制分析。</dd><dt>其他解釋</dt><dd>作者自己承認：只要少數解時，ATMS 反而要額外控制成本（§3）。</dd><dt>直接測到嗎</dt><dd>沒有量測。</dd><dt>未測的邊界</dt><dd>沒有和任何實作比較執行時間、記憶體或標籤大小。</dd><dt>評語</dt><dd><span class="str str-weak">證據不足</span> 只有論證與一個刻意構造的例子。</dd></dl></div>
+<div class="rcard"><b>主張三：即使有上千個假設，ATMS 仍然實用（§4.8）。</b><dl><dt>支持證據</dt><dd>論證：不一致通常在小的假設子集中就能辨認，所以大部分環境格不用檢查。</dd><dt>其他解釋</dt><dd>依問題結構而定；稠密依賴下標籤可以指數成長。</dd><dt>直接測到嗎</dt><dd>沒有量測。</dd><dt>未測的邊界</dt><dd>原文說要逼出最壞情況「不容易」，但沒有界定哪些問題結構安全。</dd><dt>評語</dt><dd><span class="str str-undet">尚無法判斷</span> 沒有資料，無法判斷適用範圍。</dd></dl></div>
+<div class="rcard"><b>主張四：循環理由不需要特別處理（§5）。</b><dl><dt>支持證據</dt><dd>迴圈帶回的環境必然是既有環境的超集合，被最小化步驟刪掉，傳播停止。</dd><dt>其他解釋</dt><dd>—</dd><dt>直接測到嗎</dt><dd>由演算法定義直接推得，本站引擎也重算了 §5 的循環例子。</dd><dt>未測的邊界</dt><dd>—</dd><dt>評語</dt><dd><span class="str str-strong">充分支持</span> 這是演算法步驟（最小化）的直接結果，不依賴經驗。</dd></dl></div>
+</div>
+</div></details>
+<details class="rblock" id="r-atms-d"><summary><span class="rk">D</span>研究延伸：可否證的假說<small>研究構想，不是已驗證的貢獻</small></summary><div class="rbody">
+<p>以下是研究構想，尚未被驗證。兩個都把 ATMS 接到本站其他論文的問題上。</p>
+<div class="rcards">
+<div class="rcard"><b>假說一：用 ATMS 當 LLM 記憶的一致性層，能不能減少多跳的狀態漂移？</b><dl><dt>研究問題</dt><dd>StateMem 的 Rechecker 只走一跳，多跳靠回答時的 LLM 重算。若由 LLM 抽理由與 nogood、由 ATMS 管理標籤，多跳依賴是否更可靠？</dd><dt>可否證的假說</dt><dd>在依賴鏈長度 1 到 4 的情境中，ATMS 版本的 drift-rate 隨鏈長增加的幅度明顯小於 StateMem；鏈長 1 時兩者相近。</dd><dt>實驗情境</dt><dd>用 StateMemBench 的事件程式格式自造依賴鏈長 1–4 的情境（status、sequence 類）；LLM 負責把每輪轉成理由、假設與 nogood，數值計算由問題解決器做。</dd><dt>比較基線</dt><dd>StateMem、StateMemWrapper、long-context。</dd><dt>控制變因</dt><dd>同一個抽取 LLM 與回答 LLM；同一組情境；抽取錯誤與傳播錯誤分開記錄（可用 gold 理由注入做控制組）。</dd><dt>評估指標</dt><dd>gold 比例、drift-rate（依鏈長分組）、標籤大小、每題 tokens。</dd><dt>能分辨什麼</dt><dd>「傳播是否完整」對「抽取是否正確」；gold 理由注入組能把兩者分開。</dd><dt>可能失敗的條件</dt><dd>若抽取錯誤主導，ATMS 的完備性優勢會被抵消；數值規則與 Horn 子句之間的轉換也可能引入錯誤。</dd></dl></div>
+<div class="rcard"><b>假說二：對話記憶的依賴結構是否落在 ATMS 的「實用區」？</b><dl><dt>研究問題</dt><dd>§4.8 只論證 ATMS 在常見問題上可行。從真實對話抽出的依賴圖，標籤會不會爆炸？</dd><dt>可否證的假說</dt><dd>從 StateMemBench 與 LongMemEval 抽出的依賴圖很稀疏，假設數到 1,000 時標籤大小的中位數仍不超過 3；同樣假設數的隨機稠密 Horn 理論則會快速成長。</dd><dt>實驗情境</dt><dd>把兩個評測的對話用 LLM 轉成理由與假設；另外生成不同密度的隨機 Horn 理論；記錄每次加入理由後的標籤大小、環境數與 nogood 數。</dd><dt>比較基線</dt><dd>隨機稠密理論。</dd><dt>控制變因</dt><dd>同一份 ATMS 實作（位元向量、依長度排序）；同一台機器。</dd><dt>評估指標</dt><dd>標籤大小分布、建立的環境數、每條理由的處理時間、記憶體。</dd><dt>能分辨什麼</dt><dd>原文效率論證成不成立，取決於依賴的稀疏程度。</dd><dt>可能失敗的條件</dt><dd>若 LLM 抽出的理由過度連結（把相關但非依賴的事實也連起來），圖會變稠密，結果反映的是抽取品質而非 ATMS。</dd></dl></div>
+</div>
+</div></details>
+      <div class="desk-foot">
+        <div class="note"><label for="note-research">筆記</label><textarea id="note-research" data-note="s-research" placeholder="你要重建的部分、想追的缺口、實驗構想"></textarea><span class="saved"></span></div>
+      </div>
+    </section>
+
     <!-- ===================== glossary ===================== -->
     <section class="sec" id="s-glossary" data-short="術語表">
       <div class="sec-head"><span class="sec-num">附錄</span><h2>術語表</h2></div>
@@ -671,7 +736,7 @@
 </div>
 </div>
 
-<script src="../../assets/site.js?v=c9b9523df1"></script>
+<script src="../../assets/site.js?v=a40663c2e8"></script>
 <script src="../../assets/anim.js?v=c9faccbc5c"></script>
 <script>
 // A tiny ATMS: labels by fixpoint over Horn justifications. Environments are sorted arrays of assumption names.

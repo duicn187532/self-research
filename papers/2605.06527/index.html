@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
-<link rel="stylesheet" href="../../assets/site.css?v=3aaeaccacb">
+<link rel="stylesheet" href="../../assets/site.css?v=f627d819c8">
 <script>try{var r=document.documentElement;r.setAttribute("data-host-theme",r.getAttribute("data-theme")||"");if(JSON.parse(localStorage.getItem("study:skin"))!=="study")r.setAttribute("data-skin","maple");var m=JSON.parse(localStorage.getItem("study:mode"));if(m==="light"||m==="dark")r.setAttribute("data-theme",m);}catch(e){}</script>
 
 <style>
@@ -742,6 +742,84 @@
       </div>
     </section>
 
+    <!-- ===================== researcher analysis ===================== -->
+    <section class="sec sec-research" id="s-research" data-short="研究者進階分析">
+      <div class="sec-head"><span class="sec-num">R</span><h2>研究者進階分析</h2></div>
+      <p class="research-lede">給要使用 STALE 評測、重建 CUPMem、或研究隱性衝突的讀者。依據是本頁前 13 節（已對照 v1 PDF 與附錄 A–H），以及 2026-10-22 透過 alphaXiv 補讀附錄 C、E.2、F、G 確認的設定。資料建構流程已在 <a href="#s-build">04</a> 拆解，這裡重建的是 CUPMem 與評分流程。 這篇和其他六篇的對照，見<a href="../../compare/index.html">研究工作台</a>。</p>
+<details class="rblock" id="r-stale-a"><summary><span class="rk">A</span>方法重建<small>輸入輸出、狀態、步驟順序與每一步的出處</small></summary><div class="rbody">
+<p>CUPMem 的描述分在 §5 與附錄 F.1–F.3，正文與附錄對裁決輸出的說法不完全一致（<a href="#s-cupmem">10</a>）。這篇有釋出程式碼（附錄 G），所以下面標「原文未提供」的地方，可以再去程式碼確認；本站尚未讀程式碼。</p>
+<div class="legend-r"><span><span class="tag tag-orig">原文</span> 原論文明確定義</span><span><span class="tag tag-derived">推導</span> 可由原文合理推導</span><span><span class="tag tag-assume">本站假設</span> 本站為了能實作而補的假設</span><span><span class="tag tag-unknown">原文未提供</span> 原文沒有交代，無法確定</span></div>
+<div class="rcard"><dl><dt>輸入（寫入）</dt><dd>一個新 session \(x_\tau\)（§5、附錄 F.2）。</dd><dt>輸入（回答）</dt><dd>自然語言查詢 q（附錄 F.3）。</dd><dt>關鍵狀態</dt><dd>兩層 schema \(\Omega\)：10 個狀態領域、33 個槽位，各標 single／multi（Table 8）；記憶項 \(m_i = (id, b, \ell, v, s, \tau, E)\)，\(s \in\) {ACTIVE, STALE}；槽位可標 UNKNOWN_CURRENT（附錄 F.1）。</dd><dt>Schema 來源</dt><dd>LLM 輔助的啟發式抽象，獨立於評測的生成本體建構，評估前固定（附錄 F.1）。</dd></dl></div>
+<h4>寫入：WRITE(x_τ)</h4>
+<ol class="pseudo">
+<li><code>C_τ ← 抽出與狀態相關的片段</code>，濾掉任務包裝、純歷史性提及<span class="tag tag-orig">原文 附錄 F.2</span></li>
+<li>轉成更新候選 \(\delta_k = (b_k, \ell_k, \hat v_k, z_k, \gamma_k, \tau, E_k)\)；描述轉變時保留轉變後的狀態<span class="tag tag-orig">原文 附錄 F.2</span></li>
+<li>同槽位局部更新 <code>a_k ∈ {ADD, REFINE, REPLACE, NO_OP}</code>，參考同槽位與同領域的既有項<span class="tag tag-orig">原文 附錄 F.2</span></li>
+<li>修訂候選範圍 <code>R_τ = R_direct ∪ R_affected ∪ R_global</code><span class="tag tag-orig">原文 §5、附錄 F.2</span></li>
+<li class="ind1"><code>R_affected</code>：以常識外推「可能被影響的鄰近領域」，例如健康 → 交通<span class="tag tag-orig">原文 附錄 F.2</span></li>
+<li class="ind1"><code>R_global</code> 的大小 k<span class="tag tag-unknown">原文未提供 可查程式碼</span></li>
+<li>對每個候選舊項提出修訂建議 \(p = (m_{\text{old}}, \Delta_p, \rho_p, \gamma_p)\)，交 LLM 裁決器<span class="tag tag-orig">原文 附錄 F.2</span></li>
+<li class="ind1">正文：KEEP／STALE／REPLACE／UNKNOWN 四種輸出；附錄：歸檔、舊值不安全但新值未定、證據不足三種情況<span class="tag tag-orig">原文 §5 與附錄 F.2 說法不一</span></li>
+<li class="ind1">信心 \(\gamma\) 是否當門檻使用、門檻值<span class="tag tag-unknown">原文未提供</span></li>
+<li>寫入結果：被判定失效者歸檔為 STALE（不刪除）；只知舊值不安全時把槽位標 UNKNOWN_CURRENT<span class="tag tag-orig">原文 附錄 F.1–F.2</span></li>
+<li>時間因果約束：只有較晚的證據能修訂或歸檔較早的項目<span class="tag tag-orig">原文 附錄 F.2</span></li>
+<li>所有 LLM 步驟用 GPT-4o-mini<span class="tag tag-orig">原文 §4.1、§5</span></li>
+<li class="ind1">每個 session 的 LLM 呼叫次數<span class="tag tag-unknown">原文未提供</span></li>
+</ol>
+<h4>回答：READ(q)</h4>
+<ol class="pseudo">
+<li><code>π(q) = (I_q, P_q, B_q, A_q)</code>：意圖、預設前提、需要的現況、要求的動作<span class="tag tag-orig">原文 附錄 F.3</span></li>
+<li>以前提為中心檢索，依狀態分組成 active、stale、unknown-current 三束<span class="tag tag-orig">原文 附錄 F.3</span></li>
+<li class="ind1">檢索 top-k<span class="tag tag-unknown">原文未提供 可查程式碼</span></li>
+<li>驗證器 <code>V(q, M) ∈ {SUPPORTED, OUTDATED, UNRESOLVED}</code><span class="tag tag-orig">原文 附錄 F.3</span></li>
+<li>前提依賴已歸檔或不安全的項目時擋下，只用通過裁決的記憶生成答案<span class="tag tag-orig">原文 附錄 F.3</span></li>
+</ol>
+<h4>評分：每個情境三次獨立查詢</h4>
+<ol class="pseudo">
+<li>把完整 50 個 session 的歷史（約 15 萬 tokens）序列化，對 SR、PR、IPA 各呼叫一次<span class="tag tag-orig">原文 §4.1</span></li>
+<li class="ind1">放不下的模型做「保留證據的截斷」：一定保留新舊證據 session<span class="tag tag-orig">原文 §4.1</span></li>
+<li class="ind1">記憶框架：每筆資料依原生流程建一次記憶，三題對同一份固定記憶查詢<span class="tag tag-orig">原文 §4.1</span></li>
+<li>Gemini-3.1-flash-lite 依「狀態邏輯」判定通過與否，不比對參考答案字串<span class="tag tag-orig">原文 §3.5、附錄 C、E.1</span></li>
+<li>Overall = 六欄（兩類型 × 三維度）的平均<span class="tag tag-orig">原文 Table 2</span></li>
+</ol>
+<h4>複雜度與成本（有證據的部分）</h4>
+<ul><li>建構成本每筆約 0.12 美元；評估成本每筆 LightMem 約 0.02、A-MEM 約 0.38、CUPMem 約 0.37 美元 <span class="tag tag-orig">原文 附錄 C</span>。</li><li>CUPMem 的寫入步驟要對 \(|R_\tau|\) 個候選逐一裁決，成本隨既有記憶數與受影響領域的寬度成長 <span class="tag tag-derived">推導</span>。token 數與延遲沒有報告。</li></ul>
+<h4>實作會踩到的邊界條件</h4>
+<ul><li><b>狀態再次改變</b>：石膏拆了之後又能騎車，需要撤回先前的 STALE；評測裡沒有這種題（<a href="#s-critique">13</a>）。</li><li><b>schema 外的屬性</b>：不在 10 個領域內的狀態，affected 區域推不出來。</li><li><b>寫入時誤判</b>：錯把仍有效的狀態歸檔，回答時就再也看不到它（受限讀出只用通過裁決的記憶）<span class="tag tag-derived">推導</span>。</li></ul>
+</div></details>
+<details class="rblock" id="r-stale-b"><summary><span class="rk">B</span>可重現性審查<small>九個維度逐項標示，並區分「重算表格」與「重跑實驗」</small></summary><div class="rbody">
+<p>這篇在七篇中釋出最完整：資料、建構與評估程式碼、CUPMem 實作都公開（附錄 G）。</p>
+<div class="legend-r"><span class="st st-yes">已提供</span><span class="st st-part">部分提供</span><span class="st st-no">未提供</span><span class="st st-na">不適用</span><span><span class="st st-check">待核對</span> 本站尚未在原文中確認，不代表原文沒有</span></div>
+<div class="table-wrap"><table class="repro"><thead><tr><th>維度</th><th>狀態</th><th>依據與位置</th></tr></thead><tbody><tr><td>Data 資料</td><td><span class="st st-yes">已提供</span></td><td>400 筆情境釋出於 Hugging Face（STALEproj/STALE），授權 CC BY 4.0；干擾 session 取自 LongMemEval（MIT 授權）（附錄 G）。</td></tr><tr><td>Code 程式碼</td><td><span class="st st-yes">已提供</span></td><td>建構、評估腳本與 CUPMem 實作釋出於 github.com/icedreamc/STALE（附錄 G，以匿名形式）。</td></tr><tr><td>Model 模型</td><td><span class="st st-part">部分提供</span></td><td>建構各階段用的模型（Qwen3.5-Plus、GPT-5.2、Gemini-3.1-pro、GPT-5.1-Chat、Gemini-3.1-flash-lite）、受測模型、評審都有寫（附錄 C、§4.1）。溫度與解碼設定在本站讀到的段落中沒有出現；閉源模型 API 會隨時間更新。</td></tr><tr><td>Prompt 提示詞</td><td><span class="st st-yes">已提供</span></td><td>建構提示詞在附錄 D.2，評審提示詞在附錄 E.1。</td></tr><tr><td>Parameters 參數</td><td><span class="st st-part">部分提供</span></td><td>記憶框架用預設設定與原生流程；LightMem 診斷取前 20（Table 3）。CUPMem 的 global 候選數、信心門檻、檢索 top-k 論文沒寫，可能在程式碼中。</td></tr><tr><td>Metrics 指標</td><td><span class="st st-yes">已提供</span></td><td>SR、PR、IPA 的通過條件（§3.5、附錄 E.1）；Overall 為六欄平均；評審與人工一致性細到各維度的 FPR／FNR（Table 7）。</td></tr><tr><td>Baseline 基線</td><td><span class="st st-part">部分提供</span></td><td>記憶框架統一 GPT-4o-mini 骨幹、預設設定；兩個模型因視窗不足被截斷（Table 2 標 *）。CUPMem 是看過 §4.4 診斷後設計的，在同一評測上評估。</td></tr><tr><td>Statistics 統計</td><td><span class="st st-part">部分提供</span></td><td>主表為單次執行；附錄 E.2 在固定 20 筆子集上重複呼叫 5 次，報平均與標準差；主表沒有信賴區間。</td></tr><tr><td>Cost 成本</td><td><span class="st st-part">部分提供</span></td><td>建構與評估的每筆美元成本（附錄 C）；沒有 token 數與延遲。</td></tr></tbody></table></div>
+<h4>可以重算的（只用論文數字）</h4>
+<ul><li>Table 2 每列 Overall（本頁已逐列驗算，<a href="#s-results">07</a>）；Table 7 的 FPR、FNR（<a href="#s-probe">05</a>）。</li></ul>
+<h4>可以重跑的</h4>
+<ul><li>資料與程式碼都公開，主實驗與 CUPMem 原則上可以重跑。成本可預估：400 筆 × 每筆約 0.37 美元 ≈ 148 美元（只算 CUPMem 評估，依附錄 C 估算）。</li><li>限制：閉源模型（Gemini-3.1、GPT-5.x）與評審本身會隨版本改變，分數不一定能精確重現。</li></ul>
+<h4>阻礙重現的關鍵缺口</h4>
+<p>解碼設定、CUPMem 的未列參數（可能在程式碼中，待核對），以及人工審查各標記的比例與審查者一致性（論文沒有報告）。</p>
+</div></details>
+<details class="rblock" id="r-stale-c"><summary><span class="rk">C</span>主張與證據<small>作者主張了什麼、證據測到了多少</small></summary><div class="rbody">
+<p>評語只針對證據強度。</p>
+<div class="rcards">
+<div class="rcard"><b>主張一：即使最好的模型，整體準確率也只有 55.2%（摘要）。</b><dl><dt>支持證據</dt><dd>Table 2，14 個系統。</dd><dt>其他解釋</dt><dd>部分難度來自 15 萬 tokens 的長上下文檢索，作者也承認長上下文能力與衝突推理在分數中糾纏（附錄 A）；出題與評審模型和受測模型有家族重疊。</dd><dt>直接測到嗎</dt><dd>直接量測。</dd><dt>未測的邊界</dt><dd>情境由 LLM 生成、刻意寫得隱晦；真實使用者的更新可能更直接。</dd><dt>評語</dt><dd><span class="str str-strong">充分支持</span> 在 STALE 這個建構下，多個系統都遠低於 60%，且附錄 E.2 的重複呼叫顯示這個結論穩定；推廣到真實對話要另外驗證。</dd></dl></div>
+<div class="rcard"><b>主張二：知道不等於會用（SR 高不代表 IPA 高）。</b><dl><dt>支持證據</dt><dd>Table 2 的 SR 與 IPA 差距；附錄 E.4 注意力分析。</dd><dt>其他解釋</dt><dd>評審在 IPA 的 FNR 最高（16.67%），IPA 分數可能被低估，使差距看起來更大。</dd><dt>直接測到嗎</dt><dd>行為層面直接測到；注意力分析作者自己說是診斷性、非因果。</dd><dt>未測的邊界</dt><dd>注意力分析只看 Qwen3.5 兩個模型、每組至多 20 筆。</dd><dt>評語</dt><dd><span class="str str-part">部分支持</span> 方向在多數系統成立，但幅度受 IPA 評審偏差影響。</dd></dl></div>
+<div class="rcard"><b>主張三：前提誘導的偏差很普遍（PR 是最弱的維度）。</b><dl><dt>支持證據</dt><dd>Table 2：多數系統 PR 接近 0；附錄 E.2 重複呼叫中 PR 一直接近 0；評審在 PR 的一致率 97.50%。</dd><dt>其他解釋</dt><dd>PR 題由 Gemini-3.1-pro 出，可能帶有特定措辭偏好。</dd><dt>直接測到嗎</dt><dd>直接量測，且評審可靠度有人工驗證。</dd><dt>未測的邊界</dt><dd>只測了一種誘導形式（查詢中夾帶舊前提）。</dd><dt>評語</dt><dd><span class="str str-strong">充分支持</span> 跨 14 個系統、重複執行都成立，評審在這一維最可靠。</dd></dl></div>
+<div class="rcard"><b>主張四：記憶框架的失敗在「調解」，不在「召回」（§4.4）。</b><dl><dt>支持證據</dt><dd>Table 3：LightMem 在 SR／PR 有 77.5% 取回新證據，PR 中取回後仍 99.0% 答錯。</dd><dt>其他解釋</dt><dd>其他框架可能是不同的失敗原因（例如根本沒存到）。</dd><dt>直接測到嗎</dt><dd>只對 LightMem 直接量測。</dd><dt>未測的邊界</dt><dd>Zep、mem-0 等其他框架沒有做同樣診斷。</dd><dt>評語</dt><dd><span class="str str-part">部分支持</span> 對 LightMem 成立；推廣到「記憶框架」整體證據不足。</dd></dl></div>
+<div class="rcard"><b>主張五：寫入時裁決能大幅改善（CUPMem 8.7% → 68.0%）（§5）。</b><dl><dt>支持證據</dt><dd>Table 2，同一 GPT-4o-mini 骨幹。</dd><dt>其他解釋</dt><dd>提升集中在 PR（78.0／75.0）；讀取時的前提驗證器本身就針對 PR 題型，提升可能主要來自讀取端，而不是寫入時裁決。</dd><dt>直接測到嗎</dt><dd>測了整個系統，沒有分開寫入端與讀取端的消融。</dd><dt>未測的邊界</dt><dd>在同一評測上診斷、設計、評估；沒有留出集，也沒在一般記憶評測上檢查副作用；評審人工驗證沒有涵蓋 CUPMem 的輸出。</dd><dt>評語</dt><dd><span class="str str-part">部分支持</span> 在 STALE 上的提升有數據；歸因給「寫入時裁決」與推廣到其他評測都證據不足。</dd></dl></div>
+</div>
+</div></details>
+<details class="rblock" id="r-stale-d"><summary><span class="rk">D</span>研究延伸：可否證的假說<small>研究構想，不是已驗證的貢獻</small></summary><div class="rbody">
+<p>以下是研究構想，尚未被驗證。</p>
+<div class="rcards">
+<div class="rcard"><b>假說一：CUPMem 的 PR 提升來自寫入端還是讀取端？</b><dl><dt>研究問題</dt><dd>把 CUPMem 拆成寫入時裁決與讀取時前提驗證，哪一半造成 PR 從近 0 到 75% 以上？</dd><dt>可否證的假說</dt><dd>若寫入時裁決是主因，「只有寫入端」的變體 PR 會接近完整版，「只有讀取端（套在 LightMem 上）」會明顯較低；反之則讀取端是主因。</dd><dt>實驗情境</dt><dd>用公開程式碼做三個變體：完整版；寫入端加一般 top-k 讀取；LightMem 記憶加 CUPMem 的讀取驗證器。跑全部 400 筆。</dd><dt>比較基線</dt><dd>LightMem、GPT-4o-mini 長上下文。</dd><dt>控制變因</dt><dd>GPT-4o-mini 骨幹、同一評審與評分提示詞、同一資料；每個變體 3 次執行。</dd><dt>評估指標</dt><dd>SR、PR、IPA 分類型準確率；另抽 100 筆 PR 回答做人工判讀，檢查「先質疑前提、但建議不佳」是否被評審放行。</dd><dt>能分辨什麼</dt><dd>寫入時裁決的價值對讀取時檢查的價值；也順帶檢查評審在 CUPMem 輸出上的可靠度。</dd><dt>可能失敗的條件</dt><dd>若兩端互相依賴（讀取驗證器需要 STALE 標記才能運作），單獨的變體會失效，需改用「關閉部分功能」的設計。</dd></dl></div>
+<div class="rcard"><b>假說二：CUPMem 的增益是否依賴 schema 對評測類別的覆蓋？</b><dl><dt>研究問題</dt><dd>CUPMem 的 10 領域 schema 與 STALE 的類別高度重疊。在 schema 覆蓋不到的屬性上，它還有效嗎？</dd><dt>可否證的假說</dt><dd>CUPMem 相對 GPT-4o-mini 的提升，在能對應到 schema 領域的類別上顯著大於對應不到的類別；在新生成、刻意避開 schema 領域的留出集上，提升會大幅縮小。</dd><dt>實驗情境</dt><dd>依 Figure 5 的 10 大類計算 CUPMem 分類別準確率；再用公開的建構流程生成 100 筆 schema 外屬性的新情境。</dd><dt>比較基線</dt><dd>GPT-4o-mini、LightMem、Gemini-3.1-pro。</dd><dt>控制變因</dt><dd>同一建構流程與審查標準、同一評審。</dd><dt>評估指標</dt><dd>分類別準確率與 bootstrap 信賴區間；schema 覆蓋程度（人工標註）。</dd><dt>能分辨什麼</dt><dd>「schema 覆蓋」對「一般性的裁決能力」。</dd><dt>可能失敗的條件</dt><dd>每類只有 19–54 筆，信賴區間會很寬；留出集需要人工審查才能確保衝突成立。</dd></dl></div>
+</div>
+</div></details>
+      <div class="desk-foot">
+        <div class="note"><label for="note-research">筆記</label><textarea id="note-research" data-note="s-research" placeholder="你要重建的部分、想追的缺口、實驗構想"></textarea><span class="saved"></span></div>
+      </div>
+    </section>
+
     <!-- ===================== glossary ===================== -->
     <section class="sec" id="s-glossary" data-short="術語表">
       <div class="sec-head"><span class="sec-num">附錄</span><h2>術語表</h2></div>
@@ -773,7 +851,7 @@
 </div>
 </div>
 
-<script src="../../assets/site.js?v=c9b9523df1"></script>
+<script src="../../assets/site.js?v=a40663c2e8"></script>
 <script src="../../assets/anim.js?v=c9faccbc5c"></script>
 <script>
 // STALE side-by-side animation (section s-anim): retrieval-style memory vs CUPMem write-side adjudication.

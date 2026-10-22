@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
-<link rel="stylesheet" href="../../assets/site.css?v=3aaeaccacb">
+<link rel="stylesheet" href="../../assets/site.css?v=f627d819c8">
 <script>try{var r=document.documentElement;r.setAttribute("data-host-theme",r.getAttribute("data-theme")||"");if(JSON.parse(localStorage.getItem("study:skin"))!=="study")r.setAttribute("data-skin","maple");var m=JSON.parse(localStorage.getItem("study:mode"));if(m==="light"||m==="dark")r.setAttribute("data-theme",m);}catch(e){}</script>
 
 <style>
@@ -706,6 +706,84 @@
       </div>
     </section>
 
+    <!-- ===================== researcher analysis ===================== -->
+    <section class="sec sec-research" id="s-research" data-short="研究者進階分析">
+      <div class="sec-head"><span class="sec-num">R</span><h2>研究者進階分析</h2></div>
+      <p class="research-lede">給要實作 FadeMem、檢驗它的實驗、或在它上面做研究的讀者。依據是本頁前 12 節（已對照 v2 PDF），以及 2026-10-22 透過 alphaXiv 重讀全文（共 5 頁）確認的設定。14 條公式的推導在 <a href="#s-importance">03</a> 到 <a href="#s-fusion">07</a>，這裡不重寫。 這篇和其他六篇的對照，見<a href="../../compare/index.html">研究工作台</a>。</p>
+<details class="rblock" id="r-fademem-a"><summary><span class="rk">A</span>方法重建<small>輸入輸出、狀態、步驟順序與每一步的出處</small></summary><div class="rbody">
+<p>公式都給了，但實作者最缺的是「這些公式在什麼時候、以什麼順序執行」。原文只有 Eq.14 這一行把流程串起來，下面把它展開成一次更新的步驟。凡是本站動畫（<a href="#s-anim">07+</a>）為了能跑而補的設定，都標成本站假設。</p>
+<div class="legend-r"><span><span class="tag tag-orig">原文</span> 原論文明確定義</span><span><span class="tag tag-derived">推導</span> 可由原文合理推導</span><span><span class="tag tag-assume">本站假設</span> 本站為了能實作而補的假設</span><span><span class="tag tag-unknown">原文未提供</span> 原文沒有交代，無法確定</span></div>
+<div class="rcard"><dl><dt>輸入</dt><dd>目前的記憶集合 \(\mathcal{M}_t\)、經過的時間 \(\Delta t\)（天）、一筆新記憶 \(m_{\text{new}}\)、最近的上下文 \(Q_t\)（Eq.2、Eq.14）。</dd><dt>輸出</dt><dd>\(\mathcal{M}_{t+\Delta t}\)：每筆記憶的強度、層級、衰減速率都更新，部分被刪除或融合。</dd><dt>關鍵狀態</dt><dd>每筆記憶 \((c_i, s_i, v_i(t), \tau_i, f_i)\)（Eq.1），另外實作上必須存：所屬層級、每次存取時間 \(t_j\)（算 \(\tilde f_i\) 與視窗內次數 \(n_i\) 都要用）、目前的 \(\lambda_i\) <span class="tag tag-derived">推導</span>。</dd><dt>回答流程</dt><dd>下游問答時記憶怎麼被檢索、取幾筆、是否區分兩層，論文沒有描述 <span class="tag tag-unknown">原文未提供</span>。這直接影響 LoCoMo F1 能不能重現。</dd></dl></div>
+<h4>一次更新：STEP(M, Δt, m_new, Q_t)</h4>
+<ol class="pseudo">
+<li>對每筆 <code>m_i</code>：依 Eq.2 重算 <code>I_i(t)</code><span class="tag tag-orig">原文 Eq.2</span></li>
+<li class="ind1"><code>rel(c_i, Q_t)</code> 的確切定義、\(Q_t\) 取多長<span class="tag tag-unknown">原文未提供</span></li>
+<li class="ind1">Eq.9 曾乘在 \(I_i\) 上的冗餘折扣，重算時是否保留<span class="tag tag-unknown">原文未提供</span></li>
+<li>依 Eq.3 換層：\(I \ge 0.7\) 進 LML，\(I &lt; 0.3\) 進 SML<span class="tag tag-orig">原文 Eq.3、§3.1</span></li>
+<li class="ind1">\(0.3 \le I &lt; 0.7\) 維持原層<span class="tag tag-derived">推導 由「遲滯防止震盪」推得</span></li>
+<li>依 Eq.5、Eq.6 更新 \(\lambda_i\) 與 \(\beta_i\)<span class="tag tag-orig">原文 Eq.5–6</span></li>
+<li>依 Eq.4 讓強度衰減 \(\Delta t\)<span class="tag tag-orig">原文 Eq.4</span></li>
+<li class="ind1">Eq.4 是常數 \(\lambda\) 的封閉形式；\(\lambda\) 隨時間變、又有 Eq.7 的強化時怎麼離散化<span class="tag tag-unknown">原文未提供</span></li>
+<li class="ind1">以「從建立時間起算的累積衰減量差」逐日更新<span class="tag tag-assume">本站假設 本站動畫</span></li>
+<li>強度 \(&lt; \epsilon_{\text{prune}}\) 或閒置超過 \(T_{\max}\) 天就刪除<span class="tag tag-orig">原文 §2.2</span></li>
+<li class="ind1">兩個門檻的值；刪除在衝突處理與融合之前或之後<span class="tag tag-unknown">原文未提供</span></li>
+<li>加入 <code>m_new</code><span class="tag tag-orig">原文 Eq.14</span></li>
+<li class="ind1">初始強度 \(v(0)\) 與初始層級<span class="tag tag-unknown">原文未提供</span></li>
+<li class="ind1">\(v(0)=1\)、一律先進 SML<span class="tag tag-assume">本站假設 本站動畫</span></li>
+<li><code>S ← {m_i : sim(c_new, c_i) &gt; θ_sim}</code><span class="tag tag-orig">原文 Eq.8</span></li>
+<li>對每個 <code>m_i ∈ S</code>：LLM 分成相容／矛盾／包含／被包含<span class="tag tag-orig">原文 §2.3</span></li>
+<li class="ind1">相容 → Eq.9 降 \(I_i\)；矛盾 → Eq.10 壓 \(v_i\)；包含 → LLM 合併<span class="tag tag-orig">原文 Eq.9–10</span></li>
+<li class="ind1">分類與合併的提示詞、\(\theta_{\text{sim}}, \omega, \rho, W_{\text{age}}\) 的值<span class="tag tag-unknown">原文未提供</span></li>
+<li>融合：依 Eq.11 找時間－語意群集（\(\theta_{\text{fusion}} = 0.75\)）<span class="tag tag-orig">原文 Eq.11、§3.1</span></li>
+<li class="ind1">群集大小超過門檻才請 LLM 融合，保留度低於 \(\theta_{\text{preserve}}\) 就拒絕<span class="tag tag-orig">原文 §2.4</span></li>
+<li class="ind1">融合後強度與衰減速率依 Eq.12–13<span class="tag tag-orig">原文 Eq.12–13</span></li>
+<li class="ind1">群集門檻、\(T_{\text{window}}\)、\(\theta_{\text{preserve}}\)、\(\epsilon\)、log 的底<span class="tag tag-unknown">原文未提供</span></li>
+</ol>
+<h4>存取時：ON_ACCESS(m_i, t)</h4>
+<ol class="pseudo">
+<li>記下存取時間 \(t_j\)，依 Eq.7 強化 \(v_i\)<span class="tag tag-orig">原文 Eq.7</span></li>
+<li class="ind1">哪些事件算「存取」（被檢索到？被用來回答？）<span class="tag tag-unknown">原文未提供</span></li>
+<li class="ind1">\(\Delta v, N, W\) 的值<span class="tag tag-unknown">原文未提供</span></li>
+</ol>
+<h4>複雜度與成本（有證據的部分）</h4>
+<ul><li>容量上限 LML 1,000 筆、SML 500 筆 <span class="tag tag-orig">原文 §3.1</span>；滿了怎麼處理沒說 <span class="tag tag-unknown">原文未提供</span>。</li><li>每筆新記憶要和全部記憶算相似度找 \(S\)，暴力法是 \(O(|\mathcal{M}|)\)；融合的群集若兩兩比較是 \(O(|\mathcal{M}|^2)\) <span class="tag tag-derived">推導</span>。</li><li>LLM 呼叫數 = \(|S|\) 次分類，加上合併與融合；論文沒有報告 token 或延遲 <span class="tag tag-unknown">原文未提供</span>。</li></ul>
+<h4>實作會踩到的邊界條件</h4>
+<ul><li><b>時間單位</b>：\(\beta\) 的效果在 1 天內反轉（<a href="#s-decay">04</a>），所以「天」的計法會改變誰先被忘。</li><li><b>話題切換</b>：\(\mathrm{rel}(c_i, Q_t)\) 依賴當下上下文，長期重要但最近沒提的約束會拿到低分。</li><li><b>兩套分類</b>：§2.3 的四類與 Table 2 的三類（Contradiction／Update／Overlap）怎麼對應，原文沒說，因此 Table 2 的 Acc. 無法照原定義重算。</li></ul>
+</div></details>
+<details class="rblock" id="r-fademem-b"><summary><span class="rk">B</span>可重現性審查<small>九個維度逐項標示，並區分「重算表格」與「重跑實驗」</small></summary><div class="rbody">
+<p>全文 5 頁已重讀確認：沒有程式碼連結、沒有提示詞附錄、沒有重複執行的數字。</p>
+<div class="legend-r"><span class="st st-yes">已提供</span><span class="st st-part">部分提供</span><span class="st st-no">未提供</span><span class="st st-na">不適用</span><span><span class="st st-check">待核對</span> 本站尚未在原文中確認，不代表原文沒有</span></div>
+<div class="table-wrap"><table class="repro"><thead><tr><th>維度</th><th>狀態</th><th>依據與位置</th></tr></thead><tbody><tr><td>Data 資料</td><td><span class="st st-part">部分提供</span></td><td>MSC 公開（5,000 段對話）；LoCoMo 公開，但只說「著重多跳推理」，沒有寫用了哪些題、幾題。LTI-Bench 是作者自建的合成資料（30 天、10,780 條序列、注入 4,075 個衝突），未釋出，生成方式也未描述（§3.1、§3.3）。</td></tr><tr><td>Code 程式碼</td><td><span class="st st-no">未提供</span></td><td>全文沒有程式碼或資料連結。</td></tr><tr><td>Model 模型</td><td><span class="st st-part">部分提供</span></td><td>衝突解決與融合用 GPT-4o-mini（未寫快照版本），嵌入用 text-embedding-3-small（§3.1）。下游問答用哪個模型、溫度多少，沒有寫。</td></tr><tr><td>Prompt 提示詞</td><td><span class="st st-no">未提供</span></td><td>分類、合併、融合、保留度驗證的提示詞都沒有提供。</td></tr><tr><td>Parameters 參數</td><td><span class="st st-part">部分提供</span></td><td>給了 \(\lambda_{\text{base}}=0.1\)、\(\theta_{\text{promote}}=0.7\)、\(\theta_{\text{demote}}=0.3\)、\(\theta_{\text{fusion}}=0.75\)、\(\beta\) 0.8／1.2、容量 1,000／500。其餘約 18 個未給（清單見 <a href="#s-setup">08</a>）。參數來源有兩種說法：「驗證集 grid search」（§2.1、§3.1）與「系統性消融」（§2.4），驗證集是什麼沒說。</td></tr><tr><td>Metrics 指標</td><td><span class="st st-part">部分提供</span></td><td>SRR 有公式但分母單位（筆數或 tokens）未定義；TCS 只說 0–1、越高越好，沒有計算式；RP@K 的相關性標註從哪來未說；FCR 用 LLM 事實查核，查核模型未寫；衝突解決 Acc. 的「正確策略」怎麼定未說。</td></tr><tr><td>Baseline 基線</td><td><span class="st st-part">部分提供</span></td><td>LangChain Memory 用預設設定；Mem0、MemGPT 的設定與骨幹模型未寫；固定視窗跑了 4K／8K／16K，表中只報 16K。</td></tr><tr><td>Statistics 統計</td><td><span class="st st-part">部分提供</span></td><td>宣稱以 paired t-test（\(p &lt; 0.05\)）檢定顯著性（§3.1），但沒有標示哪些差異顯著，沒有標準差、重複次數或種子。</td></tr><tr><td>Cost 成本</td><td><span class="st st-no">未提供</span></td><td>「效率」只指儲存量；LLM 呼叫的 token、延遲、費用都沒有報告。</td></tr></tbody></table></div>
+<h4>可以重算的（只用論文數字）</h4>
+<ul><li>半衰期 11.25 天與 5.02 天、Table 2 的 macro 平均、消融的降幅百分比，本頁都已驗算（<a href="#s-decay">04</a>、<a href="#s-results">09</a>、<a href="#s-ablation">10</a>）。</li></ul>
+<h4>只能部分重建的</h4>
+<ul><li>衰減、強化、遷移的數學（Eq.2–7）可以照公式實作，但超過一半的參數要自己定，行為無法和論文對照。</li></ul>
+<h4>無法重跑的</h4>
+<ul><li>Table 1、Table 2：LTI-Bench 沒有釋出，也沒有生成程序。</li><li>Table 3：缺下游問答模型、檢索設定與基線設定。</li></ul>
+<h4>阻礙重現的關鍵缺口</h4>
+<p>程式碼、LTI-Bench、約 18 個超參數、更新順序與離散化方式、下游問答流程。即使拿到全部參數，沒有更新順序仍無法保證得到相同的記憶狀態。</p>
+</div></details>
+<details class="rblock" id="r-fademem-c"><summary><span class="rk">C</span>主張與證據<small>作者主張了什麼、證據測到了多少</small></summary><div class="rbody">
+<p>評語只針對證據強度。缺少某個實驗不代表方法錯。</p>
+<div class="rcards">
+<div class="rcard"><b>主張一：減少 45% 儲存，同時多跳推理與檢索更好（摘要）。</b><dl><dt>支持證據</dt><dd>Table 3：LoCoMo SRR 0.45、多跳 F1 29.43（Mem0 28.37）；MSC RP@10 77.2%。</dd><dt>其他解釋</dt><dd>F1 差 1.06，沒有標準差，可能在執行波動內；SRR 的單位未定義，Mem0 有 DELETE 操作卻 SRR 為 0，兩者可能不是同一種計量。</dd><dt>直接測到嗎</dt><dd>儲存量與 F1 都有量，但「遺忘導致推理更好」這個因果沒有被測（消融沒有「不遺忘」的版本）。</dd><dt>未測的邊界</dt><dd>LoCoMo 只報多跳；其他題型的基線分數沒有給。</dd><dt>評語</dt><dd><span class="str str-part">部分支持</span> 「儲存大減而多跳 F1 不輸」有表格支持；「更好」與「因為遺忘而更好」證據不足。</dd></dl></div>
+<div class="rcard"><b>主張二：30 天後保留 82.1% 關鍵事實，只用 55.0% 儲存（Table 1）。</b><dl><dt>支持證據</dt><dd>LTI-Bench 的 Table 1。</dd><dt>其他解釋</dt><dd>評測集由作者自建，情境設計（受控演變、明確矛盾）天然對應 FadeMem 的機制；「保留」怎麼判定沒有寫。</dd><dt>直接測到嗎</dt><dd>在 LTI-Bench 上是直接量測，但量測程序不透明。</dd><dt>未測的邊界</dt><dd>17.9% 遺失的關鍵事實沒有錯誤分析；不同對話密度下的表現未測。</dd><dt>評語</dt><dd><span class="str str-undet">尚無法判斷</span> 資料與量測程序都不公開，讀者無法判斷這個數字代表什麼。</dd></dl></div>
+<div class="rcard"><b>主張三：每個元件都有貢獻，融合最關鍵（§3.5）。</b><dl><dt>支持證據</dt><dd>Fig. 2：拿掉融合、雙層、衝突解決後，四種題型都下降。</dd><dt>其他解釋</dt><dd>拿掉任一元件後都低於不遺忘的 Mem0，可能代表「遺忘本身有害、要靠融合補償」，而不是三者各自加分（<a href="#s-ablation">10</a>）。</dd><dt>直接測到嗎</dt><dd>直接測了三個元件；沒測「拿掉遺忘」。</dd><dt>未測的邊界</dt><dd>只在 LoCoMo 上做；單次執行。</dd><dt>評語</dt><dd><span class="str str-part">部分支持</span> 元件在 FadeMem 內部有用的方向成立；能否把增益歸給「遺忘」無法判斷。</dd></dl></div>
+<div class="rcard"><b>主張四：第一個具自適應遺忘的雙層仿生 agent 記憶（貢獻 1）。</b><dl><dt>支持證據</dt><dd>論文沒有相關研究章節來界定「第一個」。</dd><dt>其他解釋</dt><dd>MemoryBank（2023）已用艾賓浩斯曲線更新記憶強度，論文沒有引用；「雙層＋自適應」的組合是否首創取決於定義。</dd><dt>直接測到嗎</dt><dd>不是可以用實驗測的主張。</dd><dt>未測的邊界</dt><dd>—</dd><dt>評語</dt><dd><span class="str str-undet">尚無法判斷</span> 論文沒有提供文獻比較，本站也不據此宣稱它不是第一個。</dd></dl></div>
+</div>
+</div></details>
+<details class="rblock" id="r-fademem-d"><summary><span class="rk">D</span>研究延伸：可否證的假說<small>研究構想，不是已驗證的貢獻</small></summary><div class="rbody">
+<p>以下是研究構想，尚未被驗證。</p>
+<div class="rcards">
+<div class="rcard"><b>假說一：多跳增益來自融合，還是來自遺忘？</b><dl><dt>研究問題</dt><dd>把「遺忘」和「融合」拆開後，哪一個才是 LoCoMo 多跳 F1 提升的來源？</dd><dt>可否證的假說</dt><dd>若增益主要來自融合（資訊濃縮），則「只融合、不刪除」的變體（\(\epsilon_{\text{prune}}=0\)、\(T_{\max}=\infty\)）多跳 F1 不低於完整 FadeMem；若遺忘有獨立的降噪效果，完整版應顯著較高。</dd><dt>實驗情境</dt><dd>LoCoMo 全部類別；四個變體：完整、只融合、只遺忘（不融合）、都不做。</dd><dt>比較基線</dt><dd>Mem0；不做任何管理的全存檢索。</dd><dt>控制變因</dt><dd>同一個嵌入模型、同一個 LLM、同一個下游問答模型與 top-K；所有未公開參數固定為同一組並公開；每個變體 3 次以上。</dd><dt>評估指標</dt><dd>各類別 F1、以 tokens 計的儲存量、檢索精確率。</dd><dt>能分辨什麼</dt><dd>「降噪」對「濃縮」：只遺忘的變體若掉分，表示刪除本身會傷害推理。</dd><dt>可能失敗的條件</dt><dd>若變體間差距小於執行間標準差，或結果對自訂參數很敏感，就無法下結論。</dd></dl></div>
+<div class="rcard"><b>假說二：話題切換會讓長期約束被忘掉嗎？</b><dl><dt>研究問題</dt><dd>依賴當下上下文 \(Q_t\) 的重要性分數，是否會讓長期重要、但最近沒被提到的約束（過敏、預算上限）被衰減刪除？</dd><dt>可否證的假說</dt><dd>一則只在第 1 天出現的約束，在其後一段不相關話題持續越久，FadeMem 對它的保留率越低；加上「使用者釘選」的重要性下限可以消除這個效應。</dd><dt>實驗情境</dt><dd>合成 30 天互動：第 1 天說出約束，之後插入 3、7、14、21 天不相關話題，再在第 30 天提問需要該約束的任務。</dd><dt>比較基線</dt><dd>FadeMem 加釘選旗標（\(I_i\) 下限）；Mem0；全存。</dd><dt>控制變因</dt><dd>相同的約束文字與提問；記錄每次刪除與衝突壓制事件，以分開兩種遺失原因。</dd><dt>評估指標</dt><dd>約束遵守率、被刪除的時間點、記憶數。</dd><dt>能分辨什麼</dt><dd>遺失是因為衰減刪除，還是因為被誤判為矛盾而壓制。</dd><dt>可能失敗的條件</dt><dd>結果高度依賴 \(\epsilon_{\text{prune}}\) 與 \(\mu\) 這些未公開參數，需要掃描多組值並報告敏感度。</dd></dl></div>
+</div>
+</div></details>
+      <div class="desk-foot">
+        <div class="note"><label for="note-research">筆記</label><textarea id="note-research" data-note="s-research" placeholder="你要重建的部分、想追的缺口、實驗構想"></textarea><span class="saved"></span></div>
+      </div>
+    </section>
+
     <!-- ===================== glossary ===================== -->
     <section class="sec" id="s-glossary" data-short="術語表">
       <div class="sec-head"><span class="sec-num">附錄</span><h2>術語表</h2></div>
@@ -736,7 +814,7 @@
 </div>
 </div>
 
-<script src="../../assets/site.js?v=c9b9523df1"></script>
+<script src="../../assets/site.js?v=a40663c2e8"></script>
 <script src="../../assets/anim.js?v=c9faccbc5c"></script>
 <script>
 // FadeMem full-loop animation (section s-anim). Formulas follow Eq.2-14; parameters marked 示意 on the page.

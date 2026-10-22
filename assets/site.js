@@ -434,6 +434,28 @@
     });
   });
 
+  // ---------- a link to something inside a folded block (#r-…-d, #d-…) opens the folds around it ----------
+  function unfold() {
+    var id = decodeURIComponent(location.hash.slice(1));
+    var el = id && document.getElementById(id);
+    for (var d = el; d; d = d.parentElement) if (d.tagName === "DETAILS") d.open = true;
+  }
+  unfold();
+  window.addEventListener("hashchange", unfold);
+
+  // ---------- the workbench's note: saved like a paper's, but it belongs to no paper and earns no EXP ----------
+  document.querySelectorAll("textarea[data-bench-note]").forEach(function (ta) {
+    var key = "study:bench:note", status = ta.parentNode.querySelector(".saved"), timer;
+    ta.value = store.get(key, "");
+    ta.addEventListener("input", function () {
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        var ok = store.set(key, ta.value);
+        if (status) status.textContent = ok ? "已存在這個瀏覽器" : "這個瀏覽器不允許儲存，請記得匯出";
+      }, 400);
+    });
+  });
+
   if (!paper) return;
 
   // ---------- outline rail (collapsed on narrow screens so the text comes first) ----------

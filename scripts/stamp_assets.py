@@ -31,7 +31,7 @@ def main() -> int:
         "site.js": digest(ASSETS / "site.js"),
         "anim.js": digest(ASSETS / "anim.js"),
     }
-    pages = [ROOT / "index.html", *sorted(ROOT.glob("papers/*/index.html"))]
+    pages = [ROOT / "index.html", ROOT / "compare" / "index.html", *sorted(ROOT.glob("papers/*/index.html"))]
     changed = 0
     for page in pages:
         s = page.read_text(encoding="utf-8")

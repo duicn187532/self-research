@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
-<link rel="stylesheet" href="../../assets/site.css?v=3aaeaccacb">
+<link rel="stylesheet" href="../../assets/site.css?v=f627d819c8">
 <script>try{var r=document.documentElement;r.setAttribute("data-host-theme",r.getAttribute("data-theme")||"");if(JSON.parse(localStorage.getItem("study:skin"))!=="study")r.setAttribute("data-skin","maple");var m=JSON.parse(localStorage.getItem("study:mode"));if(m==="light"||m==="dark")r.setAttribute("data-theme",m);}catch(e){}</script>
 
 <style>
@@ -685,6 +685,87 @@
       </div>
     </section>
 
+    <!-- ===================== researcher analysis ===================== -->
+    <section class="sec sec-research" id="s-research" data-short="研究者進階分析">
+      <div class="sec-head"><span class="sec-num">R</span><h2>研究者進階分析</h2></div>
+      <p class="research-lede">給要重建 APEX-MEM、檢驗它的 SOTA 主張、或以「查詢時解析」為主題做研究的讀者。依據是本頁前 14 節（已對照 v1 PDF 與附錄 A–I），以及 2026-10-22 透過 alphaXiv 補讀 §3–§6 與附錄 A–C 確認的設定。表格驗算與數字不一致的細節在 <a href="#s-critique">14</a>，這裡只引用結論。 這篇和其他六篇的對照，見<a href="../../compare/index.html">研究工作台</a>。</p>
+<details class="rblock" id="r-apex-a"><summary><span class="rk">A</span>方法重建<small>輸入輸出、狀態、步驟順序與每一步的出處</small></summary><div class="rbody">
+<p>原文用符號定義了資料結構與工具介面（§3–§4），但「哪一版事實有效」不在任何固定演算法裡，而是寫在代理每次產生的 SQL 中。下面把寫入與回答整理成步驟，並特別標出這個決策點。</p>
+<div class="legend-r"><span><span class="tag tag-orig">原文</span> 原論文明確定義</span><span><span class="tag tag-derived">推導</span> 可由原文合理推導</span><span><span class="tag tag-assume">本站假設</span> 本站為了能實作而補的假設</span><span><span class="tag tag-unknown">原文未提供</span> 原文沒有交代，無法確定</span></div>
+<div class="rcard"><dl><dt>輸入（寫入）</dt><dd>一個對話輪 \(u = (s, l, \mathit{text}, t_{\text{anchor}}, \mathit{ctx})\)（§3.3）。線上模式另有問題 Q 與文件集合 D（§5）。</dd><dt>輸出（回答）</dt><dd>ReAct 代理的最終答案 y（§4）。</dd><dt>關鍵狀態</dt><dd>SQLite 中的 entities、properties、facts、events、evidence、turns 表與詞彙搜尋 view（§4）。事實帶有效區間 \([t_{\text{from}}, t_{\text{to}}]\)、信心 c、證據集合；事實錨定在事件上（§3）。</dd></dl></div>
+<h4>寫入一輪對話：INGEST(u)</h4>
+<ol class="pseudo">
+<li><code>ε ← LLM_抽取(u)</code>：少樣本、schema 約束，輸出事件、參與者、事實<span class="tag tag-orig">原文 §3.3</span></li>
+<li class="ind1">抽取模型 Claude Sonnet 4.5<span class="tag tag-orig">原文 §6.2</span></li>
+<li class="ind1">少樣本範例的內容是否公開<span class="tag tag-unknown">原文未提供 本站未在附錄中找到</span></li>
+<li>驗證：型別屬 35 類、角色屬 R、事實有資料型別、時間依 \(t_{\text{anchor}}\) 正規化成 ISO 8601<span class="tag tag-orig">原文 §3.3</span></li>
+<li>對每個提及 m：<code>C ← 密集索引的餘弦 top-k</code><span class="tag tag-orig">原文 §3.2</span></li>
+<li class="ind1">k 的值、嵌入模型<span class="tag tag-unknown">原文未提供</span></li>
+<li class="ind1"><code>LLM_解析(m, C)</code> → choose_existing／propose_new／none，加正規化名稱、別名、信心<span class="tag tag-orig">原文 §3.2</span></li>
+<li class="ind1">解析模型 Claude Haiku 4.5<span class="tag tag-orig">原文 §6.2</span></li>
+<li>屬性名稱正規化為 snake_case，推斷資料型別 δ<span class="tag tag-orig">原文 §3.2</span></li>
+<li>把子圖 \(g_t\) 併入 G，只新增、不覆寫、不刪除<span class="tag tag-orig">原文 §3、貢獻 2</span></li>
+<li class="ind1">同一屬性出現新值時，舊事實的 \(t_{\text{to}}\) 是否被關閉<span class="tag tag-unknown">原文未提供 附錄 E 案例 1 只列出 from</span></li>
+</ol>
+<h4>線上建構（LongMemEval、SealQA）：ONLINE(D, Q)</h4>
+<ol class="pseudo">
+<li>以語義與詞彙搜尋算 Relevance(d|Q)，只保留 \(&gt; \Theta_{\text{rel}} = 0.2\) 的文件<span class="tag tag-orig">原文 §5、§6.2</span></li>
+<li class="ind1">Relevance 的計算式<span class="tag tag-unknown">原文未提供</span></li>
+<li>依時間順序對保留的文件執行 INGEST<span class="tag tag-orig">原文 §5</span></li>
+</ol>
+<h4>回答：ANSWER(x)</h4>
+<ol class="pseudo">
+<li>ReAct 迴圈：每步產生推理 \(r_t\) 與動作 \(a_t\)，觀察附加到歷史<span class="tag tag-orig">原文 §4</span></li>
+<li class="ind1">工具呼叫上限 40；溫度 0<span class="tag tag-orig">原文 §6.2</span></li>
+<li>先把問題中的相對時間轉成日期或日期範圍<span class="tag tag-orig">原文 §4</span></li>
+<li>工具：SchemaViewer、EntityLookup(q, K)、GraphSQL（唯讀單一 SELECT）、Search<span class="tag tag-orig">原文 §4.1–4.4</span></li>
+<li class="ind1">EntityLookup 的 K、Search 的取回量<span class="tag tag-unknown">原文未提供</span></li>
+<li class="ind1">Table 6 出現 PropertySearch，但 §4 沒有定義這個工具<span class="tag tag-orig">原文 附錄 A，見 10</span></li>
+<li>「哪一版有效」：由代理寫的 SQL 決定，例如 <code>ORDER BY created_at DESC LIMIT 1</code><span class="tag tag-orig">原文 Table 8 範例</span></li>
+<li class="ind1">沒有固定的有效性規則；排序欄位選錯（寫入時間對有效時間）就會給出不同答案<span class="tag tag-derived">推導 見 05</span></li>
+<li>發出 Answer 或達到 40 次上限時停止<span class="tag tag-orig">原文 §6.2</span></li>
+<li class="ind1">達到上限時如何作答<span class="tag tag-unknown">原文未提供</span></li>
+</ol>
+<h4>複雜度與成本（有證據的部分）</h4>
+<ul><li>建圖每段對話 2.69M tokens，攤提到每題 13,557（Table 9）<span class="tag tag-orig">原文</span>。</li><li>每題總 token：Table 9 寫約 30,000，Table 10 的分解平均是 81,604，兩表矛盾（<a href="#s-cost">12</a>）。</li><li>GraphSQL 執行成功率 Sonnet 4.5 為 97.6%（Table 11）。</li><li>延遲沒有數字，只在限制段落說工具呼叫多會影響延遲 <span class="tag tag-unknown">原文未提供</span>。</li></ul>
+<h4>實作會踩到的邊界條件</h4>
+<ul><li><b>敘事順序與事件順序不同</b>：使用者回憶往事時，寫入時間晚、事件時間早；若代理用 created_at 排序就會選錯版本。</li><li><b>隱性失效</b>：沒有明講取代的變化（STALE 的 Type II）不會留下任何可排序的衝突，代理要自己想到去查。</li><li><b>線上建構的圖依問題而定</b>：同一段歷史面對不同問題會建出不同的圖（<a href="#s-online">07</a>）。</li></ul>
+</div></details>
+<details class="rblock" id="r-apex-b"><summary><span class="rk">B</span>可重現性審查<small>九個維度逐項標示，並區分「重算表格」與「重跑實驗」</small></summary><div class="rbody">
+<p>原文 §6.2 寫「為了可重現，溫度一律設 0」，但沒有釋出程式碼或圖資料。</p>
+<div class="legend-r"><span class="st st-yes">已提供</span><span class="st st-part">部分提供</span><span class="st st-no">未提供</span><span class="st st-na">不適用</span><span><span class="st st-check">待核對</span> 本站尚未在原文中確認，不代表原文沒有</span></div>
+<div class="table-wrap"><table class="repro"><thead><tr><th>維度</th><th>狀態</th><th>依據與位置</th></tr></thead><tbody><tr><td>Data 資料</td><td><span class="st st-part">部分提供</span></td><td>LoCoMo（五類題）、LongMemEval、SealQA-Hard（每題 30 份網路文件，依發布時間排序）（§6.1）。LongMemEval 用的是哪個版本（S、M 或 oracle）、幾題，沒有寫。</td></tr><tr><td>Code 程式碼</td><td><span class="st st-no">未提供</span></td><td>沒有程式碼或圖資料連結。</td></tr><tr><td>Model 模型</td><td><span class="st st-part">部分提供</span></td><td>抽取 Sonnet 4.5、解析 Haiku 4.5，回答代理測了多個 Claude 與 GPT；溫度 0（§6.2）。建構品質用 GPT5 當評審（Table 2）。問答準確率的評審模型沒有寫；嵌入模型沒有寫；模型快照版本沒有寫。</td></tr><tr><td>Prompt 提示詞</td><td><span class="st st-check">待核對</span></td><td>工具介面有形式定義，Table 8 有 SQL 範例，附錄 E、G 有案例。抽取與代理的完整提示詞，本站尚未在附錄中確認是否公開。限制段落提到 GPT4o 的提示詞額外加了查詢錯誤範例。</td></tr><tr><td>Parameters 參數</td><td><span class="st st-part">部分提供</span></td><td>已知：工具上限 40、\(\Theta_{\text{rel}} = 0.2\)、溫度 0、LongMemEval 檢索基線取前 5 個 session。未知：解析候選 k、EntityLookup 的 K、Relevance 計算式。</td></tr><tr><td>Metrics 指標</td><td><span class="st st-part">部分提供</span></td><td>LLM-as-a-Judge：LoCoMo 依 Mem0 的做法，LongMemEval 用建議的評審（§6.1），模型未寫。Overall 的口徑不一：APEX-MEM 含對抗題，Memory 組不含（<a href="#s-locomo">09</a>）。</td></tr><tr><td>Baseline 基線</td><td><span class="st st-part">部分提供</span></td><td>SimpleSearch 與 Full Context 由作者重跑；其他引用 Salama、Pham、Wang &amp; Chen 等論文的報告值（§6.2），評審與回答模型不同。</td></tr><tr><td>Statistics 統計</td><td><span class="st st-part">部分提供</span></td><td>每個 LLM 評審取 3 次平均，標準差 &lt; ±1（§6.2）。這是評審的重複，不是系統的重複執行；沒有顯著性檢定。</td></tr><tr><td>Cost 成本</td><td><span class="st st-part">部分提供</span></td><td>Table 9、10 有 token 分解，Table 11 有 SQL 成功率；兩張 token 表互相矛盾；沒有延遲數字。</td></tr></tbody></table></div>
+<h4>可以重算的（只用論文數字）</h4>
+<ul><li>Table 1 APEX-MEM 五列的 Overall 可以用各類題數加權精確重現；SimpleSearch 四列與 Table 3 的 Overall 重現不了（<a href="#s-locomo">09</a>、<a href="#s-ablation">10</a>）。</li><li>Table 9、10 的加總、Table 11 的成功率（<a href="#s-cost">12</a>）。</li></ul>
+<h4>只能部分重建的</h4>
+<ul><li>表結構、工具介面、ReAct 迴圈可依 §3–§4 與 Table 8 重建；但沒有提示詞與抽取範例，圖的品質無法對照 Table 2。</li></ul>
+<h4>無法重跑的</h4>
+<ul><li>全部主結果：缺程式碼、問答評審模型、LongMemEval 版本。</li><li>轉引的基線數字。</li></ul>
+<h4>阻礙重現的關鍵缺口</h4>
+<p>問答評審模型、程式碼與圖資料、抽取提示詞。前者影響所有準確率能不能互相比較；後兩者決定圖建得一不一樣。</p>
+</div></details>
+<details class="rblock" id="r-apex-c"><summary><span class="rk">C</span>主張與證據<small>作者主張了什麼、證據測到了多少</small></summary><div class="rbody">
+<p>評語只針對證據強度，不判定方法好壞。</p>
+<div class="rcards">
+<div class="rcard"><b>主張一：LoCoMo 88.88%，超越先前最佳的 MIRIX 3.50 個百分點（§6.3）。</b><dl><dt>支持證據</dt><dd>Table 1，GPT5 當回答代理。</dd><dt>其他解釋</dt><dd>回答模型本身很強：同樣用 GPT4o 時，Full Context（87.52%）高於 APEX-MEM（86.75%，都不含對抗題）。MIRIX 是轉引數字，評審不同；Overall 口徑也不同（同口徑差 4.11）。</dd><dt>直接測到嗎</dt><dd>測到 APEX-MEM 在自己的設定下得分高；沒有測同評審、同回答模型下對 MIRIX。</dd><dt>未測的邊界</dt><dd>沒有 GPT5 或 Sonnet 4.5 的全文脈絡基線；單次系統執行。</dd><dt>評語</dt><dd><span class="str str-weak">證據不足</span> 「超越先前最佳記憶系統」的比較條件不一致；對「這個設定下準確率高」則是部分支持。</dd></dl></div>
+<div class="rcard"><b>主張二：只增不刪加上查詢時解析，有助時間推理與衝突處理（貢獻 2、附錄 F）。</b><dl><dt>支持證據</dt><dd>附錄 F 的跨系統比較（Table 12）：時間題 APEX-MEM 90.63%，Mem0 75.71%、MIRIX 65.62%、Zep 76.60%。</dd><dt>其他解釋</dt><dd>四個系統的抽取、回答模型、評審都不同，差距可能來自回答模型或抽取品質。</dd><dt>直接測到嗎</dt><dd>沒有。缺同系統的覆寫式消融。</dd><dt>未測的邊界</dt><dd>回憶往事、隱性失效等需要「哪一版有效」判斷的情境未專門測。</dd><dt>評語</dt><dd><span class="str str-undet">尚無法判斷</span> 設計上合理，但現有證據無法把效果歸給只增不刪。</dd></dl></div>
+<div class="rcard"><b>主張三：每個工具都有顯著貢獻，加入 Search 提升 7.55 個百分點（§6.3、Table 3）。</b><dl><dt>支持證據</dt><dd>Table 3 工具消融（Haiku 回答）。</dd><dt>其他解釋</dt><dd>依題數加權重算，三列是 78.07%、80.83%、84.92%，Search 的貢獻約 +4.09。</dd><dt>直接測到嗎</dt><dd>直接測了工具組合；但消融的工具集與 Table 6 的呼叫紀錄對不上（Entity 組仍有 Search 呼叫）。</dd><dt>未測的邊界</dt><dd>只用 Haiku 一個回答模型、單次執行。</dd><dt>評語</dt><dd><span class="str str-part">部分支持</span> 方向（三個工具都有用、Search 最大）成立；幅度被高估。</dd></dl></div>
+<div class="rcard"><b>主張四：LongMemEval 86.2%，比會話感知 RAG 基線高 13.7 個百分點（§6.3）。</b><dl><dt>支持證據</dt><dd>Table 4：同為 Sonnet 4.5 回答，APEX-MEM Online 86.2% 對作者自跑的「前 5 個 session 展開」基線 72.5%。</dd><dt>其他解釋</dt><dd>兩者都用問題來挑相關內容，這組比較相對公平；但 LongMemEval 版本與評審模型都沒寫，無法和其他論文的數字比較。</dd><dt>直接測到嗎</dt><dd>測到同回答模型下對作者自己的檢索基線。</dd><dt>未測的邊界</dt><dd>對 Zep、Mem0 等是轉引數字；APEX-MEM 用看過問題才建的圖（<a href="#s-online">07</a>）。</dd><dt>評語</dt><dd><span class="str str-part">部分支持</span> 對作者自己的基線成立；對其他記憶系統的比較不成立。</dd></dl></div>
+<div class="rcard"><b>主張五：SealQA-Hard 上 40.15%，比最強基線高 5.55 個百分點（§6.3）。</b><dl><dt>支持證據</dt><dd>Table 5。</dd><dt>其他解釋</dt><dd>Table 5 中最強的基線其實是附搜尋工具的 GPT5（38.6%），同模型差距約 1.5 個百分點。</dd><dt>直接測到嗎</dt><dd>直接量測，但比較對象選錯。</dd><dt>未測的邊界</dt><dd>單次執行，沒有變異數。</dd><dt>評語</dt><dd><span class="str str-weak">證據不足</span> 1.5 個百分點的差距在沒有變異數的情況下不足以支持「大幅超越」。</dd></dl></div>
+</div>
+</div></details>
+<details class="rblock" id="r-apex-d"><summary><span class="rk">D</span>研究延伸：可否證的假說<small>研究構想，不是已驗證的貢獻</small></summary><div class="rbody">
+<p>以下是研究構想，尚未被驗證。</p>
+<div class="rcards">
+<div class="rcard"><b>假說一：只增不刪本身值多少？</b><dl><dt>研究問題</dt><dd>保留所有版本（只增不刪）是否就是時間題與衝突題表現好的原因？</dd><dt>可否證的假說</dt><dd>其他條件不變，把記憶改為「每個（實體, 屬性）只保留最新值」的覆寫式視圖，時間題與「什麼時候改變的」這類題目的準確率會明顯下降，單跳題則不變。若兩者都不變，表示增益不是來自只增不刪。</dd><dt>實驗情境</dt><dd>同一張 APEX-MEM 圖；用 SQL view 提供覆寫式版本給代理（只看得到最新值）；再加一組 StateMemBench 的 status 與 sequence 題，專測版本選擇。</dd><dt>比較基線</dt><dd>原版（只增不刪）、覆寫式視圖、Full Context。</dd><dt>控制變因</dt><dd>同一回答模型、同一工具上限與溫度、同一評審；每組 3 次執行。</dd><dt>評估指標</dt><dd>分類別準確率、工具呼叫數、每題 tokens。</dd><dt>能分辨什麼</dt><dd>「儲存策略」對「代理寫 SQL 的能力」：若覆寫式視圖只掉時間題，增益來自保留歷史。</dd><dt>可能失敗的條件</dt><dd>LoCoMo 的時間題多數只問事件日期而不需要版本選擇，效應可能很小；所以需要專門的版本選擇題。</dd></dl></div>
+<div class="rcard"><b>假說二：查詢時解析的錯誤是不是集中在排序欄位？</b><dl><dt>研究問題</dt><dd>代理選錯「有效版本」，是否主要因為用寫入時間（created_at）而非事實有效時間排序？</dd><dt>可否證的假說</dt><dd>在敘事順序與事件順序不同的題目上，代理以 created_at 排序的查詢比例，與答錯顯著相關；提供一個確定性的「某時點有效值」視圖後，錯誤率與工具呼叫數同時下降。</dd><dt>實驗情境</dt><dd>記錄所有 GraphSQL，自動分類排序欄位；建一組回憶往事的題（寫入晚、事件早）；介入：加入 <code>facts_as_of(t)</code> 視圖並在 SchemaViewer 中說明。</dd><dt>比較基線</dt><dd>原版代理；加視圖的代理。</dd><dt>控制變因</dt><dd>同一張圖、同一回答模型與提示詞（除視圖說明外）、溫度 0。</dd><dt>評估指標</dt><dd>準確率、排序欄位分布、工具呼叫數、每題 tokens。</dd><dt>能分辨什麼</dt><dd>錯在「解析規則」還是錯在「檢索沒取到」。</dd><dt>可能失敗的條件</dt><dd>若對話都依時間順序敘述，寫入時間與事件時間一致，兩種排序結果相同，就測不出差異。</dd></dl></div>
+</div>
+</div></details>
+      <div class="desk-foot">
+        <div class="note"><label for="note-research">筆記</label><textarea id="note-research" data-note="s-research" placeholder="你要重建的部分、想追的缺口、實驗構想"></textarea><span class="saved"></span></div>
+      </div>
+    </section>
+
     <!-- ===================== glossary ===================== -->
     <section class="sec" id="s-glossary" data-short="術語表">
       <div class="sec-head"><span class="sec-num">附錄</span><h2>術語表</h2></div>
@@ -716,7 +797,7 @@
 </div>
 </div>
 
-<script src="../../assets/site.js?v=c9b9523df1"></script>
+<script src="../../assets/site.js?v=a40663c2e8"></script>
 <script src="../../assets/anim.js?v=c9faccbc5c"></script>
 <script>
 // Date-difference widget (section s-tools), reproducing the TEMPORAL query of Table 8.

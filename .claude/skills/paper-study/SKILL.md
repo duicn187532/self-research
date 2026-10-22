@@ -55,15 +55,36 @@ Never fill in an equation, number or hyperparameter that no source gave; write `
    PDF text or is a derived value whose working is shown on the page.
 9. In the critique section, write real questions about fairness of baselines, hyperparameters,
    cost, and generalisation; not praise.
+10. Add the 研究者進階分析 section (`id="s-research"`, before the glossary, notes box but no done box,
+   so it does not change the section count). Write `scripts/research/rd_<paper>.py` modelled on the
+   existing ones, add it to `scripts/research/run.py`, and run it; `rg_lib.py` renders four folded
+   blocks. Add only what the page does not already cover:
+   - A 方法重建: inputs/outputs, state, pseudocode, update order and triggers, complexity only where
+     there is evidence; tag every step `orig` 原文 / `derived` 推導 / `assume` 本站假設 / `unknown` 原文未提供,
+     with its section, equation or table;
+   - B 可重現性: the nine dimensions (Data, Code, Model, Prompt, Parameters, Metrics, Baseline,
+     Statistics, Cost) as `yes`/`part`/`no`/`na`/`check` (待核對 = not yet confirmed, not "absent"), then
+     what can be redone, what only partly, and the key gaps; keep recomputing the paper's tables apart
+     from rerunning its experiments;
+   - C 主張與證據: per key claim the evidence, alternative explanations, whether the experiment tests it
+     directly, untested boundaries, and a strength (`strong`/`part`/`weak`/`undet`) with the reason; a
+     missing experiment does not make the method wrong;
+   - D 研究假說: 1–3 falsifiable hypotheses with design, baselines, controls, metrics, what the result
+     would tell apart, and failure conditions; label them ideas, not contributions.
+   Never guess a number the paper does not give; keep the authors' claims apart from the site's comments.
 
 ## 3. Register and check
 
 - Add a card to `index.html` with `data-progress-for="<id>"` and `data-total` = number of `data-done` boxes.
+- Add the paper to the research workbench: a column in `P` and a cell in every row of `DIMS` in
+  `scripts/research/build_compare.py` (status `y`/`p`/`x`/`n`, one sentence, the page sections that
+  support it), then revisit `QUESTIONS`, `GAPS` and `BENCH`. Run it and check every link resolves.
 - Nothing to set up for EXP and levels: site.js derives a paper's EXP from its `data-done` boxes,
   `.check details` and `data-note` boxes (README, 經驗值與等級), and the total sums every paper.
 - Run `python3 scripts/stamp_assets.py` so the new page links the current `site.css`/`site.js`/`anim.js`
   stamps (`?v=...`). Run it again whenever `assets/` changes; otherwise browsers on GitHub Pages can
   pair a new page with an old cached script.
+- `python3 scripts/check_links.py` must report 0 broken links.
 - Preview: `python3 -m http.server` and open the page, or build a single file with
   `python3 scripts/build_artifact.py papers/<id>/index.html dist/<id>.html` to publish as an Artifact.
 

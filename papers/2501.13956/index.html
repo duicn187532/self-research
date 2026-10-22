@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
-<link rel="stylesheet" href="../../assets/site.css?v=3aaeaccacb">
+<link rel="stylesheet" href="../../assets/site.css?v=f627d819c8">
 <script>try{var r=document.documentElement;r.setAttribute("data-host-theme",r.getAttribute("data-theme")||"");if(JSON.parse(localStorage.getItem("study:skin"))!=="study")r.setAttribute("data-skin","maple");var m=JSON.parse(localStorage.getItem("study:mode"));if(m==="light"||m==="dark")r.setAttribute("data-theme",m);}catch(e){}</script>
 
 <style>
@@ -714,6 +714,85 @@ ENTITY_NAME: entity summary
       </div>
     </section>
 
+    <!-- ===================== researcher analysis ===================== -->
+    <section class="sec sec-research" id="s-research" data-short="研究者進階分析">
+      <div class="sec-head"><span class="sec-num">R</span><h2>研究者進階分析</h2></div>
+      <p class="research-lede">給要自己重建 Graphiti、檢驗 Zep 實驗、或以它為基線設計研究的讀者。依據是本頁前 12 節（已對照 v1 PDF），以及 2026-10-22 透過 alphaXiv 補讀全文（含附錄 6.1.1–6.1.5）確認的實驗細節。公式與流程細節不重寫，只指回原節。 這篇和其他六篇的對照，見<a href="../../compare/index.html">研究工作台</a>。</p>
+<details class="rblock" id="r-zep-a"><summary><span class="rk">A</span>方法重建<small>輸入輸出、狀態、步驟順序與每一步的出處</small></summary><div class="rbody">
+<p>原文的建圖流程散在 §2.2–§2.3 與附錄提示詞，沒有演算法框，也沒有寫步驟之間的先後與觸發條件。下面把它整理成可實作的順序，每一步標出出處；原文沒交代的地方標「原文未提供」，不用本站的猜測補上。</p>
+<div class="legend-r"><span><span class="tag tag-orig">原文</span> 原論文明確定義</span><span><span class="tag tag-derived">推導</span> 可由原文合理推導</span><span><span class="tag tag-assume">本站假設</span> 本站為了能實作而補的假設</span><span><span class="tag tag-unknown">原文未提供</span> 原文沒有交代，無法確定</span></div>
+<div class="rcard"><dl><dt>輸入</dt><dd>一則訊息 episode：說話者、內容、參考時間 \(t_{\text{ref}}\)，加上前 \(n=4\) 則訊息當上下文（§2.1、§2.2.1）。</dd><dt>輸出</dt><dd>更新後的圖 \(\mathcal{G}\)；查詢時輸出一段 context 字串 \(\beta = \chi(\rho(\varphi(\alpha)))\)（§3）。</dd><dt>關鍵狀態</dt><dd>實體（名稱、摘要、1024 維名稱嵌入）；事實邊（關係類型、事實句、嵌入、\(t_{\text{valid}}, t_{\text{invalid}}, t'_{\text{created}}, t'_{\text{expired}}\)）；社群（摘要、名稱嵌入）；episode 與邊之間的雙向索引（§2、§2.2.3、§2.3）。</dd></dl></div>
+<h4>寫入一則訊息：INGEST(m, t_ref)</h4>
+<ol class="pseudo">
+<li><code>ctx ← 前 4 則訊息</code><span class="tag tag-orig">原文 §2.2.1</span></li>
+<li><code>E ← LLM_抽實體(m, ctx)</code>，說話者一律是第一個實體<span class="tag tag-orig">原文 §2.2.1、附錄 6.1.1</span></li>
+<li><code>E ← LLM_反思(E)</code>：受 Reflexion 啟發的補漏步驟<span class="tag tag-orig">原文 §2.2.1</span></li>
+<li class="ind1">反思用的提示詞與停止條件<span class="tag tag-unknown">原文未提供</span></li>
+<li>對每個 <code>e ∈ E</code>：<code>候選 ← 餘弦(名稱嵌入) ∪ 全文檢索(名稱, 摘要)</code><span class="tag tag-orig">原文 §2.2.1</span></li>
+<li class="ind1">候選取幾個（top-k）<span class="tag tag-unknown">原文未提供</span></li>
+<li class="ind1"><code>LLM_實體解析(e, 候選, ctx)</code> → 重複就合併並更新名稱與摘要<span class="tag tag-orig">原文 附錄 6.1.2</span></li>
+<li>以預先寫好的 Cypher 模板寫入圖（不讓 LLM 寫查詢）<span class="tag tag-orig">原文 §2.2.1</span></li>
+<li><code>F ← LLM_抽事實(m, ctx, E)</code>，只抽兩個不同實體之間的關係<span class="tag tag-orig">原文 附錄 6.1.3</span></li>
+<li>對每個 <code>f ∈ F</code>：嵌入後，只在同一對實體之間的邊做混合搜尋去重<span class="tag tag-orig">原文 §2.2.2、附錄 6.1.4</span></li>
+<li class="ind1"><code>(t_valid, t_invalid) ← LLM_時間擷取(f, m, t_ref)</code><span class="tag tag-orig">原文 附錄 6.1.5</span></li>
+<li class="ind1"><code>相關舊邊 ← 「語意相關」的既有邊</code><span class="tag tag-orig">原文 §2.2.3</span></li>
+<li class="ind2">「語意相關」怎麼選、範圍是否限同一對實體<span class="tag tag-unknown">原文未提供</span></li>
+<li class="ind1">若 LLM 判定矛盾且時間重疊：<code>舊邊.t_invalid ← f.t_valid</code>，新資訊優先<span class="tag tag-orig">原文 §2.2.3</span></li>
+<li class="ind2">這一步的提示詞（附錄只有 6.1.1–6.1.5，沒有失效判斷）<span class="tag tag-unknown">原文未提供</span></li>
+<li class="ind2">同時設定舊邊的 <code>t'_expired</code><span class="tag tag-derived">推導 依 §2.2.3 對 t'_expired 的定義</span></li>
+<li class="ind1">時間擷取、去重、失效三者的實際先後<span class="tag tag-derived">推導 依 §2.2.2→§2.2.3 的敘述順序，原文未明說</span></li>
+<li>新實體加入鄰居中多數所屬的社群，更新社群摘要<span class="tag tag-orig">原文 §2.3</span></li>
+<li class="ind1">定期整體重算社群的頻率<span class="tag tag-unknown">原文未提供</span></li>
+</ol>
+<h4>查詢：f(α) = χ(ρ(φ(α)))</h4>
+<ol class="pseudo">
+<li><code>φ</code>：餘弦、BM25、從種子節點 n 跳 BFS，分別搜事實欄、實體名稱、社群名稱<span class="tag tag-orig">原文 §3.1</span></li>
+<li class="ind1">實驗實際啟用了哪幾種搜尋、BFS 的 n 與種子<span class="tag tag-unknown">原文未提供 §4 只說「示範了部分功能」</span></li>
+<li><code>ρ</code>：RRF、MMR、episode-mentions、node distance、cross-encoder 擇一或組合<span class="tag tag-orig">原文 §3.2</span></li>
+<li class="ind1">實驗用 BGE-m3 當重排與嵌入模型，但組合方式<span class="tag tag-unknown">原文未提供 §4.1</span></li>
+<li>取前 20 條邊與實體（§4）；DMR 段寫前 10 個節點與邊（§4.2）<span class="tag tag-orig">原文 兩處說法不一致</span></li>
+<li><code>χ</code>：依 §3 範本輸出 FACTS（附有效日期區間）與 ENTITIES<span class="tag tag-orig">原文 §3</span></li>
+<li class="ind1">實驗的 context 不含社群摘要<span class="tag tag-derived">推導 範本只有 FACTS 與 ENTITIES，見 06</span></li>
+</ol>
+<h4>複雜度與成本（有證據的部分）</h4>
+<ul><li>去重只在同一對實體的邊裡搜尋，原文說這「大幅降低計算複雜度」，但沒有給漸近界或實測 <span class="tag tag-orig">原文 §2.2.2</span>。</li><li>每則訊息至少經過：抽實體、反思、逐實體解析、抽事實、逐事實去重、逐事實時間擷取、失效判斷，是多次 LLM 呼叫 <span class="tag tag-derived">推導</span>；建圖的 token 與時間原文都沒有報告 <span class="tag tag-unknown">原文未提供</span>。</li><li>圖只增不減（不刪 episode、失效的邊也保留），儲存量隨訊息數單調成長 <span class="tag tag-derived">推導</span>。</li></ul>
+<h4>實作會踩到的邊界條件</h4>
+<ul><li><b>現在式的事實</b>：規則 3 讓 \(t_{\text{valid}}\) 取「第一次被提到的那天」，不是事情真正開始的日子（見 <a href="#s-fact">05</a> 的例子）。</li><li><b>回憶往事</b>：較晚說出、但描述較早事件的話，依「新資訊優先」可能誤把仍有效的事實設為失效 <span class="tag tag-derived">推導</span>。</li><li><b>沒有日期的關係</b>：\(t_{\text{valid}}\) 留空時如何參與失效判斷，原文沒說 <span class="tag tag-unknown">原文未提供</span>。</li><li><b>\(T'\) 的用途</b>：Constructor 不輸出 \(t'\)，所以「系統當時以為什麼」在實驗裡沒有被查詢過（見 <a href="#s-episode">03</a>）。</li></ul>
+</div></details>
+<details class="rblock" id="r-zep-b"><summary><span class="rk">B</span>可重現性審查<small>九個維度逐項標示，並區分「重算表格」與「重跑實驗」</small></summary><div class="rbody">
+<p>Zep 是商業服務，論文的實驗是透過 Zep 的 API 跑的（§4）。核心引擎 Graphiti 開源，但論文沒有寫實驗用的是哪個版本。</p>
+<div class="legend-r"><span class="st st-yes">已提供</span><span class="st st-part">部分提供</span><span class="st st-no">未提供</span><span class="st st-na">不適用</span><span><span class="st st-check">待核對</span> 本站尚未在原文中確認，不代表原文沒有</span></div>
+<div class="table-wrap"><table class="repro"><thead><tr><th>維度</th><th>狀態</th><th>依據與位置</th></tr></thead><tbody><tr><td>Data 資料</td><td><span class="st st-yes">已提供</span></td><td>DMR：MemGPT 從 Multi-Session Chat 取的 500 段對話（§4.2）。LongMemEval：明確使用 LongMemEval<sub>s</sub>，平均約 115k tokens（§4）。題數與題型分布原文請讀者回查 [7]。</td></tr><tr><td>Code 程式碼</td><td><span class="st st-part">部分提供</span></td><td>Graphiti 開源（原文 [6]，github.com/getzep/graphiti）。實驗 notebook 原文寫「將會」公開在 GitHub（§4.1），v1 撰寫時尚未公開；實驗跑在 Zep 雲端服務，服務版本未載明。</td></tr><tr><td>Model 模型</td><td><span class="st st-part">部分提供</span></td><td>建圖 gpt-4o-mini-2024-07-18；回答 gpt-4o-mini-2024-07-18、gpt-4o-2024-11-20，DMR 另用 gpt-4-turbo-2024-04-09；嵌入與重排 BGE-m3（§4.1）。全文沒有寫溫度或解碼設定。</td></tr><tr><td>Prompt 提示詞</td><td><span class="st st-part">部分提供</span></td><td>附錄給了五個建圖提示詞：抽實體、實體解析、抽事實、事實解析、時間擷取（6.1.1–6.1.5，6.1.1 第 6 條在 PDF 中截斷）。缺：反思、社群摘要、失效判斷、回答提示詞。</td></tr><tr><td>Parameters 參數</td><td><span class="st st-part">部分提供</span></td><td>已知：上下文 \(n=4\)、嵌入 1024 維、檢索 20 條（§4）或 10 條（§4.2）。未知：解析候選數、BFS 跳數與種子、重排組合、社群重算頻率。</td></tr><tr><td>Metrics 指標</td><td><span class="st st-part">部分提供</span></td><td>LongMemEval 用 GPT-4o 搭配 [7] 的分題型提示詞判分（§4.3）。DMR 只寫「LLM judge 比對標準答案」，沒有寫是哪個模型（§4.2）。</td></tr><tr><td>Baseline 基線</td><td><span class="st st-part">部分提供</span></td><td>Full-context 與摘要基線由作者自跑；MemGPT 的 DMR 分數引自 [3]，作者說方法細節不足無法用 gpt-4o-mini 重現；MemGPT 跑 LongMemEval 時因不支援直接匯入既有歷史而失敗（§4.3.1）。LongMemEval 上沒有任何檢索式基線。</td></tr><tr><td>Statistics 統計</td><td><span class="st st-no">未提供</span></td><td>全文沒有重複執行次數、種子、標準差、信賴區間或顯著性檢定（已讀全文確認）。延遲只報中位數與 IQR。</td></tr><tr><td>Cost 成本</td><td><span class="st st-part">部分提供</span></td><td>報告了回答延遲（含 IQR）與平均上下文 tokens（Table 2），量測環境寫明是住宅網路連到 AWS us-west-2（§4.3）。建圖成本與時間完全沒有報告。</td></tr></tbody></table></div>
+<h4>可以重算的（只用論文數字）</h4>
+<ul><li>Table 3 的 Delta 與摘要的 18.5%：本頁已重算，發現分母不一致、18.5% 應為 18.3%（<a href="#s-lme">10</a>）。</li><li>延遲降低約 90%：\(1-3.20/31.3\)、\(1-2.58/28.9\) 都吻合。</li></ul>
+<h4>只能部分重建的</h4>
+<ul><li>建圖管線：用開源 Graphiti 加附錄提示詞可以重建主要步驟，但失效判斷、反思的提示詞缺漏，且實驗用的搜尋與重排組合未知，所以重建後的分數不應期待與 Table 2 一致。</li></ul>
+<h4>無法重跑的</h4>
+<ul><li>2024-12 到 2025-01 的 Zep 雲端服務狀態與網路延遲。</li><li>MemGPT 的 DMR 數字（引用值，非同環境）。</li></ul>
+<h4>阻礙重現的關鍵缺口</h4>
+<p>實驗用的搜尋／重排設定、失效判斷提示詞、DMR 評審模型、以及任何重複執行的變異數。前兩項決定了 LongMemEval 的提升能不能歸因到圖結構。</p>
+</div></details>
+<details class="rblock" id="r-zep-c"><summary><span class="rk">C</span>主張與證據<small>作者主張了什麼、證據測到了多少</small></summary><div class="rbody">
+<p>評語只針對「這些實驗能支持多強的結論」，不是判斷方法好壞。缺少某個實驗不代表方法錯。</p>
+<div class="rcards">
+<div class="rcard"><b>主張一：Zep 在 DMR 上勝過當時最先進的 MemGPT（94.8% 對 93.4%）。</b><dl><dt>支持證據</dt><dd>Table 1（gpt-4-turbo）。</dd><dt>其他解釋</dt><dd>MemGPT 的數字是引自原論文的報告值，模型版本、提示詞、評審都可能不同；同模型的 full-conversation 基線就有 94.4%。</dd><dt>直接測到嗎</dt><dd>測到的是「同一個評測上的兩個數字」，不是同條件的對照。</dd><dt>未測的邊界</dt><dd>沒有變異數；1.4 個百分點在 500 題上約 7 題。作者自己也說 DMR 每段只有 60 則訊息，不適合評記憶系統（§4.2）。</dd><dt>評語</dt><dd><span class="str str-weak">證據不足</span> 非同條件比較，且差距可能落在重複執行的波動內；作者自己的分析也削弱了這個比較的意義。</dd></dl></div>
+<div class="rcard"><b>主張二：在 LongMemEval 上準確度最多提升 18.5%、延遲降低約 90%。</b><dl><dt>支持證據</dt><dd>Table 2、Table 3，與 full-context 基線比。</dd><dt>其他解釋</dt><dd>任何把 115k tokens 壓到約 1.6k 的檢索都可能同時提升準確度（長上下文退化已在 [7] 證實）並大幅降低延遲；目前的設計分不開「壓縮」和「圖結構」的效果。</dd><dt>直接測到嗎</dt><dd>直接測到「Zep 勝過把整段對話塞進去」；沒有測「勝過其他檢索方式」。</dd><dt>未測的邊界</dt><dd>沒有切塊向量檢索基線、沒有消融、單次執行；single-session-assistant 題型退步（−6.8、−14.2 個百分點）。</dd><dt>評語</dt><dd><span class="str str-part">部分支持</span> 對「Zep 勝過 full-context」成立（gpt-4o 絕對 +11.0 個百分點）；對「知識圖譜是提升來源」沒有證據。</dd></dl></div>
+<div class="rcard"><b>主張三：雙時間模型是 Zep 相對既有圖譜 RAG 的關鍵差異，支撐它處理動態更新的能力（§2.1）。</b><dl><dt>支持證據</dt><dd>設計描述；temporal-reasoning 題型提升（gpt-4o-mini +17.6、gpt-4o +17.3 個百分點，Table 3）。</dd><dt>其他解釋</dt><dd>時間題的提升也可能來自上下文變短；knowledge-update 題在 gpt-4o-mini 上反而下降 2.5 個百分點。</dd><dt>直接測到嗎</dt><dd>沒有。沒有拿掉時間欄位的消融，而 \(T'\) 在實驗中不會出現在 context 裡。</dd><dt>未測的邊界</dt><dd>失效判斷的準確率、回憶往事造成的誤失效都沒有評估。</dd><dt>評語</dt><dd><span class="str str-undet">尚無法判斷</span> 設計上合理，但論文沒有任何能把效果歸給雙時間欄位的實驗。</dd></dl></div>
+<div class="rcard"><b>主張四：社群子圖提供對領域更全面的理解（§2、§2.3）。</b><dl><dt>支持證據</dt><dd>設計描述。</dd><dt>其他解釋</dt><dd>—</dd><dt>直接測到嗎</dt><dd>沒有。實驗的 context 範本只有 FACTS 與 ENTITIES，社群很可能沒用上（<a href="#s-community">06</a>）。</dd><dt>未測的邊界</dt><dd>增量標籤傳播與完整重算的偏離程度沒有量化。</dd><dt>評語</dt><dd><span class="str str-undet">尚無法判斷</span> 論文沒有提供任何使用到社群的實驗結果。</dd></dl></div>
+</div>
+</div></details>
+<details class="rblock" id="r-zep-d"><summary><span class="rk">D</span>研究延伸：可否證的假說<small>研究構想，不是已驗證的貢獻</small></summary><div class="rbody">
+<p>以下是研究構想，尚未被驗證，也不是對原論文的指控。</p>
+<div class="rcards">
+<div class="rcard"><b>假說一：LongMemEval 的提升來自壓縮，還是來自圖結構？</b><dl><dt>研究問題</dt><dd>在相同 token 預算下，Zep 的知識圖譜表示是否比一般切塊檢索更好？</dd><dt>可否證的假說</dt><dd>若圖結構有獨立貢獻，在 context 都限制為約 1.6k tokens、同一個嵌入模型與回答模型下，Zep 的整體準確率應比切塊檢索高，且差距大於重複執行的標準差；若差距落在波動內，原文的增益主要來自縮短上下文。</dd><dt>實驗情境</dt><dd>LongMemEval<sub>s</sub> 全部題目；以開源 Graphiti 依附錄提示詞建圖；同一批題目跑多個系統。</dd><dt>比較基線</dt><dd>full-context；以 turn 或 session 切塊、BGE-m3 嵌入加 BM25、RRF 融合、截到相同 token 預算的檢索；Zep 去掉實體摘要只留事實；Zep 去掉日期區間。</dd><dt>控制變因</dt><dd>回答模型與判分提示詞（[7]）固定；溫度 0；context token 預算相同；每個系統至少 3 次執行。</dd><dt>評估指標</dt><dd>整體與分題型準確率、平均 context tokens、扣除網路後的延遲、建圖 token 成本。</dd><dt>能分辨什麼</dt><dd>「降噪與壓縮效應」對「結構與時間欄位效應」；後兩個消融還能分開實體摘要與日期區間各自的貢獻。</dd><dt>可能失敗的條件</dt><dd>若開源 Graphiti 與當時雲端服務行為差異太大，結果無法回推到原論文；判分模型本身的變異也要先量出來。</dd></dl></div>
+<div class="rcard"><b>假說二：「新資訊優先」會不會把回憶往事誤判為更新？</b><dl><dt>研究問題</dt><dd>LLM 矛盾判斷加上依 \(T'\) 採信新資訊的規則，在使用者回顧過去時是否會誤設 \(t_{\text{invalid}}\)？</dd><dt>可否證的假說</dt><dd>在「說話時間晚、但描述較早事件」的回顧性陳述中，Zep 錯誤設定 \(t_{\text{invalid}}\) 的比例，會顯著高於真正的狀態更新。</dd><dt>實驗情境</dt><dd>合成三類事實對各 200 組：真更新、回顧敘述、無關敘述；人工標註真正的有效區間；用開源 Graphiti 建圖並記錄每次失效。</dd><dt>比較基線</dt><dd>規則式失效：只有 \(t_{\text{valid}}\) 較晚的新事實才能讓舊事實失效。</dd><dt>控制變因</dt><dd>同一組對話文字、同一個建圖 LLM 與提示詞；時間擷取錯誤與失效判斷錯誤分開記錄。</dd><dt>評估指標</dt><dd>失效判斷的 precision、recall；temporal-reasoning 問答準確率。</dd><dt>能分辨什麼</dt><dd>錯誤來自 LLM 的矛盾判斷，還是來自「以寫入順序為準」的規則，或來自時間擷取（現在式取 \(t_{\text{ref}}\)）。</dd><dt>可能失敗的條件</dt><dd>若時間擷取本身大量出錯，失效錯誤會被它淹沒，需要先用 gold 時間注入做控制組。</dd></dl></div>
+</div>
+</div></details>
+      <div class="desk-foot">
+        <div class="note"><label for="note-research">筆記</label><textarea id="note-research" data-note="s-research" placeholder="你要重建的部分、想追的缺口、實驗構想"></textarea><span class="saved"></span></div>
+      </div>
+    </section>
+
     <!-- ===================== glossary ===================== -->
     <section class="sec" id="s-glossary" data-short="術語表">
       <div class="sec-head"><span class="sec-num">附錄</span><h2>術語表</h2></div>
@@ -746,7 +825,7 @@ ENTITY_NAME: entity summary
 </div>
 </div>
 
-<script src="../../assets/site.js?v=c9b9523df1"></script>
+<script src="../../assets/site.js?v=a40663c2e8"></script>
 <script src="../../assets/anim.js?v=c9faccbc5c"></script>
 <script>
 // Zep graph-construction and retrieval animation (section s-anim). Steps follow §2.1-§3 and Appendix 6.1.
