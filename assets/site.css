@@ -874,22 +874,26 @@ table.results tbody td:first-child { white-space: nowrap; }
 .map-btn svg { width: 18px; height: 18px; flex: none; }
 .map-btn .map-num { font-size: 12px; font-variant-numeric: tabular-nums; }
 @media (max-width: 960px) {
-  /* The minimap is a button in the top bar here, and the chapter list slides in from the left
-     (site.js keeps the list open and moves the drawer with :root.map-open). */
+  /* The minimap is a button in the top bar here, and the minimap window itself is the drawer: it
+     slides in from the left edge at full height (site.js keeps the list open and moves it with
+     :root.map-open). No backing panel; the window scrolls when the list is long. */
   :root[data-skin="maple"] .map-btn { display: inline-flex; align-items: center; font: inherit; font-weight: 700; cursor: inherit; }
   :root[data-skin="maple"] .rail {
     position: fixed; z-index: 40; top: 0; bottom: 0; left: 0; width: min(330px, 88vw); max-height: none; margin: 0;
-    overflow-y: auto; overscroll-behavior: contain;
-    padding: calc(12px + env(safe-area-inset-top, 0px)) 10px calc(16px + env(safe-area-inset-bottom, 0px)) max(10px, env(safe-area-inset-left, 0px));
-    background: rgba(18, 30, 52, 0.55); box-shadow: 4px 0 18px rgba(0, 0, 0, 0.35);
+    overflow-y: auto; overscroll-behavior: contain; padding: 0; background: none; box-shadow: 6px 0 16px rgba(0, 0, 0, 0.35);
     transform: translateX(-105%); visibility: hidden; transition: transform 0.24s ease, visibility 0s 0.24s;
   }
   :root[data-skin="maple"].map-open .rail { transform: none; visibility: visible; transition: transform 0.24s ease; }
   /* the page layer holds the drawer: lift it over the top bar and the status bar while open */
   :root[data-skin="maple"].map-open .desk { z-index: 50; }
-  :root[data-skin="maple"].map-open .map-scrim { display: block; position: fixed; inset: 0; z-index: 39; background: rgba(8, 14, 32, 0.45); border: 0; padding: 0; }
-  :root[data-skin="maple"] .rail details { margin-top: 62px; }
+  :root[data-skin="maple"].map-open .map-scrim { display: block; position: fixed; inset: 0; z-index: 39; background: rgba(8, 14, 32, 0.25); border: 0; padding: 0; }
+  /* the window fills the drawer: its title band under the top inset, its foot over the bottom one */
+  :root[data-skin="maple"] .rail details {
+    min-height: 100%; box-sizing: border-box; margin: 0; background: #ffffff; background-clip: padding-box;
+    border-top-width: calc(72px + env(safe-area-inset-top, 0px)); border-bottom-width: calc(15px + env(safe-area-inset-bottom, 0px));
+  }
   :root[data-skin="maple"] .rail details[open] { padding-bottom: 0; }
+  :root[data-skin="maple"] .rail ol { background: #ffffff; }
   :root[data-skin="maple"] .rail li a { padding: 10px 8px; }
 }
 @media (max-width: 960px) and (prefers-reduced-motion: reduce) { :root[data-skin="maple"] .rail { transition: none; } }

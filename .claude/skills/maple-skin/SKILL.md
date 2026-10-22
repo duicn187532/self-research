@@ -159,7 +159,7 @@ to publish the built pieces with the site (GitHub Pages); the full pack stays ou
   labels. Levels are light blue with the pick orange; map, menu and pager are navy; 下一節 once
   ready and 讀完這節 are orange, lime once the section is read. Hand-mixed CSS gradients did not
   read as MapleStory, so use these. On narrow screens (≤960px) the minimap is a top-bar
-  button showing EXP n/total and the chapter list is a drawer from the left (`:root.map-open`;
+  button showing EXP n/total and the minimap window itself is a full-height, opaque drawer from the left edge (`:root.map-open`, no backing panel;
   the shade sits inside `.desk`, the drawer's stacking layer, which rises over the bars while open).
 - Paged spacing is measured, not guessed: a page leaves room above its window for its monster's
   tallest frame (`--mob-h`, 0 once beaten) and above the pager for the protagonist (`--hero-h`), so
