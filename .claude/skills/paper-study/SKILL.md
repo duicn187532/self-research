@@ -79,6 +79,10 @@ Never fill in an equation, number or hyperparameter that no source gave; write `
 - Add the paper to the research workbench: a column in `P` and a cell in every row of `DIMS` in
   `scripts/research/build_compare.py` (status `y`/`p`/`x`/`n`, one sentence, the page sections that
   support it), then revisit `QUESTIONS`, `GAPS` and `BENCH`. Run it and check every link resolves.
+- Nothing to set up for understanding marks, review dates or answer boxes: site.js adds them to every
+  section with a `data-done` box and under every `.check details`, and saves the page's section list
+  (`study:<id>:toc`) for the shelf's review list and Markdown export. Keep section ids stable once
+  published, since notes, marks and answers are stored by id (answers by question order).
 - Nothing to set up for EXP and levels: site.js derives a paper's EXP from its `data-done` boxes,
   `.check details` and `data-note` boxes (README, 經驗值與等級), and the total sums every paper.
 - Run `python3 scripts/stamp_assets.py` so the new page links the current `site.css`/`site.js`/`anim.js`

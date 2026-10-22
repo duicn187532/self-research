@@ -15,6 +15,10 @@
     }
   };
   window.StudyStore = store;
+  // dates for the review schedule, as local YYYY-MM-DD strings, which sort as they read
+  function ymd(d) { return d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2); }
+  function today() { return ymd(new Date()); }
+  function addDays(day, n) { var p = day.split("-"); return ymd(new Date(+p[0], p[1] - 1, +p[2] + n)); }
 
   var root = document.documentElement;
   var paperEl = document.querySelector("[data-paper]");
@@ -434,6 +438,280 @@
     });
   });
 
+  // ---------- shelf: sections due for review, on each card and in one list ----------
+  var GRASP_NAMES = { got: "理解", part: "部分理解", review: "需要複習" };
+  function asObj(v) { return v && typeof v === "object" && !Array.isArray(v) ? v : {}; }
+  var shelf = Array.prototype.slice.call(document.querySelectorAll("[data-progress-for]")).map(function (el) {
+    var card = el.closest(".card"), h = card && card.querySelector("h3");
+    var title = h ? h.textContent.trim() : el.getAttribute("data-progress-for");
+    return { id: el.getAttribute("data-progress-for"), el: el, total: Number(el.getAttribute("data-total")) || 0,
+      href: card ? card.getAttribute("href") : "", title: title, short: title.split("：")[0] };
+  });
+  var reviewList = document.getElementById("review-list"), due = [];
+  shelf.forEach(function (c) {
+    var g = asObj(store.get("study:" + c.id + ":grasp", {}));
+    var mine = Object.keys(g).filter(function (sec) { return g[sec] && g[sec].due <= today(); });
+    mine.forEach(function (sec) { due.push({ c: c, sec: sec, rec: g[sec] }); });
+    if (!mine.length) return;
+    var tag = document.createElement("span");
+    tag.className = "due-tag";
+    tag.textContent = mine.length + " 節該複習";
+    c.el.appendChild(tag);
+  });
+  if (reviewList && due.length) {
+    due.sort(function (a, b) { return a.rec.due < b.rec.due ? -1 : a.rec.due > b.rec.due ? 1 : 0; });
+    due.forEach(function (d) {
+      var li = document.createElement("li"), a = document.createElement("a"), info = document.createElement("span");
+      a.href = d.c.href + "#" + d.sec;
+      a.textContent = d.c.short + "：" + (d.rec.t || d.sec);
+      info.textContent = "上次標「" + (GRASP_NAMES[d.rec.g] || d.rec.g) + "」，" + d.rec.due + " 到期";
+      li.appendChild(a);
+      li.appendChild(info);
+      reviewList.appendChild(li);
+    });
+    document.getElementById("review-box").hidden = false;
+  }
+
+  // ---------- shelf: backup, export and restore ----------
+  // Everything the site keeps is under "study:" in localStorage. The backup is those entries as
+  // stored (JSON text), so a restore writes back exactly what was saved. Restoring never deletes an
+  // entry the backup does not have; it snapshots what is here first, so one restore can be undone;
+  // and replacing a note that differs needs its own confirmation.
+  var BACKUP_FORMAT = "paper-study-backup", BACKUP_VERSION = 1, UNDO_KEY = "study-undo:before-restore";
+  var bkMsg = document.getElementById("bk-msg"), bkPanel = document.getElementById("bk-panel"), bkUndo = document.getElementById("bk-undo");
+  function siteEntries() {
+    var out = {};
+    try {
+      for (var i = 0; i < localStorage.length; i++) {
+        var k = localStorage.key(i);
+        if (k && k.indexOf("study:") === 0) out[k] = localStorage.getItem(k);
+      }
+    } catch (e) { return null; }
+    return out;
+  }
+  function parsed(raw, fallback) { try { return raw === null || raw === undefined ? fallback : JSON.parse(raw); } catch (e) { return fallback; } }
+  function download(name, text, type) {
+    var url = URL.createObjectURL(new Blob([text], { type: type }));
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = name;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+  }
+  function say(t) { if (bkMsg) bkMsg.textContent = t; }
+  function backupText() {
+    var data = siteEntries();
+    if (!data) return null;
+    return JSON.stringify({ format: BACKUP_FORMAT, version: BACKUP_VERSION, site: "論文精讀室", exported: new Date().toISOString(), data: data }, null, 1);
+  }
+  function backupNow(prefix) {
+    var t = backupText();
+    if (!t) { say("這個瀏覽器不允許讀取儲存空間，無法備份。"); return false; }
+    download((prefix || "論文精讀室-備份-") + today() + ".json", t, "application/json");
+    return true;
+  }
+  function isNoteKey(k) { return /:note(:|$)/.test(k); }
+  function summarise(data) {
+    var notes = 0, read = 0, marks = 0, answers = 0;
+    Object.keys(data).forEach(function (k) {
+      var v = parsed(data[k], null);
+      if (isNoteKey(k) && String(v || "").trim()) notes++;
+      else if (/:done$/.test(k) && Array.isArray(v)) read += v.length;
+      else if (/:grasp$/.test(k)) marks += Object.keys(asObj(v)).length;
+      else if (/:try$/.test(k)) answers += Object.keys(asObj(v)).length;
+    });
+    return "筆記 " + notes + " 則、已讀 " + read + " 節、理解標記 " + marks + " 個、作答 " + answers + " 題";
+  }
+  function markdownExport() {
+    var data = siteEntries();
+    if (!data) return null;
+    function get(k, f) { return parsed(data[k], f); }
+    var out = ["# 論文精讀室：筆記與進度", "", "匯出日期：" + today(), ""];
+    shelf.forEach(function (c) {
+      var done = get("study:" + c.id + ":done", []), g = asObj(get("study:" + c.id + ":grasp", {})), tr = asObj(get("study:" + c.id + ":try", {}));
+      var toc = get("study:" + c.id + ":toc", null) || [];
+      var noteIds = Object.keys(data).filter(function (k) { return k.indexOf("study:" + c.id + ":note:") === 0 && String(get(k, "")).trim(); })
+        .map(function (k) { return k.slice(("study:" + c.id + ":note:").length); });
+      if (!done.length && !Object.keys(g).length && !Object.keys(tr).length && !noteIds.length) return;
+      var counts = { got: 0, part: 0, review: 0 }, dueN = 0;
+      Object.keys(g).forEach(function (s) { if (counts[g[s].g] !== undefined) counts[g[s].g]++; if (g[s].due <= today()) dueN++; });
+      out.push("## " + c.title, "", "- 已讀 " + Math.min(done.length, c.total) + " / " + c.total + " 節",
+        "- 理解 " + counts.got + "、部分理解 " + counts.part + "、需要複習 " + counts.review + "（已到期 " + dueN + "）", "");
+      var names = {}, order = [];
+      toc.forEach(function (p) { names[p[0]] = p[1]; order.push(p[0]); });
+      noteIds.concat(Object.keys(g)).forEach(function (s) { if (order.indexOf(s) < 0) order.push(s); });
+      order.forEach(function (s) {
+        var note = noteIds.indexOf(s) >= 0 ? String(get("study:" + c.id + ":note:" + s, "")).trim() : "";
+        if (!note && !g[s]) return;
+        out.push("### " + (names[s] || (g[s] && g[s].t) || s), "");
+        if (g[s]) out.push("理解程度：" + (GRASP_NAMES[g[s].g] || g[s].g) + "（" + g[s].at + " 標記，" + g[s].due + " 複習）", "");
+        if (note) out.push(note, "");
+      });
+      var keys = Object.keys(tr).sort(function (a, b) { return a - b; });
+      if (keys.length) {
+        out.push("### 自我檢測：我的作答", "");
+        keys.forEach(function (k) { out.push("- **" + (tr[k].q || "第 " + (+k + 1) + " 題") + "**", "  " + String(tr[k].a || "").trim().replace(/\n/g, "\n  ")); });
+        out.push("");
+      }
+    });
+    var bench = String(get("study:bench:note", "")).trim();
+    if (bench) out.push("## 研究工作台筆記", "", bench, "");
+    return out.length > 4 ? out.join("\n") : "";
+  }
+  // a backup file must say what it is, a version this page knows, and hold only the site's own entries
+  function validate(text) {
+    var obj;
+    try { obj = JSON.parse(text); } catch (e) { return { error: "這不是 JSON 檔，或檔案已損壞。" }; }
+    if (!obj || obj.format !== BACKUP_FORMAT) return { error: "這不是論文精讀室的備份檔。" };
+    if (typeof obj.version !== "number" || obj.version < 1 || Math.floor(obj.version) !== obj.version) return { error: "備份檔的版本欄位不正確。" };
+    if (obj.version > BACKUP_VERSION) return { error: "這份備份來自較新版的網站（格式第 " + obj.version + " 版），這一頁只看得懂第 " + BACKUP_VERSION + " 版。請先重新整理頁面再試。" };
+    var data = obj.data;
+    if (!data || typeof data !== "object" || Array.isArray(data)) return { error: "備份檔裡沒有資料。" };
+    var keys = Object.keys(data);
+    if (!keys.length) return { error: "這份備份是空的。" };
+    for (var i = 0; i < keys.length; i++) {
+      var k = keys[i], v = data[k];
+      if (k.indexOf("study:") !== 0) return { error: "備份裡有不屬於本站的項目（" + k.slice(0, 40) + "），為安全起見不匯入。" };
+      if (typeof v !== "string") return { error: "項目 " + k + " 的格式不正確。" };
+      try { JSON.parse(v); } catch (e) { return { error: "項目 " + k + " 的內容損壞。" }; }
+    }
+    return { data: data, exported: obj.exported };
+  }
+  // Merge keeps what is here and adds what is missing: read sections and opened answers are
+  // unioned, EXP takes the larger, a section's understanding mark the newer, notes and answers
+  // stay as they are here unless empty. Replace takes the backup's version of each entry it has.
+  function merged(k, mine, theirs) {
+    if (mine === null) return theirs;
+    var a = parsed(mine, null), b = parsed(theirs, null);
+    if (/:(done|asked)$/.test(k) && Array.isArray(a) && Array.isArray(b))
+      return JSON.stringify(a.concat(b.filter(function (x) { return a.indexOf(x) < 0; })));
+    if (/:exp$/.test(k) && typeof a === "number" && typeof b === "number") return JSON.stringify(Math.max(a, b));
+    if (/:grasp$/.test(k)) {
+      var g = asObj(a), h = asObj(b);
+      Object.keys(h).forEach(function (s) { if (!g[s] || (h[s] && h[s].at > g[s].at)) g[s] = h[s]; });
+      return JSON.stringify(g);
+    }
+    if (/:try$/.test(k)) {
+      var t = asObj(a), u = asObj(b);
+      Object.keys(u).forEach(function (q) { if (!t[q] || !String(t[q].a || "").trim()) t[q] = u[q]; });
+      return JSON.stringify(t);
+    }
+    if (isNoteKey(k)) return String(a || "").trim() ? mine : theirs;
+    return mine;
+  }
+  // notes and answers that are here, not empty, and different in the backup: what a replace would lose
+  function conflicts(data) {
+    var here = siteEntries() || {}, n = 0;
+    Object.keys(data).forEach(function (k) {
+      if (!(k in here)) return;
+      var a = parsed(here[k], null), b = parsed(data[k], null);
+      if (isNoteKey(k)) { if (String(a || "").trim() && String(a) !== String(b)) n++; }
+      else if (/:try$/.test(k)) {
+        var t = asObj(a), u = asObj(b);
+        Object.keys(t).forEach(function (q) { if (String(t[q] && t[q].a || "").trim() && (!u[q] || u[q].a !== t[q].a)) n++; });
+      }
+    });
+    return n;
+  }
+  function showUndo() { if (bkUndo) bkUndo.hidden = store.get(UNDO_KEY, null) === null; }
+  function restore(data, replace) {
+    var before = siteEntries();
+    if (!before) { say("這個瀏覽器不允許讀取儲存空間，無法還原。"); return; }
+    // the snapshot goes in first; without it there is no restore
+    if (!store.set(UNDO_KEY, { at: new Date().toISOString(), data: before })) {
+      say("儲存空間不足，無法先保存目前的資料，所以沒有還原。請先下載目前的備份，清出空間後再試。");
+      return;
+    }
+    var n = 0;
+    try {
+      Object.keys(data).forEach(function (k) {
+        var v = replace ? data[k] : merged(k, k in before ? before[k] : null, data[k]);
+        if (v !== before[k]) { localStorage.setItem(k, v); n++; }
+      });
+    } catch (e) {
+      Object.keys(before).forEach(function (k) { try { localStorage.setItem(k, before[k]); } catch (x) {} });
+      say("寫入時儲存空間不足，已放回原本的資料，沒有還原。");
+      return;
+    }
+    say("已還原，更新了 " + n + " 個項目。重新整理頁面後就會看到。若結果不對，可以按「復原到上次還原之前」。");
+    if (bkPanel) { bkPanel.hidden = true; bkPanel.textContent = ""; }
+    showUndo();
+  }
+  function askRestore(file) {
+    if (file.size > 5 * 1024 * 1024) { say("檔案太大（超過 5 MB），不像是本站的備份。"); return; }
+    var reader = new FileReader();
+    reader.onload = function () {
+      var v = validate(String(reader.result));
+      if (v.error) { say(v.error); return; }
+      var clash = conflicts(v.data);
+      bkPanel.textContent = "";
+      var head = document.createElement("p");
+      head.textContent = "備份時間：" + (v.exported ? String(v.exported).slice(0, 16).replace("T", " ") : "未記錄") + "。內容：" + summarise(v.data) + "。";
+      var here = document.createElement("p");
+      here.textContent = "這個瀏覽器目前有：" + summarise(siteEntries() || {}) + "。" +
+        (clash ? "其中 " + clash + " 則筆記或作答和備份裡的版本不同。" : "沒有和備份衝突的筆記或作答。");
+      var form = document.createElement("div");
+      form.className = "bk-choices";
+      form.innerHTML =
+        '<label><input type="radio" name="bk-mode" value="merge" checked> <b>合併（建議）</b>：本機已有的筆記與作答不動，只補上本機沒有的；已讀節數取聯集，理解標記取較新的。</label>' +
+        '<label><input type="radio" name="bk-mode" value="replace"> <b>以備份為準</b>：備份裡有的項目一律換成備份的版本；備份裡沒有的本機項目保留。</label>' +
+        '<label class="bk-confirm" hidden><input type="checkbox"> 我了解這會用備份覆蓋本機 ' + clash + ' 則不同的筆記或作答。</label>';
+      var row = document.createElement("div");
+      row.className = "btn-row";
+      var safe = document.createElement("button");
+      safe.type = "button"; safe.className = "btn"; safe.textContent = "先下載目前的備份";
+      var go = document.createElement("button");
+      go.type = "button"; go.className = "btn"; go.textContent = "還原";
+      var cancel = document.createElement("button");
+      cancel.type = "button"; cancel.className = "btn"; cancel.textContent = "取消";
+      row.appendChild(safe); row.appendChild(go); row.appendChild(cancel);
+      var confirmBox = form.querySelector(".bk-confirm"), tick = confirmBox.querySelector("input");
+      function mode() { return form.querySelector("input[name=bk-mode]:checked").value; }
+      function gate() {
+        confirmBox.hidden = !(mode() === "replace" && clash > 0);
+        go.disabled = mode() === "replace" && clash > 0 && !tick.checked;
+      }
+      form.addEventListener("change", gate);
+      safe.addEventListener("click", function () { if (backupNow("論文精讀室-還原前-")) say("已下載目前的備份。"); });
+      go.addEventListener("click", function () { gate(); if (!go.disabled) restore(v.data, mode() === "replace"); });
+      cancel.addEventListener("click", function () { bkPanel.hidden = true; bkPanel.textContent = ""; say("已取消，沒有改動任何資料。"); });
+      bkPanel.appendChild(head); bkPanel.appendChild(here); bkPanel.appendChild(form); bkPanel.appendChild(row);
+      gate();
+      bkPanel.hidden = false;
+      say("");
+    };
+    reader.onerror = function () { say("讀不到這個檔案。"); };
+    reader.readAsText(file);
+  }
+  if (document.getElementById("backup")) {
+    document.getElementById("bk-json").addEventListener("click", function () { if (backupNow()) say("已下載完整備份。"); });
+    document.getElementById("bk-md").addEventListener("click", function () {
+      var md = markdownExport();
+      if (md === null) say("這個瀏覽器不允許讀取儲存空間。");
+      else if (!md) say("還沒有筆記、進度或理解標記可以匯出。");
+      else { download("論文精讀室-筆記與進度-" + today() + ".md", md, "text/markdown"); say("已匯出 Markdown。"); }
+    });
+    var picker = document.getElementById("bk-file");
+    picker.addEventListener("change", function () { if (picker.files[0]) askRestore(picker.files[0]); picker.value = ""; });
+    bkUndo.addEventListener("click", function () {
+      var snap = store.get(UNDO_KEY, null);
+      if (!snap || !snap.data) return;
+      if (!window.confirm("把資料放回 " + String(snap.at).slice(0, 16).replace("T", " ") + " 還原之前的樣子？這之後的改動會被取代。")) return;
+      try {
+        var now = siteEntries() || {};
+        // entries the restore added are removed, the rest put back
+        Object.keys(now).forEach(function (k) { if (!(k in snap.data)) localStorage.removeItem(k); });
+        Object.keys(snap.data).forEach(function (k) { localStorage.setItem(k, snap.data[k]); });
+        localStorage.removeItem(UNDO_KEY);
+        say("已放回還原之前的資料。重新整理頁面後就會看到。");
+      } catch (e) { say("復原失敗：儲存空間無法寫入。"); }
+      showUndo();
+    });
+    showUndo();
+  }
+
   // ---------- a link to something inside a folded block (#r-…-d, #d-…) opens the folds around it ----------
   function unfold() {
     var id = decodeURIComponent(location.hash.slice(1));
@@ -810,6 +1088,128 @@
       }, 400);
     });
   });
+
+  // ---------- understanding, kept apart from "read": 理解 / 部分理解 / 需要複習, with a review date ----------
+  // Each mark is { g, at, due, streak, t }: the level, the day marked, the day it comes up for
+  // review, how many reviews in a row ended in 理解, and the section's name for the shelf's list.
+  // 需要複習 comes back the next day, 部分理解 in 3 days, 理解 in 7, then 21, then 60 days.
+  // Marks earn no EXP and leave the monsters alone.
+  var GRASP_KEY = "study:" + paper + ":grasp";
+  var grasp = store.get(GRASP_KEY, {});
+  if (!grasp || typeof grasp !== "object" || Array.isArray(grasp)) grasp = {};
+  var GRASP = { got: "理解", part: "部分理解", review: "需要複習" };
+  function shortOf(s) { return s.getAttribute("data-short") || (s.querySelector("h2") || {}).textContent || s.id; }
+  function graspDays(g, streak) { return g === "review" ? 1 : g === "part" ? 3 : [7, 21, 60][Math.min(streak, 2)]; }
+  function isDue(rec) { return !!rec && rec.due <= today(); }
+  // the shelf lists the sections and their names, so this page leaves its table of contents behind
+  var toc = quests.map(function (s) { return [s.id, shortOf(s)]; });
+  if (JSON.stringify(store.get("study:" + paper + ":toc", null)) !== JSON.stringify(toc)) store.set("study:" + paper + ":toc", toc);
+  var paperTitle = ((document.querySelector(".paper-head h1") || {}).textContent || shortName).trim();
+  if (store.get("study:" + paper + ":title", null) !== paperTitle) store.set("study:" + paper + ":title", paperTitle);
+  function showDue(id) {
+    var l = links[id], rec = grasp[id];
+    if (l) {
+      l.a.classList.toggle("is-due", isDue(rec));
+      l.a.title = rec ? GRASP[rec.g] + (isDue(rec) ? "，該複習了" : "，下次複習 " + rec.due) : "";
+    }
+  }
+  quests.forEach(function (s) {
+    var id = s.id, foot = s.querySelector(".desk-foot");
+    if (!foot) return;
+    var box = document.createElement("div");
+    box.className = "grasp";
+    var lab = document.createElement("span");
+    lab.className = "grasp-label";
+    lab.id = "grasp-" + id;
+    lab.textContent = "理解程度";
+    var seg = document.createElement("div");
+    seg.className = "seg";
+    seg.setAttribute("role", "group");
+    seg.setAttribute("aria-labelledby", lab.id);
+    var info = document.createElement("span");
+    info.className = "grasp-due";
+    info.setAttribute("aria-live", "polite");
+    var btns = Object.keys(GRASP).map(function (g) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.setAttribute("data-grasp", g);
+      b.textContent = GRASP[g];
+      b.addEventListener("click", function () { mark(g); });
+      seg.appendChild(b);
+      return b;
+    });
+    function paint() {
+      var rec = grasp[id];
+      btns.forEach(function (b) { b.setAttribute("aria-pressed", String(!!rec && rec.g === b.getAttribute("data-grasp"))); });
+      info.classList.toggle("is-due", isDue(rec));
+      info.textContent = !rec ? "還沒標記；和「讀完這節」分開記" : isDue(rec) ? "該複習了：重讀一次，再選一次理解程度" : "下次複習 " + rec.due.slice(5).replace("-", "/");
+      showDue(id);
+    }
+    // Picking the marked level again clears it, unless the section is due: then it records the review.
+    function mark(g) {
+      var rec = grasp[id];
+      if (rec && rec.g === g && !isDue(rec)) delete grasp[id];
+      else {
+        var streak = g === "got" && rec && rec.g === "got" && isDue(rec) ? (rec.streak || 0) + 1 : 0;
+        grasp[id] = { g: g, at: today(), due: addDays(today(), graspDays(g, streak)), streak: streak, t: shortOf(s) };
+      }
+      store.set(GRASP_KEY, grasp);
+      paint();
+    }
+    box.appendChild(lab);
+    box.appendChild(seg);
+    box.appendChild(info);
+    foot.appendChild(box);
+    paint();
+  });
+  var dueNow = quests.filter(function (s) { return isDue(grasp[s.id]); });
+  if (dueNow.length) hud.chat([["複習", "有 " + dueNow.length + " 節到了複習時間：" + dueNow.map(shortOf).join("、")]]);
+
+  // ---------- answer first: a box under each self-check question; writing in it is optional ----------
+  var TRY_KEY = "study:" + paper + ":try";
+  var tries = store.get(TRY_KEY, {});
+  if (!tries || typeof tries !== "object" || Array.isArray(tries)) tries = {};
+  allDialogs.forEach(function (d, k) {
+    // the question as written, TeX and all: this runs before MathJax and before the NPC joins the summary
+    var sum = d.querySelector("summary").cloneNode(true);
+    Array.prototype.forEach.call(sum.querySelectorAll(".npc-portrait"), function (n) { n.remove(); });
+    var q = sum.textContent.trim();
+    var wrap = document.createElement("div");
+    wrap.className = "note try";
+    var id = "try-" + paper.replace(/\W/g, "") + "-" + k;
+    var lab = document.createElement("label");
+    lab.setAttribute("for", id);
+    lab.textContent = "先寫下你的答案（可略過）";
+    var ta = document.createElement("textarea");
+    ta.id = id;
+    ta.rows = 1;
+    ta.placeholder = "寫完再打開題目看參考答案，對照哪裡不同";
+    ta.value = tries[k] && tries[k].a || "";
+    var status = document.createElement("span");
+    status.className = "saved";
+    var timer;
+    ta.addEventListener("input", function () {
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        if (ta.value.trim()) tries[k] = { q: q, a: ta.value }; else delete tries[k];
+        status.textContent = store.set(TRY_KEY, tries) ? "已存在這個瀏覽器" : "這個瀏覽器不允許儲存";
+      }, 400);
+    });
+    wrap.appendChild(lab);
+    wrap.appendChild(ta);
+    wrap.appendChild(status);
+    d.parentNode.insertBefore(wrap, d.nextSibling);
+    d.addEventListener("toggle", function () { lab.textContent = d.open ? "你的答案（和上面的參考答案對照）" : "先寫下你的答案（可略過）"; });
+  });
+  // the export section points at the shelf's site-wide backup
+  var exportSec = document.getElementById("s-export");
+  if (exportSec && homeLink) {
+    var tip = document.createElement("p");
+    tip.className = "mx-src";
+    tip.innerHTML = "這裡只複製這一篇的筆記。換裝置或清除瀏覽資料前，到<a>書架的「備份與匯出」</a>下載全站備份（含進度、理解程度與作答）。";
+    tip.querySelector("a").href = homeLink.getAttribute("href") + "#backup";
+    exportSec.appendChild(tip);
+  }
 
   // Export every note as Markdown so it can be pasted back into the repo or a chat.
   function collectNotes() {

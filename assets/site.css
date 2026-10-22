@@ -592,6 +592,37 @@ table.repro td:nth-child(2) { white-space: nowrap; }
   table.repro td:first-child { display: inline; }
   table.repro td:nth-child(2) { display: inline; margin-left: 0.5rem; }
 }
+/* understanding and review (site.js): a mark per section beside 讀完這節, a reminder in the
+   outline, an optional answer box under each self-check question, and on the shelf the due list
+   and the backup panel */
+.grasp { flex-basis: 100%; display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0.7rem; }
+.grasp-label { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.1em; font-weight: 700; }
+.grasp-due { font-size: var(--step--1); color: var(--muted); }
+.grasp-due.is-due { color: var(--warn); font-weight: 700; }
+.rail li a.is-due::after { content: "複習"; flex: none; order: 3; font-size: 0.7rem; line-height: 1.5; padding: 0 0.35rem; border-radius: 3px; background: var(--warn-soft); color: var(--warn); }
+.check .try { gap: 0.15rem; }
+.check .try label { font-size: 0.7rem; }
+.check .try textarea { min-height: 2.6rem; font-size: 1rem; }
+.check .try textarea:focus, .check .try textarea:not(:placeholder-shown) { min-height: 5.1rem; }
+.check .try .saved:empty { display: none; }
+.due-tag { font-size: 0.75rem; color: var(--warn); background: var(--warn-soft); border-radius: 3px; padding: 0 0.4rem; }
+.review-box ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.45rem; }
+.review-box li { display: grid; gap: 0.05rem; }
+.review-box li span, .review-box p, .backup-box p { font-size: var(--step--1); color: var(--muted); }
+.backup-box .btn-row { margin-top: 0.4rem; }
+.backup-box .btn { font-size: var(--step--1); }
+.bk-pick { position: relative; overflow: hidden; }
+.bk-pick input { position: absolute; inset: 0; opacity: 0; cursor: pointer; font-size: 0; }
+.bk-pick:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
+.bk-panel { display: grid; gap: 0.5rem; margin-top: 0.6rem; padding-top: 0.6rem; border-top: 1px dashed var(--rule); font-size: var(--step--1); }
+.bk-choices { display: grid; gap: 0.4rem; }
+.bk-choices label { display: block; }
+.bk-choices label[hidden] { display: none; }
+/* these display rules would otherwise win over the hidden attribute */
+:is(.review-box, .bk-panel, .backup-box .btn)[hidden] { display: none; }
+.bk-confirm { color: var(--warn); font-weight: 700; }
+.bk-msg { min-height: 1.2em; margin-top: 0.4rem; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
 /* the workbench (compare/index.html): one column of sections, a status matrix that scrolls
    sideways on a phone with the dimension names pinned, then the same dimensions folded */
 .bench { max-width: 64rem; margin: 0 auto; padding-block: 2.25rem 5rem; display: grid; grid-template-columns: minmax(0, 1fr); gap: 3.5rem; }

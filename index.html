@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
-<link rel="stylesheet" href="assets/site.css?v=f627d819c8">
+<link rel="stylesheet" href="assets/site.css?v=f8545c2a87">
 <script>try{var r=document.documentElement;r.setAttribute("data-host-theme",r.getAttribute("data-theme")||"");if(JSON.parse(localStorage.getItem("study:skin"))!=="study")r.setAttribute("data-skin","maple");var m=JSON.parse(localStorage.getItem("study:mode"));if(m==="light"||m==="dark")r.setAttribute("data-theme",m);}catch(e){}</script>
 
 </head>
@@ -123,6 +123,11 @@
   </div>
 
   <aside class="shelf-aside">
+    <div class="review-box" id="review-box" hidden>
+      <h2>該複習了</h2>
+      <p>你標過理解程度、已到複習日的章節。重讀後再選一次理解程度，下次複習日會往後排。</p>
+      <ul id="review-list"></ul>
+    </div>
     <div class="method">
       <h2>每篇的讀法</h2>
       <ol>
@@ -140,10 +145,22 @@
         <li>頁首的「解釋深度」會套用到每一篇</li>
       </ul>
     </div>
+    <div class="backup-box" id="backup">
+      <h2>備份與匯出</h2>
+      <p>筆記、閱讀進度、理解程度與作答都只存在這個瀏覽器。換裝置或清除瀏覽資料之前，先下載完整備份。</p>
+      <div class="btn-row">
+        <button type="button" class="btn" id="bk-json">下載完整備份（JSON）</button>
+        <button type="button" class="btn" id="bk-md">匯出筆記與進度（Markdown）</button>
+        <label class="btn bk-pick">從備份還原…<input type="file" id="bk-file" accept=".json,application/json"></label>
+      </div>
+      <div class="bk-panel" id="bk-panel" hidden></div>
+      <p class="bk-msg" id="bk-msg" role="status" aria-live="polite"></p>
+      <button type="button" class="btn" id="bk-undo" hidden>復原到上次還原之前</button>
+    </div>
   </aside>
 </div>
 </main>
 
-<script src="assets/site.js?v=a40663c2e8"></script>
+<script src="assets/site.js?v=2d33618925"></script>
 </body>
 </html>
