@@ -130,8 +130,41 @@
     setMapleReady(false);
   }
 
-  // ---------- status bar for the game skin: LV = sections finished, EXP = share of all sections ----------
-  // Decorative: the same numbers are in the rail or tally, so it is hidden from assistive tech.
+  // ---------- experience: one reader across every paper ----------
+  // EXP is worked out from what is stored (sections finished, answers opened, notes written, papers
+  // opened), never added up click by click, so ticking a box on and off earns nothing and every
+  // paper added later counts with no setup. Each paper page caches its own sum in study:<id>:exp;
+  // the total is the sum of those. Levels start at 1 and never cap: the first section is LV.2,
+  // a whole paper about LV.7, ten papers about LV.18, fifty about LV.34.
+  var EXP = { visit: 50, section: 100, elite: 100, boss: 200, paper: 500, ask: 20, note: 30 };
+  function needFor(lv) { return Math.round((45 * Math.pow(lv, 1.5) + 55) / 10) * 10; }
+  function levelOf(exp) {
+    var lv = 1, into = Math.max(0, exp);
+    while (into >= needFor(lv)) { into -= needFor(lv); lv += 1; }
+    return { lv: lv, into: into, need: needFor(lv), exp: exp };
+  }
+  // titles change at the levels the game's job advancements would
+  var JOBS = [[1, "新手讀者"], [10, "見習研究員"], [20, "研究員"], [30, "資深研究員"], [50, "精讀大師"]];
+  function jobOf(lv) { var t = JOBS[0][1]; JOBS.forEach(function (j) { if (lv >= j[0]) t = j[1]; }); return t; }
+  // every paper's EXP but one: its cached sum, or for a paper read before EXP existed, its finished sections
+  function storedExp(except) {
+    var per = {};
+    try {
+      for (var k = 0; k < localStorage.length; k++) {
+        var m = (localStorage.key(k) || "").match(/^study:([^:]+):(exp|done)$/);
+        if (!m || m[1] === except) continue;
+        per[m[1]] = per[m[1]] || {};
+        per[m[1]][m[2]] = store.get(m[0], null);
+      }
+    } catch (e) { return 0; }
+    return Object.keys(per).reduce(function (sum, id) {
+      var p = per[id];
+      return sum + (typeof p.exp === "number" ? p.exp : Array.isArray(p.done) ? p.done.length * EXP.section : 0);
+    }, 0);
+  }
+
+  // ---------- status bar for the game skin: LV, the job title, EXP towards the next level ----------
+  // Decorative: the same progress is in the rail or tally, so it is hidden from assistive tech.
   function makeHud(job, name, notice) {
     var hud = document.createElement("div");
     hud.className = "hud";
@@ -144,16 +177,17 @@
     hud.querySelector(".hud-name span").textContent = job;
     hud.querySelector(".hud-name b").textContent = name;
     document.body.appendChild(hud);
-    var last = [0, 0];
+    var last = levelOf(0);
     function draw() {
-      var n = last[0], total = last[1], pct = total ? n / total : 0;
-      hud.querySelector(".hud-num").textContent = n + " / " + total + " [" + (pct * 100).toFixed(2) + "%]";
+      var lvNow = last.lv, pct = last.into / last.need;
+      hud.querySelector(".hud-name span").textContent = jobOf(lvNow);
+      hud.querySelector(".hud-num").textContent = last.into + " / " + last.need + " [" + (pct * 100).toFixed(2) + "%]";
       // the bar's coloured interior starts 25px left of the box, under the "EXP." label
       hud.querySelector(".hud-gray").style.left = "calc(" + (pct * 100) + "% + " + (25 * pct - 25) + "px)";
       if (!mapleReady) return;
       var lv = hud.querySelector(".hud-lv");
       lv.textContent = "";
-      String(n).split("").forEach(function (d) {
+      String(lvNow).split("").forEach(function (d) {
         var img = document.createElement("img");
         img.src = mapleUrl("lv" + d + ".png");
         img.alt = "";
@@ -161,7 +195,7 @@
       });
     }
     whenMaple(draw);
-    var update = function (n, total) { last = [n, total]; draw(); };
+    var update = function (state) { last = state; draw(); };
     // the chat line takes turns through [tag, text] lines, a new one every few seconds
     var ticker = null;
     update.chat = function (lines) {
@@ -284,7 +318,7 @@
     return { wrap: wrap, cast: cast };
   }
   // finishing a section knocks its monster down: hit, the fall, then an EXP note where it stood
-  function defeat(p) {
+  function defeat(p, gain) {
     var m = p.cast[0];
     if (reduceMotion) { p.wrap.hidden = true; return; }
     m.walker.classList.add("is-hit");
@@ -313,7 +347,7 @@
       p.wrap.classList.add("is-down");
       var pop = document.createElement("span");
       pop.className = "exp-pop";
-      pop.textContent = "EXP +1";
+      pop.textContent = gain > 0 ? "EXP +" + gain : "EXP";
       p.wrap.appendChild(pop);
       p.timer = setTimeout(function () { p.wrap.hidden = true; pop.remove(); }, 1400);
     }, 260);
@@ -356,14 +390,16 @@
   if (tallyStarted) tallyStarted.textContent = String(started);
   if (tallyDone) {
     var shelfHud = makeHud("書架", "論文精讀室", "歡迎來到論文精讀室。");
-    shelfHud(sumDone, sumTotal);
+    var me = levelOf(storedExp(null));
+    shelfHud(me);
     // the chat line recommends the papers in turn
     var tips = [];
     document.querySelectorAll(".card").forEach(function (c) {
       var t = c.querySelector("h3"), d = c.querySelector("p");
       if (t) tips.push(["推薦", t.textContent.trim() + (d ? "：" + firstSentence(d) : "")]);
     });
-    shelfHud.chat([["公告", "歡迎來到論文精讀室。點一篇論文開始任務。"]].concat(shuffle(tips)));
+    shelfHud.chat([["公告", "歡迎來到論文精讀室。點一篇論文開始任務。"],
+      ["角色", "LV." + me.lv + " " + jobOf(me.lv) + "　累積經驗值 " + me.exp + "，再 " + (me.need - me.into) + " 升級"]].concat(shuffle(tips)));
   }
   if (tallyDone) whenMaple(function () {
     if (!window.MAPLE_SPRITES) return;
@@ -412,11 +448,57 @@
   var countable = document.querySelectorAll("input[data-done]").length;
   var crumb = document.querySelector(".toolbar .crumb");
   var shortName = crumb ? crumb.textContent.split("·")[0].trim() : paper;
-  var hud = makeHud("精讀中", shortName, "讀完一節就按「讀完這節」，EXP 會增加。");
+  var hud = makeHud("精讀中", shortName, "讀完一節、打開解答、寫筆記，都能獲得經驗值。");
+
+  // ---------- experience on this paper ----------
+  var quests = sections.filter(function (s) { return s.querySelector("input[data-done]"); });
+  var EXP_KEY = "study:" + paper + ":exp", ASK_KEY = "study:" + paper + ":asked";
+  var firstVisit = store.get(EXP_KEY, null) === null;
+  var asked = store.get(ASK_KEY, []);
+  var others = storedExp(paper);
+  // the elite waits midway and the boss on the last section (as the monsters do); they are worth more
+  function bonusOf(s) {
+    var i = quests.indexOf(s);
+    if (i === quests.length - 1 && quests.length > 1) return EXP.boss;
+    if (i === Math.floor(quests.length / 2) && quests.length > 3) return EXP.elite;
+    return 0;
+  }
+  function isDone(s) { return done.indexOf(s.querySelector("input[data-done]").getAttribute("data-done")) >= 0; }
+  function allDone() { return quests.length > 0 && quests.every(isDone); }
+  function paperExp() {
+    var e = EXP.visit;
+    quests.forEach(function (s) { if (isDone(s)) e += EXP.section + bonusOf(s); });
+    if (allDone()) e += EXP.paper;
+    e += asked.length * EXP.ask;
+    document.querySelectorAll("textarea[data-note]").forEach(function (ta) {
+      if (String(store.get(noteKey(ta.getAttribute("data-note")), "")).trim()) e += EXP.note;
+    });
+    return e;
+  }
+  var mine = paperExp(), now = levelOf(others + mine), lastGain = null;
+  store.set(EXP_KEY, mine);
+  // sum again after a change: what was gained, and whether the level, the title or the paper changed
+  function award() {
+    var before = now, wasAll = allDone.last;
+    mine = paperExp();
+    store.set(EXP_KEY, mine);
+    now = levelOf(others + mine);
+    allDone.last = allDone();
+    renderProgress();
+    return { gain: now.exp - before.exp, up: now.lv > before.lv, job: jobOf(now.lv) !== jobOf(before.lv), finished: allDone.last && !wasAll };
+  }
+  allDone.last = allDone();
+  function gainLines(g, first) {
+    var lines = [["系統", first + "，獲得經驗值 +" + g.gain]];
+    if (g.finished) lines.push(["系統", "任務完成！整篇讀完，額外獲得 +" + EXP.paper]);
+    if (g.up) lines.unshift(["系統", "等級提升！LV." + now.lv + (g.job ? "　轉職為「" + jobOf(now.lv) + "」" : "")]);
+    return lines;
+  }
+  function here() { return pageLines(current >= 0 ? current : 0); }
   // the minimap's name band: site name over the paper's short name
-  var railSummary = document.querySelector(".rail summary");
+  var railSummary = document.querySelector(".rail summary"), names = null;
   if (railSummary) {
-    var names = document.createElement("span");
+    names = document.createElement("span");
     names.className = "mini-names";
     names.setAttribute("aria-hidden", "true");
     names.innerHTML = "<b>論文精讀室</b><span></span>";
@@ -468,7 +550,6 @@
   // (the outfit changes every visit); its monsters and NPCs are picked from the id too.
   var seed = seedOf(paper), castDone = {}, party = null, outfits = [];
   var later = window.requestIdleCallback ? function (fn) { window.requestIdleCallback(fn, { timeout: 2000 }); } : function (fn) { setTimeout(fn, 600); };
-  var quests = sections.filter(function (s) { return s.querySelector("input[data-done]"); });
   var allDialogs = Array.prototype.slice.call(document.querySelectorAll(".check details"));
   function mobFor(s) {
     var i = quests.indexOf(s);
@@ -491,10 +572,13 @@
     later(function () { warm(m.name, "hit"); warm(m.name, "die"); });
     box.addEventListener("change", function () {
       if (!box.checked) { s.style.setProperty("--mob-h", tall); respawn(p); return; }
-      defeat(p);
-      cheer();
+      // the gain was summed by the box's first listener; the monster tells it
+      var g = lastGain || { gain: 0 };
+      g.told = true;
+      defeat(p, g.gain);
+      cheer(g.up);
       var foe = window.MAPLE_SPRITES[m.name].label || "怪物";
-      hud.chat([["系統", "打倒了" + foe + "，EXP +1。按「下一節」繼續任務。"]].concat(pageLines(sections.indexOf(s))));
+      hud.chat(gainLines(g, "打倒了" + foe).concat([["提示", "按「下一節」繼續任務。"]], pageLines(sections.indexOf(s))));
     });
   }
   function addNpc(d) {
@@ -569,15 +653,15 @@
     setAct(hero.spr, name, "stand");
     heroRoom();
   }
-  // finishing a section: the protagonist cheers and levels up (LV counts finished sections)
-  function cheer() {
+  // a gain: the protagonist cheers, and the level-up light plays when the level went up
+  function cheer(up) {
     if (!party || reduceMotion) return;
     var hero = party.cast[0], acts = window.MAPLE_SPRITES[hero.name].acts;
     if (acts.cheer) {
       setAct(hero.spr, hero.name, "cheer");
       setTimeout(function () { setAct(hero.spr, hero.name, "stand"); }, 1800);
     }
-    if (!window.MAPLE_SPRITES["fx-levelup"]) return;
+    if (!up || !window.MAPLE_SPRITES["fx-levelup"]) return;
     var fx = document.createElement("span");
     fx.className = "fx-levelup";
     var pillar = spriteEl("fx-levelup", "stand");
@@ -632,7 +716,9 @@
     if (bar) bar.style.width = (countable ? (100 * n) / countable : 0) + "%";
     if (txt) txt.textContent = n + " / " + countable;
     if (mapBtn) mapBtn.querySelector(".map-num").textContent = n + "/" + countable;
-    hud(n, countable);
+    hud(now);
+    // the minimap's name band carries the reader's level and title (a phone's status bar has no room for it)
+    if (names) names.firstChild.textContent = "LV." + now.lv + " " + jobOf(now.lv);
   }
   document.querySelectorAll("input[data-done]").forEach(function (box) {
     var id = box.getAttribute("data-done");
@@ -642,9 +728,27 @@
       if (box.checked) done.push(id);
       store.set(DONE_KEY, done);
       renderProgress();
+      var g = lastGain = award();
+      // without a monster on this section (no sprites, or the original style) say it here
+      if (g.gain > 0) setTimeout(function () {
+        if (g.told) return;
+        g.told = true;
+        cheer(g.up);
+        hud.chat(gainLines(g, "讀完這節").concat(here()));
+      }, 0);
     });
   });
   renderProgress();
+  // opening a self-check answer for the first time
+  allDialogs.forEach(function (d, k) {
+    d.addEventListener("toggle", function () {
+      if (!d.open || asked.indexOf(k) >= 0) return;
+      asked.push(k);
+      store.set(ASK_KEY, asked);
+      var g = award();
+      if (g.gain > 0) { cheer(g.up); hud.chat(gainLines(g, "回答了自我檢測").concat(here())); }
+    });
+  });
 
   // ---------- notes ----------
   function noteKey(id) { return "study:" + paper + ":note:" + id; }
@@ -658,6 +762,9 @@
       timer = setTimeout(function () {
         var ok = store.set(noteKey(id), ta.value);
         if (status) status.textContent = ok ? "已存在這個瀏覽器" : "這個瀏覽器不允許儲存，請記得匯出";
+        // a section's first note earns EXP once; emptying it takes that back
+        var g = award();
+        if (g.gain > 0) { cheer(g.up); hud.chat(gainLines(g, "寫了筆記").concat(here())); }
       }, 400);
     });
   });
@@ -823,4 +930,5 @@
   }
   skinHooks.push(setPaged);
   setPaged();
+  if (firstVisit) hud.chat([["系統", "接受新任務，獲得經驗值 +" + EXP.visit]].concat(here()));
 })();

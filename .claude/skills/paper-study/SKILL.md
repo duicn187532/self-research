@@ -59,6 +59,8 @@ Never fill in an equation, number or hyperparameter that no source gave; write `
 ## 3. Register and check
 
 - Add a card to `index.html` with `data-progress-for="<id>"` and `data-total` = number of `data-done` boxes.
+- Nothing to set up for EXP and levels: site.js derives a paper's EXP from its `data-done` boxes,
+  `.check details` and `data-note` boxes (README, 經驗值與等級), and the total sums every paper.
 - Run `python3 scripts/stamp_assets.py` so the new page links the current `site.css`/`site.js`/`anim.js`
   stamps (`?v=...`). Run it again whenever `assets/` changes; otherwise browsers on GitHub Pages can
   pair a new page with an old cached script.

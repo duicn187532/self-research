@@ -659,7 +659,7 @@ table.results tbody td:first-child { white-space: nowrap; }
 :root[data-skin="maple"] .mini-names { display: flex; flex-direction: column; line-height: 1.25; min-width: 0; font-size: 12px; font-weight: 700; color: #ffffff; text-shadow: var(--outline); }
 :root[data-skin="maple"] .mini-names span { font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 :root[data-skin="maple"] .rail .progress-text { font-size: 11px; margin-left: auto; color: #ffffff; text-shadow: var(--outline); font-family: var(--font-body); font-weight: 700; }
-:root[data-skin="maple"] .rail .progress-text::before { content: "EXP "; }
+:root[data-skin="maple"] .rail .progress-text::before { content: "任務 "; }
 :root[data-skin="maple"] .rail summary::after { font-size: 11px; font-weight: 700; color: #3d2604; background: linear-gradient(#ffe39a, #f2b13b); border: 1px solid #a8711a; border-radius: 2px; padding: 0 5px; line-height: 16px; }
 :root[data-skin="maple"] .progress { margin: 0; height: 6px; border-radius: 0; background: #1c2024; }
 :root[data-skin="maple"] .progress > span { background: linear-gradient(#e2f25c, #9cc11a); }

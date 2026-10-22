@@ -169,6 +169,13 @@ to publish the built pieces with the site (GitHub Pages); the full pack stays ou
   hit and fall strips and every outfit are fetched ahead, so nothing pops in late.
 - The status bar and the top bar each carry a 200px block of their colour beyond the screen edge,
   so a phone's sliding browser bar or an over-scroll shows bar, not the page behind.
+- Experience is one character across all papers, derived from stored progress (never added per
+  click): 50 per paper opened, 100 per section read (+100 elite, +200 boss section), 500 for a whole
+  paper, 20 per self-check answer first opened, 30 per section's first note. Level n→n+1 needs
+  round((45·n^1.5+55)/10)·10, uncapped (first section LV.2, one paper ≈ LV.7, ten ≈ LV.18). Titles
+  at LV 10/20/30/50 as job advancements. The status bar shows LV, title and EXP within the level;
+  the minimap band shows the level and title on phones. The LevelUp light plays only on a real
+  level-up; otherwise the protagonist just cheers. Each paper caches `study:<id>:exp`.
 - In this skin a paper is paged: one section at a time with 上一節 / 下一節 at its foot. The other
   sections are `hidden="until-found"`, so find-in-page and `#id` links still reach them and turn to
   their page. Fold those hidden pages explicitly (`height: 0; overflow: hidden`): Safari
