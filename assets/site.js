@@ -269,9 +269,26 @@
     live.push({ el: el, w: c[0], n: c[2], i: 0, acc: 0, ms: ms || 170, once: !!once });
     if (!clock) clock = setInterval(tick, TICK);
   }
-  // fetch strips before they are shown, so a sprite never appears a moment after its window
+  // Strips are fetched and decoded before they are needed, and a sprite changes act only once the
+  // new strip is decoded: the old frames stay up until then, so a switch never shows a blank.
+  var strips = {};
+  function fetchStrip(name, act) {
+    var url = mapleUrl("spr-" + name + "-" + act + ".png");
+    if (!strips[url]) {
+      var img = new Image();
+      img.src = url;
+      strips[url] = { img: img, ready: (img.decode ? img.decode() : new Promise(function (ok) { img.onload = img.onerror = ok; })).catch(function () {}) };
+    }
+    return strips[url].ready;
+  }
   function warm(name, act) {
-    if (window.MAPLE_SPRITES && window.MAPLE_SPRITES[name] && window.MAPLE_SPRITES[name].acts[act]) new Image().src = mapleUrl("spr-" + name + "-" + act + ".png");
+    if (window.MAPLE_SPRITES && window.MAPLE_SPRITES[name] && window.MAPLE_SPRITES[name].acts[act]) fetchStrip(name, act);
+  }
+  // the last request wins, so a quick open-and-close never ends on the wrong act
+  function swapAct(el, name, act, once, ms) {
+    if (!window.MAPLE_SPRITES[name].acts[act]) act = "stand";
+    var want = el.want = name + "/" + act;
+    fetchStrip(name, act).then(function () { if (el.want === want) setAct(el, name, act, once, ms); });
   }
   function spriteEl(name, act) {
     var el = document.createElement("span");
@@ -323,7 +340,7 @@
     if (reduceMotion) { p.wrap.hidden = true; return; }
     m.walker.classList.add("is-hit");
     if (m.walker.patrol) m.walker.patrol.pause();
-    setAct(m.spr, m.name, "hit");
+    swapAct(m.spr, m.name, "hit");
     // a critical hit's number over the monster, in the game's own digits
     if (window.MAPLE_SPRITES["fx-digits"]) {
       var dmg = document.createElement("span"), cell = window.MAPLE_SPRITES["fx-digits"].acts.stand;
@@ -343,7 +360,7 @@
       p.wrap.appendChild(dmg);
     }
     setTimeout(function () {
-      setAct(m.spr, m.name, "die", true, 140);
+      swapAct(m.spr, m.name, "die", true, 140);
       p.wrap.classList.add("is-down");
       var pop = document.createElement("span");
       pop.className = "exp-pop";
@@ -360,7 +377,7 @@
     p.wrap.classList.remove("is-down");
     m.walker.classList.remove("is-hit");
     if (m.walker.patrol) m.walker.patrol.play();
-    setAct(m.spr, m.name, m.walker.className === "walker" ? "move" : "stand");
+    swapAct(m.spr, m.name, m.walker.className === "walker" ? "move" : "stand");
   }
 
   // ---------- shelf: show progress for each paper, and the totals ----------
@@ -607,11 +624,14 @@
       mark = spriteEl(markName(), "stand");
       mark.classList.add("npc-quest");
       npc.appendChild(mark);
-      if (box) box.addEventListener("change", function () { setAct(mark, markName(), "stand"); });
+      if (box) box.addEventListener("change", function () { swapAct(mark, markName(), "stand"); });
+      ["quest-new", "quest-open", "quest-done"].forEach(function (q) { warm(q, "stand"); });
     }
+    warm(name, "stand");
+    warm(name, "say");
     d.addEventListener("toggle", function () {
-      setAct(spr, name, d.open ? "say" : "stand");
-      if (mark) setAct(mark, markName(), "stand");
+      swapAct(spr, name, d.open ? "say" : "stand");
+      if (mark) swapAct(mark, markName(), "stand");
     });
   }
   function castFor(i) {
@@ -650,7 +670,7 @@
     var hero = party.cast[0], name = outfits[i % outfits.length];
     if (name === hero.name) return;
     hero.name = name;
-    setAct(hero.spr, name, "stand");
+    swapAct(hero.spr, name, "stand");
     heroRoom();
   }
   // a gain: the protagonist cheers, and the level-up light plays when the level went up
@@ -658,8 +678,8 @@
     if (!party || reduceMotion) return;
     var hero = party.cast[0], acts = window.MAPLE_SPRITES[hero.name].acts;
     if (acts.cheer) {
-      setAct(hero.spr, hero.name, "cheer");
-      setTimeout(function () { setAct(hero.spr, hero.name, "stand"); }, 1800);
+      swapAct(hero.spr, hero.name, "cheer");
+      setTimeout(function () { swapAct(hero.spr, hero.name, "stand"); }, 1800);
     }
     if (!up || !window.MAPLE_SPRITES["fx-levelup"]) return;
     var fx = document.createElement("span");
@@ -700,9 +720,9 @@
     later(function () { outfits.forEach(function (o) { warm(o, "stand"); warm(o, "cheer"); }); });
     // fetch the level-up and damage strips while idle, so the first finished section plays at once
     later(function () {
-      ["fx-levelup-stand", "fx-levelup-text", "fx-digits-stand"].forEach(function (f) {
-        if (window.MAPLE_SPRITES[f.replace(/-(stand|text)$/, "")]) new Image().src = mapleUrl("spr-" + f + ".png");
-      });
+      warm("fx-levelup", "stand");
+      warm("fx-levelup", "text");
+      warm("fx-digits", "stand");
     });
   });
   function renderProgress() {

@@ -166,7 +166,10 @@ to publish the built pieces with the site (GitHub Pages); the full pack stays ou
   a phone shows no empty band. A page turn scrolls to the top and the new page rises in (0.28s).
   sprites.js is fetched at once when the page opens in maple, alongside the probe; the pages either
   side of the current one get their cast built and strips fetched in idle time, and the monster's
-  hit and fall strips and every outfit are fetched ahead, so nothing pops in late.
+  hit and fall strips and every outfit are fetched ahead, so nothing pops in late. A sprite never changes
+  act by pointing at an unloaded strip: `swapAct` fetches and decodes the new strip first (an NPC's
+  talking frames and the quest marks as soon as it stands there) and keeps the old frames up until
+  then, the last request winning; only a sprite's first strip is set directly.
 - The status bar and the top bar each carry a 200px block of their colour beyond the screen edge,
   so a phone's sliding browser bar or an over-scroll shows bar, not the page behind.
 - Experience is one character across all papers, derived from stored progress (never added per
