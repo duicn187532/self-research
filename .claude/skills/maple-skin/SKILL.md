@@ -171,7 +171,10 @@ to publish the built pieces with the site (GitHub Pages); the full pack stays ou
   so a phone's sliding browser bar or an over-scroll shows bar, not the page behind.
 - In this skin a paper is paged: one section at a time with 上一節 / 下一節 at its foot. The other
   sections are `hidden="until-found"`, so find-in-page and `#id` links still reach them and turn to
-  their page. The chat line on the status bar cycles the current section's title, its 五歲
+  their page. Fold those hidden pages explicitly (`height: 0; overflow: hidden`): Safari
+  supports until-found only in part and left every hidden page taking its full height, a screen of
+  empty scene before the pager that Chromium never shows. To check it there, inject
+  `[hidden=until-found]{content-visibility:visible!important;display:block!important;visibility:hidden}`. The chat line on the status bar cycles the current section's title, its 五歲
   explanation's first sentence and its self-check question.
 
 ## 4. Things that will come up
