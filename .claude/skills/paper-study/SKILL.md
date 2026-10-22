@@ -72,6 +72,25 @@ Never fill in an equation, number or hyperparameter that no source gave; write `
    - D 研究假說: 1–3 falsifiable hypotheses with design, baselines, controls, metrics, what the result
      would tell apart, and failure conditions; label them ideas, not contributions.
    Never guess a number the paper does not give; keep the authors' claims apart from the site's comments.
+11. Add the chapter battles (章節討伐). Write `scripts/quiz/q_<paper>.py` modelled on the existing banks
+   and run `python3 scripts/quiz/install.py <id>` once (adds the `s-boss` section before `s-research`,
+   the `quiz.js` and `battle.js` script tags, and bumps the shelf card's `data-total`; safe to rerun),
+   then `python3 scripts/quiz/build.py <name>`. Rules:
+   - `Q(id, facet, question, options, why, src)`: the right answer is always `options[0]` (the page
+     shuffles); facet is `method` 方法理解, `reason` 公式或情境推理, or `critique` 實驗批判; `src` lists
+     the sections to reread (defaults to the chapter itself).
+   - Every substantive chapter gets at least one question; reading guide (`s-route`), pure glossary and
+     export get none and keep their done box. Mark the method or experiment core chapters
+     `"tier": "elite"` with `"ask": 3`. The BOSS asks 5–6 questions written for it, each spanning at
+     least two chapters (not copies of chapter questions); the BOSS and the bank cover all three facets.
+   - Only questions whose answer the page (checked against the full text) settles. Recompute any
+     number before using it; put the working in `why`. Fewer good questions beat padded coverage.
+   - Keep the answer to its core claim and move detail into `why`. Distractors are specific, plausible
+     statements the page refutes, about as long as the answer, sharing its form (no odd-one-out prefix
+     like 「因為」 on distractors only), and never invent a number attributed to the paper. `build.py`
+     rejects an answer over 1.4× its longest distractor, or one that is the longest option in more than
+     half the questions.
+   - `why` says why the answer is right and where (section, table, page 0N), without new claims.
 
 ## 3. Register and check
 
@@ -83,6 +102,9 @@ Never fill in an equation, number or hyperparameter that no source gave; write `
   section with a `data-done` box and under every `.check details`, and saves the page's section list
   (`study:<id>:toc`) for the shelf's review list and Markdown export. Keep section ids stable once
   published, since notes, marks and answers are stored by id (answers by question order).
+- Battles mark a chapter done when won and use the same `data-done` box, so EXP, progress and the
+  maple monsters need nothing extra; keep chapter ids in the bank in sync with the page (`build.py`
+  checks them).
 - Nothing to set up for EXP and levels: site.js derives a paper's EXP from its `data-done` boxes,
   `.check details` and `data-note` boxes (README, 經驗值與等級), and the total sums every paper.
 - Run `python3 scripts/stamp_assets.py` so the new page links the current `site.css`/`site.js`/`anim.js`

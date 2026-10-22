@@ -472,6 +472,10 @@
     document.getElementById("review-box").hidden = false;
   }
 
+  // ---------- shelf: titles, each paper's research mastery, the latest battles (assets/battle.js) ----------
+  var expedition = document.getElementById("expedition-body");
+  if (expedition && window.StudyBattle) window.StudyBattle.shelf(expedition, shelf.map(function (c) { return { id: c.id, short: c.short, href: c.href }; }));
+
   // ---------- shelf: backup, export and restore ----------
   // Everything the site keeps is under "study:" in localStorage. The backup is those entries as
   // stored (JSON text), so a restore writes back exactly what was saved. Restoring never deletes an
@@ -773,8 +777,19 @@
   var firstVisit = store.get(EXP_KEY, null) === null;
   var asked = store.get(ASK_KEY, []);
   var others = storedExp(paper);
-  // the elite waits midway and the boss on the last section (as the monsters do); they are worth more
+  // ---------- chapter battles: papers/<id>/quiz.js holds the questions, assets/battle.js runs them ----------
+  // With a question bank, a chapter's tier comes from the bank: no entry, no monster (閱讀路線 keeps its box);
+  // "elite" for the method and experiment chapters; "boss" for the cross-chapter BOSS chapter (s-boss).
+  var bank = window.STUDY_QUIZ && window.STUDY_QUIZ.paper === paper && window.StudyBattle ? window.STUDY_QUIZ : null;
+  function tierOf(s) {
+    if (!bank) return null;
+    if (s.id === "s-boss") return bank.boss ? "boss" : null;
+    var c = bank.sections && bank.sections[s.id];
+    return c ? (c.tier || "normal") : null;
+  }
+  // elites and the boss are worth more; without a bank, the elite waits midway and the boss on the last section
   function bonusOf(s) {
+    if (bank) { var t = tierOf(s); return t === "boss" ? EXP.boss : t === "elite" ? EXP.elite : 0; }
     var i = quests.indexOf(s);
     if (i === quests.length - 1 && quests.length > 1) return EXP.boss;
     if (i === Math.floor(quests.length / 2) && quests.length > 3) return EXP.elite;
@@ -861,8 +876,8 @@
     fitRail();
   }
   // The cast for this paper, built a page at a time as you reach it, so a phone only fetches the
-  // sprites it shows: a monster on each section that can be finished (one elite midway, a boss on
-  // the last), NPCs taking turns in the self-check dialogs, and the protagonist with a pet, who
+  // sprites it shows: a monster on each section that can be finished (with a question bank, one on each
+  // chapter with a battle, of its tier; without, one elite midway and a boss on the last), NPCs taking turns in the self-check dialogs, and the protagonist with a pet, who
   // goes with you from page to page. A paper's protagonist is 殺人鯨 or 露希妲, picked from its id
   // (the outfit changes every visit); its monsters and NPCs are picked from the id too.
   var seed = seedOf(paper), castDone = {}, party = null, outfits = [];
@@ -872,15 +887,23 @@
     var i = quests.indexOf(s);
     if (i < 0) return null;
     var mobs = rotate(sprites("mob"), seed), elites = sprites("elite"), bosses = rotate(sprites("boss"), seed);
+    if (bank) {
+      var t = tierOf(s);
+      if (!t) return null;
+      if (t === "boss" && bosses.length) return { name: bosses[0], big: true };
+      if (t === "elite" && elites.length) return { name: elites[(seed + i) % elites.length], big: true };
+      return mobs.length ? { name: mobs[i % mobs.length], big: false } : null;
+    }
     if (i === quests.length - 1 && bosses.length && quests.length > 1) return { name: bosses[0], big: true };
     if (i === Math.floor(quests.length / 2) && elites.length && quests.length > 3) return { name: elites[seed % elites.length], big: true };
     return mobs.length ? { name: mobs[i % mobs.length], big: false } : null;
   }
+  var mobOf = {};
   function addMob(s) {
     var m = mobFor(s);
     if (!m) return;
     s.classList.toggle("has-big", m.big);
-    var p = perch(s, [m.name], "walk");
+    var p = mobOf[s.id] = perch(s, [m.name], "walk");
     var box = s.querySelector("input[data-done]");
     // the page leaves room above the window for the monster's tallest frame, none once it is beaten
     var acts = window.MAPLE_SPRITES[m.name].acts, tall = Math.max.apply(null, Object.keys(acts).map(function (a) { return acts[a][1]; }));
@@ -1115,7 +1138,8 @@
   }
   quests.forEach(function (s) {
     var id = s.id, foot = s.querySelector(".desk-foot");
-    if (!foot) return;
+    // the BOSS chapter has no text of its own to understand: its mastery is on its board
+    if (!foot || id === "s-boss") return;
     var box = document.createElement("div");
     box.className = "grasp";
     var lab = document.createElement("span");
@@ -1201,6 +1225,77 @@
     d.parentNode.insertBefore(wrap, d.nextSibling);
     d.addEventListener("toggle", function () { lab.textContent = d.open ? "你的答案（和上面的參考答案對照）" : "先寫下你的答案（可略過）"; });
   });
+  // ---------- battles in the chapters' feet ----------
+  // A win ticks the chapter's (now hidden) 讀完這節 box, so EXP, progress and the monster's fall run as
+  // before; a chapter already ticked stays done, and a battle there still counts toward mastery. The
+  // monster also stands in the battle box, and flinches at each hit.
+  var secNames = {}, battles = {};
+  sections.forEach(function (s) {
+    var num = s.querySelector(".sec-num"), short = shortOf(s), n = num ? num.textContent.trim() : "";
+    secNames[s.id] = n && short.indexOf(n) !== 0 ? n + " " + short : short;
+  });
+  var boardEl = document.getElementById("boss-board");
+  function drawBoard() { if (bank && boardEl) window.StudyBattle.board(boardEl, paper, bank, secNames); }
+  if (bank) quests.forEach(function (s) {
+    var t = tierOf(s), foot = s.querySelector(".desk-foot"), box = s.querySelector("input[data-done]");
+    if (!t || !foot || !box) return;
+    var label = box.closest(".done");
+    if (label) label.hidden = true;
+    var art = null;
+    function act(a, once) { if (art) swapAct(art.spr, art.name, a, once, once ? 140 : undefined); }
+    var b = battles[s.id] = window.StudyBattle.mount(foot, {
+      paper: paper, key: s.id, tier: t, set: t === "boss" ? bank.boss : bank.sections[s.id],
+      name: secNames[s.id], names: secNames, foe: t === "boss" ? bank.boss.name : null,
+      cleared: function () { return box.checked; },
+      onStart: function () { act("stand"); },
+      onHit: function () {
+        act("hit");
+        clearTimeout(b.hitT);
+        b.hitT = setTimeout(function () { act("stand"); }, 450);
+      },
+      onWin: function () {
+        clearTimeout(b.hitT);
+        act("die", true);
+        var fresh = t === "boss" ? window.StudyBattle.grant(paper, bank.title) : [];
+        if (!box.checked) { box.checked = true; box.dispatchEvent(new Event("change")); }
+        else hud.chat([["討伐", "又打倒了一次「" + (b.foe || secNames[s.id]) + "」，熟練度已更新。"]].concat(here()));
+        if (fresh.length) setTimeout(function () {
+          hud.chat(fresh.map(function (x) { return ["稱號", "獲得稱號「" + x + "」"]; }).concat(here()));
+        }, 2200);
+        drawBoard();
+      },
+      onLose: function () {
+        act("stand");
+        hud.chat([["戰鬥", "被打倒了。看完下面的解答、回到該節複習，隨時可以再挑戰。"]].concat(here()));
+        drawBoard();
+      }
+    });
+    // the monster's picture and name, once the sprite table has loaded
+    whenMaple(function () {
+      var m = window.MAPLE_SPRITES && mobFor(s);
+      if (!m || !b) return;
+      art = { name: m.name, spr: spriteEl(m.name, "stand") };
+      b.foe = t === "boss" && bank.boss.name ? bank.boss.name : (window.MAPLE_SPRITES[m.name].label || null);
+      b.setFoe(b.foe, art.spr);
+      ["hit", "die"].forEach(function (a) { later(function () { warm(m.name, a); }); });
+    });
+  });
+  drawBoard();
+
+  // A reader who keeps no notes sees a folded 筆記（選用）; one with a note sees it open.
+  document.querySelectorAll(".desk-foot > .note").forEach(function (n) {
+    var ta = n.querySelector("textarea[data-note]");
+    if (!ta) return;
+    var d = document.createElement("details");
+    d.className = "note-fold";
+    var sum = document.createElement("summary");
+    sum.textContent = "筆記（選用）";
+    n.parentNode.insertBefore(d, n);
+    d.appendChild(sum);
+    d.appendChild(n);
+    d.open = !!ta.value.trim();
+  });
+
   // the export section points at the shelf's site-wide backup
   var exportSec = document.getElementById("s-export");
   if (exportSec && homeLink) {

@@ -30,6 +30,7 @@ def main() -> int:
         "site.css": digest(ASSETS / "site.css", *maple),
         "site.js": digest(ASSETS / "site.js"),
         "anim.js": digest(ASSETS / "anim.js"),
+        "battle.js": digest(ASSETS / "battle.js"),
     }
     pages = [ROOT / "index.html", ROOT / "compare" / "index.html", *sorted(ROOT.glob("papers/*/index.html"))]
     changed = 0
@@ -38,6 +39,10 @@ def main() -> int:
         new = s
         for name, v in stamps.items():
             new = re.sub(r'((?:href|src)="[./]*assets/' + re.escape(name) + r')(?:\?v=\w+)?"', r'\1?v=' + v + '"', new)
+        # a paper's own question bank, next to its page
+        quiz = page.parent / "quiz.js"
+        if quiz.exists():
+            new = re.sub(r'src="quiz\.js(?:\?v=\w+)?"', 'src="quiz.js?v=' + digest(quiz) + '"', new)
         if new != s:
             page.write_text(new, encoding="utf-8")
             changed += 1
