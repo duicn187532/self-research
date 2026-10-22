@@ -9,6 +9,10 @@
   plank9.png   WorldSelect/BtWorld/e, the blank world sign, turned to lie flat (95x26).
                Slices 4 6 4 16; the left 16 holds the nail.
   leaf.png     Title/MSTitle, the logo's red maple leaf alone (the black lettering dropped), 64x64.
+  bt-{orange,blue,navy,lime}-{normal,hover,pressed}.png
+               Basic.img BtSend, BtReceive, BtYes and BtQGiveup with the label cut out: the left
+               3 columns, a text-free column (x 3) four times, the right 3. Slices 2 3 2 3, so CSS
+               stretches them to any width with Chinese labels on top.
 """
 import os
 import sys
@@ -37,3 +41,15 @@ side = max(leaf.size)
 square = Image.new("RGBA", (side, side), (0, 0, 0, 0))
 square.paste(leaf, ((side - leaf.width) // 2, (side - leaf.height) // 2))
 square.resize((64, 64), Image.LANCZOS).save(os.path.join(O, "leaf.png"), optimize=True)
+
+# the game's plain buttons, label removed, for CSS to stretch
+for colour, name in [("orange", "BtSend"), ("blue", "BtReceive"), ("navy", "BtYes"), ("lime", "BtQGiveup")]:
+    for state, src in [("normal", "normal"), ("hover", "mouseOver"), ("pressed", "pressed")]:
+        bt = Image.open(A + "/ui/UI.wz/Basic.img/%s_%s_0.png" % (name, src)).convert("RGBA")
+        w, h = bt.size
+        piece = Image.new("RGBA", (10, h))
+        piece.paste(bt.crop((0, 0, 3, h)), (0, 0))
+        for k in range(4):
+            piece.paste(bt.crop((3, 0, 4, h)), (3 + k, 0))
+        piece.paste(bt.crop((w - 3, 0, w, h)), (7, 0))
+        piece.save(os.path.join(O, "bt-%s-%s.png" % (colour, state)), optimize=True)

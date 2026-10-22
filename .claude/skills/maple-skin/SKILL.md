@@ -80,6 +80,7 @@ byte for byte. The pieces and how CSS uses them (`border-image: url(x) T R B L f
 | `mini9.png` | MiniMap/MaxMap nine pieces | 72 6 15 6 | chapter list. Rows 6–20 are the white title strip (`mini-title.png` = "MINI MAP"), 20–64 the steel-blue name band |
 | `bal9.png` + `bal-arrow.png` | ChatBalloon/npc | 6 6 6 6 | a quoted claim from the paper |
 | `tab0.png` / `tab1.png` | Basic Tab left+fill+right | 0 12 0 6 | explanation-level tabs (blank, so Chinese labels work). This repo's site now draws the level switch in CSS instead: the tabs blur at phone sizes |
+| `bt-*-*.png` | Basic.img BtSend / BtReceive / BtYes / BtQGiveup, label cut out (10 wide) | 2 3 2 3 | every CSS button (see section 3) |
 | `leaf.png` | Login.img Title/MSTitle, the red leaf only (64x64, `build_login.py`) | — | the logo in the top bar and the minimap's icon |
 | `hud-bg.png` | StatusBar base/backgrnd | repeat-x, 71px tall | status bar ground |
 | `chat9.png` | backgrnd2 rows 7–29 | stretched | the white chat strip: a "[公告]" system line |
@@ -152,8 +153,12 @@ to publish the built pieces with the site (GitHub Pages); the full pack stays ou
   1052103 and the 村長 screenshot are not identified yet, so they carry descriptive plates.
 - 楓葉冒險 is the default style (head snippet: anything but a stored "study" turns it on; site.js
   still drops it when the art does not load, and `build_artifact.py` strips that line). The top
-  bar carries the leaf logo, a navy level switch with the pick in dialog-button gold and blue
-  game buttons, all CSS so they stay sharp. On narrow screens (≤960px) the minimap is a top-bar
+  bar carries the leaf logo and the game's own buttons: Basic.img BtSend (orange), BtReceive
+  (light blue), BtYes (navy) and BtQGiveup (lime), cut without their labels by `build_login.py`
+  into `bt-<colour>-<normal|hover|pressed>.png` and stretched as 9-slices (2 3 2 3) under Chinese
+  labels. Levels are light blue with the pick orange; map, menu and pager are navy; 下一節 once
+  ready and 讀完這節 are orange, lime once the section is read. Hand-mixed CSS gradients did not
+  read as MapleStory, so use these. On narrow screens (≤960px) the minimap is a top-bar
   button showing EXP n/total and the chapter list is a drawer from the left (`:root.map-open`;
   the shade sits inside `.desk`, the drawer's stacking layer, which rises over the bars while open).
 - Paged spacing is measured, not guessed: a page leaves room above its window for its monster's
