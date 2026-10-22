@@ -8,6 +8,7 @@
                ruled lines sit at y 26 and 218, so the top slice carries the first one.
   plank9.png   WorldSelect/BtWorld/e, the blank world sign, turned to lie flat (95x26).
                Slices 4 6 4 16; the left 16 holds the nail.
+  leaf.png     Title/MSTitle, the logo's red maple leaf alone (the black lettering dropped), 64x64.
 """
 import os
 import sys
@@ -21,3 +22,18 @@ for src, out in [("scroll/0/1.png", "scroll9.png"), ("chBackgrn.png", "parch9.pn
     im = Image.open(WS + src).convert("RGBA").quantize(256, method=Image.Quantize.FASTOCTREE)
     im.save(os.path.join(O, out), optimize=True)
 Image.open(WS + "BtWorld/e/normal/0.png").convert("RGBA").rotate(90, expand=True).save(os.path.join(O, "plank9.png"), optimize=True)
+
+# the logo's leaf: its red pixels, right of the lettering, centred on a square
+logo = Image.open(A + "/ui/UI.wz/Login.img/Title/MSTitle.png").convert("RGBA")
+leaf = Image.new("RGBA", logo.size, (0, 0, 0, 0))
+src, dst = logo.load(), leaf.load()
+for y in range(logo.height):
+    for x in range(180, logo.width):
+        r, g, b, a = src[x, y]
+        if a and r > g + 40 and r > b + 40:
+            dst[x, y] = (r, g, b, a)
+leaf = leaf.crop(leaf.getbbox())
+side = max(leaf.size)
+square = Image.new("RGBA", (side, side), (0, 0, 0, 0))
+square.paste(leaf, ((side - leaf.width) // 2, (side - leaf.height) // 2))
+square.resize((64, 64), Image.LANCZOS).save(os.path.join(O, "leaf.png"), optimize=True)

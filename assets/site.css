@@ -601,26 +601,40 @@ table.results tbody td:first-child { white-space: nowrap; }
   border-width: 28px 22px 34px 24px; border-image: url("maple/win9s.png") 28 22 34 24 fill / 28px 22px 34px 24px stretch repeat;
 }
 
-/* ---------- top bar: the silver of the status bar, levels as window tabs ---------- */
+/* ---------- top bar: the silver of the status bar, the logo's maple leaf, game-style controls ----------
+   The levels are a navy switch with the pick in the dialog-button gold; the minimap (phones) and
+   the menu are the blue buttons of the game's dialogs. All drawn in CSS so they stay sharp. */
 :root[data-skin="maple"] .toolbar { background: url("maple/hud-bg.png") 0 -1px / auto 71px repeat-x; border-bottom: 1px solid #5b6f86; }
+/* over-scrolling past the top shows more bar, not the page */
+:root[data-skin="maple"] .toolbar::before { content: ""; position: absolute; left: 0; right: 0; bottom: 100%; height: 200px; background: #ccdddd; }
 :root[data-skin="maple"] .toolbar .home { color: #1c2b44; font-weight: 900; }
-:root[data-skin="maple"] .toolbar .home::before { background: #242221; color: #ffd43b; border: 1px solid #000000; }
+:root[data-skin="maple"] .toolbar .home::before {
+  content: ""; width: 30px; height: 30px; border: 0; border-radius: 0; background: url("maple/leaf.png") center / contain no-repeat;
+  filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.8));
+}
 :root[data-skin="maple"] .toolbar .crumb, :root[data-skin="maple"] .levels-label { color: #3b4b5e; }
-:root[data-skin="maple"] .seg { background: none; border: 0; padding: 0 0 0 4px; border-radius: 0; align-self: end; gap: 0; }
+:root[data-skin="maple"] .seg {
+  align-self: center; gap: 2px; padding: 2px; border-radius: 7px; border: 1px solid #0d1626;
+  background: linear-gradient(#3a5172, #1f2e47); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 0 rgba(255, 255, 255, 0.7);
+}
 :root[data-skin="maple"] .seg button {
-  height: 24px; padding: 0 4px; border-radius: 0; color: #41566e; font-weight: 700; background: none; margin-right: -6px;
-  border-style: solid; border-width: 0 12px 0 6px; border-image: url("maple/tab0.png") 0 12 0 6 fill / 0 12px 0 6px stretch;
+  min-height: 30px; height: 30px; padding: 0 9px; margin: 0; border: 1px solid transparent; border-radius: 5px; line-height: 28px;
+  color: #d9e6f5; font-weight: 700; background: none; text-shadow: 0 1px 0 rgba(0, 0, 0, 0.55);
 }
-:root[data-skin="maple"] .seg button[aria-pressed="true"] { border-image-source: url("maple/tab1.png"); color: #0f2c4f; background: none; position: relative; z-index: 1; }
-:root[data-skin="maple"] .seg button:hover { color: #0f2c4f; }
-:root[data-skin="maple"] .appear-btn {
-  width: 54px; height: 34px; padding: 0; border: 0; border-radius: 0; color: transparent; background: url("maple/bt-menu-normal.png") no-repeat;
+:root[data-skin="maple"] .seg button[aria-pressed="true"] {
+  color: #3d2604; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.55); border-color: #a8711a;
+  background: linear-gradient(#fff2be, #ffcb4c 55%, #f0a020); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85);
 }
-:root[data-skin="maple"] .appear-btn:hover { background-image: url("maple/bt-menu-mouseOver.png"); }
-:root[data-skin="maple"] .appear-btn:active, :root[data-skin="maple"] .appear-btn[aria-expanded="true"] { background-image: url("maple/bt-menu-pressed.png"); }
-:root[data-skin="maple"] .appear-btn svg { display: none; }
+:root[data-skin="maple"] .seg button:hover:not([aria-pressed="true"]) { color: #ffffff; background: rgba(255, 255, 255, 0.1); }
+:root[data-skin="maple"] :is(.appear-btn, .map-btn) {
+  min-height: 34px; height: 34px; padding: 0 10px; gap: 6px; border-radius: 6px; border: 1px solid #123f69;
+  font-weight: 700; color: #ffffff; text-shadow: 0 1px 0 rgba(0, 0, 0, 0.45);
+  background: linear-gradient(#64b2ef, #2a7cbd 55%, #1a5f9c); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55), 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+:root[data-skin="maple"] :is(.appear-btn, .map-btn):hover { filter: brightness(1.08); }
+:root[data-skin="maple"] :is(.appear-btn, .map-btn):active,
+:root[data-skin="maple"] :is(.appear-btn, .map-btn)[aria-expanded="true"] { background: linear-gradient(#1a5f9c, #2a7cbd); box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.35); color: #ffffff; border-color: #0d3050; }
 :root[data-skin="maple"] .appear-panel { padding: 2px 10px 8px; }
-:root[data-skin="maple"] .appear-panel .seg button { margin-right: -6px; }
 
 /* ---------- chapter list: the minimap window ---------- */
 :root[data-skin="maple"] .rail { max-height: calc(100vh - 10rem); }
@@ -634,8 +648,8 @@ table.results tbody td:first-child { white-space: nowrap; }
   display: flex; align-items: center; gap: 8px; font-size: 0; color: #ffffff; background: none;
 }
 :root[data-skin="maple"] .rail summary::before {
-  content: "讀"; flex: none; width: 34px; height: 34px; display: grid; place-items: center; font-size: 15px; font-weight: 900;
-  color: #ffd43b; background: #2a3f63; border: 1px solid #0e1a2e; border-radius: 3px;
+  content: ""; flex: none; width: 34px; height: 34px;
+  background: #2a3f63 url("maple/leaf.png") center / 26px no-repeat; border: 1px solid #0e1a2e; border-radius: 3px;
 }
 :root[data-skin="maple"] .mini-names { display: flex; flex-direction: column; line-height: 1.25; min-width: 0; font-size: 12px; font-weight: 700; color: #ffffff; text-shadow: var(--outline); }
 :root[data-skin="maple"] .mini-names span { font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -780,14 +794,19 @@ table.results tbody td:first-child { white-space: nowrap; }
 
 /* ---------- one quest per page (site.js turns the pages) ---------- */
 :root[data-skin="maple"] .column.is-paged { display: block; }
-:root[data-skin="maple"] .column.is-paged > .paper-head:not([hidden]) { margin-bottom: 5rem; }
-/* past the first page the section is the top window: room above it for the protagonist and the monster */
-:root[data-skin="maple"] .column.is-paged > .paper-head[hidden] ~ .sec:not([hidden]) { margin-top: 96px; }
-:root[data-skin="maple"] .column.is-paged > .paper-head[hidden] ~ .sec.has-big:not([hidden]) { margin-top: 140px; }
+:root[data-skin="maple"] .desk:has(.is-paged) { padding-bottom: 16px; }
+/* room above the page's window for exactly its monster (site.js sets --mob-h, the tallest of its
+   frames), and above the pager for the protagonist (--hero-h) */
+:root[data-skin="maple"] .column.is-paged > .sec:not([hidden]) { margin-top: calc(var(--mob-h, 0) * 1px + 8px); }
+:root[data-skin="maple"] .column.is-paged > .paper-head:not([hidden]) ~ .sec:not([hidden]) { margin-top: calc(var(--mob-h, 0) * 1px + 32px); }
+/* a page arrives with a short rise */
+:root[data-skin="maple"] .column.is-paged > .is-entering { animation: page-in 0.28s ease-out; }
+@keyframes page-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { :root[data-skin="maple"] .column.is-paged > .is-entering { animation: none; } }
 /* the sections on other pages stay in the document for find-in-page, folded to nothing */
 :root[data-skin="maple"] .column.is-paged > [hidden] { border: 0; padding: 0; margin: 0; }
 :root[data-skin="maple"] .pager:not([hidden]) {
-  position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 10px; margin-top: 8rem;
+  position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 10px; margin-top: calc(var(--hero-h, 90) * 1px + 40px);
 }
 /* the portal (MapHelper portal/game/pv) rises over the quest count once the section is done */
 :root[data-skin="maple"] .pager .pg-portal { display: none; position: absolute; left: 50%; bottom: calc(100% - 22px); transform: translateX(-50%) scale(0.6); transform-origin: 50% 100%; pointer-events: none; }
@@ -821,7 +840,6 @@ table.results tbody td:first-child { white-space: nowrap; }
 :root[data-skin="maple"] .perch-walk { right: 16px; width: 170px; }
 :root[data-skin="maple"] .walker { position: absolute; left: 0; bottom: 0; }
 :root[data-skin="maple"] .perch-walk .stander { position: absolute; right: 0; bottom: 0; }
-}
 :root[data-skin="maple"] .perch.is-down { animation: perch-fade 1.3s ease-in forwards; }
 @keyframes perch-fade { 0%, 65% { opacity: 1; } 100% { opacity: 0; } }
 :root[data-skin="maple"] .exp-pop {
@@ -840,6 +858,7 @@ table.results tbody td:first-child { white-space: nowrap; }
 
 /* ---------- status bar (built by site.js) ---------- */
 :root[data-skin="maple"] .hud { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; height: calc(71px + env(safe-area-inset-bottom, 0px)); background: url("maple/hud-bg.png") 0 0 / auto 71px repeat-x; image-rendering: pixelated; }
+:root[data-skin="maple"] .hud::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 200px; background: #88aabb; }
 :root[data-skin="maple"] .hud-chat { position: absolute; left: 0; top: 7px; width: min(760px, 100%); height: 22px; padding-left: 8px; background: url("maple/chat9.png") 0 0 / 100% 22px no-repeat; font-size: 12px; line-height: 22px; color: #333333; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; image-rendering: auto; }
 :root[data-skin="maple"] .hud-chat b { color: #d14a00; }
 :root[data-skin="maple"] .hud-row { position: absolute; left: 0; right: 0; top: 29px; height: 42px; display: flex; align-items: center; }
@@ -853,13 +872,29 @@ table.results tbody td:first-child { white-space: nowrap; }
 :root[data-skin="maple"] .hud-gray { position: absolute; top: 0; bottom: 0; right: 0; background: url("maple/exp-gray.png") 0 0 / 1px 100% repeat-x; }
 :root[data-skin="maple"] .hud-num { position: absolute; right: 2px; top: -14px; font-size: 11px; font-weight: 700; line-height: 13px; color: #ffffff; text-shadow: var(--outline); image-rendering: auto; }
 
+.map-btn, .map-scrim { display: none; }
+.map-btn svg { width: 18px; height: 18px; flex: none; }
+.map-btn .map-num { font-size: 12px; font-variant-numeric: tabular-nums; }
 @media (max-width: 960px) {
-  /* the minimap sits above the text here: let it grow with its list instead of scrolling inside */
-  :root[data-skin="maple"] .rail { max-height: none; overflow: visible; }
+  /* The minimap is a button in the top bar here, and the chapter list slides in from the left
+     (site.js keeps the list open and moves the drawer with :root.map-open). */
+  :root[data-skin="maple"] .map-btn { display: inline-flex; align-items: center; font: inherit; font-weight: 700; cursor: inherit; }
+  :root[data-skin="maple"] .rail {
+    position: fixed; z-index: 40; top: 0; bottom: 0; left: 0; width: min(330px, 88vw); max-height: none; margin: 0;
+    overflow-y: auto; overscroll-behavior: contain;
+    padding: calc(12px + env(safe-area-inset-top, 0px)) 10px calc(16px + env(safe-area-inset-bottom, 0px)) max(10px, env(safe-area-inset-left, 0px));
+    background: rgba(18, 30, 52, 0.55); box-shadow: 4px 0 18px rgba(0, 0, 0, 0.35);
+    transform: translateX(-105%); visibility: hidden; transition: transform 0.24s ease, visibility 0s 0.24s;
+  }
+  :root[data-skin="maple"].map-open .rail { transform: none; visibility: visible; transition: transform 0.24s ease; }
+  /* the page layer holds the drawer: lift it over the top bar and the status bar while open */
+  :root[data-skin="maple"].map-open .desk { z-index: 50; }
+  :root[data-skin="maple"].map-open .map-scrim { display: block; position: fixed; inset: 0; z-index: 39; background: rgba(8, 14, 32, 0.45); border: 0; padding: 0; }
+  :root[data-skin="maple"] .rail details { margin-top: 62px; }
   :root[data-skin="maple"] .rail details[open] { padding-bottom: 0; }
-  :root[data-skin="maple"] .rail details:not([open]) { border-bottom-width: 8px; }
-  :root[data-skin="maple"] .rail li a { padding: 9px 8px; }
+  :root[data-skin="maple"] .rail li a { padding: 10px 8px; }
 }
+@media (max-width: 960px) and (prefers-reduced-motion: reduce) { :root[data-skin="maple"] .rail { transition: none; } }
 @media (max-width: 600px) {
   :root[data-skin="maple"] .sec { padding: 2px 4px 10px; }
   /* thick game frames: let the windows use the page gutter so the text column stays wide */
@@ -889,8 +924,9 @@ table.results tbody td:first-child { white-space: nowrap; }
   :root[data-skin="maple"] .check details[open]:has(.npc-portrait) summary::before { left: -10px; }
   :root[data-skin="maple"] .hud-left { width: 80px; background-size: 207px 42px; }
   :root[data-skin="maple"] .hud-name { display: none; }
-  :root[data-skin="maple"] .appear-btn { width: 54px; }
-  :root[data-skin="maple"] .seg button { padding: 0 2px; font-size: 0.8125rem; }
+  :root[data-skin="maple"] .toolbar-inner { gap: 6px; padding-block: 7px; }
+  :root[data-skin="maple"] .seg button { padding: 0 7px; font-size: 0.8125rem; }
+  :root[data-skin="maple"] :is(.appear-btn, .map-btn) { padding: 0 8px; }
 }
 @media (prefers-reduced-motion: reduce) { :root[data-skin="maple"] .card:hover { transform: none; } }
 
@@ -900,4 +936,9 @@ table.results tbody td:first-child { white-space: nowrap; }
   .toolbar .home { font-size: 0; gap: 0; }
   .toolbar .home::before { font-size: 0.85rem; }
   .seg button { padding: 0 0.5rem; }
+  :root[data-skin="maple"] .seg button { padding: 0 6px; }
+}
+@media (max-width: 380px) {
+  :root[data-skin="maple"] .seg button { padding: 0 4px; font-size: 0.75rem; }
+  :root[data-skin="maple"] .toolbar-inner { gap: 4px; }
 }

@@ -79,7 +79,8 @@ byte for byte. The pieces and how CSS uses them (`border-image: url(x) T R B L f
 | `win9s.png` | win9 without the blue button band | 28 22 34 24 | windows with no buttons (paper header, shelf boxes, cards, the appearance panel) |
 | `mini9.png` | MiniMap/MaxMap nine pieces | 72 6 15 6 | chapter list. Rows 6–20 are the white title strip (`mini-title.png` = "MINI MAP"), 20–64 the steel-blue name band |
 | `bal9.png` + `bal-arrow.png` | ChatBalloon/npc | 6 6 6 6 | a quoted claim from the paper |
-| `tab0.png` / `tab1.png` | Basic Tab left+fill+right | 0 12 0 6 | explanation-level tabs (blank, so Chinese labels work) |
+| `tab0.png` / `tab1.png` | Basic Tab left+fill+right | 0 12 0 6 | explanation-level tabs (blank, so Chinese labels work). This repo's site now draws the level switch in CSS instead: the tabs blur at phone sizes |
+| `leaf.png` | Login.img Title/MSTitle, the red leaf only (64x64, `build_login.py`) | — | the logo in the top bar and the minimap's icon |
 | `hud-bg.png` | StatusBar base/backgrnd | repeat-x, 71px tall | status bar ground |
 | `chat9.png` | backgrnd2 rows 7–29 | stretched | the white chat strip: a "[公告]" system line |
 | `hud-left.png` | backgrnd2 x 0–207, rows 29–71 | — | LV box (digits from `lv0-9.png` at left 38, top 15) and the name panel |
@@ -149,6 +150,20 @@ to publish the built pieces with the site (GitHub Pages); the full pack stays ou
 - Names on NPC plates and in the chat line are the Taiwan client's (漢斯, 赫麗娜, 那因哈特, 米哈逸,
   奧茲, 伊麗娜, 伊卡勒特, 鷹眼; 藍寶, 綠水靈, 綠菇菇, 緞帶肥肥, 菇菇寶貝, 藍水靈, 雪吉拉). Npc 0002002,
   1052103 and the 村長 screenshot are not identified yet, so they carry descriptive plates.
+- 楓葉冒險 is the default style (head snippet: anything but a stored "study" turns it on; site.js
+  still drops it when the art does not load, and `build_artifact.py` strips that line). The top
+  bar carries the leaf logo, a navy level switch with the pick in dialog-button gold and blue
+  game buttons, all CSS so they stay sharp. On narrow screens (≤960px) the minimap is a top-bar
+  button showing EXP n/total and the chapter list is a drawer from the left (`:root.map-open`;
+  the shade sits inside `.desk`, the drawer's stacking layer, which rises over the bars while open).
+- Paged spacing is measured, not guessed: a page leaves room above its window for its monster's
+  tallest frame (`--mob-h`, 0 once beaten) and above the pager for the protagonist (`--hero-h`), so
+  a phone shows no empty band. A page turn scrolls to the top and the new page rises in (0.28s).
+  sprites.js is fetched at once when the page opens in maple, alongside the probe; the pages either
+  side of the current one get their cast built and strips fetched in idle time, and the monster's
+  hit and fall strips and every outfit are fetched ahead, so nothing pops in late.
+- The status bar and the top bar each carry a 200px block of their colour beyond the screen edge,
+  so a phone's sliding browser bar or an over-scroll shows bar, not the page behind.
 - In this skin a paper is paged: one section at a time with 上一節 / 下一節 at its foot. The other
   sections are `hidden="until-found"`, so find-in-page and `#id` links still reach them and turn to
   their page. The chat line on the status bar cycles the current section's title, its 五歲
@@ -160,8 +175,8 @@ to publish the built pieces with the site (GitHub Pages); the full pack stays ou
   give each an `aria-label` in Chinese. Only draw a CSS button when the label must be Chinese.
 - **NPC names**: don't guess Taiwanese official names. Use a role ("精讀導師") until the user
   supplies the name.
-- **Phone**: hide the minimap's list (keep its name band), shrink the dialog's portrait column to
-  104px (`border-width: 28px 14px 58px 104px`), drop the HUD name panel. The status bar stays 71px.
+- **Phone**: the minimap becomes a top-bar button and a drawer (see above); the dialog drops its
+  portrait column and the NPC stands on its top edge; drop the HUD name panel.
 - **Readability**: body text stays on the windows' own light panels at 15.5–16px, `#2b2b2b`–`#333`;
   never put running text straight on the scene.
 - **Some NPCs are invisible** (`stand/0.png` 1px wide, e.g. Npc 1101000); use `info/default.png` or pick another.

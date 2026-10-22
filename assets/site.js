@@ -36,8 +36,8 @@
 
   // ---------- appearance: style (study / maple) and colour mode (system / light / dark) ----------
   // The 楓葉冒險 skin is drawn with game art in assets/maple/ (scripts/setup_maple.py builds it).
-  // It is offered only when that art loads, so the inlined single-file builds, which have no
-  // images, show just the colour modes.
+  // It is the default, and it is offered only when that art loads, so the inlined single-file
+  // builds, which have no images, show the original style and just the colour modes.
   var SKIN_KEY = "study:skin", MODE_KEY = "study:mode";
   // The pages link site.css?v=<stamp> (scripts/stamp_assets.py), and the files this script builds
   // URLs for carry the same stamp, so a browser holding an older copy fetches the new one.
@@ -47,7 +47,7 @@
   var stamp = (cssHref.match(/[?&]v=(\w+)/) || [])[1];
   function mapleUrl(file) { return mapleBase + file + (stamp ? "?v=" + stamp : ""); }
   var mapleReady = false, mapleHooks = [];
-  function whenMaple(fn) { if (mapleReady) fn(); else mapleHooks.push(fn); }
+  function whenMaple(fn) { if (mapleReady && tableDone) fn(); else mapleHooks.push(fn); }
   var hostTheme = root.hasAttribute("data-host-theme") ? root.getAttribute("data-host-theme") : root.getAttribute("data-theme");
   var skinHooks = [];
   function applySkin(v) {
@@ -59,7 +59,7 @@
     else if (hostTheme) root.setAttribute("data-theme", hostTheme);
     else root.removeAttribute("data-theme");
   }
-  var skin = store.get(SKIN_KEY, "study"), mode = store.get(MODE_KEY, "system");
+  var skin = store.get(SKIN_KEY, "maple"), mode = store.get(MODE_KEY, "system");
   applyMode(mode);
   var openAppear = null, skinRow = null;
   var bar = document.querySelector(".toolbar-inner");
@@ -98,18 +98,27 @@
     sync();
   }
   // The head snippet may already have switched to maple from storage; that stands only if the art is here.
+  // The sprite table comes with the art (the skin still works if it is missing). When the page opens
+  // in maple it is fetched at once, alongside the probe, so the cast is not a round trip late.
+  var table = null, tableDone = false;
+  function loadTable() {
+    if (table || !mapleBase) return;
+    table = document.createElement("script");
+    table.onload = table.onerror = function () { tableDone = true; runMaple(); };
+    table.src = mapleUrl("sprites.js");
+    document.head.appendChild(table);
+  }
+  function runMaple() { if (mapleReady && tableDone) mapleHooks.splice(0).forEach(function (fn) { fn(); }); }
+  if (skin === "maple") loadTable();
   function setMapleReady(ok) {
     mapleReady = ok;
     applySkin(skin);
     if (skinRow) skinRow.hidden = !ok;
     if (!ok) return;
-    // the sprite table comes with the art; the skin still works if it is missing
-    var table = document.createElement("script");
-    table.onload = table.onerror = function () { mapleHooks.splice(0).forEach(function (fn) { fn(); }); };
-    table.src = mapleUrl("sprites.js");
-    document.head.appendChild(table);
+    loadTable();
+    runMaple();
     // fetch the hover, pressed and opened states now, so a button never blinks empty on first use
-    ["bt-menu-mouseOver", "bt-menu-pressed", "btnext-mouseOver", "btprev-normal", "btprev-mouseOver", "btclose-normal", "tab1", "list3"]
+    ["btnext-mouseOver", "btprev-normal", "btprev-mouseOver", "btclose-normal", "list3"]
       .forEach(function (f) { new Image().src = mapleBase + f + ".png"; });
   }
   if (mapleBase) {
@@ -225,6 +234,10 @@
     if (c[2] < 2 || reduceMotion) return;
     live.push({ el: el, w: c[0], n: c[2], i: 0, acc: 0, ms: ms || 170, once: !!once });
     if (!clock) clock = setInterval(tick, TICK);
+  }
+  // fetch strips before they are shown, so a sprite never appears a moment after its window
+  function warm(name, act) {
+    if (window.MAPLE_SPRITES && window.MAPLE_SPRITES[name] && window.MAPLE_SPRITES[name].acts[act]) new Image().src = mapleUrl("spr-" + name + "-" + act + ".png");
   }
   function spriteEl(name, act) {
     var el = document.createElement("span");
@@ -410,12 +423,51 @@
     names.lastChild.textContent = shortName;
     railSummary.insertBefore(names, railSummary.firstChild);
   }
+  // In the game skin on a narrow screen the minimap is a top-bar button showing the progress, and
+  // the chapter list slides in from the left; picking a chapter, the shade or Esc puts it away.
+  var narrow = window.matchMedia ? window.matchMedia("(max-width: 960px)") : null;
+  var mapBtn = null, homeLink = document.querySelector(".toolbar .home");
+  function drawerMode() { return root.getAttribute("data-skin") === "maple" && !!narrow && narrow.matches; }
+  function openMap(v) {
+    root.classList.toggle("map-open", v);
+    if (mapBtn) mapBtn.setAttribute("aria-expanded", String(v));
+  }
+  if (railDetails && railSummary && homeLink) {
+    mapBtn = document.createElement("button");
+    mapBtn.type = "button";
+    mapBtn.className = "map-btn";
+    mapBtn.setAttribute("aria-expanded", "false");
+    mapBtn.setAttribute("aria-label", "章節地圖");
+    mapBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true">' +
+      '<path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/></svg><span class="map-num"></span>';
+    homeLink.parentNode.insertBefore(mapBtn, homeLink.nextSibling);
+    var scrim = document.createElement("button");
+    scrim.type = "button";
+    scrim.className = "map-scrim";
+    scrim.tabIndex = -1;
+    scrim.setAttribute("aria-label", "關閉章節地圖");
+    // in the drawer's own stacking layer (.desk), just under it
+    railDetails.closest(".rail").parentNode.appendChild(scrim);
+    mapBtn.addEventListener("click", function () { railDetails.open = true; openMap(!root.classList.contains("map-open")); });
+    scrim.addEventListener("click", function () { openMap(false); });
+    railSummary.addEventListener("click", function (e) { if (drawerMode()) { e.preventDefault(); openMap(false); } });
+    if (outline) outline.addEventListener("click", function (e) { if (drawerMode() && e.target.closest("a")) openMap(false); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && root.classList.contains("map-open")) { openMap(false); mapBtn.focus(); } });
+    var fitRail = function () {
+      openMap(false);
+      railDetails.open = drawerMode() || !(narrow && narrow.matches);
+    };
+    skinHooks.push(fitRail);
+    if (narrow && narrow.addEventListener) narrow.addEventListener("change", fitRail);
+    fitRail();
+  }
   // The cast for this paper, built a page at a time as you reach it, so a phone only fetches the
   // sprites it shows: a monster on each section that can be finished (one elite midway, a boss on
   // the last), NPCs taking turns in the self-check dialogs, and the protagonist with a pet, who
   // goes with you from page to page. A paper's protagonist is 殺人鯨 or 露希妲, picked from its id
   // (the outfit changes every visit); its monsters and NPCs are picked from the id too.
   var seed = seedOf(paper), castDone = {}, party = null, outfits = [];
+  var later = window.requestIdleCallback ? function (fn) { window.requestIdleCallback(fn, { timeout: 2000 }); } : function (fn) { setTimeout(fn, 600); };
   var quests = sections.filter(function (s) { return s.querySelector("input[data-done]"); });
   var allDialogs = Array.prototype.slice.call(document.querySelectorAll(".check details"));
   function mobFor(s) {
@@ -432,9 +484,13 @@
     s.classList.toggle("has-big", m.big);
     var p = perch(s, [m.name], "walk");
     var box = s.querySelector("input[data-done]");
+    // the page leaves room above the window for the monster's tallest frame, none once it is beaten
+    var acts = window.MAPLE_SPRITES[m.name].acts, tall = Math.max.apply(null, Object.keys(acts).map(function (a) { return acts[a][1]; }));
+    s.style.setProperty("--mob-h", box.checked ? 0 : tall);
     if (box.checked) p.wrap.hidden = true;
+    later(function () { warm(m.name, "hit"); warm(m.name, "die"); });
     box.addEventListener("change", function () {
-      if (!box.checked) { respawn(p); return; }
+      if (!box.checked) { s.style.setProperty("--mob-h", tall); respawn(p); return; }
       defeat(p);
       cheer();
       var foe = window.MAPLE_SPRITES[m.name].label || "怪物";
@@ -480,10 +536,29 @@
     addMob(sections[i]);
     sections[i].querySelectorAll(".check details").forEach(addNpc);
   }
+  // while a page is read, the pages either side get their cast and fetch its strips
+  function ahead(i) {
+    later(function () {
+      [i + 1, i - 1].forEach(function (k) {
+        if (!sections[k] || castDone[k] || !window.MAPLE_SPRITES) return;
+        castFor(k);
+        sections[k].querySelectorAll(".spr").forEach(function (el) {
+          var u = el.style.backgroundImage.match(/url\("?(.*?)"?\)/);
+          if (u) new Image().src = u[1];
+        });
+      });
+    });
+  }
   // The protagonist waits at the foot of every page, on 上一節, next to where you mark the section
   // read and beside the portal that opens then, so the level-up plays where you are looking.
   function placeParty() {
     if (party && party.wrap.parentNode !== pager) pager.appendChild(party.wrap);
+  }
+  // the pager leaves room above it for the protagonist's current outfit
+  function heroRoom() {
+    if (!party) return;
+    var acts = window.MAPLE_SPRITES[party.cast[0].name].acts;
+    pager.style.setProperty("--hero-h", Math.max(acts.stand[1], acts.cheer ? acts.cheer[1] : 0));
   }
   // each page dresses the protagonist in the next of their outfits, so a read shows all of them
   function dress(i) {
@@ -492,6 +567,7 @@
     if (name === hero.name) return;
     hero.name = name;
     setAct(hero.spr, name, "stand");
+    heroRoom();
   }
   // finishing a section: the protagonist cheers and levels up (LV counts finished sections)
   function cheer() {
@@ -535,9 +611,10 @@
       pager.appendChild(portal);
     }
     placeParty();
-    if (current >= 0) { castFor(current); dress(current); }
+    heroRoom();
+    if (current >= 0) { castFor(current); dress(current); ahead(current); }
+    later(function () { outfits.forEach(function (o) { warm(o, "stand"); warm(o, "cheer"); }); });
     // fetch the level-up and damage strips while idle, so the first finished section plays at once
-    var later = window.requestIdleCallback || function (fn) { setTimeout(fn, 2500); };
     later(function () {
       ["fx-levelup-stand", "fx-levelup-text", "fx-digits-stand"].forEach(function (f) {
         if (window.MAPLE_SPRITES[f.replace(/-(stand|text)$/, "")]) new Image().src = mapleUrl("spr-" + f + ".png");
@@ -554,6 +631,7 @@
     var txt = document.getElementById("progress-text");
     if (bar) bar.style.width = (countable ? (100 * n) / countable : 0) + "%";
     if (txt) txt.textContent = n + " / " + countable;
+    if (mapBtn) mapBtn.querySelector(".map-num").textContent = n + "/" + countable;
     hud(n, countable);
   }
   document.querySelectorAll("input[data-done]").forEach(function (box) {
@@ -630,7 +708,7 @@
   // style keeps the single long page.
   var head = document.querySelector(".paper-head");
   var column = document.querySelector(".column");
-  var current = -1, paged = false;
+  var current = -1, paged = false, entered = false;
   function pad(i) { return (i < 10 ? "0" : "") + i; }
   function titleOf(i) { var s = sections[i]; return s ? s.getAttribute("data-short") || s.querySelector("h2").textContent : ""; }
   // what the chat line says on a page: where you are, a key point (the 五歲 explanation's first
@@ -676,8 +754,20 @@
     drawPager();
     castFor(i);
     dress(i);
-    if (changed) hud.chat(pageLines(i));
-    if (scroll) window.scrollTo(0, i === 0 ? 0 : Math.max(0, sections[i].getBoundingClientRect().top + window.pageYOffset - 170));
+    ahead(i);
+    if (changed) {
+      hud.chat(pageLines(i));
+      // the new page rises in (not on the first one shown)
+      if (entered) [head, sections[i]].forEach(function (el) {
+        if (!el || el.hidden) return;
+        el.classList.remove("is-entering");
+        void el.offsetWidth;
+        el.classList.add("is-entering");
+      });
+      entered = true;
+    }
+    // a new page starts at its top, with its monster in view
+    if (scroll) window.scrollTo(0, 0);
   }
   function go(i) {
     if (i < 0 || i >= sections.length) return;
@@ -694,10 +784,15 @@
     var i = pageOf(target);
     if (i < 0) return false;
     if (i !== current) turnTo(i, false);
-    target.scrollIntoView();
+    if (target === sections[i]) window.scrollTo(0, 0); else target.scrollIntoView();
     return true;
   }
   window.addEventListener("hashchange", function () { if (paged) fromHash(); });
+  // the browser scrolls to the address's anchor once the page has loaded; a section's page starts at its top
+  window.addEventListener("load", function () {
+    var t = location.hash ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : null;
+    if (paged && t && t === sections[current]) setTimeout(function () { window.scrollTo(0, 0); }, 0);
+  });
   window.addEventListener("popstate", function () { if (paged && !fromHash()) turnTo(0, true); });
   sections.forEach(function (s) {
     s.addEventListener("beforematch", function () { if (paged) turnTo(sections.indexOf(s), false); });

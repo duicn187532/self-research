@@ -24,6 +24,8 @@ def build(src: pathlib.Path) -> str:
     s = re.sub(r"<!doctype html>\s*", "", s, flags=re.I)
     s = re.sub(r"</?(html|head|body)[^>]*>\s*", "", s)
     s = re.sub(r'<meta (charset|name="viewport")[^>]*>\s*', "", s)
+    # The game skin needs assets/maple/, which a single file lacks: keep the head from switching to it.
+    s = s.replace('if(JSON.parse(localStorage.getItem("study:skin"))!=="study")r.setAttribute("data-skin","maple");', "")
     # Links back to the shelf don't exist outside the repo.
     s = s.replace('href="../../index.html"', 'href="#"')
     return s
