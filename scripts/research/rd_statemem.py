@@ -44,7 +44,7 @@ DATA = {
 "repro": {
 "lead": "附錄提供了全部提示詞原文、後端介面與基線設定，連 top-k 的選擇都做了掃描說明。缺的是程式碼與資料的取得連結。",
 "rows": [
-  ("Data 資料", "part", "StateMemBench：原文寫「我們釋出」，標註工具也隨評測釋出（§4、附錄 A.4），但 PDF 中沒有給連結。外部評測（LongMemEval、LoCoMo、MemoryArena、τ²）公開。"),
+  ("Data 資料", "part", "StateMemBench：原文寫「我們釋出」，標註工具也隨評測釋出（§4、附錄 A.4），但 PDF 中沒有給連結（2026-10-22 經 alphaXiv 取得全文逐字搜尋：全文的網址都是參考文獻）。外部評測（LongMemEval、LoCoMo、MemoryArena、τ²）公開。"),
   ("Code 程式碼", "part", "提示詞逐字公開（附錄 E、F.1），後端介面以兩個方法定義（附錄 F.3）；沒有程式碼連結。"),
   ("Model 模型", "yes", "骨幹 Qwen-3.5-9B、DeepSeek-V4-Flash（關閉推理），評審 deepseek-v4-pro，渲染 sonnet-4.6，驗證 haiku-4.5，嵌入 text-embedding-3-small；全部溫度 0（§6、附錄 G.1）。API 模型會隨時間更新。"),
   ("Prompt 提示詞", "yes", "TurnEncoder（附錄 E.1）、回答與重算指引（E.3）、包裝器與對照組（F.1）都逐字公開。"),
@@ -56,7 +56,7 @@ DATA = {
 ],
 "after": [
 ("可以重算的（只用論文數字）", "<ul><li>Table 10 的三種加權（本頁已驗算）、McNemar 的二項機率、PABAK（<a href=\"#s-label\">02</a>、<a href=\"#s-evidence\">03</a>）。</li><li>Figure 2 的金額推不出來（<a href=\"#s-critique\">15</a>）。</li></ul>"),
-("可以重跑的", "<ul><li>提示詞與設定完整，StateMem 與包裝器都可以照附錄重新實作，套到任何有 <code>ingest</code>／<code>search</code> 介面的後端。</li><li>主實驗需要 StateMemBench；PDF 沒有連結，取得途徑待核對。</li></ul>"),
+("可以重跑的", "<ul><li>提示詞與設定完整，StateMem 與包裝器都可以照附錄重新實作，套到任何有 <code>ingest</code>／<code>search</code> 介面的後端。</li><li>主實驗需要 StateMemBench。PDF 只寫「我們釋出」，沒有連結，目前無法從原文取得；在作者公開之前，只能照 §4 與附錄 D 的事件程式格式自造情境，分數不能和 Table 3 直接比。</li></ul>"),
 ("阻礙重現的關鍵缺口", "<p>評測資料與程式碼的連結；needs_recheck 旗標的清除規則；單次執行（沒有種子間變異）。</p>"),
 ],
 },
