@@ -5,6 +5,7 @@ Does not claim to replace browser testing or PDF source verification.
 """
 from html.parser import HTMLParser
 from pathlib import Path
+import json
 import re
 import sys
 
@@ -69,6 +70,26 @@ def verify() -> list[str]:
     for id in PAPERS:
         if '"' + id + '": {' not in js:
             failures.append("Missing five-dimension configuration for " + id)
+    manifest = json.loads((ROOT / 'scripts/research/source_manifest.json').read_text(encoding='utf-8'))
+    if set(manifest.get('papers', {})) != set(PAPERS):
+        failures.append('Source manifest must cover exactly seven papers')
+    for id in PAPERS:
+        start = js.find('"' + id + '": {')
+        if start < 0:
+            continue
+        end = js.find('\n    },', start)
+        if end < 0:
+            end = js.find('\n    }\n  };', start)
+        block = js[start:end] if end >= 0 else js[start:]
+        page_html = (ROOT / 'papers' / id / 'index.html').read_text(encoding='utf-8')
+        for anchor in set(re.findall(r'"(s-[a-zA-Z0-9-]+)"', block)):
+            if ('id="' + anchor + '"') not in page_html:
+                failures.append(id + ': reading-lab broken anchor #' + anchor)
+        record = manifest.get('papers', {}).get(id, {})
+        if not record.get('metadata_evidence') or not record.get('version') or not record.get('missing'):
+            failures.append(id + ': missing pinned source evidence/status record')
+        if record.get('fulltext_status') in ('verified', 'fulltext_verified'):
+            failures.append(id + ': unsupported fulltext verified claim in this change')
     for term in ('"Problem"', '"Method"', '"Benchmark"', '"Contribution"', '"Gap"'):
         if js.count(term) != 7:
             failures.append("Each paper must have exactly one " + term)
