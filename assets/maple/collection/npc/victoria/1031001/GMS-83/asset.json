@@ -1,0 +1,74 @@
+{
+  "id": "1031001",
+  "type": "npc",
+  "region": "victoria",
+  "town": "ellinia",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": null,
+  "name_zh_tw_status": "unavailable",
+  "source_url": "https://maplestory.io/api/GMS/83/npc/1031001",
+  "export_url": "https://maplestory.io/api/wz/export/GMS/83/Npc/1031001.img",
+  "wz_path": "Npc.wz/1031001.img",
+  "version": {
+    "region": "GMS",
+    "version": "83"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "stand",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 53,
+          "height": 63,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "eece1104858c9d4ad444dde7d17f30aea6af05313e53ee4466706d09ee964f00",
+          "pixel_sha256": "4c7d0975b694c00c798fd1379260314df47aa718e5adf2b344177e1296e6117c",
+          "wz_path": "Npc.wz/1031001.img/stand/0",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/victoria/1031001/GMS-83/stand/0000.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "Serabi the Fairy",
+  "role": "Armor Seller",
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "Entrance - Mushroom Town Training Camp",
+      "streetName": "Maple Road",
+      "id": 0
+    }
+  ],
+  "expected_actions": {
+    "stand": 1
+  },
+  "source_metadata_sha256": "1e17e8e8186d85973dd86688a561b367ed59bf62bc95722445ea66b29444b8e0",
+  "source_archive_sha256": "c303a96dd1d1223d90ca5567edf16e9c626bb8e430cb090a02b5381bee3215cf",
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "not_retrieved",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false
+  },
+  "github_path": "assets/maple/collection/npc/victoria/1031001/GMS-83",
+  "status": "collected"
+}

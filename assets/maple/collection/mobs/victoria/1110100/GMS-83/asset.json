@@ -1,0 +1,276 @@
+{
+  "id": "1110100",
+  "type": "mobs",
+  "region": "victoria",
+  "town": null,
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": "綠菇菇",
+  "name_zh_tw_status": "unverified_translation",
+  "source_url": "https://maplestory.io/api/GMS/83/mob/1110100",
+  "export_url": "https://maplestory.io/api/wz/export/GMS/83/Mob/1110100.img",
+  "wz_path": "Mob.wz/1110100.img",
+  "version": {
+    "region": "GMS",
+    "version": "83"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "die1",
+      "frame_count": 4,
+      "expected_frame_count": 4,
+      "frames": [
+        {
+          "index": 0,
+          "width": 57,
+          "height": 49,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "df2afe9f814957aed1bfeabdfbaf65e2b89af1e447ad6a57d8d9cf85a864d625",
+          "pixel_sha256": "d5b0c931245839a60ec616d069d611b365aef70d387fed11ccf83343f59cb4d7",
+          "wz_path": "Mob.wz/1110100.img/die1/0",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/victoria/1110100/GMS-83/die1/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 57,
+          "height": 48,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "130f667067b342898a60782282211e2b6a7c7b9627fee27fd3f886a6c6a53b7a",
+          "pixel_sha256": "efd49159402d28d6ecff7b766456fb83d39231abb014f880754c22e17f458441",
+          "wz_path": "Mob.wz/1110100.img/die1/1",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/victoria/1110100/GMS-83/die1/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 57,
+          "height": 47,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "1bf531dd8e69ea50df82666f19f072ea79985bbba1861aef40cba9b86816b61c",
+          "pixel_sha256": "add561377674bc738335760d87e8525d9a404b714b57944263109164baa2dfdf",
+          "wz_path": "Mob.wz/1110100.img/die1/2",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/victoria/1110100/GMS-83/die1/0002.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 3,
+          "width": 57,
+          "height": 46,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "cbfe49dafed8ff05569f08d8e97fd79731332ccba7f0fc372c65d521abd4ebae",
+          "pixel_sha256": "d2eef24ef77f36e5a4b4dd458e3d5f20bdc8e970cf4b7f6bf55805a82e10cc22",
+          "wz_path": "Mob.wz/1110100.img/die1/3",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/victoria/1110100/GMS-83/die1/0003.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true
+    },
+    {
+      "name": "hit1",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 56,
+          "height": 56,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "ee2fce17bdb5a993edb0fc42090abe6d317900e2ca172032e3d00f4e19b324a7",
+          "pixel_sha256": "3e7f20ac179d02e74f3bab0ed1bdb373ca6d2cdf7852de0341922a0f736f8830",
+          "wz_path": "Mob.wz/1110100.img/hit1/0",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/victoria/1110100/GMS-83/hit1/0000.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true
+    },
+    {
+      "name": "move",
+      "frame_count": 4,
+      "expected_frame_count": 4,
+      "frames": [
+        {
+          "index": 0,
+          "width": 56,
+          "height": 52,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "2bd160cb8fdf577abae56ef469d20f6ebab000c471dfee6e46e7c5f8db1f67c1",
+          "pixel_sha256": "f756f5062fa1fdcca4f4f6e81a05569d90a295f827574f040fc5d687dbe36019",
+          "wz_path": "Mob.wz/1110100.img/move/0",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/victoria/1110100/GMS-83/move/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 56,
+          "height": 51,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "4facbe42a35630e9b5c8bf1003deccac0767d7f57a6c55fde7ccce80e46ba800",
+          "pixel_sha256": "3d869f6ab9c72715a29582964a67f876841a4c57c0cc24e40c3f8216dc4193ca",
+          "wz_path": "Mob.wz/1110100.img/move/1",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/victoria/1110100/GMS-83/move/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 56,
+          "height": 52,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "922d6ea781f640de7a8c089b60bf43ad955803b671c5396e4cc31d8b29a31dde",
+          "pixel_sha256": "77ef08159f0ced8e7ac76f7ec73c269e52d607d30a5b180831c89bd11b76802b",
+          "wz_path": "Mob.wz/1110100.img/move/2",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/victoria/1110100/GMS-83/move/0002.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 3,
+          "width": 56,
+          "height": 51,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "0fb66a6c46fa5ae252b6ee55bc399ebf0096ee74f10fb9440ea6490a9da40bd6",
+          "pixel_sha256": "8d2d271c1e1575c75fd2bf40968c1782d00e3fac2bc94ed7d897c8868168b573",
+          "wz_path": "Mob.wz/1110100.img/move/3",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/victoria/1110100/GMS-83/move/0003.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true
+    },
+    {
+      "name": "stand",
+      "frame_count": 3,
+      "expected_frame_count": 3,
+      "frames": [
+        {
+          "index": 0,
+          "width": 56,
+          "height": 52,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "0537339211124118cae2683d56f5d65485032439f2f6a2dfd86ec611ffbdecc0",
+          "pixel_sha256": "39344563cbc530e16cb1f6490eb9b3854ba86218554ac46d34fa62d1bac62b7a",
+          "wz_path": "Mob.wz/1110100.img/stand/0",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/victoria/1110100/GMS-83/stand/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 56,
+          "height": 52,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "6ec4ab0f7d72709a4846a0a8574c6e530731b6951fcf8318d10125704db16a64",
+          "pixel_sha256": "b9905bc0ff62c01af9c9ceaa8d266b9ec3633b6001e14fef891a9c338c19b88b",
+          "wz_path": "Mob.wz/1110100.img/stand/1",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/victoria/1110100/GMS-83/stand/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 56,
+          "height": 52,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "63cf044b74f80cc6dcfc51f591c38b3e19b2c8159561fa82c044428989814aba",
+          "pixel_sha256": "39344563cbc530e16cb1f6490eb9b3854ba86218554ac46d34fa62d1bac62b7a",
+          "wz_path": "Mob.wz/1110100.img/stand/2",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/victoria/1110100/GMS-83/stand/0002.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "Green Mushroom",
+  "role": null,
+  "is_shop": null,
+  "source_locations": [
+    100000002,
+    100000003,
+    104040002,
+    800010000,
+    100040003,
+    100050000,
+    101010102,
+    102020100,
+    103030000,
+    103030100,
+    104030001,
+    104040001
+  ],
+  "expected_actions": {
+    "die1": 4,
+    "hit1": 1,
+    "move": 4,
+    "stand": 3
+  },
+  "source_metadata_sha256": "3a26c5281adeae23ebd70df27107f027918e6ea7e72d548c93af1653c180f951",
+  "source_archive_sha256": "ae4bd7c60e0ff2698f68293ce943ea8fae3caa940f980a1ea7d5d3967481d97b",
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "not_retrieved",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false
+  },
+  "github_path": "assets/maple/collection/mobs/victoria/1110100/GMS-83",
+  "status": "collected"
+}

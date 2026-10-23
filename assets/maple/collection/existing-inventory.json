@@ -1,0 +1,1562 @@
+[
+  {
+    "github_path": "assets/maple/bal-arrow.png",
+    "width": 13,
+    "height": 13,
+    "mode": "RGBA",
+    "sha256": "6ecababe60b399c8f4457ba14f69a784cf116a24b7f531753bb90233bb82756b",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/bal9.png",
+    "width": 24,
+    "height": 26,
+    "mode": "RGBA",
+    "sha256": "59d7e4d1dd73d2d788087103b5454d3b77cc5d5628278b5ee364ed9cd85efb72",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/bar.png",
+    "width": 121,
+    "height": 19,
+    "mode": "RGBA",
+    "sha256": "064d6023c13c99919883adc8df1aeebf00389192843ea9c38469ed5b41a11422",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/bt-blue-hover.png",
+    "width": 10,
+    "height": 18,
+    "mode": "RGBA",
+    "sha256": "2ee386f457a46c5c4af13b1e0682c82a3c6e8d011cb2d21f8d4c5be547e15cea",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/bt-blue-normal.png",
+    "width": 10,
+    "height": 18,
+    "mode": "RGBA",
+    "sha256": "fa90dfaa04bed1bedbe669d99f1c3038da667bf95c32b9457b1bc2acc3a07690",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/bt-blue-pressed.png",
+    "width": 10,
+    "height": 18,
+    "mode": "RGBA",
+    "sha256": "97b18e61e351107ee4130c11e9751293d21bba77dd85c98f7f68c435163afa62",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/bt-lime-hover.png",
+    "width": 10,
+    "height": 18,
+    "mode": "RGBA",
+    "sha256": "2b41c5f248b495c7b55a2c6a8858e8180a5cb5dbe1fad13dde041676adb68173",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/bt-lime-normal.png",
+    "width": 10,
+    "height": 18,
+    "mode": "RGBA",
+    "sha256": "a21e1707faed809827607f6586eb3ae9416b96e73c693847dda5ce1412c50f33",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/bt-lime-pressed.png",
+    "width": 10,
+    "height": 18,
+    "mode": "RGBA",
+    "sha256": "e0ce54ee79039cb221920108c5a8e344adce6055c5b29efa72b6dc88dfd49c55",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/bt-menu-mouseOver.png",
+    "width": 54,
+    "height": 34,
+    "mode": "RGBA",
+    "sha256": "c732121637aeb53291a678980b6605ad015096803b6b307fd5e40be582fb7845",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/bt-menu-normal.png",
+    "width": 54,
+    "height": 34,
+    "mode": "RGBA",
+    "sha256": "23d4fe15fe857f50e67492dc2da7f74ec66b3eae15b3a71e13202fb74ef8423c",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/bt-menu-pressed.png",
+    "width": 54,
+    "height": 34,
+    "mode": "RGBA",
+    "sha256": "3bc9a2ad94ac44db0bbcb1bcf6ec51354fbf0aa930d2b611428c98975b3e51a5",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/bt-navy-hover.png",
+    "width": 10,
+    "height": 24,
+    "mode": "RGBA",
+    "sha256": "aa08ec575a0a8c2bd38da4668bf65373a2cc9898c1b61683c2f4441e8f9ece4e",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/bt-navy-normal.png",
+    "width": 10,
+    "height": 24,
+    "mode": "RGBA",
+    "sha256": "6d41e92d8c6f4bcdc2d99c1f4da25c266024e2323f32e1fd97c6fc7c2304fce6",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/bt-navy-pressed.png",
+    "width": 10,
+    "height": 24,
+    "mode": "RGBA",
+    "sha256": "71ac2f4740262c76574918a74b099acfe6b6acab3fc4ad80f903432576bd26c7",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/bt-orange-hover.png",
+    "width": 10,
+    "height": 18,
+    "mode": "RGBA",
+    "sha256": "b9a46275a7c76f61ede7f68b5828431f6b1f6c3b9d3738ab649b0dc6bbbf8685",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/bt-orange-normal.png",
+    "width": 10,
+    "height": 18,
+    "mode": "RGBA",
+    "sha256": "a347a017d770770a53a05d50c4f82546deb401105b2ebf4a6bd80c0ca588f6ad",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/bt-orange-pressed.png",
+    "width": 10,
+    "height": 18,
+    "mode": "RGBA",
+    "sha256": "8438a2c3b3b471ac06c94faa4f261ea05183ba17dc106ec072d3f99fc4aa61d8",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/bt-short-mouseOver.png",
+    "width": 54,
+    "height": 34,
+    "mode": "RGBA",
+    "sha256": "540223416b052b97585f89f6c6cad428f13dd9d18ecd53d13c5491a08f7d4eab",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/bt-short-normal.png",
+    "width": 54,
+    "height": 34,
+    "mode": "RGBA",
+    "sha256": "5b5b7377f7df937aa6c29bc6ab263ff9ef03a9b123d58f03df8c6305903a34e8",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/bt-short-pressed.png",
+    "width": 54,
+    "height": 34,
+    "mode": "RGBA",
+    "sha256": "1fb3a42d6886e7b7cdc62223828b70218791152f1fbb0e800a13a2748ed45112",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/bt-world.png",
+    "width": 36,
+    "height": 12,
+    "mode": "RGBA",
+    "sha256": "a3c556fd3ea241b258694d9eb161cd90f57e5b9a446229a6c6406d93126bb5e4",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/btclose-mouseOver.png",
+    "width": 85,
+    "height": 18,
+    "mode": "RGBA",
+    "sha256": "08af806ce8f2257b958927760e1712694befbd54aa3a7602b0c0f7eb15869db0",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/btclose-normal.png",
+    "width": 85,
+    "height": 18,
+    "mode": "RGBA",
+    "sha256": "8c73406f7f6dad75d0e224a325094141f84150ecb94853520dbd0c713edbf2ce",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/btclose-pressed.png",
+    "width": 85,
+    "height": 18,
+    "mode": "RGBA",
+    "sha256": "05be63e17a0fb0d4af914d6ca673a3ccad03aafeffa2f04ffbdcce6a47324858",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/btnext-mouseOver.png",
+    "width": 46,
+    "height": 18,
+    "mode": "RGBA",
+    "sha256": "299f1b8debe6f129506f750d4b52b10c41fde60989d9af820f1efba57a7219ec",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/btnext-normal.png",
+    "width": 46,
+    "height": 18,
+    "mode": "RGBA",
+    "sha256": "a00e2d3bc369e850a248e64727b1fe8e484bf265f0fb8eb0e79cde681e285d6a",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/btnext-pressed.png",
+    "width": 46,
+    "height": 18,
+    "mode": "RGBA",
+    "sha256": "24bb316f60b74c575c56aa97e6553be240294b43151bfaa712ae34040bb40a6e",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/btok-mouseOver.png",
+    "width": 46,
+    "height": 18,
+    "mode": "RGBA",
+    "sha256": "59ef3f430c087e3ce08126d59c6d1c2ab560c4979b0a9570096d7f3fe89ab72e",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/btok-normal.png",
+    "width": 46,
+    "height": 18,
+    "mode": "RGBA",
+    "sha256": "88b30ce71dc511e4016f50be35f38cade2766670087773b67833fa4c295e2ec1",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/btok-pressed.png",
+    "width": 46,
+    "height": 18,
+    "mode": "RGBA",
+    "sha256": "6a9865e08df89889f078b25b7f1c04ab150b888b0742ede8f3387f2664982c70",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/btprev-mouseOver.png",
+    "width": 46,
+    "height": 18,
+    "mode": "RGBA",
+    "sha256": "88a861e5a0874f3b17552d2a591c657178d5de37641ade94598681f2a313ad7e",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/btprev-normal.png",
+    "width": 46,
+    "height": 18,
+    "mode": "RGBA",
+    "sha256": "428cc3489896c907dd54907f800d20c8fdfce6e9649ac3abf145f25e65c2cfb4",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/btprev-pressed.png",
+    "width": 46,
+    "height": 17,
+    "mode": "RGBA",
+    "sha256": "60e7510e5844df8104a1e2bb737631d86a091f600b67e31bfe4339551b73ca63",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/chat9.png",
+    "width": 566,
+    "height": 22,
+    "mode": "RGBA",
+    "sha256": "a20ed54c8e1bb518b10542a64966e80179a24407d6753b26c2efe9e415079f04",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/cursor.png",
+    "width": 24,
+    "height": 28,
+    "mode": "RGBA",
+    "sha256": "8faa78db33638704b4d50df7958454d81ac63ecaa6940a1e2a2160f8a15b3350",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/dlg9.png",
+    "width": 529,
+    "height": 106,
+    "mode": "RGBA",
+    "sha256": "91cbe084c4c0254d68a4531c2f87b2048e66d552fdb2cbd70517bc318186144c",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/exp-gray.png",
+    "width": 1,
+    "height": 16,
+    "mode": "RGBA",
+    "sha256": "5643777cd716747ce9fdcd456ef016de3c4e38d841752f0c95cf6117e4fbae23",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/exp.png",
+    "width": 124,
+    "height": 31,
+    "mode": "RGBA",
+    "sha256": "cc12f1391581da44612bb3ae31c74790da7b9db17cb93fa0050d049282ed2d4e",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/hud-bg.png",
+    "width": 800,
+    "height": 71,
+    "mode": "RGBA",
+    "sha256": "d8533ee65e5c7670a05ec4bcde9f56e400eb2fdeec7676a302fa7fa3541fec78",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/hud-gp9.png",
+    "width": 358,
+    "height": 42,
+    "mode": "RGBA",
+    "sha256": "e01b8593b5d92f8214bacf7e73eb951b2ba9ffaae33a2d6805b61e93e2d2b0a2",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/hud-left.png",
+    "width": 207,
+    "height": 42,
+    "mode": "RGBA",
+    "sha256": "bcff49bc9639e876e189d352005018eda03922c521311a4ea75bc3c3f447391c",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/leaf.png",
+    "width": 64,
+    "height": 64,
+    "mode": "RGBA",
+    "sha256": "73b61c01e30f82753eb27d30953af7b862534072425b2717089f1a64c7a9719a",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/list0.png",
+    "width": 123,
+    "height": 15,
+    "mode": "RGBA",
+    "sha256": "d09c60cfa62ef7d9857035decacdd241edfb994d054394104d846b42c5e05328",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/list1.png",
+    "width": 105,
+    "height": 18,
+    "mode": "RGBA",
+    "sha256": "19e26a9ac0d04c9ee0e1bf47356b0cc2331743957dad06322d04af1885b90245",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/list3.png",
+    "width": 179,
+    "height": 14,
+    "mode": "RGBA",
+    "sha256": "f319b5b78d6afda49d46bf10c71db38cf7aa212d1eded705ff99ce2cb1541c59",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/lv0.png",
+    "width": 11,
+    "height": 13,
+    "mode": "RGBA",
+    "sha256": "15e7a469ddf72e87385370f8df34974a3ac93a659eb1bc86db71f4576537ec78",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/lv1.png",
+    "width": 11,
+    "height": 13,
+    "mode": "RGBA",
+    "sha256": "10dda18ee6be406a3687cdb5a1d966f5b53ca6f510fd9db32b59fa1a9a322b5b",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/lv2.png",
+    "width": 11,
+    "height": 13,
+    "mode": "RGBA",
+    "sha256": "dac75f9fb402a6bde90969939d180189509f1072befec5fe809917c0d97d74a2",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/lv3.png",
+    "width": 11,
+    "height": 13,
+    "mode": "RGBA",
+    "sha256": "ead91d0476be06fb5ea872a29c9c204ec684a358973ff1351c60adbe0e3e083a",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/lv4.png",
+    "width": 11,
+    "height": 13,
+    "mode": "RGBA",
+    "sha256": "575fa2d874da6394f48376335e103c75fd876c67d48dd64f3c2ef4f49bf727b9",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/lv5.png",
+    "width": 11,
+    "height": 13,
+    "mode": "RGBA",
+    "sha256": "a772fca894de59f380b5dcc1f5f20134ac50de9aa1fc0ea1084c42ce0e167fff",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/lv6.png",
+    "width": 11,
+    "height": 13,
+    "mode": "RGBA",
+    "sha256": "feac591df10c51653593cd0bde85d817ee8ab88e280bf2dad87b8de84549bba0",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/lv7.png",
+    "width": 11,
+    "height": 13,
+    "mode": "RGBA",
+    "sha256": "6386e32a1087555a4ece801f34c298fdf153b6015bd881c1f325a122f5d7808e",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/lv8.png",
+    "width": 11,
+    "height": 13,
+    "mode": "RGBA",
+    "sha256": "2f41a5ed9f6219d66a264aeab27cac53b2fe511a5936b280a1c150ad29c4e648",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/lv9.png",
+    "width": 11,
+    "height": 13,
+    "mode": "RGBA",
+    "sha256": "8801130aa6ec6fa3575e7e1d9fa7c5e73904a3f5cb3862b87ad83c0694d6218b",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/mini-title.png",
+    "width": 40,
+    "height": 5,
+    "mode": "RGBA",
+    "sha256": "8f66433c6b8c3c294fa5b20166804bbdf3b9664ae6933f63b5033e560d5db205",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/mini9.png",
+    "width": 13,
+    "height": 88,
+    "mode": "RGBA",
+    "sha256": "784c1490a4054d2b3440f5763adf0540a94002e4c6b0d9600fafaf9ee05ab5b1",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/parch9.png",
+    "width": 449,
+    "height": 233,
+    "mode": "P",
+    "sha256": "608e12fbca2737a0877e2e574ea1f78d350d7bea400a0ae8e37e5b6c6e2d498b",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/plank9.png",
+    "width": 95,
+    "height": 26,
+    "mode": "RGBA",
+    "sha256": "214cc383b9cafa14c69cdf155db411942c01464260a1974d9cc517a124a2e232",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/scene-day-sm.jpg",
+    "width": 1280,
+    "height": 720,
+    "mode": "RGB",
+    "sha256": "a0df4223ea694045a67c04f8404a0b8ddfa10f660d98a6c8dfcc83550d756e0e",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/scene-day.jpg",
+    "width": 1920,
+    "height": 1080,
+    "mode": "RGB",
+    "sha256": "7b69e52df96abad3b57a9e5eea56dbaafd3387ba239d3791e80861fadabe9fa6",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/scene-ellinia-sm.jpg",
+    "width": 1280,
+    "height": 720,
+    "mode": "RGB",
+    "sha256": "4c0d05304f6d7e91079ca10f7446532bc97ac6258e441cd2a325bf57e3656c87",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/scene-ellinia.jpg",
+    "width": 1920,
+    "height": 1080,
+    "mode": "RGB",
+    "sha256": "8599e4e1cecce2b85373738ce9e3a26e7777b9293d974d9454c88c281a767d7e",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/scene-login-sm.jpg",
+    "width": 1280,
+    "height": 720,
+    "mode": "RGB",
+    "sha256": "d0c81ff5cd5046fa50208894b8cd045dac5fdf1be019b48ed93424966e244c1b",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/scene-login.jpg",
+    "width": 1920,
+    "height": 1080,
+    "mode": "RGB",
+    "sha256": "acbabc9c92119e8d87dc18d593efc06201fe01adfab5d6a4dd5e1146cb4dea5f",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/scroll9.png",
+    "width": 513,
+    "height": 416,
+    "mode": "P",
+    "sha256": "5b55f28e3cb43555a4b94c2e885317cd7cc8cda5da5d9cf77cd01941561c1032",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-boss-1-stand.png",
+    "width": 1080,
+    "height": 129,
+    "mode": "RGBA",
+    "sha256": "36a46dd6205c78947d52d600a8b6a695ae43a8af3143953c934ada23ee528d13",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-elite-yeti-die.png",
+    "width": 1218,
+    "height": 107,
+    "mode": "RGBA",
+    "sha256": "d0c69bcc8f7f644c4bdc104b593c756f644021d4c3e4c1ee488f5feb1f9240b1",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-elite-yeti-hit.png",
+    "width": 210,
+    "height": 117,
+    "mode": "RGBA",
+    "sha256": "5b33b92a8df77777d5857c5f3348d99d6c5aee8e5395e9d1a1b893ae912a6e56",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-elite-yeti-move.png",
+    "width": 484,
+    "height": 111,
+    "mode": "RGBA",
+    "sha256": "5807d329073587e60a5ad5946beefd87282d2d2692f093a261c0a36507890231",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-elite-yeti-stand.png",
+    "width": 300,
+    "height": 107,
+    "mode": "RGBA",
+    "sha256": "21dc2aee4da7da2e6dc97038a4a52b09f715df47d57d807d7cc50d2486ee6f77",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-fx-digits-stand.png",
+    "width": 430,
+    "height": 48,
+    "mode": "RGBA",
+    "sha256": "4e54308d74cc0959c099d7226817b8263d4ab6b399f63897ea42e419bcb29ce5",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-fx-levelup-stand.png",
+    "width": 2960,
+    "height": 345,
+    "mode": "P",
+    "sha256": "2b9bd304624ccb94cab5c2af232ed93e461533b212698a2f82ac74cbacf48e9e",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-fx-levelup-text.png",
+    "width": 2664,
+    "height": 215,
+    "mode": "P",
+    "sha256": "ed7dd420631e6cffd1e07476e7c53bac5319e88c06319b97e8884fd5a382ee1b",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-hero-1-move.png",
+    "width": 548,
+    "height": 83,
+    "mode": "RGBA",
+    "sha256": "7dde8ee2a1065af815e295c78bd88bfc8527ae3b25082759c69135f911ea159c",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-hero-1-stand.png",
+    "width": 655,
+    "height": 87,
+    "mode": "RGBA",
+    "sha256": "009fcad102935740616ab5e6db77266b08cdbc90762e4013827e15d5a235b691",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-hero-2-move.png",
+    "width": 240,
+    "height": 73,
+    "mode": "RGBA",
+    "sha256": "44fec6ab176cd527f86cd6ea9f1a65aa5654c0a0cd809d5a3d5063b477427b6f",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-hero-2-stand.png",
+    "width": 59,
+    "height": 73,
+    "mode": "RGBA",
+    "sha256": "a4e544cfd1d5290fe353cbb83503880d73155a245bbdde44de87007f30a11bc9",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-hero-3-move.png",
+    "width": 328,
+    "height": 88,
+    "mode": "RGBA",
+    "sha256": "add7bd4337a64a1788cc3c5ad0f475e622c1381f0e89e651bb5c79151a9a2727",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-hero-3-stand.png",
+    "width": 80,
+    "height": 88,
+    "mode": "RGBA",
+    "sha256": "8c7677225aa790f58672cee4f8663f4edd0e68adfa4bb45bee370b7627dcac24",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-hero-4-move.png",
+    "width": 316,
+    "height": 84,
+    "mode": "RGBA",
+    "sha256": "7d3781f87de5448c410fcb2545e5016c2e88ea13b023498649543f3c5899f5ea",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-hero-4-stand.png",
+    "width": 63,
+    "height": 83,
+    "mode": "RGBA",
+    "sha256": "830a4f0e76ccf5c68dfd6c6a46ffaf2fde6cf8eb1e58feee78dc31a4607ea17a",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-hero-5-move.png",
+    "width": 212,
+    "height": 76,
+    "mode": "RGBA",
+    "sha256": "d77b202d4e1ab846bc629279c4fab68038cca1856a9781535f12c31bc2b8b1db",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-hero-5-stand.png",
+    "width": 53,
+    "height": 76,
+    "mode": "RGBA",
+    "sha256": "8f5682ca13b268849232a0eba049d85509d085e57b5625758f205dd384102b2b",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-hero-6-move.png",
+    "width": 220,
+    "height": 75,
+    "mode": "RGBA",
+    "sha256": "b8f0f7bab7808abf25f121eb812711ece3259fa6ba6567fc6ccee4ea7d17714d",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-hero-6-stand.png",
+    "width": 52,
+    "height": 79,
+    "mode": "RGBA",
+    "sha256": "07ba042f4b71f7512b5b6636b739d817a62ead52e8f094135c0042faefa4ca35",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-hero-7-stand.png",
+    "width": 75,
+    "height": 82,
+    "mode": "RGBA",
+    "sha256": "36f1f2bb945b1ca9e922e887ff7d59ad7b43091106f8f4a2fb17362d24035b48",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-hero-lucid-move.png",
+    "width": 288,
+    "height": 68,
+    "mode": "RGBA",
+    "sha256": "6fd7a22b3113e3784caf00adce0f6d112124aeebaddadcf8d6720a9cbe0b59e4",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-hero-lucid-stand.png",
+    "width": 48,
+    "height": 69,
+    "mode": "RGBA",
+    "sha256": "2d786f902b9770dad7fec881dffc58d451741f4994106da4a45395d344cc95d0",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-hero-lucid2-cheer.png",
+    "width": 390,
+    "height": 87,
+    "mode": "RGBA",
+    "sha256": "cc0b12c80e599a46dd5162d28641477836788363a7eeda178cdfa965401326ac",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-hero-lucid2-move.png",
+    "width": 260,
+    "height": 88,
+    "mode": "RGBA",
+    "sha256": "77d29437b4079096d2af656b3c693837148366b62b509098bea1260e59d9ea7d",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-hero-lucid2-stand.png",
+    "width": 65,
+    "height": 87,
+    "mode": "RGBA",
+    "sha256": "5c91c12c2caad81eafb0376297294bd8041b60966490fc1d033c745734aca3f2",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-hero-lucid3-move.png",
+    "width": 260,
+    "height": 88,
+    "mode": "RGBA",
+    "sha256": "77d29437b4079096d2af656b3c693837148366b62b509098bea1260e59d9ea7d",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-hero-lucid3-stand.png",
+    "width": 81,
+    "height": 118,
+    "mode": "RGBA",
+    "sha256": "ada83e38ecfdc22b2e4e8dddf135c71f09bf2e79ff7d3373b770e7feb93f7653",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-hero-orca-stand.png",
+    "width": 456,
+    "height": 88,
+    "mode": "RGBA",
+    "sha256": "32ccd21c97d9847428c8abf19546c46856869fd80352173486addeda769ba3a7",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-hero-orca2-move.png",
+    "width": 420,
+    "height": 73,
+    "mode": "RGBA",
+    "sha256": "12225a85cc3d46ee9d100e38f1e5596ee144134dfe2611ecc563ec4d683aa5f2",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-hero-orca2-stand.png",
+    "width": 68,
+    "height": 72,
+    "mode": "RGBA",
+    "sha256": "8f4cae0dd2dee191b975700028a8b85fad5d4511214836144f09d8ab37a94ec3",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-hero-orca3-cheer.png",
+    "width": 1020,
+    "height": 71,
+    "mode": "RGBA",
+    "sha256": "b0d0795ead7a8964fc3b8c008d0965c0b0068fc6e636f5aae5e1863d77acd2ef",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-hero-orca3-move.png",
+    "width": 272,
+    "height": 71,
+    "mode": "RGBA",
+    "sha256": "b493fc2c5c24bcc16997d47af6590a3b1efeff0cfde9d4b68c5bca93315f4f44",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-hero-orca3-stand.png",
+    "width": 68,
+    "height": 71,
+    "mode": "RGBA",
+    "sha256": "5bf000b06340357998da8224f8839f1dbc6c32e0b18dddf0a2995375bbec311d",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-mob-blueslime-die.png",
+    "width": 252,
+    "height": 65,
+    "mode": "RGBA",
+    "sha256": "3a183305fb6608570ca63f92ed8834db14754cbe3ea4ec230e0a8bdaa6113b41",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-mob-blueslime-hit.png",
+    "width": 68,
+    "height": 66,
+    "mode": "RGBA",
+    "sha256": "e61bf61e43266e2a00f72ce4ce650ef425f5be859447f6041ab080ab430b6dbb",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-mob-blueslime-move.png",
+    "width": 525,
+    "height": 87,
+    "mode": "RGBA",
+    "sha256": "ab93201fbd5e03269808a4c2756de5c0d20765b02de7ee3487dd41cd0637b09e",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-mob-blueslime-stand.png",
+    "width": 222,
+    "height": 50,
+    "mode": "RGBA",
+    "sha256": "2af8e9b8d3f3647c2d0c8ce667206e070b7b144cfecd74bc3d64f0d84cf59972",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-mob-greenshroom-die.png",
+    "width": 228,
+    "height": 49,
+    "mode": "RGBA",
+    "sha256": "e671266ac981a054a78ab7ea8c7900ec0cb9de6266c7d73272a387ddbc384fa5",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-mob-greenshroom-hit.png",
+    "width": 56,
+    "height": 56,
+    "mode": "RGBA",
+    "sha256": "8654236977b61ef1fb217ce79913b06221cf537068f4b7dc2c633afe6b94ec43",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-mob-greenshroom-move.png",
+    "width": 224,
+    "height": 52,
+    "mode": "RGBA",
+    "sha256": "a9f0d93a3a15dd39b2132de5f26a3125fe857cf0643c71d04d9fe1b32776e98c",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-mob-greenshroom-stand.png",
+    "width": 168,
+    "height": 52,
+    "mode": "RGBA",
+    "sha256": "6bd4c76325dd174cb060c87f8aed79de255481ecde74bf9d1e98601800b16158",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-mob-orangeshroom-die.png",
+    "width": 183,
+    "height": 59,
+    "mode": "RGBA",
+    "sha256": "a569d1ee265e45dc993c41086eed7f1b4b401712242f44fce7e8c414f0043b58",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-mob-orangeshroom-hit.png",
+    "width": 62,
+    "height": 65,
+    "mode": "RGBA",
+    "sha256": "58a200d79187324d7ee636c19f014d2de354abc4dfa83a2c08dac7a78a88634d",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-mob-orangeshroom-move.png",
+    "width": 192,
+    "height": 64,
+    "mode": "RGBA",
+    "sha256": "79cfd480b5408c2aa115b8830408ae58bb9e3c53b23d4a4287e7b8fc11b3b9f0",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-mob-orangeshroom-stand.png",
+    "width": 126,
+    "height": 58,
+    "mode": "RGBA",
+    "sha256": "f72e4ab5da6b88125234ce69d19aac7a9134c07ee79909455450508fa0a6ee43",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-mob-pig-die.png",
+    "width": 207,
+    "height": 56,
+    "mode": "RGBA",
+    "sha256": "eae88f74ecc91204dcb67455e1c9106f8f74bde5e8d46cca908c57445782fb0b",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-mob-pig-hit.png",
+    "width": 60,
+    "height": 54,
+    "mode": "RGBA",
+    "sha256": "85e7c662c0cb5822b7ba8266fb9cd05f5908a63e0dce263c0abd0ffed92a661e",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-mob-pig-move.png",
+    "width": 201,
+    "height": 50,
+    "mode": "RGBA",
+    "sha256": "ac89486929eb34b21b55d04ad2c3d8a634a0be0195c99eef86b5dac5a40a4e81",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-mob-pig-stand.png",
+    "width": 207,
+    "height": 49,
+    "mode": "RGBA",
+    "sha256": "3150a1377429fe38cd0088b960b9b45734534e90cf7c8c1bb9034ee79fe431c4",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-mob-slime-die.png",
+    "width": 244,
+    "height": 60,
+    "mode": "RGBA",
+    "sha256": "a049aca3383a4caba2d095267a38842548bee3ff4b0bf4fd711a902679d936f8",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-mob-slime-hit.png",
+    "width": 63,
+    "height": 66,
+    "mode": "RGBA",
+    "sha256": "dbb170424ed6d87b3187ed194812432bdd308e265ea8ec2763c9c093b6523ee2",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-mob-slime-move.png",
+    "width": 490,
+    "height": 84,
+    "mode": "RGBA",
+    "sha256": "5a2e43010fe73473f696da8e1495d77b3651662f3f4c6b7ad9bece5a4c14f0f0",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-mob-slime-stand.png",
+    "width": 207,
+    "height": 50,
+    "mode": "RGBA",
+    "sha256": "b245e562a460a3db02d4019a7836274616eacba0fcb1854cb8074f600f056c79",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-mob-snail-die.png",
+    "width": 168,
+    "height": 32,
+    "mode": "RGBA",
+    "sha256": "dba30f2d036ba55fd968c6c696b228f38ed8023624b93f96432bbcb7132deaf6",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-mob-snail-hit.png",
+    "width": 41,
+    "height": 39,
+    "mode": "RGBA",
+    "sha256": "eafd5f8cb2eeac6ec94c9184c260ac81b904dee643d25f9737d19b3fa128a6ef",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-mob-snail-move.png",
+    "width": 164,
+    "height": 34,
+    "mode": "RGBA",
+    "sha256": "140bb202bcfb6860ed801c9f3f294e6e374669014c5fa569c4f9947a5afca390",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-mob-snail-stand.png",
+    "width": 35,
+    "height": 34,
+    "mode": "RGBA",
+    "sha256": "9c41e9a568faec9d29f22ecafc8d436ed23286c174f1322197667f0babb50daf",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-npc-bowman-stand.png",
+    "width": 60,
+    "height": 71,
+    "mode": "RGBA",
+    "sha256": "b042f5fff7ddf81180bb81238af878f7f211b503a9f124b6fe4146aa49dcdd9a",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-npc-chief-stand.png",
+    "width": 81,
+    "height": 88,
+    "mode": "RGBA",
+    "sha256": "1c1341b88d36b440796b8aeb23385ac44987ce211fd87740205e42d7f0385eca",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-npc-clerk-say.png",
+    "width": 468,
+    "height": 71,
+    "mode": "RGBA",
+    "sha256": "f9333ea2963965a7947f12dcb1b3c35c642b0236838ea8f0bdbff4da99baa84d",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-npc-clerk-stand.png",
+    "width": 52,
+    "height": 70,
+    "mode": "RGBA",
+    "sha256": "47ae8bd3f221692fae0974d42ad97a836aa4abf7129612333711287711fc49b2",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-npc-flame-say.png",
+    "width": 540,
+    "height": 83,
+    "mode": "RGBA",
+    "sha256": "b924371ded2381be0a43f10d2cc14b55fb53f6ba670fa822a2056d30a89aa885",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-npc-flame-stand.png",
+    "width": 60,
+    "height": 83,
+    "mode": "RGBA",
+    "sha256": "6c3f15648f1a043386c78f331a2890b5b4ec094b58fef336bb33edb26cd7e674",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-npc-girl-say.png",
+    "width": 572,
+    "height": 66,
+    "mode": "RGBA",
+    "sha256": "10a47b02ce88d94e558f41d4cf2ec1712d41639a7f913c758acdcfd2f4297770",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-npc-girl-stand.png",
+    "width": 176,
+    "height": 66,
+    "mode": "RGBA",
+    "sha256": "f84baf4b413bb86fd9d77029315660c0f24cf2140e26b9f75b7b4f571cbd8fbf",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-npc-knight-say.png",
+    "width": 406,
+    "height": 79,
+    "mode": "RGBA",
+    "sha256": "ebbb1cd01d2d0c5d8af23f812962877b9ba5e0c5792fb3d115e68dbbb48d53e3",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-npc-knight-stand.png",
+    "width": 58,
+    "height": 79,
+    "mode": "RGBA",
+    "sha256": "c734ea769791730fbe06a9095a038007c1638640ee02ef7744f844cfd12b9d2b",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-npc-night-say.png",
+    "width": 720,
+    "height": 80,
+    "mode": "RGBA",
+    "sha256": "414e2af97ff872507ecf74f92cd5350ba9a0ba544fafca3ed7ab45ff094e124d",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-npc-night-stand.png",
+    "width": 43,
+    "height": 80,
+    "mode": "RGBA",
+    "sha256": "8a20b90c11a5d506647c5ec9a1d61226efec4f47ec4b15b4c7c665ef4c3c977c",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-npc-strategist-say.png",
+    "width": 720,
+    "height": 82,
+    "mode": "RGBA",
+    "sha256": "ba4be8b344b2b777bda678cd222e1a0f5548011094f09f8880234d48a4b6bacc",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-npc-strategist-stand.png",
+    "width": 48,
+    "height": 82,
+    "mode": "RGBA",
+    "sha256": "6fabd1a6eb2684cfe0cd53d944459d88a45377e40bc58da8ba7391d06a2345c3",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-npc-thunder-say.png",
+    "width": 896,
+    "height": 84,
+    "mode": "RGBA",
+    "sha256": "d45b87642bd9d6c8f499ce1b10f312dd01a5cbc28c78d445449e9737aad54e95",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-npc-thunder-stand.png",
+    "width": 64,
+    "height": 84,
+    "mode": "RGBA",
+    "sha256": "20ab6756a355dca54c3b06da55918e05f2f81a761cd58788b15f0eb41c34c9ed",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-npc-wind-say.png",
+    "width": 924,
+    "height": 77,
+    "mode": "RGBA",
+    "sha256": "282118642b3bdeebbf4c1d4a580c1867db141ca5bf28d831ccf816a94fea9131",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-npc-wind-stand.png",
+    "width": 77,
+    "height": 77,
+    "mode": "RGBA",
+    "sha256": "7847f6ac79b1caa5997a0500a2b15ae31130c313b76c5aa04d0af469208270d7",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-npc-wizard-stand.png",
+    "width": 308,
+    "height": 150,
+    "mode": "RGBA",
+    "sha256": "f7c9e0899261114154f5f3f5c49793e3082beb8758486a6d1709f94095fb4276",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-pet-dino-move.png",
+    "width": 240,
+    "height": 43,
+    "mode": "RGBA",
+    "sha256": "c261f1a13e952d65997e8d1f358771a0b6b4fbc53c1c2e37374b8c5402a69854",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-pet-dino-stand.png",
+    "width": 144,
+    "height": 42,
+    "mode": "RGBA",
+    "sha256": "e010a58f6d466f4ceaeb5aca85625c16e4673a62245bedc151fadbaab36a70f5",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-pet-husky-move.png",
+    "width": 141,
+    "height": 40,
+    "mode": "RGBA",
+    "sha256": "6642a9251bb1479dce62c4daaaf83cd859e6f728cba797b1411de28e47e22f74",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-pet-husky-stand.png",
+    "width": 138,
+    "height": 37,
+    "mode": "RGBA",
+    "sha256": "fe47f912e9284f7656ba169ac34bec26d727b3a6da9758a9df8a5c800f7313ac",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-portal-stand.png",
+    "width": 704,
+    "height": 256,
+    "mode": "RGBA",
+    "sha256": "883cbcc2fd3fdf8816587085a01a5e1fedcb227acbdc60f1370b940f2ab5dd0a",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-quest-done-stand.png",
+    "width": 352,
+    "height": 44,
+    "mode": "RGBA",
+    "sha256": "a0ecf2a9beba04faed3e65e1393c058ccd620f08c486f65845ebf8a7e0b7b899",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-quest-new-stand.png",
+    "width": 352,
+    "height": 46,
+    "mode": "RGBA",
+    "sha256": "32bcc0592473ddef93f66251510759d2778d965ce5d844c24388b6f3e03349c1",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-quest-open-stand.png",
+    "width": 168,
+    "height": 44,
+    "mode": "RGBA",
+    "sha256": "f049aa922ebcb95c792bb71092584fa28dd9f514cf2159e2ef806b8e6d3c2feb",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/tab0.png",
+    "width": 26,
+    "height": 24,
+    "mode": "RGBA",
+    "sha256": "be0dae140f463cbf628a6792089505ed59102d377355b5d649a8a694d7248c3a",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/tab1.png",
+    "width": 26,
+    "height": 24,
+    "mode": "RGBA",
+    "sha256": "24eeb6c421dd73bba39ad6c1faf3c8a5bbf5ba7e4a8150e8f43457c765fa1679",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/win9.png",
+    "width": 404,
+    "height": 106,
+    "mode": "RGBA",
+    "sha256": "b2f87cb4f637f879d9b5bce6349024716c18ec170d219c0d9334f6688fd9efc0",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/win9s.png",
+    "width": 404,
+    "height": 82,
+    "mode": "RGBA",
+    "sha256": "d30cadb2f83886d5a0ed98cc7c135432604b0135c16fa3f2d0482c2b743f18fc",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  }
+]

@@ -1,0 +1,74 @@
+{
+  "id": "1022004",
+  "type": "npc",
+  "region": "victoria",
+  "town": "perion",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": null,
+  "name_zh_tw_status": "unavailable",
+  "source_url": "https://maplestory.io/api/GMS/83/npc/1022004",
+  "export_url": "https://maplestory.io/api/wz/export/GMS/83/Npc/1022004.img",
+  "wz_path": "Npc.wz/1022004.img",
+  "version": {
+    "region": "GMS",
+    "version": "83"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "stand",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 53,
+          "height": 69,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "e43799866412f1d70a96809cc751b1286b92de942426ffdb6b4d23baaa4a8e33",
+          "pixel_sha256": "216d4d84860012932810ff63dd6f2e60d38eb407cfb2c99c2700316f8a987d27",
+          "wz_path": "Npc.wz/1022004.img/stand/0",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/victoria/1022004/GMS-83/stand/0000.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "Mr. Smith",
+  "role": "Item Creator",
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "Entrance - Mushroom Town Training Camp",
+      "streetName": "Maple Road",
+      "id": 0
+    }
+  ],
+  "expected_actions": {
+    "stand": 1
+  },
+  "source_metadata_sha256": "4e0f4eacc4f8c3921e039b4f27d1d0a4667989ffee688e9ca7599f64a8272090",
+  "source_archive_sha256": "e68e56b1b619bea079727d9a8a0e809f0b7489144e97f888095973cf04829492",
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "not_retrieved",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false
+  },
+  "github_path": "assets/maple/collection/npc/victoria/1022004/GMS-83",
+  "status": "collected"
+}

@@ -1,0 +1,74 @@
+{
+  "id": "1022000",
+  "type": "npc",
+  "region": "victoria",
+  "town": "perion",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": "武術教練",
+  "name_zh_tw_status": "unverified_translation",
+  "source_url": "https://maplestory.io/api/GMS/83/npc/1022000",
+  "export_url": "https://maplestory.io/api/wz/export/GMS/83/Npc/1022000.img",
+  "wz_path": "Npc.wz/1022000.img",
+  "version": {
+    "region": "GMS",
+    "version": "83"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "stand",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 81,
+          "height": 88,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "d88016579f1b332363249106aef5c64d8fe46be557757a1a4c91136923fe64b6",
+          "pixel_sha256": "82247e25f21ecf78268a66bf936cd94306bb4f484e46d28be09aa103299a146f",
+          "wz_path": "Npc.wz/1022000.img/stand/0",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/victoria/1022000/GMS-83/stand/0000.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "Dances with Balrog",
+  "role": "Warrior Instructor",
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "Entrance - Mushroom Town Training Camp",
+      "streetName": "Maple Road",
+      "id": 0
+    }
+  ],
+  "expected_actions": {
+    "stand": 1
+  },
+  "source_metadata_sha256": "e464a074e2f63e4ef3b65192cf62552339e5f8f240c797bd430a83fef1df1f7f",
+  "source_archive_sha256": "7001df8dcff23887acbb872eb470660af6ba1f1e8c1782637d8a45ef58d75ac9",
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "not_retrieved",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false
+  },
+  "github_path": "assets/maple/collection/npc/victoria/1022000/GMS-83",
+  "status": "collected"
+}

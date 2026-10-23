@@ -1,0 +1,74 @@
+{
+  "id": "1012007",
+  "type": "npc",
+  "region": "victoria",
+  "town": "henesys",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": null,
+  "name_zh_tw_status": "unavailable",
+  "source_url": "https://maplestory.io/api/GMS/83/npc/1012007",
+  "export_url": "https://maplestory.io/api/wz/export/GMS/83/Npc/1012007.img",
+  "wz_path": "Npc.wz/1012007.img",
+  "version": {
+    "region": "GMS",
+    "version": "83"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "stand",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 55,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "7651912e035bdaed7046ab9b2565ef298c3a5af53322a4d6464002a82ebf16e1",
+          "pixel_sha256": "3046173104ffc6193bb1630da51ad85d79cdc5cb79132a3340d1768b7d57b096",
+          "wz_path": "Npc.wz/1012007.img/stand/0",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/victoria/1012007/GMS-83/stand/0000.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "Trainer Frod",
+  "role": "Pet Trainer",
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "Entrance - Mushroom Town Training Camp",
+      "streetName": "Maple Road",
+      "id": 0
+    }
+  ],
+  "expected_actions": {
+    "stand": 1
+  },
+  "source_metadata_sha256": "87da7da0e3a64e5758e6ada269c42ad27723b810c17df97f75caa67708d41651",
+  "source_archive_sha256": "54d0cb49456a42d4403ca960ef8ce3777e3ac477027f5bb5ab4b7285fc0bacba",
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "not_retrieved",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false
+  },
+  "github_path": "assets/maple/collection/npc/victoria/1012007/GMS-83",
+  "status": "collected"
+}

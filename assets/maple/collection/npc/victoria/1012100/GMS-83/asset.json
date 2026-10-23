@@ -1,0 +1,74 @@
+{
+  "id": "1012100",
+  "type": "npc",
+  "region": "victoria",
+  "town": "henesys",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": "赫麗娜",
+  "name_zh_tw_status": "unverified_translation",
+  "source_url": "https://maplestory.io/api/GMS/83/npc/1012100",
+  "export_url": "https://maplestory.io/api/wz/export/GMS/83/Npc/1012100.img",
+  "wz_path": "Npc.wz/1012100.img",
+  "version": {
+    "region": "GMS",
+    "version": "83"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "stand",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 60,
+          "height": 71,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "d47c36d164776d040c8ba1d1d69ebed67e3728c2380e489c0fafda6dd9246ed0",
+          "pixel_sha256": "733367f554496a458bcb1278021687d35c65580a1600739ef2754ab5c2d69b28",
+          "wz_path": "Npc.wz/1012100.img/stand/0",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/victoria/1012100/GMS-83/stand/0000.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "Athena Pierce",
+  "role": "Bowman Instructor",
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "Entrance - Mushroom Town Training Camp",
+      "streetName": "Maple Road",
+      "id": 0
+    }
+  ],
+  "expected_actions": {
+    "stand": 1
+  },
+  "source_metadata_sha256": "a67e44e06b0ce69e40a6e4101f62071c0e0808179e3412487f97df6cc672db9f",
+  "source_archive_sha256": "acd5cee356d324793b5b217b0f84c120f64383c24fca40fd575abb1be80822f3",
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "not_retrieved",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false
+  },
+  "github_path": "assets/maple/collection/npc/victoria/1012100/GMS-83",
+  "status": "collected"
+}

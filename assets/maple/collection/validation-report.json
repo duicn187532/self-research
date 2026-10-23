@@ -1,0 +1,24 @@
+{
+  "verified_on": "2026-10-23",
+  "entity_records": 120,
+  "by_type": {
+    "mobs": 47,
+    "npc": 73
+  },
+  "by_region": {
+    "victoria": 120
+  },
+  "npc_by_town": {
+    "lith-harbor": 14,
+    "henesys": 28,
+    "perion": 13,
+    "ellinia": 18
+  },
+  "frame_references": 1376,
+  "unique_referenced_pngs": 1376,
+  "complete_api_action_frame_sets": 111,
+  "timing_and_origin_complete": 0,
+  "existing_images_preserved_inventory_count": 156,
+  "duplicate_storage": [],
+  "failures": []
+}

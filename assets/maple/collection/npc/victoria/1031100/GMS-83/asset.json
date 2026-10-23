@@ -1,0 +1,74 @@
+{
+  "id": "1031100",
+  "type": "npc",
+  "region": "victoria",
+  "town": "ellinia",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": null,
+  "name_zh_tw_status": "unavailable",
+  "source_url": "https://maplestory.io/api/GMS/83/npc/1031100",
+  "export_url": "https://maplestory.io/api/wz/export/GMS/83/Npc/1031100.img",
+  "wz_path": "Npc.wz/1031100.img",
+  "version": {
+    "region": "GMS",
+    "version": "83"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "stand",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 54,
+          "height": 66,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "da76eb93043d71806ecb4d44152ff8dd630486ff56e9dc9a2256dfd6fe50e71f",
+          "pixel_sha256": "250fa4e4ac30a55f7f2515d08e925e7ae0f55bb68d81a1d3626354866db47da8",
+          "wz_path": "Npc.wz/1031100.img/stand/0",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/victoria/1031100/GMS-83/stand/0000.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "Len the Fairy",
+  "role": "Grocer",
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "Entrance - Mushroom Town Training Camp",
+      "streetName": "Maple Road",
+      "id": 0
+    }
+  ],
+  "expected_actions": {
+    "stand": 1
+  },
+  "source_metadata_sha256": "20ba8c3750da3df1c45e5fc08b5aa49df542104e9bd63c338f24503e041ecaeb",
+  "source_archive_sha256": "af368deb317f81429fd5b840667d384dea0c75d1a843fcd6cb22f6a76dbf081c",
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "not_retrieved",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false
+  },
+  "github_path": "assets/maple/collection/npc/victoria/1031100/GMS-83",
+  "status": "collected"
+}

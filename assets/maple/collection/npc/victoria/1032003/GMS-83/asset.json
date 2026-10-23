@@ -1,0 +1,139 @@
+{
+  "id": "1032003",
+  "type": "npc",
+  "region": "victoria",
+  "town": "ellinia",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": null,
+  "name_zh_tw_status": "unavailable",
+  "source_url": "https://maplestory.io/api/GMS/83/npc/1032003",
+  "export_url": "https://maplestory.io/api/wz/export/GMS/83/Npc/1032003.img",
+  "wz_path": "Npc.wz/1032003.img",
+  "version": {
+    "region": "GMS",
+    "version": "83"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "finger",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 56,
+          "height": 70,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5920afdea2b46a5d3f20d4300d8bdc4280f5cd7b6a01fa9216969328cf9a3795",
+          "pixel_sha256": "c8762900fc0717a6ad2563f47f9a4bfbde6dde6dbf7ed1dce8d009585364c37d",
+          "wz_path": "Npc.wz/1032003.img/finger/0",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/victoria/1032003/GMS-83/finger/0000.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true
+    },
+    {
+      "name": "stand",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 56,
+          "height": 70,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "a17f1539829e05fa2ebf51d2868a5031c65ab35e26be011cbf9d26baecd1446d",
+          "pixel_sha256": "011a985b9814411b88f3fe0ecbabb7319130dc663737dbd5d57cf6fa1c9677ce",
+          "wz_path": "Npc.wz/1032003.img/stand/0",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/victoria/1032003/GMS-83/stand/0000.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true
+    },
+    {
+      "name": "wink",
+      "frame_count": 2,
+      "expected_frame_count": 2,
+      "frames": [
+        {
+          "index": 0,
+          "width": 56,
+          "height": 70,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "9b3f48d0f399934afd2f2ec0d6deda2564617e3d248908cf0ad96c0cf8664f05",
+          "pixel_sha256": "79892244b42340e9790d68bfa853863ec6174c116f1b211bbdc153ca1dc46b79",
+          "wz_path": "Npc.wz/1032003.img/wink/0",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/victoria/1032003/GMS-83/wink/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 56,
+          "height": 70,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "e613be7cc12462b997f8054e71022bb59e5f35b104963828e8dc6bb77904cfaf",
+          "pixel_sha256": "011a985b9814411b88f3fe0ecbabb7319130dc663737dbd5d57cf6fa1c9677ce",
+          "wz_path": "Npc.wz/1032003.img/wink/1",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/victoria/1032003/GMS-83/wink/0001.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "Shane",
+  "role": null,
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "Entrance - Mushroom Town Training Camp",
+      "streetName": "Maple Road",
+      "id": 0
+    }
+  ],
+  "expected_actions": {
+    "finger": 1,
+    "stand": 1,
+    "wink": 2
+  },
+  "source_metadata_sha256": "0a57cb09fe843afe3b402f5b1df7223dacc10a150a4300816eb4cbe85c89d26e",
+  "source_archive_sha256": "27e0b207472477ae2e770cd14303414ea75aaba68e8a66a98dbd849b228bb065",
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "not_retrieved",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false
+  },
+  "github_path": "assets/maple/collection/npc/victoria/1032003/GMS-83",
+  "status": "collected"
+}

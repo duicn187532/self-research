@@ -1,0 +1,108 @@
+{
+  "assets": [
+    {
+      "id": "1012110",
+      "type": "npc",
+      "region": "victoria",
+      "town": "henesys",
+      "region_status": "curated_target_not_exclusive_spawn_location",
+      "name_zh_tw": null,
+      "name_zh_tw_status": "unavailable",
+      "source_url": "https://maplestory.io/api/GMS/83/npc/1012110",
+      "export_url": "https://maplestory.io/api/wz/export/GMS/83/Npc/1012110.img",
+      "wz_path": "Npc.wz/1012110.img",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "license": {
+        "status": "redistribution_permission_unconfirmed",
+        "rights_holder": "Nexon",
+        "evidence_url": "https://maplestory.io/",
+        "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+      },
+      "actions": [],
+      "acquired_on": "2026-10-23",
+      "name": "Anne",
+      "role": null,
+      "is_shop": false,
+      "source_locations": [
+        {
+          "name": "Entrance - Mushroom Town Training Camp",
+          "streetName": "Maple Road",
+          "id": 0
+        }
+      ],
+      "expected_actions": {},
+      "source_metadata_sha256": "f7e51442c76411530a682b573a6f4f863305cb6da5f0e80132a044f1aef51af4",
+      "source_archive_sha256": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85",
+      "status": "download_failed",
+      "reason": "No mapped PNG frames in export"
+    },
+    {
+      "id": "1022106",
+      "type": "npc",
+      "region": "victoria",
+      "town": "perion",
+      "region_status": "curated_target_not_exclusive_spawn_location",
+      "name_zh_tw": null,
+      "name_zh_tw_status": "unavailable",
+      "source_url": "https://maplestory.io/api/GMS/83/npc/1022106",
+      "export_url": "https://maplestory.io/api/wz/export/GMS/83/Npc/1022106.img",
+      "wz_path": "Npc.wz/1022106.img",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "license": {
+        "status": "redistribution_permission_unconfirmed",
+        "rights_holder": "Nexon",
+        "evidence_url": "https://maplestory.io/",
+        "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+      },
+      "actions": [],
+      "acquired_on": "2026-10-23",
+      "status": "download_failed",
+      "reason": "HTTP Error 404: Not Found"
+    },
+    {
+      "id": "1032105",
+      "type": "npc",
+      "region": "victoria",
+      "town": "ellinia",
+      "region_status": "curated_target_not_exclusive_spawn_location",
+      "name_zh_tw": null,
+      "name_zh_tw_status": "unavailable",
+      "source_url": "https://maplestory.io/api/GMS/83/npc/1032105",
+      "export_url": "https://maplestory.io/api/wz/export/GMS/83/Npc/1032105.img",
+      "wz_path": "Npc.wz/1032105.img",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "license": {
+        "status": "redistribution_permission_unconfirmed",
+        "rights_holder": "Nexon",
+        "evidence_url": "https://maplestory.io/",
+        "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+      },
+      "actions": [],
+      "acquired_on": "2026-10-23",
+      "name": "Estelle",
+      "role": null,
+      "is_shop": false,
+      "source_locations": [
+        {
+          "name": "Entrance - Mushroom Town Training Camp",
+          "streetName": "Maple Road",
+          "id": 0
+        }
+      ],
+      "expected_actions": {},
+      "source_metadata_sha256": "972480a3acd86c81324b5c2684edc4bc5d15523ea534dc37b345f1f65ee893a3",
+      "source_archive_sha256": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85",
+      "status": "download_failed",
+      "reason": "No mapped PNG frames in export"
+    }
+  ]
+}

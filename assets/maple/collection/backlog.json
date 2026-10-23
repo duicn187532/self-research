@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "not_counted_as_collected": true,
+  "targets": {"npc":150,"mobs":200,"elites":30,"bosses":40,"characters":30,"pets":20,"maps":30,"ui_items_skills_effects":100},
+  "priority_groups": [
+    {"priority":"P0","type":"mobs","region":"victoria","reason":"Continue species coverage after first verified batch; do not count recolors/actions as new species without identity review."},
+    {"priority":"P1","type":"maps","region":"lachelein","names":["拉契爾恩"],"id":null,"version":null,"reason":"Region postdates GMS 83; select and verify a newer version before collection."},
+    {"priority":"P1","type":"npc","region":"lachelein","id":null,"reason":"Version and Taiwanese name mapping pending."},
+    {"priority":"P1","type":"characters","names":["殺人鯨","露希妲","英雄團","皇家騎士團"],"reason":"Existing site sprites retained. Additional costumes/IDs require mapping; do not count variants as distinct people."},
+    {"priority":"P1","type":"bosses","names":["菇菇王","殭屍菇菇王","巴洛古","皮卡啾","拉圖斯","炎魔","龍王","凡雷恩","阿卡伊農","西格諾斯","殺人鯨","史烏","戴米安","露希妲","威爾"],"reason":"Phase, part, and form mapping pending. NPC depictions are not boss combat animation sets."},
+    {"priority":"P1","type":"elites","reason":"GMS 83 predates modern elite system; website difficulty labels are not game elite classifications."},
+    {"priority":"P1","type":"elite-bosses","reason":"Keep separate from normal elites and ordinary bosses; modern version required."},
+    {"priority":"P2","type":"maps","region":"victoria","nodes":["Back","Obj","Tile","MapHelper/portal"],"reason":"Layer-set mapping pending. Existing composite scenes preserved, not counted as new maps."},
+    {"priority":"P2","type":"pets","reason":"Not downloaded in NPC/mob batches."},
+    {"priority":"P2","type":"ui-items-skills-effects","reason":"Not downloaded in NPC/mob batches; nested mob effects remain attached to parent mob and are not counted again."}
+  ]
+}

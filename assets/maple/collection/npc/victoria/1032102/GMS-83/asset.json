@@ -1,0 +1,121 @@
+{
+  "id": "1032102",
+  "type": "npc",
+  "region": "victoria",
+  "town": "ellinia",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": null,
+  "name_zh_tw_status": "unavailable",
+  "source_url": "https://maplestory.io/api/GMS/83/npc/1032102",
+  "export_url": "https://maplestory.io/api/wz/export/GMS/83/Npc/1032102.img",
+  "wz_path": "Npc.wz/1032102.img",
+  "version": {
+    "region": "GMS",
+    "version": "83"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "stand",
+      "frame_count": 4,
+      "expected_frame_count": 4,
+      "frames": [
+        {
+          "index": 0,
+          "width": 83,
+          "height": 79,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "204f682a31bc1ed823a463b18b9cd8f1ac17587d9e7fba9c8f9a89daca66ee4d",
+          "pixel_sha256": "63c13dd9121bc36149330e7c5108938c23627a6c578a78646902d0dfd2255561",
+          "wz_path": "Npc.wz/1032102.img/stand/0",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/victoria/1032102/GMS-83/stand/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 83,
+          "height": 79,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "b8044133f6f6043668da53ba385ad210fbc1138b092e1df143da3e75376715ce",
+          "pixel_sha256": "5c0b5209ac6b4bf5b009b7da91a09dc10f343e6a47dbba909b528674f07ded51",
+          "wz_path": "Npc.wz/1032102.img/stand/1",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/victoria/1032102/GMS-83/stand/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 83,
+          "height": 79,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "a2043cc6ba4467c5b68ea4431b8a5bea7e26a51bb9aa9a20f800ac52423acc37",
+          "pixel_sha256": "63c13dd9121bc36149330e7c5108938c23627a6c578a78646902d0dfd2255561",
+          "wz_path": "Npc.wz/1032102.img/stand/2",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/victoria/1032102/GMS-83/stand/0002.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 3,
+          "width": 83,
+          "height": 79,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "4f14ec1432378e910398c160c96edcb04c45e12c0fe7bf146061dbf81a56d782",
+          "pixel_sha256": "5c0b5209ac6b4bf5b009b7da91a09dc10f343e6a47dbba909b528674f07ded51",
+          "wz_path": "Npc.wz/1032102.img/stand/3",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/GMS/83/npc/1032102/render/stand/3",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/victoria/1032102/GMS-83/stand/0003.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "Mar the Fairy",
+  "role": "Pet Master",
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "Entrance - Mushroom Town Training Camp",
+      "streetName": "Maple Road",
+      "id": 0
+    }
+  ],
+  "expected_actions": {
+    "stand": 4
+  },
+  "source_metadata_sha256": "ea66c4972ef64a683aee07f5bf507b5678382e2219ee23b067ef09d934390747",
+  "source_archive_sha256": "86779368c584cf8e523e3d99201bdfe939862c67da8575a89adcb31c95e63f01",
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "not_retrieved",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false
+  },
+  "github_path": "assets/maple/collection/npc/victoria/1032102/GMS-83",
+  "status": "collected"
+}

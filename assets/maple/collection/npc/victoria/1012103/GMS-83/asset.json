@@ -1,0 +1,74 @@
+{
+  "id": "1012103",
+  "type": "npc",
+  "region": "victoria",
+  "town": "henesys",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": null,
+  "name_zh_tw_status": "unavailable",
+  "source_url": "https://maplestory.io/api/GMS/83/npc/1012103",
+  "export_url": "https://maplestory.io/api/wz/export/GMS/83/Npc/1012103.img",
+  "wz_path": "Npc.wz/1012103.img",
+  "version": {
+    "region": "GMS",
+    "version": "83"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "stand",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 49,
+          "height": 71,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "1bf6757eeef0be3eddbb0d2110faf87ff3f3efc4bb83e82892e125f4e626c38e",
+          "pixel_sha256": "cd95bb17cefcf4c8c75bf8e757f3c3fe207b1d26cadb67ecc7055eeea13316a5",
+          "wz_path": "Npc.wz/1012103.img/stand/0",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/victoria/1012103/GMS-83/stand/0000.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "Natalie",
+  "role": "Hair Salon Owner",
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "Entrance - Mushroom Town Training Camp",
+      "streetName": "Maple Road",
+      "id": 0
+    }
+  ],
+  "expected_actions": {
+    "stand": 1
+  },
+  "source_metadata_sha256": "b03809dcf0f08c9a4f0317e982f48ab83169720d354bcb4995d9d0bb60f40a3f",
+  "source_archive_sha256": "dfdf7969a7dcabfe448fab66e329de39294d4952bdde6586adc22766a1086a5a",
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "not_retrieved",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false
+  },
+  "github_path": "assets/maple/collection/npc/victoria/1012103/GMS-83",
+  "status": "collected"
+}
