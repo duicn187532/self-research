@@ -55,6 +55,8 @@ def main() -> int:
         for old in OUT.glob("spr-*.png"):
             old.unlink()
         subprocess.run([sys.executable, "-I", str(SKILL / "build_sprites.py"), str(pack), str(OUT), str(SPRITES)], check=True)
+        # Add the verified TWMS collection characters after rebuilding the legacy pack strips.
+        subprocess.run([sys.executable, str(ROOT / "scripts/build_collection_sprites.py")], check=True)
     print(f"wrote {OUT}")
     return 0
 

@@ -890,11 +890,11 @@
     if (bank) {
       var t = tierOf(s);
       if (!t) return null;
-      if (t === "boss" && bosses.length) return { name: bosses[0], big: true };
+      if (t === "boss" && bosses.length) return { name: bosses[(seed + i) % bosses.length], big: true };
       if (t === "elite" && elites.length) return { name: elites[(seed + i) % elites.length], big: true };
       return mobs.length ? { name: mobs[i % mobs.length], big: false } : null;
     }
-    if (i === quests.length - 1 && bosses.length && quests.length > 1) return { name: bosses[0], big: true };
+    if (i === quests.length - 1 && bosses.length && quests.length > 1) return { name: bosses[(seed + i) % bosses.length], big: true };
     if (i === Math.floor(quests.length / 2) && elites.length && quests.length > 3) return { name: elites[seed % elites.length], big: true };
     return mobs.length ? { name: mobs[i % mobs.length], big: false } : null;
   }
