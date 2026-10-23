@@ -976,9 +976,14 @@
     if (!window.MAPLE_SPRITES || castDone[i] || !sections[i]) return;
     castDone[i] = true;
     addMob(sections[i]);
-    // The explanation surrounds every reading level, so its guide remains visible in comparison mode.
-    var guideHost = sections[i].querySelector(".explain, .claim, .summary, .worked, .detail");
-    if (guideHost) addGuide(guideHost, paper + ":reading:" + i);
+    var explanation = sections[i].querySelector(".explain");
+    var levels = explanation && explanation.querySelectorAll(":scope > .lv");
+    if (levels && levels.length) {
+      levels.forEach(function (host) { addGuide(host, paper + ":reading:" + i + ":" + host.className); });
+    } else {
+      var guideHost = explanation || sections[i].querySelector(".claim, .summary, .worked, .detail");
+      if (guideHost) addGuide(guideHost, paper + ":reading:" + i);
+    }
     sections[i].querySelectorAll(".check details").forEach(addNpc);
   }
   // while a page is read, the pages either side get their cast and fetch its strips

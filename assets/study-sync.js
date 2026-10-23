@@ -4,6 +4,7 @@
   if (window.StudySyncV1) return;
   window.StudySyncV1 = true;
   var scriptUrl = document.currentScript && document.currentScript.src;
+  var mapleArt = new URL('maple/', scriptUrl).href;
   var scope = scriptUrl && scriptUrl.indexOf('/shared/') !== -1 ? 'os-lab' : 'self-research';
   var configUrl = new URL('study-sync-config.js', scriptUrl).href;
   var ownerKey = '__study_sync_owner_v1:' + scope;
@@ -103,6 +104,13 @@
         'border:1px solid var(--rule,#9baac2);border-radius:999px;background:var(--paper,#fff);color:var(--ink,#182235);' +
         'white-space:nowrap;font-size:var(--step--1,.85rem)}' +
       '#study-sync-root .ss-trigger[aria-expanded="true"]{border-color:var(--accent,#347b78);color:var(--accent,#347b78)}' +
+      ':root[data-skin="maple"] #study-sync-root .ss-trigger{min-height:34px;height:34px;padding:0 10px;border-style:solid;border-width:2px 3px;' +
+        'border-radius:0;background:none;border-image:url("' + mapleArt + 'bt-orange-normal.png") 2 3 fill / 2px 3px stretch;' +
+        'color:#fff;font-weight:800;text-shadow:-1px 0 #8a3c00,1px 0 #8a3c00,0 -1px #8a3c00,0 1px #8a3c00}' +
+      ':root[data-skin="maple"] #study-sync-root .ss-trigger:hover{border-image-source:url("' + mapleArt + 'bt-orange-hover.png")}' +
+      ':root[data-skin="maple"] #study-sync-root .ss-trigger[aria-expanded="true"]{border-image-source:url("' + mapleArt + 'bt-orange-pressed.png");color:#fff}' +
+      ':root[data-skin="maple"] #study-sync-root .ss-icon{display:inline-block;width:16px;height:16px;flex:none;font-size:0;' +
+        'background:url("' + mapleArt + 'leaf.png") center / contain no-repeat}' +
       '#study-sync-root .ss-trigger:focus-visible,#study-sync-root .ss-panel button:focus-visible{outline:2px solid var(--accent,#347b78);outline-offset:2px}' +
       '#study-sync-root .ss-panel{position:absolute;top:100%;right:max(12px,env(safe-area-inset-right,0px));' +
         'z-index:30;box-sizing:border-box;width:min(340px,calc(100vw - 24px));max-height:min(75vh,650px);overflow-y:auto;' +
@@ -117,7 +125,13 @@
       '#study-sync-root .ss-status{font-size:12px;margin:9px 0;color:var(--muted,#394962);overflow-wrap:anywhere}' +
       '#study-sync-root .ss-conflict{padding:8px;border:1px solid #d49a59;border-radius:6px;margin:8px 0;overflow-wrap:anywhere}' +
       '#study-sync-root .ss-heading{font-weight:700;font-size:16px}' +
-      '@media(max-width:600px){#study-sync-root .ss-label{display:none}' +
+      '#study-sync-root .ss-id-form{display:grid;gap:6px;padding:9px 0;border-block:1px solid var(--rule,#9baac2)}' +
+      '#study-sync-root .ss-id-form[hidden]{display:none}' +
+      '#study-sync-root .ss-id-form label{font-weight:700}' +
+      '#study-sync-root .ss-id-form input{box-sizing:border-box;width:100%;min-height:38px;padding:6px 8px;' +
+        'border:1px solid var(--rule,#9baac2);border-radius:5px;background:var(--surface,#fff);color:var(--ink,#182235);font:inherit}' +
+      '#study-sync-root .ss-id-form small{color:var(--muted,#394962)}' +
+      '@media(max-width:600px){#study-sync-root .ss-label{display:inline-block;max-width:7ch;overflow:hidden;text-overflow:ellipsis}' +
         '#study-sync-root .ss-trigger{min-width:2.25rem;padding:0 .55rem}' +
         '#study-sync-root .ss-panel{font-size:14px}}' +
       '@media(max-width:380px){#study-sync-root .ss-trigger{min-width:2rem;padding:0 .35rem}' +
@@ -134,14 +148,38 @@
     var x = el('button', '', text);
     x.type = 'button'; x.addEventListener('click', fn); return x;
   }
+  function displayId() {
+    var data = session && session.user && session.user.user_metadata;
+    var id = data && data.study_display_id;
+    return typeof id === 'string' && /^[\p{L}\p{N}_-]{2,20}$/u.test(id) ? id : '';
+  }
+  async function saveDisplayId(event) {
+    event.preventDefault();
+    if (!userId || !client) return;
+    var id = ui.idInput.value.trim().normalize('NFKC');
+    if (!/^[\p{L}\p{N}_-]{2,20}$/u.test(id)) {
+      message('ID 須為 2–20 字，可用中英文字、數字、底線或連字號。'); return;
+    }
+    ui.idSubmit.disabled = true;
+    try {
+      var result = await client.auth.updateUser({ data: { study_display_id: id } });
+      if (result.error) throw result.error;
+      session = { user: result.data.user };
+      message('冒險者 ID 已儲存，其他裝置登入同一帳號後也會顯示。');
+    } catch (e) { message('ID 儲存失敗：' + e.message); }
+    finally { ui.idSubmit.disabled = false; }
+  }
   function render() {
     if (!ui.root) return;
-    var labelText = userId ? (needsReload ? '待重新載入' : '已登入') : '訪客模式';
+    var id = displayId();
+    var labelText = userId ? (id || '設定 ID') : '登入';
     ui.labelText.textContent = labelText;
-    ui.label.setAttribute('aria-label', '學習同步：' + labelText);
-    ui.label.title = '學習同步：' + labelText;
+    ui.label.setAttribute('aria-label', userId ? '冒險者 ID：' + labelText + '；學習同步設定' : '登入與學習同步');
+    ui.label.title = userId ? '冒險者 ID：' + labelText : '登入與學習同步';
     ui.status.textContent = status || (userId ? '已登入，進度將同步至雲端。' : '未登入：學習進度只保留在此瀏覽器。');
-    ui.identity.textContent = userId ? ('帳號：' + ((session && session.user && session.user.email) || userId.slice(0, 8))) : '免登入可使用完整教材';
+    ui.identity.textContent = userId ? ('已登入 · 冒險者 ID：' + (id || '尚未設定')) : '免登入可使用完整教材';
+    ui.idForm.hidden = !userId;
+    if (document.activeElement !== ui.idInput) ui.idInput.value = id;
     ui.github.hidden = !!userId || !client;
     ui.google.hidden = !!userId || !client;
     ui.logout.hidden = !userId;
@@ -176,6 +214,16 @@
     panel.appendChild(ui.identity);
     panel.appendChild(ui.status);
     panel.appendChild(ui.offline);
+    ui.idForm = el('form', 'ss-id-form');
+    var idLabel = el('label', '', '冒險者 ID'); idLabel.htmlFor = 'study-display-id';
+    ui.idInput = el('input'); ui.idInput.id = 'study-display-id'; ui.idInput.type = 'text';
+    ui.idInput.maxLength = 20; ui.idInput.autocomplete = 'nickname';
+    ui.idSubmit = el('button', '', '儲存 ID'); ui.idSubmit.type = 'submit';
+    ui.idForm.appendChild(idLabel); ui.idForm.appendChild(ui.idInput);
+    ui.idForm.appendChild(el('small', '', '2–20 字；可用中英文字、數字、_ 或 -。只用來顯示，不改登入方式。'));
+    ui.idForm.appendChild(ui.idSubmit);
+    ui.idForm.addEventListener('submit', saveDisplayId);
+    panel.appendChild(ui.idForm);
     var actions = el('div', 'ss-actions');
     ui.github = button('GitHub 登入', function () { login('github'); });
     ui.google = button('Google 登入', function () { login('google'); });
@@ -199,7 +247,7 @@
     ui.label.setAttribute('aria-haspopup', 'true');
     ui.label.setAttribute('aria-expanded', 'false');
     ui.label.appendChild(el('span', 'ss-icon', '☁'));
-    ui.labelText = el('span', 'ss-label', '訪客模式');
+    ui.labelText = el('span', 'ss-label', '登入');
     ui.label.appendChild(ui.labelText);
     ui.root.appendChild(ui.label);
     ui.root.appendChild(panel);
