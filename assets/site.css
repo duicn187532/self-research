@@ -475,7 +475,7 @@ table.results tbody td:first-child { white-space: nowrap; }
 .anim-hint { display: none; font-size: 0.75rem; color: var(--muted); }
 
 /* ---------- phones: one compact toolbar row, larger tap targets, calmer spacing ---------- */
-@media (max-width: 600px) {
+@media (max-width: 720px) {
   html { scroll-padding-top: calc(3.75rem + env(safe-area-inset-top, 0px)); }
   body { line-height: 1.9; }
   .gutter {
@@ -544,7 +544,7 @@ table.results tbody td:first-child { white-space: nowrap; }
 .appear-panel .seg { justify-self: start; flex-wrap: wrap; }
 .appear-panel .seg button { min-height: 2.25rem; }
 .appear-panel p { color: var(--muted); font-size: 0.75rem; line-height: 1.6; }
-@media (max-width: 600px) { .appear-btn .t { display: none; } .appear-btn { padding: 0 0.55rem; } }
+@media (max-width: 720px) { .appear-btn .t { display: none; } .appear-btn { padding: 0 0.55rem; } }
 
 /* ---------- researcher analysis (each paper's s-research) and the research workbench ----------
    Four folded blocks: method reconstruction, reproducibility audit, claims and evidence, hypotheses.
@@ -639,16 +639,19 @@ table.repro td:nth-child(2) { white-space: nowrap; }
 .bt-tier { align-self: center; font-size: 0.75rem; font-weight: 700; line-height: 1.6; padding: 0 0.45rem; border-radius: 3px; background: var(--paper); color: var(--muted); box-shadow: inset 0 0 0 1px var(--rule); }
 .battle[data-tier="elite"] .bt-tier { background: var(--accent-soft); color: var(--accent); box-shadow: none; }
 .battle[data-tier="boss"] .bt-tier { background: var(--warn-soft); color: var(--warn); box-shadow: none; }
-.bt-art { display: inline-flex; align-items: flex-end; justify-content: center; width: 72px; height: 64px; overflow: visible; }
+.bt-art { position: relative; display: inline-flex; align-items: flex-end; justify-content: center; width: 72px; height: 72px; overflow: visible; }
 .bt-art:empty { display: none; }
 .bt-art .spr { flex: none; transform: scale(min(1, calc(64 / var(--h)), calc(72 / var(--w)))); transform-origin: 50% 100%; }
 .bt-hero { position: relative; display: inline-flex; flex: none; align-items: flex-end; justify-content: center; width: 48px; height: 58px; overflow: visible; }
-.bt-hero > .spr { flex: none; transform: scale(min(1, calc(56 / var(--h)), calc(44 / var(--w)))) scaleX(-1); transform-origin: 50% 100%; }
-.bt-hero.is-struck { filter: brightness(1.5) sepia(1) saturate(5); }
-.fx-skill { position: absolute; z-index: 4; right: -20px; top: 2px; width: 38px; height: 42px; pointer-events: none; animation: skill-flash 0.45s ease-out forwards; }
-.fx-skill::before { content: ""; position: absolute; inset: 4px 14px; width: 9px; background: #fff39a; border: 2px solid #55d9ff; box-shadow: 0 0 8px #4de8ff; transform: skew(-32deg) rotate(28deg); }
-.fx-skill::after { content: "✦"; position: absolute; right: 0; top: -5px; color: #fff39a; font-size: 22px; text-shadow: 0 0 6px #3ddcff; }
-@keyframes skill-flash { 0% { opacity: 0; transform: scale(.3) rotate(-30deg); } 35% { opacity: 1; transform: scale(1.2) rotate(12deg); } 100% { opacity: 0; transform: scale(1.5) rotate(30deg); } }
+.bt-hero-actor { position: relative; display: inline-flex; align-items: flex-end; justify-content: center; width: 48px; height: 58px; }
+.bt-hero-actor > .spr { flex: none; transform: scale(min(1, calc(56 / var(--h)), calc(44 / var(--w)))) scaleX(-1); transform-origin: 50% 100%; }
+.bt-hero-actor.is-struck { filter: brightness(1.5) sepia(1) saturate(5); }
+/* The spell lands on the foe, with enough area and duration to read on a phone. */
+.bt-art .fx-skill { position: absolute; z-index: 4; left: 50%; top: 50%; width: 94px; height: 94px; transform: translate(-50%, -50%); pointer-events: none; border-radius: 50%; background: radial-gradient(circle, #fffbd8 0 13%, #80efffe0 25%, #526ef577 46%, transparent 70%); animation: skill-impact 1.05s ease-out forwards; }
+.bt-art .fx-skill::before { content: ""; position: absolute; inset: 6px 42px; background: #fff8a8; border: 2px solid #46dafa; border-radius: 8px; box-shadow: 0 0 12px 5px #4de8ff; transform: skew(-25deg) rotate(36deg); }
+.bt-art .fx-skill::after { content: "✦"; position: absolute; right: 9px; top: 3px; color: #fffad4; font-size: 35px; text-shadow: 0 0 8px #336de8, 0 0 15px #4de8ff; }
+@keyframes skill-impact { 0% { opacity: 0; scale: .45; } 18%, 65% { opacity: 1; scale: 1; } 100% { opacity: 0; scale: 1.2; } }
+@media (prefers-reduced-motion: reduce) { .bt-art .fx-skill { animation: none; } }
 .bt-foe { align-self: center; font-size: 1.05rem; }
 .bt-rule { align-self: center; margin-left: auto; font-size: var(--step--1); color: var(--muted); letter-spacing: 0.05em; }
 .bt-status, .bt-say, .bt-verdict, .bt-review p, .bt-redo p, .bt-result p { margin: 0; }
@@ -670,6 +673,14 @@ table.repro td:nth-child(2) { white-space: nowrap; }
 .bt-opt.is-wrong { opacity: 1; border-color: var(--warn); background: var(--warn-soft); }
 .bt-say { min-height: 1.4em; }
 .bt-say b { margin-right: 0.4rem; }
+.bt-hit-scene { position: relative; display: flex; align-items: end; justify-content: center; gap: 44px; max-width: 240px; min-height: 70px; margin: 0.4rem 0 0; padding: 3px 12px; border: 1px solid var(--rule); border-radius: 7px; background: linear-gradient(110deg, var(--paper), var(--accent-soft)); overflow: hidden; }
+.bt-hit-sprite { display: inline-flex; flex: none; align-items: flex-end; justify-content: center; width: 55px; height: 62px; }
+.bt-hit-sprite .spr { flex: none; transform: scale(min(1, calc(60 / var(--h)), calc(52 / var(--w)))); transform-origin: 50% 100%; }
+.bt-hit-hero .spr { transform: scale(min(1, calc(60 / var(--h)), calc(52 / var(--w)))) scaleX(-1); }
+.bt-hit-burst { position: absolute; z-index: 2; left: 50%; top: 44%; width: 58px; height: 58px; border-radius: 50%; background: radial-gradient(circle, #fff8aa 0 12%, #58e5ff 36%, transparent 70%); transform: translate(-50%, -50%); box-shadow: 0 0 18px #4de8ff; animation: hit-scene-flash 1.35s ease-out forwards; }
+.bt-hit-burst::after { content: "✦"; position: absolute; top: 0; left: 18px; color: #fff4a2; font-size: 32px; text-shadow: 0 0 8px #4977ed; }
+@keyframes hit-scene-flash { 0% { opacity: 0; scale: .4; } 18%, 70% { opacity: 1; scale: 1; } 100% { opacity: 0; scale: 1.15; } }
+@media (prefers-reduced-motion: reduce) { .bt-hit-burst { animation: none; } }
 .bt-verdict { font-weight: 700; }
 .bt-review { margin: 0; padding-left: 1.3rem; display: grid; gap: 0.75rem; font-size: 0.9375rem; }
 .bt-mark { font-size: 0.7rem; padding: 0 0.35rem; border-radius: 3px; background: var(--ok-soft); color: var(--ok); white-space: nowrap; }
@@ -948,12 +959,12 @@ table.bench-tbl th[scope="rowgroup"], table.bench-tbl th[scope="row"] { color: v
   min-height: 190px; border-width: 28px 22px 58px 150px; border-image: url("maple/dlg9.png") 28 22 58 150 fill / 28px 22px 58px 150px stretch repeat;
 }
 :root[data-skin="maple"] .paper-head:has(> .npc-portrait),
-:root[data-skin="maple"] :is(.claim, .lv-kid, .summary, .worked, .detail):has(> .npc-portrait) {
+:root[data-skin="maple"] :is(.explain, .claim, .summary, .worked, .detail):has(> .npc-portrait) {
   position: relative; min-height: 168px; padding: 8px 12px 8px 10px; border-radius: 0; background: none;
   border-style: solid; border-width: 28px 22px 58px 150px;
   border-image: url("maple/dlg9.png") 28 22 58 150 fill / 28px 22px 58px 150px stretch repeat;
 }
-:root[data-skin="maple"] :is(.claim, .lv-kid, .summary, .worked, .detail):has(> .npc-portrait)::after { content: "NPC GUIDE"; position: absolute; left: -136px; bottom: -46px; line-height: 20px; font-size: 12px; font-weight: 900; color: #ffffff; text-shadow: var(--outline); }
+:root[data-skin="maple"] :is(.explain, .claim, .summary, .worked, .detail):has(> .npc-portrait)::after { content: "導讀"; position: absolute; left: -136px; bottom: -46px; line-height: 20px; font-size: 12px; font-weight: 900; color: #ffffff; text-shadow: var(--outline); }
 :root[data-skin="maple"] .npc-portrait {
   display: flex; position: absolute; left: -140px; width: 120px; top: 0; min-height: 132px;
   flex-direction: column; align-items: center; justify-content: flex-end; gap: 3px; pointer-events: none;
@@ -1130,7 +1141,7 @@ table.bench-tbl th[scope="rowgroup"], table.bench-tbl th[scope="row"] { color: v
   :root[data-skin="maple"] .rail li a { padding: 10px 8px; }
 }
 @media (max-width: 960px) and (prefers-reduced-motion: reduce) { :root[data-skin="maple"] .rail { transition: none; } }
-@media (max-width: 600px) {
+@media (max-width: 720px) {
   :root[data-skin="maple"] .sec { padding: 2px 4px 10px; }
   /* thick game frames: let the windows use the page gutter so the text column stays wide */
   :root[data-skin="maple"] :is(.sec, .paper-head, .shelf-head, .shelf-aside > div, .card) { margin-inline: -10px; }
@@ -1147,6 +1158,13 @@ table.bench-tbl th[scope="rowgroup"], table.bench-tbl th[scope="row"] { color: v
   :root[data-skin="maple"] .check details:has(.npc-portrait) {
     min-height: 0; margin-top: 70px; border-width: 28px 14px 58px 16px;
     border-image: url("maple/win9.png") 28 22 58 24 fill / 28px 14px 58px 16px stretch repeat;
+  }
+  :root[data-skin="maple"] :is(.explain, .claim, .summary, .worked, .detail):has(> .npc-portrait) {
+    min-height: 0; margin-top: 76px; padding: 3px 6px 7px; border-width: 28px 14px 58px 16px;
+    border-image: url("maple/win9.png") 28 22 58 24 fill / 28px 14px 58px 16px stretch repeat;
+  }
+  :root[data-skin="maple"] :is(.explain, .claim, .summary, .worked, .detail):has(> .npc-portrait)::after {
+    left: 0; bottom: -46px; color: #1c2b44; text-shadow: none;
   }
   :root[data-skin="maple"] .npc-portrait {
     left: -4px; top: auto; bottom: calc(100% + 24px); width: auto; min-height: 0;

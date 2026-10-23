@@ -245,7 +245,7 @@
     if (!name) return;
     var npc = document.createElement("span"); npc.className = "npc-portrait"; npc.setAttribute("aria-hidden", "true");
     var fig = document.createElement("span"); fig.className = "npc-fig"; fig.appendChild(spriteEl(name, "say"));
-    var plate = document.createElement("span"); plate.className = "npc-name"; plate.textContent = window.MAPLE_SPRITES[name].role || window.MAPLE_SPRITES[name].label || "NPC";
+    var plate = document.createElement("span"); plate.className = "npc-name"; plate.textContent = window.MAPLE_SPRITES[name].label || window.MAPLE_SPRITES[name].role || "NPC";
     npc.appendChild(fig); npc.appendChild(plate); host.prepend(npc); warm(name, "stand"); warm(name, "say");
   }
   function seedOf(str) { var h = 7; for (var i = 0; i < str.length; i++) h = (h * 31 + str.charCodeAt(i)) >>> 0; return h; }
@@ -948,7 +948,7 @@
     fig.appendChild(spr);
     var plate = document.createElement("span");
     plate.className = "npc-name";
-    plate.textContent = window.MAPLE_SPRITES[name].role || "";
+    plate.textContent = window.MAPLE_SPRITES[name].label || window.MAPLE_SPRITES[name].role || "NPC";
     npc.appendChild(fig);
     npc.appendChild(plate);
     // inside the summary, the one part of a closed <details> that is drawn; the summary is
@@ -976,7 +976,8 @@
     if (!window.MAPLE_SPRITES || castDone[i] || !sections[i]) return;
     castDone[i] = true;
     addMob(sections[i]);
-    var guideHost = sections[i].querySelector(".claim, .lv-kid, .summary, .worked, .detail");
+    // The explanation surrounds every reading level, so its guide remains visible in comparison mode.
+    var guideHost = sections[i].querySelector(".explain, .claim, .summary, .worked, .detail");
     if (guideHost) addGuide(guideHost, paper + ":reading:" + i);
     sections[i].querySelectorAll(".check details").forEach(addNpc);
   }
@@ -1262,13 +1263,27 @@
     var art = null;
     var heroArt = null, heroTimer = null;
     function strikeHero() {
-      if (!heroArt || reduceMotion) return;
+      if (!heroArt) return;
       heroArt.classList.add("is-casting");
       swapAct(heroArt.querySelector(".spr"), heroArt.dataset.hero, "move");
-      var fx = document.createElement("span"); fx.className = "fx-skill"; fx.setAttribute("aria-hidden", "true"); heroArt.appendChild(fx);
-      if (heroArt.animate) heroArt.animate([{ transform: "translateX(0)" }, { transform: "translateX(26px)" }, { transform: "translateX(0)" }], { duration: 420, easing: "ease-out" });
+      var target = b && b.artHost;
+      if (target) {
+        target.querySelectorAll(".fx-skill").forEach(function (old) { old.remove(); });
+        var fx = document.createElement("span"); fx.className = "fx-skill"; fx.setAttribute("aria-hidden", "true");
+        target.appendChild(fx);
+        setTimeout(function () { fx.remove(); }, 1100);
+      }
+      if (b && b.feedbackHost && art) {
+        var scene = document.createElement("span"); scene.className = "bt-hit-scene"; scene.setAttribute("aria-hidden", "true");
+        var caster = document.createElement("span"); caster.className = "bt-hit-sprite bt-hit-hero"; caster.appendChild(spriteEl(heroArt.dataset.hero, "move"));
+        var burst = document.createElement("span"); burst.className = "bt-hit-burst";
+        var victim = document.createElement("span"); victim.className = "bt-hit-sprite bt-hit-foe"; victim.appendChild(spriteEl(art.name, "hit"));
+        scene.appendChild(caster); scene.appendChild(burst); scene.appendChild(victim);
+        b.feedbackHost.appendChild(scene);
+      }
+      if (!reduceMotion && heroArt.animate) heroArt.animate([{ transform: "translateX(0)" }, { transform: "translateX(22px)" }, { transform: "translateX(0)" }], { duration: 650, easing: "ease-out" });
       clearTimeout(heroTimer);
-      heroTimer = setTimeout(function () { heroArt.classList.remove("is-casting"); fx.remove(); swapAct(heroArt.querySelector(".spr"), heroArt.dataset.hero, "stand"); }, 520);
+      heroTimer = setTimeout(function () { heroArt.classList.remove("is-casting"); swapAct(heroArt.querySelector(".spr"), heroArt.dataset.hero, "stand"); }, 900);
     }
     function act(a, once) { if (art) swapAct(art.spr, art.name, a, once, once ? 140 : undefined); }
     var b = battles[s.id] = window.StudyBattle.mount(foot, {
@@ -1279,7 +1294,7 @@
         act("stand");
         var heroes = sprites("hero").filter(function (h) { return window.MAPLE_SPRITES[h].family === "orca" || window.MAPLE_SPRITES[h].family === "lucid"; });
         var heroName = heroes[(seed + sections.indexOf(s)) % Math.max(1, heroes.length)];
-        if (heroName) { heroArt = document.createElement("span"); heroArt.className = "bt-hero"; heroArt.dataset.hero = heroName; heroArt.setAttribute("aria-hidden", "true"); heroArt.appendChild(spriteEl(heroName, "stand")); b.setHero(heroArt); }
+        if (heroName) { heroArt = document.createElement("span"); heroArt.className = "bt-hero-actor"; heroArt.dataset.hero = heroName; heroArt.setAttribute("aria-hidden", "true"); heroArt.appendChild(spriteEl(heroName, "stand")); b.setHero(heroArt); }
       },
       onHit: function () {
         strikeHero();

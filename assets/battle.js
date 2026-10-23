@@ -271,7 +271,7 @@
       if (node) art.appendChild(node);
     }
     function setHero(node) { hero.textContent = ""; if (node) hero.appendChild(node); }
-    return { refresh: paintStatus, setFoe: setFoe, setHero: setHero };
+    return { refresh: paintStatus, setFoe: setFoe, setHero: setHero, artHost: art, feedbackHost: say };
   }
 
   // ---------- the BOSS chapter's board: title, mastery by facet, this paper's record, questions to revisit ----------
