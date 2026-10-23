@@ -1,0 +1,611 @@
+{
+  "id": "2081002",
+  "type": "npc",
+  "region": "leafre",
+  "town": "神木村",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": "依托",
+  "name_zh_tw_status": "source_twms",
+  "source_url": "https://maplestory.io/api/TWMS/256/npc/2081002",
+  "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Npc/2081002.img",
+  "wz_path": "Npc.wz/2081002.img",
+  "version": {
+    "region": "TWMS",
+    "version": "256"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "hand",
+      "frame_count": 6,
+      "expected_frame_count": 6,
+      "frames": [
+        {
+          "index": 0,
+          "width": 48,
+          "height": 56,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "f28ea3b7ac9dbf2cf773b3c96818cc35fbfdc77acb13f5c6091d4a5705c8c401",
+          "pixel_sha256": "b9a2261b6a2e7255cca40851e7ff11c7918824e2f42317fe2b1fb9a36b70a788",
+          "wz_path": "Npc.wz/2081002.img/hand/0",
+          "duration_ms": 3000,
+          "origin": {
+            "x": 31,
+            "y": 56
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/leafre/2081002/TWMS-256/hand/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 48,
+          "height": 57,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "f50939c64746027b9c217eb54e4b52d1908a4ef4f4778bb6247f0992df4f03b9",
+          "pixel_sha256": "b38b04d7581480800271d8db861d7941f8de9572545a4407996b1893800228bb",
+          "wz_path": "Npc.wz/2081002.img/hand/1",
+          "duration_ms": 300,
+          "origin": {
+            "x": 31,
+            "y": 57
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/leafre/2081002/TWMS-256/hand/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 47,
+          "height": 57,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "b9778a932d38b0db8ebc6c2ab47f773f899a58f474490a0aa5013733db4707d9",
+          "pixel_sha256": "dca98d59865472706d9c104d47ee15268bab3d12a0f9cb9b108ddeceb71ba12e",
+          "wz_path": "Npc.wz/2081002.img/hand/2",
+          "duration_ms": 300,
+          "origin": {
+            "x": 30,
+            "y": 57
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/leafre/2081002/TWMS-256/hand/0002.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 3,
+          "width": 48,
+          "height": 57,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "0700ce85d96574f5f2b097e2b66c358798d2a01f79323e30cbe9c1e1c46c1bff",
+          "pixel_sha256": "3cd5306d4b4c13c515fd796e6062658b6ed6775872d7493e68015f9f76b25469",
+          "wz_path": "Npc.wz/2081002.img/hand/3",
+          "duration_ms": 300,
+          "origin": {
+            "x": 31,
+            "y": 57
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/leafre/2081002/TWMS-256/hand/0003.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 4,
+          "width": 47,
+          "height": 57,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "b9778a932d38b0db8ebc6c2ab47f773f899a58f474490a0aa5013733db4707d9",
+          "pixel_sha256": "dca98d59865472706d9c104d47ee15268bab3d12a0f9cb9b108ddeceb71ba12e",
+          "wz_path": "Npc.wz/2081002.img/hand/4",
+          "duration_ms": 300,
+          "origin": {
+            "x": 30,
+            "y": 57
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/leafre/2081002/TWMS-256/hand/0002.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "64f88280e0591cab96f6012f6344abf5222f8a7fd8b8a82acb0cd8a79c97a40b"
+        },
+        {
+          "index": 5,
+          "width": 48,
+          "height": 57,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "f50939c64746027b9c217eb54e4b52d1908a4ef4f4778bb6247f0992df4f03b9",
+          "pixel_sha256": "b38b04d7581480800271d8db861d7941f8de9572545a4407996b1893800228bb",
+          "wz_path": "Npc.wz/2081002.img/hand/5",
+          "duration_ms": 800,
+          "origin": {
+            "x": 31,
+            "y": 57
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/leafre/2081002/TWMS-256/hand/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "d4684ae7555ec39d822665ec69e6a699f2483952987d228fc8cd24e4dbb7f9e4"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Npc/2081002.img/hand",
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "say",
+      "frame_count": 16,
+      "expected_frame_count": 16,
+      "frames": [
+        {
+          "index": 0,
+          "width": 48,
+          "height": 56,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "4241f916f25fe2b1929d455df41df487c2300d518fb9a20d7bbbc4ff5e3c27eb",
+          "pixel_sha256": "f73ee21f2e5fe002263ae8c443a69e846bfcb8230e8e418f27199413d45f3b0e",
+          "wz_path": "Npc.wz/2081002.img/say/0",
+          "duration_ms": 1500,
+          "origin": {
+            "x": 31,
+            "y": 56
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/leafre/2081002/TWMS-256/say/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 48,
+          "height": 56,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "f28ea3b7ac9dbf2cf773b3c96818cc35fbfdc77acb13f5c6091d4a5705c8c401",
+          "pixel_sha256": "b9a2261b6a2e7255cca40851e7ff11c7918824e2f42317fe2b1fb9a36b70a788",
+          "wz_path": "Npc.wz/2081002.img/say/1",
+          "duration_ms": 100,
+          "origin": {
+            "x": 31,
+            "y": 56
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/leafre/2081002/TWMS-256/hand/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "b9566d0b9c5d6b6a5c5d9b90b7e6dc85904cd5815998e5eb4b0445b36fe138f3"
+        },
+        {
+          "index": 2,
+          "width": 48,
+          "height": 56,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "4241f916f25fe2b1929d455df41df487c2300d518fb9a20d7bbbc4ff5e3c27eb",
+          "pixel_sha256": "f73ee21f2e5fe002263ae8c443a69e846bfcb8230e8e418f27199413d45f3b0e",
+          "wz_path": "Npc.wz/2081002.img/say/2",
+          "duration_ms": 100,
+          "origin": {
+            "x": 31,
+            "y": 56
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/leafre/2081002/TWMS-256/say/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "0d7981668aea4772aec5355c2974049a8ea77661d96a3da3beee4cc960a22bba"
+        },
+        {
+          "index": 3,
+          "width": 48,
+          "height": 56,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "f28ea3b7ac9dbf2cf773b3c96818cc35fbfdc77acb13f5c6091d4a5705c8c401",
+          "pixel_sha256": "b9a2261b6a2e7255cca40851e7ff11c7918824e2f42317fe2b1fb9a36b70a788",
+          "wz_path": "Npc.wz/2081002.img/say/3",
+          "duration_ms": 100,
+          "origin": {
+            "x": 31,
+            "y": 56
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2081002/render/say/3",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/leafre/2081002/TWMS-256/hand/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "cbd5e8beb6ca0d440b2284e8d98466534b9825ef7a5982adf606c0530fab3dd1"
+        },
+        {
+          "index": 4,
+          "width": 48,
+          "height": 56,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "4241f916f25fe2b1929d455df41df487c2300d518fb9a20d7bbbc4ff5e3c27eb",
+          "pixel_sha256": "f73ee21f2e5fe002263ae8c443a69e846bfcb8230e8e418f27199413d45f3b0e",
+          "wz_path": "Npc.wz/2081002.img/say/4",
+          "duration_ms": 100,
+          "origin": {
+            "x": 31,
+            "y": 56
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2081002/render/say/4",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/leafre/2081002/TWMS-256/say/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "ccf6bcbb3dabe5326c9b26459edc96216e26119e16f9e9dc1202513527c3bd24"
+        },
+        {
+          "index": 5,
+          "width": 48,
+          "height": 56,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "f28ea3b7ac9dbf2cf773b3c96818cc35fbfdc77acb13f5c6091d4a5705c8c401",
+          "pixel_sha256": "b9a2261b6a2e7255cca40851e7ff11c7918824e2f42317fe2b1fb9a36b70a788",
+          "wz_path": "Npc.wz/2081002.img/say/5",
+          "duration_ms": 200,
+          "origin": {
+            "x": 31,
+            "y": 56
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/leafre/2081002/TWMS-256/hand/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "234abddb9765666665a987044cce8bc14299230cac47a46f89a5a7d37e18b12c"
+        },
+        {
+          "index": 6,
+          "width": 48,
+          "height": 56,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "f28ea3b7ac9dbf2cf773b3c96818cc35fbfdc77acb13f5c6091d4a5705c8c401",
+          "pixel_sha256": "b9a2261b6a2e7255cca40851e7ff11c7918824e2f42317fe2b1fb9a36b70a788",
+          "wz_path": "Npc.wz/2081002.img/say/6",
+          "duration_ms": 100,
+          "origin": {
+            "x": 31,
+            "y": 56
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2081002/render/say/6",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/leafre/2081002/TWMS-256/hand/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "fcbf4c91ad8325a9ac525968c73b9edd67f0c08b7d25a268a05b584c3f36aa1c"
+        },
+        {
+          "index": 7,
+          "width": 48,
+          "height": 56,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "4241f916f25fe2b1929d455df41df487c2300d518fb9a20d7bbbc4ff5e3c27eb",
+          "pixel_sha256": "f73ee21f2e5fe002263ae8c443a69e846bfcb8230e8e418f27199413d45f3b0e",
+          "wz_path": "Npc.wz/2081002.img/say/7",
+          "duration_ms": 100,
+          "origin": {
+            "x": 31,
+            "y": 56
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2081002/render/say/7",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/leafre/2081002/TWMS-256/say/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "5b4d244b868ce0366a8049a503305242f02d77f1e4fddc753ed81998a654ccc1"
+        },
+        {
+          "index": 8,
+          "width": 48,
+          "height": 56,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "f28ea3b7ac9dbf2cf773b3c96818cc35fbfdc77acb13f5c6091d4a5705c8c401",
+          "pixel_sha256": "b9a2261b6a2e7255cca40851e7ff11c7918824e2f42317fe2b1fb9a36b70a788",
+          "wz_path": "Npc.wz/2081002.img/say/8",
+          "duration_ms": 100,
+          "origin": {
+            "x": 31,
+            "y": 56
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2081002/render/say/8",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/leafre/2081002/TWMS-256/hand/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "f32bdc0d6c91ef786afebe75d114735efe02526b9259bed7408e1ae81b85c7cf"
+        },
+        {
+          "index": 9,
+          "width": 48,
+          "height": 56,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "4241f916f25fe2b1929d455df41df487c2300d518fb9a20d7bbbc4ff5e3c27eb",
+          "pixel_sha256": "f73ee21f2e5fe002263ae8c443a69e846bfcb8230e8e418f27199413d45f3b0e",
+          "wz_path": "Npc.wz/2081002.img/say/9",
+          "duration_ms": 100,
+          "origin": {
+            "x": 31,
+            "y": 56
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2081002/render/say/9",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/leafre/2081002/TWMS-256/say/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "b784f5d46269901bbe337301660ad512c909f07bb8a5fc949a5e165f2e27b534"
+        },
+        {
+          "index": 10,
+          "width": 48,
+          "height": 56,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "f28ea3b7ac9dbf2cf773b3c96818cc35fbfdc77acb13f5c6091d4a5705c8c401",
+          "pixel_sha256": "b9a2261b6a2e7255cca40851e7ff11c7918824e2f42317fe2b1fb9a36b70a788",
+          "wz_path": "Npc.wz/2081002.img/say/10",
+          "duration_ms": 100,
+          "origin": {
+            "x": 31,
+            "y": 56
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2081002/render/say/10",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/leafre/2081002/TWMS-256/hand/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "45d87a37380d78d62684a483ed61234fa15d2ec86885c5d40b30392398204a3f"
+        },
+        {
+          "index": 11,
+          "width": 48,
+          "height": 56,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "4241f916f25fe2b1929d455df41df487c2300d518fb9a20d7bbbc4ff5e3c27eb",
+          "pixel_sha256": "f73ee21f2e5fe002263ae8c443a69e846bfcb8230e8e418f27199413d45f3b0e",
+          "wz_path": "Npc.wz/2081002.img/say/11",
+          "duration_ms": 100,
+          "origin": {
+            "x": 31,
+            "y": 56
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2081002/render/say/11",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/leafre/2081002/TWMS-256/say/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "d3555e2f98a8c7c8df900742b1f9b5759b516ea585bd1b9a3c84d9c64e22ae50"
+        },
+        {
+          "index": 12,
+          "width": 48,
+          "height": 56,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "f28ea3b7ac9dbf2cf773b3c96818cc35fbfdc77acb13f5c6091d4a5705c8c401",
+          "pixel_sha256": "b9a2261b6a2e7255cca40851e7ff11c7918824e2f42317fe2b1fb9a36b70a788",
+          "wz_path": "Npc.wz/2081002.img/say/12",
+          "duration_ms": 100,
+          "origin": {
+            "x": 31,
+            "y": 56
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2081002/render/say/12",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/leafre/2081002/TWMS-256/hand/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "af260e691e6b434b11b504930ce1ed872a0e126f17e41838c5497f30dfc012fb"
+        },
+        {
+          "index": 13,
+          "width": 48,
+          "height": 56,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "f28ea3b7ac9dbf2cf773b3c96818cc35fbfdc77acb13f5c6091d4a5705c8c401",
+          "pixel_sha256": "b9a2261b6a2e7255cca40851e7ff11c7918824e2f42317fe2b1fb9a36b70a788",
+          "wz_path": "Npc.wz/2081002.img/say/13",
+          "duration_ms": 200,
+          "origin": {
+            "x": 31,
+            "y": 56
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2081002/render/say/13",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/leafre/2081002/TWMS-256/hand/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "91673c7aded8b6564ec72055a1b67d6112f4d63dff4ad0deece5514c99052c6e"
+        },
+        {
+          "index": 14,
+          "width": 48,
+          "height": 56,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "f28ea3b7ac9dbf2cf773b3c96818cc35fbfdc77acb13f5c6091d4a5705c8c401",
+          "pixel_sha256": "b9a2261b6a2e7255cca40851e7ff11c7918824e2f42317fe2b1fb9a36b70a788",
+          "wz_path": "Npc.wz/2081002.img/say/14",
+          "duration_ms": 100,
+          "origin": {
+            "x": 31,
+            "y": 56
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2081002/render/say/14",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/leafre/2081002/TWMS-256/hand/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "4267d802dce7c4fb4bd09489d423d3e265f30d34f31d963ea7a7df3b27b206b4"
+        },
+        {
+          "index": 15,
+          "width": 48,
+          "height": 56,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "4241f916f25fe2b1929d455df41df487c2300d518fb9a20d7bbbc4ff5e3c27eb",
+          "pixel_sha256": "f73ee21f2e5fe002263ae8c443a69e846bfcb8230e8e418f27199413d45f3b0e",
+          "wz_path": "Npc.wz/2081002.img/say/15",
+          "duration_ms": 100,
+          "origin": {
+            "x": 31,
+            "y": 56
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2081002/render/say/15",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/leafre/2081002/TWMS-256/say/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "1adfeaca1d5f5b1eff573a4c3ba980864a05198ac9b35175aa964c8a11d02c48"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Npc/2081002.img/say",
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "stand",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 48,
+          "height": 56,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "4241f916f25fe2b1929d455df41df487c2300d518fb9a20d7bbbc4ff5e3c27eb",
+          "pixel_sha256": "f73ee21f2e5fe002263ae8c443a69e846bfcb8230e8e418f27199413d45f3b0e",
+          "wz_path": "Npc.wz/2081002.img/stand/0",
+          "duration_ms": 3000,
+          "origin": {
+            "x": 31,
+            "y": 56
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/leafre/2081002/TWMS-256/say/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "408b19f1e602cdc4361fd58458147edb5cfda0e36cf437b01cce93f205fcef9a"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Npc/2081002.img/stand",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "依托",
+  "role": null,
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "依托之家",
+      "streetName": "神木村",
+      "id": 240000004
+    }
+  ],
+  "expected_actions": {
+    "hand": 6,
+    "say": 16,
+    "stand": 1
+  },
+  "source_metadata_sha256": "833cda4d0003684434ba3ff4b900dd91089aef1cb577fc424c86b1bbe096e28d",
+  "source_archive_sha256": "1fcb812e307991a3726cdc1764c7831170424ca4c01610b4829893d83932eaf1",
+  "source_frame_indices": {
+    "hand": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "say": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "stand": [
+      0
+    ]
+  },
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "complete",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
+  },
+  "github_path": "assets/maple/collection/npc/leafre/2081002/TWMS-256",
+  "status": "collected"
+}

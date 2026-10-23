@@ -1,0 +1,11 @@
+[
+  {"id":220000000,"region":"ludibrium","name":"玩具城"},
+  {"id":220080000,"region":"ludibrium","name":"時間塔"},
+  {"id":220080001,"region":"ludibrium","name":"時間塔內部"},
+  {"id":200000000,"region":"orbis","name":"天空之城"},
+  {"id":200000100,"region":"orbis","name":"天空之城售票處"},
+  {"id":211000000,"region":"el-nath","name":"冰原雪域"},
+  {"id":211041100,"region":"el-nath","name":"亡者之林Ⅰ"},
+  {"id":240000000,"region":"leafre","name":"神木村"},
+  {"id":240010000,"region":"leafre","name":"神木村西邊森林"}
+]

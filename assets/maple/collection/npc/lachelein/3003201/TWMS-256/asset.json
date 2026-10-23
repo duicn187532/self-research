@@ -1,0 +1,195 @@
+{
+  "id": "3003201",
+  "type": "npc",
+  "region": "lachelein",
+  "town": "lachelein",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": "防毒面具",
+  "name_zh_tw_status": "unverified_translation",
+  "source_url": "https://maplestory.io/api/TWMS/256/npc/3003201",
+  "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Npc/3003201.img",
+  "wz_path": "Npc.wz/3003201.img",
+  "version": {
+    "region": "TWMS",
+    "version": "256"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "stand",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 78,
+          "height": 86,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "c90468272478724ab893709d05bebbb7577958507a864d97d1f09a9356541c26",
+          "pixel_sha256": "5fc2ad5725fe4544e91ad60b3b73a71462acf96fb9be0ba6e5f8dc313c063cf5",
+          "wz_path": "Npc.wz/3003201.img/stand/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 43,
+            "y": 86
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/lachelein/3003201/TWMS-256/stand/0000.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Npc/3003201.img/stand",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "防毒面具",
+  "role": null,
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "秘密據點",
+      "streetName": "拉契爾恩",
+      "id": 450003100
+    }
+  ],
+  "expected_actions": {
+    "condition1": 1,
+    "condition10": 1,
+    "condition11": 1,
+    "condition2": 1,
+    "condition3": 1,
+    "condition4": 1,
+    "condition5": 1,
+    "condition6": 1,
+    "condition7": 1,
+    "condition8": 1,
+    "condition9": 1,
+    "stand": 1
+  },
+  "source_metadata_sha256": "653360e876ecc37f8ca846d7f827f0324144a6d04c927899df923f44df3afdb0",
+  "source_archive_sha256": "a4534b21b3ce9d9f1b00975785dbf9a593f7797dad2e185d3e0e3dc268b11feb",
+  "source_frame_indices": {
+    "condition1": [
+      34326
+    ],
+    "condition10": [
+      34306
+    ],
+    "condition11": [
+      34306
+    ],
+    "condition2": [
+      34326
+    ],
+    "condition3": [
+      34325
+    ],
+    "condition4": [
+      34319
+    ],
+    "condition5": [
+      34319
+    ],
+    "condition6": [
+      34315
+    ],
+    "condition7": [
+      34310
+    ],
+    "condition8": [
+      34310
+    ],
+    "condition9": [
+      34309
+    ],
+    "stand": [
+      0
+    ]
+  },
+  "missing_frames": [
+    {
+      "action": "condition1",
+      "index": 34326,
+      "error": "HTTP Error 400: Bad Request"
+    },
+    {
+      "action": "condition10",
+      "index": 34306,
+      "error": "HTTP Error 400: Bad Request"
+    },
+    {
+      "action": "condition11",
+      "index": 34306,
+      "error": "HTTP Error 400: Bad Request"
+    },
+    {
+      "action": "condition2",
+      "index": 34326,
+      "error": "HTTP Error 400: Bad Request"
+    },
+    {
+      "action": "condition3",
+      "index": 34325,
+      "error": "HTTP Error 400: Bad Request"
+    },
+    {
+      "action": "condition4",
+      "index": 34319,
+      "error": "HTTP Error 400: Bad Request"
+    },
+    {
+      "action": "condition5",
+      "index": 34319,
+      "error": "HTTP Error 400: Bad Request"
+    },
+    {
+      "action": "condition6",
+      "index": 34315,
+      "error": "HTTP Error 400: Bad Request"
+    },
+    {
+      "action": "condition7",
+      "index": 34310,
+      "error": "HTTP Error 400: Bad Request"
+    },
+    {
+      "action": "condition8",
+      "index": 34310,
+      "error": "HTTP Error 400: Bad Request"
+    },
+    {
+      "action": "condition9",
+      "index": 34309,
+      "error": "HTTP Error 400: Bad Request"
+    }
+  ],
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": false,
+    "timing_and_origin": "partial",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
+  },
+  "github_path": "assets/maple/collection/npc/lachelein/3003201/TWMS-256",
+  "status": "collected"
+}

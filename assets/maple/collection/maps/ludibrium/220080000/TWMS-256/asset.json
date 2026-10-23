@@ -1,0 +1,649 @@
+{
+  "id": "220080000",
+  "type": "maps",
+  "region": "ludibrium",
+  "town": "ludibrium",
+  "name": "時間塔",
+  "name_zh_tw": "時間塔",
+  "name_zh_tw_status": "source_twms",
+  "source_url": "https://maplestory.io/api/TWMS/256/map/220080000",
+  "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Map/Map/Map2/220080000.img",
+  "wz_path": "Map.wz/Map/Map2/220080000.img",
+  "version": {
+    "region": "TWMS",
+    "version": "256"
+  },
+  "acquired_on": "2026-10-23",
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "exported-canvases",
+      "kind": "map_layers",
+      "frame_count": 1,
+      "expected_frame_count": null,
+      "count_matches_api": null,
+      "indices_contiguous": true,
+      "frames": [
+        {
+          "index": 0,
+          "source_archive_path": "Map-Map-Map2-220080000.img-miniMap-canvas.png",
+          "width": 258,
+          "height": 45,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "1a84616bdae6fc217232fd195df4c7eb50b7f45125ee7bbf8c5175a6e8a665a9",
+          "pixel_sha256": "fac6ad60dfa986418264ad42bd1cf0194cfb3755f23507ad594d1d6574281b47",
+          "github_path": "assets/maple/collection/maps/ludibrium/220080000/TWMS-256/layers/Map-Map-Map2-220080000.img-miniMap-canvas.png",
+          "storage": "original_png",
+          "decode": "pass",
+          "duration_ms": null,
+          "origin": null
+        }
+      ]
+    }
+  ],
+  "source_metadata_sha256": "31e3f16f40001e947391137bc6c119d8558ad8f066b86e594bcb6acdf897c628",
+  "source_metadata": {
+    "backgroundMusic": "Bgm07/WhereverYouAre",
+    "isReturnMap": false,
+    "returnMap": 220000000,
+    "portals": [
+      {
+        "portalName": "sp",
+        "toName": "",
+        "type": 0,
+        "toMap": 999999999,
+        "x": -826,
+        "y": -524,
+        "isStarForcePortal": false,
+        "index": 0,
+        "unknownExit": true,
+        "bounds": {
+          "x": -826,
+          "y": -524,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -826,
+            "y": -524,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -524,
+          "right": -825,
+          "bottom": -523,
+          "left": -826
+        }
+      },
+      {
+        "portalName": "sp",
+        "toName": "",
+        "type": 0,
+        "toMap": 999999999,
+        "x": 240,
+        "y": -531,
+        "isStarForcePortal": false,
+        "index": 0,
+        "unknownExit": true,
+        "bounds": {
+          "x": 240,
+          "y": -531,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 240,
+            "y": -531,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -531,
+          "right": 241,
+          "bottom": -530,
+          "left": 240
+        }
+      },
+      {
+        "portalName": "st00",
+        "toName": "",
+        "type": 1,
+        "toMap": 999999999,
+        "x": -1866,
+        "y": -332,
+        "isStarForcePortal": false,
+        "index": 0,
+        "unknownExit": true,
+        "bounds": {
+          "x": -1866,
+          "y": -332,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -1866,
+            "y": -332,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -332,
+          "right": -1865,
+          "bottom": -331,
+          "left": -1866
+        }
+      },
+      {
+        "portalName": "mysticGate00",
+        "toName": "",
+        "type": 1,
+        "toMap": 999999999,
+        "x": -559,
+        "y": -546,
+        "isStarForcePortal": false,
+        "index": 0,
+        "unknownExit": true,
+        "bounds": {
+          "x": -559,
+          "y": -546,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -559,
+            "y": -546,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -546,
+          "right": -558,
+          "bottom": -545,
+          "left": -559
+        }
+      },
+      {
+        "portalName": "out00",
+        "toName": "",
+        "type": 7,
+        "toMap": 999999999,
+        "x": -2107,
+        "y": -335,
+        "onlyOnce": false,
+        "isStarForcePortal": false,
+        "index": 0,
+        "unknownExit": true,
+        "bounds": {
+          "x": -2107,
+          "y": -335,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -2107,
+            "y": -335,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -335,
+          "right": -2106,
+          "bottom": -334,
+          "left": -2107
+        }
+      },
+      {
+        "portalName": "out01",
+        "toName": "",
+        "type": 7,
+        "toMap": 999999999,
+        "x": 1590,
+        "y": -334,
+        "onlyOnce": false,
+        "isStarForcePortal": false,
+        "index": 0,
+        "unknownExit": true,
+        "bounds": {
+          "x": 1590,
+          "y": -334,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 1590,
+            "y": -334,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -334,
+          "right": 1591,
+          "bottom": -333,
+          "left": 1590
+        }
+      },
+      {
+        "portalName": "in00",
+        "toName": "",
+        "type": 7,
+        "toMap": 999999999,
+        "x": -295,
+        "y": -632,
+        "isStarForcePortal": false,
+        "index": 0,
+        "unknownExit": true,
+        "bounds": {
+          "x": -295,
+          "y": -632,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -295,
+            "y": -632,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -632,
+          "right": -294,
+          "bottom": -631,
+          "left": -295
+        }
+      }
+    ],
+    "npcs": [
+      {
+        "x": -17,
+        "y": -544,
+        "walkAreaX1": -67,
+        "walkAreaX2": 33,
+        "id": 2041024,
+        "footholdId": 5,
+        "foothold": {
+          "id": 5,
+          "next": 0,
+          "prev": 0,
+          "piece": 0,
+          "x1": -628,
+          "x2": 68,
+          "y1": -544,
+          "y2": -544,
+          "layerId": 2,
+          "groupId": 20
+        },
+        "hidden": false,
+        "type": 0,
+        "link": "/npc/2041024",
+        "index": 0,
+        "position": {},
+        "bounds": {
+          "x": -17,
+          "y": -544,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -17,
+            "y": -544,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -544,
+          "right": -16,
+          "bottom": -543,
+          "left": -17
+        },
+        "flip": false
+      }
+    ],
+    "mobs": [],
+    "mobRate": 0.49999991059303284,
+    "isTown": false,
+    "isSwim": false,
+    "mapMark": "Ludibrium",
+    "miniMap": {
+      "centerX": 2341,
+      "centerY": 900,
+      "height": 732,
+      "width": 4141,
+      "magnification": 4,
+      "canvas": "iVBORw0KGgoAAAANSUhEUgAAAQIAAAAtCAYAAABFwmUHAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAW+ElEQVR4nO1c63njuM7mj2mALXBL4JSgKUEpQSnBLsEqwSohKiEsISxhWMJhC9/7gqREyfIlTna+3XOEZ3dsSwJI4kYAhPJD7bDDDv/zsDuCHXbYYXcEO+yww+4IdthhB7U7gh122EHtjmCHHXZQuyPYYYcd1O4IdthhB7U7gh122EHtjmCHHXZQuyPYYYcd1O4IdthhB7U7gh122EHtjmCHHXZQuyPYYYcd1O4IdthhB7U7gh122EHtjuC/HbS19s0Yw0+Fz/mG1ldQIv7T+DeqYRjkivf+VwSoHf5r4aYj0MbqBEp7H4KKIV4+Y7Tozsa9Hf7/AcJrRIDZ8K87gAkj/6dV0zR0Amr3Af8O0NpQbDDTbTvFZmADPTru4/9Q37/qCLpTdzBmPFk8bki8s+E4tkdqiE6KAcKmNSYaHZyKponHQb0E57za4R8DNHxGAvx/dgJ6+thyCzR8uY4ogo5gh382YMM257N5s6YxsHEdvAo+xJFRXQN/7pWJh2a0VAFee+2DCrE5+tH1hcaPW+TdEJXPvkVrZ1ob3zQuaBcU1cOP+N8kbTI6aviFA/zGy7MLMlrTY31a8ziDKDHtN9OFDcEmwmfv3QLMxdAfqz8EYtRVFHA/IpifwVxV27ZqHEf1p+FZPlEVoQhX8Z6RGwOqGNWtsIgM+3TYBNOBXqove1r4AdsYZ523asRufAqBsfxBpmxhowoeoGvw5CgLYYIYwd+axlVHwCDgBNw+60CIRtneCwe9MQGhRhR1Cd5AXDpg93hEya4uBpHLRxc//urVT8zVt23TIHqJSEkuGMVkJYersbG6xTzPP/v4l9oQxppu09iG0dEWXT5LunzOGt28der9r6PQXSgOFePjoD9ehnj0QQ1Gkm944nDpbBCNyT2OR+X+OKjfZS7qDwBrA1/Fp1z/ZHpAObx36uNn5hNYaIPEtJeOoevaDkHoSF05dfbdqGAgl7+26B7a5twa14Ku6Apxx9GNW/UP6N9hzDvme6c/hqDDMIZfW3Q/Dubj6CKmEV9V8qN6y9nUuif61cZ3zuWW47oFOhsc/w2hVQHGeiL9tg3YtZXxXo/DCGMJmI+E8mIg9ABhZStXHQH3EbgVZREBuKBlyyWIE+jaqCVfIEUT4C3gZWEIMTr1JMCWDkM0ERvQASOPENIB8U349fKyiDCQt+rT4fDmvI/DMCBV0dZF4scOytBfo4t0F3Q16HaHwAf7/hVh78QMKLw+HLoTSx3YAY9gWTNgbdbGA557rWlaCyWJCIF0MF1nG+yaB+po3w8vNU1c1xjvxF1oGMYeeVlDPLCQNJ+KnHSS48XF8qV85SS0eH2xHzqpdFcvn5omG6d/FhATebuhrHrj0cXN5xXcdKPILHaUGfh4osxeX48LnoG3FjLroPcN+DtwsCAK7+yGo0UwC+aHJkKmHSMdGHtLRw26x/rBA4jynoEBQBdAGHtdTofX64Rzb1wU02KqbKi3vIz5UL+m9YveQnHpc0QXMJEB04FrOMCDLPTrMR5p2kHHbYtyHkevOuQD7tQFjXwAF8EAS72PfhztePSKO2ZkGp+npGjEuba36Qig2Z0KYzsypGC1OeKbT+mAaduIVAQMDykC0NgxGHhjgx2ifzqGBNN6QxuB7lpwDUIwpA+hWBjtJFSK3Ta4Z+h3QhO8b3wqVvrbdOHUmoOh4FnfhAe1uDc5LiiGpeHGFANa70YL2nguDpc03YAJYI6GU9UNaDLggtzhhOekuklgGWJYG4xDUJDrNBc0HwH45RNYf5AfOplzKQRq1gG4+0vEt7JR2UijmnQ45u+4Lpts/h1jSiVizrPSbxn33er82FYQrBcfKu9TcfDbUdo9AH/G4CP5Cwa35CHlQt4tdAHyaoueNDZY5wb6C38l2sJO7Adt9Qkbs2EhlLj4sHAoMFzxI6Rp6Fs0FYY8CR6RqZece2stovkhGWPDLQH+A4ygEOzr68IRWIkOyVP4IjcOhnSdixeb1yPAiLkf+oFrwXiuCxGGia/4SUEEbuW0886qdnRxdE4fX7iNmOTcDdIHICOWEpvddARygKTLLuJFsLqVnIYRRt5HQhoMSQg4F4Js0f3T8SOFhwE1LLM3YBTZlXazZdimqfEqn2XAJmFVIwy9xVPuJt1oemOF7uYc0+7JJXKnp97FASw7bSkVwz5YNyKlMESJuVTDqGtde4uxzD+Ko0KA42Crb/HJyAkOD06tOSQ7oxJywiwEanEA3A3p4OV3mUM+DiwWXDb+9GlhdPOJAu/GHPrJtHWdGFffiw7E6VbFSKJJKjGoJ5xAHtsxtoZLPdpG1bnNmr/Jk2Ey5C1+N5sR07wE5LGSph1byFYldV5Ald5yJdxteqzmTV1P5QK2ALoCrtXD+DolRXpzOY/EQj7I/cAbmcNTdSbxU3QCPK1DNBDM6dzDJYJXwYp1Yl9ERkVHBWegEeXSVrld5bpfpJLraexNRyCbTUyevbV5qhBrz6CyU1m8YjLpodFp4xxchTqqLwBLDY65+yCeXbLC4qkLOOfEg6XwfvBaYjLV3KMLRUGENMrWSDgejwtjZHTgRj3kMTzmgZhBdVdpgr9wBA4Pq4lm3y9ocgxclrCv7GTR6q8XCrXOoX/+CYHLBsYcZHVMWPtRfjd5Z5fTo2I1OjsQblhigD4Rz14j1QjS92kKVJHaiqZxakN6HjhF6oKmBqe5x37FX2SNAyJGn8Jt0QVGxFd1QSwVy0NkFhmeI0pz1KNax/gdNtwzGHECPoJn4y2PRlsbfTxabGPAG7hJjaO70AV+0LZ4D2uLrX3OUSLF6LDvOkQFHSgNbcP8ZGxh+RF5j/ibbMLpGNhlmZt0Auh5Fbsi9nqKX/RyOyIgJZPqcQhuRAsk4AzMsWLaN7VJAzKydJ7FQsbR6kuAUIBHEVhcpAi2HqFB1eGhRK+ah5w3am9LupvpCxVAag4V3KLrWfCNCLnGkTWFqylRPdc0lzaKV30SaBA6W6bJhcDkA1JBjwETjfxq4XY6BaLxh+n52mxLBeoi6Z++pPRhVY9YOh31tWJoFJk58jYwTb/23IK/6WDb3wpEsGK5n41/U2Gz0U76FxPOVaIuajmqy/p1NdRfbz539fYK9PBiPAvEZ0+Pwmum60Z4hxYJlUqxCFNVbOR07CGkhWZPKZbMa15Pg286Atk6jYHjsHA14T36yPqDJKf9iEhcIyMp4SfbBiJCb/+1aCDBc5nF/YL2v7shBlnnez4WY6rGKrCSRDQbvhGjlPKuMENEkwvsudtr/q6KAefQP8Kl5cPXVDdKOQ6NOmRUUtIrFupMou5FEIeUx8AcTjrVM+Lg1c/Pr/pLAcUfhqdOD58G5pg8gSpOgIAgY+yM6cwAX9NZEUbjoBPDqEcWShGvOzOJ/KdaNR1dPzWQbSIoGxF9mKHllhdEGxFR9AOyEZNyXx+0TyHlv9vaNuCfsiKEswPyvTd+j7lAkD5NCgFjPgeQCa93mDo1qH5PdQKTP+faQPk9lwDi4nOJX4+R55FOJjRdEzKyJ/tK/hbmx+Uivo/sn0QjjJUTILAkcTxo1fXOmCOCVRr9iFAFmjIiWQqpjQBRZAs/MlyMfLPFmG0KXrumBFA+55etnJl7kfnI6JQ7lG1PcB6fPgbZ4T5w38/xf9p7Ytr9y0nBrXcIYmXg0khSX8//S4rA3LJ0FOZrc/yf6w6SEmR60zBx/lFqF2oKFhhV/LHmqYdAK63+IQ7+W6fRmJMLg+Hu/1vkpxgJKNnAizDYXBQHq21jo192AC8dAauRZ/MehpD0QXuNNFhPoowpKhiqk6iEx+LT2CHGbFIByrjwxNno8zWGOyx9kq5WQd+49xTNK6ecD0OojbXqGizfY75us2HP872Sy8c4FQvraHzhMISAXrB5rg+U3oRLKXxJ0Z9pvpTyiWRK15isVyXOhwA4JgdA8eojT8At/XoEzLl5j8ZL+c6rUZezqF8hq4hO/7fsYzKsZTgtjrD177oc/fB8Zgg/l44AUrehca31jdMI+Xm2VJY/n0DNrKzZEtloY1SDhNN7k5uQHwbdts072ySjth/IfeoOrmrklK5WI+uua96scnZI5/iv30GXGy/xSBfsfkcUtugoa9v2vWvGhuU656Z7xDUbNCdOEa+xYxOifcdcXtQdW9GpyGtzAj81AhnpG0jBdzKY5UmBDFicX+73EJnxvbF83KALzVRQSAXD7BRScTiqEkKEXCyYTipKVKCWFrD8nuiyjZZTZp+WegxmmalJZsu6ZV5orHIdXLJtq98MjGv0plnrAve4tjW47y37Rrcauiq603iQ2bm1rh1hMM7Hl7hqVcdcT13ju340HrrAMcMVmvVcsUab9EuLLmx2LN4DG+zQWnuArcYxuumYtXYvkG9UOq8ouQHORXex9S0iyRH/Daq/TA06y86rQ2y8G19t34XRL89DF6Xi+ZrRJpwPZy9HJwrT+lxrEZs9eqzkDAH2qVMvduQpBZtaKOWsXDTXOfcrC4R4gb1CW+29a7oIobF2zbPbTDeu6b6C7kidh3AGY9XJb3Qr4rljY9Q7xhy5Xuy+H2lvDKnhkmeL2kpEzwYXvsZLPDYiNZyrD5vNKWtg8xDIdcLqbPDp1Y5cKBTGuLwraxWWVfv8JVzk9qoYczpHlIsm66lEFmX7q7ODFQmlLguIE5SiYeQa9JmXRh9/PniSsJBZGe50OrH/wkoWFMfsvprId2zYGPT6+voTwZZnPxr7BC6IpkaOMb1J66f75/P5I52ysPztkp+DmXgv+sRGo19WYyAev2+8r8KTZux9XQ5gUgUfE4IOv6WjXMf2tXyC33h2APR9P4h+NdAvH55qKCK07FM2rbLSTfeKqMBd2KpJ6drUHsJjEwvrPrQn2qqluvNI5lqNQHyICc0QbDipUmC8WRwVdRGj1HqxOdwHvip7ejsPHuEN/Al4+3JoYwu2G9moJsXyxgc/Tk0+4IPqzo0jXoyt8m5pYCu6MO8XRCxwGQh8QgmVE13I2MWya4GuPpxPxFPECzDkOdfV+nA691gqYqYDq6XAPXaNPrsxTsc0iIt4YsvmxJfMHqtAsw+OcwFPHbXjZmPRGFTfNLZLktQT+9lExC4yOSfSU4lukc+v5DIXBKcIP+bILuf9en4m6vIZq9SgopFhs+6W5yDhVjmCpI9SD77GCOUsvE988uQTj4yPp4N+b1QwxpQjzKAHr+3o3KAb28bu0PIkV9vwFv1yl+UbceT/OPZsmH5T6X4Uum18a9hHlpssQuy5jTaDU6/mdDqPfAGKfWs2nOM60ugOHcxPs1cMutACn+89UE2Htgknmxo1RH2c99Z5BkfwaKe30+BG9vCfFaOTJ949Kb027FXlO6ZypK9zCJ/j3ZCcfNYShuvYXBkwAdhWX3qnLxwBvRUecNxpA1nTwmk0UI0xzAMsKkJaqhEQROjhPrlDDuuz8ztgbGxPxmnEEbCMoJvOvFP/A7joj0d5g6PoN9KP5nTqfvPCCGVp4WQHJkcBs8QOCgM/3qMb4eIhf6UrpQYbm/fD4TfXM7qZLlhtQLcL+XgUvG5Pjbce90YXEI/qt67pJDnFfNi6VB+nmbe3w4fccx4s4sEt5gIXQrfgnbrfYRjVqg5gymVl86vFjEC0mZ8pLxqVeoHMJaZeUBYWy3VJH+o3E/Ok5VnZ/OazwamQWNUYFk1LlfdfZYyfKhZAZt2hQW5JPvloutPh3Y2j+CbDzb8KT7w+YJseOXTL118ssAbtaAyQnmzBc4uvjacO93stnbLWdt1vNiNKDc1GXc/dIRj1gc1B6oQ0WRgysK2F2XXSg8wAZQ+IsOWoFVKFHzp7F04SYbE7f9qf6TJbdqKSV6Zp1bmzmCsCw6xfLaMZ9Uk4HnvHF5hiWiCdl7Szr6rCTBWYS8o5LifNyGg8Hl3TNGxtWjiCSRvYx0MnYFp7itY3fHMxaWO2/rqTpGplpUcEV99gHy81vUeg3tTSDyisNPnpfDadb4nzwT48HuWFKNZwwHhMzWSfS+2di0HbdI8qncJXNpB3QDce+Z5JCrxj3nl1KMduizVplcYkrjXD7KsWNKGsQ2/S34sQVU7V/ql193bhKv9VmFgYUeZc3i+od+sa6pOCqYioqmuTHk+MWTYh6blWMDUqlXsTvcK26p7WFV01O4cYN2Z5Zc1F3YRX0q2GEAFGblNxyuV3IWSXZScf5ZOksOC/Tn0XdXSYlpp5obVDWB2kYT0dlM/TZAc4x04Jl10UWfObhdNc2disZH9IPRwIONmgKcO5UCIXUgqif0n2el6ripUgVry40hRWF3vhCRChmjel2d+TozlpHxS5RJm2ld1CSTMQ8b17Mwds9oMU9OXiD+QynbHNqRqlCDT1ldqHbVqcK8Kuj8dkXhcZINKRbOng2NKV3qV7pr3E4b/i20wOFqgGjVTV3tJD5TnSVQ/QnWmn0D5qL8913C0UX0yEQz+kpxjkihPiy1GZZqJgmgWpBWVCosntSB5sGqP+U4Kqqk63+FzSy4qVRRP8tcr6ZzaXotUmO4g0R23irKgXnwXqia6uL/EQjcb/lIMHHUu6t00/8alVZG9MNo4VVc/Vrt7medKROy3Om03GwH1fzgdGw3N0iLLIiXNYcKpEG1N0UxIayCwhMbr+yAtXtZCTSHm/veR+ecyWn9x0kr4TT7NXD8noBjPUhTLNF+tf85GozbfnTTo1itQYaR+ERsemKNYPx4y5xJVlDjfrANcUYzbqS4W5R28D4p3712nq5Zwq/Lukro13zRBuwGemHdefG3J4iN4j81sr1a3n9eqZrd/xcb7eXc9T8r5F8BvoXx3wAXpb99fefeFAq3hyy7GuiEyXr87jxo4sONP9HzqPH1P0qaa8v6I/704Mc8z04krCWW1f2Q4ZDqU/WZBCI/nTHSFVTwut5BvncRfjqIITN3DUNk4stGacaV+rpriNE6b1zGFvjaNX6y44eW5X5pNw4hM49TjxjkzqcZa8egZHnjMzjsnh9DaO2pRJLftLmagbMlErmTyCk/TyMf6ahUzS92fkWB7Qn5Njeb6yk4dk8jfbyQ/WSmM1t1DibVWMKOeOknek4lIsedYKh7+DJFH57JrvLRcc0qvyXMnTM06scFTG0TdwzGocoV9yXDJS5lN4rZWq5qP9ozgxfa9wUsJ1ibPm1cM4K17pR/j7qEzUdZxJJpWjTLLLOPpybps4N+QYKznOa1ATbRU+IZNM+1NyXK37mkziEzgXdrLS33t2cg1H69ty/NvsRElEoPOFPHxmuJoQo+wIpXSSiHMplzj5zSaVXnfNOPmlmJDp6RBmnJAaWuIGjr6Bk/KfjMNTWj3jlPqvjjVOnMdJPnCJk730EsdLC+8ljq3WrRa8Wowz8eoGTnE4Fzg3+FtkYj4hk6s4aQ66eu6WTD4tR21mI65lsl63yjjXZLLF3xtyVNdw7sjkczh6Icflum/L5HEcpf6IneD7D/kz5LmSLM5qOnLKk84hRmo8Kd9LxPAITnquHOTEkiqWRpf4RRy5OePETRyVfsQ5OqnHSWt4HkdNOHrGyeifw1nxtyhD4W+uPqd11zg1r1Y4tUyujvOoTJ7BeVAmC749IBOlv8Df78C5ZycPymSBs5a9/mN28iONOB0uZW5kj134PnFpfmL+vsSZ7l3gVP8W7pcJPoyjNnA2n749jnpibldwyiS2eXUbZ3sctfxerTtpbEF/jFcPy/Eqf78D52+SyZVx1M1x1Dfi3OPvd8jkz9jJjyh/9O/4KyUOcTmbvwv00mk8gKCWE1v/fpbON0AOse6v54tj52H+mfK5SUx936SfoKXzP/E79OfOfL51qfLXpjb/TP/05ui9+Tw8IZ0aiq79NaAddtjhfwP+D1FtbAiAe8iUAAAAAElFTkSuQmCC"
+    },
+    "footholds": {
+      "12": {
+        "id": 12,
+        "next": 18,
+        "prev": 11,
+        "piece": 0,
+        "x1": 1048,
+        "x2": 1465,
+        "y1": -332,
+        "y2": -332,
+        "layerId": 5,
+        "groupId": 0
+      },
+      "8": {
+        "id": 8,
+        "next": 9,
+        "prev": 13,
+        "piece": 0,
+        "x1": -650,
+        "x2": -203,
+        "y1": -332,
+        "y2": -332,
+        "layerId": 5,
+        "groupId": 0
+      },
+      "3": {
+        "id": 3,
+        "next": 0,
+        "prev": 0,
+        "piece": 0,
+        "x1": -410,
+        "x2": -174,
+        "y1": -612,
+        "y2": -612,
+        "layerId": 1,
+        "groupId": 21
+      },
+      "11": {
+        "id": 11,
+        "next": 12,
+        "prev": 10,
+        "piece": 0,
+        "x1": 631,
+        "x2": 1048,
+        "y1": -332,
+        "y2": -332,
+        "layerId": 5,
+        "groupId": 0
+      },
+      "1": {
+        "id": 1,
+        "next": 0,
+        "prev": 0,
+        "piece": 0,
+        "x1": -429,
+        "x2": -153,
+        "y1": -570,
+        "y2": -570,
+        "layerId": 1,
+        "groupId": 21
+      },
+      "10": {
+        "id": 10,
+        "next": 11,
+        "prev": 9,
+        "piece": 0,
+        "x1": 214,
+        "x2": 631,
+        "y1": -332,
+        "y2": -332,
+        "layerId": 5,
+        "groupId": 0
+      },
+      "6": {
+        "id": 6,
+        "next": 0,
+        "prev": 0,
+        "piece": 0,
+        "x1": -663,
+        "x2": 98,
+        "y1": -474,
+        "y2": -474,
+        "layerId": 3,
+        "groupId": 19
+      },
+      "17": {
+        "id": 17,
+        "next": 16,
+        "prev": 0,
+        "piece": 0,
+        "x1": -2340,
+        "x2": -2318,
+        "y1": -332,
+        "y2": -332,
+        "layerId": 5,
+        "groupId": 0
+      },
+      "4": {
+        "id": 4,
+        "next": 0,
+        "prev": 0,
+        "piece": 0,
+        "x1": -399,
+        "x2": -185,
+        "y1": -631,
+        "y2": -631,
+        "layerId": 1,
+        "groupId": 21
+      },
+      "2": {
+        "id": 2,
+        "next": 0,
+        "prev": 0,
+        "piece": 0,
+        "x1": -420,
+        "x2": -162,
+        "y1": -592,
+        "y2": -592,
+        "layerId": 1,
+        "groupId": 21
+      },
+      "14": {
+        "id": 14,
+        "next": 13,
+        "prev": 15,
+        "piece": 0,
+        "x1": -1484,
+        "x2": -1067,
+        "y1": -332,
+        "y2": -332,
+        "layerId": 5,
+        "groupId": 0
+      },
+      "7": {
+        "id": 7,
+        "next": 0,
+        "prev": 0,
+        "piece": 0,
+        "x1": -693,
+        "x2": 121,
+        "y1": -403,
+        "y2": -403,
+        "layerId": 4,
+        "groupId": 10
+      },
+      "13": {
+        "id": 13,
+        "next": 8,
+        "prev": 14,
+        "piece": 0,
+        "x1": -1067,
+        "x2": -650,
+        "y1": -332,
+        "y2": -332,
+        "layerId": 5,
+        "groupId": 0
+      },
+      "5": {
+        "id": 5,
+        "next": 0,
+        "prev": 0,
+        "piece": 0,
+        "x1": -628,
+        "x2": 68,
+        "y1": -544,
+        "y2": -544,
+        "layerId": 2,
+        "groupId": 20
+      },
+      "19": {
+        "id": 19,
+        "next": 0,
+        "prev": 18,
+        "piece": 0,
+        "x1": 1758,
+        "x2": 1803,
+        "y1": -332,
+        "y2": -332,
+        "layerId": 5,
+        "groupId": 1
+      },
+      "18": {
+        "id": 18,
+        "next": 19,
+        "prev": 12,
+        "piece": 0,
+        "x1": 1465,
+        "x2": 1758,
+        "y1": -332,
+        "y2": -332,
+        "layerId": 5,
+        "groupId": 0
+      },
+      "9": {
+        "id": 9,
+        "next": 10,
+        "prev": 8,
+        "piece": 0,
+        "x1": -203,
+        "x2": 214,
+        "y1": -332,
+        "y2": -332,
+        "layerId": 5,
+        "groupId": 0
+      },
+      "16": {
+        "id": 16,
+        "next": 15,
+        "prev": 17,
+        "piece": 0,
+        "x1": -2318,
+        "x2": -1901,
+        "y1": -332,
+        "y2": -332,
+        "layerId": 5,
+        "groupId": 0
+      },
+      "15": {
+        "id": 15,
+        "next": 14,
+        "prev": 16,
+        "piece": 0,
+        "x1": -1901,
+        "x2": -1484,
+        "y1": -332,
+        "y2": -332,
+        "layerId": 5,
+        "groupId": 0
+      }
+    },
+    "minimumLevel": 115,
+    "vrBounds": {
+      "x": -2341,
+      "y": -1010,
+      "width": 4141,
+      "height": 842,
+      "location": {
+        "x": -2341,
+        "y": -1010,
+        "isEmpty": false
+      },
+      "size": {
+        "width": 4141,
+        "height": 842,
+        "isEmpty": false
+      },
+      "isEmpty": false,
+      "top": -1010,
+      "right": 1800,
+      "bottom": -168,
+      "left": -2341
+    },
+    "returnMapName": {
+      "name": "玩具城",
+      "streetName": "玩具城",
+      "id": 220000000
+    },
+    "ladderRopes": [],
+    "name": "時間塔",
+    "streetName": "玩具城",
+    "id": 220080000
+  },
+  "source_archive_sha256": "ea37fe79c409e0070507d4a27052f0b1ec036d53b690f30d7f539c7c254b982c",
+  "composite": {
+    "source_url": "https://maplestory.io/api/TWMS/256/map/220080000/render/0?showBackgrounds=true&showPortals=true",
+    "github_path": "assets/maple/collection/maps/ludibrium/220080000/TWMS-256/composite.png",
+    "width": 4151,
+    "height": 422,
+    "mode": "RGBA",
+    "has_transparency": true,
+    "sha256": "d09086512a66fcb68837b9ce999bd5512c051fc97ed3e77df04c3f062e4657b2",
+    "pixel_sha256": "02ff1589898e2c1a7226f52c997fd1d1912fc66ef4ebcecc3ca211aae884231a",
+    "decode": "pass"
+  },
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "all_wz_numeric_frame_nodes_present": true,
+    "timing_and_origin": "not_applicable",
+    "visual_playback": "not_applicable",
+    "original_wz_binary_compared": false,
+    "independent_resource_canvases": "pass"
+  },
+  "github_path": "assets/maple/collection/maps/ludibrium/220080000/TWMS-256",
+  "status": "collected",
+  "resource_sets": [
+    {
+      "kind": "back",
+      "name": "toyCastleDungeon",
+      "wz_path": "Map.wz/Back/toyCastleDungeon.img",
+      "source_url": "https://maplestory.io/api/wz/export/TWMS/256/Map/Back/toyCastleDungeon.img",
+      "canvas_count": 44,
+      "manifest_path": "assets/maple/collection/maps/ludibrium/shared-resource-sets/TWMS-256/back/toyCastleDungeon/resource-set.json"
+    },
+    {
+      "kind": "obj",
+      "name": "dungeon2",
+      "wz_path": "Map.wz/Obj/dungeon2.img",
+      "source_url": "https://maplestory.io/api/wz/export/TWMS/256/Map/Obj/dungeon2.img",
+      "canvas_count": 706,
+      "manifest_path": "assets/maple/collection/maps/ludibrium/shared-resource-sets/TWMS-256/obj/dungeon2/resource-set.json"
+    }
+  ]
+}

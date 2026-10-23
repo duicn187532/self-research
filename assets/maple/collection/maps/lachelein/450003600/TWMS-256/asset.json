@@ -1,0 +1,192 @@
+{
+  "id": "450003600",
+  "type": "maps",
+  "region": "lachelein",
+  "town": "lachelein",
+  "name": "惡夢時間塔頂端",
+  "name_zh_tw": "惡夢時間塔頂端",
+  "name_zh_tw_status": "source_twms",
+  "source_url": "https://maplestory.io/api/TWMS/256/map/450003600",
+  "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Map/Map/Map4/450003600.img",
+  "wz_path": "Map.wz/Map/Map4/450003600.img",
+  "version": {
+    "region": "TWMS",
+    "version": "256"
+  },
+  "acquired_on": "2026-10-23",
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "exported-canvases",
+      "kind": "map_layers",
+      "frame_count": 1,
+      "expected_frame_count": null,
+      "count_matches_api": null,
+      "indices_contiguous": true,
+      "frames": [
+        {
+          "index": 0,
+          "source_archive_path": "Map-Map-Map4-450003600.img-miniMap-canvas.png",
+          "width": 83,
+          "height": 62,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "f1a32f155e45bf67716050ecc3b21ba7ddb8ad0d6a8d93cfce8d3f1478727c13",
+          "pixel_sha256": "b2f526b78a9e5404abb231dd1c220ec12aa8cc71495e45704731fc0385467937",
+          "github_path": "assets/maple/collection/maps/lachelein/450003600/TWMS-256/layers/Map-Map-Map4-450003600.img-miniMap-canvas.png",
+          "storage": "sha256_reference",
+          "decode": "pass",
+          "duration_ms": null,
+          "origin": null
+        }
+      ]
+    }
+  ],
+  "source_metadata_sha256": "6bee01797ff146bbaefd031708232741a4bdc8a93d37379f492bd30ea48df031",
+  "source_metadata": {
+    "backgroundMusic": "Bgm46/ClockTowerofNightmare",
+    "isReturnMap": false,
+    "returnMap": 450003000,
+    "portals": [
+      {
+        "portalName": "sp",
+        "toName": "",
+        "type": 0,
+        "toMap": 999999999,
+        "x": -106,
+        "y": 19,
+        "isStarForcePortal": false,
+        "index": 0,
+        "unknownExit": true,
+        "bounds": {
+          "x": -106,
+          "y": 19,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -106,
+            "y": 19,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 19,
+          "right": -105,
+          "bottom": 20,
+          "left": -106
+        }
+      },
+      null
+    ],
+    "npcs": [],
+    "mobs": [],
+    "mobRate": 1,
+    "isTown": false,
+    "isSwim": false,
+    "mapMark": "Lacheln",
+    "miniMap": {
+      "centerX": 577,
+      "centerY": 815,
+      "height": 1002,
+      "width": 1328,
+      "magnification": 4,
+      "canvas": "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"
+    },
+    "footholds": {
+      "1": {
+        "id": 1,
+        "next": 0,
+        "prev": 0,
+        "piece": 0,
+        "x1": -359,
+        "x2": 441,
+        "y1": 36,
+        "y2": 36,
+        "layerId": 2,
+        "groupId": 0
+      }
+    },
+    "minimumLevel": 220,
+    "vrBounds": {
+      "x": -1000,
+      "y": -800,
+      "width": 1748,
+      "height": 979,
+      "location": {
+        "x": -1000,
+        "y": -800,
+        "isEmpty": false
+      },
+      "size": {
+        "width": 1748,
+        "height": 979,
+        "isEmpty": false
+      },
+      "isEmpty": false,
+      "top": -800,
+      "right": 748,
+      "bottom": 179,
+      "left": -1000
+    },
+    "returnMapName": {
+      "name": "拉契爾恩市中心",
+      "streetName": "拉契爾恩",
+      "id": 450003000
+    },
+    "ladderRopes": [],
+    "name": "惡夢時間塔頂端",
+    "streetName": "拉契爾恩時間塔",
+    "id": 450003600
+  },
+  "source_archive_sha256": "bb62d099243d3cd16987eabd7fcbd1e3b4fb5d909b8f68eb16773b100973ba61",
+  "composite": {
+    "source_url": "https://maplestory.io/api/TWMS/256/map/450003600/render/0?showBackgrounds=true&showPortals=true",
+    "github_path": "assets/maple/collection/maps/lachelein/450003600/TWMS-256/composite.png",
+    "width": 1328,
+    "height": 1002,
+    "mode": "RGBA",
+    "has_transparency": true,
+    "sha256": "ff4f376b7395f256e861f5f9ac97f6fb1283f75aeb92eb6bcaee405557504035",
+    "pixel_sha256": "ea32cc1fae1955084ac414e1ca940fa8676496da9b33e539ff59533b2551435d",
+    "decode": "pass"
+  },
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "all_wz_numeric_frame_nodes_present": true,
+    "timing_and_origin": "not_applicable",
+    "visual_playback": "not_applicable",
+    "original_wz_binary_compared": false,
+    "independent_resource_canvases": "pass"
+  },
+  "github_path": "assets/maple/collection/maps/lachelein/450003600/TWMS-256",
+  "status": "collected",
+  "resource_sets": [
+    {
+      "kind": "back",
+      "name": "Lacheln",
+      "wz_path": "Map.wz/Back/Lacheln.img",
+      "source_url": "https://maplestory.io/api/wz/export/TWMS/256/Map/Back/Lacheln.img",
+      "canvas_count": 371,
+      "manifest_path": "assets/maple/collection/maps/lachelein/shared-resource-sets/TWMS-256/back/resource-set.json"
+    },
+    {
+      "kind": "obj",
+      "name": "Lacheln",
+      "wz_path": "Map.wz/Obj/Lacheln.img",
+      "source_url": "https://maplestory.io/api/wz/export/TWMS/256/Map/Obj/Lacheln.img",
+      "canvas_count": 655,
+      "manifest_path": "assets/maple/collection/maps/lachelein/shared-resource-sets/TWMS-256/obj/resource-set.json"
+    }
+  ]
+}

@@ -1,0 +1,854 @@
+{
+  "id": "2020000",
+  "type": "npc",
+  "region": "el-nath",
+  "town": "冰原雪域",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": "伯堅",
+  "name_zh_tw_status": "source_twms",
+  "source_url": "https://maplestory.io/api/TWMS/256/npc/2020000",
+  "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Npc/2020000.img",
+  "wz_path": "Npc.wz/2020000.img",
+  "version": {
+    "region": "TWMS",
+    "version": "256"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "angry",
+      "frame_count": 12,
+      "expected_frame_count": 12,
+      "frames": [
+        {
+          "index": 0,
+          "width": 59,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "dfcfbf415868a3ab32a49c950b6782d7d9621efb07f0e4d5773acb7c62ca3ff5",
+          "pixel_sha256": "e5f9eef413070879b70454ed51c5493c52bd92ad09d9bf8c3a66f1d39f946fde",
+          "wz_path": "Npc.wz/2020000.img/angry/0",
+          "duration_ms": 1000,
+          "origin": {
+            "x": 29,
+            "y": 77
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/el-nath/2020000/TWMS-256/angry/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 59,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "c093c5b4cb8f39a9c6726a729758ccfa4167b2bb3e8f23fdeb011b606b6ccf88",
+          "pixel_sha256": "7464ccfbbb92b573d7f918d029705c26744a09ec996641fefedae9efcb3355c1",
+          "wz_path": "Npc.wz/2020000.img/angry/1",
+          "duration_ms": 150,
+          "origin": {
+            "x": 29,
+            "y": 77
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/el-nath/2020000/TWMS-256/angry/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 59,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "dfcfbf415868a3ab32a49c950b6782d7d9621efb07f0e4d5773acb7c62ca3ff5",
+          "pixel_sha256": "e5f9eef413070879b70454ed51c5493c52bd92ad09d9bf8c3a66f1d39f946fde",
+          "wz_path": "Npc.wz/2020000.img/angry/2",
+          "duration_ms": 200,
+          "origin": {
+            "x": 29,
+            "y": 77
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/el-nath/2020000/TWMS-256/angry/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "c9e25f4171f3a5551526bd25b92d8eda5b60767c71ff666c02de6c72f90ae719"
+        },
+        {
+          "index": 3,
+          "width": 59,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "c093c5b4cb8f39a9c6726a729758ccfa4167b2bb3e8f23fdeb011b606b6ccf88",
+          "pixel_sha256": "7464ccfbbb92b573d7f918d029705c26744a09ec996641fefedae9efcb3355c1",
+          "wz_path": "Npc.wz/2020000.img/angry/3",
+          "duration_ms": 150,
+          "origin": {
+            "x": 29,
+            "y": 77
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2020000/render/angry/3",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/el-nath/2020000/TWMS-256/angry/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "553b0ed19eed3ef4ca8a2e9b570640af13f3a185a980554f25c47ea07dfe664a"
+        },
+        {
+          "index": 4,
+          "width": 59,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "dfcfbf415868a3ab32a49c950b6782d7d9621efb07f0e4d5773acb7c62ca3ff5",
+          "pixel_sha256": "e5f9eef413070879b70454ed51c5493c52bd92ad09d9bf8c3a66f1d39f946fde",
+          "wz_path": "Npc.wz/2020000.img/angry/4",
+          "duration_ms": 500,
+          "origin": {
+            "x": 29,
+            "y": 77
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/el-nath/2020000/TWMS-256/angry/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "a7fe7b3edcb26ad2103585e88997203ece9428a0fb4b08a619b0c476e9a52f07"
+        },
+        {
+          "index": 5,
+          "width": 64,
+          "height": 76,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "b456fd1328be14e7a2344ce57874bfbffa150ae23ac70ea57c24ebdf082d7331",
+          "pixel_sha256": "6ac057e83b0122cb413ae8b20ac01d787a0f48dc933488e8c11653e17fc17803",
+          "wz_path": "Npc.wz/2020000.img/angry/5",
+          "duration_ms": 200,
+          "origin": {
+            "x": 34,
+            "y": 76
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/el-nath/2020000/TWMS-256/angry/0005.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 6,
+          "width": 65,
+          "height": 76,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "639ef5ca72bf16854091cf8e2965a1caaf0dc34f068485f49c872b459f03fac0",
+          "pixel_sha256": "1bc7d8e978b2c6c7cd127492f4d7be40d932836ac3bd1ca5053b26c6da0c82f7",
+          "wz_path": "Npc.wz/2020000.img/angry/6",
+          "duration_ms": 200,
+          "origin": {
+            "x": 35,
+            "y": 76
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/el-nath/2020000/TWMS-256/angry/0006.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 7,
+          "width": 65,
+          "height": 76,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "be7d7706de2ebc2137fcc47e54e118da06875e531d59f399b309deac12d8f48a",
+          "pixel_sha256": "0f30e4c4da1679038822e0aca0c4bbd67cb0853d6c3fe271df12c6068d9791be",
+          "wz_path": "Npc.wz/2020000.img/angry/7",
+          "duration_ms": 200,
+          "origin": {
+            "x": 35,
+            "y": 76
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/el-nath/2020000/TWMS-256/angry/0007.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 8,
+          "width": 65,
+          "height": 76,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "639ef5ca72bf16854091cf8e2965a1caaf0dc34f068485f49c872b459f03fac0",
+          "pixel_sha256": "1bc7d8e978b2c6c7cd127492f4d7be40d932836ac3bd1ca5053b26c6da0c82f7",
+          "wz_path": "Npc.wz/2020000.img/angry/8",
+          "duration_ms": 500,
+          "origin": {
+            "x": 35,
+            "y": 76
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/el-nath/2020000/TWMS-256/angry/0006.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "37cbcf55a1c2308d08499f0ed8f49f89d86f68d8332203eafb2053e199a17ee6"
+        },
+        {
+          "index": 9,
+          "width": 65,
+          "height": 76,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "8b2955a7be10530750f0361228031d81f995e9ca2076c23944e63f87ce3aa887",
+          "pixel_sha256": "f9b9fe4e5f723701782ccd67a6c9cfaf39580ec4a71e6a28aea86b6f4070372a",
+          "wz_path": "Npc.wz/2020000.img/angry/9",
+          "duration_ms": 150,
+          "origin": {
+            "x": 35,
+            "y": 76
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/el-nath/2020000/TWMS-256/angry/0009.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 10,
+          "width": 64,
+          "height": 76,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "b456fd1328be14e7a2344ce57874bfbffa150ae23ac70ea57c24ebdf082d7331",
+          "pixel_sha256": "6ac057e83b0122cb413ae8b20ac01d787a0f48dc933488e8c11653e17fc17803",
+          "wz_path": "Npc.wz/2020000.img/angry/10",
+          "duration_ms": 200,
+          "origin": {
+            "x": 34,
+            "y": 76
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2020000/render/angry/10",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/el-nath/2020000/TWMS-256/angry/0005.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "6c32558ce0ec788d9afa8d09bb1d63611ec75256be877dadb6764168b8a8979b"
+        },
+        {
+          "index": 11,
+          "width": 59,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "dfcfbf415868a3ab32a49c950b6782d7d9621efb07f0e4d5773acb7c62ca3ff5",
+          "pixel_sha256": "e5f9eef413070879b70454ed51c5493c52bd92ad09d9bf8c3a66f1d39f946fde",
+          "wz_path": "Npc.wz/2020000.img/angry/11",
+          "duration_ms": 1000,
+          "origin": {
+            "x": 29,
+            "y": 77
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/el-nath/2020000/TWMS-256/angry/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "3af4e2530ddd364d368a5c70fef18b9f0a6d132f75bdce9be6d87d3860208a27"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Npc/2020000.img/angry",
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "say0",
+      "frame_count": 18,
+      "expected_frame_count": 18,
+      "frames": [
+        {
+          "index": 0,
+          "width": 59,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "dfcfbf415868a3ab32a49c950b6782d7d9621efb07f0e4d5773acb7c62ca3ff5",
+          "pixel_sha256": "e5f9eef413070879b70454ed51c5493c52bd92ad09d9bf8c3a66f1d39f946fde",
+          "wz_path": "Npc.wz/2020000.img/say0/0",
+          "duration_ms": 250,
+          "origin": {
+            "x": 29,
+            "y": 77
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/el-nath/2020000/TWMS-256/angry/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "6a89349d6f176eb883a19931602d58a622681f58caba5d8c162a68c482bb3cee"
+        },
+        {
+          "index": 1,
+          "width": 59,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "bffb223c40442993348bc6a51178301594f16c61967ecee4bfb3759d5b3a7226",
+          "pixel_sha256": "e23aa41034f2c4c4c141434051d83c19e799f88f40c7b886eb3a276fc32cc78d",
+          "wz_path": "Npc.wz/2020000.img/say0/1",
+          "duration_ms": 250,
+          "origin": {
+            "x": 29,
+            "y": 77
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/el-nath/2020000/TWMS-256/say0/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 59,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "dfcfbf415868a3ab32a49c950b6782d7d9621efb07f0e4d5773acb7c62ca3ff5",
+          "pixel_sha256": "e5f9eef413070879b70454ed51c5493c52bd92ad09d9bf8c3a66f1d39f946fde",
+          "wz_path": "Npc.wz/2020000.img/say0/2",
+          "duration_ms": 250,
+          "origin": {
+            "x": 29,
+            "y": 77
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2020000/render/say0/2",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/el-nath/2020000/TWMS-256/angry/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "5ef8d7cd9123e6e2bb51e0d85981e0adf6f4cad2599be9e55fb66f21c2d0aa2c"
+        },
+        {
+          "index": 3,
+          "width": 59,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "bffb223c40442993348bc6a51178301594f16c61967ecee4bfb3759d5b3a7226",
+          "pixel_sha256": "e23aa41034f2c4c4c141434051d83c19e799f88f40c7b886eb3a276fc32cc78d",
+          "wz_path": "Npc.wz/2020000.img/say0/3",
+          "duration_ms": 250,
+          "origin": {
+            "x": 29,
+            "y": 77
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2020000/render/say0/3",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/el-nath/2020000/TWMS-256/say0/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "1cd7485d96b9bbb481a8308293de28d045755e08e58fbd90fda0561cd60b7a73"
+        },
+        {
+          "index": 4,
+          "width": 59,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "dfcfbf415868a3ab32a49c950b6782d7d9621efb07f0e4d5773acb7c62ca3ff5",
+          "pixel_sha256": "e5f9eef413070879b70454ed51c5493c52bd92ad09d9bf8c3a66f1d39f946fde",
+          "wz_path": "Npc.wz/2020000.img/say0/4",
+          "duration_ms": 250,
+          "origin": {
+            "x": 29,
+            "y": 77
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2020000/render/say0/4",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/el-nath/2020000/TWMS-256/angry/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "285932b20466a988c05c9bc2114f1fbc4a749a0f4d0e5826177fffcfab46ab1a"
+        },
+        {
+          "index": 5,
+          "width": 59,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "bffb223c40442993348bc6a51178301594f16c61967ecee4bfb3759d5b3a7226",
+          "pixel_sha256": "e23aa41034f2c4c4c141434051d83c19e799f88f40c7b886eb3a276fc32cc78d",
+          "wz_path": "Npc.wz/2020000.img/say0/5",
+          "duration_ms": 250,
+          "origin": {
+            "x": 29,
+            "y": 77
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2020000/render/say0/5",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/el-nath/2020000/TWMS-256/say0/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "ddb6db7c32127d22ca0e97629eb2b95d5e25ea03818399711ec960eae55d3e25"
+        },
+        {
+          "index": 6,
+          "width": 59,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "dfcfbf415868a3ab32a49c950b6782d7d9621efb07f0e4d5773acb7c62ca3ff5",
+          "pixel_sha256": "e5f9eef413070879b70454ed51c5493c52bd92ad09d9bf8c3a66f1d39f946fde",
+          "wz_path": "Npc.wz/2020000.img/say0/6",
+          "duration_ms": 250,
+          "origin": {
+            "x": 29,
+            "y": 77
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2020000/render/say0/6",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/el-nath/2020000/TWMS-256/angry/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "efaba8b899cab9acf5b953e34a441b3769b8c37af92e62401034ab071e1fa807"
+        },
+        {
+          "index": 7,
+          "width": 59,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "bffb223c40442993348bc6a51178301594f16c61967ecee4bfb3759d5b3a7226",
+          "pixel_sha256": "e23aa41034f2c4c4c141434051d83c19e799f88f40c7b886eb3a276fc32cc78d",
+          "wz_path": "Npc.wz/2020000.img/say0/7",
+          "duration_ms": 250,
+          "origin": {
+            "x": 29,
+            "y": 77
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2020000/render/say0/7",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/el-nath/2020000/TWMS-256/say0/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "b146c54571f3c5a65df655830ed667811d6b2fb786040165762cd08973e4e437"
+        },
+        {
+          "index": 8,
+          "width": 59,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "dfcfbf415868a3ab32a49c950b6782d7d9621efb07f0e4d5773acb7c62ca3ff5",
+          "pixel_sha256": "e5f9eef413070879b70454ed51c5493c52bd92ad09d9bf8c3a66f1d39f946fde",
+          "wz_path": "Npc.wz/2020000.img/say0/8",
+          "duration_ms": 250,
+          "origin": {
+            "x": 29,
+            "y": 77
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2020000/render/say0/8",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/el-nath/2020000/TWMS-256/angry/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "28de3cc09afadf1c0f43c15c834f1777ed08d96243fd43cdd7a769a9ddcc9436"
+        },
+        {
+          "index": 9,
+          "width": 59,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "bffb223c40442993348bc6a51178301594f16c61967ecee4bfb3759d5b3a7226",
+          "pixel_sha256": "e23aa41034f2c4c4c141434051d83c19e799f88f40c7b886eb3a276fc32cc78d",
+          "wz_path": "Npc.wz/2020000.img/say0/9",
+          "duration_ms": 250,
+          "origin": {
+            "x": 29,
+            "y": 77
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2020000/render/say0/9",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/el-nath/2020000/TWMS-256/say0/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "5c519bd2403f26cf933b8156c5e39a5b186518440c784cd94526b0398aeb870f"
+        },
+        {
+          "index": 10,
+          "width": 59,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "dfcfbf415868a3ab32a49c950b6782d7d9621efb07f0e4d5773acb7c62ca3ff5",
+          "pixel_sha256": "e5f9eef413070879b70454ed51c5493c52bd92ad09d9bf8c3a66f1d39f946fde",
+          "wz_path": "Npc.wz/2020000.img/say0/10",
+          "duration_ms": 250,
+          "origin": {
+            "x": 29,
+            "y": 77
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2020000/render/say0/10",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/el-nath/2020000/TWMS-256/angry/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "ebd02d74028a35a22dcf5f1d6a58d60eae923280d33587481c7e721d314da09d"
+        },
+        {
+          "index": 11,
+          "width": 59,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "bffb223c40442993348bc6a51178301594f16c61967ecee4bfb3759d5b3a7226",
+          "pixel_sha256": "e23aa41034f2c4c4c141434051d83c19e799f88f40c7b886eb3a276fc32cc78d",
+          "wz_path": "Npc.wz/2020000.img/say0/11",
+          "duration_ms": 250,
+          "origin": {
+            "x": 29,
+            "y": 77
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2020000/render/say0/11",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/el-nath/2020000/TWMS-256/say0/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "52d485901b23b61fd0cbe657bfdd4889f9dd606d48132cb7a0d296abd9daad10"
+        },
+        {
+          "index": 12,
+          "width": 59,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "dfcfbf415868a3ab32a49c950b6782d7d9621efb07f0e4d5773acb7c62ca3ff5",
+          "pixel_sha256": "e5f9eef413070879b70454ed51c5493c52bd92ad09d9bf8c3a66f1d39f946fde",
+          "wz_path": "Npc.wz/2020000.img/say0/12",
+          "duration_ms": 250,
+          "origin": {
+            "x": 29,
+            "y": 77
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2020000/render/say0/12",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/el-nath/2020000/TWMS-256/angry/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "66bda8056d75f037827e2003fa98ffe8368e3c68deed91474c0d87c799ef795d"
+        },
+        {
+          "index": 13,
+          "width": 59,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "bffb223c40442993348bc6a51178301594f16c61967ecee4bfb3759d5b3a7226",
+          "pixel_sha256": "e23aa41034f2c4c4c141434051d83c19e799f88f40c7b886eb3a276fc32cc78d",
+          "wz_path": "Npc.wz/2020000.img/say0/13",
+          "duration_ms": 250,
+          "origin": {
+            "x": 29,
+            "y": 77
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2020000/render/say0/13",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/el-nath/2020000/TWMS-256/say0/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "6da4a84bb34d696f65c11e07dbf139de3eeb98f57883ab3372e301d55f76382b"
+        },
+        {
+          "index": 14,
+          "width": 59,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "dfcfbf415868a3ab32a49c950b6782d7d9621efb07f0e4d5773acb7c62ca3ff5",
+          "pixel_sha256": "e5f9eef413070879b70454ed51c5493c52bd92ad09d9bf8c3a66f1d39f946fde",
+          "wz_path": "Npc.wz/2020000.img/say0/14",
+          "duration_ms": 250,
+          "origin": {
+            "x": 29,
+            "y": 77
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2020000/render/say0/14",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/el-nath/2020000/TWMS-256/angry/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "e1631671e22655191e1b05a2acda6a37d05c54e66ef6e9b3fd01a8405819de88"
+        },
+        {
+          "index": 15,
+          "width": 59,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "bffb223c40442993348bc6a51178301594f16c61967ecee4bfb3759d5b3a7226",
+          "pixel_sha256": "e23aa41034f2c4c4c141434051d83c19e799f88f40c7b886eb3a276fc32cc78d",
+          "wz_path": "Npc.wz/2020000.img/say0/15",
+          "duration_ms": 250,
+          "origin": {
+            "x": 29,
+            "y": 77
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2020000/render/say0/15",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/el-nath/2020000/TWMS-256/say0/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "f18f2eafad9097588837a2125f219a46c749aa4640f0275519222ae3b19f3c89"
+        },
+        {
+          "index": 16,
+          "width": 59,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "dfcfbf415868a3ab32a49c950b6782d7d9621efb07f0e4d5773acb7c62ca3ff5",
+          "pixel_sha256": "e5f9eef413070879b70454ed51c5493c52bd92ad09d9bf8c3a66f1d39f946fde",
+          "wz_path": "Npc.wz/2020000.img/say0/16",
+          "duration_ms": 250,
+          "origin": {
+            "x": 29,
+            "y": 77
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2020000/render/say0/16",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/el-nath/2020000/TWMS-256/angry/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "f6cb63762e5b7ca7f206e7b41fafebea2ec0765eab050704af38087fa3becdb6"
+        },
+        {
+          "index": 17,
+          "width": 59,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "bffb223c40442993348bc6a51178301594f16c61967ecee4bfb3759d5b3a7226",
+          "pixel_sha256": "e23aa41034f2c4c4c141434051d83c19e799f88f40c7b886eb3a276fc32cc78d",
+          "wz_path": "Npc.wz/2020000.img/say0/17",
+          "duration_ms": 250,
+          "origin": {
+            "x": 29,
+            "y": 77
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2020000/render/say0/17",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/el-nath/2020000/TWMS-256/say0/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "e5675e2a2e964e1953c40c3dd5539f9dd49577e6c2ad6d7407126e4de93f73ba"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Npc/2020000.img/say0",
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "stand",
+      "frame_count": 4,
+      "expected_frame_count": 4,
+      "frames": [
+        {
+          "index": 0,
+          "width": 59,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "dfcfbf415868a3ab32a49c950b6782d7d9621efb07f0e4d5773acb7c62ca3ff5",
+          "pixel_sha256": "e5f9eef413070879b70454ed51c5493c52bd92ad09d9bf8c3a66f1d39f946fde",
+          "wz_path": "Npc.wz/2020000.img/stand/0",
+          "duration_ms": 3000,
+          "origin": {
+            "x": 29,
+            "y": 77
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/el-nath/2020000/TWMS-256/angry/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "ee88a6150403421dde236438ccbc2489efd3d4fbc3f003dc5be00a0bdeba18db"
+        },
+        {
+          "index": 1,
+          "width": 59,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "c093c5b4cb8f39a9c6726a729758ccfa4167b2bb3e8f23fdeb011b606b6ccf88",
+          "pixel_sha256": "7464ccfbbb92b573d7f918d029705c26744a09ec996641fefedae9efcb3355c1",
+          "wz_path": "Npc.wz/2020000.img/stand/1",
+          "duration_ms": 150,
+          "origin": {
+            "x": 29,
+            "y": 77
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/el-nath/2020000/TWMS-256/angry/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "6538c006c052941724823c3087dbb1b8aeba04f58288177ed68e8034bbf167d6"
+        },
+        {
+          "index": 2,
+          "width": 59,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "dfcfbf415868a3ab32a49c950b6782d7d9621efb07f0e4d5773acb7c62ca3ff5",
+          "pixel_sha256": "e5f9eef413070879b70454ed51c5493c52bd92ad09d9bf8c3a66f1d39f946fde",
+          "wz_path": "Npc.wz/2020000.img/stand/2",
+          "duration_ms": 200,
+          "origin": {
+            "x": 29,
+            "y": 77
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/el-nath/2020000/TWMS-256/angry/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "e9c8c0032aa854a27eeac5045219760d2ee36cf2782381deab710505b0e65adb"
+        },
+        {
+          "index": 3,
+          "width": 59,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "c093c5b4cb8f39a9c6726a729758ccfa4167b2bb3e8f23fdeb011b606b6ccf88",
+          "pixel_sha256": "7464ccfbbb92b573d7f918d029705c26744a09ec996641fefedae9efcb3355c1",
+          "wz_path": "Npc.wz/2020000.img/stand/3",
+          "duration_ms": 150,
+          "origin": {
+            "x": 29,
+            "y": 77
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2020000/render/stand/3",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/el-nath/2020000/TWMS-256/angry/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "7736820466cb6546d42d417c6770bbb7ad1da51d6c8e93f9f89c7c94bf8f6b46"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Npc/2020000.img/stand",
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "伯堅",
+  "role": "冶煉專家",
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "冰原雪域市集",
+      "streetName": "艾納斯大陸",
+      "id": 211000100
+    }
+  ],
+  "expected_actions": {
+    "angry": 12,
+    "say0": 18,
+    "stand": 4
+  },
+  "source_metadata_sha256": "da646d9b606574aaa78409d273e3bc177ce963f99e5a2875561c04e0c9f50372",
+  "source_archive_sha256": "b176b09af687d6b2e258affff3b36187bf433f03ea1d723c5fcbc8cc4b2da9da",
+  "source_frame_indices": {
+    "angry": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "say0": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ],
+    "stand": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "complete",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
+  },
+  "github_path": "assets/maple/collection/npc/el-nath/2020000/TWMS-256",
+  "status": "collected"
+}

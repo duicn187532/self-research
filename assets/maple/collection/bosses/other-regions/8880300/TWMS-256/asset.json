@@ -1,0 +1,311 @@
+{
+  "id": "8880300",
+  "type": "bosses",
+  "region": "other-regions",
+  "town": "esfera",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": "威爾 第一階段",
+  "name_zh_tw_status": "unverified_translation",
+  "source_url": "https://maplestory.io/api/TWMS/256/mob/8880300",
+  "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Mob/8880300.img",
+  "wz_path": "Mob.wz/8880300.img",
+  "version": {
+    "region": "TWMS",
+    "version": "256"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "die1",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 1,
+          "height": 1,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "aac47e8d39add213b54b9bfe239571d9e3c8415480f54c6a692365efcd5abb7f",
+          "pixel_sha256": "a79246fb5dcd05b249389b79a05343236b9a541a75c1c474ae9433a8f882e3c4",
+          "wz_path": "Mob.wz/8880300.img/die1/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 0,
+            "y": 0
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880300/render/die1/0",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/lachelein/3003245/TWMS-256/remove/0000.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "7a2819228b8028b4ae0966834f1783e96d5a4a917c138ecfc058f12f795f7b21"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Mob/8880300.img/die1",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "hit1",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 1,
+          "height": 1,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "aac47e8d39add213b54b9bfe239571d9e3c8415480f54c6a692365efcd5abb7f",
+          "pixel_sha256": "a79246fb5dcd05b249389b79a05343236b9a541a75c1c474ae9433a8f882e3c4",
+          "wz_path": "Mob.wz/8880300.img/hit1/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 0,
+            "y": 0
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880300/render/hit1/0",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/lachelein/3003245/TWMS-256/remove/0000.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "06f77e3a91298a9d27fadbe5a6c7ca96b00008dc9a7ce785e4ed33f28848cecf"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Mob/8880300.img/hit1",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "skill1",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 1,
+          "height": 1,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "aac47e8d39add213b54b9bfe239571d9e3c8415480f54c6a692365efcd5abb7f",
+          "pixel_sha256": "a79246fb5dcd05b249389b79a05343236b9a541a75c1c474ae9433a8f882e3c4",
+          "wz_path": "Mob.wz/8880300.img/skill1/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 0,
+            "y": 0
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/lachelein/3003245/TWMS-256/remove/0000.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "4dc4c757c1245e137c250c64995c7585bcfae789b7db2ea6840d05a37714479a"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Mob/8880300.img/skill1",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "skill2",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 1,
+          "height": 1,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "aac47e8d39add213b54b9bfe239571d9e3c8415480f54c6a692365efcd5abb7f",
+          "pixel_sha256": "a79246fb5dcd05b249389b79a05343236b9a541a75c1c474ae9433a8f882e3c4",
+          "wz_path": "Mob.wz/8880300.img/skill2/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 0,
+            "y": 0
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/lachelein/3003245/TWMS-256/remove/0000.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "7a90af4f9372037fbe5624549af7fc31e0a654e29ae812394f68ad8043699f48"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Mob/8880300.img/skill2",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "skill3",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 1,
+          "height": 1,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "aac47e8d39add213b54b9bfe239571d9e3c8415480f54c6a692365efcd5abb7f",
+          "pixel_sha256": "a79246fb5dcd05b249389b79a05343236b9a541a75c1c474ae9433a8f882e3c4",
+          "wz_path": "Mob.wz/8880300.img/skill3/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 0,
+            "y": 0
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/lachelein/3003245/TWMS-256/remove/0000.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "29ccb6747b97f8c1f9f908d836d0a8cbe01017d50b00df5ebde580abc10c84c9"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Mob/8880300.img/skill3",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "stand",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 1,
+          "height": 1,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "aac47e8d39add213b54b9bfe239571d9e3c8415480f54c6a692365efcd5abb7f",
+          "pixel_sha256": "a79246fb5dcd05b249389b79a05343236b9a541a75c1c474ae9433a8f882e3c4",
+          "wz_path": "Mob.wz/8880300.img/stand/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 0,
+            "y": 0
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/lachelein/3003245/TWMS-256/remove/0000.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "9220a7917e2fb795b407522a10ef8230b4d455b4b733334887ef9de8277c9d79"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Mob/8880300.img/stand",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "威爾",
+  "role": null,
+  "is_shop": null,
+  "source_locations": [],
+  "expected_actions": {
+    "die1": 1,
+    "hit1": 1,
+    "skill1": 1,
+    "skill2": 1,
+    "skill3": 1,
+    "stand": 1
+  },
+  "source_metadata_sha256": "535375a2336b8f6845e612d9cc2a4292272abe515af1069b384d429edb931c58",
+  "source_archive_sha256": "556556f1697667506215c50a8ac070f0e890af58a0351ddbf019e9890eab1c9f",
+  "unmapped_export_nodes": [
+    "Mob-8880300.img-info-thumbnail.png"
+  ],
+  "source_frame_indices": {
+    "die1": [
+      0
+    ],
+    "hit1": [
+      0
+    ],
+    "skill1": [
+      0
+    ],
+    "skill2": [
+      0
+    ],
+    "skill3": [
+      0
+    ],
+    "stand": [
+      0
+    ]
+  },
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "partial",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
+  },
+  "github_path": "assets/maple/collection/bosses/other-regions/8880300/TWMS-256",
+  "status": "collected"
+}

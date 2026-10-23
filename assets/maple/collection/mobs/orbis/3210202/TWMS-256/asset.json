@@ -1,0 +1,458 @@
+{
+  "id": "3210202",
+  "type": "mobs",
+  "region": "orbis",
+  "town": "天空之城",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": "幼藍獨角獅",
+  "name_zh_tw_status": "source_twms",
+  "source_url": "https://maplestory.io/api/TWMS/256/mob/3210202",
+  "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Mob/3210202.img",
+  "wz_path": "Mob.wz/3210202.img",
+  "version": {
+    "region": "TWMS",
+    "version": "256"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "die1",
+      "frame_count": 4,
+      "expected_frame_count": 4,
+      "frames": [
+        {
+          "index": 0,
+          "width": 39,
+          "height": 47,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "d1f78f06015c81326a8ac00181674781ab932f6544bc3d08760c1f79f4d98d1f",
+          "pixel_sha256": "ddb7570cf46ea91ae4ab05819f1cc17e6d4b513ff09a7c871b499825654588c7",
+          "wz_path": "Mob.wz/3210202.img/die1/0",
+          "duration_ms": 200,
+          "origin": {
+            "x": 19,
+            "y": 47
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/orbis/3210202/TWMS-256/die1/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 40,
+          "height": 41,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "a1aef73a48abfc1513fbb9a056133f5ea56d867c4e38c764f5e957db1903bb3b",
+          "pixel_sha256": "6f978a95eb4cd5feb3c9bcbfa4f6477dbd05a0947349f722580f96d475c21451",
+          "wz_path": "Mob.wz/3210202.img/die1/1",
+          "duration_ms": 120,
+          "origin": {
+            "x": 22,
+            "y": 41
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/orbis/3210202/TWMS-256/die1/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 43,
+          "height": 37,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "c1b30c49e3a90aae1dd379fc1c53a3cf6c864c73357ff43665c7db5e349f8330",
+          "pixel_sha256": "f623a62f2914af072239ea6dc3c30f7c2310fb1380675d7c98c6511f5deec268",
+          "wz_path": "Mob.wz/3210202.img/die1/2",
+          "duration_ms": 120,
+          "origin": {
+            "x": 28,
+            "y": 37
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/orbis/3210202/TWMS-256/die1/0002.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 3,
+          "width": 43,
+          "height": 35,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "3f04f9bf61afb7a6ff0659151218bf92c1d6cd2f52216f8a8ad2b9567a96fd58",
+          "pixel_sha256": "c5a44a10200dcd2e367ce9f2ab4e3b31efb4187f8c3bb67fbee62f818d56fa95",
+          "wz_path": "Mob.wz/3210202.img/die1/3",
+          "duration_ms": 300,
+          "origin": {
+            "x": 29,
+            "y": 35
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/orbis/3210202/TWMS-256/die1/0003.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Mob/3210202.img/die1",
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "hit1",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 39,
+          "height": 47,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "d1f78f06015c81326a8ac00181674781ab932f6544bc3d08760c1f79f4d98d1f",
+          "pixel_sha256": "ddb7570cf46ea91ae4ab05819f1cc17e6d4b513ff09a7c871b499825654588c7",
+          "wz_path": "Mob.wz/3210202.img/hit1/0",
+          "duration_ms": 300,
+          "origin": {
+            "x": 19,
+            "y": 47
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/orbis/3210202/TWMS-256/die1/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "184819a701a028fd8a47106da8e298bd64e28437874d704748134055d87c4c7b"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Mob/3210202.img/hit1",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "jump",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 36,
+          "height": 43,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "35164895e4eaec29f220243430f8ba417774e350e81ab33a61c3a098802f0396",
+          "pixel_sha256": "076698191a2d1c7745ecc5ba714e3f9764260de7526686f99dcaac58c9e7b392",
+          "wz_path": "Mob.wz/3210202.img/jump/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 18,
+            "y": 43
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/orbis/3210202/TWMS-256/jump/0000.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Mob/3210202.img/jump",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "move",
+      "frame_count": 3,
+      "expected_frame_count": 3,
+      "frames": [
+        {
+          "index": 0,
+          "width": 36,
+          "height": 43,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "35164895e4eaec29f220243430f8ba417774e350e81ab33a61c3a098802f0396",
+          "pixel_sha256": "076698191a2d1c7745ecc5ba714e3f9764260de7526686f99dcaac58c9e7b392",
+          "wz_path": "Mob.wz/3210202.img/move/0",
+          "duration_ms": 150,
+          "origin": {
+            "x": 18,
+            "y": 43
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/orbis/3210202/TWMS-256/jump/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "fc7c997b417c692f2d1cd4c1ab0116dc11744b74eaec4c8c0a713be866c1f3ff"
+        },
+        {
+          "index": 1,
+          "width": 38,
+          "height": 40,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "00cab2d4df2bc328dd344503cc911147052d494c1bf84a83101e4849bc56aba1",
+          "pixel_sha256": "96ad2626e0348799e2b4c07cdb36593cf90f86b0751ec7a77a32d4d7559655ca",
+          "wz_path": "Mob.wz/3210202.img/move/1",
+          "duration_ms": 100,
+          "origin": {
+            "x": 18,
+            "y": 40
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/orbis/3210202/TWMS-256/move/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 40,
+          "height": 42,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "db7f264ec4c4debe4736de630338b2c2434a00cb2b64b438fd69977030f6b0be",
+          "pixel_sha256": "5ec01d4d38eca6456c72f740ea9bd88e54d001272b81177722e79d706cdf7d42",
+          "wz_path": "Mob.wz/3210202.img/move/2",
+          "duration_ms": 150,
+          "origin": {
+            "x": 18,
+            "y": 42
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/orbis/3210202/TWMS-256/move/0002.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Mob/3210202.img/move",
+        "indices": [
+          0,
+          1,
+          2
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "stand",
+      "frame_count": 6,
+      "expected_frame_count": 6,
+      "frames": [
+        {
+          "index": 0,
+          "width": 35,
+          "height": 43,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "db087c0cf55d79ea2f3bf0cc8563275b98b43ed28bd953b7d441be09b4115d3c",
+          "pixel_sha256": "9dff82c7da327c67aacc7d9cd9c08495acebc6909c3ebaea132e1a27f750831b",
+          "wz_path": "Mob.wz/3210202.img/stand/0",
+          "duration_ms": 2000,
+          "origin": {
+            "x": 19,
+            "y": 43
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/orbis/3210202/TWMS-256/stand/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 35,
+          "height": 43,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "e0a97500f77c75d2c4fa377cb4ce8ff39e6133cbef05f28eaa3f95f61def6199",
+          "pixel_sha256": "80867a713d27e57b848a5cb5d0daab712531a8e6c3bc9abedabd5c2a37488f7d",
+          "wz_path": "Mob.wz/3210202.img/stand/1",
+          "duration_ms": 70,
+          "origin": {
+            "x": 19,
+            "y": 43
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/orbis/3210202/TWMS-256/stand/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 35,
+          "height": 43,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "76a94918e31698ec3833b57c8b6d13b6460bdae73e90794a553c02243f90f5d0",
+          "pixel_sha256": "3f00457b1611f1c74aab0c6895659f3deda7a2e941f67b3df6c17e4ac19438ad",
+          "wz_path": "Mob.wz/3210202.img/stand/2",
+          "duration_ms": 70,
+          "origin": {
+            "x": 19,
+            "y": 43
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/orbis/3210202/TWMS-256/stand/0002.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 3,
+          "width": 35,
+          "height": 43,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "db087c0cf55d79ea2f3bf0cc8563275b98b43ed28bd953b7d441be09b4115d3c",
+          "pixel_sha256": "9dff82c7da327c67aacc7d9cd9c08495acebc6909c3ebaea132e1a27f750831b",
+          "wz_path": "Mob.wz/3210202.img/stand/3",
+          "duration_ms": 120,
+          "origin": {
+            "x": 19,
+            "y": 43
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/orbis/3210202/TWMS-256/stand/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "06241d7e8e225f318f9e2d4cef42cf654d6123abcfe7aec9ea91ebac9dd8a006"
+        },
+        {
+          "index": 4,
+          "width": 35,
+          "height": 43,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "e0a97500f77c75d2c4fa377cb4ce8ff39e6133cbef05f28eaa3f95f61def6199",
+          "pixel_sha256": "80867a713d27e57b848a5cb5d0daab712531a8e6c3bc9abedabd5c2a37488f7d",
+          "wz_path": "Mob.wz/3210202.img/stand/4",
+          "duration_ms": 70,
+          "origin": {
+            "x": 19,
+            "y": 43
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/3210202/render/stand/4",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/mobs/orbis/3210202/TWMS-256/stand/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "8f60e366ab1c1b0ba7c49db25b840f74ebb3da7bc304bd2d687c43fa6776925d"
+        },
+        {
+          "index": 5,
+          "width": 35,
+          "height": 43,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "76a94918e31698ec3833b57c8b6d13b6460bdae73e90794a553c02243f90f5d0",
+          "pixel_sha256": "3f00457b1611f1c74aab0c6895659f3deda7a2e941f67b3df6c17e4ac19438ad",
+          "wz_path": "Mob.wz/3210202.img/stand/5",
+          "duration_ms": 70,
+          "origin": {
+            "x": 19,
+            "y": 43
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/3210202/render/stand/5",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/mobs/orbis/3210202/TWMS-256/stand/0002.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "783b91e8a1a9adfcc91ae20505105502d2834fcfee554bd983e4cbed60385ed1"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Mob/3210202.img/stand",
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "幼藍獨角獅",
+  "role": null,
+  "is_shop": null,
+  "source_locations": [
+    200010100,
+    200010130,
+    200010100,
+    200010130
+  ],
+  "expected_actions": {
+    "die1": 4,
+    "hit1": 1,
+    "jump": 1,
+    "move": 3,
+    "stand": 6
+  },
+  "source_metadata_sha256": "a5066b7c2490d619acbc6a9461f489b07a911b4e5466923ad76e52e07f5f15c2",
+  "source_archive_sha256": "c1c754b246dcb831b86194b43cf652f511bd427fedae0295ee7b20a6ec0c4f05",
+  "source_frame_indices": {
+    "die1": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "hit1": [
+      0
+    ],
+    "jump": [
+      0
+    ],
+    "move": [
+      0,
+      1,
+      2
+    ],
+    "stand": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "partial",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
+  },
+  "github_path": "assets/maple/collection/mobs/orbis/3210202/TWMS-256",
+  "status": "collected"
+}

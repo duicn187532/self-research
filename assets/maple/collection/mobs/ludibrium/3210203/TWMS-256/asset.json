@@ -1,0 +1,1184 @@
+{
+  "id": "3210203",
+  "type": "mobs",
+  "region": "ludibrium",
+  "town": "玩具城與時間塔",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": "發條貓熊",
+  "name_zh_tw_status": "source_twms",
+  "source_url": "https://maplestory.io/api/TWMS/256/mob/3210203",
+  "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Mob/3210203.img",
+  "wz_path": "Mob.wz/3210203.img",
+  "version": {
+    "region": "TWMS",
+    "version": "256"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "die1",
+      "frame_count": 6,
+      "expected_frame_count": 6,
+      "frames": [
+        {
+          "index": 0,
+          "width": 53,
+          "height": 50,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "4208c2dc3bf42112fa54056cb2f6d3c2f28fb983837b02a18be3364d91e281a2",
+          "pixel_sha256": "c5d98386b4652f765c711701c9bd31d92a2fe1a54efb2ae732e34fff27cda73a",
+          "wz_path": "Mob.wz/3210203.img/die1/0",
+          "duration_ms": 130,
+          "origin": {
+            "x": 27,
+            "y": 50
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/die1/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 48,
+          "height": 53,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "8f67839de87f95de65fabf08be4ded77efeb2123914a21077410a019854caeac",
+          "pixel_sha256": "31a130cacca8373d2ecd266fd4ca6bb0d2aa9afe4589dc6e86532c7c6f9fe237",
+          "wz_path": "Mob.wz/3210203.img/die1/1",
+          "duration_ms": 130,
+          "origin": {
+            "x": 19,
+            "y": 53
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/die1/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 49,
+          "height": 58,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "f76d46126cbc0c12ced73067d7633d28e3bcc019dd603f38ecfd305da8b38f70",
+          "pixel_sha256": "044d56f4fb77f7cba68d573f51cb0a06031a39d45e780f701d7f86c38c3a2959",
+          "wz_path": "Mob.wz/3210203.img/die1/2",
+          "duration_ms": 130,
+          "origin": {
+            "x": 21,
+            "y": 58
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/die1/0002.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 3,
+          "width": 50,
+          "height": 44,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "f1528b20fb91d6dbaab563648a2ba7572d1723296e374c9554b946207f7f78c1",
+          "pixel_sha256": "75251ce469114cd39ac72688faed2fba205417d5f49dcd5888db5dddb20922a4",
+          "wz_path": "Mob.wz/3210203.img/die1/3",
+          "duration_ms": 130,
+          "origin": {
+            "x": 30,
+            "y": 44
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/die1/0003.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 4,
+          "width": 50,
+          "height": 35,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "06375ea1f171e8a24355d6f8442bfa419af7cdb86e98363abe9e02fbaeafaa19",
+          "pixel_sha256": "b9bab319d150935270866086be1b37f17e356191e5952d2f2a39de366feb0248",
+          "wz_path": "Mob.wz/3210203.img/die1/4",
+          "duration_ms": 130,
+          "origin": {
+            "x": 34,
+            "y": 35
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/die1/0004.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 5,
+          "width": 48,
+          "height": 34,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "ded0ee9a871136bc9ed10409cf5724d27060e5268cd16ef0bffe9bc5a099a290",
+          "pixel_sha256": "b85f0faa736ec9052fa5d9ae3d410ca84dc8198ad52248c5b6a1192a3fc9b6e8",
+          "wz_path": "Mob.wz/3210203.img/die1/5",
+          "duration_ms": 130,
+          "origin": {
+            "x": 34,
+            "y": 34
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/die1/0005.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Mob/3210203.img/die1",
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "hit1",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 53,
+          "height": 50,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "a084badd23819185d02fa2852e58e43edfae513b9a1bdb6fa168cbdc4cacdea2",
+          "pixel_sha256": "5a9327540eb47ca1872c59b5904b4a189d223ad31e2f7acb1ef6948fcc127385",
+          "wz_path": "Mob.wz/3210203.img/hit1/0",
+          "duration_ms": 300,
+          "origin": {
+            "x": 28,
+            "y": 50
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/hit1/0000.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Mob/3210203.img/hit1",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "jump",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 43,
+          "height": 50,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "796bab58e84cad5bcf19686fe0ed5f8e9b86a5f982fdae0048e9bd358dd0860e",
+          "pixel_sha256": "cc00aaf09e45199bc937fc107d297f39ad20572adf75b7db05dd52ac48863ae2",
+          "wz_path": "Mob.wz/3210203.img/jump/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 23,
+            "y": 50
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/jump/0000.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Mob/3210203.img/jump",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "move",
+      "frame_count": 8,
+      "expected_frame_count": 8,
+      "frames": [
+        {
+          "index": 0,
+          "width": 46,
+          "height": 50,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "6feaf1ece8cc8013d42300ae4b8c67922740f9cadd263942dc7a1cf4a8111d2f",
+          "pixel_sha256": "76b690f0d9be011fa06e199b375cea154d909311c54a01029216848af8676d37",
+          "wz_path": "Mob.wz/3210203.img/move/0",
+          "duration_ms": 100,
+          "origin": {
+            "x": 23,
+            "y": 50
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/move/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 51,
+          "height": 50,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "8f6a5b1c23c2202944d529bf9e8a8f2152d6cd1b08b47f61033f082739b316b6",
+          "pixel_sha256": "0bb534ad9e3e1d2621972bd403625ba61df30db63355ba9c48d2b17c608b6aab",
+          "wz_path": "Mob.wz/3210203.img/move/1",
+          "duration_ms": 100,
+          "origin": {
+            "x": 24,
+            "y": 50
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/move/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 52,
+          "height": 51,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "d5d45cebd9a33d46c784d238e46d18388b071346138ab9dd9da8b5cbdd3ee6a5",
+          "pixel_sha256": "a6badbc26432d91892a96bc20197e3d3d2655c1678fddc94005322784f37f58b",
+          "wz_path": "Mob.wz/3210203.img/move/2",
+          "duration_ms": 100,
+          "origin": {
+            "x": 25,
+            "y": 51
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/move/0002.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 3,
+          "width": 50,
+          "height": 50,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "1966fc327cb38003e8046d5e69fb9233e6fd2ad6bf22d0f8b076e489d19bea74",
+          "pixel_sha256": "3f0a2b0c342a95a78de68e6a2ec59d124d7a7e7f403ee64cc1e16f96a6c5068b",
+          "wz_path": "Mob.wz/3210203.img/move/3",
+          "duration_ms": 100,
+          "origin": {
+            "x": 25,
+            "y": 50
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/move/0003.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 4,
+          "width": 47,
+          "height": 49,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "4b1e542db6580df44d4e675d7ff27557b5e72fce843ba410a094de8cf926fa20",
+          "pixel_sha256": "0a408508f78637eaf1189882ebdd3d86247002de6826ab8330a42cbe47c0a749",
+          "wz_path": "Mob.wz/3210203.img/move/4",
+          "duration_ms": 100,
+          "origin": {
+            "x": 24,
+            "y": 49
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/move/0004.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 5,
+          "width": 50,
+          "height": 49,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "caca917f4db6acdfdf7138d116992d884b6c23434fd6bcb72dc88fa90ed6f5b4",
+          "pixel_sha256": "7494ec9fabec63e973c4486fa6f7d9d270b0102cd0a7519e007f538c5a232264",
+          "wz_path": "Mob.wz/3210203.img/move/5",
+          "duration_ms": 100,
+          "origin": {
+            "x": 23,
+            "y": 49
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/move/0005.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 6,
+          "width": 49,
+          "height": 50,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "e5ca4ef8c79db00115b877a508e0a1908922fca5e5012e25e0fade1c8c7156d9",
+          "pixel_sha256": "0aadc7f08cdb4397444f37fb735613ba5405d4de141dc94b9ec2ebf137cf7326",
+          "wz_path": "Mob.wz/3210203.img/move/6",
+          "duration_ms": 100,
+          "origin": {
+            "x": 22,
+            "y": 50
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/move/0006.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 7,
+          "width": 47,
+          "height": 51,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "4636ca2b1688fd91da8987ccfaf561de2f764fc996f2aa99bb9e059b1db01f92",
+          "pixel_sha256": "aba417997df3c88bef47edf1501592f5fd29247912166d005cb5d07e0e013a98",
+          "wz_path": "Mob.wz/3210203.img/move/7",
+          "duration_ms": 100,
+          "origin": {
+            "x": 22,
+            "y": 51
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/move/0007.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Mob/3210203.img/move",
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "stand",
+      "frame_count": 35,
+      "expected_frame_count": 35,
+      "frames": [
+        {
+          "index": 0,
+          "width": 55,
+          "height": 49,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "9d413aae521294e6db7bbae8b2d656b4071bf8d15f733dd347656b81bbe113a2",
+          "pixel_sha256": "66dadc565aee74887a62c8e1a768e10facfcc8d1b518cb2716ce58ee690dde3f",
+          "wz_path": "Mob.wz/3210203.img/stand/0",
+          "duration_ms": 100,
+          "origin": {
+            "x": 32,
+            "y": 49
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/stand/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 57,
+          "height": 37,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "f4dff97fae245c06bd0b2d159edbbd2b7e8a950e8621969334b95695fe9cb5cf",
+          "pixel_sha256": "8661ecf5f0f2eb15e29e958450df7700a09554775606997a2ab1a2248147d93a",
+          "wz_path": "Mob.wz/3210203.img/stand/1",
+          "duration_ms": 100,
+          "origin": {
+            "x": 47,
+            "y": 37
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/stand/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 53,
+          "height": 35,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "99b64b8510c314276826933a2c69934b561e880a0553574aebf090614ddccdf4",
+          "pixel_sha256": "60e9a83a7fa60e1b1081e3f18e3475a6fafc3f1867e30819d5e5ff61317cc97e",
+          "wz_path": "Mob.wz/3210203.img/stand/2",
+          "duration_ms": 100,
+          "origin": {
+            "x": 45,
+            "y": 35
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/stand/0002.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 3,
+          "width": 57,
+          "height": 33,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "385b0123f862eddce40f0fe3404c7079452dae5c06de4fb6d15e29fe2b1735e2",
+          "pixel_sha256": "f53662008c8f96ae055059d013cf3e81bb75ca8549092b354e7f03eac4d8edde",
+          "wz_path": "Mob.wz/3210203.img/stand/3",
+          "duration_ms": 100,
+          "origin": {
+            "x": 47,
+            "y": 33
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/stand/0003.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 4,
+          "width": 55,
+          "height": 28,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "95a08a83023fdbc657c5c3e052076c72c6ccd335161d61b39389b1280530d96e",
+          "pixel_sha256": "1bcc500213944e5777ae61e3e7fb6a36e7654d09056b7052af51ecd239e29d5c",
+          "wz_path": "Mob.wz/3210203.img/stand/4",
+          "duration_ms": 100,
+          "origin": {
+            "x": 49,
+            "y": 28
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/stand/0004.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 5,
+          "width": 55,
+          "height": 35,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "64f2ef8d56df69dbbd1486be7d0edeeb9b79c74be44de6bdf3b9753301e6dda1",
+          "pixel_sha256": "699d38f5382c89170a2db65976401a4a364e6a2d70f7abb90be9330b09da37d2",
+          "wz_path": "Mob.wz/3210203.img/stand/5",
+          "duration_ms": 100,
+          "origin": {
+            "x": 49,
+            "y": 35
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/stand/0005.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 6,
+          "width": 55,
+          "height": 33,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "f4a2b08cb7252d643eea7033a708eb874bc0467797a5c4d8b88d763069202698",
+          "pixel_sha256": "9a36780703fc22b0cdbb9b9f384da2085d190d7c6f0f3fbb391b05065c2d236b",
+          "wz_path": "Mob.wz/3210203.img/stand/6",
+          "duration_ms": 100,
+          "origin": {
+            "x": 49,
+            "y": 33
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/stand/0006.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 7,
+          "width": 58,
+          "height": 32,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "eadcae277a52cf49d92b5bb7fe49e3a3a1f14e45adad4cdf6e50352939e3fc0a",
+          "pixel_sha256": "02a9e97a84b4b1766e61b3348d15de2dc3ab370c8666538de4ad95ec22a60b57",
+          "wz_path": "Mob.wz/3210203.img/stand/7",
+          "duration_ms": 100,
+          "origin": {
+            "x": 49,
+            "y": 32
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/stand/0007.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 8,
+          "width": 57,
+          "height": 29,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "a1e27f4e16efc2836df9376070fd866b9da75299763f827e8c14e7372fb50c36",
+          "pixel_sha256": "eb2efca8f807cc7fc98b877b690a3695a0a2f47752889f817e45f0d7b3a7c786",
+          "wz_path": "Mob.wz/3210203.img/stand/8",
+          "duration_ms": 100,
+          "origin": {
+            "x": 47,
+            "y": 29
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/stand/0008.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 9,
+          "width": 49,
+          "height": 36,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "52ce0d7b04c45326b6abebd1f6219f2c8d0cfa17a119176e7c851ada649e1ead",
+          "pixel_sha256": "060daf3c168f4f85b1b142e1fd8503b57e89a0f07f076e3f0a1f5c42c03261ff",
+          "wz_path": "Mob.wz/3210203.img/stand/9",
+          "duration_ms": 100,
+          "origin": {
+            "x": 43,
+            "y": 36
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/stand/0009.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 10,
+          "width": 41,
+          "height": 50,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5f367315e1e865d345660bb2391488338e0d3ea3d2fee168b0d9dedb55127935",
+          "pixel_sha256": "1e71dae435f4f83712e79559b4b32ce86e7b7ea5cfa7a0ae4b360384fe5c385b",
+          "wz_path": "Mob.wz/3210203.img/stand/10",
+          "duration_ms": 100,
+          "origin": {
+            "x": 19,
+            "y": 50
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/stand/0010.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 11,
+          "width": 45,
+          "height": 50,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "a5737529e065b9daeb40e86162cb0b64b0a6be6a66af5ca147e2494e39e0e49b",
+          "pixel_sha256": "04891fbfaa6303ac49e6b882e6461e4a5f55cae2cfc050d7afca2e32ea5434fb",
+          "wz_path": "Mob.wz/3210203.img/stand/11",
+          "duration_ms": 100,
+          "origin": {
+            "x": 20,
+            "y": 50
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/stand/0011.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 12,
+          "width": 45,
+          "height": 50,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "29a08af0b960e7c0fc587855c17df9b8a5e1387e04eb784cd651524dbf9b0b90",
+          "pixel_sha256": "7990dff3f8bdf647f2805c89bd86f9a46dafbe3476cb314410afe025e2735420",
+          "wz_path": "Mob.wz/3210203.img/stand/12",
+          "duration_ms": 100,
+          "origin": {
+            "x": 21,
+            "y": 50
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/stand/0012.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 13,
+          "width": 45,
+          "height": 51,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "a70769f7e4e03eee09cce62e7ca4ff80d27779114fe2b235e34aac85c06f6dae",
+          "pixel_sha256": "6b3d6ecc1e57109c9f6c15d21021d3255eb6702a1036b85ec452965ff83fd4ae",
+          "wz_path": "Mob.wz/3210203.img/stand/13",
+          "duration_ms": 100,
+          "origin": {
+            "x": 21,
+            "y": 51
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/stand/0013.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 14,
+          "width": 41,
+          "height": 51,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "ff1978f03cbd4ec34bc926481049b92f5a22a9fb4278cd9b9027d1ff56464e2c",
+          "pixel_sha256": "da038997bf2a4ea3f5d622fac3599e874af04e9cad4f72d00e576f633f925c8c",
+          "wz_path": "Mob.wz/3210203.img/stand/14",
+          "duration_ms": 100,
+          "origin": {
+            "x": 21,
+            "y": 51
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/stand/0014.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 15,
+          "width": 45,
+          "height": 51,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "82d88808e862df082721058726c6b8f3e88cfee1c0f731aaa60b9be268a58548",
+          "pixel_sha256": "a338b06c1a2a2f870c04007304a51e91b5957e9ae34947bcf9b5ed126ee5b882",
+          "wz_path": "Mob.wz/3210203.img/stand/15",
+          "duration_ms": 100,
+          "origin": {
+            "x": 21,
+            "y": 51
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/stand/0015.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 16,
+          "width": 45,
+          "height": 50,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "89bf8c0d8acb7e6bdb1065d76db1fe1d64588f801571637f9044a941b053d237",
+          "pixel_sha256": "d124a23a206bbd61f2e8d7d072fa53cb3c0e1cb8074cc216b8aa27005727e5c9",
+          "wz_path": "Mob.wz/3210203.img/stand/16",
+          "duration_ms": 100,
+          "origin": {
+            "x": 21,
+            "y": 50
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/stand/0016.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 17,
+          "width": 45,
+          "height": 51,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "a3fd09b33d4131f6bdc1642c4fb2f61eaf775ed463d9a486d2e05562604d15c6",
+          "pixel_sha256": "caf3de70a73632bafc705994f148f77d89bfb8b0da3a36a00c452bf34e27de0e",
+          "wz_path": "Mob.wz/3210203.img/stand/17",
+          "duration_ms": 100,
+          "origin": {
+            "x": 21,
+            "y": 51
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/stand/0017.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 18,
+          "width": 43,
+          "height": 51,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "41409047a341d1df35884b2346ed38771149c961d28cafdc624fc1af9ef38aaf",
+          "pixel_sha256": "7ecad56bf3127a8a3f0993580676bb55ea1bb7ff58bea7223933cbcb31694e15",
+          "wz_path": "Mob.wz/3210203.img/stand/18",
+          "duration_ms": 100,
+          "origin": {
+            "x": 21,
+            "y": 51
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/stand/0018.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 19,
+          "width": 46,
+          "height": 50,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "6feaf1ece8cc8013d42300ae4b8c67922740f9cadd263942dc7a1cf4a8111d2f",
+          "pixel_sha256": "76b690f0d9be011fa06e199b375cea154d909311c54a01029216848af8676d37",
+          "wz_path": "Mob.wz/3210203.img/stand/19",
+          "duration_ms": 100,
+          "origin": {
+            "x": 24,
+            "y": 50
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/move/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "d5b088b1e0f6bce0f517aa28ed2b2e5f8d5976b7739121bf2a25b638939fcca2"
+        },
+        {
+          "index": 20,
+          "width": 51,
+          "height": 50,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "8f6a5b1c23c2202944d529bf9e8a8f2152d6cd1b08b47f61033f082739b316b6",
+          "pixel_sha256": "0bb534ad9e3e1d2621972bd403625ba61df30db63355ba9c48d2b17c608b6aab",
+          "wz_path": "Mob.wz/3210203.img/stand/20",
+          "duration_ms": 100,
+          "origin": {
+            "x": 29,
+            "y": 50
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/move/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "55de2f7990b6b40720f767045a48cf67bdaa8c51ee7f18830838a9bbed40a0ca"
+        },
+        {
+          "index": 21,
+          "width": 52,
+          "height": 51,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "d5d45cebd9a33d46c784d238e46d18388b071346138ab9dd9da8b5cbdd3ee6a5",
+          "pixel_sha256": "a6badbc26432d91892a96bc20197e3d3d2655c1678fddc94005322784f37f58b",
+          "wz_path": "Mob.wz/3210203.img/stand/21",
+          "duration_ms": 100,
+          "origin": {
+            "x": 34,
+            "y": 51
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/move/0002.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "6d014ddc25defb9cc78d686782193ec65cf108c941b2ccc0d1f21dc6bf9a96e0"
+        },
+        {
+          "index": 22,
+          "width": 50,
+          "height": 50,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "1966fc327cb38003e8046d5e69fb9233e6fd2ad6bf22d0f8b076e489d19bea74",
+          "pixel_sha256": "3f0a2b0c342a95a78de68e6a2ec59d124d7a7e7f403ee64cc1e16f96a6c5068b",
+          "wz_path": "Mob.wz/3210203.img/stand/22",
+          "duration_ms": 100,
+          "origin": {
+            "x": 38,
+            "y": 50
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/move/0003.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "36ca70604faaf608594a7ca62b6c1c9d36c55f99c790a16078d94a5d833cadf1"
+        },
+        {
+          "index": 23,
+          "width": 47,
+          "height": 49,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "8cc70a58e1468d159de3c88eec6a3db2d4b1f9298275e383ac9d3595b3fe98d5",
+          "pixel_sha256": "c8f542047bbe7fdcc72121291606a2fe667478d1488901a3a664ffeaeef9bc16",
+          "wz_path": "Mob.wz/3210203.img/stand/23",
+          "duration_ms": 100,
+          "origin": {
+            "x": 43,
+            "y": 49
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/stand/0023.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 24,
+          "width": 50,
+          "height": 49,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "7dda913b36f52cdd73591deed4aadec1a14a1a1f0cf458208373e8dabee0e396",
+          "pixel_sha256": "3f49dd17d30bd4fce3cf9c8fcec4472d538279c334319b48c5bef316b2a3d67a",
+          "wz_path": "Mob.wz/3210203.img/stand/24",
+          "duration_ms": 100,
+          "origin": {
+            "x": 43,
+            "y": 49
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/stand/0024.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 25,
+          "width": 49,
+          "height": 50,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "f6eb5ecc7169adc90e64996f808ff84a74e09819ea485a6867af1505afba2bd1",
+          "pixel_sha256": "ab687aeecdea81b9e52121627ee226dbb7108b91d1d0cb7f24280b576b84afa5",
+          "wz_path": "Mob.wz/3210203.img/stand/25",
+          "duration_ms": 100,
+          "origin": {
+            "x": 39,
+            "y": 50
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/stand/0025.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 26,
+          "width": 47,
+          "height": 51,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "c9fa3182871067981028c76319b5e5b10ca50ac5cad141ade74083f919527027",
+          "pixel_sha256": "cfe08bb0d26ce3df4b9dd09883928510871fe6600b92d7882772688d524bf131",
+          "wz_path": "Mob.wz/3210203.img/stand/26",
+          "duration_ms": 100,
+          "origin": {
+            "x": 34,
+            "y": 51
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/stand/0026.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 27,
+          "width": 46,
+          "height": 50,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "56bf5c2e2af9d206e29a8a70eb2d64a7b07fb271927753c7fd26e222e577a93d",
+          "pixel_sha256": "421c521e9357334684a361856ed7c614a07b7e82522e2e1693b5416b32ae52bf",
+          "wz_path": "Mob.wz/3210203.img/stand/27",
+          "duration_ms": 100,
+          "origin": {
+            "x": 30,
+            "y": 50
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/stand/0027.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 28,
+          "width": 51,
+          "height": 50,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "3aa2cf5591087f32c98d9fd1764d65f01f83c592314ca798a7173c59f2fc009c",
+          "pixel_sha256": "450e552ad8dd1d71c67c60fe3c3903e4256e9dc75b4a7f02eb757b7c8b0cad8e",
+          "wz_path": "Mob.wz/3210203.img/stand/28",
+          "duration_ms": 100,
+          "origin": {
+            "x": 30,
+            "y": 50
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/stand/0028.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 29,
+          "width": 52,
+          "height": 51,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "bd97437a074e5ed3f71b95cea3ab4aa59702f2426adda1648f5560ac549cff09",
+          "pixel_sha256": "f39def8bbcb0efc31e6b42b42f4bc0a2cafdffeec796d14c6287f5b3845d8831",
+          "wz_path": "Mob.wz/3210203.img/stand/29",
+          "duration_ms": 100,
+          "origin": {
+            "x": 26,
+            "y": 51
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/stand/0029.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 30,
+          "width": 50,
+          "height": 50,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "99c335720da77299e968d823b3b69dce185fa77bb80909b5e120129c7dc3c88d",
+          "pixel_sha256": "b8c7aab8923879d062249234643f3e684dcfbfd30c8156009df56ab0e3c81dbb",
+          "wz_path": "Mob.wz/3210203.img/stand/30",
+          "duration_ms": 100,
+          "origin": {
+            "x": 20,
+            "y": 50
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/stand/0030.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 31,
+          "width": 47,
+          "height": 49,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "4b1e542db6580df44d4e675d7ff27557b5e72fce843ba410a094de8cf926fa20",
+          "pixel_sha256": "0a408508f78637eaf1189882ebdd3d86247002de6826ab8330a42cbe47c0a749",
+          "wz_path": "Mob.wz/3210203.img/stand/31",
+          "duration_ms": 100,
+          "origin": {
+            "x": 13,
+            "y": 49
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/move/0004.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "a20903ba4e17c329e5de2b2aa5c6cd845220b5e545cbbf2ddae7a9cd27e81f5f"
+        },
+        {
+          "index": 32,
+          "width": 50,
+          "height": 49,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "caca917f4db6acdfdf7138d116992d884b6c23434fd6bcb72dc88fa90ed6f5b4",
+          "pixel_sha256": "7494ec9fabec63e973c4486fa6f7d9d270b0102cd0a7519e007f538c5a232264",
+          "wz_path": "Mob.wz/3210203.img/stand/32",
+          "duration_ms": 100,
+          "origin": {
+            "x": 15,
+            "y": 49
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/move/0005.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "74916ff73d528ba0768c3fcd9f4eeeaa1528c6bb99b7e35cc59916fe804fbcdc"
+        },
+        {
+          "index": 33,
+          "width": 49,
+          "height": 50,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "e5ca4ef8c79db00115b877a508e0a1908922fca5e5012e25e0fade1c8c7156d9",
+          "pixel_sha256": "0aadc7f08cdb4397444f37fb735613ba5405d4de141dc94b9ec2ebf137cf7326",
+          "wz_path": "Mob.wz/3210203.img/stand/33",
+          "duration_ms": 100,
+          "origin": {
+            "x": 18,
+            "y": 50
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/move/0006.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "b6a58d8bee8881b47b1b016a725e3e91a9ab8ae95b7f4802dd88e1a99131b931"
+        },
+        {
+          "index": 34,
+          "width": 47,
+          "height": 51,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "4636ca2b1688fd91da8987ccfaf561de2f764fc996f2aa99bb9e059b1db01f92",
+          "pixel_sha256": "aba417997df3c88bef47edf1501592f5fd29247912166d005cb5d07e0e013a98",
+          "wz_path": "Mob.wz/3210203.img/stand/34",
+          "duration_ms": 100,
+          "origin": {
+            "x": 21,
+            "y": 51
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256/move/0007.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "22b96e3bd0a0bbc6fb9b8eb0eee1cdd43ba35bd0d74b01b682ff42b231fe4358"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Mob/3210203.img/stand",
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "發條貓熊",
+  "role": null,
+  "is_shop": null,
+  "source_locations": [
+    220010100,
+    220010900,
+    220011000,
+    220020100,
+    220020200,
+    220020300,
+    220020400,
+    220020500,
+    220030200,
+    220030300,
+    220030400
+  ],
+  "expected_actions": {
+    "die1": 6,
+    "hit1": 1,
+    "jump": 1,
+    "move": 8,
+    "stand": 35
+  },
+  "source_metadata_sha256": "89ca87e6267a4ed4e4883e1e8eaed1c53c83da01eab70774a70d487611856ace",
+  "source_archive_sha256": "a7beb7c13ee96e00fb1bb8701f44a95823eb14eaedafcc7873a4fe6ec6b2dddc",
+  "source_frame_indices": {
+    "die1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit1": [
+      0
+    ],
+    "jump": [
+      0
+    ],
+    "move": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "stand": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34
+    ]
+  },
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "partial",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
+  },
+  "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256",
+  "status": "collected"
+}

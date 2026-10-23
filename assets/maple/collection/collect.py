@@ -19,7 +19,6 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parents[3]
 OUT = Path(__file__).resolve().parent
 BASE = 'https://maplestory.io/api'
-VERSION = '83'
 DATE = '2026-10-23'
 
 def fetch(url):
@@ -47,17 +46,18 @@ def dump(path, value):
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
 
 def prepare(spec):
-    kind, ident, region, town, zh = spec
+    kind, ident, region, town, zh, *source = spec
+    source_region, version = source if source else ('GMS', '83')
     api_kind = 'npc' if kind == 'npc' else 'mob'
     package = 'Npc' if kind == 'npc' else 'Mob'
     wz_id = str(ident).zfill(7)
-    url = f'{BASE}/GMS/{VERSION}/{api_kind}/{ident}'
-    export_url = f'{BASE}/wz/export/GMS/{VERSION}/{package}/{wz_id}.img'
+    url = f'{BASE}/{source_region}/{version}/{api_kind}/{ident}'
+    export_url = f'{BASE}/wz/export/{source_region}/{version}/{package}/{wz_id}.img'
     entry = {'id': str(ident), 'type': kind, 'region': region, 'town': town,
              'region_status': 'curated_target_not_exclusive_spawn_location',
-             'name_zh_tw': zh, 'name_zh_tw_status': 'unverified_translation' if zh else 'unavailable',
+             'name_zh_tw': zh, 'name_zh_tw_status': 'source_twms' if source_region == 'TWMS' and zh else ('unverified_translation' if zh else 'unavailable'),
              'source_url': url, 'export_url': export_url,
-             'wz_path': f'{package}.wz/{wz_id}.img', 'version': {'region': 'GMS', 'version': VERSION},
+             'wz_path': f'{package}.wz/{wz_id}.img', 'version': {'region': source_region, 'version': version},
              'license': {'status': 'redistribution_permission_unconfirmed', 'rights_holder': 'Nexon',
                          'evidence_url': 'https://maplestory.io/', 'publication_basis': 'owner_explicit_instruction_2026-10-23_not_a_copyright_license'},
              'actions': [], 'acquired_on': DATE}
@@ -70,6 +70,8 @@ def prepare(spec):
                      source_metadata_sha256=hashlib.sha256(meta_bytes).hexdigest())
         if kind == 'mobs' and meta.get('meta', {}).get('isBoss'):
             raise ValueError('Boss flag conflicts with ordinary monster classification')
+        if kind == 'bosses' and not meta.get('meta', {}).get('isBoss'):
+            raise ValueError('Boss classification requires source boss flag')
         archive = fetch(export_url)
         entry['source_archive_sha256'] = hashlib.sha256(archive).hexdigest()
         frames = []
@@ -105,7 +107,7 @@ def prepare(spec):
             if not count:
                 continue
             try:
-                node_url=f'{BASE}/wz/GMS/{VERSION}/{package}/{wz_id}.img/{action}'
+                node_url=f'{BASE}/wz/{source_region}/{version}/{package}/{wz_id}.img/{action}'
                 node=json.loads(fetch(node_url))
                 indices=sorted(int(x) for x in node['children'] if str(x).isdigit())
                 entry.setdefault('source_frame_indices',{})[action]=indices
@@ -153,7 +155,7 @@ def collect(plan):
         'counting_policy': 'Unique type/ID/version records; actions and frame aliases are not entities. IDs may still represent alternate costumes; species/character totals require identity review.',
         'license_warning': 'Original Nexon artwork; no public redistribution permission confirmed. See RIGHTS.md.'}
     known = {(a['type'], a['id'], a['version']['version']) for a in manifest['assets']}
-    plan = [x for x in plan if (x[0], str(x[1]), VERSION) not in known]
+    plan = [x for x in plan if (x[0], str(x[1]), (x[6] if len(x)>6 else '83')) not in known]
     hashes = {}
     for p in sorted((ROOT / 'assets/maple').rglob('*.png')):
         hashes.setdefault(hashlib.sha256(p.read_bytes()).hexdigest(), p.relative_to(ROOT).as_posix())
@@ -167,7 +169,7 @@ def collect(plan):
                 print('FAILED', entry['type'], entry['id'], error, flush=True)
                 dump(candidates_path, candidates)
                 continue
-            folder = OUT / entry['type'] / entry['region'] / entry['id'] / 'GMS-83'
+            folder = OUT / entry['type'] / entry['region'] / entry['id'] / f"{entry['version']['region']}-{entry['version']['version']}"
             actions = {}
             for action, frame, data in sorted(frames, key=lambda x: (x[0], x[1]['index'])):
                 digest = frame['sha256']

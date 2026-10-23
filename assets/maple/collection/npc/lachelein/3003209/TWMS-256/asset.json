@@ -1,0 +1,402 @@
+{
+  "id": "3003209",
+  "type": "npc",
+  "region": "lachelein",
+  "town": "lachelein",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": "大爺",
+  "name_zh_tw_status": "unverified_translation",
+  "source_url": "https://maplestory.io/api/TWMS/256/npc/3003209",
+  "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Npc/3003209.img",
+  "wz_path": "Npc.wz/3003209.img",
+  "version": {
+    "region": "TWMS",
+    "version": "256"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "eye",
+      "frame_count": 3,
+      "expected_frame_count": 3,
+      "frames": [
+        {
+          "index": 0,
+          "width": 57,
+          "height": 89,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "8715c85a6dc884e6d573f1602e42b6c43889928d8167e7ef144d766135ffb6d2",
+          "pixel_sha256": "62dcb599783a34beef60664b167badb28b41b1da73dcb87402b009dd3494dd2d",
+          "wz_path": "Npc.wz/3003209.img/eye/0",
+          "duration_ms": 210,
+          "origin": {
+            "x": 31,
+            "y": 89
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/lachelein/3003209/TWMS-256/eye/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 57,
+          "height": 89,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "80c48ef5b4c0a78d0e4a6749087458ff5e4e004d74d9aea974c8ac6cee423523",
+          "pixel_sha256": "112a367a73576441b141474b77abd011d39fa099004186c9167b592aba691cb2",
+          "wz_path": "Npc.wz/3003209.img/eye/1",
+          "duration_ms": 210,
+          "origin": {
+            "x": 31,
+            "y": 89
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/lachelein/3003209/TWMS-256/eye/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 57,
+          "height": 89,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "db88a6d5e9c403c97bab425e5fcc53ca5a7eada262fbe98e616aadcc27d08ef4",
+          "pixel_sha256": "6d3271f02c13feaadc5b7e65374f6be72e1e0d6dc96beccf8a30b0d5113e65fe",
+          "wz_path": "Npc.wz/3003209.img/eye/2",
+          "duration_ms": 210,
+          "origin": {
+            "x": 31,
+            "y": 89
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/lachelein/3003209/TWMS-256/eye/0002.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Npc/3003209.img/eye",
+        "indices": [
+          0,
+          1,
+          2
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "move",
+      "frame_count": 4,
+      "expected_frame_count": 4,
+      "frames": [
+        {
+          "index": 0,
+          "width": 50,
+          "height": 90,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "dbc0c4b017653e24fbf39b55af589863441fb1ea89a83adb1949b3f421c747ab",
+          "pixel_sha256": "695a5a973f88fecbbd2c72b2ccab74ad42776a3c07c262783efc64a23d97af4b",
+          "wz_path": "Npc.wz/3003209.img/move/0",
+          "duration_ms": 210,
+          "origin": {
+            "x": 26,
+            "y": 90
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/lachelein/3003209/TWMS-256/move/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 51,
+          "height": 89,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "717aa8bdef4088967b7854754de4c92852f9dd7cb0d41331deea2c5efd8748a2",
+          "pixel_sha256": "a6d72e39d9aadf46d816c54237984ccefff4c283b66d960fed4bb4237e32ba13",
+          "wz_path": "Npc.wz/3003209.img/move/1",
+          "duration_ms": 210,
+          "origin": {
+            "x": 26,
+            "y": 89
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/lachelein/3003209/TWMS-256/move/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 50,
+          "height": 90,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "a16b26f126849e4a938c2533d5bf9215c84fd2ad77a1bae613d6b5b25c962937",
+          "pixel_sha256": "3805d3f5b6aed4f6245ab6c2a5237b915741c75ce825b315a889233ba26d9967",
+          "wz_path": "Npc.wz/3003209.img/move/2",
+          "duration_ms": 210,
+          "origin": {
+            "x": 26,
+            "y": 90
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/lachelein/3003209/TWMS-256/move/0002.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 3,
+          "width": 52,
+          "height": 89,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "0e5d61808c35249449d34d65732126db1a4d82ede158e5cec241e48fa3d7aa7b",
+          "pixel_sha256": "58b310675ee5f73f853cf59a030a3ec67f0cd4c8cf0316197d32f97bea50e9b1",
+          "wz_path": "Npc.wz/3003209.img/move/3",
+          "duration_ms": 210,
+          "origin": {
+            "x": 26,
+            "y": 89
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/lachelein/3003209/TWMS-256/move/0003.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Npc/3003209.img/move",
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "say",
+      "frame_count": 4,
+      "expected_frame_count": 4,
+      "frames": [
+        {
+          "index": 0,
+          "width": 56,
+          "height": 89,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "a2972bf3a06b8b9f46c83be2e58abac6b3bf822996db32cca0082d3353918bbb",
+          "pixel_sha256": "9ec089a70437751b5188e54286231d511636a4881f0fab49be65676243da8127",
+          "wz_path": "Npc.wz/3003209.img/say/0",
+          "duration_ms": 210,
+          "origin": {
+            "x": 30,
+            "y": 89
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/lachelein/3003209/TWMS-256/say/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 57,
+          "height": 89,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "90d9bc8ade36dfd06f045bc7b09292bdc4fb1cbb804f45ff1dc63a9ed322c1d1",
+          "pixel_sha256": "85c1de34f0fafcf5dc606769a516a8cbe5b7c38858607bdd6fecc598f5f6e250",
+          "wz_path": "Npc.wz/3003209.img/say/1",
+          "duration_ms": 210,
+          "origin": {
+            "x": 31,
+            "y": 89
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/lachelein/3003209/TWMS-256/say/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 58,
+          "height": 89,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "9091db6c8b7b22fac158168d4fae8aecbf4041ea97450a286033f3ebabf65960",
+          "pixel_sha256": "6ee4d38efe3edf962c438f0ad02a53f6369eb7e2b5a0a6139e2d4927aab8c29e",
+          "wz_path": "Npc.wz/3003209.img/say/2",
+          "duration_ms": 210,
+          "origin": {
+            "x": 32,
+            "y": 89
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/lachelein/3003209/TWMS-256/say/0002.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 3,
+          "width": 57,
+          "height": 89,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "80c48ef5b4c0a78d0e4a6749087458ff5e4e004d74d9aea974c8ac6cee423523",
+          "pixel_sha256": "112a367a73576441b141474b77abd011d39fa099004186c9167b592aba691cb2",
+          "wz_path": "Npc.wz/3003209.img/say/3",
+          "duration_ms": 210,
+          "origin": {
+            "x": 31,
+            "y": 89
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/lachelein/3003209/TWMS-256/eye/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "efad94470b578bc7ece1540e9d8929f78efa7e2c95cb36cab3f9c2d71e155dfa"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Npc/3003209.img/say",
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "stand",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 57,
+          "height": 89,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "8715c85a6dc884e6d573f1602e42b6c43889928d8167e7ef144d766135ffb6d2",
+          "pixel_sha256": "62dcb599783a34beef60664b167badb28b41b1da73dcb87402b009dd3494dd2d",
+          "wz_path": "Npc.wz/3003209.img/stand/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 31,
+            "y": 89
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/lachelein/3003209/TWMS-256/eye/0000.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "6f1233afc05fc3f77968773b78753d13319a3a588c06cb1a88742f761503bdff"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Npc/3003209.img/stand",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "大爺",
+  "role": null,
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "秘密據點",
+      "streetName": "拉契爾恩",
+      "id": 450003100
+    }
+  ],
+  "expected_actions": {
+    "condition1": 1,
+    "condition2": 1,
+    "condition3": 1,
+    "eye": 3,
+    "move": 4,
+    "say": 4,
+    "stand": 1
+  },
+  "source_metadata_sha256": "55f162339c89efa585ff3cfd48abd13afde58a192342720d8a57f1822c61dee3",
+  "source_archive_sha256": "fc688ef0a04f17372c4463c23db43d2a3680a5dcc25584ce5b26d4d51a87f7cc",
+  "source_frame_indices": {
+    "condition1": [
+      34331
+    ],
+    "condition2": [
+      34326
+    ],
+    "condition3": [
+      34326
+    ],
+    "eye": [
+      0,
+      1,
+      2
+    ],
+    "move": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "say": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "stand": [
+      0
+    ]
+  },
+  "missing_frames": [
+    {
+      "action": "condition1",
+      "index": 34331,
+      "error": "HTTP Error 400: Bad Request"
+    },
+    {
+      "action": "condition2",
+      "index": 34326,
+      "error": "HTTP Error 400: Bad Request"
+    },
+    {
+      "action": "condition3",
+      "index": 34326,
+      "error": "HTTP Error 400: Bad Request"
+    }
+  ],
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": false,
+    "timing_and_origin": "partial",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
+  },
+  "github_path": "assets/maple/collection/npc/lachelein/3003209/TWMS-256",
+  "status": "collected"
+}

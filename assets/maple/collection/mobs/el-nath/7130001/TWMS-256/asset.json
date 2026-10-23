@@ -1,0 +1,726 @@
+{
+  "id": "7130001",
+  "type": "mobs",
+  "region": "el-nath",
+  "town": "冰原雪域",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": "地獄獵犬",
+  "name_zh_tw_status": "source_twms",
+  "source_url": "https://maplestory.io/api/TWMS/256/mob/7130001",
+  "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Mob/7130001.img",
+  "wz_path": "Mob.wz/7130001.img",
+  "version": {
+    "region": "TWMS",
+    "version": "256"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "attack1",
+      "frame_count": 11,
+      "expected_frame_count": 11,
+      "frames": [
+        {
+          "index": 0,
+          "width": 102,
+          "height": 78,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "34d65e8c4bd085d2f1e392bd0fb4d0e12d02153741ef0e08779539d3b30fdcca",
+          "pixel_sha256": "71d9f1718e327aaa1b008be2507b6e0331be9267c091c8543a330415a0631ee7",
+          "wz_path": "Mob.wz/7130001.img/attack1/0",
+          "duration_ms": 130,
+          "origin": {
+            "x": 52,
+            "y": 78
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/el-nath/7130001/TWMS-256/attack1/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 102,
+          "height": 76,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "ddfc21a87b8addeb6a3c970207648ddc82997479c9148b00fd2d2f0494559b21",
+          "pixel_sha256": "23904b4e15256cb25666a539ae98524deac9feed7eb7cbacfb3e5b584092d662",
+          "wz_path": "Mob.wz/7130001.img/attack1/1",
+          "duration_ms": 130,
+          "origin": {
+            "x": 52,
+            "y": 76
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/el-nath/7130001/TWMS-256/attack1/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 102,
+          "height": 74,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "3843572ea509af72eceff2d1d15f93266dd399e820fe075f6230592c91a356b9",
+          "pixel_sha256": "6a7505ecf985035f53a45a57256042a94c2afe11e457adef8892f35825d3216f",
+          "wz_path": "Mob.wz/7130001.img/attack1/2",
+          "duration_ms": 130,
+          "origin": {
+            "x": 52,
+            "y": 74
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/el-nath/7130001/TWMS-256/attack1/0002.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 3,
+          "width": 91,
+          "height": 78,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "82ee3b2def2a6e673326c6e1b9cf901b5b8625c822c21365c01a739cf2947dc3",
+          "pixel_sha256": "8e94cb63fe09f03164a86c1e39624f2980c5cf2c5974c58f23cb193b6e685e0f",
+          "wz_path": "Mob.wz/7130001.img/attack1/3",
+          "duration_ms": 120,
+          "origin": {
+            "x": 42,
+            "y": 78
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/el-nath/7130001/TWMS-256/attack1/0003.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 4,
+          "width": 87,
+          "height": 108,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "f8e45f0478bf8f162f451c8ad661e7092d93dee89869c16a56926bc61849fde1",
+          "pixel_sha256": "e636494ba309090c2a692423f941af71df83aa23ec703870032bacd4b8631522",
+          "wz_path": "Mob.wz/7130001.img/attack1/4",
+          "duration_ms": 120,
+          "origin": {
+            "x": 28,
+            "y": 108
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/el-nath/7130001/TWMS-256/attack1/0004.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 5,
+          "width": 84,
+          "height": 112,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "d927bd707371927fec10b9c23ef30017dd3d52d7e5db505b71825771c7c43d80",
+          "pixel_sha256": "1c5165a2baebbd8a67314a782cc001dea0c53d25d8df3c9c8a067bb88337ce17",
+          "wz_path": "Mob.wz/7130001.img/attack1/5",
+          "duration_ms": 150,
+          "origin": {
+            "x": 21,
+            "y": 112
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/el-nath/7130001/TWMS-256/attack1/0005.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 6,
+          "width": 84,
+          "height": 114,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "3fcf88d3acc93e6c560fdcf12c964ef975a096227454454a1b8d819ace385e0a",
+          "pixel_sha256": "dc901891e3fced54eac238e854f8c36eb581fcf2006f8065160f96ab54460a92",
+          "wz_path": "Mob.wz/7130001.img/attack1/6",
+          "duration_ms": 200,
+          "origin": {
+            "x": 17,
+            "y": 114
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/el-nath/7130001/TWMS-256/attack1/0006.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 7,
+          "width": 113,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "d1b1e166b70a1820c7c9f3e029efdfc9291fc7a51edca159574fb51f91987de9",
+          "pixel_sha256": "df277937ea51c85521830ee3621e15fd35e99f442b40775377c7af3356a22435",
+          "wz_path": "Mob.wz/7130001.img/attack1/7",
+          "duration_ms": 120,
+          "origin": {
+            "x": 65,
+            "y": 74
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/el-nath/7130001/TWMS-256/attack1/0007.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 8,
+          "width": 113,
+          "height": 70,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "80b3dcac10732ec3359f779f88d180eed971822e2c4603b6d7eb5d0af39f4f1f",
+          "pixel_sha256": "e42a1de7a9e8e0fb4eadb9923c0c8117b223f05742f4d9922ab4f58d75e371f6",
+          "wz_path": "Mob.wz/7130001.img/attack1/8",
+          "duration_ms": 130,
+          "origin": {
+            "x": 64,
+            "y": 70
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/el-nath/7130001/TWMS-256/attack1/0008.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 9,
+          "width": 114,
+          "height": 69,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5b01e14b59deb47652165979fb0544a82526adc742e1f8674a94a4dfb50ccf2e",
+          "pixel_sha256": "c0c657d281148c6f7db89fa7c69638247a69fce8a4e9808b37999f66dfe11830",
+          "wz_path": "Mob.wz/7130001.img/attack1/9",
+          "duration_ms": 130,
+          "origin": {
+            "x": 64,
+            "y": 69
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/el-nath/7130001/TWMS-256/attack1/0009.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 10,
+          "width": 110,
+          "height": 78,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "9c1e1f8578d9c1bd8b54ac16f4d8f55f2609564f83a17e841fd29f4fb833c101",
+          "pixel_sha256": "a9183749172bae2b804d0a09e9fc72aed5481be7a1cf543bba5655d0a6065850",
+          "wz_path": "Mob.wz/7130001.img/attack1/10",
+          "duration_ms": 120,
+          "origin": {
+            "x": 61,
+            "y": 78
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/el-nath/7130001/TWMS-256/attack1/0010.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Mob/7130001.img/attack1",
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "die1",
+      "frame_count": 5,
+      "expected_frame_count": 5,
+      "frames": [
+        {
+          "index": 0,
+          "width": 106,
+          "height": 79,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5820d038f2c56581c8694d92873de75485f20e4d4bcb322fd42a83e834482c42",
+          "pixel_sha256": "01133123dc10114d33b6960930642c085aa6a9c22e7f7b855f9cf9e2b281905d",
+          "wz_path": "Mob.wz/7130001.img/die1/0",
+          "duration_ms": 120,
+          "origin": {
+            "x": 52,
+            "y": 78
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/el-nath/7130001/TWMS-256/die1/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 112,
+          "height": 74,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "97ac86f0648c0bc71c0cba4eeb52a566b6ac1ef83b46c2b2dad4ed6c6a4404b7",
+          "pixel_sha256": "d286e1f9acc21cc33701dc20b9dbdffc5d035e1708dfdaeec447dea7a11841d1",
+          "wz_path": "Mob.wz/7130001.img/die1/1",
+          "duration_ms": 120,
+          "origin": {
+            "x": 52,
+            "y": 73
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/el-nath/7130001/TWMS-256/die1/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 126,
+          "height": 69,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "4eb5103bf626bd617cdc97125cd34ed8dc2bfb68d1651917d4ee597ed4a6293e",
+          "pixel_sha256": "64e4eee5b50c346cd9f6a01c2d5dd8a4e9c29740fbcf73769ebc4235c7ca4963",
+          "wz_path": "Mob.wz/7130001.img/die1/2",
+          "duration_ms": 120,
+          "origin": {
+            "x": 52,
+            "y": 68
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/el-nath/7130001/TWMS-256/die1/0002.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 3,
+          "width": 121,
+          "height": 67,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "e84df4b77a9ac5567d690fa83563ecc75a98c3f92a6377f20ead953c71d8bd0b",
+          "pixel_sha256": "5196f316252b28457a479459947d6ea73bd1d6e0c16ac83f6caeca3e79ea1e27",
+          "wz_path": "Mob.wz/7130001.img/die1/3",
+          "duration_ms": 120,
+          "origin": {
+            "x": 56,
+            "y": 66
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/el-nath/7130001/TWMS-256/die1/0003.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 4,
+          "width": 121,
+          "height": 67,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "26a41d41d8ebf42073f2223024cb480ce7e9648cd5f9880ae995871a46a14345",
+          "pixel_sha256": "bcd0688e6729772b038efcb014b6a195fff5d037f7dbccfed013660ab3d39b85",
+          "wz_path": "Mob.wz/7130001.img/die1/4",
+          "duration_ms": 300,
+          "origin": {
+            "x": 56,
+            "y": 65
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/el-nath/7130001/TWMS-256/die1/0004.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Mob/7130001.img/die1",
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "hit1",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 112,
+          "height": 80,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "0d7617fa9a5fce9ca87b8054758cc1f3bf6903ceebe327bb1bd2e181abf7928c",
+          "pixel_sha256": "01d0449842f34534233f5e9f2f449c81acf8c2cec1bcb1e728408075f186146b",
+          "wz_path": "Mob.wz/7130001.img/hit1/0",
+          "duration_ms": 300,
+          "origin": {
+            "x": 47,
+            "y": 80
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/el-nath/7130001/TWMS-256/hit1/0000.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Mob/7130001.img/hit1",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "move",
+      "frame_count": 8,
+      "expected_frame_count": 8,
+      "frames": [
+        {
+          "index": 0,
+          "width": 106,
+          "height": 79,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "a462f7f7446979375ac18aef8468138d02f0ae4575a6b5ac2c7467fe482e1eff",
+          "pixel_sha256": "ae73df380f4edf45c8bb562cb08b7809c6d4f133b99f770a5e0098622f4b963b",
+          "wz_path": "Mob.wz/7130001.img/move/0",
+          "duration_ms": 100,
+          "origin": {
+            "x": 55,
+            "y": 79
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/el-nath/7130001/TWMS-256/move/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 110,
+          "height": 78,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "19d9085fce490dd434e6082f82236a64af48324ac59a65dd53365be3a3dea2dc",
+          "pixel_sha256": "6e209fe29caa990e42c95cf3bf0054bbe8c661b4ffa526143a544931d86a3047",
+          "wz_path": "Mob.wz/7130001.img/move/1",
+          "duration_ms": 100,
+          "origin": {
+            "x": 55,
+            "y": 78
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/el-nath/7130001/TWMS-256/move/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 111,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "68fc91cb19776b0e4bee9b0b06dea655028757cd6384766d5226c5f855676066",
+          "pixel_sha256": "948b05e983c97d650c8e47c064081baa393644957520e18c39c58f0ee61d5f17",
+          "wz_path": "Mob.wz/7130001.img/move/2",
+          "duration_ms": 100,
+          "origin": {
+            "x": 55,
+            "y": 77
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/el-nath/7130001/TWMS-256/move/0002.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 3,
+          "width": 111,
+          "height": 76,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "76150eedf74a1032c5e166f15761ec01f2190e44841f1d8a911b568e4fef5549",
+          "pixel_sha256": "c5a6b91af4e7bc9aa69f2ebae30eef52070a84ce66d67fc0fceccfbb498a2573",
+          "wz_path": "Mob.wz/7130001.img/move/3",
+          "duration_ms": 100,
+          "origin": {
+            "x": 55,
+            "y": 76
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/el-nath/7130001/TWMS-256/move/0003.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 4,
+          "width": 102,
+          "height": 73,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "65d201170fea8ff830679ba571a77c80b51fa339b838bc2bcf94aab24ab748bd",
+          "pixel_sha256": "d61e1751814139f1aa172050d988cec8b5bb340ad203f515e0b1306531edd3a0",
+          "wz_path": "Mob.wz/7130001.img/move/4",
+          "duration_ms": 100,
+          "origin": {
+            "x": 55,
+            "y": 73
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/el-nath/7130001/TWMS-256/move/0004.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 5,
+          "width": 98,
+          "height": 76,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5515c9fbe71eb97b62a85efac5c49d363b07cce44cb828925f11b994e754aea0",
+          "pixel_sha256": "254e1d6b0c3e08ea3f75bc1bfd3508942b74de3024969ecdb165469888104861",
+          "wz_path": "Mob.wz/7130001.img/move/5",
+          "duration_ms": 100,
+          "origin": {
+            "x": 55,
+            "y": 76
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/el-nath/7130001/TWMS-256/move/0005.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 6,
+          "width": 101,
+          "height": 79,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "ff6bddc050f912f775303dc0ecca8d1d3b515b75baa0210fa455c75e7f49a17b",
+          "pixel_sha256": "347ce32f113f1c043e0906515289af810c9813d155af7919d8a9ba1cdb8312cd",
+          "wz_path": "Mob.wz/7130001.img/move/6",
+          "duration_ms": 100,
+          "origin": {
+            "x": 55,
+            "y": 79
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/el-nath/7130001/TWMS-256/move/0006.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 7,
+          "width": 105,
+          "height": 78,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "576e7af6df5d1b414b1b3ebdf5b7f5919802fdd158ad557e0e4f20c48c631c41",
+          "pixel_sha256": "21f5688a42190b048e90e30cfbb451b57689612e70ccf8ee81d70dbb5d276127",
+          "wz_path": "Mob.wz/7130001.img/move/7",
+          "duration_ms": 100,
+          "origin": {
+            "x": 55,
+            "y": 78
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/el-nath/7130001/TWMS-256/move/0007.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Mob/7130001.img/move",
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "stand",
+      "frame_count": 4,
+      "expected_frame_count": 4,
+      "frames": [
+        {
+          "index": 0,
+          "width": 104,
+          "height": 79,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "aa7738b420507cc674cd7b79ba989fb173cdcf86627ac1d9a96d631c55703f39",
+          "pixel_sha256": "408dd228af061e39888f0ed6276badbe540bf2701e49f117abb1294a4a2f86ce",
+          "wz_path": "Mob.wz/7130001.img/stand/0",
+          "duration_ms": 100,
+          "origin": {
+            "x": 52,
+            "y": 79
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/el-nath/7130001/TWMS-256/stand/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 109,
+          "height": 79,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "b60bdf91361d026c2854ae4a893b0b6502cd7be07e39b4f34eb80b12d01175ee",
+          "pixel_sha256": "e16500cc24480c311bc32f8cae2ef2bbfe3d1f336799eead395e61aa67a896e6",
+          "wz_path": "Mob.wz/7130001.img/stand/1",
+          "duration_ms": 100,
+          "origin": {
+            "x": 52,
+            "y": 79
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/el-nath/7130001/TWMS-256/stand/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 104,
+          "height": 78,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "d6532457bf9eba11502b13bed769bd8e036e32283e9626f9830bb63aa49efe1b",
+          "pixel_sha256": "0e66cbef3fdc09e492e30d9a20e603976a3d765a7bab11d9907099c753fa65fe",
+          "wz_path": "Mob.wz/7130001.img/stand/2",
+          "duration_ms": 100,
+          "origin": {
+            "x": 52,
+            "y": 78
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/el-nath/7130001/TWMS-256/stand/0002.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 3,
+          "width": 102,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "b393195bc56b43e77fd90ab6ea0720a7e3493f0acdb938b50c95fa41475dbc7c",
+          "pixel_sha256": "5871f351b546d3bfa7158d1971ee7a821ead6005e7808f8be5ecf03599f7dec7",
+          "wz_path": "Mob.wz/7130001.img/stand/3",
+          "duration_ms": 100,
+          "origin": {
+            "x": 52,
+            "y": 77
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/el-nath/7130001/TWMS-256/stand/0003.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Mob/7130001.img/stand",
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "[★] 地獄獵犬",
+  "role": null,
+  "is_shop": null,
+  "source_locations": [
+    211042100,
+    211042000,
+    211042100,
+    211042200
+  ],
+  "expected_actions": {
+    "attack1": 11,
+    "die1": 5,
+    "hit1": 1,
+    "move": 8,
+    "stand": 4
+  },
+  "source_metadata_sha256": "937a2022b64723b184840889608f7897b8a99025cca7caf2972a6d3b0c9dc6b6",
+  "source_archive_sha256": "6fab25b6e36c921175a619de265a37a3743715f3d785b8bc3c02c2c820e410ca",
+  "source_frame_indices": {
+    "attack1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "die1": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "hit1": [
+      0
+    ],
+    "move": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "stand": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "complete",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
+  },
+  "github_path": "assets/maple/collection/mobs/el-nath/7130001/TWMS-256",
+  "status": "collected"
+}

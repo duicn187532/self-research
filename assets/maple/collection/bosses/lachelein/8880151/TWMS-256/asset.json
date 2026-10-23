@@ -1,0 +1,4365 @@
+{
+  "id": "8880151",
+  "type": "bosses",
+  "region": "lachelein",
+  "town": "lachelein",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": "露希妲 第二階段",
+  "name_zh_tw_status": "unverified_translation",
+  "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151",
+  "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Mob/8880151.img",
+  "wz_path": "Mob.wz/8880151.img",
+  "version": {
+    "region": "TWMS",
+    "version": "256"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "attack1",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 1,
+          "height": 1,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "aac47e8d39add213b54b9bfe239571d9e3c8415480f54c6a692365efcd5abb7f",
+          "pixel_sha256": "a79246fb5dcd05b249389b79a05343236b9a541a75c1c474ae9433a8f882e3c4",
+          "wz_path": "Mob.wz/8880151.img/attack1/0",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/lachelein/3003245/TWMS-256/remove/0000.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found",
+            "origin": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "1edcad75d4113ff41e8d3e585774569b195e014a89304515f79bc70c06dc0018"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Mob/8880151.img/attack1",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "attack2",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 1,
+          "height": 1,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "aac47e8d39add213b54b9bfe239571d9e3c8415480f54c6a692365efcd5abb7f",
+          "pixel_sha256": "a79246fb5dcd05b249389b79a05343236b9a541a75c1c474ae9433a8f882e3c4",
+          "wz_path": "Mob.wz/8880151.img/attack2/0",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/lachelein/3003245/TWMS-256/remove/0000.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found",
+            "origin": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "0d1880c90e2878d6a60651407a35ff5a355161cea5bceeea7c16a75923b40231"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Mob/8880151.img/attack2",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "attack3",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 4,
+          "height": 4,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "e58bb8268b982341ab5a27ee7864ba9cc775b733c41a5b9d9de123c7ca537b4b",
+          "pixel_sha256": "902ebbf7115e54ff32ba1f5e6a16dafdadf2ab40a180cb583c7dac31925756b3",
+          "wz_path": "Mob.wz/8880151.img/attack3/0",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/attack3/0000.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found",
+            "origin": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "3a58583920d58343dafea659347a20bbeace48130851c382d657a3fb7a32aab2"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Mob/8880151.img/attack3",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "attack3/info/hit",
+      "frame_count": 1,
+      "expected_frame_count": null,
+      "frames": [
+        {
+          "index": 0,
+          "width": 4,
+          "height": 4,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "e58bb8268b982341ab5a27ee7864ba9cc775b733c41a5b9d9de123c7ca537b4b",
+          "pixel_sha256": "902ebbf7115e54ff32ba1f5e6a16dafdadf2ab40a180cb583c7dac31925756b3",
+          "wz_path": "Mob.wz/8880151.img/attack3/info/hit/0",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/attack3/0000.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found",
+            "origin": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "4ea365f32cd53276807ebdba1b5451dd28dc9824e2179009e3713c1d06bfacea"
+        }
+      ],
+      "count_matches_api": false,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Mob/8880151.img/attack3/info/hit",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "attack4",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 1,
+          "height": 1,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "aac47e8d39add213b54b9bfe239571d9e3c8415480f54c6a692365efcd5abb7f",
+          "pixel_sha256": "a79246fb5dcd05b249389b79a05343236b9a541a75c1c474ae9433a8f882e3c4",
+          "wz_path": "Mob.wz/8880151.img/attack4/0",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/lachelein/3003245/TWMS-256/remove/0000.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found",
+            "origin": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "da47b6dae3275f59dff02c57117b5186ecd6d1b546c85b260eff8ef34c005564"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Mob/8880151.img/attack4",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "attack5",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 1,
+          "height": 1,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "aac47e8d39add213b54b9bfe239571d9e3c8415480f54c6a692365efcd5abb7f",
+          "pixel_sha256": "a79246fb5dcd05b249389b79a05343236b9a541a75c1c474ae9433a8f882e3c4",
+          "wz_path": "Mob.wz/8880151.img/attack5/0",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/lachelein/3003245/TWMS-256/remove/0000.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found",
+            "origin": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "eb4eca63180d214af928c987ebfe4cf2afaddaf7165f180610c0f62aaf3347f8"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Mob/8880151.img/attack5",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "attack6",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 1,
+          "height": 1,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "aac47e8d39add213b54b9bfe239571d9e3c8415480f54c6a692365efcd5abb7f",
+          "pixel_sha256": "a79246fb5dcd05b249389b79a05343236b9a541a75c1c474ae9433a8f882e3c4",
+          "wz_path": "Mob.wz/8880151.img/attack6/0",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/lachelein/3003245/TWMS-256/remove/0000.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found",
+            "origin": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "43ee79e148b405179b8a9895324a6f1add11db943af580f134b172aeb02e7364"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Mob/8880151.img/attack6",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "die1",
+      "frame_count": 14,
+      "expected_frame_count": 14,
+      "frames": [
+        {
+          "index": 0,
+          "width": 356,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "45c02d76dc26836c5c7900462da7e187f50cee7713f953003b7efed72e9a5fe2",
+          "pixel_sha256": "9c1a4564fad560c0812c7d8b0411714a27a1f0133db1a490663465cafe2a36dd",
+          "wz_path": "Mob.wz/8880151.img/die1/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 117,
+            "y": 233
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/die1/0",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill6/0000.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "58f62c91fa4d2ac3df9ac0aac4d3bd7f8120f80b781a08736a33d310300d15cb"
+        },
+        {
+          "index": 1,
+          "width": 344,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "0e913caaafaaa9c31653bce24418c4c704f1982c21d95346ff4b16940b896538",
+          "pixel_sha256": "c54fe935be235c1546297ec3effa1e71c09bdce08255bbf88a1ee25d55b90395",
+          "wz_path": "Mob.wz/8880151.img/die1/1",
+          "duration_ms": null,
+          "origin": {
+            "x": 113,
+            "y": 234
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/die1/1",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill6/0001.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "8471d0fb078140329731b6a755774fe02ee28ba43ed3524955e443a45f27fbb8"
+        },
+        {
+          "index": 2,
+          "width": 336,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "a57df8100f6554453c9d16a6a8f88a14fdc0fc5e1bf5dc082ea3a398ddb585ed",
+          "pixel_sha256": "cc15fe758166ea8b4fb4c755fe7c5a1835649982ad3ce2787c19726348100636",
+          "wz_path": "Mob.wz/8880151.img/die1/2",
+          "duration_ms": null,
+          "origin": {
+            "x": 110,
+            "y": 235
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/die1/2",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill6/0002.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "eff2c870bd05ddabcea9bda855b2774cc75adb11f8d7a145ebd3ce5797455f68"
+        },
+        {
+          "index": 3,
+          "width": 256,
+          "height": 400,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "a82294af3ec91fe2d75e1dae8413ab85828c5b928c3125daff8b24f5c7111163",
+          "pixel_sha256": "209ee383a94d7832c4091a6b56d54877e7619741319ee7d0f098e2ad793daeae",
+          "wz_path": "Mob.wz/8880151.img/die1/3",
+          "duration_ms": null,
+          "origin": {
+            "x": 83,
+            "y": 262
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/die1/3",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill6/0003.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "bd98a0cff7791ac8e513127a295c4f0e81452c932173b323d8c9523f240a5832"
+        },
+        {
+          "index": 4,
+          "width": 196,
+          "height": 384,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "8724a976e32bc6242591af8d30320b81fcff7c4e7fe40dc368e1629e2020b93b",
+          "pixel_sha256": "69fc004b976bfaa791a81845151ce9f33d361998debacdbae4ca07ccd3e0dbaf",
+          "wz_path": "Mob.wz/8880151.img/die1/4",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/die1/4",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill6/0004.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found",
+            "origin": "The read operation timed out"
+          },
+          "source_png_sha256": "65cba6a71263a60db2e0d483d764976dcae34ea4497903c195d0512103475184"
+        },
+        {
+          "index": 5,
+          "width": 220,
+          "height": 444,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "2039635f7d1e61730b87c88182500ed8ac005103627d73e134fb644d6dd0afbe",
+          "pixel_sha256": "dcdc7802d1afdae42e61e59a08b76a81ce6ac1b78e38dd24af331910d920d07e",
+          "wz_path": "Mob.wz/8880151.img/die1/5",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/die1/5",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill6/0005.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found",
+            "origin": "The read operation timed out"
+          },
+          "source_png_sha256": "a8bdc06160b81d0d76d58fdd5fa6f815d162160074d456a4e91a3d82a0886f8e"
+        },
+        {
+          "index": 6,
+          "width": 252,
+          "height": 456,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "3a4a7f9588b11a4cde8de1e00758b6041b81490338f95d2fc1325553ab444ea5",
+          "pixel_sha256": "bf9ce4191f10cc03c097b8cc9b2513219e576777c190469f9269856e8d6b9ca1",
+          "wz_path": "Mob.wz/8880151.img/die1/6",
+          "duration_ms": null,
+          "origin": {
+            "x": 122,
+            "y": 301
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/die1/6",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill6/0006.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "ef4366d83a7722d5702aeeada23f75bff900edcba4b60bfe799896df78164dec"
+        },
+        {
+          "index": 7,
+          "width": 276,
+          "height": 552,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "bdbbfc4c1785f08c430a005bfbaad220dc07423adac5a4b9c821f0970db84459",
+          "pixel_sha256": "91e21a2c2ba456493796bcf10b8a8a05bb4203dfbfd146d9fe30a17d216f8942",
+          "wz_path": "Mob.wz/8880151.img/die1/7",
+          "duration_ms": null,
+          "origin": {
+            "x": 134,
+            "y": 305
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/die1/7",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill6/0007.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "f2307402b7672a692f0197df563cff88074364835daa4d17781498f7607f035a"
+        },
+        {
+          "index": 8,
+          "width": 292,
+          "height": 480,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "c8554da0ee3697a8182a2fa9aee3cc67d38108c8d7a715b640048c529fd91b34",
+          "pixel_sha256": "3ff5e6f80c3e0da3dce60a4e49ff1bec6dcc56de3626805d110084d37460bd5f",
+          "wz_path": "Mob.wz/8880151.img/die1/8",
+          "duration_ms": null,
+          "origin": {
+            "x": 141,
+            "y": 308
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/die1/8",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill6/0008.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "7263af8073cdc05b8dba14d0db50a3b089f4ff1e56e3519a49aab70188f5b386"
+        },
+        {
+          "index": 9,
+          "width": 296,
+          "height": 500,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "36974fb85e9b592a63f4115ead68b758f493651a3c0d3ae346c805bdf2f6869c",
+          "pixel_sha256": "132c6f26c7e3192f52a9bf24dfe894d5e94fca82539b7512da390dc84aa3a55c",
+          "wz_path": "Mob.wz/8880151.img/die1/9",
+          "duration_ms": null,
+          "origin": {
+            "x": 143,
+            "y": 309
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/die1/9",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill6/0009.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "ad696de6aba2b9a205a75289e7fa4d77020b2a05f67ca8de5922b57d32dde3fa"
+        },
+        {
+          "index": 10,
+          "width": 216,
+          "height": 488,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5156d1242546c95bbf34426883f8af54f42d1c0b5459b11d0a724243f98d18a9",
+          "pixel_sha256": "af63c3d3659c7b0b4396a2a646bcb433b0b88c5942f3d3e79e34d5a6bbd4f9f6",
+          "wz_path": "Mob.wz/8880151.img/die1/10",
+          "duration_ms": null,
+          "origin": {
+            "x": 89,
+            "y": 309
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/die1/10",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill6/0010.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "de8e55a3476a31d0ae686cf46a693867d061f2fb7ba501327d0cedd6113264e2"
+        },
+        {
+          "index": 11,
+          "width": 172,
+          "height": 536,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "14d403936c596933e81edfd6aa6353ee5ac88fc6860936fec6a5c6c95b56d7e8",
+          "pixel_sha256": "091fb937d5d81bb1f1157e6cb8993ea90bead73364cab51194429d9abbaa0bc3",
+          "wz_path": "Mob.wz/8880151.img/die1/11",
+          "duration_ms": null,
+          "origin": {
+            "x": 83,
+            "y": 309
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/die1/11",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill6/0011.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "768c42b69b2409bfc8cabd0a5ce39322fdeabb20ac360dd234d45d717703bbaa"
+        },
+        {
+          "index": 12,
+          "width": 164,
+          "height": 500,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "ffad31c165f4ed4abcb39b492d99022e1c9f1b59d7bacafa912a76f9c23d21c3",
+          "pixel_sha256": "d112159a57683a5f6078c79ef7d4893c8af99dc76d30b4faac3c98148a082043",
+          "wz_path": "Mob.wz/8880151.img/die1/12",
+          "duration_ms": null,
+          "origin": {
+            "x": 84,
+            "y": 309
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/die1/12",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill6/0012.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "9a294f7465d6ab010248fff7dd34208dfe7c16f6604501db4f4363dc4181bca1"
+        },
+        {
+          "index": 13,
+          "width": 152,
+          "height": 492,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "2ca6b9d895046cb9618ca93f566604411ebf8d745cd486df34c92ae24c616594",
+          "pixel_sha256": "9bb69b772a30ae2fd0c4e8aff3cbc5947de944e85d0403fe3c3400f3a3fac850",
+          "wz_path": "Mob.wz/8880151.img/die1/13",
+          "duration_ms": null,
+          "origin": {
+            "x": 86,
+            "y": 299
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/die1/13",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill6/0013.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "4766e51fa1113f3e41083ce66882d8b71091ca9b7c92300d785e99b7ea2cd6b0"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Mob/8880151.img/die1",
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "fly",
+      "frame_count": 16,
+      "expected_frame_count": 16,
+      "frames": [
+        {
+          "index": 0,
+          "width": 356,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "74bf2d48931d89e927c9f65dde45c6c0155927afb23feeff0f6a3913b0be6854",
+          "pixel_sha256": "4d27d6d8fc4419439433b54d4aa90ac7723badeb7ae3a450d42008cd6b6bfff4",
+          "wz_path": "Mob.wz/8880151.img/fly/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 117,
+            "y": 233
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/fly/0",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/fly/0000.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "311c7797939f4ceb5eae90f320d7c352528a50ff4b30021904103389a3b8a787"
+        },
+        {
+          "index": 1,
+          "width": 344,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "ba2643a87c25703faef2b213d680bf4fd80f6d019fe10503eba85d3eac95537f",
+          "pixel_sha256": "adaf557f5e26f37c05af928ce2b63c8bdec4350fc67317ccf71ff4a6962ce003",
+          "wz_path": "Mob.wz/8880151.img/fly/1",
+          "duration_ms": null,
+          "origin": {
+            "x": 113,
+            "y": 234
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/fly/1",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/fly/0001.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "ac63d2ba7f86ff72b44f8cea06366b999e9bcde4fdc07426d5edf20d6b195470"
+        },
+        {
+          "index": 2,
+          "width": 336,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "75576147956ac09e23ae08f14daec6f42c9d548dd512c3a97e360e3fb044c105",
+          "pixel_sha256": "9b00784c037d6a86846ee1300234e8cef35b2448825a1c8bd7bf5aad7a0ab550",
+          "wz_path": "Mob.wz/8880151.img/fly/2",
+          "duration_ms": null,
+          "origin": {
+            "x": 110,
+            "y": 235
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/fly/2",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/fly/0002.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "63dfddeec48e0369fffeccd4df0d6672c2897116e602a6b14629e41d97e95098"
+        },
+        {
+          "index": 3,
+          "width": 324,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "7aa28b83bc5cbe617d9261fd9159716f69501f6e0250c75851e407d836cbfba2",
+          "pixel_sha256": "72abda05c0fad546ac6dfc860906f4d71cd1f6c731ca3bb59d43bb2ab24fddfc",
+          "wz_path": "Mob.wz/8880151.img/fly/3",
+          "duration_ms": null,
+          "origin": {
+            "x": 106,
+            "y": 236
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/fly/3",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/fly/0003.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "80e90028127e817f6c5b0edef64de29e4cf511745905e752e4990698ce4535a7"
+        },
+        {
+          "index": 4,
+          "width": 316,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "78017bafab20bdf07f85583289f7e74d444c29a9cfc9e36de338986dde490458",
+          "pixel_sha256": "a45cb9473b1704b7b8f73de2ee1074fc8f82b1117f30d02b3ce8eecda2d99260",
+          "wz_path": "Mob.wz/8880151.img/fly/4",
+          "duration_ms": null,
+          "origin": {
+            "x": 104,
+            "y": 235
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/fly/4",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/fly/0004.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "ff4351bda808b14381e7d8ed82a5bdb79a8000e8db7215296d981d3eb9632862"
+        },
+        {
+          "index": 5,
+          "width": 308,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "760a545e6055245535a7fd6fecb1e16f95b2e5539b3e934d4beb492c2a78f39a",
+          "pixel_sha256": "1a40c0252f79bc01ac273390a215dd5eecc8175536ca1f9e36568657a810ed82",
+          "wz_path": "Mob.wz/8880151.img/fly/5",
+          "duration_ms": null,
+          "origin": {
+            "x": 101,
+            "y": 234
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/fly/5",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/fly/0005.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "6b7c54852c8557029feb0684bd31ffc6d329e85ee012088ced27e8c88f61d242"
+        },
+        {
+          "index": 6,
+          "width": 316,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "964282fc11f50eaf1993a2aa9e0b803a8ba07542804bc9b5fa8754001fbc8860",
+          "pixel_sha256": "22f66d1840bd7a41212a97d7782bf66f02db8859f82a12791212877a10eb7f65",
+          "wz_path": "Mob.wz/8880151.img/fly/6",
+          "duration_ms": null,
+          "origin": {
+            "x": 104,
+            "y": 234
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/fly/6",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/fly/0006.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "42e53176501ce2b6f2d8e76b8f46fc441e1121eec360244dd463d11a975965d7"
+        },
+        {
+          "index": 7,
+          "width": 340,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "1fd14a161bbef8eb100bc3adb1172af323ebf0aefaae1b24f60d2944cc7847ee",
+          "pixel_sha256": "87bba2932d92bb25e3b12d5eab67497e0b8f9ca98c3a72678779b8d1b8401fa0",
+          "wz_path": "Mob.wz/8880151.img/fly/7",
+          "duration_ms": null,
+          "origin": {
+            "x": 112,
+            "y": 232
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/fly/7",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/fly/0007.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "55f2cc9c5fda5a9f93d8de23357cabbc915a3936516907ef2c4227e24d1d63d6"
+        },
+        {
+          "index": 8,
+          "width": 356,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "46fe84212e4e69c921b7c20aa1ec1d41152ba21a536c4080f950353949cff778",
+          "pixel_sha256": "66a19502e73a852f9fae70ae53093da9da4c5f62abe081eefc1cea7817457e96",
+          "wz_path": "Mob.wz/8880151.img/fly/8",
+          "duration_ms": null,
+          "origin": {
+            "x": 117,
+            "y": 233
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/fly/8",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/fly/0008.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "bcc53fcf16840a72d81bb1a7306101ba6cb4ffa4d95b2cfcf9bcc5fb07279274"
+        },
+        {
+          "index": 9,
+          "width": 344,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "23b803b1a043db36df87484e57aa4c73de752d96ed3726685d133981fbd9738e",
+          "pixel_sha256": "4b0d7336b15301041ae17fe05d1ae09570116ba3310979901949117b5449c568",
+          "wz_path": "Mob.wz/8880151.img/fly/9",
+          "duration_ms": null,
+          "origin": {
+            "x": 113,
+            "y": 234
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/fly/9",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/fly/0009.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "afb4937a8f5a40b177ca15bc6b02d91286b203a20279629ca5d88abd4e3e8e70"
+        },
+        {
+          "index": 10,
+          "width": 336,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "77e315e20b291ef73db5cb19b85b8a2ab3805e012f5c3322c92af37429b2cffc",
+          "pixel_sha256": "afe64a04444ec4ee5bc135ab5e9d62b90b9bcb15e11aed387919bf00a509d6df",
+          "wz_path": "Mob.wz/8880151.img/fly/10",
+          "duration_ms": null,
+          "origin": {
+            "x": 110,
+            "y": 235
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/fly/10",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/fly/0010.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "a01f35934fc36ec1eb28e7960b3f0260961d4044bc85099367e9fa27d4a29de6"
+        },
+        {
+          "index": 11,
+          "width": 324,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "60632a5768ce779bc99248ddc22d05578eb54c9f3106420152ad9c64e031c8c5",
+          "pixel_sha256": "57876c01372f561dd9fec6f806e0b008d6af9179c99e7841a10bb09a6a089dcf",
+          "wz_path": "Mob.wz/8880151.img/fly/11",
+          "duration_ms": null,
+          "origin": {
+            "x": 106,
+            "y": 236
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/fly/11",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/fly/0011.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "2e72044499707614743b8fd79f8defba2f301ccb3f8bc1ca4efcbb9e4491be58"
+        },
+        {
+          "index": 12,
+          "width": 316,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "9db57a0b6a2847e2bc57b21875aa879734272e12d5b9da51a332ed41aa1e814f",
+          "pixel_sha256": "f808a9dfb6d7b0c7c47cfeec0278992e8393a75f6aab47e74276bb11e1d16061",
+          "wz_path": "Mob.wz/8880151.img/fly/12",
+          "duration_ms": null,
+          "origin": {
+            "x": 104,
+            "y": 235
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/fly/12",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/fly/0012.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "570543926c4fe3979abd75adf5c4ff2408da4ac6fca73303236671a217eed7bd"
+        },
+        {
+          "index": 13,
+          "width": 308,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "46b6f0cd318dc4831f1b033b1ecc1edd4a7078b8e1c8f54dbae5aff09474e22f",
+          "pixel_sha256": "2a6d8e6a79bd14d6be18991d60624eed69f39b9b1918c0a9a4165a54448d01a5",
+          "wz_path": "Mob.wz/8880151.img/fly/13",
+          "duration_ms": null,
+          "origin": {
+            "x": 101,
+            "y": 234
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/fly/13",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/fly/0013.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "d779f653926006e2b37aa4713ad6ed12d96841d7ce5d87217f552ad34869195e"
+        },
+        {
+          "index": 14,
+          "width": 316,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "2a654e747b433be54299039283cd547f4558571e23d5dcea703994577e9302bb",
+          "pixel_sha256": "15ba40211c4b552bbf0b4c4ebd85d7d840f3778de6bde9a45e48d766ef54770e",
+          "wz_path": "Mob.wz/8880151.img/fly/14",
+          "duration_ms": null,
+          "origin": {
+            "x": 104,
+            "y": 234
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/fly/14",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/fly/0014.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "b9ab3573bfa27d679609b24c75571f42e92186bf723b1512219d15fa7a2f3a76"
+        },
+        {
+          "index": 15,
+          "width": 340,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "fa195b2f2aa1d930e1f005aae225f26bf15e8935c639394694a5506d00ce4ff3",
+          "pixel_sha256": "840196d098caa29114f33f2b46ead6c6e2127adde58db117583c533572c228ae",
+          "wz_path": "Mob.wz/8880151.img/fly/15",
+          "duration_ms": null,
+          "origin": {
+            "x": 112,
+            "y": 232
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/fly/15",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/fly/0015.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "bf9b3c4ab041f0ccf9cd3ed27a99c6fbf508a2114a94ab405f71d9c2b4b67be4"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Mob/8880151.img/fly",
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "hit1",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 356,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "74bf2d48931d89e927c9f65dde45c6c0155927afb23feeff0f6a3913b0be6854",
+          "pixel_sha256": "4d27d6d8fc4419439433b54d4aa90ac7723badeb7ae3a450d42008cd6b6bfff4",
+          "wz_path": "Mob.wz/8880151.img/hit1/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 117,
+            "y": 233
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/hit1/0",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/fly/0000.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "2b7766cca4e53eac4d7621821680ccdfb4efe5b3f7d81e851537e15bae697743"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Mob/8880151.img/hit1",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "skill1",
+      "frame_count": 35,
+      "expected_frame_count": 36,
+      "frames": [
+        {
+          "index": 0,
+          "width": 336,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "3458e35904e4620354e29d0394077a4b2ac3b2dca45a02eed6218948ac36b335",
+          "pixel_sha256": "be28ea176df62a93b38c0f7e892778520f03451f4ed13d568c40d71a864b42e6",
+          "wz_path": "Mob.wz/8880151.img/skill1/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 116,
+            "y": 245
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill1/0",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill1/0000.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "612e9d04218efbb5c28eb436dfab34e6fee956baf885fff1206b4c96ac5748b1"
+        },
+        {
+          "index": 2,
+          "width": 316,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "cc628b4b45e4360aa627e5c9efce93e6351314dd5094d39171f56f453c477d4a",
+          "pixel_sha256": "e9609bcd6b08f8628d74f330a060528721ade512a234119153a811a882ec0538",
+          "wz_path": "Mob.wz/8880151.img/skill1/2",
+          "duration_ms": null,
+          "origin": {
+            "x": 110,
+            "y": 250
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill1/2",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill1/0002.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "400f4e6c8c09e1f8483fdcc1a698aca3a28db55d7d4be1a2fcd1e19fef987462"
+        },
+        {
+          "index": 3,
+          "width": 308,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "acd0bdcaafafd20467066baf8b27889b92a7298ddc1efd4527368e7721472ca2",
+          "pixel_sha256": "10b03517a5939b4b8d7b2c24e2682381f645dc285b490901bfa83fd776740be5",
+          "wz_path": "Mob.wz/8880151.img/skill1/3",
+          "duration_ms": null,
+          "origin": {
+            "x": 107,
+            "y": 270
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill1/3",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill1/0003.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "f62a5720a1ad497f29ebe3c05f89cd8b694b8d522618880a422be62c59a5317b"
+        },
+        {
+          "index": 4,
+          "width": 316,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "d5d236237ad343862471b302d31a16f87a5f7a5b78c4d7d29cf975f13c4dd0ee",
+          "pixel_sha256": "6df308c1e876c12b2d06999c30f867f7dfdf92c71156eed2f6e7631e93a238ac",
+          "wz_path": "Mob.wz/8880151.img/skill1/4",
+          "duration_ms": null,
+          "origin": {
+            "x": 110,
+            "y": 301
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill1/4",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill1/0004.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "8cee560816b3aa32ce8addbdf78ebe97529e68cbade0824968889913e4285c5c"
+        },
+        {
+          "index": 5,
+          "width": 340,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "922da2f778306a458a898848af286234c17068c6fcbf22afbd8c2a62230b7121",
+          "pixel_sha256": "016bff2e2a348cb0975ea8d803777f8c1b13122572a44763e9b3d2be0088aaea",
+          "wz_path": "Mob.wz/8880151.img/skill1/5",
+          "duration_ms": null,
+          "origin": {
+            "x": 118,
+            "y": 325
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill1/5",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill1/0005.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "f4a1c8f7349c014dd7003fa3e695f3106e970996d27127c7920ce1a7143d80d1"
+        },
+        {
+          "index": 6,
+          "width": 408,
+          "height": 388,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "8460735473d18764d114ca8aa0ff1e598509cb740fa484200fe5a866c7eb69cf",
+          "pixel_sha256": "bde305276ae62913e475d8ebfec20abe0645c7b28531f8e9749b6af3937b3bb0",
+          "wz_path": "Mob.wz/8880151.img/skill1/6",
+          "duration_ms": null,
+          "origin": {
+            "x": 177,
+            "y": 340
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill1/6",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill1/0006.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "407d50fe4f1170a34a1cb8894d9147bda3d773933eb3496ba5dc0774f8673fe2"
+        },
+        {
+          "index": 7,
+          "width": 400,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "183c511c85e0bf648a9d808f24d3af25add2c37f529836f995435d0dfc61ae73",
+          "pixel_sha256": "8a77af07df788627f74c993c19ca0329b66f77a94cb8353a9e74dd62c3fab86a",
+          "wz_path": "Mob.wz/8880151.img/skill1/7",
+          "duration_ms": null,
+          "origin": {
+            "x": 174,
+            "y": 340
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill1/7",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill1/0007.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "57b4504c6cbe147fcd282f285e846e988126667371300d2bdcaf3fffe65edf82"
+        },
+        {
+          "index": 8,
+          "width": 384,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "9c631461c83ec362d327dcdef856f04e7be19ab81f22380d8839cf54c0b0cb80",
+          "pixel_sha256": "7460825da0ea76ec79455880c07536933bf29090f3e4a6046ed3aef6c5da1881",
+          "wz_path": "Mob.wz/8880151.img/skill1/8",
+          "duration_ms": null,
+          "origin": {
+            "x": 167,
+            "y": 341
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill1/8",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill1/0008.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "fad6261ef64caadc95b03ff8d6b76b4f27320f992bf96e26058e6b7bbf51d44f"
+        },
+        {
+          "index": 9,
+          "width": 476,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "c677353221eda8ce549f5cf478aa9f8a45b3a5928ca9b6cbdd82581b73d408a0",
+          "pixel_sha256": "d5d39762fb5a9e38c53b72926a5165684e5b4f9ab38324c7ed6b88741979c9e0",
+          "wz_path": "Mob.wz/8880151.img/skill1/9",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill1/9",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill1/0009.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found",
+            "origin": "The read operation timed out"
+          },
+          "source_png_sha256": "b667699110a2ffebb20631059d5e66c8fd3f6ce41794f3b71e007f3edf563b5c"
+        },
+        {
+          "index": 10,
+          "width": 520,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "6753e020af16f36485b813f24ff9c8eac1a4622d1d2d20caa8c09c7ca183aeca",
+          "pixel_sha256": "62914809730f117c2c4d94bc1c0ef923e485f0ce66c02ec46658e2fe6b87ff9b",
+          "wz_path": "Mob.wz/8880151.img/skill1/10",
+          "duration_ms": null,
+          "origin": {
+            "x": 229,
+            "y": 342
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill1/10",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill1/0010.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "d28eacccbb717c90aecf33275ab220b3f21f7eb5229df02ab1e47c17a30dc370"
+        },
+        {
+          "index": 11,
+          "width": 520,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "f289e5eb11bedbdfa60ca26cb02706a845b8d3dfa130e5793f1c1bc67f7a0fe6",
+          "pixel_sha256": "45a511f9520f11aa1d45f32fda6834a702e3a88486a3e1d79e10660866e61849",
+          "wz_path": "Mob.wz/8880151.img/skill1/11",
+          "duration_ms": null,
+          "origin": {
+            "x": 229,
+            "y": 343
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill1/11",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill1/0011.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "0afa47bd3d1ad29ae0e90b3434600edaf36fcc3ba06057bca12f4d8532f149d0"
+        },
+        {
+          "index": 12,
+          "width": 520,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "b5a868ae3295fdea528d8d384f8adaaaf292364fb392134831f3912b59f2cc95",
+          "pixel_sha256": "59cec8cc60e5bbf825ef5927c4bd5ab898659f9d58264c4f05554ad48e7a2e7f",
+          "wz_path": "Mob.wz/8880151.img/skill1/12",
+          "duration_ms": null,
+          "origin": {
+            "x": 229,
+            "y": 342
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill1/12",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill1/0012.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "a92030370ac83cbe75e3b7105e01601a61b856f36da94f7515630aa1b7f9aabb"
+        },
+        {
+          "index": 13,
+          "width": 520,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "eff2d51f3885b5a91f6365932407813edb6da96362ee19784e980a490ddbbac8",
+          "pixel_sha256": "a54430fea1ee9d289a18cb07232b5ab55be026acfc9ec847243e34be96c96253",
+          "wz_path": "Mob.wz/8880151.img/skill1/13",
+          "duration_ms": null,
+          "origin": {
+            "x": 229,
+            "y": 342
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill1/13",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill1/0013.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "201559c78c5a47567e5378914d8b6dca8bdb4801712ff0cba6a82970b17baa00"
+        },
+        {
+          "index": 14,
+          "width": 516,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "ba68faf3db25fb8e73c986ad76a1f68a5ca4b03b71f6d78b1d93d054175c7bbb",
+          "pixel_sha256": "5f8f4c9a9799fea6b6e8a9ab6ef7b73ba90a9e2b895a212fec7c491825eccdd9",
+          "wz_path": "Mob.wz/8880151.img/skill1/14",
+          "duration_ms": null,
+          "origin": {
+            "x": 229,
+            "y": 342
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill1/14",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill1/0014.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "ddf2b3443052ddba75adc27a16dcfc7e299f287f83a5c579b82fdbba69216ef3"
+        },
+        {
+          "index": 15,
+          "width": 520,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "9cc7183f794daa358153ad2a6631ab724c6288df6365b33db40ce978ebb5c1fa",
+          "pixel_sha256": "323cf16965137fd630c1ab52cb2d2157ae865b763d9450fe8aba4099374ae045",
+          "wz_path": "Mob.wz/8880151.img/skill1/15",
+          "duration_ms": null,
+          "origin": {
+            "x": 229,
+            "y": 342
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill1/15",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill1/0015.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "aec2724754a323a0eb15b574975c705ada61ff06e0e554e2e46b265042908da5"
+        },
+        {
+          "index": 16,
+          "width": 516,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "198e26ddca52894fa440ba1ab21092abab26e3c7d2ace629ef2982de46872678",
+          "pixel_sha256": "2be2661091991954de3a9ec7805bc5508fa55a95aaaa65bdb2586553d70a4507",
+          "wz_path": "Mob.wz/8880151.img/skill1/16",
+          "duration_ms": null,
+          "origin": {
+            "x": 229,
+            "y": 342
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill1/16",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill1/0016.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "7bfc168d37fdaeb2c9e8919ff65169ef6624b0cb0df73552ee1bcfa741adb67b"
+        },
+        {
+          "index": 17,
+          "width": 512,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "e7deee9cab379d0aaa03504a61e0d9e71ac10ee45b359706332ac516ca9b1169",
+          "pixel_sha256": "9f21f4400d8890312082830bdabca952c56160e2d6586cded2d8de7dd152d18a",
+          "wz_path": "Mob.wz/8880151.img/skill1/17",
+          "duration_ms": null,
+          "origin": {
+            "x": 229,
+            "y": 342
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill1/17",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill1/0017.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "dbd45e12a53ab2ce44f12537ec027963f396234c3927c32a7b600adbafac28bf"
+        },
+        {
+          "index": 18,
+          "width": 516,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "c41634fe7610db7f656248062d46b26db7e162ee585c4a7f639e798da3f47028",
+          "pixel_sha256": "574295b1b2ef3ea112c2c6df43024bde6a4978aa917f1af5411ed45551af1048",
+          "wz_path": "Mob.wz/8880151.img/skill1/18",
+          "duration_ms": null,
+          "origin": {
+            "x": 229,
+            "y": 343
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill1/18",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill1/0018.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "20d87145d7a0fe6b8daed08c052a8eabc25bd54af6f78a9291fecd00ddc3c084"
+        },
+        {
+          "index": 19,
+          "width": 516,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "53d9508df3c1d2a5d442993af8cae7985f1e4eac1e3b5b051594db5a7e52b115",
+          "pixel_sha256": "ef179ba51fe9f8913fc37bc45ad17239e31699ffecb867683e9e038d25bd8ea6",
+          "wz_path": "Mob.wz/8880151.img/skill1/19",
+          "duration_ms": null,
+          "origin": {
+            "x": 229,
+            "y": 342
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill1/19",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill1/0019.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "0b563526b6d1fa703b5f49e014d53efa108630273533df259624d7cc32822357"
+        },
+        {
+          "index": 20,
+          "width": 516,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "a097e6822e36b8772a2d995266e5de4d0f9d04a63abd7ce24bd6a97775e80c1a",
+          "pixel_sha256": "38d52435ed481ebc7f7c39b81f93e476b1a3f5a903b6b2c3c75b2313ee0d8f54",
+          "wz_path": "Mob.wz/8880151.img/skill1/20",
+          "duration_ms": null,
+          "origin": {
+            "x": 229,
+            "y": 342
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill1/20",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill1/0020.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "481d676f0351f89dc91b26e199d01f7dd4ae3e6fe0c6269e44a332220538b5b7"
+        },
+        {
+          "index": 21,
+          "width": 516,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "780cdd3d677ad77c462b70d67e12fad60b024df3c03348e1c44512743a6eb399",
+          "pixel_sha256": "fd12e32ace72bf6b0b21952d600c077e296911e793ddc0bce3f9584f47276924",
+          "wz_path": "Mob.wz/8880151.img/skill1/21",
+          "duration_ms": null,
+          "origin": {
+            "x": 229,
+            "y": 342
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill1/21",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill1/0021.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "3797639b4b0cd1ce20e17f20edc156bf52392d2437a5b9d4d6167bb53e067e89"
+        },
+        {
+          "index": 22,
+          "width": 556,
+          "height": 692,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "29b209f5d0bc7fee2cf3203e1d0881199c4e21caaa1ec9bbbf29b31936320720",
+          "pixel_sha256": "d4fdeaf67da7c92c0c6e638e7433789bc30f1c408648d9dc5d53b9fd75a86054",
+          "wz_path": "Mob.wz/8880151.img/skill1/22",
+          "duration_ms": null,
+          "origin": {
+            "x": 269,
+            "y": 476
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill1/22",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill1/0022.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "5d3e1949c40802dfee86c0b9f30f5c91cace3b8a88a35d743beeb8a60490088d"
+        },
+        {
+          "index": 23,
+          "width": 548,
+          "height": 676,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "61685e3eeb4864d0cf7d237ecd105bceadfa2d4224c87fb2c07faccb2ee315e9",
+          "pixel_sha256": "c90f916c8a6535b333c33f7034331203c3d5a48b7e44acb0beb3b1ce00b78e34",
+          "wz_path": "Mob.wz/8880151.img/skill1/23",
+          "duration_ms": null,
+          "origin": {
+            "x": 269,
+            "y": 476
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill1/23",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill1/0023.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "9d70c8db22534b76b78f8eb356631e65fa5f69692f9dbcaf0763879d8ba3b40d"
+        },
+        {
+          "index": 24,
+          "width": 536,
+          "height": 664,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "ca4b30b713f7758944ecb47c7de384dc11b5f6acfc7c26001fe1c7c558890311",
+          "pixel_sha256": "0108e0660a456c101076577d7c76ec444e52bbf2a5ddb2cd132f7d3b81d01529",
+          "wz_path": "Mob.wz/8880151.img/skill1/24",
+          "duration_ms": null,
+          "origin": {
+            "x": 269,
+            "y": 476
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill1/24",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill1/0024.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "786a1d94224075e27526ef65e5822c1bc2e2acfe38ca75ad613800f18ab1ee3a"
+        },
+        {
+          "index": 25,
+          "width": 536,
+          "height": 672,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "51464e2ee1f7c58a067b450600044c85d7a3475405b865364d9f3bbe0aaf7371",
+          "pixel_sha256": "95dd076770fb3dc46c466f4212b8e113ed1716c5b6fd2b1feac95db0a079f520",
+          "wz_path": "Mob.wz/8880151.img/skill1/25",
+          "duration_ms": null,
+          "origin": {
+            "x": 269,
+            "y": 476
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill1/25",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill1/0025.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "a8f85f23de6939318858cee85b2518419ddd66db53413589ae43c07d4001d508"
+        },
+        {
+          "index": 26,
+          "width": 536,
+          "height": 672,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5936c6763ba0a7324d3429323c5c65432404281e981a9b4ca60ca6364b335255",
+          "pixel_sha256": "6e712c3cb43ead99066e29d5dcf42b43568a08713dec17c2dd5bea30569c1e77",
+          "wz_path": "Mob.wz/8880151.img/skill1/26",
+          "duration_ms": null,
+          "origin": {
+            "x": 269,
+            "y": 476
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill1/26",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill1/0026.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "6837191137de960599ff9af4a230e92785b6a50539945c9281bb6dddb7c7cc3a"
+        },
+        {
+          "index": 27,
+          "width": 536,
+          "height": 668,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "aa60dca7a5b727734726b31b5d1f20e4ce75478a4d80ad72aff5b8a931eb2894",
+          "pixel_sha256": "a0d2fedbc128d23828a323e93eed74c641e32ca744b1f71473a234a436099476",
+          "wz_path": "Mob.wz/8880151.img/skill1/27",
+          "duration_ms": null,
+          "origin": {
+            "x": 269,
+            "y": 475
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill1/27",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill1/0027.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "f6af88e2a8f30184663be0cbaad1e619926bd603663a92e7240f2bf1e761d9d9"
+        },
+        {
+          "index": 28,
+          "width": 536,
+          "height": 672,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "97e4c5da5d0b19b648452a4a8c6755b2f3b6281dd543161bdd400271c3cce6c3",
+          "pixel_sha256": "bf5be8d890dc6444f15b6da3f179744c6263fd34077e766c5772e84e74d5c0e9",
+          "wz_path": "Mob.wz/8880151.img/skill1/28",
+          "duration_ms": null,
+          "origin": {
+            "x": 269,
+            "y": 475
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill1/28",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill1/0028.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "be0bf14d9819e65e872450f808cfcb3b94c787f1911c3a9dfe4acaeb79c529bd"
+        },
+        {
+          "index": 29,
+          "width": 536,
+          "height": 672,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "9c5812c215a4cc48c4a5ac79d7adb91f6432d1a0916050ae323be07be823dbe1",
+          "pixel_sha256": "daba9c5fbf19949f3722efaadafe3e6c1f1a8e12326a427195737946da767c50",
+          "wz_path": "Mob.wz/8880151.img/skill1/29",
+          "duration_ms": null,
+          "origin": {
+            "x": 269,
+            "y": 476
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill1/29",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill1/0029.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "c64e5f31c3f4e768a57411c4e0aa83488d8665c37398c2ecc180f47ba69e9322"
+        },
+        {
+          "index": 30,
+          "width": 536,
+          "height": 664,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "23427293dfa51407b3ce1b624f26a9637a5b706b08837f88b4096c5a4f381c74",
+          "pixel_sha256": "f0e0fe6c89d2660a585db626864fa3cb356d34d882a8444c4fd9f2c1914a3f5a",
+          "wz_path": "Mob.wz/8880151.img/skill1/30",
+          "duration_ms": null,
+          "origin": {
+            "x": 269,
+            "y": 464
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill1/30",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill1/0030.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "4b62a0064f1e0bd6eff0772927ba30faa2486e3b96c06fc33c13a1e220505a32"
+        },
+        {
+          "index": 31,
+          "width": 536,
+          "height": 636,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "26687f0ff0ef90d3172506760497b38054441d6f66dad9f3374bb80860156ae3",
+          "pixel_sha256": "d1f1534689958b99f8ee07d2b01a4e2c75f1be321c0125899c1150538d9f3bb0",
+          "wz_path": "Mob.wz/8880151.img/skill1/31",
+          "duration_ms": null,
+          "origin": {
+            "x": 269,
+            "y": 444
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill1/31",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill1/0031.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "e152d472dd88549ed68e7386b7db3c38feb0332c9d4dead7f9b0a24f30c0360f"
+        },
+        {
+          "index": 32,
+          "width": 536,
+          "height": 616,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "bb173f70862dbe4b77ad559a2a2cf8c29f945b9ef1d059b89b4ffb9890990716",
+          "pixel_sha256": "e9a07b597978a104af834fe4ec331984ac27b070680531d50c1b5eb0a9ad07e3",
+          "wz_path": "Mob.wz/8880151.img/skill1/32",
+          "duration_ms": null,
+          "origin": {
+            "x": 269,
+            "y": 429
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill1/32",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill1/0032.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "5755946c648123fbe5e2ba8aa6d09a2c6dcf1a40dd2564b0817a6ba33b993471"
+        },
+        {
+          "index": 33,
+          "width": 536,
+          "height": 604,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "4eb8996a54909a4f595055a30193b6e5ec213531291ae54ef4eed7c0bf7c1b15",
+          "pixel_sha256": "b3c0f025d5ae537d2a4d795fad74c944c5c86143f650b53c81423d9e2fe9a490",
+          "wz_path": "Mob.wz/8880151.img/skill1/33",
+          "duration_ms": null,
+          "origin": {
+            "x": 269,
+            "y": 415
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill1/33",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill1/0033.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "The read operation timed out"
+          },
+          "source_png_sha256": "bc1f0831991c81df23918b2b322849dbcc1746dcb4752895c15b0ea35e697d0d"
+        },
+        {
+          "index": 34,
+          "width": 536,
+          "height": 596,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "ce9e35d1bd2c646e785d063a7ecffa05d9aca13397e26c9dcb5caf7c8ab464c9",
+          "pixel_sha256": "a611f51b7245c8e636c4dcc691637302d461b7280f420c3743d75ac1f9daa10a",
+          "wz_path": "Mob.wz/8880151.img/skill1/34",
+          "duration_ms": null,
+          "origin": {
+            "x": 269,
+            "y": 415
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill1/34",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill1/0034.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "ef724130df2413184a055734775f8e55d51250ceaecb7ea3c900891a04c8fa09"
+        },
+        {
+          "index": 35,
+          "width": 340,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "d3adb7b23e1cc37c0f75db1695e6337954828bfdb6531cbb5b1f3b1bda203496",
+          "pixel_sha256": "8e24f0d2d2824497affa4363e12041a228e92f0a4db1e907fac431f86f9912c2",
+          "wz_path": "Mob.wz/8880151.img/skill1/35",
+          "duration_ms": null,
+          "origin": {
+            "x": 118,
+            "y": 246
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill1/35",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill1/0035.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "79cfeafc2b1f42ca6e24ecb7cbaafb0660bf54dce2714e2fd5b44fc02e3f1195"
+        }
+      ],
+      "count_matches_api": false,
+      "indices_contiguous": false,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Mob/8880151.img/skill1",
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35
+        ],
+        "error": null
+      },
+      "wz_indices_match": false
+    },
+    {
+      "name": "skill2",
+      "frame_count": 10,
+      "expected_frame_count": 24,
+      "frames": [
+        {
+          "index": 0,
+          "width": 356,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "165cd755cb8b8804fa446fca86b8716a868bce65eef7bfebd7c8db0db9086740",
+          "pixel_sha256": "bbe2b3d499d94cec582621d926909b7622813605c5eb820e1e344bd8c5b4ec0f",
+          "wz_path": "Mob.wz/8880151.img/skill2/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 117,
+            "y": 233
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill2/0",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill2/0000.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "83ed83c1f0126e6ed55f2d1752c8e90703102ed68983ccc33b971fc743f3d9af"
+        },
+        {
+          "index": 1,
+          "width": 584,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "2badf03f2d89b8cbae5b583637db728002b3c02210bd82830da709e3dd8df03d",
+          "pixel_sha256": "0d4c962dfb7d2347eb10721f636ac0f035a179edfe3327fb19c10416ab6df7cd",
+          "wz_path": "Mob.wz/8880151.img/skill2/1",
+          "duration_ms": null,
+          "origin": {
+            "x": 352,
+            "y": 233
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill2/1",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill2/0001.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "a9022904cd00936224a907f9cba72d47e2b2db9cc96bd6041ad9e759f624e2f1"
+        },
+        {
+          "index": 2,
+          "width": 568,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "018656238ecfb473445317b7744f4a31cb821cec532a60e6acc769cb3953d46c",
+          "pixel_sha256": "0a7ca369519fab1f6698b10796b129c3d664de2699338a80f77c811fbf9aa6a0",
+          "wz_path": "Mob.wz/8880151.img/skill2/2",
+          "duration_ms": null,
+          "origin": {
+            "x": 343,
+            "y": 233
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill2/2",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill2/0002.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "The read operation timed out"
+          },
+          "source_png_sha256": "f92c25ed31bbd267808bfdc909818201fda599e5a44412fc43167311a722f567"
+        },
+        {
+          "index": 3,
+          "width": 548,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5054f9a1d50b956134a64f264781fa224ab103ca1698a685247c34d147081357",
+          "pixel_sha256": "56ba0dbacec5424b301809ceeb704223c67b87627733f1b745d060c47da11e45",
+          "wz_path": "Mob.wz/8880151.img/skill2/3",
+          "duration_ms": null,
+          "origin": {
+            "x": 329,
+            "y": 233
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill2/3",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill2/0003.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "86df057435a9833673a8a9aabc416c4a81d9e293f3bb64d97b08832d9846e75d"
+        },
+        {
+          "index": 4,
+          "width": 536,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "fad7633cb893df4d25d0094db98833c2b5178f6b0da6bf002b17232bb7184b4b",
+          "pixel_sha256": "4c11b69957e246644244b36e33fa2a5cbabba6c6905e74e03d17a9287d4af53d",
+          "wz_path": "Mob.wz/8880151.img/skill2/4",
+          "duration_ms": null,
+          "origin": {
+            "x": 322,
+            "y": 233
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill2/4",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill2/0004.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "70d9db63281daffa7ddf266a7194ebd6ca2352546755200ee1f29aceb381bc8d"
+        },
+        {
+          "index": 5,
+          "width": 528,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "8299673010d3929a9b49abdcbe40eccc7dbe9059aa2f24cd47de5dc8ee6ba3c0",
+          "pixel_sha256": "074f0485eec89ded011764aeac3407fb2673520a3e9e69f99b40e2b7d1bf5815",
+          "wz_path": "Mob.wz/8880151.img/skill2/5",
+          "duration_ms": null,
+          "origin": {
+            "x": 318,
+            "y": 233
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill2/5",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill2/0005.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "1b4c363ee795a66d7be037de7c50f48d8b90114ca20313cdc30966cef0f74750"
+        },
+        {
+          "index": 6,
+          "width": 532,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "71e16dd73773fa3f7f1878e7e36cd12f61a9b18db45740175dcc93a30051332d",
+          "pixel_sha256": "43c9947a266803c274c5170b018e920aaacb21e25e42ae8871492ff863e03d59",
+          "wz_path": "Mob.wz/8880151.img/skill2/6",
+          "duration_ms": null,
+          "origin": {
+            "x": 317,
+            "y": 234
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill2/6",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill2/0006.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "d91c57192b7d3386f71dd770b62cbfbf6fea6a4609593bad0aad7790c0052df9"
+        },
+        {
+          "index": 7,
+          "width": 512,
+          "height": 388,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "b5034f268f53eb632b5d8754d88d2b5b96705171e23df64ce3355337e0eb648f",
+          "pixel_sha256": "a66bc7f5fbd3acef02a26f82af354557fe19033dc8f9afc21226acb47f7c6510",
+          "wz_path": "Mob.wz/8880151.img/skill2/7",
+          "duration_ms": null,
+          "origin": {
+            "x": 282,
+            "y": 242
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill2/7",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill2/0007.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "a593041bc6e4e121a311bad6cfe6fb8e8023ccd8a9cc724e93070875e7ea556e"
+        },
+        {
+          "index": 8,
+          "width": 500,
+          "height": 420,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "fdc633c93ddb2a11490d61f7cdf325d031f07d64e03bb4ab067ecf42736d6f41",
+          "pixel_sha256": "9eb52cf629624ed007e795708c25acf4b49b3d095400bec4daa6a8422c9c0fda",
+          "wz_path": "Mob.wz/8880151.img/skill2/8",
+          "duration_ms": null,
+          "origin": {
+            "x": 262,
+            "y": 273
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill2/8",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill2/0008.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "15c279b133d8e78be1798a533417e26b3212bcd58257d055a6c561ba4e9f6e34"
+        },
+        {
+          "index": 9,
+          "width": 496,
+          "height": 432,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "597c872f93ad580dc56da7a508329a9d23e8c56c97b1d0b1cffe88c385be810c",
+          "pixel_sha256": "53e7a4bf40b691c925e0f26e7a05a334bb65e78b0e99eae527021af715ad10f6",
+          "wz_path": "Mob.wz/8880151.img/skill2/9",
+          "duration_ms": null,
+          "origin": {
+            "x": 265,
+            "y": 287
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill2/9",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill2/0009.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "e22f74b7e426fa06ed90a75e468e15b57f89d2f40cfa958d3d7dd32af6eaa0ca"
+        }
+      ],
+      "count_matches_api": false,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Mob/8880151.img/skill2",
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "error": null
+      },
+      "wz_indices_match": false
+    },
+    {
+      "name": "skill3",
+      "frame_count": 19,
+      "expected_frame_count": 19,
+      "frames": [
+        {
+          "index": 0,
+          "width": 356,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "2ac4fe4b6acd7107e8dc8714ac1a8d4a9049306ba7cca68bbd3ee25aced069c8",
+          "pixel_sha256": "d5691fa2811d11b1560d74b443f2733c750a5199c52ea3466e31eb2451ab117c",
+          "wz_path": "Mob.wz/8880151.img/skill3/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 117,
+            "y": 233
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill3/0",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill3/0000.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "4f254b39b716347c290dcea53b4421757e698b4fc2f73dbce4e2c1750e0c1bb7"
+        },
+        {
+          "index": 1,
+          "width": 388,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "dfaf90329eb1e8a64393d07da9a050f19cf1d104a15244e82dae1efb9107c1c4",
+          "pixel_sha256": "6acd6d7d5f68ed0e4ed56628f920a6320307ee6cce00ed22b6fd5ae58a9dc59a",
+          "wz_path": "Mob.wz/8880151.img/skill3/1",
+          "duration_ms": null,
+          "origin": {
+            "x": 164,
+            "y": 233
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill3/1",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill3/0001.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "46fc3cf84ddae88957af00efe62e05864614a3c45025a736042df047fc27e741"
+        },
+        {
+          "index": 2,
+          "width": 376,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "b97b957011a93966bdbc5e80574f69ca3753c20611677ba9d63abfc34c81bde2",
+          "pixel_sha256": "b588bb9e9bf4b77463ead331683c01cd803c4602cc8f7f25f9f566eeb793e3b3",
+          "wz_path": "Mob.wz/8880151.img/skill3/2",
+          "duration_ms": null,
+          "origin": {
+            "x": 162,
+            "y": 233
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill3/2",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill3/0002.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "1f672b88a6fdeb42448970fdd1b66c810292d392b102522380b6fc2a66142923"
+        },
+        {
+          "index": 3,
+          "width": 372,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "f96b92ef729a4b007160cbf216f732963852638b29e1d7452b9af2226759fcec",
+          "pixel_sha256": "9bd1b3c27f577e6eaafe2db4af1647afd7d553763d9dfd6eadc7a1a7a5d82b85",
+          "wz_path": "Mob.wz/8880151.img/skill3/3",
+          "duration_ms": null,
+          "origin": {
+            "x": 159,
+            "y": 234
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill3/3",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill3/0003.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "4332dcd6f762578f62bf030c3ceee14ac04a47acb7075a7376ae1b7f85706481"
+        },
+        {
+          "index": 4,
+          "width": 388,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "0e2c1bd192fd94c7de38a2803bcc640f744d58d1e8c209923e82e21efa735bbd",
+          "pixel_sha256": "718e2e9d8c64244afaa66256f1d9b0d5d91146eaecb5ea92b57168108cd6385a",
+          "wz_path": "Mob.wz/8880151.img/skill3/4",
+          "duration_ms": null,
+          "origin": {
+            "x": 148,
+            "y": 233
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill3/4",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill3/0004.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "0ed2bfc7ccebbf5a3503593e9ac47b3d67e8de254a7609683adc491902eed9c6"
+        },
+        {
+          "index": 5,
+          "width": 372,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "e6e185b58a75744267764762840dc4a955587c226717639601251af36e17857a",
+          "pixel_sha256": "238bfbd351dddc9fe1585e9672245ab8a3937484253dc638e1b3fc5f110b6d16",
+          "wz_path": "Mob.wz/8880151.img/skill3/5",
+          "duration_ms": null,
+          "origin": {
+            "x": 148,
+            "y": 233
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill3/5",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill3/0005.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "8c542fb232ddab0e8918ac9fe6abd11d1f39dac70bfe38335033f507af1e1492"
+        },
+        {
+          "index": 6,
+          "width": 320,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "45ab9defbc8e500da3dd3c6ebe79697731c5ab7b762e69367abe2bdcbd2e932a",
+          "pixel_sha256": "ca4ffa487b64dbaf36a16f5ed17ac4a17ef96f358725527f6a797273cc837f6f",
+          "wz_path": "Mob.wz/8880151.img/skill3/6",
+          "duration_ms": null,
+          "origin": {
+            "x": 107,
+            "y": 233
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill3/6",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill3/0006.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "85da6fd1efbdc7d4ee442a2e697a7f72712121c27c2b0148fd55f1ec5abb5a7d"
+        },
+        {
+          "index": 7,
+          "width": 1024,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "534fb93cfb70328354759ad72e4b4c35c7cd103bcc53647a602e10dfd63b3c17",
+          "pixel_sha256": "e06aaf6f0d67b0f015228a31113d8070ad87ac729330ed353412dcc9dcdd7609",
+          "wz_path": "Mob.wz/8880151.img/skill3/7",
+          "duration_ms": null,
+          "origin": {
+            "x": 512,
+            "y": 233
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill3/7",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill3/0007.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "7e6bc45b3976e9a3544f247e3d2ea9c4c4652021bfd4fda10c3ccb02460f357e"
+        },
+        {
+          "index": 8,
+          "width": 1024,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "49b52f63e87a512db1d782563ab13a825532cb11384b9833ddbf2456ee3b89cb",
+          "pixel_sha256": "cd34a95fbb19f2def9180a78d6bca6d33285525a05d4846102c0dd1a4ad4d14a",
+          "wz_path": "Mob.wz/8880151.img/skill3/8",
+          "duration_ms": null,
+          "origin": {
+            "x": 512,
+            "y": 233
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill3/8",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill3/0008.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "8e95d92821656c654f31b75b0b38f50fc292824d4f937d1aa99707b176361ff0"
+        },
+        {
+          "index": 9,
+          "width": 1024,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "b595ac53090d18a089ed46fc1e48b7ca97eaed18d1ee3bbb9753854af22b101b",
+          "pixel_sha256": "9e41e5a41ee4b349449decb4bd8957f96e98d04c281775f236e5faf4d1e066ac",
+          "wz_path": "Mob.wz/8880151.img/skill3/9",
+          "duration_ms": null,
+          "origin": {
+            "x": 512,
+            "y": 233
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill3/9",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill3/0009.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "956dce5e32c9442741adda94bb1ad94f5e0f4f2ee67e3b0d131fc20a0cf496fc"
+        },
+        {
+          "index": 10,
+          "width": 1024,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "0fcdb570e0a757cb18c23821e46ab7dd0321575b09f0714a8967cb6613426372",
+          "pixel_sha256": "e1c97333c71b91e61d60c27b712fd648258b492a7fb8d3ad177268e81c1b7b9c",
+          "wz_path": "Mob.wz/8880151.img/skill3/10",
+          "duration_ms": null,
+          "origin": {
+            "x": 512,
+            "y": 233
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill3/10",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill3/0010.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "9546d861df6e955049a6313fffafe5b3a438f105c244d8cb6aa6a4fcfaed086b"
+        },
+        {
+          "index": 11,
+          "width": 1024,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "f7fc201b47c5508a8d478549ba755c3daee0904d802acf92fd7201b444f8d33f",
+          "pixel_sha256": "fdce5290fa4953cf00649485a12b7efae8545bb88770794bb15348946738118f",
+          "wz_path": "Mob.wz/8880151.img/skill3/11",
+          "duration_ms": null,
+          "origin": {
+            "x": 512,
+            "y": 233
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill3/11",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill3/0011.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "52d43ad4724d543a08fdccbffecf219863f1518e72cfe29e8bea07bfc0558644"
+        },
+        {
+          "index": 12,
+          "width": 1024,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "fe8774ce05ac0ae33c00bcc1e270270f36c6cfd63653d0e82cc199cf97698901",
+          "pixel_sha256": "5cd7ee3bc0381a94e7b4b52ff150566830676302c547feea27b15a909510206f",
+          "wz_path": "Mob.wz/8880151.img/skill3/12",
+          "duration_ms": null,
+          "origin": {
+            "x": 512,
+            "y": 233
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill3/12",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill3/0012.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "91a18507cfa3037ecc948e89212c34a5a5ec3b3dbe2d272a67af1dd0eb3a4475"
+        },
+        {
+          "index": 13,
+          "width": 1024,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "3e5c4638096ef389f2bd084951413ffcd60b055c95cf93d212e6c5ba15681533",
+          "pixel_sha256": "2d029bd68fdea4fed05d5d4b80bd55b8a0f03c38082314794f38015d1a28c8eb",
+          "wz_path": "Mob.wz/8880151.img/skill3/13",
+          "duration_ms": null,
+          "origin": {
+            "x": 512,
+            "y": 234
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill3/13",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill3/0013.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "8b537ecac5a05d6fdbdb48e6e5e6b56809eeb7591ad98892adf4a7ef2e245fc4"
+        },
+        {
+          "index": 14,
+          "width": 1024,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "11bd1d1911249ee93f079efb97ed51b1b430df4123024a1ddd30f9c114e69c1e",
+          "pixel_sha256": "4cf3c01864a74a1a5cf01c5adc6762131e594e9315a19cc1650acae653121bfb",
+          "wz_path": "Mob.wz/8880151.img/skill3/14",
+          "duration_ms": null,
+          "origin": {
+            "x": 512,
+            "y": 233
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill3/14",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill3/0014.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "d3878478dd20d37d0048db28fcb4669e3e710ac5005a5bcd16feca0e58792991"
+        },
+        {
+          "index": 15,
+          "width": 1024,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "df9cb1222ff6abc9c738c05ff549ca5c9c4b6bc34c183196886a6dcb79f09c17",
+          "pixel_sha256": "0b888793c256085c8b6efa140e9f78de05df75b344d4f84f0f9a5d5f8b50fa4e",
+          "wz_path": "Mob.wz/8880151.img/skill3/15",
+          "duration_ms": null,
+          "origin": {
+            "x": 512,
+            "y": 233
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill3/15",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill3/0015.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "00aa926a6620bbe46e32e33f36825dc1a23c0a811db11358f9cc9598464c4a64"
+        },
+        {
+          "index": 16,
+          "width": 1024,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "498655ba56e16c44a722fa7c96cbd6f6ac63b34c4b531cb754ab11394d86df8e",
+          "pixel_sha256": "bbf1f474e1ce705391cba71f83483948bdf1c07bd85bbc4d580c7af61e08310f",
+          "wz_path": "Mob.wz/8880151.img/skill3/16",
+          "duration_ms": null,
+          "origin": {
+            "x": 512,
+            "y": 233
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill3/16",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill3/0016.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "6e312ad384bb2c4853a00b8caf0e6ddba1ccc79a92b5c96bb82eec17633cf558"
+        },
+        {
+          "index": 17,
+          "width": 920,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "a8c684e9b3e80a92608da4be69f08734614777e7c6a7242a030d4ff4788a7f09",
+          "pixel_sha256": "b2cbde6efabee045b0688c5e78aa2f6d21f9274c0c41e4d2bd73c82b4a2b371c",
+          "wz_path": "Mob.wz/8880151.img/skill3/17",
+          "duration_ms": null,
+          "origin": {
+            "x": 460,
+            "y": 233
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill3/17",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill3/0017.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "0c4dcd99ac5ecbccd8dc97dbecd66bed444a2dc278d693af409274c38e69a588"
+        },
+        {
+          "index": 18,
+          "width": 324,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "62db1040eaa2554a0782a78e23e087e01b08647824bf980a65c88c0945abbad5",
+          "pixel_sha256": "ddb95b05279ed92151b20070aca832937a6e05e4b3656e9160f6d19bf9b54f33",
+          "wz_path": "Mob.wz/8880151.img/skill3/18",
+          "duration_ms": null,
+          "origin": {
+            "x": 106,
+            "y": 233
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill3/18",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill3/0018.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "5cb106dc8939e429fc1c45b9ce2a88461b46671fd5eb67435dca4da226301f4d"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Mob/8880151.img/skill3",
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "skill4",
+      "frame_count": 29,
+      "expected_frame_count": 29,
+      "frames": [
+        {
+          "index": 0,
+          "width": 356,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "500d764d86bdc5b4dc1cb676ae86aa235b7c4b85f41ffe6e17083d546855c3e8",
+          "pixel_sha256": "b42d7eef122c2bd61c78fce695178a96448abf3ad98d40b62460d4d1950d1a37",
+          "wz_path": "Mob.wz/8880151.img/skill4/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 117,
+            "y": 233
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill4/0",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill4/0000.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "2ec8f68a58e83f446e85c57f1bc6ffa650fa1636ac4062e49dd74d1ce2874879"
+        },
+        {
+          "index": 1,
+          "width": 344,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "4f43c0508afdb734e594c26f64314d99139ac63357e19aefb32b32fcc8662a01",
+          "pixel_sha256": "d244804edd93f7d9c653adafe57524b6ad49ad6d7ff8a81ebcb8ceb501df663c",
+          "wz_path": "Mob.wz/8880151.img/skill4/1",
+          "duration_ms": null,
+          "origin": {
+            "x": 113,
+            "y": 234
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill4/1",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill4/0001.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "fa149c0e0f5dce18e0aaa9cb8520dfbbcb6292a191996f1ae06ff64464cce3fb"
+        },
+        {
+          "index": 2,
+          "width": 336,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "94402c8af8146d15d8e05651861ffc1e354514c5f51a9bec2ee25f6f883d3721",
+          "pixel_sha256": "1dd01ada8d51faf13431b4765ddd27d4684c334ac07fb18be0908315693d6cd3",
+          "wz_path": "Mob.wz/8880151.img/skill4/2",
+          "duration_ms": null,
+          "origin": {
+            "x": 110,
+            "y": 235
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill4/2",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill4/0002.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "975ca9ef1c5193b13c4428e9fea774ea0a8272dfb01a30a86bf391b6942c2508"
+        },
+        {
+          "index": 3,
+          "width": 256,
+          "height": 400,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "7ae707049aecbbf663bc65fb524595d11ecb70e6fb83ed6a9dbc17137e3b9319",
+          "pixel_sha256": "125274bca3464e1ffa664f3c8c9c6c768e64d1ee8f2d0d087c3a455974b138a3",
+          "wz_path": "Mob.wz/8880151.img/skill4/3",
+          "duration_ms": null,
+          "origin": {
+            "x": 83,
+            "y": 262
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill4/3",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill4/0003.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "eff08b2ee99d6efa44f0b8602235cda716f2a971bbb9f3d614e24bca9f69ba6d"
+        },
+        {
+          "index": 4,
+          "width": 196,
+          "height": 384,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "8fbeb5b1b6487cd38e42dce2f12211d8a0ed7113cdae8e9e71014d8b5cac2b47",
+          "pixel_sha256": "350010b5a46e048ac7849c161aa8793ed1753efa6376f025288bc9e904958a8d",
+          "wz_path": "Mob.wz/8880151.img/skill4/4",
+          "duration_ms": null,
+          "origin": {
+            "x": 84,
+            "y": 299
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill4/4",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill4/0004.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "5de314e0be7244a7288e86be3748222c1ea18d4364760f278b8faffe3c1fc2ea"
+        },
+        {
+          "index": 5,
+          "width": 220,
+          "height": 444,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "3e3f37ee27d84111a9ac38a0086be434aed0e2dd1896b36de7ddd271bfded4c9",
+          "pixel_sha256": "aae3464ac752ea82085cd26f4111119a2620778cb44ea536182f03a81471758a",
+          "wz_path": "Mob.wz/8880151.img/skill4/5",
+          "duration_ms": null,
+          "origin": {
+            "x": 105,
+            "y": 303
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill4/5",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill4/0005.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "6a3cf6adbdb0194684401c65eee0f18314fe423b471dc6c4b2ba30b0e95331bd"
+        },
+        {
+          "index": 6,
+          "width": 252,
+          "height": 456,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "074dbe079bef0b7be594444daabde912deef0ba93539172bd05494643ad8fb5f",
+          "pixel_sha256": "d4071934cd204400e266626348ccd4fd9a47f0b2cf67e4db1bc08703340d9c22",
+          "wz_path": "Mob.wz/8880151.img/skill4/6",
+          "duration_ms": null,
+          "origin": {
+            "x": 122,
+            "y": 301
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill4/6",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill4/0006.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "d6b05b93869b8931b8a7a7dd165e1886ec1b6c01b8dbc6d3016dc13bc3a2e6ac"
+        },
+        {
+          "index": 7,
+          "width": 276,
+          "height": 552,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "552843c3651454b9160571eae9a47d5842c73ba13c093fab893933540be86595",
+          "pixel_sha256": "8185e07c5f55b094738a36e0cc0c566ff7c4bd9436ed55c9f8b5d5d4617b67f0",
+          "wz_path": "Mob.wz/8880151.img/skill4/7",
+          "duration_ms": null,
+          "origin": {
+            "x": 134,
+            "y": 305
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill4/7",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill4/0007.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "f75ce452d196cc7fdbe617dfc346a978ff2d101a85ffd46c446f18a11455550f"
+        },
+        {
+          "index": 8,
+          "width": 292,
+          "height": 480,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "47faa971c9f8feb278eae8a6590a22d0b86777c058a50aaa0263ae05c0a7084e",
+          "pixel_sha256": "5b7ae4d42e9ccc3e0894976fe4146ed77223b9822f1e7f573efc52ae4777082a",
+          "wz_path": "Mob.wz/8880151.img/skill4/8",
+          "duration_ms": null,
+          "origin": {
+            "x": 141,
+            "y": 308
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill4/8",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill4/0008.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "ceb5c1308be7c1204ed2bc00327b23a98006022d70df2af75091bd766c8995f8"
+        },
+        {
+          "index": 9,
+          "width": 296,
+          "height": 500,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "cd68d9699e361a7bfccebf3d48381506a0c1f0c92aab3d386e0fca7689925902",
+          "pixel_sha256": "d3e5b0e15971f73f897aac3c33653f8ae12daec2cf91643d1ddf05ddbbb71862",
+          "wz_path": "Mob.wz/8880151.img/skill4/9",
+          "duration_ms": null,
+          "origin": {
+            "x": 143,
+            "y": 309
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill4/9",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill4/0009.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "0732a8404be339b3ce1d7c6edc68e321622a906c5d0ff045cef9dd9c298d83b6"
+        },
+        {
+          "index": 10,
+          "width": 216,
+          "height": 488,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "dfe6ad784a11495e0cf2b579ab3bd02257dcdb211ac9d854425651149fb50c06",
+          "pixel_sha256": "1789b5ed33e9782de91142768c0ef5e296406439d0a20fbdeb1d83157babddb6",
+          "wz_path": "Mob.wz/8880151.img/skill4/10",
+          "duration_ms": null,
+          "origin": {
+            "x": 89,
+            "y": 309
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill4/10",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill4/0010.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "94c0c24bcdcf5df997a86a21889baded89cab76e31ff46a8d0c1a81f991f97db"
+        },
+        {
+          "index": 11,
+          "width": 172,
+          "height": 536,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "aaec203f0a6b94ec78c8b6c3bed5ff58a18046a06a3766741cb590545e71f6a1",
+          "pixel_sha256": "15e77aa04e3a2b9032ccae62b4921b2d3ecb3443ff50ac42e98490d46e26a7a5",
+          "wz_path": "Mob.wz/8880151.img/skill4/11",
+          "duration_ms": null,
+          "origin": {
+            "x": 83,
+            "y": 309
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill4/11",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill4/0011.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "de98929296e2cbc7f08933416d60efb64a0be10a7b12b2dfc35bcc635f07cbb1"
+        },
+        {
+          "index": 12,
+          "width": 164,
+          "height": 500,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "3fd2bf237a227983818fdf1eac5a1301687d5632229a5847542b747be78c2961",
+          "pixel_sha256": "8b2bbd79589605257012aca65ad29c62d73a70ce8857ae59b43a38b70cd70fca",
+          "wz_path": "Mob.wz/8880151.img/skill4/12",
+          "duration_ms": null,
+          "origin": {
+            "x": 84,
+            "y": 309
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill4/12",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill4/0012.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "6c76cb695c226d54bee0a02d49a206ca27d9a9ba730a12303437805017fb6916"
+        },
+        {
+          "index": 13,
+          "width": 152,
+          "height": 492,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "f7c621d054805b3bbe86f046eb1f0946a6892b3f40c79369e58dece0593f0d5a",
+          "pixel_sha256": "f047b9f5100dfd69f27cb3c65be2d58d56234188bdcad2b3a20bcdf624ee33e5",
+          "wz_path": "Mob.wz/8880151.img/skill4/13",
+          "duration_ms": null,
+          "origin": {
+            "x": 86,
+            "y": 299
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill4/13",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill4/0013.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "b1d216c49e02daa89eb3f3268b391bd78b81d8a935e761efa402c4df6c1d93a7"
+        },
+        {
+          "index": 14,
+          "width": 1,
+          "height": 1,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "aac47e8d39add213b54b9bfe239571d9e3c8415480f54c6a692365efcd5abb7f",
+          "pixel_sha256": "a79246fb5dcd05b249389b79a05343236b9a541a75c1c474ae9433a8f882e3c4",
+          "wz_path": "Mob.wz/8880151.img/skill4/14",
+          "duration_ms": 20000,
+          "origin": null,
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/lachelein/3003245/TWMS-256/remove/0000.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "origin": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "2ec959875be2db49e6af8a13c6db67fac800775a5f89221572b71fa9529b965a"
+        },
+        {
+          "index": 15,
+          "width": 152,
+          "height": 492,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "f7c621d054805b3bbe86f046eb1f0946a6892b3f40c79369e58dece0593f0d5a",
+          "pixel_sha256": "f047b9f5100dfd69f27cb3c65be2d58d56234188bdcad2b3a20bcdf624ee33e5",
+          "wz_path": "Mob.wz/8880151.img/skill4/15",
+          "duration_ms": null,
+          "origin": {
+            "x": 86,
+            "y": 299
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill4/15",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill4/0013.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "93669b537ecd5beecd5b729959aff781b710f9869976f3f53baed77e4c71affe"
+        },
+        {
+          "index": 16,
+          "width": 164,
+          "height": 500,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "3fd2bf237a227983818fdf1eac5a1301687d5632229a5847542b747be78c2961",
+          "pixel_sha256": "8b2bbd79589605257012aca65ad29c62d73a70ce8857ae59b43a38b70cd70fca",
+          "wz_path": "Mob.wz/8880151.img/skill4/16",
+          "duration_ms": null,
+          "origin": {
+            "x": 84,
+            "y": 309
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill4/16",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill4/0012.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "f0fb0d9944c32d7e461412d30384406b0c5e6541dd09d17ce18384d5ed47f3bd"
+        },
+        {
+          "index": 17,
+          "width": 172,
+          "height": 536,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "aaec203f0a6b94ec78c8b6c3bed5ff58a18046a06a3766741cb590545e71f6a1",
+          "pixel_sha256": "15e77aa04e3a2b9032ccae62b4921b2d3ecb3443ff50ac42e98490d46e26a7a5",
+          "wz_path": "Mob.wz/8880151.img/skill4/17",
+          "duration_ms": null,
+          "origin": {
+            "x": 83,
+            "y": 309
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill4/17",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill4/0011.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "08596a108c51f9337ea23741604bb2414d9ff3b90032ebbbf7088d1fe3135999"
+        },
+        {
+          "index": 18,
+          "width": 216,
+          "height": 488,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "dfe6ad784a11495e0cf2b579ab3bd02257dcdb211ac9d854425651149fb50c06",
+          "pixel_sha256": "1789b5ed33e9782de91142768c0ef5e296406439d0a20fbdeb1d83157babddb6",
+          "wz_path": "Mob.wz/8880151.img/skill4/18",
+          "duration_ms": null,
+          "origin": {
+            "x": 89,
+            "y": 309
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill4/18",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill4/0010.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "0fce776ab05985bdb14445085d8134712e825bcb9a829ddc7a59fec3d40d3464"
+        },
+        {
+          "index": 19,
+          "width": 296,
+          "height": 500,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "cd68d9699e361a7bfccebf3d48381506a0c1f0c92aab3d386e0fca7689925902",
+          "pixel_sha256": "d3e5b0e15971f73f897aac3c33653f8ae12daec2cf91643d1ddf05ddbbb71862",
+          "wz_path": "Mob.wz/8880151.img/skill4/19",
+          "duration_ms": null,
+          "origin": {
+            "x": 143,
+            "y": 309
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill4/19",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill4/0009.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "4128d4ea823236d604d3c395af03d64c3a84adf1e2df2b5aa7f93e4fa2b52dd1"
+        },
+        {
+          "index": 20,
+          "width": 292,
+          "height": 480,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "47faa971c9f8feb278eae8a6590a22d0b86777c058a50aaa0263ae05c0a7084e",
+          "pixel_sha256": "5b7ae4d42e9ccc3e0894976fe4146ed77223b9822f1e7f573efc52ae4777082a",
+          "wz_path": "Mob.wz/8880151.img/skill4/20",
+          "duration_ms": null,
+          "origin": {
+            "x": 141,
+            "y": 308
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill4/20",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill4/0008.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "1a1eeca03e720dffd8e354bd8b361a11d7e1d7f910842e4e016caebbbf1977e6"
+        },
+        {
+          "index": 21,
+          "width": 276,
+          "height": 552,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "552843c3651454b9160571eae9a47d5842c73ba13c093fab893933540be86595",
+          "pixel_sha256": "8185e07c5f55b094738a36e0cc0c566ff7c4bd9436ed55c9f8b5d5d4617b67f0",
+          "wz_path": "Mob.wz/8880151.img/skill4/21",
+          "duration_ms": null,
+          "origin": {
+            "x": 134,
+            "y": 305
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill4/21",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill4/0007.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "b21827455a0f37e8a5d402c8e8b55f742891a86db5103521d2fc980a2b9efe65"
+        },
+        {
+          "index": 22,
+          "width": 252,
+          "height": 456,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "074dbe079bef0b7be594444daabde912deef0ba93539172bd05494643ad8fb5f",
+          "pixel_sha256": "d4071934cd204400e266626348ccd4fd9a47f0b2cf67e4db1bc08703340d9c22",
+          "wz_path": "Mob.wz/8880151.img/skill4/22",
+          "duration_ms": null,
+          "origin": {
+            "x": 122,
+            "y": 301
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill4/22",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill4/0006.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "0ab8f41a54b7a04dc8a1f5dd2b76538c6ce2c02500ef8403fa5068f6c431e7fe"
+        },
+        {
+          "index": 23,
+          "width": 220,
+          "height": 444,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "3e3f37ee27d84111a9ac38a0086be434aed0e2dd1896b36de7ddd271bfded4c9",
+          "pixel_sha256": "aae3464ac752ea82085cd26f4111119a2620778cb44ea536182f03a81471758a",
+          "wz_path": "Mob.wz/8880151.img/skill4/23",
+          "duration_ms": null,
+          "origin": {
+            "x": 105,
+            "y": 303
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill4/23",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill4/0005.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "fc9189528a85b54b909dfa6c3853c9381d2506058d90e1ef04f5f01540c56be2"
+        },
+        {
+          "index": 24,
+          "width": 196,
+          "height": 384,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "8fbeb5b1b6487cd38e42dce2f12211d8a0ed7113cdae8e9e71014d8b5cac2b47",
+          "pixel_sha256": "350010b5a46e048ac7849c161aa8793ed1753efa6376f025288bc9e904958a8d",
+          "wz_path": "Mob.wz/8880151.img/skill4/24",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill4/24",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill4/0004.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found",
+            "origin": "The read operation timed out"
+          },
+          "source_png_sha256": "884f8b9e7f4cc243deca40998a7154b6dcd6a58c5b42655c9e2ae739944a38ed"
+        },
+        {
+          "index": 25,
+          "width": 256,
+          "height": 400,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "7ae707049aecbbf663bc65fb524595d11ecb70e6fb83ed6a9dbc17137e3b9319",
+          "pixel_sha256": "125274bca3464e1ffa664f3c8c9c6c768e64d1ee8f2d0d087c3a455974b138a3",
+          "wz_path": "Mob.wz/8880151.img/skill4/25",
+          "duration_ms": null,
+          "origin": {
+            "x": 83,
+            "y": 262
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill4/25",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill4/0003.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "832888c25a88f23fbbf69baac44499678b5a22ea628805badff90ce21109b224"
+        },
+        {
+          "index": 26,
+          "width": 336,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "94402c8af8146d15d8e05651861ffc1e354514c5f51a9bec2ee25f6f883d3721",
+          "pixel_sha256": "1dd01ada8d51faf13431b4765ddd27d4684c334ac07fb18be0908315693d6cd3",
+          "wz_path": "Mob.wz/8880151.img/skill4/26",
+          "duration_ms": null,
+          "origin": {
+            "x": 110,
+            "y": 235
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill4/26",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill4/0002.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "551d4f95e5e56d53262039d90d3592b4db8b8795bc1ff8df00d4583fc567486e"
+        },
+        {
+          "index": 27,
+          "width": 344,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "4f43c0508afdb734e594c26f64314d99139ac63357e19aefb32b32fcc8662a01",
+          "pixel_sha256": "d244804edd93f7d9c653adafe57524b6ad49ad6d7ff8a81ebcb8ceb501df663c",
+          "wz_path": "Mob.wz/8880151.img/skill4/27",
+          "duration_ms": null,
+          "origin": {
+            "x": 113,
+            "y": 234
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill4/27",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill4/0001.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "2df4a4c0c9b9a37bd3ff6fdfcf534ec31e2f89e93e40c1181b84e8fa45efa3b1"
+        },
+        {
+          "index": 28,
+          "width": 356,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "500d764d86bdc5b4dc1cb676ae86aa235b7c4b85f41ffe6e17083d546855c3e8",
+          "pixel_sha256": "b42d7eef122c2bd61c78fce695178a96448abf3ad98d40b62460d4d1950d1a37",
+          "wz_path": "Mob.wz/8880151.img/skill4/28",
+          "duration_ms": null,
+          "origin": {
+            "x": 117,
+            "y": 233
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill4/28",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill4/0000.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "1232dccce545e69789a17a4ba25d577128071f49cfffea8bef1dfbd529812ac1"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Mob/8880151.img/skill4",
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "skill5",
+      "frame_count": 5,
+      "expected_frame_count": 62,
+      "frames": [
+        {
+          "index": 1,
+          "width": 344,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "cb47ee6e2af926b53215634f6cec7e5db1201535851ff56b6d99ad9d35b6d892",
+          "pixel_sha256": "cc00cebd1737c13d734f9c10e80d0ecea7ed095c3514e0a77e80894c7deef68e",
+          "wz_path": "Mob.wz/8880151.img/skill5/1",
+          "duration_ms": 90,
+          "origin": {
+            "x": 113,
+            "y": 233
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill5/1",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill5/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "35eff41e3c0d4fc51221a5033cd0fbf5ae7377cdfed6dca06dcab4cd55d97184"
+        },
+        {
+          "index": 2,
+          "width": 336,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "b25bf9a2ff84c78b69c8d11ad75dd868e14b69ba18b34e3719fc89484976918a",
+          "pixel_sha256": "2fa565343afaca72eabfa44d079162cb022c3f94ffb9e148fa02d88849bd86e7",
+          "wz_path": "Mob.wz/8880151.img/skill5/2",
+          "duration_ms": 90,
+          "origin": {
+            "x": 110,
+            "y": 233
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill5/2",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill5/0002.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "77970439bded4a2f827d1ef5c0d5ab29d7b63bb106e0894223164b2377549437"
+        },
+        {
+          "index": 3,
+          "width": 324,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "7d926983d3b0ac6e0b233ad8c715939660aec11e1aa35885e7c35c377280242b",
+          "pixel_sha256": "98e3a682409defd8fe7a5e2e81778c04016cbbf79e5c19df21b13067c7febee3",
+          "wz_path": "Mob.wz/8880151.img/skill5/3",
+          "duration_ms": 90,
+          "origin": {
+            "x": 106,
+            "y": 233
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill5/3",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill5/0003.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "f6fb68bf85ce3fe4a92a3c2473fbc978f060d566a35d695668b92df8f795d255"
+        },
+        {
+          "index": 4,
+          "width": 316,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "9253a275c8e2211334e1e14a3820133ba54e4cca494406ad5f19a58b607f93c4",
+          "pixel_sha256": "9ff59617d46494e0dc8f2c024795f5008e9c2846533971c4c9e5d42d2966a600",
+          "wz_path": "Mob.wz/8880151.img/skill5/4",
+          "duration_ms": 90,
+          "origin": {
+            "x": 104,
+            "y": 233
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill5/4",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill5/0004.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "dcf423d4542d0dfc749e091c20cdee9c9fea550e7e3a33a297c49194a0fae96c"
+        },
+        {
+          "index": 30,
+          "width": 1,
+          "height": 1,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "aac47e8d39add213b54b9bfe239571d9e3c8415480f54c6a692365efcd5abb7f",
+          "pixel_sha256": "a79246fb5dcd05b249389b79a05343236b9a541a75c1c474ae9433a8f882e3c4",
+          "wz_path": "Mob.wz/8880151.img/skill5/30",
+          "duration_ms": 15000,
+          "origin": null,
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/lachelein/3003245/TWMS-256/remove/0000.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "origin": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "77a8a284956d4f74090d92e65a66b71a1fe549d81e35bacd3f245feb8253a254"
+        }
+      ],
+      "count_matches_api": false,
+      "indices_contiguous": false,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Mob/8880151.img/skill5",
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61
+        ],
+        "error": null
+      },
+      "wz_indices_match": false
+    },
+    {
+      "name": "skill6",
+      "frame_count": 14,
+      "expected_frame_count": 15,
+      "frames": [
+        {
+          "index": 0,
+          "width": 356,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "45c02d76dc26836c5c7900462da7e187f50cee7713f953003b7efed72e9a5fe2",
+          "pixel_sha256": "9c1a4564fad560c0812c7d8b0411714a27a1f0133db1a490663465cafe2a36dd",
+          "wz_path": "Mob.wz/8880151.img/skill6/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 117,
+            "y": 233
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill6/0",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill6/0000.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "e3eae503fb7bcd3eca8855e8896984ead4aa1cc6e94d81430f4903908e1ef92b"
+        },
+        {
+          "index": 1,
+          "width": 344,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "0e913caaafaaa9c31653bce24418c4c704f1982c21d95346ff4b16940b896538",
+          "pixel_sha256": "c54fe935be235c1546297ec3effa1e71c09bdce08255bbf88a1ee25d55b90395",
+          "wz_path": "Mob.wz/8880151.img/skill6/1",
+          "duration_ms": null,
+          "origin": {
+            "x": 113,
+            "y": 234
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill6/1",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill6/0001.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "The read operation timed out"
+          },
+          "source_png_sha256": "265385e539a1b03c1444a57eb1c669a593cdfcbb5eb919b9404f1288fb8435d8"
+        },
+        {
+          "index": 2,
+          "width": 336,
+          "height": 380,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "a57df8100f6554453c9d16a6a8f88a14fdc0fc5e1bf5dc082ea3a398ddb585ed",
+          "pixel_sha256": "cc15fe758166ea8b4fb4c755fe7c5a1835649982ad3ce2787c19726348100636",
+          "wz_path": "Mob.wz/8880151.img/skill6/2",
+          "duration_ms": null,
+          "origin": {
+            "x": 110,
+            "y": 235
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill6/2",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill6/0002.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "75a82d9acf109e0c12c1a62ee5133c3ad9f0e0ae8cd40c423950ac87f4155063"
+        },
+        {
+          "index": 3,
+          "width": 256,
+          "height": 400,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "a82294af3ec91fe2d75e1dae8413ab85828c5b928c3125daff8b24f5c7111163",
+          "pixel_sha256": "209ee383a94d7832c4091a6b56d54877e7619741319ee7d0f098e2ad793daeae",
+          "wz_path": "Mob.wz/8880151.img/skill6/3",
+          "duration_ms": null,
+          "origin": {
+            "x": 83,
+            "y": 262
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill6/3",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill6/0003.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "d8c10c7c4d59fd2ec74516b291947c976f458e8e41b7d4bc81a0b20c811fb8ec"
+        },
+        {
+          "index": 4,
+          "width": 196,
+          "height": 384,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "8724a976e32bc6242591af8d30320b81fcff7c4e7fe40dc368e1629e2020b93b",
+          "pixel_sha256": "69fc004b976bfaa791a81845151ce9f33d361998debacdbae4ca07ccd3e0dbaf",
+          "wz_path": "Mob.wz/8880151.img/skill6/4",
+          "duration_ms": null,
+          "origin": {
+            "x": 84,
+            "y": 299
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill6/4",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill6/0004.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "e10b3e155d76a1a7c9108ff46c396234478f6bbe57b553d8a84f72cecdbb280d"
+        },
+        {
+          "index": 5,
+          "width": 220,
+          "height": 444,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "2039635f7d1e61730b87c88182500ed8ac005103627d73e134fb644d6dd0afbe",
+          "pixel_sha256": "dcdc7802d1afdae42e61e59a08b76a81ce6ac1b78e38dd24af331910d920d07e",
+          "wz_path": "Mob.wz/8880151.img/skill6/5",
+          "duration_ms": null,
+          "origin": {
+            "x": 105,
+            "y": 303
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill6/5",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill6/0005.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "faebb7e87b291685050b1253c35c45dbf809e429e5e10c2331553d3ac5e99d65"
+        },
+        {
+          "index": 6,
+          "width": 252,
+          "height": 456,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "3a4a7f9588b11a4cde8de1e00758b6041b81490338f95d2fc1325553ab444ea5",
+          "pixel_sha256": "bf9ce4191f10cc03c097b8cc9b2513219e576777c190469f9269856e8d6b9ca1",
+          "wz_path": "Mob.wz/8880151.img/skill6/6",
+          "duration_ms": null,
+          "origin": {
+            "x": 122,
+            "y": 301
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill6/6",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill6/0006.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "3cd1e0287d8bb56887e198333e346d8b3e78aa022454c0e22da47b6d3dda2956"
+        },
+        {
+          "index": 7,
+          "width": 276,
+          "height": 552,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "bdbbfc4c1785f08c430a005bfbaad220dc07423adac5a4b9c821f0970db84459",
+          "pixel_sha256": "91e21a2c2ba456493796bcf10b8a8a05bb4203dfbfd146d9fe30a17d216f8942",
+          "wz_path": "Mob.wz/8880151.img/skill6/7",
+          "duration_ms": null,
+          "origin": {
+            "x": 134,
+            "y": 305
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill6/7",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill6/0007.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "507e8a92eba74d527b04fb2b47d459093470622491a0ac6cda8093f150a82ddc"
+        },
+        {
+          "index": 8,
+          "width": 292,
+          "height": 480,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "c8554da0ee3697a8182a2fa9aee3cc67d38108c8d7a715b640048c529fd91b34",
+          "pixel_sha256": "3ff5e6f80c3e0da3dce60a4e49ff1bec6dcc56de3626805d110084d37460bd5f",
+          "wz_path": "Mob.wz/8880151.img/skill6/8",
+          "duration_ms": null,
+          "origin": {
+            "x": 141,
+            "y": 308
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill6/8",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill6/0008.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "9f6cd9280c347e6506eb9c16de2ceb30a8d265f58b32cba43a26226b455663ee"
+        },
+        {
+          "index": 9,
+          "width": 296,
+          "height": 500,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "36974fb85e9b592a63f4115ead68b758f493651a3c0d3ae346c805bdf2f6869c",
+          "pixel_sha256": "132c6f26c7e3192f52a9bf24dfe894d5e94fca82539b7512da390dc84aa3a55c",
+          "wz_path": "Mob.wz/8880151.img/skill6/9",
+          "duration_ms": null,
+          "origin": {
+            "x": 143,
+            "y": 309
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill6/9",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill6/0009.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "6d8f2a6cff0a7f248cb212227824cf0003f24d27d93284c7b54e166277a3067d"
+        },
+        {
+          "index": 10,
+          "width": 216,
+          "height": 488,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5156d1242546c95bbf34426883f8af54f42d1c0b5459b11d0a724243f98d18a9",
+          "pixel_sha256": "af63c3d3659c7b0b4396a2a646bcb433b0b88c5942f3d3e79e34d5a6bbd4f9f6",
+          "wz_path": "Mob.wz/8880151.img/skill6/10",
+          "duration_ms": null,
+          "origin": {
+            "x": 89,
+            "y": 309
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill6/10",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill6/0010.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "f04cd6b8c14602c0dfd91e0f97fdc0a996f9c335a60d272083944fdf185cb19e"
+        },
+        {
+          "index": 11,
+          "width": 172,
+          "height": 536,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "14d403936c596933e81edfd6aa6353ee5ac88fc6860936fec6a5c6c95b56d7e8",
+          "pixel_sha256": "091fb937d5d81bb1f1157e6cb8993ea90bead73364cab51194429d9abbaa0bc3",
+          "wz_path": "Mob.wz/8880151.img/skill6/11",
+          "duration_ms": null,
+          "origin": {
+            "x": 83,
+            "y": 309
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill6/11",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill6/0011.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "b67e9daa16b450e0c35a2b710847126503d6d2fd974d6be820ef3327137c661a"
+        },
+        {
+          "index": 12,
+          "width": 164,
+          "height": 500,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "ffad31c165f4ed4abcb39b492d99022e1c9f1b59d7bacafa912a76f9c23d21c3",
+          "pixel_sha256": "d112159a57683a5f6078c79ef7d4893c8af99dc76d30b4faac3c98148a082043",
+          "wz_path": "Mob.wz/8880151.img/skill6/12",
+          "duration_ms": null,
+          "origin": {
+            "x": 84,
+            "y": 309
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8880151/render/skill6/12",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256/skill6/0012.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "c012dbc207ccb964b51530714a595980fe6629711799a22a526fa3a921d02c56"
+        },
+        {
+          "index": 14,
+          "width": 1,
+          "height": 1,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "aac47e8d39add213b54b9bfe239571d9e3c8415480f54c6a692365efcd5abb7f",
+          "pixel_sha256": "a79246fb5dcd05b249389b79a05343236b9a541a75c1c474ae9433a8f882e3c4",
+          "wz_path": "Mob.wz/8880151.img/skill6/14",
+          "duration_ms": 12000,
+          "origin": null,
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/lachelein/3003245/TWMS-256/remove/0000.png",
+          "storage": "identical_pixels_reference",
+          "metadata_issues": {
+            "origin": "HTTP Error 404: Not Found"
+          },
+          "source_png_sha256": "c9b12d76d3c82be2b91a8c7141d643566fba3de6ddd11bbea9afbdfdd0c8959d"
+        }
+      ],
+      "count_matches_api": false,
+      "indices_contiguous": false,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Mob/8880151.img/skill6",
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "error": null
+      },
+      "wz_indices_match": false
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "露希妲",
+  "role": null,
+  "is_shop": null,
+  "source_locations": [],
+  "expected_actions": {
+    "attack1": 1,
+    "attack2": 1,
+    "attack3": 1,
+    "attack4": 1,
+    "attack5": 1,
+    "attack6": 1,
+    "die1": 14,
+    "fly": 16,
+    "hit1": 1,
+    "skill1": 36,
+    "skill2": 24,
+    "skill3": 19,
+    "skill4": 29,
+    "skill5": 62,
+    "skill6": 15
+  },
+  "source_metadata_sha256": "57f75635e4d9683f217b15eb58d1907742a8aa175b5c3cc8897a253287ca408f",
+  "source_archive_sha256": "16936c338058d2b03e6d6ea85bd06a8002ad8179685fc728c98a8c5785fbca79",
+  "source_frame_indices": {
+    "attack1": [
+      0
+    ],
+    "attack2": [
+      0
+    ],
+    "attack3": [
+      0
+    ],
+    "attack4": [
+      0
+    ],
+    "attack5": [
+      0
+    ],
+    "attack6": [
+      0
+    ],
+    "die1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "fly": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "hit1": [
+      0
+    ],
+    "skill1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35
+    ],
+    "skill2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
+    "skill3": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "skill4": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28
+    ],
+    "skill5": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61
+    ],
+    "skill6": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+    ]
+  },
+  "missing_frames": [
+    {
+      "action": "skill1",
+      "index": 1,
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "action": "skill2",
+      "index": 10,
+      "error": "The read operation timed out"
+    },
+    {
+      "action": "skill2",
+      "index": 11,
+      "error": "The read operation timed out"
+    },
+    {
+      "action": "skill5",
+      "index": 0,
+      "error": "The read operation timed out"
+    },
+    {
+      "action": "skill5",
+      "index": 5,
+      "error": "The read operation timed out"
+    },
+    {
+      "action": "skill6",
+      "index": 13,
+      "error": "The read operation timed out"
+    }
+  ],
+  "incomplete_actions": [
+    "skill2",
+    "skill5"
+  ],
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": false,
+    "timing_and_origin": "partial",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": false
+  },
+  "github_path": "assets/maple/collection/bosses/lachelein/8880151/TWMS-256",
+  "status": "partial"
+}

@@ -1,0 +1,3352 @@
+{
+  "id": "450003000",
+  "type": "maps",
+  "region": "lachelein",
+  "town": "lachelein",
+  "name": "拉契爾恩市中心",
+  "name_zh_tw": "拉契爾恩市中心",
+  "name_zh_tw_status": "source_twms",
+  "source_url": "https://maplestory.io/api/TWMS/256/map/450003000",
+  "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Map/Map/Map4/450003000.img",
+  "wz_path": "Map.wz/Map/Map4/450003000.img",
+  "version": {
+    "region": "TWMS",
+    "version": "256"
+  },
+  "acquired_on": "2026-10-23",
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "exported-canvases",
+      "kind": "map_layers",
+      "frame_count": 1,
+      "expected_frame_count": null,
+      "count_matches_api": null,
+      "indices_contiguous": true,
+      "frames": [
+        {
+          "index": 0,
+          "source_archive_path": "Map-Map-Map4-450003000.img-miniMap-canvas.png",
+          "width": 277,
+          "height": 70,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "676f11351883bce35152cf5fd7f1b49797f7cfc046cc1809202c0bc2a8efc146",
+          "pixel_sha256": "7cc5b88c80599102c3d69538a9ec5f585fe6b4ba09c6cac881506b2584b14b16",
+          "github_path": "assets/maple/collection/maps/lachelein/450003000/TWMS-256/layers/Map-Map-Map4-450003000.img-miniMap-canvas.png",
+          "storage": "sha256_reference",
+          "decode": "pass",
+          "duration_ms": null,
+          "origin": null
+        }
+      ]
+    }
+  ],
+  "source_metadata_sha256": "8cf8ad058a62a2d2a48d25282a39ce9e6b049d888656dd51f4bee080ee40d00c",
+  "source_metadata": {
+    "backgroundMusic": "Bgm46/LachelntheIllusionCity",
+    "isReturnMap": false,
+    "returnMap": 450003000,
+    "portals": [
+      {
+        "portalName": "sp",
+        "toName": "",
+        "type": 0,
+        "toMap": 999999999,
+        "x": 1919,
+        "y": 36,
+        "isStarForcePortal": false,
+        "index": 0,
+        "unknownExit": true,
+        "bounds": {
+          "x": 1919,
+          "y": 36,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 1919,
+            "y": 36,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 36,
+          "right": 1920,
+          "bottom": 37,
+          "left": 1919
+        }
+      },
+      {
+        "portalName": "dreambreaker00",
+        "toName": "",
+        "type": 1,
+        "toMap": 999999999,
+        "x": 3033,
+        "y": 75,
+        "isStarForcePortal": false,
+        "index": 0,
+        "unknownExit": true,
+        "bounds": {
+          "x": 3033,
+          "y": 75,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 3033,
+            "y": 75,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 75,
+          "right": 3034,
+          "bottom": 76,
+          "left": 3033
+        }
+      },
+      {
+        "portalName": "tp",
+        "toName": "",
+        "type": 6,
+        "toMap": 999999999,
+        "x": -527,
+        "y": 78,
+        "isStarForcePortal": false,
+        "index": 0,
+        "unknownExit": true,
+        "bounds": {
+          "x": -527,
+          "y": 78,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -527,
+            "y": 78,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 78,
+          "right": -526,
+          "bottom": 79,
+          "left": -527
+        }
+      },
+      {
+        "portalName": "tp",
+        "toName": "",
+        "type": 6,
+        "toMap": 999999999,
+        "x": 804,
+        "y": 78,
+        "isStarForcePortal": false,
+        "index": 0,
+        "unknownExit": true,
+        "bounds": {
+          "x": 804,
+          "y": 78,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 804,
+            "y": 78,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 78,
+          "right": 805,
+          "bottom": 79,
+          "left": 804
+        }
+      },
+      {
+        "portalName": "tp",
+        "toName": "",
+        "type": 6,
+        "toMap": 999999999,
+        "x": -647,
+        "y": 78,
+        "isStarForcePortal": false,
+        "index": 0,
+        "unknownExit": true,
+        "bounds": {
+          "x": -647,
+          "y": 78,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -647,
+            "y": 78,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 78,
+          "right": -646,
+          "bottom": 79,
+          "left": -647
+        }
+      },
+      {
+        "portalName": "tp",
+        "toName": "",
+        "type": 6,
+        "toMap": 999999999,
+        "x": 961,
+        "y": 51,
+        "isStarForcePortal": false,
+        "index": 0,
+        "unknownExit": true,
+        "bounds": {
+          "x": 961,
+          "y": 51,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 961,
+            "y": 51,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 51,
+          "right": 962,
+          "bottom": 52,
+          "left": 961
+        }
+      },
+      {
+        "portalName": "in00",
+        "toName": "out00",
+        "type": 2,
+        "toMap": 450003100,
+        "x": 392,
+        "y": 78,
+        "linkToMap": "/map/450003100",
+        "toMapName": {
+          "name": "秘密據點",
+          "streetName": "拉契爾恩",
+          "id": 450003100
+        },
+        "onlyOnce": false,
+        "isStarForcePortal": false,
+        "index": 0,
+        "unknownExit": false,
+        "bounds": {
+          "x": 392,
+          "y": 78,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 392,
+            "y": 78,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 78,
+          "right": 393,
+          "bottom": 79,
+          "left": 392
+        }
+      },
+      {
+        "portalName": "in01",
+        "toName": "",
+        "type": 7,
+        "toMap": 999999999,
+        "x": -386,
+        "y": 82,
+        "onlyOnce": false,
+        "isStarForcePortal": false,
+        "index": 0,
+        "unknownExit": true,
+        "bounds": {
+          "x": -386,
+          "y": 82,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -386,
+            "y": 82,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 82,
+          "right": -385,
+          "bottom": 83,
+          "left": -386
+        }
+      },
+      {
+        "portalName": "in02",
+        "toName": "",
+        "type": 7,
+        "toMap": 999999999,
+        "x": 2012,
+        "y": 77,
+        "onlyOnce": false,
+        "isStarForcePortal": false,
+        "index": 0,
+        "unknownExit": true,
+        "bounds": {
+          "x": 2012,
+          "y": 77,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 2012,
+            "y": 77,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 77,
+          "right": 2013,
+          "bottom": 78,
+          "left": 2012
+        }
+      },
+      {
+        "portalName": "in03",
+        "toName": "",
+        "type": 7,
+        "toMap": 999999999,
+        "x": 2779,
+        "y": 78,
+        "onlyOnce": false,
+        "isStarForcePortal": false,
+        "index": 0,
+        "unknownExit": true,
+        "bounds": {
+          "x": 2779,
+          "y": 78,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 2779,
+            "y": 78,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 78,
+          "right": 2780,
+          "bottom": 79,
+          "left": 2779
+        }
+      },
+      {
+        "portalName": "out00",
+        "toName": "",
+        "type": 7,
+        "toMap": 999999999,
+        "x": -930,
+        "y": 80,
+        "isStarForcePortal": false,
+        "index": 0,
+        "unknownExit": true,
+        "bounds": {
+          "x": -930,
+          "y": 80,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -930,
+            "y": 80,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 80,
+          "right": -929,
+          "bottom": 81,
+          "left": -930
+        }
+      },
+      {
+        "portalName": "in04",
+        "toName": "",
+        "type": 7,
+        "toMap": 999999999,
+        "x": 1197,
+        "y": 79,
+        "isStarForcePortal": false,
+        "index": 0,
+        "unknownExit": true,
+        "bounds": {
+          "x": 1197,
+          "y": 79,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 1197,
+            "y": 79,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 79,
+          "right": 1198,
+          "bottom": 80,
+          "left": 1197
+        }
+      },
+      {
+        "portalName": "tp",
+        "toName": "",
+        "type": 6,
+        "toMap": 999999999,
+        "x": -753,
+        "y": 75,
+        "isStarForcePortal": false,
+        "index": 0,
+        "unknownExit": true,
+        "bounds": {
+          "x": -753,
+          "y": 75,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -753,
+            "y": 75,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 75,
+          "right": -752,
+          "bottom": 76,
+          "left": -753
+        }
+      },
+      {
+        "portalName": "tp",
+        "toName": "",
+        "type": 6,
+        "toMap": 999999999,
+        "x": -259,
+        "y": 80,
+        "isStarForcePortal": false,
+        "index": 0,
+        "unknownExit": true,
+        "bounds": {
+          "x": -259,
+          "y": 80,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -259,
+            "y": 80,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 80,
+          "right": -258,
+          "bottom": 81,
+          "left": -259
+        }
+      }
+    ],
+    "npcs": [
+      {
+        "x": 209,
+        "y": -134,
+        "walkAreaX1": 159,
+        "walkAreaX2": 259,
+        "id": 3003105,
+        "footholdId": 52,
+        "foothold": {
+          "id": 52,
+          "next": 0,
+          "prev": 0,
+          "piece": 18,
+          "x1": 67,
+          "x2": 242,
+          "y1": -140,
+          "y2": -133,
+          "layerId": 5,
+          "groupId": 17
+        },
+        "hidden": false,
+        "type": 0,
+        "link": "/npc/3003105",
+        "index": 0,
+        "position": {},
+        "bounds": {
+          "x": 209,
+          "y": -134,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 209,
+            "y": -134,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -134,
+          "right": 210,
+          "bottom": -133,
+          "left": 209
+        },
+        "flip": false
+      },
+      {
+        "x": 93,
+        "y": -138,
+        "walkAreaX1": 43,
+        "walkAreaX2": 143,
+        "id": 3003106,
+        "footholdId": 52,
+        "foothold": {
+          "id": 52,
+          "next": 0,
+          "prev": 0,
+          "piece": 18,
+          "x1": 67,
+          "x2": 242,
+          "y1": -140,
+          "y2": -133,
+          "layerId": 5,
+          "groupId": 17
+        },
+        "hidden": false,
+        "type": 0,
+        "link": "/npc/3003106",
+        "index": 1,
+        "position": {},
+        "bounds": {
+          "x": 93,
+          "y": -138,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 93,
+            "y": -138,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -138,
+          "right": 94,
+          "bottom": -137,
+          "left": 93
+        },
+        "flip": true
+      },
+      {
+        "x": -597,
+        "y": -334,
+        "walkAreaX1": -647,
+        "walkAreaX2": -591,
+        "id": 3003288,
+        "footholdId": 32,
+        "foothold": {
+          "id": 32,
+          "next": 0,
+          "prev": 31,
+          "piece": 3,
+          "x1": -650,
+          "x2": -571,
+          "y1": -369,
+          "y2": -317,
+          "layerId": 4,
+          "groupId": 36
+        },
+        "hidden": false,
+        "type": 0,
+        "link": "/npc/3003288",
+        "index": 10,
+        "position": {},
+        "bounds": {
+          "x": -597,
+          "y": -334,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -597,
+            "y": -334,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -334,
+          "right": -596,
+          "bottom": -333,
+          "left": -597
+        },
+        "flip": false
+      },
+      {
+        "x": 2511,
+        "y": 78,
+        "walkAreaX1": 2461,
+        "walkAreaX2": 2561,
+        "id": 9000132,
+        "footholdId": 83,
+        "foothold": {
+          "id": 83,
+          "next": 94,
+          "prev": 91,
+          "piece": 9,
+          "x1": 2404,
+          "x2": 2666,
+          "y1": 78,
+          "y2": 78,
+          "layerId": 5,
+          "groupId": 9
+        },
+        "hidden": false,
+        "type": 0,
+        "link": "/npc/9000132",
+        "index": 1000,
+        "position": {},
+        "bounds": {
+          "x": 2511,
+          "y": 78,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 2511,
+            "y": 78,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 78,
+          "right": 2512,
+          "bottom": 79,
+          "left": 2511
+        },
+        "flip": true
+      },
+      {
+        "x": 2570,
+        "y": 78,
+        "walkAreaX1": 2520,
+        "walkAreaX2": 2620,
+        "id": 9000131,
+        "footholdId": 83,
+        "foothold": {
+          "id": 83,
+          "next": 94,
+          "prev": 91,
+          "piece": 9,
+          "x1": 2404,
+          "x2": 2666,
+          "y1": 78,
+          "y2": 78,
+          "layerId": 5,
+          "groupId": 9
+        },
+        "hidden": false,
+        "type": 0,
+        "link": "/npc/9000131",
+        "index": 1001,
+        "position": {},
+        "bounds": {
+          "x": 2570,
+          "y": 78,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 2570,
+            "y": 78,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 78,
+          "right": 2571,
+          "bottom": 79,
+          "left": 2570
+        },
+        "flip": false
+      },
+      {
+        "x": 1932,
+        "y": -208,
+        "walkAreaX1": 1882,
+        "walkAreaX2": 1982,
+        "id": 9401686,
+        "footholdId": 98,
+        "foothold": {
+          "id": 98,
+          "next": 99,
+          "prev": 97,
+          "piece": 22,
+          "x1": 1762,
+          "x2": 1949,
+          "y1": -208,
+          "y2": -208,
+          "layerId": 5,
+          "groupId": 44
+        },
+        "hidden": false,
+        "type": 0,
+        "link": "/npc/9401686",
+        "index": 1002,
+        "position": {},
+        "bounds": {
+          "x": 1932,
+          "y": -208,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 1932,
+            "y": -208,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -208,
+          "right": 1933,
+          "bottom": -207,
+          "left": 1932
+        },
+        "flip": false
+      },
+      {
+        "x": 1801,
+        "y": -208,
+        "walkAreaX1": 1782,
+        "walkAreaX2": 1851,
+        "id": 9401687,
+        "footholdId": 98,
+        "foothold": {
+          "id": 98,
+          "next": 99,
+          "prev": 97,
+          "piece": 22,
+          "x1": 1762,
+          "x2": 1949,
+          "y1": -208,
+          "y2": -208,
+          "layerId": 5,
+          "groupId": 44
+        },
+        "hidden": false,
+        "type": 0,
+        "link": "/npc/9401687",
+        "index": 1003,
+        "position": {},
+        "bounds": {
+          "x": 1801,
+          "y": -208,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 1801,
+            "y": -208,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -208,
+          "right": 1802,
+          "bottom": -207,
+          "left": 1801
+        },
+        "flip": false
+      },
+      {
+        "x": 1801,
+        "y": -208,
+        "walkAreaX1": 1782,
+        "walkAreaX2": 1851,
+        "id": 9401704,
+        "footholdId": 98,
+        "foothold": {
+          "id": 98,
+          "next": 99,
+          "prev": 97,
+          "piece": 22,
+          "x1": 1762,
+          "x2": 1949,
+          "y1": -208,
+          "y2": -208,
+          "layerId": 5,
+          "groupId": 44
+        },
+        "hidden": false,
+        "type": 0,
+        "link": "/npc/9401704",
+        "index": 1004,
+        "position": {},
+        "bounds": {
+          "x": 1801,
+          "y": -208,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 1801,
+            "y": -208,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -208,
+          "right": 1802,
+          "bottom": -207,
+          "left": 1801
+        },
+        "flip": false
+      },
+      {
+        "x": 1801,
+        "y": -208,
+        "walkAreaX1": 1782,
+        "walkAreaX2": 1851,
+        "id": 9401705,
+        "footholdId": 98,
+        "foothold": {
+          "id": 98,
+          "next": 99,
+          "prev": 97,
+          "piece": 22,
+          "x1": 1762,
+          "x2": 1949,
+          "y1": -208,
+          "y2": -208,
+          "layerId": 5,
+          "groupId": 44
+        },
+        "hidden": false,
+        "type": 0,
+        "link": "/npc/9401705",
+        "index": 1005,
+        "position": {},
+        "bounds": {
+          "x": 1801,
+          "y": -208,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 1801,
+            "y": -208,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -208,
+          "right": 1802,
+          "bottom": -207,
+          "left": 1801
+        },
+        "flip": false
+      },
+      {
+        "x": 1801,
+        "y": -208,
+        "walkAreaX1": 1782,
+        "walkAreaX2": 1851,
+        "id": 9401706,
+        "footholdId": 98,
+        "foothold": {
+          "id": 98,
+          "next": 99,
+          "prev": 97,
+          "piece": 22,
+          "x1": 1762,
+          "x2": 1949,
+          "y1": -208,
+          "y2": -208,
+          "layerId": 5,
+          "groupId": 44
+        },
+        "hidden": false,
+        "type": 0,
+        "link": "/npc/9401706",
+        "index": 1006,
+        "position": {},
+        "bounds": {
+          "x": 1801,
+          "y": -208,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 1801,
+            "y": -208,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -208,
+          "right": 1802,
+          "bottom": -207,
+          "left": 1801
+        },
+        "flip": false
+      },
+      {
+        "x": 1801,
+        "y": -208,
+        "walkAreaX1": 1782,
+        "walkAreaX2": 1851,
+        "id": 9401707,
+        "footholdId": 98,
+        "foothold": {
+          "id": 98,
+          "next": 99,
+          "prev": 97,
+          "piece": 22,
+          "x1": 1762,
+          "x2": 1949,
+          "y1": -208,
+          "y2": -208,
+          "layerId": 5,
+          "groupId": 44
+        },
+        "hidden": false,
+        "type": 0,
+        "link": "/npc/9401707",
+        "index": 1007,
+        "position": {},
+        "bounds": {
+          "x": 1801,
+          "y": -208,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 1801,
+            "y": -208,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -208,
+          "right": 1802,
+          "bottom": -207,
+          "left": 1801
+        },
+        "flip": false
+      },
+      {
+        "x": 1801,
+        "y": -208,
+        "walkAreaX1": 1782,
+        "walkAreaX2": 1851,
+        "id": 9401708,
+        "footholdId": 98,
+        "foothold": {
+          "id": 98,
+          "next": 99,
+          "prev": 97,
+          "piece": 22,
+          "x1": 1762,
+          "x2": 1949,
+          "y1": -208,
+          "y2": -208,
+          "layerId": 5,
+          "groupId": 44
+        },
+        "hidden": false,
+        "type": 0,
+        "link": "/npc/9401708",
+        "index": 1008,
+        "position": {},
+        "bounds": {
+          "x": 1801,
+          "y": -208,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 1801,
+            "y": -208,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -208,
+          "right": 1802,
+          "bottom": -207,
+          "left": 1801
+        },
+        "flip": false
+      },
+      {
+        "x": 698,
+        "y": 78,
+        "walkAreaX1": 648,
+        "walkAreaX2": 748,
+        "id": 3003289,
+        "footholdId": 72,
+        "foothold": {
+          "id": 72,
+          "next": 73,
+          "prev": 84,
+          "piece": 3,
+          "x1": 556,
+          "x2": 816,
+          "y1": 78,
+          "y2": 78,
+          "layerId": 5,
+          "groupId": 20
+        },
+        "hidden": false,
+        "type": 0,
+        "link": "/npc/3003289",
+        "index": 11,
+        "position": {},
+        "bounds": {
+          "x": 698,
+          "y": 78,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 698,
+            "y": 78,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 78,
+          "right": 699,
+          "bottom": 79,
+          "left": 698
+        },
+        "flip": false
+      },
+      {
+        "x": 1831,
+        "y": 78,
+        "walkAreaX1": 1781,
+        "walkAreaX2": 1851,
+        "id": 3003290,
+        "footholdId": 82,
+        "foothold": {
+          "id": 82,
+          "next": 92,
+          "prev": 85,
+          "piece": 8,
+          "x1": 1611,
+          "x2": 1871,
+          "y1": 78,
+          "y2": 78,
+          "layerId": 5,
+          "groupId": 8
+        },
+        "hidden": false,
+        "type": 0,
+        "link": "/npc/3003290",
+        "index": 12,
+        "position": {},
+        "bounds": {
+          "x": 1831,
+          "y": 78,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 1831,
+            "y": 78,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 78,
+          "right": 1832,
+          "bottom": 79,
+          "left": 1831
+        },
+        "flip": false
+      },
+      {
+        "x": 1698,
+        "y": 78,
+        "walkAreaX1": 1648,
+        "walkAreaX2": 1748,
+        "id": 3003228,
+        "footholdId": 82,
+        "foothold": {
+          "id": 82,
+          "next": 92,
+          "prev": 85,
+          "piece": 8,
+          "x1": 1611,
+          "x2": 1871,
+          "y1": 78,
+          "y2": 78,
+          "layerId": 5,
+          "groupId": 8
+        },
+        "hidden": false,
+        "type": 0,
+        "link": "/npc/3003228",
+        "index": 13,
+        "position": {},
+        "bounds": {
+          "x": 1698,
+          "y": 78,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 1698,
+            "y": 78,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 78,
+          "right": 1699,
+          "bottom": 79,
+          "left": 1698
+        },
+        "flip": false
+      },
+      {
+        "x": 1564,
+        "y": 78,
+        "walkAreaX1": 1514,
+        "walkAreaX2": 1591,
+        "id": 3003229,
+        "footholdId": 85,
+        "foothold": {
+          "id": 85,
+          "next": 82,
+          "prev": 79,
+          "piece": 11,
+          "x1": 1351,
+          "x2": 1611,
+          "y1": 78,
+          "y2": 78,
+          "layerId": 5,
+          "groupId": 11
+        },
+        "hidden": false,
+        "type": 0,
+        "link": "/npc/3003229",
+        "index": 14,
+        "position": {},
+        "bounds": {
+          "x": 1564,
+          "y": 78,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 1564,
+            "y": 78,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 78,
+          "right": 1565,
+          "bottom": 79,
+          "left": 1564
+        },
+        "flip": true
+      },
+      {
+        "x": 838,
+        "y": -337,
+        "walkAreaX1": 788,
+        "walkAreaX2": 888,
+        "id": 9000123,
+        "footholdId": 9,
+        "foothold": {
+          "id": 9,
+          "next": 10,
+          "prev": 8,
+          "piece": 1,
+          "x1": 797,
+          "x2": 855,
+          "y1": -366,
+          "y2": -325,
+          "layerId": 4,
+          "groupId": 39
+        },
+        "hidden": true,
+        "type": 0,
+        "link": "/npc/9000123",
+        "index": 15,
+        "position": {},
+        "bounds": {
+          "x": 838,
+          "y": -337,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 838,
+            "y": -337,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -337,
+          "right": 839,
+          "bottom": -336,
+          "left": 838
+        },
+        "flip": false
+      },
+      {
+        "x": 852,
+        "y": -327,
+        "walkAreaX1": 802,
+        "walkAreaX2": 902,
+        "id": 9000124,
+        "footholdId": 9,
+        "foothold": {
+          "id": 9,
+          "next": 10,
+          "prev": 8,
+          "piece": 1,
+          "x1": 797,
+          "x2": 855,
+          "y1": -366,
+          "y2": -325,
+          "layerId": 4,
+          "groupId": 39
+        },
+        "hidden": true,
+        "type": 0,
+        "link": "/npc/9000124",
+        "index": 16,
+        "position": {},
+        "bounds": {
+          "x": 852,
+          "y": -327,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 852,
+            "y": -327,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -327,
+          "right": 853,
+          "bottom": -326,
+          "left": 852
+        },
+        "flip": false
+      },
+      {
+        "x": 3357,
+        "y": 78,
+        "walkAreaX1": 3307,
+        "walkAreaX2": 3407,
+        "id": 9010022,
+        "footholdId": 93,
+        "foothold": {
+          "id": 93,
+          "next": 0,
+          "prev": 95,
+          "piece": 14,
+          "x1": 3186,
+          "x2": 3446,
+          "y1": 78,
+          "y2": 78,
+          "layerId": 5,
+          "groupId": 14
+        },
+        "hidden": false,
+        "type": 0,
+        "link": "/npc/9010022",
+        "index": 17,
+        "position": {},
+        "bounds": {
+          "x": 3357,
+          "y": 78,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 3357,
+            "y": 78,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 78,
+          "right": 3358,
+          "bottom": 79,
+          "left": 3357
+        },
+        "flip": false
+      },
+      {
+        "x": -15,
+        "y": -240,
+        "walkAreaX1": -65,
+        "walkAreaX2": 35,
+        "id": 3003263,
+        "footholdId": 0,
+        "hidden": false,
+        "type": 0,
+        "link": "/npc/3003263",
+        "index": 18,
+        "position": {},
+        "bounds": {
+          "x": -15,
+          "y": -240,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -15,
+            "y": -240,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -240,
+          "right": -14,
+          "bottom": -239,
+          "left": -15
+        },
+        "flip": true
+      },
+      {
+        "x": 160,
+        "y": 51,
+        "walkAreaX1": 110,
+        "walkAreaX2": 210,
+        "id": 3003262,
+        "footholdId": 48,
+        "foothold": {
+          "id": 48,
+          "next": 0,
+          "prev": 49,
+          "piece": 18,
+          "x1": -81,
+          "x2": 318,
+          "y1": 51,
+          "y2": 51,
+          "layerId": 5,
+          "groupId": 17
+        },
+        "hidden": false,
+        "type": 0,
+        "link": "/npc/3003262",
+        "index": 19,
+        "position": {},
+        "bounds": {
+          "x": 160,
+          "y": 51,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 160,
+            "y": 51,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 51,
+          "right": 161,
+          "bottom": 52,
+          "left": 160
+        },
+        "flip": false
+      },
+      {
+        "x": 495,
+        "y": 78,
+        "walkAreaX1": 445,
+        "walkAreaX2": 536,
+        "id": 3003202,
+        "footholdId": 84,
+        "foothold": {
+          "id": 84,
+          "next": 72,
+          "prev": 80,
+          "piece": 10,
+          "x1": 296,
+          "x2": 556,
+          "y1": 78,
+          "y2": 78,
+          "layerId": 5,
+          "groupId": 10
+        },
+        "hidden": false,
+        "type": 0,
+        "link": "/npc/3003202",
+        "index": 2,
+        "position": {},
+        "bounds": {
+          "x": 495,
+          "y": 78,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 495,
+            "y": 78,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 78,
+          "right": 496,
+          "bottom": 79,
+          "left": 495
+        },
+        "flip": true
+      },
+      {
+        "x": 2580,
+        "y": 78,
+        "walkAreaX1": 2530,
+        "walkAreaX2": 2630,
+        "id": 9010100,
+        "footholdId": 83,
+        "foothold": {
+          "id": 83,
+          "next": 94,
+          "prev": 91,
+          "piece": 9,
+          "x1": 2404,
+          "x2": 2666,
+          "y1": 78,
+          "y2": 78,
+          "layerId": 5,
+          "groupId": 9
+        },
+        "hidden": false,
+        "type": 0,
+        "link": "/npc/9010100",
+        "index": 20,
+        "position": {},
+        "bounds": {
+          "x": 2580,
+          "y": 78,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 2580,
+            "y": 78,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 78,
+          "right": 2581,
+          "bottom": 79,
+          "left": 2580
+        },
+        "flip": false
+      },
+      {
+        "x": 846,
+        "y": -249,
+        "walkAreaX1": 796,
+        "walkAreaX2": 896,
+        "id": 9010109,
+        "footholdId": 4,
+        "foothold": {
+          "id": 4,
+          "next": 0,
+          "prev": 0,
+          "piece": 1,
+          "x1": 561,
+          "x2": 968,
+          "y1": -202,
+          "y2": -270,
+          "layerId": 4,
+          "groupId": 39
+        },
+        "hidden": false,
+        "type": 0,
+        "link": "/npc/9010109",
+        "index": 21,
+        "position": {},
+        "bounds": {
+          "x": 846,
+          "y": -249,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 846,
+            "y": -249,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -249,
+          "right": 847,
+          "bottom": -248,
+          "left": 846
+        },
+        "flip": false
+      },
+      {
+        "x": 687,
+        "y": -223,
+        "walkAreaX1": 637,
+        "walkAreaX2": 737,
+        "id": 9010106,
+        "footholdId": 4,
+        "foothold": {
+          "id": 4,
+          "next": 0,
+          "prev": 0,
+          "piece": 1,
+          "x1": 561,
+          "x2": 968,
+          "y1": -202,
+          "y2": -270,
+          "layerId": 4,
+          "groupId": 39
+        },
+        "hidden": false,
+        "type": 0,
+        "link": "/npc/9010106",
+        "index": 22,
+        "position": {},
+        "bounds": {
+          "x": 687,
+          "y": -223,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 687,
+            "y": -223,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -223,
+          "right": 688,
+          "bottom": -222,
+          "left": 687
+        },
+        "flip": false
+      },
+      {
+        "x": 320,
+        "y": -221,
+        "walkAreaX1": 270,
+        "walkAreaX2": 326,
+        "id": 3003146,
+        "footholdId": 53,
+        "foothold": {
+          "id": 53,
+          "next": 0,
+          "prev": 0,
+          "piece": 18,
+          "x1": 228,
+          "x2": 346,
+          "y1": -225,
+          "y2": -221,
+          "layerId": 5,
+          "groupId": 17
+        },
+        "hidden": false,
+        "type": 0,
+        "link": "/npc/3003146",
+        "index": 23,
+        "position": {},
+        "bounds": {
+          "x": 320,
+          "y": -221,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 320,
+            "y": -221,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -221,
+          "right": 321,
+          "bottom": -220,
+          "left": 320
+        },
+        "flip": true
+      },
+      {
+        "x": 1388,
+        "y": 78,
+        "walkAreaX1": 1371,
+        "walkAreaX2": 1438,
+        "id": 3003225,
+        "footholdId": 85,
+        "foothold": {
+          "id": 85,
+          "next": 82,
+          "prev": 79,
+          "piece": 11,
+          "x1": 1351,
+          "x2": 1611,
+          "y1": 78,
+          "y2": 78,
+          "layerId": 5,
+          "groupId": 11
+        },
+        "hidden": false,
+        "type": 0,
+        "link": "/npc/3003225",
+        "index": 3,
+        "position": {},
+        "bounds": {
+          "x": 1388,
+          "y": 78,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 1388,
+            "y": 78,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 78,
+          "right": 1389,
+          "bottom": 79,
+          "left": 1388
+        },
+        "flip": false
+      },
+      {
+        "x": 1312,
+        "y": 78,
+        "walkAreaX1": 1262,
+        "walkAreaX2": 1331,
+        "id": 3003226,
+        "footholdId": 79,
+        "foothold": {
+          "id": 79,
+          "next": 85,
+          "prev": 78,
+          "piece": 5,
+          "x1": 1089,
+          "x2": 1351,
+          "y1": 78,
+          "y2": 78,
+          "layerId": 5,
+          "groupId": 5
+        },
+        "hidden": false,
+        "type": 0,
+        "link": "/npc/3003226",
+        "index": 4,
+        "position": {},
+        "bounds": {
+          "x": 1312,
+          "y": 78,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 1312,
+            "y": 78,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 78,
+          "right": 1313,
+          "bottom": 79,
+          "left": 1312
+        },
+        "flip": false
+      },
+      {
+        "x": 610,
+        "y": 78,
+        "walkAreaX1": 576,
+        "walkAreaX2": 660,
+        "id": 3003227,
+        "footholdId": 72,
+        "foothold": {
+          "id": 72,
+          "next": 73,
+          "prev": 84,
+          "piece": 3,
+          "x1": 556,
+          "x2": 816,
+          "y1": 78,
+          "y2": 78,
+          "layerId": 5,
+          "groupId": 20
+        },
+        "hidden": false,
+        "type": 0,
+        "link": "/npc/3003227",
+        "index": 5,
+        "position": {},
+        "bounds": {
+          "x": 610,
+          "y": 78,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 610,
+            "y": 78,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 78,
+          "right": 611,
+          "bottom": 79,
+          "left": 610
+        },
+        "flip": false
+      },
+      {
+        "x": 277,
+        "y": 51,
+        "walkAreaX1": 227,
+        "walkAreaX2": 326,
+        "id": 3003215,
+        "footholdId": 48,
+        "foothold": {
+          "id": 48,
+          "next": 0,
+          "prev": 49,
+          "piece": 18,
+          "x1": -81,
+          "x2": 318,
+          "y1": 51,
+          "y2": 51,
+          "layerId": 5,
+          "groupId": 17
+        },
+        "hidden": false,
+        "type": 0,
+        "link": "/npc/3003215",
+        "index": 6,
+        "position": {},
+        "bounds": {
+          "x": 277,
+          "y": 51,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 277,
+            "y": 51,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 51,
+          "right": 278,
+          "bottom": 52,
+          "left": 277
+        },
+        "flip": true
+      },
+      {
+        "x": 916,
+        "y": -129,
+        "walkAreaX1": 866,
+        "walkAreaX2": 966,
+        "id": 3003285,
+        "footholdId": 16,
+        "foothold": {
+          "id": 16,
+          "next": 0,
+          "prev": 0,
+          "piece": 1,
+          "x1": 884,
+          "x2": 928,
+          "y1": -127,
+          "y2": -130,
+          "layerId": 4,
+          "groupId": 39
+        },
+        "hidden": false,
+        "type": 0,
+        "link": "/npc/3003285",
+        "index": 7,
+        "position": {},
+        "bounds": {
+          "x": 916,
+          "y": -129,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 916,
+            "y": -129,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -129,
+          "right": 917,
+          "bottom": -128,
+          "left": 916
+        },
+        "flip": false
+      },
+      {
+        "x": 2256,
+        "y": -343,
+        "walkAreaX1": 2232,
+        "walkAreaX2": 2306,
+        "id": 3003286,
+        "footholdId": 22,
+        "foothold": {
+          "id": 22,
+          "next": 21,
+          "prev": 0,
+          "piece": 5,
+          "x1": 2212,
+          "x2": 2291,
+          "y1": -315,
+          "y2": -367,
+          "layerId": 4,
+          "groupId": 34
+        },
+        "hidden": false,
+        "type": 0,
+        "link": "/npc/3003286",
+        "index": 8,
+        "position": {},
+        "bounds": {
+          "x": 2256,
+          "y": -343,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 2256,
+            "y": -343,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -343,
+          "right": 2257,
+          "bottom": -342,
+          "left": 2256
+        },
+        "flip": false
+      },
+      {
+        "x": 65,
+        "y": -343,
+        "walkAreaX1": 15,
+        "walkAreaX2": 115,
+        "id": 3003287,
+        "footholdId": 60,
+        "foothold": {
+          "id": 60,
+          "next": 59,
+          "prev": 61,
+          "piece": 18,
+          "x1": -13,
+          "x2": 156,
+          "y1": -345,
+          "y2": -341,
+          "layerId": 5,
+          "groupId": 17
+        },
+        "hidden": false,
+        "type": 0,
+        "link": "/npc/3003287",
+        "index": 9,
+        "position": {},
+        "bounds": {
+          "x": 65,
+          "y": -343,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 65,
+            "y": -343,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -343,
+          "right": 66,
+          "bottom": -342,
+          "left": 65
+        },
+        "flip": false
+      }
+    ],
+    "mobs": [],
+    "mobRate": 1,
+    "isTown": true,
+    "isSwim": false,
+    "mapMark": "Lacheln",
+    "miniMap": {
+      "centerX": 1000,
+      "centerY": 740,
+      "height": 1130,
+      "width": 4440,
+      "magnification": 4,
+      "canvas": "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"
+    },
+    "footholds": {
+      "99": {
+        "id": 99,
+        "next": 100,
+        "prev": 98,
+        "piece": 23,
+        "x1": 1949,
+        "x2": 2135,
+        "y1": -208,
+        "y2": -208,
+        "layerId": 5,
+        "groupId": 44
+      },
+      "84": {
+        "id": 84,
+        "next": 72,
+        "prev": 80,
+        "piece": 10,
+        "x1": 296,
+        "x2": 556,
+        "y1": 78,
+        "y2": 78,
+        "layerId": 5,
+        "groupId": 10
+      },
+      "67": {
+        "id": 67,
+        "next": 66,
+        "prev": 68,
+        "piece": 18,
+        "x1": -59,
+        "x2": 40,
+        "y1": -466,
+        "y2": -510,
+        "layerId": 5,
+        "groupId": 17
+      },
+      "24": {
+        "id": 24,
+        "next": 0,
+        "prev": 0,
+        "piece": 5,
+        "x1": 2300,
+        "x2": 2392,
+        "y1": -90,
+        "y2": -87,
+        "layerId": 4,
+        "groupId": 34
+      },
+      "96": {
+        "id": 96,
+        "next": 97,
+        "prev": 0,
+        "piece": 21,
+        "x1": 1572,
+        "x2": 1602,
+        "y1": -208,
+        "y2": -208,
+        "layerId": 5,
+        "groupId": 45
+      },
+      "54": {
+        "id": 54,
+        "next": 0,
+        "prev": 55,
+        "piece": 18,
+        "x1": 34,
+        "x2": 66,
+        "y1": -564,
+        "y2": -548,
+        "layerId": 5,
+        "groupId": 17
+      },
+      "89": {
+        "id": 89,
+        "next": 90,
+        "prev": 88,
+        "piece": 12,
+        "x1": 2276,
+        "x2": 2341,
+        "y1": 48,
+        "y2": 59,
+        "layerId": 5,
+        "groupId": 12
+      },
+      "11": {
+        "id": 11,
+        "next": 12,
+        "prev": 10,
+        "piece": 1,
+        "x1": 1029,
+        "x2": 1073,
+        "y1": -361,
+        "y2": -346,
+        "layerId": 4,
+        "groupId": 39
+      },
+      "83": {
+        "id": 83,
+        "next": 94,
+        "prev": 91,
+        "piece": 9,
+        "x1": 2404,
+        "x2": 2666,
+        "y1": 78,
+        "y2": 78,
+        "layerId": 5,
+        "groupId": 9
+      },
+      "29": {
+        "id": 29,
+        "next": 0,
+        "prev": 0,
+        "piece": 5,
+        "x1": 2504,
+        "x2": 2647,
+        "y1": 29,
+        "y2": 29,
+        "layerId": 4,
+        "groupId": 34
+      },
+      "66": {
+        "id": 66,
+        "next": 65,
+        "prev": 67,
+        "piece": 18,
+        "x1": 40,
+        "x2": 112,
+        "y1": -510,
+        "y2": -494,
+        "layerId": 5,
+        "groupId": 17
+      },
+      "41": {
+        "id": 41,
+        "next": 42,
+        "prev": 0,
+        "piece": 4,
+        "x1": 1592,
+        "x2": 1729,
+        "y1": -119,
+        "y2": -119,
+        "layerId": 4,
+        "groupId": 35
+      },
+      "86": {
+        "id": 86,
+        "next": 87,
+        "prev": 92,
+        "piece": 12,
+        "x1": 2131,
+        "x2": 2178,
+        "y1": 78,
+        "y2": 78,
+        "layerId": 5,
+        "groupId": 12
+      },
+      "59": {
+        "id": 59,
+        "next": 58,
+        "prev": 60,
+        "piece": 18,
+        "x1": 156,
+        "x2": 245,
+        "y1": -341,
+        "y2": -320,
+        "layerId": 5,
+        "groupId": 17
+      },
+      "26": {
+        "id": 26,
+        "next": 0,
+        "prev": 0,
+        "piece": 5,
+        "x1": 2502,
+        "x2": 2557,
+        "y1": -202,
+        "y2": -199,
+        "layerId": 4,
+        "groupId": 34
+      },
+      "71": {
+        "id": 71,
+        "next": 81,
+        "prev": 0,
+        "piece": 2,
+        "x1": -1004,
+        "x2": -744,
+        "y1": 78,
+        "y2": 78,
+        "layerId": 5,
+        "groupId": 19
+      },
+      "53": {
+        "id": 53,
+        "next": 0,
+        "prev": 0,
+        "piece": 18,
+        "x1": 228,
+        "x2": 346,
+        "y1": -225,
+        "y2": -221,
+        "layerId": 5,
+        "groupId": 17
+      },
+      "88": {
+        "id": 88,
+        "next": 89,
+        "prev": 87,
+        "piece": 12,
+        "x1": 2217,
+        "x2": 2276,
+        "y1": 57,
+        "y2": 48,
+        "layerId": 5,
+        "groupId": 12
+      },
+      "100": {
+        "id": 100,
+        "next": 0,
+        "prev": 99,
+        "piece": 24,
+        "x1": 2135,
+        "x2": 2181,
+        "y1": -208,
+        "y2": -208,
+        "layerId": 5,
+        "groupId": 44
+      },
+      "9": {
+        "id": 9,
+        "next": 10,
+        "prev": 8,
+        "piece": 1,
+        "x1": 797,
+        "x2": 855,
+        "y1": -366,
+        "y2": -325,
+        "layerId": 4,
+        "groupId": 39
+      },
+      "56": {
+        "id": 56,
+        "next": 55,
+        "prev": 0,
+        "piece": 18,
+        "x1": -11,
+        "x2": 9,
+        "y1": -536,
+        "y2": -565,
+        "layerId": 5,
+        "groupId": 17
+      },
+      "13": {
+        "id": 13,
+        "next": 0,
+        "prev": 12,
+        "piece": 1,
+        "x1": 1104,
+        "x2": 1113,
+        "y1": -311,
+        "y2": -284,
+        "layerId": 4,
+        "groupId": 39
+      },
+      "40": {
+        "id": 40,
+        "next": 0,
+        "prev": 0,
+        "piece": 4,
+        "x1": 1314,
+        "x2": 1423,
+        "y1": -115,
+        "y2": -115,
+        "layerId": 4,
+        "groupId": 35
+      },
+      "3": {
+        "id": 3,
+        "next": 0,
+        "prev": 0,
+        "piece": 1,
+        "x1": 615,
+        "x2": 659,
+        "y1": -99,
+        "y2": -102,
+        "layerId": 4,
+        "groupId": 39
+      },
+      "85": {
+        "id": 85,
+        "next": 82,
+        "prev": 79,
+        "piece": 11,
+        "x1": 1351,
+        "x2": 1611,
+        "y1": 78,
+        "y2": 78,
+        "layerId": 5,
+        "groupId": 11
+      },
+      "58": {
+        "id": 58,
+        "next": 0,
+        "prev": 59,
+        "piece": 18,
+        "x1": 245,
+        "x2": 269,
+        "y1": -320,
+        "y2": -298,
+        "layerId": 5,
+        "groupId": 17
+      },
+      "25": {
+        "id": 25,
+        "next": 0,
+        "prev": 0,
+        "piece": 5,
+        "x1": 2579,
+        "x2": 2634,
+        "y1": -196,
+        "y2": -193,
+        "layerId": 4,
+        "groupId": 34
+      },
+      "43": {
+        "id": 43,
+        "next": 70,
+        "prev": 81,
+        "piece": 0,
+        "x1": -484,
+        "x2": -224,
+        "y1": 78,
+        "y2": 78,
+        "layerId": 5,
+        "groupId": 17
+      },
+      "70": {
+        "id": 70,
+        "next": 80,
+        "prev": 43,
+        "piece": 1,
+        "x1": -224,
+        "x2": 36,
+        "y1": 78,
+        "y2": 78,
+        "layerId": 5,
+        "groupId": 18
+      },
+      "6": {
+        "id": 6,
+        "next": 0,
+        "prev": 5,
+        "piece": 1,
+        "x1": 977,
+        "x2": 1128,
+        "y1": -327,
+        "y2": -272,
+        "layerId": 4,
+        "groupId": 39
+      },
+      "8": {
+        "id": 8,
+        "next": 9,
+        "prev": 7,
+        "piece": 1,
+        "x1": 733,
+        "x2": 797,
+        "y1": -391,
+        "y2": -366,
+        "layerId": 4,
+        "groupId": 39
+      },
+      "18": {
+        "id": 18,
+        "next": 0,
+        "prev": 0,
+        "piece": 2,
+        "x1": 2675,
+        "x2": 2859,
+        "y1": 67,
+        "y2": 67,
+        "layerId": 4,
+        "groupId": 34
+      },
+      "73": {
+        "id": 73,
+        "next": 74,
+        "prev": 72,
+        "piece": 4,
+        "x1": 816,
+        "x2": 863,
+        "y1": 78,
+        "y2": 78,
+        "layerId": 5,
+        "groupId": 4
+      },
+      "55": {
+        "id": 55,
+        "next": 54,
+        "prev": 56,
+        "piece": 18,
+        "x1": 9,
+        "x2": 34,
+        "y1": -565,
+        "y2": -564,
+        "layerId": 5,
+        "groupId": 17
+      },
+      "12": {
+        "id": 12,
+        "next": 13,
+        "prev": 11,
+        "piece": 1,
+        "x1": 1073,
+        "x2": 1104,
+        "y1": -346,
+        "y2": -311,
+        "layerId": 4,
+        "groupId": 39
+      },
+      "30": {
+        "id": 30,
+        "next": 0,
+        "prev": 0,
+        "piece": 5,
+        "x1": 2297,
+        "x2": 2390,
+        "y1": 26,
+        "y2": 27,
+        "layerId": 4,
+        "groupId": 34
+      },
+      "2": {
+        "id": 2,
+        "next": 0,
+        "prev": 0,
+        "piece": 1,
+        "x1": 589,
+        "x2": 688,
+        "y1": -44,
+        "y2": -50,
+        "layerId": 4,
+        "groupId": 39
+      },
+      "48": {
+        "id": 48,
+        "next": 0,
+        "prev": 49,
+        "piece": 18,
+        "x1": -81,
+        "x2": 318,
+        "y1": 51,
+        "y2": 51,
+        "layerId": 5,
+        "groupId": 17
+      },
+      "15": {
+        "id": 15,
+        "next": 0,
+        "prev": 0,
+        "piece": 1,
+        "x1": 811,
+        "x2": 855,
+        "y1": -137,
+        "y2": -140,
+        "layerId": 4,
+        "groupId": 39
+      },
+      "42": {
+        "id": 42,
+        "next": 0,
+        "prev": 41,
+        "piece": 4,
+        "x1": 1729,
+        "x2": 1784,
+        "y1": -119,
+        "y2": -57,
+        "layerId": 4,
+        "groupId": 35
+      },
+      "60": {
+        "id": 60,
+        "next": 59,
+        "prev": 61,
+        "piece": 18,
+        "x1": -13,
+        "x2": 156,
+        "y1": -345,
+        "y2": -341,
+        "layerId": 5,
+        "groupId": 17
+      },
+      "5": {
+        "id": 5,
+        "next": 6,
+        "prev": 0,
+        "piece": 1,
+        "x1": 861,
+        "x2": 977,
+        "y1": -306,
+        "y2": -327,
+        "layerId": 4,
+        "groupId": 39
+      },
+      "87": {
+        "id": 87,
+        "next": 88,
+        "prev": 86,
+        "piece": 12,
+        "x1": 2178,
+        "x2": 2217,
+        "y1": 78,
+        "y2": 57,
+        "layerId": 5,
+        "groupId": 12
+      },
+      "78": {
+        "id": 78,
+        "next": 79,
+        "prev": 77,
+        "piece": 4,
+        "x1": 1058,
+        "x2": 1089,
+        "y1": 78,
+        "y2": 78,
+        "layerId": 5,
+        "groupId": 4
+      },
+      "27": {
+        "id": 27,
+        "next": 0,
+        "prev": 0,
+        "piece": 5,
+        "x1": 2428,
+        "x2": 2483,
+        "y1": -207,
+        "y2": -204,
+        "layerId": 4,
+        "groupId": 34
+      },
+      "45": {
+        "id": 45,
+        "next": 44,
+        "prev": 0,
+        "piece": 18,
+        "x1": -253,
+        "x2": -86,
+        "y1": -170,
+        "y2": -242,
+        "layerId": 5,
+        "groupId": 17
+      },
+      "72": {
+        "id": 72,
+        "next": 73,
+        "prev": 84,
+        "piece": 3,
+        "x1": 556,
+        "x2": 816,
+        "y1": 78,
+        "y2": 78,
+        "layerId": 5,
+        "groupId": 20
+      },
+      "75": {
+        "id": 75,
+        "next": 76,
+        "prev": 74,
+        "piece": 4,
+        "x1": 902,
+        "x2": 961,
+        "y1": 57,
+        "y2": 48,
+        "layerId": 5,
+        "groupId": 4
+      },
+      "57": {
+        "id": 57,
+        "next": 0,
+        "prev": 0,
+        "piece": 18,
+        "x1": 244,
+        "x2": 311,
+        "y1": -125,
+        "y2": -124,
+        "layerId": 5,
+        "groupId": 17
+      },
+      "14": {
+        "id": 14,
+        "next": 0,
+        "prev": 0,
+        "piece": 1,
+        "x1": 677,
+        "x2": 721,
+        "y1": -120,
+        "y2": -123,
+        "layerId": 4,
+        "groupId": 39
+      },
+      "32": {
+        "id": 32,
+        "next": 0,
+        "prev": 31,
+        "piece": 3,
+        "x1": -650,
+        "x2": -571,
+        "y1": -369,
+        "y2": -317,
+        "layerId": 4,
+        "groupId": 36
+      },
+      "17": {
+        "id": 17,
+        "next": 0,
+        "prev": 0,
+        "piece": 2,
+        "x1": 2577,
+        "x2": 2631,
+        "y1": 35,
+        "y2": 35,
+        "layerId": 4,
+        "groupId": 34
+      },
+      "62": {
+        "id": 62,
+        "next": 61,
+        "prev": 63,
+        "piece": 18,
+        "x1": -169,
+        "x2": -115,
+        "y1": -308,
+        "y2": -329,
+        "layerId": 5,
+        "groupId": 17
+      },
+      "44": {
+        "id": 44,
+        "next": 0,
+        "prev": 45,
+        "piece": 18,
+        "x1": -86,
+        "x2": 51,
+        "y1": -242,
+        "y2": -235,
+        "layerId": 5,
+        "groupId": 17
+      },
+      "91": {
+        "id": 91,
+        "next": 83,
+        "prev": 90,
+        "piece": 12,
+        "x1": 2373,
+        "x2": 2404,
+        "y1": 78,
+        "y2": 78,
+        "layerId": 5,
+        "groupId": 12
+      },
+      "47": {
+        "id": 47,
+        "next": 46,
+        "prev": 0,
+        "piece": 18,
+        "x1": -238,
+        "x2": -83,
+        "y1": -89,
+        "y2": -137,
+        "layerId": 5,
+        "groupId": 17
+      },
+      "19": {
+        "id": 19,
+        "next": 0,
+        "prev": 0,
+        "piece": 2,
+        "x1": 2991,
+        "x2": 3098,
+        "y1": 36,
+        "y2": 36,
+        "layerId": 4,
+        "groupId": 34
+      },
+      "74": {
+        "id": 74,
+        "next": 75,
+        "prev": 73,
+        "piece": 4,
+        "x1": 863,
+        "x2": 902,
+        "y1": 78,
+        "y2": 57,
+        "layerId": 5,
+        "groupId": 4
+      },
+      "31": {
+        "id": 31,
+        "next": 32,
+        "prev": 0,
+        "piece": 3,
+        "x1": -945,
+        "x2": -650,
+        "y1": -334,
+        "y2": -369,
+        "layerId": 4,
+        "groupId": 36
+      },
+      "77": {
+        "id": 77,
+        "next": 78,
+        "prev": 76,
+        "piece": 4,
+        "x1": 1026,
+        "x2": 1058,
+        "y1": 59,
+        "y2": 78,
+        "layerId": 5,
+        "groupId": 4
+      },
+      "49": {
+        "id": 49,
+        "next": 48,
+        "prev": 0,
+        "piece": 18,
+        "x1": -233,
+        "x2": -81,
+        "y1": 53,
+        "y2": 51,
+        "layerId": 5,
+        "groupId": 17
+      },
+      "16": {
+        "id": 16,
+        "next": 0,
+        "prev": 0,
+        "piece": 1,
+        "x1": 884,
+        "x2": 928,
+        "y1": -127,
+        "y2": -130,
+        "layerId": 4,
+        "groupId": 39
+      },
+      "34": {
+        "id": 34,
+        "next": 0,
+        "prev": 0,
+        "piece": 3,
+        "x1": -993,
+        "x2": -938,
+        "y1": -195,
+        "y2": -198,
+        "layerId": 4,
+        "groupId": 36
+      },
+      "61": {
+        "id": 61,
+        "next": 60,
+        "prev": 62,
+        "piece": 18,
+        "x1": -115,
+        "x2": -13,
+        "y1": -329,
+        "y2": -345,
+        "layerId": 5,
+        "groupId": 17
+      },
+      "79": {
+        "id": 79,
+        "next": 85,
+        "prev": 78,
+        "piece": 5,
+        "x1": 1089,
+        "x2": 1351,
+        "y1": 78,
+        "y2": 78,
+        "layerId": 5,
+        "groupId": 5
+      },
+      "90": {
+        "id": 90,
+        "next": 91,
+        "prev": 89,
+        "piece": 12,
+        "x1": 2341,
+        "x2": 2373,
+        "y1": 59,
+        "y2": 78,
+        "layerId": 5,
+        "groupId": 12
+      },
+      "64": {
+        "id": 64,
+        "next": 0,
+        "prev": 65,
+        "piece": 18,
+        "x1": 200,
+        "x2": 241,
+        "y1": -429,
+        "y2": -353,
+        "layerId": 5,
+        "groupId": 17
+      },
+      "46": {
+        "id": 46,
+        "next": 0,
+        "prev": 47,
+        "piece": 18,
+        "x1": -83,
+        "x2": 43,
+        "y1": -137,
+        "y2": -131,
+        "layerId": 5,
+        "groupId": 17
+      },
+      "21": {
+        "id": 21,
+        "next": 0,
+        "prev": 22,
+        "piece": 5,
+        "x1": 2291,
+        "x2": 2586,
+        "y1": -367,
+        "y2": -332,
+        "layerId": 4,
+        "groupId": 34
+      },
+      "93": {
+        "id": 93,
+        "next": 0,
+        "prev": 95,
+        "piece": 14,
+        "x1": 3186,
+        "x2": 3446,
+        "y1": 78,
+        "y2": 78,
+        "layerId": 5,
+        "groupId": 14
+      },
+      "39": {
+        "id": 39,
+        "next": 0,
+        "prev": 0,
+        "piece": 4,
+        "x1": 1398,
+        "x2": 1711,
+        "y1": -444,
+        "y2": -465,
+        "layerId": 4,
+        "groupId": 35
+      },
+      "76": {
+        "id": 76,
+        "next": 77,
+        "prev": 75,
+        "piece": 4,
+        "x1": 961,
+        "x2": 1026,
+        "y1": 48,
+        "y2": 59,
+        "layerId": 5,
+        "groupId": 4
+      },
+      "33": {
+        "id": 33,
+        "next": 0,
+        "prev": 0,
+        "piece": 3,
+        "x1": -751,
+        "x2": -659,
+        "y1": -89,
+        "y2": -92,
+        "layerId": 4,
+        "groupId": 36
+      },
+      "51": {
+        "id": 51,
+        "next": 50,
+        "prev": 0,
+        "piece": 18,
+        "x1": -243,
+        "x2": -84,
+        "y1": 69,
+        "y2": 67,
+        "layerId": 5,
+        "groupId": 17
+      },
+      "69": {
+        "id": 69,
+        "next": 68,
+        "prev": 0,
+        "piece": 18,
+        "x1": -156,
+        "x2": -136,
+        "y1": -318,
+        "y2": -389,
+        "layerId": 5,
+        "groupId": 17
+      },
+      "80": {
+        "id": 80,
+        "next": 84,
+        "prev": 70,
+        "piece": 6,
+        "x1": 36,
+        "x2": 296,
+        "y1": 78,
+        "y2": 78,
+        "layerId": 5,
+        "groupId": 6
+      },
+      "36": {
+        "id": 36,
+        "next": 0,
+        "prev": 0,
+        "piece": 3,
+        "x1": -842,
+        "x2": -787,
+        "y1": -206,
+        "y2": -209,
+        "layerId": 4,
+        "groupId": 36
+      },
+      "63": {
+        "id": 63,
+        "next": 62,
+        "prev": 0,
+        "piece": 18,
+        "x1": -193,
+        "x2": -169,
+        "y1": -285,
+        "y2": -308,
+        "layerId": 5,
+        "groupId": 17
+      },
+      "98": {
+        "id": 98,
+        "next": 99,
+        "prev": 97,
+        "piece": 22,
+        "x1": 1762,
+        "x2": 1949,
+        "y1": -208,
+        "y2": -208,
+        "layerId": 5,
+        "groupId": 44
+      },
+      "20": {
+        "id": 20,
+        "next": 0,
+        "prev": 0,
+        "piece": 2,
+        "x1": 2707,
+        "x2": 2889,
+        "y1": 35,
+        "y2": 35,
+        "layerId": 4,
+        "groupId": 34
+      },
+      "1": {
+        "id": 1,
+        "next": 0,
+        "prev": 0,
+        "piece": 1,
+        "x1": 837,
+        "x2": 974,
+        "y1": -60,
+        "y2": -69,
+        "layerId": 4,
+        "groupId": 39
+      },
+      "92": {
+        "id": 92,
+        "next": 86,
+        "prev": 82,
+        "piece": 13,
+        "x1": 1871,
+        "x2": 2131,
+        "y1": 78,
+        "y2": 78,
+        "layerId": 5,
+        "groupId": 13
+      },
+      "38": {
+        "id": 38,
+        "next": 0,
+        "prev": 0,
+        "piece": 3,
+        "x1": -749,
+        "x2": -656,
+        "y1": 25,
+        "y2": 24,
+        "layerId": 4,
+        "groupId": 36
+      },
+      "23": {
+        "id": 23,
+        "next": 0,
+        "prev": 0,
+        "piece": 5,
+        "x1": 2505,
+        "x2": 2656,
+        "y1": -80,
+        "y2": -76,
+        "layerId": 4,
+        "groupId": 34
+      },
+      "50": {
+        "id": 50,
+        "next": 0,
+        "prev": 51,
+        "piece": 18,
+        "x1": -84,
+        "x2": 334,
+        "y1": 67,
+        "y2": 65,
+        "layerId": 5,
+        "groupId": 17
+      },
+      "4": {
+        "id": 4,
+        "next": 0,
+        "prev": 0,
+        "piece": 1,
+        "x1": 561,
+        "x2": 968,
+        "y1": -202,
+        "y2": -270,
+        "layerId": 4,
+        "groupId": 39
+      },
+      "95": {
+        "id": 95,
+        "next": 93,
+        "prev": 94,
+        "piece": 16,
+        "x1": 2926,
+        "x2": 3186,
+        "y1": 78,
+        "y2": 78,
+        "layerId": 5,
+        "groupId": 16
+      },
+      "68": {
+        "id": 68,
+        "next": 67,
+        "prev": 69,
+        "piece": 18,
+        "x1": -136,
+        "x2": -59,
+        "y1": -389,
+        "y2": -466,
+        "layerId": 5,
+        "groupId": 17
+      },
+      "35": {
+        "id": 35,
+        "next": 0,
+        "prev": 0,
+        "piece": 3,
+        "x1": -916,
+        "x2": -861,
+        "y1": -201,
+        "y2": -204,
+        "layerId": 4,
+        "groupId": 36
+      },
+      "7": {
+        "id": 7,
+        "next": 8,
+        "prev": 0,
+        "piece": 1,
+        "x1": 651,
+        "x2": 733,
+        "y1": -299,
+        "y2": -391,
+        "layerId": 4,
+        "groupId": 39
+      },
+      "10": {
+        "id": 10,
+        "next": 11,
+        "prev": 9,
+        "piece": 1,
+        "x1": 855,
+        "x2": 1029,
+        "y1": -325,
+        "y2": -361,
+        "layerId": 4,
+        "groupId": 39
+      },
+      "82": {
+        "id": 82,
+        "next": 92,
+        "prev": 85,
+        "piece": 8,
+        "x1": 1611,
+        "x2": 1871,
+        "y1": 78,
+        "y2": 78,
+        "layerId": 5,
+        "groupId": 8
+      },
+      "28": {
+        "id": 28,
+        "next": 0,
+        "prev": 0,
+        "piece": 5,
+        "x1": 2345,
+        "x2": 2400,
+        "y1": -214,
+        "y2": -211,
+        "layerId": 4,
+        "groupId": 34
+      },
+      "65": {
+        "id": 65,
+        "next": 64,
+        "prev": 66,
+        "piece": 18,
+        "x1": 112,
+        "x2": 200,
+        "y1": -494,
+        "y2": -429,
+        "layerId": 5,
+        "groupId": 17
+      },
+      "22": {
+        "id": 22,
+        "next": 21,
+        "prev": 0,
+        "piece": 5,
+        "x1": 2212,
+        "x2": 2291,
+        "y1": -315,
+        "y2": -367,
+        "layerId": 4,
+        "groupId": 34
+      },
+      "94": {
+        "id": 94,
+        "next": 95,
+        "prev": 83,
+        "piece": 15,
+        "x1": 2666,
+        "x2": 2926,
+        "y1": 78,
+        "y2": 78,
+        "layerId": 5,
+        "groupId": 15
+      },
+      "52": {
+        "id": 52,
+        "next": 0,
+        "prev": 0,
+        "piece": 18,
+        "x1": 67,
+        "x2": 242,
+        "y1": -140,
+        "y2": -133,
+        "layerId": 5,
+        "groupId": 17
+      },
+      "97": {
+        "id": 97,
+        "next": 98,
+        "prev": 96,
+        "piece": 31,
+        "x1": 1602,
+        "x2": 1762,
+        "y1": -208,
+        "y2": -208,
+        "layerId": 5,
+        "groupId": 45
+      },
+      "81": {
+        "id": 81,
+        "next": 43,
+        "prev": 71,
+        "piece": 7,
+        "x1": -744,
+        "x2": -484,
+        "y1": 78,
+        "y2": 78,
+        "layerId": 5,
+        "groupId": 7
+      },
+      "37": {
+        "id": 37,
+        "next": 0,
+        "prev": 0,
+        "piece": 3,
+        "x1": -759,
+        "x2": -704,
+        "y1": -213,
+        "y2": -216,
+        "layerId": 4,
+        "groupId": 36
+      }
+    },
+    "minimumLevel": 220,
+    "vrBounds": {
+      "x": -1000,
+      "y": -740,
+      "width": 4440,
+      "height": 1130,
+      "location": {
+        "x": -1000,
+        "y": -740,
+        "isEmpty": false
+      },
+      "size": {
+        "width": 4440,
+        "height": 1130,
+        "isEmpty": false
+      },
+      "isEmpty": false,
+      "top": -740,
+      "right": 3440,
+      "bottom": 390,
+      "left": -1000
+    },
+    "returnMapName": {
+      "name": "拉契爾恩市中心",
+      "streetName": "拉契爾恩",
+      "id": 450003000
+    },
+    "ladderRopes": [
+      {
+        "x": 2106,
+        "y1": -206,
+        "y2": 35,
+        "isLadder": true
+      }
+    ],
+    "name": "拉契爾恩市中心",
+    "streetName": "拉契爾恩",
+    "id": 450003000
+  },
+  "source_archive_sha256": "488e570e4fabd5de5b0b7d703958ec3edff30e285d03febeabd616728a05fa14",
+  "composite": {
+    "source_url": "https://maplestory.io/api/TWMS/256/map/450003000/render/0?showBackgrounds=true&showPortals=true",
+    "github_path": "assets/maple/collection/maps/lachelein/450003000/TWMS-256/composite.png",
+    "width": 4483,
+    "height": 1244,
+    "mode": "RGBA",
+    "has_transparency": true,
+    "sha256": "e645eed5c6327cfca3b56576d9473c0d6c0642ccf02bcddd9a7f732609a26aa3",
+    "pixel_sha256": "d2f5abbf5fd3351caf5244dbdf04ffcdc475585397bab4490268190fe08d8735",
+    "decode": "pass"
+  },
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "all_wz_numeric_frame_nodes_present": true,
+    "timing_and_origin": "not_applicable",
+    "visual_playback": "not_applicable",
+    "original_wz_binary_compared": false,
+    "independent_resource_canvases": "pass"
+  },
+  "github_path": "assets/maple/collection/maps/lachelein/450003000/TWMS-256",
+  "status": "collected",
+  "resource_sets": [
+    {
+      "kind": "back",
+      "name": "Lacheln",
+      "wz_path": "Map.wz/Back/Lacheln.img",
+      "source_url": "https://maplestory.io/api/wz/export/TWMS/256/Map/Back/Lacheln.img",
+      "canvas_count": 371,
+      "manifest_path": "assets/maple/collection/maps/lachelein/shared-resource-sets/TWMS-256/back/resource-set.json"
+    },
+    {
+      "kind": "obj",
+      "name": "Lacheln",
+      "wz_path": "Map.wz/Obj/Lacheln.img",
+      "source_url": "https://maplestory.io/api/wz/export/TWMS/256/Map/Obj/Lacheln.img",
+      "canvas_count": 655,
+      "manifest_path": "assets/maple/collection/maps/lachelein/shared-resource-sets/TWMS-256/obj/resource-set.json"
+    }
+  ]
+}

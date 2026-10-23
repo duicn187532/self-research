@@ -20,7 +20,7 @@ for a in m['assets']:
         if verification and not verification['error']:
             indices=verification['indices']
         elif count:
-            url=f'{BASE}/wz/GMS/83/{a["wz_path"].replace(".wz/","/")}/{name}'
+            url=f'{BASE}/wz/{a["version"]["region"]}/{a["version"]["version"]}/{a["wz_path"].replace(".wz/","/")}/{name}'
             try:
                 node=json.loads(fetch(url))
                 indices=sorted(int(x) for x in node['children'] if str(x).isdigit())

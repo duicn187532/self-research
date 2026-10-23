@@ -1,0 +1,158 @@
+{
+  "id": "2040015",
+  "type": "npc",
+  "region": "ludibrium",
+  "town": "玩具城",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": "廠長卡霍",
+  "name_zh_tw_status": "source_twms",
+  "source_url": "https://maplestory.io/api/TWMS/256/npc/2040015",
+  "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Npc/2040015.img",
+  "wz_path": "Npc.wz/2040015.img",
+  "version": {
+    "region": "TWMS",
+    "version": "256"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "stand",
+      "frame_count": 4,
+      "expected_frame_count": 4,
+      "frames": [
+        {
+          "index": 0,
+          "width": 81,
+          "height": 86,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "360f1628115f02da4b72d934e23fa8778094940262eeead7266acf767d812b48",
+          "pixel_sha256": "75b5ba94964c0c64834b18a6405a22ed12d6ff51e27d1a3b21973aa8fa25faf5",
+          "wz_path": "Npc.wz/2040015.img/stand/0",
+          "duration_ms": 3000,
+          "origin": {
+            "x": 40,
+            "y": 86
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/ludibrium/2040015/TWMS-256/stand/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 81,
+          "height": 86,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "d1d4cab2400cf0abb6029d2708999a1f6bc2ebdd6284a7738b0e6001b9ec9196",
+          "pixel_sha256": "c226a7b573e93b1766501dc4fd9fd78868fe031913df50bf8f9e5a29b3402da3",
+          "wz_path": "Npc.wz/2040015.img/stand/1",
+          "duration_ms": 300,
+          "origin": {
+            "x": 40,
+            "y": 86
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/ludibrium/2040015/TWMS-256/stand/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 81,
+          "height": 86,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "360f1628115f02da4b72d934e23fa8778094940262eeead7266acf767d812b48",
+          "pixel_sha256": "75b5ba94964c0c64834b18a6405a22ed12d6ff51e27d1a3b21973aa8fa25faf5",
+          "wz_path": "Npc.wz/2040015.img/stand/2",
+          "duration_ms": 150,
+          "origin": {
+            "x": 40,
+            "y": 86
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/ludibrium/2040015/TWMS-256/stand/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "f5b89f9bb13e9bc20367123bf8b4a289824fdb54c2710d17086eb125691f6f23"
+        },
+        {
+          "index": 3,
+          "width": 81,
+          "height": 86,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "d1d4cab2400cf0abb6029d2708999a1f6bc2ebdd6284a7738b0e6001b9ec9196",
+          "pixel_sha256": "c226a7b573e93b1766501dc4fd9fd78868fe031913df50bf8f9e5a29b3402da3",
+          "wz_path": "Npc.wz/2040015.img/stand/3",
+          "duration_ms": 600,
+          "origin": {
+            "x": 40,
+            "y": 86
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/ludibrium/2040015/TWMS-256/stand/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "3aa4500baf959f189d5ce22126376a2ec23e27fed03bbacb1e608bcfe221b3b1"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Npc/2040015.img/stand",
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "廠長卡霍",
+  "role": null,
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "玩具工廠<主工程A>",
+      "streetName": "玩具城",
+      "id": 220020300
+    },
+    {
+      "name": "玩具工廠<第4區>",
+      "streetName": "隱藏地圖",
+      "id": 922000000
+    }
+  ],
+  "expected_actions": {
+    "stand": 4
+  },
+  "source_metadata_sha256": "5874b39c7535ffd3269a9ac09f7c813f9e40e2df37b45928f78ceff56b1d36bf",
+  "source_archive_sha256": "da248d98129b0a4decae2b4ae5060fa4b64a134541014ea851d2d52ac44fec10",
+  "source_frame_indices": {
+    "stand": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "complete",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
+  },
+  "github_path": "assets/maple/collection/npc/ludibrium/2040015/TWMS-256",
+  "status": "collected"
+}

@@ -90,7 +90,7 @@ def main():
             if visual_group not in seen_visual_groups:new_unique[a['type']]+=1
         else:existing_only.append(a['type']+'/'+a['id'])
         seen_visual_groups.add(visual_group)
-    report={'verified_on':'2026-10-23','entity_records':len(keys),
+    report={'verified_on':'2026-10-24','entity_records':len(keys),
         'by_type':dict(Counter(a['type'] for a in manifest['assets'])),
         'by_region':dict(Counter(a['region'] for a in manifest['assets'])),
         'npc_by_town':dict(Counter(a['town'] for a in manifest['assets'] if a['type']=='npc')),

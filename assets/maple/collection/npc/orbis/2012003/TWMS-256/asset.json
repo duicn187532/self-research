@@ -1,0 +1,1012 @@
+{
+  "id": "2012003",
+  "type": "npc",
+  "region": "orbis",
+  "town": "天空之城",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": "妖精 娜麗",
+  "name_zh_tw_status": "source_twms",
+  "source_url": "https://maplestory.io/api/TWMS/256/npc/2012003",
+  "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Npc/2012003.img",
+  "wz_path": "Npc.wz/2012003.img",
+  "version": {
+    "region": "TWMS",
+    "version": "256"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "smile0",
+      "frame_count": 18,
+      "expected_frame_count": 18,
+      "frames": [
+        {
+          "index": 0,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "04639ecf40ce8bf5456fc0bf7843385f44469cba89afe7876b36b35a6168d92c",
+          "pixel_sha256": "30778e8ecd281a9b39b2c5935e72cb344f9f2cf6dfe310df5c8ef33991476fb8",
+          "wz_path": "Npc.wz/2012003.img/smile0/0",
+          "duration_ms": 250,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5cefc17c71fe34539923de16df8d7b4aa8bd2cf5421dd7f3243d123307a4155a",
+          "pixel_sha256": "1a970da00f3f736535181a428c6538e9b1894eb78b31c211aa59cea470e41afa",
+          "wz_path": "Npc.wz/2012003.img/smile0/1",
+          "duration_ms": 250,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "04639ecf40ce8bf5456fc0bf7843385f44469cba89afe7876b36b35a6168d92c",
+          "pixel_sha256": "30778e8ecd281a9b39b2c5935e72cb344f9f2cf6dfe310df5c8ef33991476fb8",
+          "wz_path": "Npc.wz/2012003.img/smile0/2",
+          "duration_ms": 250,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2012003/render/smile0/2",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "513c562224f9abdf461ed251ff114b670724397a289ebc14a77ae4997de30563"
+        },
+        {
+          "index": 3,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5cefc17c71fe34539923de16df8d7b4aa8bd2cf5421dd7f3243d123307a4155a",
+          "pixel_sha256": "1a970da00f3f736535181a428c6538e9b1894eb78b31c211aa59cea470e41afa",
+          "wz_path": "Npc.wz/2012003.img/smile0/3",
+          "duration_ms": 250,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2012003/render/smile0/3",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "cf6e4a6870ce2f6803f43f2e36007fc4088d132175e65e37da5250bb49fef0a1"
+        },
+        {
+          "index": 4,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "04639ecf40ce8bf5456fc0bf7843385f44469cba89afe7876b36b35a6168d92c",
+          "pixel_sha256": "30778e8ecd281a9b39b2c5935e72cb344f9f2cf6dfe310df5c8ef33991476fb8",
+          "wz_path": "Npc.wz/2012003.img/smile0/4",
+          "duration_ms": 250,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2012003/render/smile0/4",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "884c9f3f6c635483141c2593e40a8bf990bbf9905d06a2200b4a64523704b99c"
+        },
+        {
+          "index": 5,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5cefc17c71fe34539923de16df8d7b4aa8bd2cf5421dd7f3243d123307a4155a",
+          "pixel_sha256": "1a970da00f3f736535181a428c6538e9b1894eb78b31c211aa59cea470e41afa",
+          "wz_path": "Npc.wz/2012003.img/smile0/5",
+          "duration_ms": 250,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2012003/render/smile0/5",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "e09a2b1ed1821a0c84600af579928e17dd44f6b90c06167a349859dbc6f0ff2f"
+        },
+        {
+          "index": 6,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "04639ecf40ce8bf5456fc0bf7843385f44469cba89afe7876b36b35a6168d92c",
+          "pixel_sha256": "30778e8ecd281a9b39b2c5935e72cb344f9f2cf6dfe310df5c8ef33991476fb8",
+          "wz_path": "Npc.wz/2012003.img/smile0/6",
+          "duration_ms": 250,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2012003/render/smile0/6",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "1897071e1699491613f32eafddff1aeb86fe3907d8c5dae7a2af4d618a62c44b"
+        },
+        {
+          "index": 7,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5cefc17c71fe34539923de16df8d7b4aa8bd2cf5421dd7f3243d123307a4155a",
+          "pixel_sha256": "1a970da00f3f736535181a428c6538e9b1894eb78b31c211aa59cea470e41afa",
+          "wz_path": "Npc.wz/2012003.img/smile0/7",
+          "duration_ms": 250,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2012003/render/smile0/7",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "6b37926f5d96f12e4b1467b18083513019afa682f9eb0217afd7bde05d238538"
+        },
+        {
+          "index": 8,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "04639ecf40ce8bf5456fc0bf7843385f44469cba89afe7876b36b35a6168d92c",
+          "pixel_sha256": "30778e8ecd281a9b39b2c5935e72cb344f9f2cf6dfe310df5c8ef33991476fb8",
+          "wz_path": "Npc.wz/2012003.img/smile0/8",
+          "duration_ms": 250,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2012003/render/smile0/8",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "3798de57c11b8b96159ae8be62ef3e4483cc766b3d07e5e01a7749a2b6db33ed"
+        },
+        {
+          "index": 9,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5cefc17c71fe34539923de16df8d7b4aa8bd2cf5421dd7f3243d123307a4155a",
+          "pixel_sha256": "1a970da00f3f736535181a428c6538e9b1894eb78b31c211aa59cea470e41afa",
+          "wz_path": "Npc.wz/2012003.img/smile0/9",
+          "duration_ms": 250,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2012003/render/smile0/9",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "ff796a86ed116a065458fa59bcf8e7c371762cee4f171a29a304c2cecdc1f879"
+        },
+        {
+          "index": 10,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "04639ecf40ce8bf5456fc0bf7843385f44469cba89afe7876b36b35a6168d92c",
+          "pixel_sha256": "30778e8ecd281a9b39b2c5935e72cb344f9f2cf6dfe310df5c8ef33991476fb8",
+          "wz_path": "Npc.wz/2012003.img/smile0/10",
+          "duration_ms": 250,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2012003/render/smile0/10",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "5310a59f3bdfe28c6858e25cad1fa65a56db6d778e2723df4be8957ce121c889"
+        },
+        {
+          "index": 11,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5cefc17c71fe34539923de16df8d7b4aa8bd2cf5421dd7f3243d123307a4155a",
+          "pixel_sha256": "1a970da00f3f736535181a428c6538e9b1894eb78b31c211aa59cea470e41afa",
+          "wz_path": "Npc.wz/2012003.img/smile0/11",
+          "duration_ms": 250,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2012003/render/smile0/11",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "23592e6e97f7749c4eda0b50aa0715fef29a342d68cf416890faededc282c3b4"
+        },
+        {
+          "index": 12,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "04639ecf40ce8bf5456fc0bf7843385f44469cba89afe7876b36b35a6168d92c",
+          "pixel_sha256": "30778e8ecd281a9b39b2c5935e72cb344f9f2cf6dfe310df5c8ef33991476fb8",
+          "wz_path": "Npc.wz/2012003.img/smile0/12",
+          "duration_ms": 250,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2012003/render/smile0/12",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "ac437cc69067ca75ec8ef9d2b802e8579213717a9f2b4bf04f4cee0672ce3be5"
+        },
+        {
+          "index": 13,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5cefc17c71fe34539923de16df8d7b4aa8bd2cf5421dd7f3243d123307a4155a",
+          "pixel_sha256": "1a970da00f3f736535181a428c6538e9b1894eb78b31c211aa59cea470e41afa",
+          "wz_path": "Npc.wz/2012003.img/smile0/13",
+          "duration_ms": 250,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2012003/render/smile0/13",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "1be8d54c7ff38ac06d3f03ede74aa26a1cdabef6c596e53a9e9353b8f47d1a13"
+        },
+        {
+          "index": 14,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "04639ecf40ce8bf5456fc0bf7843385f44469cba89afe7876b36b35a6168d92c",
+          "pixel_sha256": "30778e8ecd281a9b39b2c5935e72cb344f9f2cf6dfe310df5c8ef33991476fb8",
+          "wz_path": "Npc.wz/2012003.img/smile0/14",
+          "duration_ms": 250,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2012003/render/smile0/14",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "603d76df9ebe40543c8d69b2055a5d2cccff718e26bf2e4380bd081466153b56"
+        },
+        {
+          "index": 15,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5cefc17c71fe34539923de16df8d7b4aa8bd2cf5421dd7f3243d123307a4155a",
+          "pixel_sha256": "1a970da00f3f736535181a428c6538e9b1894eb78b31c211aa59cea470e41afa",
+          "wz_path": "Npc.wz/2012003.img/smile0/15",
+          "duration_ms": 250,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2012003/render/smile0/15",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "c9261d93880a0613072564b944304e9d989ce5e88172431e2214787b42e86b2f"
+        },
+        {
+          "index": 16,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "04639ecf40ce8bf5456fc0bf7843385f44469cba89afe7876b36b35a6168d92c",
+          "pixel_sha256": "30778e8ecd281a9b39b2c5935e72cb344f9f2cf6dfe310df5c8ef33991476fb8",
+          "wz_path": "Npc.wz/2012003.img/smile0/16",
+          "duration_ms": 250,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2012003/render/smile0/16",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "26fc2107f5c4bb0d3dcc617da2ddfc8b3231fc476bd539151da2e85d43832e25"
+        },
+        {
+          "index": 17,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5cefc17c71fe34539923de16df8d7b4aa8bd2cf5421dd7f3243d123307a4155a",
+          "pixel_sha256": "1a970da00f3f736535181a428c6538e9b1894eb78b31c211aa59cea470e41afa",
+          "wz_path": "Npc.wz/2012003.img/smile0/17",
+          "duration_ms": 250,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2012003/render/smile0/17",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "6b5dc99b4cd0a51ab70d324281cc4afdb48202ff91168d6f7b27bdb357e04be7"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Npc/2012003.img/smile0",
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "smile1",
+      "frame_count": 18,
+      "expected_frame_count": 18,
+      "frames": [
+        {
+          "index": 0,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "04639ecf40ce8bf5456fc0bf7843385f44469cba89afe7876b36b35a6168d92c",
+          "pixel_sha256": "30778e8ecd281a9b39b2c5935e72cb344f9f2cf6dfe310df5c8ef33991476fb8",
+          "wz_path": "Npc.wz/2012003.img/smile1/0",
+          "duration_ms": 250,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "e4fb29db198a344751488d932c6ea049383b4d2d174ae0adc02f6a366ca73b97"
+        },
+        {
+          "index": 1,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5cefc17c71fe34539923de16df8d7b4aa8bd2cf5421dd7f3243d123307a4155a",
+          "pixel_sha256": "1a970da00f3f736535181a428c6538e9b1894eb78b31c211aa59cea470e41afa",
+          "wz_path": "Npc.wz/2012003.img/smile1/1",
+          "duration_ms": 250,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "0b46927aa751805962a6080b489f5e31fe8a8e71269d5a77e98197d2b73c7fd7"
+        },
+        {
+          "index": 2,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "04639ecf40ce8bf5456fc0bf7843385f44469cba89afe7876b36b35a6168d92c",
+          "pixel_sha256": "30778e8ecd281a9b39b2c5935e72cb344f9f2cf6dfe310df5c8ef33991476fb8",
+          "wz_path": "Npc.wz/2012003.img/smile1/2",
+          "duration_ms": 250,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2012003/render/smile1/2",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "d63f6126f102d85c2791b082feea637fec16fbc593be6a5c7966bab5694d91df"
+        },
+        {
+          "index": 3,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5cefc17c71fe34539923de16df8d7b4aa8bd2cf5421dd7f3243d123307a4155a",
+          "pixel_sha256": "1a970da00f3f736535181a428c6538e9b1894eb78b31c211aa59cea470e41afa",
+          "wz_path": "Npc.wz/2012003.img/smile1/3",
+          "duration_ms": 250,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2012003/render/smile1/3",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "8cd3a04b088f423c0f6a83759fa8493ca5022df05fb685b42c4711a71887cb48"
+        },
+        {
+          "index": 4,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "04639ecf40ce8bf5456fc0bf7843385f44469cba89afe7876b36b35a6168d92c",
+          "pixel_sha256": "30778e8ecd281a9b39b2c5935e72cb344f9f2cf6dfe310df5c8ef33991476fb8",
+          "wz_path": "Npc.wz/2012003.img/smile1/4",
+          "duration_ms": 250,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2012003/render/smile1/4",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "97c4565015c4de533e50755c72e3f5410ab48948f19db15e54694d0118da9824"
+        },
+        {
+          "index": 5,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5cefc17c71fe34539923de16df8d7b4aa8bd2cf5421dd7f3243d123307a4155a",
+          "pixel_sha256": "1a970da00f3f736535181a428c6538e9b1894eb78b31c211aa59cea470e41afa",
+          "wz_path": "Npc.wz/2012003.img/smile1/5",
+          "duration_ms": 250,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2012003/render/smile1/5",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "de32beb93464d11667520664d5c30ebd03c263261ab5af9909d7e5e09d283da8"
+        },
+        {
+          "index": 6,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "04639ecf40ce8bf5456fc0bf7843385f44469cba89afe7876b36b35a6168d92c",
+          "pixel_sha256": "30778e8ecd281a9b39b2c5935e72cb344f9f2cf6dfe310df5c8ef33991476fb8",
+          "wz_path": "Npc.wz/2012003.img/smile1/6",
+          "duration_ms": 250,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2012003/render/smile1/6",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "179131eb5574cf0539bf4bada2ed7d112e126986d9b1c834b6d52e00d99705cc"
+        },
+        {
+          "index": 7,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5cefc17c71fe34539923de16df8d7b4aa8bd2cf5421dd7f3243d123307a4155a",
+          "pixel_sha256": "1a970da00f3f736535181a428c6538e9b1894eb78b31c211aa59cea470e41afa",
+          "wz_path": "Npc.wz/2012003.img/smile1/7",
+          "duration_ms": 250,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2012003/render/smile1/7",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "245c933dd7aeb2d9191e31d2c2071b2433bb22428de9342731e1ccd81152a674"
+        },
+        {
+          "index": 8,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "04639ecf40ce8bf5456fc0bf7843385f44469cba89afe7876b36b35a6168d92c",
+          "pixel_sha256": "30778e8ecd281a9b39b2c5935e72cb344f9f2cf6dfe310df5c8ef33991476fb8",
+          "wz_path": "Npc.wz/2012003.img/smile1/8",
+          "duration_ms": 250,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2012003/render/smile1/8",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "833b176853e1e3503095082d780d36e9d1886b7e6cb1f5174e6ef06b24432bd2"
+        },
+        {
+          "index": 9,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5cefc17c71fe34539923de16df8d7b4aa8bd2cf5421dd7f3243d123307a4155a",
+          "pixel_sha256": "1a970da00f3f736535181a428c6538e9b1894eb78b31c211aa59cea470e41afa",
+          "wz_path": "Npc.wz/2012003.img/smile1/9",
+          "duration_ms": 250,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2012003/render/smile1/9",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "fc46e20d9bb36ba2b622b6539f3483d31091476b3fed8caa088d4df09e817934"
+        },
+        {
+          "index": 10,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "04639ecf40ce8bf5456fc0bf7843385f44469cba89afe7876b36b35a6168d92c",
+          "pixel_sha256": "30778e8ecd281a9b39b2c5935e72cb344f9f2cf6dfe310df5c8ef33991476fb8",
+          "wz_path": "Npc.wz/2012003.img/smile1/10",
+          "duration_ms": 250,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2012003/render/smile1/10",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "af539e55b0c084589d9561570dbc6d081fe839ba51416867598db626ff602735"
+        },
+        {
+          "index": 11,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5cefc17c71fe34539923de16df8d7b4aa8bd2cf5421dd7f3243d123307a4155a",
+          "pixel_sha256": "1a970da00f3f736535181a428c6538e9b1894eb78b31c211aa59cea470e41afa",
+          "wz_path": "Npc.wz/2012003.img/smile1/11",
+          "duration_ms": 250,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2012003/render/smile1/11",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "7bf59ba81af697f8a6e65bfba8539ce78c1fcc4157791a9e32b85f597581693b"
+        },
+        {
+          "index": 12,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "04639ecf40ce8bf5456fc0bf7843385f44469cba89afe7876b36b35a6168d92c",
+          "pixel_sha256": "30778e8ecd281a9b39b2c5935e72cb344f9f2cf6dfe310df5c8ef33991476fb8",
+          "wz_path": "Npc.wz/2012003.img/smile1/12",
+          "duration_ms": 250,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2012003/render/smile1/12",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "99dd05dd4b2569858ad2060edefdb586f7701350a9b741c2a4e5cf59c755b857"
+        },
+        {
+          "index": 13,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5cefc17c71fe34539923de16df8d7b4aa8bd2cf5421dd7f3243d123307a4155a",
+          "pixel_sha256": "1a970da00f3f736535181a428c6538e9b1894eb78b31c211aa59cea470e41afa",
+          "wz_path": "Npc.wz/2012003.img/smile1/13",
+          "duration_ms": 250,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2012003/render/smile1/13",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "f4268748e08f24847a8ac3f65ffe5edf9a570c9dbd539622227d4ae76b3f207a"
+        },
+        {
+          "index": 14,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "04639ecf40ce8bf5456fc0bf7843385f44469cba89afe7876b36b35a6168d92c",
+          "pixel_sha256": "30778e8ecd281a9b39b2c5935e72cb344f9f2cf6dfe310df5c8ef33991476fb8",
+          "wz_path": "Npc.wz/2012003.img/smile1/14",
+          "duration_ms": 250,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2012003/render/smile1/14",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "5a1f5fb8d29daef95f6ce025544db73e3a392df09c675656bb17d7659206bd69"
+        },
+        {
+          "index": 15,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5cefc17c71fe34539923de16df8d7b4aa8bd2cf5421dd7f3243d123307a4155a",
+          "pixel_sha256": "1a970da00f3f736535181a428c6538e9b1894eb78b31c211aa59cea470e41afa",
+          "wz_path": "Npc.wz/2012003.img/smile1/15",
+          "duration_ms": 250,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2012003/render/smile1/15",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "89942f7d409a2104736adead6553c2bd32f053b12cc44d0e3436a1bce5fae040"
+        },
+        {
+          "index": 16,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "04639ecf40ce8bf5456fc0bf7843385f44469cba89afe7876b36b35a6168d92c",
+          "pixel_sha256": "30778e8ecd281a9b39b2c5935e72cb344f9f2cf6dfe310df5c8ef33991476fb8",
+          "wz_path": "Npc.wz/2012003.img/smile1/16",
+          "duration_ms": 250,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2012003/render/smile1/16",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "6ac1621761802150af83775e1c4f61f93851add5c67f6efd61a7e1d0e0eaad59"
+        },
+        {
+          "index": 17,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5cefc17c71fe34539923de16df8d7b4aa8bd2cf5421dd7f3243d123307a4155a",
+          "pixel_sha256": "1a970da00f3f736535181a428c6538e9b1894eb78b31c211aa59cea470e41afa",
+          "wz_path": "Npc.wz/2012003.img/smile1/17",
+          "duration_ms": 250,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2012003/render/smile1/17",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "4bfe3f63e943f210a71a4b3ba3fa8d60cf3acb66312bc9081c0e58757f17b962"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Npc/2012003.img/smile1",
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "stand",
+      "frame_count": 4,
+      "expected_frame_count": 4,
+      "frames": [
+        {
+          "index": 0,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "04639ecf40ce8bf5456fc0bf7843385f44469cba89afe7876b36b35a6168d92c",
+          "pixel_sha256": "30778e8ecd281a9b39b2c5935e72cb344f9f2cf6dfe310df5c8ef33991476fb8",
+          "wz_path": "Npc.wz/2012003.img/stand/0",
+          "duration_ms": 3000,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "0f6d7f97da3495a0970ac3a7bb6aaac8a965b2c14b93862beb8b359cc8a597d0"
+        },
+        {
+          "index": 1,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "343896e42fa2cfc2908995102ef091d01b7fffc5057e8aae62ceb12e50da8f78",
+          "pixel_sha256": "a60f7c336b3d11a7c030cab13ba9b9134e4a2aa8fe4a055643b94ce365fabba7",
+          "wz_path": "Npc.wz/2012003.img/stand/1",
+          "duration_ms": 100,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/stand/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "04639ecf40ce8bf5456fc0bf7843385f44469cba89afe7876b36b35a6168d92c",
+          "pixel_sha256": "30778e8ecd281a9b39b2c5935e72cb344f9f2cf6dfe310df5c8ef33991476fb8",
+          "wz_path": "Npc.wz/2012003.img/stand/2",
+          "duration_ms": 250,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/smile0/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "a79f4a132a3f82dddd4ef327223100b102827da483e95ede54ac53e7b4de16db"
+        },
+        {
+          "index": 3,
+          "width": 70,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "343896e42fa2cfc2908995102ef091d01b7fffc5057e8aae62ceb12e50da8f78",
+          "pixel_sha256": "a60f7c336b3d11a7c030cab13ba9b9134e4a2aa8fe4a055643b94ce365fabba7",
+          "wz_path": "Npc.wz/2012003.img/stand/3",
+          "duration_ms": 100,
+          "origin": {
+            "x": 38,
+            "y": 96
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2012003/render/stand/3",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256/stand/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "b8bd793d296f99ac3fa5df4378948e0fab029b7401014f2c9a2ddf6aefe9ec4c"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Npc/2012003.img/stand",
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "妖精 娜麗",
+  "role": "武器商人",
+  "is_shop": true,
+  "source_locations": [
+    {
+      "name": "天空之城武器/防具商店",
+      "streetName": "天空之城",
+      "id": 200000001
+    }
+  ],
+  "expected_actions": {
+    "smile0": 18,
+    "smile1": 18,
+    "stand": 4
+  },
+  "source_metadata_sha256": "780ada9f4d3eb9c50adc52dfb26cbda931652dcca131b4462df3a77aefe9a052",
+  "source_archive_sha256": "24af0866f546f973d6c020764c9da873a89df9d62f5dd6d56c5101791d84a061",
+  "source_frame_indices": {
+    "smile0": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ],
+    "smile1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ],
+    "stand": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "complete",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
+  },
+  "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256",
+  "status": "collected"
+}

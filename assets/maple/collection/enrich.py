@@ -4,8 +4,8 @@ from concurrent.futures import ThreadPoolExecutor
 from collect import OUT, BASE, fetch, dump
 
 def enrich_frame(job):
-    path,field=job
-    url=f'{BASE}/wz/GMS/83/{path.replace(".wz/", "/")}/{field}'
+    region,version,path,field=job
+    url=f'{BASE}/wz/{region}/{version}/{path.replace(".wz/", "/")}/{field}'
     try:
         data=json.loads(fetch(url))
         value=data.get('value')
@@ -20,24 +20,34 @@ cache_path=OUT/'frame-metadata-cache.json'
 cache=json.loads(cache_path.read_text(encoding='utf-8')) if cache_path.exists() else {}
 jobs=[]
 for a in manifest['assets']:
+    if a['type']=='maps':
+        continue
     for action in a['actions']:
         for f in action['frames']:
             for field in ('delay','origin'):
-                if f['wz_path']+'/'+field not in cache: jobs.append((f['wz_path'],field))
-with ThreadPoolExecutor(max_workers=6) as pool:
+                key=f"{a['version']['region']}/{a['version']['version']}/{f['wz_path']}/{field}"
+                old_key=f['wz_path']+'/'+field
+                if key not in cache and not (a['version']['region']=='GMS' and a['version']['version']=='83' and old_key in cache):
+                    jobs.append((a['version']['region'],a['version']['version'],f['wz_path'],field))
+with ThreadPoolExecutor(max_workers=16) as pool:
     for count,(job,value,error) in enumerate(pool.map(enrich_frame,jobs),1):
-        cache[job[0]+'/'+job[1]]={'value':value,'error':error}
+        cache['/'.join(job)]={'value':value,'error':error}
         if count%100==0:
             dump(cache_path,cache)
             print('frame metadata',count,'/',len(jobs),flush=True)
 dump(cache_path,cache)
 for a in manifest['assets']:
+    if a['type']=='maps':
+        a['validation']['timing_and_origin']='not_applicable'
+        dump(OUT.parents[2]/a['github_path']/'asset.json',a)
+        continue
     complete=True
     for action in a['actions']:
         for f in action['frames']:
             f.pop('metadata_issues',None)
             for field,target in [('delay','duration_ms'),('origin','origin')]:
-                result=cache[f['wz_path']+'/'+field]
+                key=f"{a['version']['region']}/{a['version']['version']}/{f['wz_path']}/{field}"
+                result=cache.get(key) or cache[f['wz_path']+'/'+field]
                 f[target]=result['value']
                 if result['error']:
                     complete=False

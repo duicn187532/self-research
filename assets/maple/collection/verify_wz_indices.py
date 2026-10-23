@@ -17,16 +17,19 @@ m=json.loads((OUT/'manifest.json').read_text(encoding='utf-8'))
 def inspect(job):
     a,g=job
     path=a['wz_path']+'/'+g['name']
-    url=f'{BASE}/wz/GMS/83/{path.replace(".wz/","/")}'
+    url=f"{BASE}/wz/{a['version']['region']}/{a['version']['version']}/{path.replace('.wz/','/')}"
     try:
         data=json.loads(fetch(url))
-        return path,{'source_url':url,'indices':sorted(int(v) for v in data['children'] if str(v).isdigit()),'error':None}
-    except Exception as error:return path,{'source_url':url,'indices':None,'error':str(error)}
+        key=f"{a['version']['region']}/{a['version']['version']}/{path}"
+        return key,{'source_url':url,'indices':sorted(int(v) for v in data['children'] if str(v).isdigit()),'error':None}
+    except Exception as error:
+        key=f"{a['version']['region']}/{a['version']['version']}/{path}"
+        return key,{'source_url':url,'indices':None,'error':str(error)}
 
 if args.prepare:
-    jobs=[(a,g) for a in m['assets'] for g in a['actions'] if g.get('kind')!='auxiliary_canvas' and (g['frames'] or g.get('expected_frame_count'))]
+    jobs=[(a,g) for a in m['assets'] if a['type']!='maps' for g in a['actions'] if g.get('kind')!='auxiliary_canvas' and (g['frames'] or g.get('expected_frame_count'))]
     results={}
-    with ThreadPoolExecutor(max_workers=6) as pool:
+    with ThreadPoolExecutor(max_workers=16) as pool:
         futures=[pool.submit(inspect,job) for job in jobs]
         for i,future in enumerate(as_completed(futures),1):
             path,result=future.result();results[path]=result
@@ -35,11 +38,15 @@ if args.prepare:
 if args.apply:
     results=json.loads(cache.read_text(encoding='utf-8'))
     for a in m['assets']:
+        if a['type']=='maps':
+            dump(ROOT/a['github_path']/'asset.json',a)
+            continue
         complete=True
         for g in a['actions']:
             if g.get('kind')=='auxiliary_canvas':continue
             if not g['frames'] and not g.get('expected_frame_count'):continue
-            result=results.get(a['wz_path']+'/'+g['name'])
+            key=f"{a['version']['region']}/{a['version']['version']}/{a['wz_path']}/{g['name']}"
+            result=results.get(key) or results.get(a['wz_path']+'/'+g['name'])
             g['wz_index_verification']=result
             if not result or result['error']:
                 complete=False;continue

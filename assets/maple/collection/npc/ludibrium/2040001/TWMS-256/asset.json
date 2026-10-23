@@ -1,0 +1,258 @@
+{
+  "id": "2040001",
+  "type": "npc",
+  "region": "ludibrium",
+  "town": "玩具城",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": "玩具士兵-迪布",
+  "name_zh_tw_status": "source_twms",
+  "source_url": "https://maplestory.io/api/TWMS/256/npc/2040001",
+  "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Npc/2040001.img",
+  "wz_path": "Npc.wz/2040001.img",
+  "version": {
+    "region": "TWMS",
+    "version": "256"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "smile",
+      "frame_count": 4,
+      "expected_frame_count": 4,
+      "frames": [
+        {
+          "index": 0,
+          "width": 45,
+          "height": 156,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "aaa7dbf0d7c1aa97bff39bcce0e91e0e256f7c13e81ea23ca7b484000304b1ed",
+          "pixel_sha256": "03ad1080b91362447a90122cacc924ee882f0e6e2cd20004317350ab08999a90",
+          "wz_path": "Npc.wz/2040001.img/smile/0",
+          "duration_ms": 3000,
+          "origin": {
+            "x": 22,
+            "y": 156
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/ludibrium/2040001/TWMS-256/smile/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 45,
+          "height": 156,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "e089f8d078b4219f6c6f3f9a890fa1b5b5536dcf31dd0546e95c82cca06e7515",
+          "pixel_sha256": "8a6bd13da8f802ec8f69a07ffcebd23acb4f79305b01ada261f68b2ca13203e0",
+          "wz_path": "Npc.wz/2040001.img/smile/1",
+          "duration_ms": 120,
+          "origin": {
+            "x": 22,
+            "y": 156
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/ludibrium/2040001/TWMS-256/smile/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 45,
+          "height": 156,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "aaa7dbf0d7c1aa97bff39bcce0e91e0e256f7c13e81ea23ca7b484000304b1ed",
+          "pixel_sha256": "03ad1080b91362447a90122cacc924ee882f0e6e2cd20004317350ab08999a90",
+          "wz_path": "Npc.wz/2040001.img/smile/2",
+          "duration_ms": 200,
+          "origin": {
+            "x": 22,
+            "y": 156
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/ludibrium/2040001/TWMS-256/smile/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "84f78991f3884a9db655d247aa56e72f10aab7176be863521e31d54c42188ccd"
+        },
+        {
+          "index": 3,
+          "width": 45,
+          "height": 156,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "e089f8d078b4219f6c6f3f9a890fa1b5b5536dcf31dd0546e95c82cca06e7515",
+          "pixel_sha256": "8a6bd13da8f802ec8f69a07ffcebd23acb4f79305b01ada261f68b2ca13203e0",
+          "wz_path": "Npc.wz/2040001.img/smile/3",
+          "duration_ms": 120,
+          "origin": {
+            "x": 22,
+            "y": 156
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2040001/render/smile/3",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/ludibrium/2040001/TWMS-256/smile/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "cea85589cc77987f194cf505e34df7ca0286ae65999e27925634ea1fe413b53a"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Npc/2040001.img/smile",
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "stand",
+      "frame_count": 4,
+      "expected_frame_count": 4,
+      "frames": [
+        {
+          "index": 0,
+          "width": 45,
+          "height": 156,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "9b3823625d9e549d4e61f86c43aa66467454caa5078e5fe690b63bff980e8ac5",
+          "pixel_sha256": "a7a5fa084c6b1b66f228c7b7c42d5915f8b3d06936011e4385706b9cc5669579",
+          "wz_path": "Npc.wz/2040001.img/stand/0",
+          "duration_ms": 3000,
+          "origin": {
+            "x": 22,
+            "y": 156
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/ludibrium/2040001/TWMS-256/stand/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 45,
+          "height": 156,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "f800e03ce5a5300d9d01103fd7865da483d2f13010f4c56517f1c3dada4e21c3",
+          "pixel_sha256": "019cc315678df5f586d9a7d493c7871f760088d889747baa79a8b1f420f19c3a",
+          "wz_path": "Npc.wz/2040001.img/stand/1",
+          "duration_ms": 120,
+          "origin": {
+            "x": 22,
+            "y": 156
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/ludibrium/2040001/TWMS-256/stand/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 45,
+          "height": 156,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "9b3823625d9e549d4e61f86c43aa66467454caa5078e5fe690b63bff980e8ac5",
+          "pixel_sha256": "a7a5fa084c6b1b66f228c7b7c42d5915f8b3d06936011e4385706b9cc5669579",
+          "wz_path": "Npc.wz/2040001.img/stand/2",
+          "duration_ms": 200,
+          "origin": {
+            "x": 22,
+            "y": 156
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/ludibrium/2040001/TWMS-256/stand/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "711fd95bab821f9b53c2de06d9a3a4b646174721032df521ea3a77409353756f"
+        },
+        {
+          "index": 3,
+          "width": 45,
+          "height": 156,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "f800e03ce5a5300d9d01103fd7865da483d2f13010f4c56517f1c3dada4e21c3",
+          "pixel_sha256": "019cc315678df5f586d9a7d493c7871f760088d889747baa79a8b1f420f19c3a",
+          "wz_path": "Npc.wz/2040001.img/stand/3",
+          "duration_ms": 120,
+          "origin": {
+            "x": 22,
+            "y": 156
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2040001/render/stand/3",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/ludibrium/2040001/TWMS-256/stand/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "7164a731e841c90213f2180ce6393b019855202fda78413712779758e54a90d0"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Npc/2040001.img/stand",
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "玩具士兵-迪布",
+  "role": null,
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "愛奧斯塔100樓",
+      "streetName": "玩具城",
+      "id": 221023200
+    }
+  ],
+  "expected_actions": {
+    "smile": 4,
+    "stand": 4
+  },
+  "source_metadata_sha256": "8efef35cfe1230c5538cf9b0277bde6740508d435d6b30c0d8a746d21e576a09",
+  "source_archive_sha256": "8b8834d096794fbc63289c374a4e7e5f8da96870659d62977f4144d0d97b30ff",
+  "source_frame_indices": {
+    "smile": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "stand": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "complete",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
+  },
+  "github_path": "assets/maple/collection/npc/ludibrium/2040001/TWMS-256",
+  "status": "collected"
+}

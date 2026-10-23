@@ -1,0 +1,94 @@
+{
+  "id": "2020008",
+  "type": "npc",
+  "region": "el-nath",
+  "town": "冰原雪域",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": "泰勒斯",
+  "name_zh_tw_status": "source_twms",
+  "source_url": "https://maplestory.io/api/TWMS/256/npc/2020008",
+  "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Npc/2020008.img",
+  "wz_path": "Npc.wz/2020008.img",
+  "version": {
+    "region": "TWMS",
+    "version": "256"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "stand",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 68,
+          "height": 81,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "bdf16babdda3a29ce2df02d4adcacc0ce3e6b352373b1b83b1e9da20f2796d37",
+          "pixel_sha256": "404410c253330fbc8472dac8550b287fe7b322ec4961281fe9595421023ca6c4",
+          "wz_path": "Npc.wz/2020008.img/stand/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 34,
+            "y": 77
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/el-nath/2020008/TWMS-256/stand/0000.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Npc/2020008.img/stand",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "泰勒斯",
+  "role": "3轉劍士轉職官",
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "長老公館",
+      "streetName": "艾納斯島",
+      "id": 211000001
+    }
+  ],
+  "expected_actions": {
+    "stand": 1
+  },
+  "source_metadata_sha256": "f3f67b7dc68b2d6ec19b1464dc46460f553f08f119380ea105b8e1454f350ac4",
+  "source_archive_sha256": "d57335d2a829ee2d767ecbe0c40d06b84c607e4cfc83d1e188e265186021a786",
+  "source_frame_indices": {
+    "stand": [
+      0
+    ]
+  },
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "partial",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
+  },
+  "github_path": "assets/maple/collection/npc/el-nath/2020008/TWMS-256",
+  "status": "collected"
+}

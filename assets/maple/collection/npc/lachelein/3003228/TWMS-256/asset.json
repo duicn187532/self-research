@@ -1,0 +1,156 @@
+{
+  "id": "3003228",
+  "type": "npc",
+  "region": "lachelein",
+  "town": "lachelein",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": "美女面具",
+  "name_zh_tw_status": "unverified_translation",
+  "source_url": "https://maplestory.io/api/TWMS/256/npc/3003228",
+  "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Npc/3003228.img",
+  "wz_path": "Npc.wz/3003228.img",
+  "version": {
+    "region": "TWMS",
+    "version": "256"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "stand",
+      "frame_count": 4,
+      "expected_frame_count": 4,
+      "frames": [
+        {
+          "index": 0,
+          "width": 49,
+          "height": 69,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "10ec87fd37d86c721a2c96a91de497d94d1d3ac3273c0eb3d693e5b42f882f8b",
+          "pixel_sha256": "9ecfe555b538c98a63d2e15870d8eaa9a0888209450bff3a9fe90d2e3e2e128a",
+          "wz_path": "Npc.wz/3003228.img/stand/0",
+          "duration_ms": 180,
+          "origin": {
+            "x": 19,
+            "y": 69
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/lachelein/3003228/TWMS-256/stand/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 49,
+          "height": 69,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "0388695e285e2bf4b3b543b968ac1cda8750e62f1bb35865ba054b8f217c000a",
+          "pixel_sha256": "c738ce81f8b052f51a91ec3a4077311a2563892c1fcf992698e033d6a7618e6f",
+          "wz_path": "Npc.wz/3003228.img/stand/1",
+          "duration_ms": 180,
+          "origin": {
+            "x": 19,
+            "y": 69
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/lachelein/3003228/TWMS-256/stand/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 49,
+          "height": 69,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "dc17dbcfd1163c9216eb3b0023ba8787db7947b7aa9f9759b9d6685f3095ae1d",
+          "pixel_sha256": "eb24f55b5729333ed392f615edccadda8e2bf6b42538c68eef8224a87833cb43",
+          "wz_path": "Npc.wz/3003228.img/stand/2",
+          "duration_ms": 180,
+          "origin": {
+            "x": 19,
+            "y": 69
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/lachelein/3003228/TWMS-256/stand/0002.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 3,
+          "width": 49,
+          "height": 69,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "ec0dee24008b5c6458f188feef82d398fcbd04f405a4b8838d4ec7b0edd305f4",
+          "pixel_sha256": "f89d4b9e5ca61c4fa989153ecd53fdced453d74440157d4e14af2e0e01f0de99",
+          "wz_path": "Npc.wz/3003228.img/stand/3",
+          "duration_ms": 180,
+          "origin": {
+            "x": 19,
+            "y": 69
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/lachelein/3003228/TWMS-256/stand/0003.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Npc/3003228.img/stand",
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "美女面具",
+  "role": null,
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "拉契爾恩市中心",
+      "streetName": "拉契爾恩",
+      "id": 450003000
+    },
+    {
+      "name": "市中心",
+      "streetName": "市中心",
+      "id": 450003710
+    }
+  ],
+  "expected_actions": {
+    "stand": 4
+  },
+  "source_metadata_sha256": "a60fa40a77588f7bf2410462a8641ff37fda0ffc1239c6bbabb56f786abad762",
+  "source_archive_sha256": "781f0945d48beceede8b0edbfe594dbd6f05d5d17850286e881b9dcd0b410ba1",
+  "source_frame_indices": {
+    "stand": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "complete",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
+  },
+  "github_path": "assets/maple/collection/npc/lachelein/3003228/TWMS-256",
+  "status": "collected"
+}

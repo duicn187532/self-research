@@ -1,0 +1,224 @@
+{
+  "id": "3003239",
+  "type": "npc",
+  "region": "lachelein",
+  "town": "lachelein",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": "馬戲團面具",
+  "name_zh_tw_status": "unverified_translation",
+  "source_url": "https://maplestory.io/api/TWMS/256/npc/3003239",
+  "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Npc/3003239.img",
+  "wz_path": "Npc.wz/3003239.img",
+  "version": {
+    "region": "TWMS",
+    "version": "256"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "condition2",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 34315,
+          "width": 69,
+          "height": 90,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "e70d15f7d53ed38177fc3b3b733b9de30a37bd4b3c6021155b63482beafbde38",
+          "pixel_sha256": "309e42f422eed3086ee1c00d6f5e382c983eea88b341d30c9697bf9c9b8ee882",
+          "wz_path": "Npc.wz/3003239.img/condition2/34315",
+          "duration_ms": null,
+          "origin": null,
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/3003239/render/condition2/0",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/lachelein/3003239/TWMS-256/condition2/34315.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found",
+            "origin": "HTTP Error 404: Not Found"
+          }
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": false,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Npc/3003239.img/condition2",
+        "indices": [
+          34315
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "stand",
+      "frame_count": 4,
+      "expected_frame_count": 4,
+      "frames": [
+        {
+          "index": 0,
+          "width": 69,
+          "height": 90,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "f86d42ca8d555c3d6ffec166503646e37430b12866f2b299649a610c04bf29ea",
+          "pixel_sha256": "4aacd8ecf96c78558211762bb7067a4bc507663829b8b8ed857705f1b5984fae",
+          "wz_path": "Npc.wz/3003239.img/stand/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 32,
+            "y": 90
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/3003239/render/stand/0",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/lachelein/3003239/TWMS-256/stand/0000.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        },
+        {
+          "index": 1,
+          "width": 69,
+          "height": 90,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "8613be216570a1f50e8b5467030c4c1452008e1757454c63e34fce7946fb0d37",
+          "pixel_sha256": "beba821f26854cb437410b5bbede7ace7c2b2538bfa6abb6d8916cd6cc134d4a",
+          "wz_path": "Npc.wz/3003239.img/stand/1",
+          "duration_ms": null,
+          "origin": {
+            "x": 32,
+            "y": 90
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/3003239/render/stand/1",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/lachelein/3003239/TWMS-256/stand/0001.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        },
+        {
+          "index": 2,
+          "width": 69,
+          "height": 90,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "03d7e9a1ba43af87d1a76c05b947329a056d49d501177bbdc4e194eeea43766a",
+          "pixel_sha256": "b1916634308fa773d3c52240445d708ef895b2e3644e98680e30196f90f1fa90",
+          "wz_path": "Npc.wz/3003239.img/stand/2",
+          "duration_ms": null,
+          "origin": {
+            "x": 32,
+            "y": 90
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/3003239/render/stand/2",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/lachelein/3003239/TWMS-256/stand/0002.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        },
+        {
+          "index": 3,
+          "width": 69,
+          "height": 90,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "29a7df20056a371df0ea135401c06a9b98f9ade4d1959fa34b85b396722deede",
+          "pixel_sha256": "3972dc579d014664bf6d723df268d9ef4e554d3c3d3d4bbb922a7adc96b795ca",
+          "wz_path": "Npc.wz/3003239.img/stand/3",
+          "duration_ms": null,
+          "origin": {
+            "x": 32,
+            "y": 90
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/3003239/render/stand/3",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/lachelein/3003239/TWMS-256/stand/0003.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Npc/3003239.img/stand",
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "馬戲團面具",
+  "role": null,
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "吵雜不夜城",
+      "streetName": "拉契爾恩不夜城",
+      "id": 450003330
+    }
+  ],
+  "expected_actions": {
+    "condition1": 1,
+    "condition2": 1,
+    "stand": 4
+  },
+  "source_metadata_sha256": "c65d1500a740cc3a88b7105301905d480adb37d6fb6aa0289194a6db1dddce3a",
+  "source_archive_sha256": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85",
+  "source_frame_indices": {
+    "condition1": [
+      34325
+    ],
+    "condition2": [
+      34315
+    ],
+    "stand": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "missing_frames": [
+    {
+      "action": "condition1",
+      "index": 34325,
+      "error": "HTTP Error 400: Bad Request"
+    }
+  ],
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": false,
+    "timing_and_origin": "partial",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
+  },
+  "github_path": "assets/maple/collection/npc/lachelein/3003239/TWMS-256",
+  "status": "collected"
+}

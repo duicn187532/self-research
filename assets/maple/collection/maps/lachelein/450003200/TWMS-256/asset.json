@@ -1,0 +1,2908 @@
+{
+  "id": "450003200",
+  "type": "maps",
+  "region": "lachelein",
+  "town": "lachelein",
+  "name": "不法者街道1",
+  "name_zh_tw": "不法者街道1",
+  "name_zh_tw_status": "source_twms",
+  "source_url": "https://maplestory.io/api/TWMS/256/map/450003200",
+  "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Map/Map/Map4/450003200.img",
+  "wz_path": "Map.wz/Map/Map4/450003200.img",
+  "version": {
+    "region": "TWMS",
+    "version": "256"
+  },
+  "acquired_on": "2026-10-23",
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "exported-canvases",
+      "kind": "map_layers",
+      "frame_count": 1,
+      "expected_frame_count": null,
+      "count_matches_api": null,
+      "indices_contiguous": true,
+      "frames": [
+        {
+          "index": 0,
+          "source_archive_path": "Map-Map-Map4-450003200.img-miniMap-canvas.png",
+          "width": 174,
+          "height": 67,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "d72df08564238cadaa6195c23dd0aed02e131bb70562881125168c963374f708",
+          "pixel_sha256": "1b5123d468d39ad7a7d4f246fab24eb3a4c85e1422647a0c03e43965acc1ebb3",
+          "github_path": "assets/maple/collection/maps/lachelein/450003200/TWMS-256/layers/Map-Map-Map4-450003200.img-miniMap-canvas.png",
+          "storage": "sha256_reference",
+          "decode": "pass",
+          "duration_ms": null,
+          "origin": null
+        }
+      ]
+    }
+  ],
+  "source_metadata_sha256": "b6bf19643b3d63a0a465070199a90cc22999a0a780e931ef72120576ab1f2f65",
+  "source_metadata": {
+    "backgroundMusic": "Bgm46/LachelntheIllusionCity",
+    "isReturnMap": false,
+    "returnMap": 450003000,
+    "portals": [
+      {
+        "portalName": "sp",
+        "toName": "",
+        "type": 0,
+        "toMap": 999999999,
+        "x": -822,
+        "y": -147,
+        "isStarForcePortal": false,
+        "index": 0,
+        "unknownExit": true,
+        "bounds": {
+          "x": -822,
+          "y": -147,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -822,
+            "y": -147,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -147,
+          "right": -821,
+          "bottom": -146,
+          "left": -822
+        }
+      },
+      {
+        "portalName": "east00",
+        "toName": "west00",
+        "type": 2,
+        "toMap": 450003100,
+        "x": 1540,
+        "y": -446,
+        "linkToMap": "/map/450003100",
+        "toMapName": {
+          "name": "秘密據點",
+          "streetName": "拉契爾恩",
+          "id": 450003100
+        },
+        "onlyOnce": false,
+        "isStarForcePortal": false,
+        "index": 0,
+        "unknownExit": false,
+        "bounds": {
+          "x": 1540,
+          "y": -446,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 1540,
+            "y": -446,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -446,
+          "right": 1541,
+          "bottom": -445,
+          "left": 1540
+        }
+      },
+      null,
+      {
+        "portalName": "hp03",
+        "toName": "hp02",
+        "type": 10,
+        "toMap": 450003200,
+        "x": 1129,
+        "y": 54,
+        "linkToMap": "/map/450003200",
+        "toMapName": {
+          "name": "不法者街道1",
+          "streetName": "拉契爾恩後街",
+          "id": 450003200
+        },
+        "isStarForcePortal": false,
+        "index": 0,
+        "unknownExit": false,
+        "bounds": {
+          "x": 1129,
+          "y": 54,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 1129,
+            "y": 54,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 54,
+          "right": 1130,
+          "bottom": 55,
+          "left": 1129
+        }
+      },
+      {
+        "portalName": "hp00",
+        "toName": "hp01",
+        "type": 10,
+        "toMap": 450003200,
+        "x": -536,
+        "y": -363,
+        "linkToMap": "/map/450003200",
+        "toMapName": {
+          "name": "不法者街道1",
+          "streetName": "拉契爾恩後街",
+          "id": 450003200
+        },
+        "isStarForcePortal": false,
+        "index": 0,
+        "unknownExit": false,
+        "bounds": {
+          "x": -536,
+          "y": -363,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -536,
+            "y": -363,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -363,
+          "right": -535,
+          "bottom": -362,
+          "left": -536
+        }
+      },
+      {
+        "portalName": "hp01",
+        "toName": "hp00",
+        "type": 10,
+        "toMap": 450003200,
+        "x": 1230,
+        "y": -430,
+        "linkToMap": "/map/450003200",
+        "toMapName": {
+          "name": "不法者街道1",
+          "streetName": "拉契爾恩後街",
+          "id": 450003200
+        },
+        "isStarForcePortal": false,
+        "index": 0,
+        "unknownExit": false,
+        "bounds": {
+          "x": 1230,
+          "y": -430,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 1230,
+            "y": -430,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -430,
+          "right": 1231,
+          "bottom": -429,
+          "left": 1230
+        }
+      },
+      {
+        "portalName": "hp02",
+        "toName": "hp03",
+        "type": 10,
+        "toMap": 450003200,
+        "x": -86,
+        "y": 53,
+        "linkToMap": "/map/450003200",
+        "toMapName": {
+          "name": "不法者街道1",
+          "streetName": "拉契爾恩後街",
+          "id": 450003200
+        },
+        "isStarForcePortal": false,
+        "index": 0,
+        "unknownExit": false,
+        "bounds": {
+          "x": -86,
+          "y": 53,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -86,
+            "y": 53,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 53,
+          "right": -85,
+          "bottom": 54,
+          "left": -86
+        }
+      }
+    ],
+    "npcs": [],
+    "mobs": [
+      {
+        "x": -495,
+        "y": 51,
+        "walkAreaX1": -702,
+        "walkAreaX2": -482,
+        "id": 8643001,
+        "footholdId": 2,
+        "foothold": {
+          "id": 2,
+          "next": 3,
+          "prev": 1,
+          "piece": 1,
+          "x1": -722,
+          "x2": -462,
+          "y1": 51,
+          "y2": 51,
+          "layerId": 5,
+          "groupId": 11
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 0,
+        "position": {},
+        "bounds": {
+          "x": -495,
+          "y": 51,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -495,
+            "y": 51,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 51,
+          "right": -494,
+          "bottom": 52,
+          "left": -495
+        },
+        "flip": false
+      },
+      {
+        "x": -166,
+        "y": -177,
+        "walkAreaX1": -166,
+        "walkAreaX2": -89,
+        "id": 8643001,
+        "footholdId": 14,
+        "foothold": {
+          "id": 14,
+          "next": 20,
+          "prev": 13,
+          "piece": 13,
+          "x1": -169,
+          "x2": -69,
+          "y1": -177,
+          "y2": -177,
+          "layerId": 5,
+          "groupId": 38
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 1,
+        "position": {},
+        "bounds": {
+          "x": -166,
+          "y": -177,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -166,
+            "y": -177,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -177,
+          "right": -165,
+          "bottom": -176,
+          "left": -166
+        },
+        "flip": false
+      },
+      {
+        "x": 736,
+        "y": -181,
+        "walkAreaX1": 732,
+        "walkAreaX2": 793,
+        "id": 8643001,
+        "footholdId": 39,
+        "foothold": {
+          "id": 39,
+          "next": 40,
+          "prev": 38,
+          "piece": 42,
+          "x1": 712,
+          "x2": 813,
+          "y1": -181,
+          "y2": -181,
+          "layerId": 5,
+          "groupId": 45
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 10,
+        "position": {},
+        "bounds": {
+          "x": 736,
+          "y": -181,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 736,
+            "y": -181,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -181,
+          "right": 737,
+          "bottom": -180,
+          "left": 736
+        },
+        "flip": false
+      },
+      {
+        "x": 1105,
+        "y": -183,
+        "walkAreaX1": 1097,
+        "walkAreaX2": 1157,
+        "id": 8643001,
+        "footholdId": 25,
+        "foothold": {
+          "id": 25,
+          "next": 26,
+          "prev": 24,
+          "piece": 26,
+          "x1": 1077,
+          "x2": 1177,
+          "y1": -183,
+          "y2": -183,
+          "layerId": 5,
+          "groupId": 46
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 11,
+        "position": {},
+        "bounds": {
+          "x": 1105,
+          "y": -183,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 1105,
+            "y": -183,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -183,
+          "right": 1106,
+          "bottom": -182,
+          "left": 1105
+        },
+        "flip": false
+      },
+      {
+        "x": 1355,
+        "y": -183,
+        "walkAreaX1": 1298,
+        "walkAreaX2": 1358,
+        "id": 8643001,
+        "footholdId": 27,
+        "foothold": {
+          "id": 27,
+          "next": 28,
+          "prev": 26,
+          "piece": 28,
+          "x1": 1278,
+          "x2": 1378,
+          "y1": -183,
+          "y2": -183,
+          "layerId": 5,
+          "groupId": 48
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 12,
+        "position": {},
+        "bounds": {
+          "x": 1355,
+          "y": -183,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 1355,
+            "y": -183,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -183,
+          "right": 1356,
+          "bottom": -182,
+          "left": 1355
+        },
+        "flip": false
+      },
+      {
+        "x": 632,
+        "y": -431,
+        "walkAreaX1": 621,
+        "walkAreaX2": 681,
+        "id": 8643001,
+        "footholdId": 32,
+        "foothold": {
+          "id": 32,
+          "next": 33,
+          "prev": 31,
+          "piece": 36,
+          "x1": 601,
+          "x2": 701,
+          "y1": -431,
+          "y2": -431,
+          "layerId": 5,
+          "groupId": 84
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 13,
+        "position": {},
+        "bounds": {
+          "x": 632,
+          "y": -431,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 632,
+            "y": -431,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -431,
+          "right": 633,
+          "bottom": -430,
+          "left": 632
+        },
+        "flip": false
+      },
+      {
+        "x": 784,
+        "y": -431,
+        "walkAreaX1": 721,
+        "walkAreaX2": 784,
+        "id": 8643001,
+        "footholdId": 33,
+        "foothold": {
+          "id": 33,
+          "next": 34,
+          "prev": 32,
+          "piece": 37,
+          "x1": 701,
+          "x2": 802,
+          "y1": -431,
+          "y2": -431,
+          "layerId": 5,
+          "groupId": 83
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 14,
+        "position": {},
+        "bounds": {
+          "x": 784,
+          "y": -431,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 784,
+            "y": -431,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -431,
+          "right": 785,
+          "bottom": -430,
+          "left": 784
+        },
+        "flip": false
+      },
+      {
+        "x": 944,
+        "y": -431,
+        "walkAreaX1": 822,
+        "walkAreaX2": 982,
+        "id": 8643001,
+        "footholdId": 35,
+        "foothold": {
+          "id": 35,
+          "next": 48,
+          "prev": 34,
+          "piece": 91,
+          "x1": 902,
+          "x2": 1002,
+          "y1": -431,
+          "y2": -431,
+          "layerId": 5,
+          "groupId": 78
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 15,
+        "position": {},
+        "bounds": {
+          "x": 944,
+          "y": -431,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 944,
+            "y": -431,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -431,
+          "right": 945,
+          "bottom": -430,
+          "left": 944
+        },
+        "flip": false
+      },
+      {
+        "x": 1058,
+        "y": -431,
+        "walkAreaX1": 1022,
+        "walkAreaX2": 1083,
+        "id": 8643001,
+        "footholdId": 48,
+        "foothold": {
+          "id": 48,
+          "next": 49,
+          "prev": 35,
+          "piece": 92,
+          "x1": 1002,
+          "x2": 1103,
+          "y1": -431,
+          "y2": -431,
+          "layerId": 5,
+          "groupId": 85
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 16,
+        "position": {},
+        "bounds": {
+          "x": 1058,
+          "y": -431,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 1058,
+            "y": -431,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -431,
+          "right": 1059,
+          "bottom": -430,
+          "left": 1058
+        },
+        "flip": false
+      },
+      {
+        "x": 1285,
+        "y": 51,
+        "walkAreaX1": 1123,
+        "walkAreaX2": 1343,
+        "id": 8643001,
+        "footholdId": 9,
+        "foothold": {
+          "id": 9,
+          "next": 10,
+          "prev": 8,
+          "piece": 8,
+          "x1": 1103,
+          "x2": 1363,
+          "y1": 51,
+          "y2": 51,
+          "layerId": 5,
+          "groupId": 8
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 17,
+        "position": {},
+        "bounds": {
+          "x": 1285,
+          "y": 51,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 1285,
+            "y": 51,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 51,
+          "right": 1286,
+          "bottom": 52,
+          "left": 1285
+        },
+        "flip": false
+      },
+      {
+        "x": 976,
+        "y": 51,
+        "walkAreaX1": 863,
+        "walkAreaX2": 1083,
+        "id": 8643001,
+        "footholdId": 8,
+        "foothold": {
+          "id": 8,
+          "next": 9,
+          "prev": 7,
+          "piece": 7,
+          "x1": 843,
+          "x2": 1103,
+          "y1": 51,
+          "y2": 51,
+          "layerId": 5,
+          "groupId": 7
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 18,
+        "position": {},
+        "bounds": {
+          "x": 976,
+          "y": 51,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 976,
+            "y": 51,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 51,
+          "right": 977,
+          "bottom": 52,
+          "left": 976
+        },
+        "flip": false
+      },
+      {
+        "x": 759,
+        "y": 51,
+        "walkAreaX1": 603,
+        "walkAreaX2": 823,
+        "id": 8643001,
+        "footholdId": 7,
+        "foothold": {
+          "id": 7,
+          "next": 8,
+          "prev": 6,
+          "piece": 6,
+          "x1": 583,
+          "x2": 843,
+          "y1": 51,
+          "y2": 51,
+          "layerId": 5,
+          "groupId": 6
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 19,
+        "position": {},
+        "bounds": {
+          "x": 759,
+          "y": 51,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 759,
+            "y": 51,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 51,
+          "right": 760,
+          "bottom": 52,
+          "left": 759
+        },
+        "flip": false
+      },
+      {
+        "x": -293,
+        "y": -177,
+        "walkAreaX1": -350,
+        "walkAreaX2": -290,
+        "id": 8643001,
+        "footholdId": 12,
+        "foothold": {
+          "id": 12,
+          "next": 13,
+          "prev": 11,
+          "piece": 11,
+          "x1": -370,
+          "x2": -270,
+          "y1": -177,
+          "y2": -177,
+          "layerId": 5,
+          "groupId": 39
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 2,
+        "position": {},
+        "bounds": {
+          "x": -293,
+          "y": -177,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -293,
+            "y": -177,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -177,
+          "right": -292,
+          "bottom": -176,
+          "left": -293
+        },
+        "flip": false
+      },
+      {
+        "x": 540,
+        "y": 51,
+        "walkAreaX1": 343,
+        "walkAreaX2": 563,
+        "id": 8643001,
+        "footholdId": 6,
+        "foothold": {
+          "id": 6,
+          "next": 7,
+          "prev": 5,
+          "piece": 5,
+          "x1": 323,
+          "x2": 583,
+          "y1": 51,
+          "y2": 51,
+          "layerId": 5,
+          "groupId": 5
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 20,
+        "position": {},
+        "bounds": {
+          "x": 540,
+          "y": 51,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 540,
+            "y": 51,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 51,
+          "right": 541,
+          "bottom": 52,
+          "left": 540
+        },
+        "flip": false
+      },
+      {
+        "x": 369,
+        "y": 51,
+        "walkAreaX1": 343,
+        "walkAreaX2": 563,
+        "id": 8643001,
+        "footholdId": 6,
+        "foothold": {
+          "id": 6,
+          "next": 7,
+          "prev": 5,
+          "piece": 5,
+          "x1": 323,
+          "x2": 583,
+          "y1": 51,
+          "y2": 51,
+          "layerId": 5,
+          "groupId": 5
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 21,
+        "position": {},
+        "bounds": {
+          "x": 369,
+          "y": 51,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 369,
+            "y": 51,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 51,
+          "right": 370,
+          "bottom": 52,
+          "left": 369
+        },
+        "flip": false
+      },
+      {
+        "x": 73,
+        "y": 51,
+        "walkAreaX1": 73,
+        "walkAreaX2": 303,
+        "id": 8643001,
+        "footholdId": 5,
+        "foothold": {
+          "id": 5,
+          "next": 6,
+          "prev": 4,
+          "piece": 4,
+          "x1": 58,
+          "x2": 323,
+          "y1": 51,
+          "y2": 51,
+          "layerId": 5,
+          "groupId": 14
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 22,
+        "position": {},
+        "bounds": {
+          "x": 73,
+          "y": 51,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 73,
+            "y": 51,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 51,
+          "right": 74,
+          "bottom": 52,
+          "left": 73
+        },
+        "flip": false
+      },
+      {
+        "x": -331,
+        "y": 51,
+        "walkAreaX1": -442,
+        "walkAreaX2": -222,
+        "id": 8643001,
+        "footholdId": 3,
+        "foothold": {
+          "id": 3,
+          "next": 4,
+          "prev": 2,
+          "piece": 2,
+          "x1": -462,
+          "x2": -202,
+          "y1": 51,
+          "y2": 51,
+          "layerId": 5,
+          "groupId": 12
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 23,
+        "position": {},
+        "bounds": {
+          "x": -331,
+          "y": 51,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -331,
+            "y": 51,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 51,
+          "right": -330,
+          "bottom": 52,
+          "left": -331
+        },
+        "flip": false
+      },
+      {
+        "x": 1251,
+        "y": -183,
+        "walkAreaX1": 1197,
+        "walkAreaX2": 1258,
+        "id": 8643001,
+        "footholdId": 26,
+        "foothold": {
+          "id": 26,
+          "next": 27,
+          "prev": 25,
+          "piece": 27,
+          "x1": 1177,
+          "x2": 1278,
+          "y1": -183,
+          "y2": -183,
+          "layerId": 5,
+          "groupId": 47
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 24,
+        "position": {},
+        "bounds": {
+          "x": 1251,
+          "y": -183,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 1251,
+            "y": -183,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -183,
+          "right": 1252,
+          "bottom": -182,
+          "left": 1251
+        },
+        "flip": false
+      },
+      {
+        "x": 1496,
+        "y": 51,
+        "walkAreaX1": 1383,
+        "walkAreaX2": 1608,
+        "id": 8643001,
+        "footholdId": 10,
+        "foothold": {
+          "id": 10,
+          "next": 0,
+          "prev": 9,
+          "piece": 9,
+          "x1": 1363,
+          "x2": 1628,
+          "y1": 51,
+          "y2": 51,
+          "layerId": 5,
+          "groupId": 9
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 25,
+        "position": {},
+        "bounds": {
+          "x": 1496,
+          "y": 51,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 1496,
+            "y": 51,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 51,
+          "right": 1497,
+          "bottom": 52,
+          "left": 1496
+        },
+        "flip": false
+      },
+      {
+        "x": -316,
+        "y": -365,
+        "walkAreaX1": -346,
+        "walkAreaX2": -286,
+        "id": 8643001,
+        "footholdId": 18,
+        "foothold": {
+          "id": 18,
+          "next": 19,
+          "prev": 17,
+          "piece": 18,
+          "x1": -366,
+          "x2": -266,
+          "y1": -365,
+          "y2": -365,
+          "layerId": 5,
+          "groupId": 70
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 26,
+        "position": {},
+        "bounds": {
+          "x": -316,
+          "y": -365,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -316,
+            "y": -365,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -365,
+          "right": -315,
+          "bottom": -364,
+          "left": -316
+        },
+        "flip": false
+      },
+      {
+        "x": 232,
+        "y": -393,
+        "walkAreaX1": 227,
+        "walkAreaX2": 287,
+        "id": 8643001,
+        "footholdId": 51,
+        "foothold": {
+          "id": 51,
+          "next": 42,
+          "prev": 50,
+          "piece": 95,
+          "x1": 207,
+          "x2": 307,
+          "y1": -393,
+          "y2": -393,
+          "layerId": 5,
+          "groupId": 76
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 27,
+        "position": {},
+        "bounds": {
+          "x": 232,
+          "y": -393,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 232,
+            "y": -393,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -393,
+          "right": 233,
+          "bottom": -392,
+          "left": 232
+        },
+        "flip": false
+      },
+      {
+        "x": -407,
+        "y": -365,
+        "walkAreaX1": -447,
+        "walkAreaX2": -386,
+        "id": 8643001,
+        "footholdId": 17,
+        "foothold": {
+          "id": 17,
+          "next": 18,
+          "prev": 16,
+          "piece": 17,
+          "x1": -467,
+          "x2": -366,
+          "y1": -365,
+          "y2": -365,
+          "layerId": 5,
+          "groupId": 69
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 28,
+        "position": {},
+        "bounds": {
+          "x": -407,
+          "y": -365,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -407,
+            "y": -365,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -365,
+          "right": -406,
+          "bottom": -364,
+          "left": -407
+        },
+        "flip": false
+      },
+      {
+        "x": 320,
+        "y": -393,
+        "walkAreaX1": 320,
+        "walkAreaX2": 384,
+        "id": 8643001,
+        "footholdId": 42,
+        "foothold": {
+          "id": 42,
+          "next": 0,
+          "prev": 51,
+          "piece": 45,
+          "x1": 307,
+          "x2": 404,
+          "y1": -393,
+          "y2": -393,
+          "layerId": 5,
+          "groupId": 73
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 29,
+        "position": {},
+        "bounds": {
+          "x": 320,
+          "y": -393,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 320,
+            "y": -393,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -393,
+          "right": 321,
+          "bottom": -392,
+          "left": 320
+        },
+        "flip": false
+      },
+      {
+        "x": -523,
+        "y": -365,
+        "walkAreaX1": -547,
+        "walkAreaX2": -487,
+        "id": 8643001,
+        "footholdId": 16,
+        "foothold": {
+          "id": 16,
+          "next": 17,
+          "prev": 15,
+          "piece": 16,
+          "x1": -567,
+          "x2": -467,
+          "y1": -365,
+          "y2": -365,
+          "layerId": 5,
+          "groupId": 64
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 3,
+        "position": {},
+        "bounds": {
+          "x": -523,
+          "y": -365,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -523,
+            "y": -365,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -365,
+          "right": -522,
+          "bottom": -364,
+          "left": -523
+        },
+        "flip": false
+      },
+      {
+        "x": 1171,
+        "y": -431,
+        "walkAreaX1": 1123,
+        "walkAreaX2": 1183,
+        "id": 8643001,
+        "footholdId": 49,
+        "foothold": {
+          "id": 49,
+          "next": 36,
+          "prev": 48,
+          "piece": 93,
+          "x1": 1103,
+          "x2": 1203,
+          "y1": -431,
+          "y2": -431,
+          "layerId": 5,
+          "groupId": 82
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 30,
+        "position": {},
+        "bounds": {
+          "x": 1171,
+          "y": -431,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 1171,
+            "y": -431,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -431,
+          "right": 1172,
+          "bottom": -430,
+          "left": 1171
+        },
+        "flip": false
+      },
+      {
+        "x": 835,
+        "y": -181,
+        "walkAreaX1": 833,
+        "walkAreaX2": 890,
+        "id": 8643001,
+        "footholdId": 40,
+        "foothold": {
+          "id": 40,
+          "next": 0,
+          "prev": 39,
+          "piece": 43,
+          "x1": 813,
+          "x2": 910,
+          "y1": -181,
+          "y2": -181,
+          "layerId": 5,
+          "groupId": 36
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 31,
+        "position": {},
+        "bounds": {
+          "x": 835,
+          "y": -181,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 835,
+            "y": -181,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -181,
+          "right": 836,
+          "bottom": -180,
+          "left": 835
+        },
+        "flip": false
+      },
+      {
+        "x": 1185,
+        "y": -183,
+        "walkAreaX1": 1185,
+        "walkAreaX2": 1258,
+        "id": 8643001,
+        "footholdId": 26,
+        "foothold": {
+          "id": 26,
+          "next": 27,
+          "prev": 25,
+          "piece": 27,
+          "x1": 1177,
+          "x2": 1278,
+          "y1": -183,
+          "y2": -183,
+          "layerId": 5,
+          "groupId": 47
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 32,
+        "position": {},
+        "bounds": {
+          "x": 1185,
+          "y": -183,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 1185,
+            "y": -183,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -183,
+          "right": 1186,
+          "bottom": -182,
+          "left": 1185
+        },
+        "flip": false
+      },
+      {
+        "x": -192,
+        "y": 51,
+        "walkAreaX1": -192,
+        "walkAreaX2": 38,
+        "id": 8643001,
+        "footholdId": 4,
+        "foothold": {
+          "id": 4,
+          "next": 5,
+          "prev": 3,
+          "piece": 3,
+          "x1": -202,
+          "x2": 58,
+          "y1": 51,
+          "y2": 51,
+          "layerId": 5,
+          "groupId": 13
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 33,
+        "position": {},
+        "bounds": {
+          "x": -192,
+          "y": 51,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -192,
+            "y": 51,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 51,
+          "right": -191,
+          "bottom": 52,
+          "left": -192
+        },
+        "flip": false
+      },
+      {
+        "x": 1063,
+        "y": 51,
+        "walkAreaX1": 863,
+        "walkAreaX2": 1083,
+        "id": 8643001,
+        "footholdId": 8,
+        "foothold": {
+          "id": 8,
+          "next": 9,
+          "prev": 7,
+          "piece": 7,
+          "x1": 843,
+          "x2": 1103,
+          "y1": 51,
+          "y2": 51,
+          "layerId": 5,
+          "groupId": 7
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 34,
+        "position": {},
+        "bounds": {
+          "x": 1063,
+          "y": 51,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 1063,
+            "y": 51,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 51,
+          "right": 1064,
+          "bottom": 52,
+          "left": 1063
+        },
+        "flip": false
+      },
+      {
+        "x": 1184,
+        "y": 51,
+        "walkAreaX1": 1123,
+        "walkAreaX2": 1343,
+        "id": 8643001,
+        "footholdId": 9,
+        "foothold": {
+          "id": 9,
+          "next": 10,
+          "prev": 8,
+          "piece": 8,
+          "x1": 1103,
+          "x2": 1363,
+          "y1": 51,
+          "y2": 51,
+          "layerId": 5,
+          "groupId": 8
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 35,
+        "position": {},
+        "bounds": {
+          "x": 1184,
+          "y": 51,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 1184,
+            "y": 51,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 51,
+          "right": 1185,
+          "bottom": 52,
+          "left": 1184
+        },
+        "flip": false
+      },
+      {
+        "x": 856,
+        "y": 51,
+        "walkAreaX1": 856,
+        "walkAreaX2": 1083,
+        "id": 8643001,
+        "footholdId": 8,
+        "foothold": {
+          "id": 8,
+          "next": 9,
+          "prev": 7,
+          "piece": 7,
+          "x1": 843,
+          "x2": 1103,
+          "y1": 51,
+          "y2": 51,
+          "layerId": 5,
+          "groupId": 7
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 36,
+        "position": {},
+        "bounds": {
+          "x": 856,
+          "y": 51,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 856,
+            "y": 51,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 51,
+          "right": 857,
+          "bottom": 52,
+          "left": 856
+        },
+        "flip": false
+      },
+      {
+        "x": 658,
+        "y": -181,
+        "walkAreaX1": 632,
+        "walkAreaX2": 692,
+        "id": 8643001,
+        "footholdId": 38,
+        "foothold": {
+          "id": 38,
+          "next": 39,
+          "prev": 37,
+          "piece": 41,
+          "x1": 612,
+          "x2": 712,
+          "y1": -181,
+          "y2": -181,
+          "layerId": 5,
+          "groupId": 33
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 37,
+        "position": {},
+        "bounds": {
+          "x": 658,
+          "y": -181,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 658,
+            "y": -181,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -181,
+          "right": 659,
+          "bottom": -180,
+          "left": 658
+        },
+        "flip": false
+      },
+      {
+        "x": -98,
+        "y": -177,
+        "walkAreaX1": -149,
+        "walkAreaX2": -89,
+        "id": 8643001,
+        "footholdId": 14,
+        "foothold": {
+          "id": 14,
+          "next": 20,
+          "prev": 13,
+          "piece": 13,
+          "x1": -169,
+          "x2": -69,
+          "y1": -177,
+          "y2": -177,
+          "layerId": 5,
+          "groupId": 38
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 38,
+        "position": {},
+        "bounds": {
+          "x": -98,
+          "y": -177,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -98,
+            "y": -177,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -177,
+          "right": -97,
+          "bottom": -176,
+          "left": -98
+        },
+        "flip": false
+      },
+      {
+        "x": 232,
+        "y": 51,
+        "walkAreaX1": 78,
+        "walkAreaX2": 303,
+        "id": 8643001,
+        "footholdId": 5,
+        "foothold": {
+          "id": 5,
+          "next": 6,
+          "prev": 4,
+          "piece": 4,
+          "x1": 58,
+          "x2": 323,
+          "y1": 51,
+          "y2": 51,
+          "layerId": 5,
+          "groupId": 14
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 39,
+        "position": {},
+        "bounds": {
+          "x": 232,
+          "y": 51,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 232,
+            "y": 51,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 51,
+          "right": 233,
+          "bottom": 52,
+          "left": 232
+        },
+        "flip": false
+      },
+      {
+        "x": -235,
+        "y": -365,
+        "walkAreaX1": -246,
+        "walkAreaX2": -189,
+        "id": 8643001,
+        "footholdId": 19,
+        "foothold": {
+          "id": 19,
+          "next": 0,
+          "prev": 18,
+          "piece": 19,
+          "x1": -266,
+          "x2": -169,
+          "y1": -365,
+          "y2": -365,
+          "layerId": 5,
+          "groupId": 67
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 4,
+        "position": {},
+        "bounds": {
+          "x": -235,
+          "y": -365,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -235,
+            "y": -365,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -365,
+          "right": -234,
+          "bottom": -364,
+          "left": -235
+        },
+        "flip": false
+      },
+      {
+        "x": 116,
+        "y": -393,
+        "walkAreaX1": 116,
+        "walkAreaX2": 187,
+        "id": 8643001,
+        "footholdId": 50,
+        "foothold": {
+          "id": 50,
+          "next": 51,
+          "prev": 43,
+          "piece": 94,
+          "x1": 106,
+          "x2": 207,
+          "y1": -393,
+          "y2": -393,
+          "layerId": 5,
+          "groupId": 77
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 5,
+        "position": {},
+        "bounds": {
+          "x": 116,
+          "y": -393,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 116,
+            "y": -393,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -393,
+          "right": 117,
+          "bottom": -392,
+          "left": 116
+        },
+        "flip": false
+      },
+      {
+        "x": -77,
+        "y": 51,
+        "walkAreaX1": -182,
+        "walkAreaX2": 38,
+        "id": 8643001,
+        "footholdId": 4,
+        "foothold": {
+          "id": 4,
+          "next": 5,
+          "prev": 3,
+          "piece": 3,
+          "x1": -202,
+          "x2": 58,
+          "y1": 51,
+          "y2": 51,
+          "layerId": 5,
+          "groupId": 13
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 6,
+        "position": {},
+        "bounds": {
+          "x": -77,
+          "y": 51,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -77,
+            "y": 51,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 51,
+          "right": -76,
+          "bottom": 52,
+          "left": -77
+        },
+        "flip": false
+      },
+      {
+        "x": 105,
+        "y": -177,
+        "walkAreaX1": 51,
+        "walkAreaX2": 112,
+        "id": 8643001,
+        "footholdId": 21,
+        "foothold": {
+          "id": 21,
+          "next": 22,
+          "prev": 20,
+          "piece": 22,
+          "x1": 31,
+          "x2": 132,
+          "y1": -177,
+          "y2": -177,
+          "layerId": 5,
+          "groupId": 42
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 7,
+        "position": {},
+        "bounds": {
+          "x": 105,
+          "y": -177,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 105,
+            "y": -177,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -177,
+          "right": 106,
+          "bottom": -176,
+          "left": 105
+        },
+        "flip": false
+      },
+      {
+        "x": 270,
+        "y": -177,
+        "walkAreaX1": 252,
+        "walkAreaX2": 309,
+        "id": 8643001,
+        "footholdId": 23,
+        "foothold": {
+          "id": 23,
+          "next": 0,
+          "prev": 22,
+          "piece": 24,
+          "x1": 232,
+          "x2": 329,
+          "y1": -177,
+          "y2": -177,
+          "layerId": 5,
+          "groupId": 34
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 8,
+        "position": {},
+        "bounds": {
+          "x": 270,
+          "y": -177,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 270,
+            "y": -177,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -177,
+          "right": 271,
+          "bottom": -176,
+          "left": 270
+        },
+        "flip": false
+      },
+      {
+        "x": 644,
+        "y": 51,
+        "walkAreaX1": 603,
+        "walkAreaX2": 823,
+        "id": 8643001,
+        "footholdId": 7,
+        "foothold": {
+          "id": 7,
+          "next": 8,
+          "prev": 6,
+          "piece": 6,
+          "x1": 583,
+          "x2": 843,
+          "y1": 51,
+          "y2": 51,
+          "layerId": 5,
+          "groupId": 6
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/8643001",
+        "index": 9,
+        "position": {},
+        "bounds": {
+          "x": 644,
+          "y": 51,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 644,
+            "y": 51,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 51,
+          "right": 645,
+          "bottom": 52,
+          "left": 644
+        },
+        "flip": false
+      }
+    ],
+    "mobRate": 2.3999998569488525,
+    "isTown": false,
+    "isSwim": false,
+    "mapMark": "Lacheln",
+    "miniMap": {
+      "centerX": 1064,
+      "centerY": 673,
+      "height": 1082,
+      "width": 2798,
+      "magnification": 4,
+      "canvas": "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"
+    },
+    "footholds": {
+      "23": {
+        "id": 23,
+        "next": 0,
+        "prev": 22,
+        "piece": 24,
+        "x1": 232,
+        "x2": 329,
+        "y1": -177,
+        "y2": -177,
+        "layerId": 5,
+        "groupId": 34
+      },
+      "2": {
+        "id": 2,
+        "next": 3,
+        "prev": 1,
+        "piece": 1,
+        "x1": -722,
+        "x2": -462,
+        "y1": 51,
+        "y2": 51,
+        "layerId": 5,
+        "groupId": 11
+      },
+      "34": {
+        "id": 34,
+        "next": 35,
+        "prev": 33,
+        "piece": 38,
+        "x1": 802,
+        "x2": 902,
+        "y1": -431,
+        "y2": -431,
+        "layerId": 5,
+        "groupId": 78
+      },
+      "45": {
+        "id": 45,
+        "next": 0,
+        "prev": 46,
+        "piece": 51,
+        "x1": -857,
+        "x2": -760,
+        "y1": -125,
+        "y2": -125,
+        "layerId": 5,
+        "groupId": 27
+      },
+      "19": {
+        "id": 19,
+        "next": 0,
+        "prev": 18,
+        "piece": 19,
+        "x1": -266,
+        "x2": -169,
+        "y1": -365,
+        "y2": -365,
+        "layerId": 5,
+        "groupId": 67
+      },
+      "10": {
+        "id": 10,
+        "next": 0,
+        "prev": 9,
+        "piece": 9,
+        "x1": 1363,
+        "x2": 1628,
+        "y1": 51,
+        "y2": 51,
+        "layerId": 5,
+        "groupId": 9
+      },
+      "21": {
+        "id": 21,
+        "next": 22,
+        "prev": 20,
+        "piece": 22,
+        "x1": 31,
+        "x2": 132,
+        "y1": -177,
+        "y2": -177,
+        "layerId": 5,
+        "groupId": 42
+      },
+      "32": {
+        "id": 32,
+        "next": 33,
+        "prev": 31,
+        "piece": 36,
+        "x1": 601,
+        "x2": 701,
+        "y1": -431,
+        "y2": -431,
+        "layerId": 5,
+        "groupId": 84
+      },
+      "43": {
+        "id": 43,
+        "next": 50,
+        "prev": 41,
+        "piece": 46,
+        "x1": 5,
+        "x2": 106,
+        "y1": -393,
+        "y2": -393,
+        "layerId": 5,
+        "groupId": 71
+      },
+      "4": {
+        "id": 4,
+        "next": 5,
+        "prev": 3,
+        "piece": 3,
+        "x1": -202,
+        "x2": 58,
+        "y1": 51,
+        "y2": 51,
+        "layerId": 5,
+        "groupId": 13
+      },
+      "30": {
+        "id": 30,
+        "next": 0,
+        "prev": 47,
+        "piece": 34,
+        "x1": 1509,
+        "x2": 1606,
+        "y1": -446,
+        "y2": -446,
+        "layerId": 5,
+        "groupId": 86
+      },
+      "41": {
+        "id": 41,
+        "next": 43,
+        "prev": 0,
+        "piece": 44,
+        "x1": -26,
+        "x2": 5,
+        "y1": -393,
+        "y2": -393,
+        "layerId": 5,
+        "groupId": 74
+      },
+      "6": {
+        "id": 6,
+        "next": 7,
+        "prev": 5,
+        "piece": 5,
+        "x1": 323,
+        "x2": 583,
+        "y1": 51,
+        "y2": 51,
+        "layerId": 5,
+        "groupId": 5
+      },
+      "50": {
+        "id": 50,
+        "next": 51,
+        "prev": 43,
+        "piece": 94,
+        "x1": 106,
+        "x2": 207,
+        "y1": -393,
+        "y2": -393,
+        "layerId": 5,
+        "groupId": 77
+      },
+      "16": {
+        "id": 16,
+        "next": 17,
+        "prev": 15,
+        "piece": 16,
+        "x1": -567,
+        "x2": -467,
+        "y1": -365,
+        "y2": -365,
+        "layerId": 5,
+        "groupId": 64
+      },
+      "27": {
+        "id": 27,
+        "next": 28,
+        "prev": 26,
+        "piece": 28,
+        "x1": 1278,
+        "x2": 1378,
+        "y1": -183,
+        "y2": -183,
+        "layerId": 5,
+        "groupId": 48
+      },
+      "14": {
+        "id": 14,
+        "next": 20,
+        "prev": 13,
+        "piece": 13,
+        "x1": -169,
+        "x2": -69,
+        "y1": -177,
+        "y2": -177,
+        "layerId": 5,
+        "groupId": 38
+      },
+      "18": {
+        "id": 18,
+        "next": 19,
+        "prev": 17,
+        "piece": 18,
+        "x1": -366,
+        "x2": -266,
+        "y1": -365,
+        "y2": -365,
+        "layerId": 5,
+        "groupId": 70
+      },
+      "25": {
+        "id": 25,
+        "next": 26,
+        "prev": 24,
+        "piece": 26,
+        "x1": 1077,
+        "x2": 1177,
+        "y1": -183,
+        "y2": -183,
+        "layerId": 5,
+        "groupId": 46
+      },
+      "29": {
+        "id": 29,
+        "next": 47,
+        "prev": 0,
+        "piece": 30,
+        "x1": 1379,
+        "x2": 1410,
+        "y1": -446,
+        "y2": -446,
+        "layerId": 5,
+        "groupId": 87
+      },
+      "5": {
+        "id": 5,
+        "next": 6,
+        "prev": 4,
+        "piece": 4,
+        "x1": 58,
+        "x2": 323,
+        "y1": 51,
+        "y2": 51,
+        "layerId": 5,
+        "groupId": 14
+      },
+      "12": {
+        "id": 12,
+        "next": 13,
+        "prev": 11,
+        "piece": 11,
+        "x1": -370,
+        "x2": -270,
+        "y1": -177,
+        "y2": -177,
+        "layerId": 5,
+        "groupId": 39
+      },
+      "38": {
+        "id": 38,
+        "next": 39,
+        "prev": 37,
+        "piece": 41,
+        "x1": 612,
+        "x2": 712,
+        "y1": -181,
+        "y2": -181,
+        "layerId": 5,
+        "groupId": 33
+      },
+      "49": {
+        "id": 49,
+        "next": 36,
+        "prev": 48,
+        "piece": 93,
+        "x1": 1103,
+        "x2": 1203,
+        "y1": -431,
+        "y2": -431,
+        "layerId": 5,
+        "groupId": 82
+      },
+      "51": {
+        "id": 51,
+        "next": 42,
+        "prev": 50,
+        "piece": 95,
+        "x1": 207,
+        "x2": 307,
+        "y1": -393,
+        "y2": -393,
+        "layerId": 5,
+        "groupId": 76
+      },
+      "7": {
+        "id": 7,
+        "next": 8,
+        "prev": 6,
+        "piece": 6,
+        "x1": 583,
+        "x2": 843,
+        "y1": 51,
+        "y2": 51,
+        "layerId": 5,
+        "groupId": 6
+      },
+      "17": {
+        "id": 17,
+        "next": 18,
+        "prev": 16,
+        "piece": 17,
+        "x1": -467,
+        "x2": -366,
+        "y1": -365,
+        "y2": -365,
+        "layerId": 5,
+        "groupId": 69
+      },
+      "15": {
+        "id": 15,
+        "next": 16,
+        "prev": 0,
+        "piece": 15,
+        "x1": -598,
+        "x2": -567,
+        "y1": -365,
+        "y2": -365,
+        "layerId": 5,
+        "groupId": 68
+      },
+      "26": {
+        "id": 26,
+        "next": 27,
+        "prev": 25,
+        "piece": 27,
+        "x1": 1177,
+        "x2": 1278,
+        "y1": -183,
+        "y2": -183,
+        "layerId": 5,
+        "groupId": 47
+      },
+      "37": {
+        "id": 37,
+        "next": 38,
+        "prev": 0,
+        "piece": 40,
+        "x1": 581,
+        "x2": 612,
+        "y1": -181,
+        "y2": -181,
+        "layerId": 5,
+        "groupId": 40
+      },
+      "13": {
+        "id": 13,
+        "next": 14,
+        "prev": 12,
+        "piece": 12,
+        "x1": -270,
+        "x2": -169,
+        "y1": -177,
+        "y2": -177,
+        "layerId": 5,
+        "groupId": 37
+      },
+      "1": {
+        "id": 1,
+        "next": 2,
+        "prev": 0,
+        "piece": 0,
+        "x1": -982,
+        "x2": -722,
+        "y1": 51,
+        "y2": 51,
+        "layerId": 5,
+        "groupId": 10
+      },
+      "24": {
+        "id": 24,
+        "next": 25,
+        "prev": 0,
+        "piece": 25,
+        "x1": 1046,
+        "x2": 1077,
+        "y1": -183,
+        "y2": -183,
+        "layerId": 5,
+        "groupId": 44
+      },
+      "35": {
+        "id": 35,
+        "next": 48,
+        "prev": 34,
+        "piece": 91,
+        "x1": 902,
+        "x2": 1002,
+        "y1": -431,
+        "y2": -431,
+        "layerId": 5,
+        "groupId": 78
+      },
+      "28": {
+        "id": 28,
+        "next": 0,
+        "prev": 27,
+        "piece": 29,
+        "x1": 1378,
+        "x2": 1475,
+        "y1": -183,
+        "y2": -183,
+        "layerId": 5,
+        "groupId": 43
+      },
+      "39": {
+        "id": 39,
+        "next": 40,
+        "prev": 38,
+        "piece": 42,
+        "x1": 712,
+        "x2": 813,
+        "y1": -181,
+        "y2": -181,
+        "layerId": 5,
+        "groupId": 45
+      },
+      "46": {
+        "id": 46,
+        "next": 45,
+        "prev": 44,
+        "piece": 52,
+        "x1": -958,
+        "x2": -857,
+        "y1": -125,
+        "y2": -125,
+        "layerId": 5,
+        "groupId": 30
+      },
+      "9": {
+        "id": 9,
+        "next": 10,
+        "prev": 8,
+        "piece": 8,
+        "x1": 1103,
+        "x2": 1363,
+        "y1": 51,
+        "y2": 51,
+        "layerId": 5,
+        "groupId": 8
+      },
+      "11": {
+        "id": 11,
+        "next": 12,
+        "prev": 0,
+        "piece": 10,
+        "x1": -401,
+        "x2": -370,
+        "y1": -177,
+        "y2": -177,
+        "layerId": 5,
+        "groupId": 35
+      },
+      "22": {
+        "id": 22,
+        "next": 23,
+        "prev": 21,
+        "piece": 23,
+        "x1": 132,
+        "x2": 232,
+        "y1": -177,
+        "y2": -177,
+        "layerId": 5,
+        "groupId": 32
+      },
+      "33": {
+        "id": 33,
+        "next": 34,
+        "prev": 32,
+        "piece": 37,
+        "x1": 701,
+        "x2": 802,
+        "y1": -431,
+        "y2": -431,
+        "layerId": 5,
+        "groupId": 83
+      },
+      "3": {
+        "id": 3,
+        "next": 4,
+        "prev": 2,
+        "piece": 2,
+        "x1": -462,
+        "x2": -202,
+        "y1": 51,
+        "y2": 51,
+        "layerId": 5,
+        "groupId": 12
+      },
+      "44": {
+        "id": 44,
+        "next": 46,
+        "prev": 0,
+        "piece": 50,
+        "x1": -989,
+        "x2": -958,
+        "y1": -125,
+        "y2": -125,
+        "layerId": 5,
+        "groupId": 28
+      },
+      "48": {
+        "id": 48,
+        "next": 49,
+        "prev": 35,
+        "piece": 92,
+        "x1": 1002,
+        "x2": 1103,
+        "y1": -431,
+        "y2": -431,
+        "layerId": 5,
+        "groupId": 85
+      },
+      "20": {
+        "id": 20,
+        "next": 21,
+        "prev": 14,
+        "piece": 21,
+        "x1": -69,
+        "x2": 31,
+        "y1": -177,
+        "y2": -177,
+        "layerId": 5,
+        "groupId": 41
+      },
+      "31": {
+        "id": 31,
+        "next": 32,
+        "prev": 0,
+        "piece": 35,
+        "x1": 570,
+        "x2": 601,
+        "y1": -431,
+        "y2": -431,
+        "layerId": 5,
+        "groupId": 81
+      },
+      "42": {
+        "id": 42,
+        "next": 0,
+        "prev": 51,
+        "piece": 45,
+        "x1": 307,
+        "x2": 404,
+        "y1": -393,
+        "y2": -393,
+        "layerId": 5,
+        "groupId": 73
+      },
+      "36": {
+        "id": 36,
+        "next": 0,
+        "prev": 49,
+        "piece": 39,
+        "x1": 1203,
+        "x2": 1300,
+        "y1": -431,
+        "y2": -431,
+        "layerId": 5,
+        "groupId": 80
+      },
+      "40": {
+        "id": 40,
+        "next": 0,
+        "prev": 39,
+        "piece": 43,
+        "x1": 813,
+        "x2": 910,
+        "y1": -181,
+        "y2": -181,
+        "layerId": 5,
+        "groupId": 36
+      },
+      "47": {
+        "id": 47,
+        "next": 30,
+        "prev": 29,
+        "piece": 53,
+        "x1": 1410,
+        "x2": 1509,
+        "y1": -446,
+        "y2": -446,
+        "layerId": 5,
+        "groupId": 79
+      },
+      "8": {
+        "id": 8,
+        "next": 9,
+        "prev": 7,
+        "piece": 7,
+        "x1": 843,
+        "x2": 1103,
+        "y1": 51,
+        "y2": 51,
+        "layerId": 5,
+        "groupId": 7
+      }
+    },
+    "minimumArcaneForce": 190,
+    "minimumLevel": 220,
+    "vrBounds": {
+      "x": -979,
+      "y": -806,
+      "width": 2597,
+      "height": 1186,
+      "location": {
+        "x": -979,
+        "y": -806,
+        "isEmpty": false
+      },
+      "size": {
+        "width": 2597,
+        "height": 1186,
+        "isEmpty": false
+      },
+      "isEmpty": false,
+      "top": -806,
+      "right": 1618,
+      "bottom": 380,
+      "left": -979
+    },
+    "returnMapName": {
+      "name": "拉契爾恩市中心",
+      "streetName": "拉契爾恩",
+      "id": 450003000
+    },
+    "ladderRopes": [
+      {
+        "x": 1439,
+        "y1": -444,
+        "y2": -188,
+        "isLadder": true
+      },
+      {
+        "x": 33,
+        "y1": -391,
+        "y2": -199,
+        "isLadder": true
+      },
+      {
+        "x": 189,
+        "y1": -175,
+        "y2": 17,
+        "isLadder": true
+      },
+      {
+        "x": 881,
+        "y1": -429,
+        "y2": -206,
+        "isLadder": true
+      },
+      {
+        "x": 658,
+        "y1": -179,
+        "y2": 45,
+        "isLadder": true
+      },
+      {
+        "x": -482,
+        "y1": -363,
+        "y2": -172,
+        "isLadder": true
+      },
+      {
+        "x": -843,
+        "y1": -123,
+        "y2": 36,
+        "isLadder": true
+      }
+    ],
+    "name": "不法者街道1",
+    "streetName": "拉契爾恩後街",
+    "id": 450003200
+  },
+  "source_archive_sha256": "990e255396cd6036cdc78d296d07927e81eea8fc6883d6e690fdab3c3063f0df",
+  "composite": {
+    "source_url": "https://maplestory.io/api/TWMS/256/map/450003200/render/0?showBackgrounds=true&showPortals=true",
+    "github_path": "assets/maple/collection/maps/lachelein/450003200/TWMS-256/composite.png",
+    "width": 2798,
+    "height": 1082,
+    "mode": "RGBA",
+    "has_transparency": true,
+    "sha256": "c31d6ba333fb7870fff071b008374b78745d23000a28f0bba9cea4f265cf04ef",
+    "pixel_sha256": "2af23916d2222bf3fab133f8028e7d1a09e099adcc05c2efae0d1242555593a0",
+    "decode": "pass"
+  },
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "all_wz_numeric_frame_nodes_present": true,
+    "timing_and_origin": "not_applicable",
+    "visual_playback": "not_applicable",
+    "original_wz_binary_compared": false,
+    "independent_resource_canvases": "pass"
+  },
+  "github_path": "assets/maple/collection/maps/lachelein/450003200/TWMS-256",
+  "status": "collected",
+  "resource_sets": [
+    {
+      "kind": "back",
+      "name": "Lacheln",
+      "wz_path": "Map.wz/Back/Lacheln.img",
+      "source_url": "https://maplestory.io/api/wz/export/TWMS/256/Map/Back/Lacheln.img",
+      "canvas_count": 371,
+      "manifest_path": "assets/maple/collection/maps/lachelein/shared-resource-sets/TWMS-256/back/resource-set.json"
+    },
+    {
+      "kind": "obj",
+      "name": "Lacheln",
+      "wz_path": "Map.wz/Obj/Lacheln.img",
+      "source_url": "https://maplestory.io/api/wz/export/TWMS/256/Map/Obj/Lacheln.img",
+      "canvas_count": 655,
+      "manifest_path": "assets/maple/collection/maps/lachelein/shared-resource-sets/TWMS-256/obj/resource-set.json"
+    }
+  ]
+}

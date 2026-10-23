@@ -1,0 +1,94 @@
+{
+  "id": "2081007",
+  "type": "npc",
+  "region": "leafre",
+  "town": "神木村",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": "騎士拉烏爾",
+  "name_zh_tw_status": "source_twms",
+  "source_url": "https://maplestory.io/api/TWMS/256/npc/2081007",
+  "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Npc/2081007.img",
+  "wz_path": "Npc.wz/2081007.img",
+  "version": {
+    "region": "TWMS",
+    "version": "256"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "stand",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 86,
+          "height": 75,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "4115b0b2b7df0e35e0d47fc495912d5a3d3b7e20eae6b72cc7bcb8299bf4b77a",
+          "pixel_sha256": "2cd59dcf9130fb12df25e9c130f683a3f7e7d78928217d32d128bbbc7c6ba0cf",
+          "wz_path": "Npc.wz/2081007.img/stand/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 43,
+            "y": 73
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/leafre/2081007/TWMS-256/stand/0000.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Npc/2081007.img/stand",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "騎士拉烏爾",
+  "role": "敢死隊隊長",
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "翼龍峽谷",
+      "streetName": "神木村",
+      "id": 240040400
+    }
+  ],
+  "expected_actions": {
+    "stand": 1
+  },
+  "source_metadata_sha256": "268eeaa56462c95e0bfc376390d98108b7836d27946c4b50890ab3eeccc0ff4b",
+  "source_archive_sha256": "7d0093ecafbc190024d245638c3740991c9ef0e6a7287edc557f2255b81ce4ec",
+  "source_frame_indices": {
+    "stand": [
+      0
+    ]
+  },
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "partial",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
+  },
+  "github_path": "assets/maple/collection/npc/leafre/2081007/TWMS-256",
+  "status": "collected"
+}

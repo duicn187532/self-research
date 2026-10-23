@@ -1,14 +1,21 @@
 {
-  "verified_on": "2026-10-23",
-  "entity_records": 198,
+  "verified_on": "2026-10-24",
+  "entity_records": 280,
   "by_type": {
-    "mobs": 47,
-    "npc": 151
+    "mobs": 63,
+    "npc": 198,
+    "bosses": 6,
+    "maps": 13
   },
   "by_region": {
     "victoria": 168,
     "maple-island": 21,
-    "other-regions": 9
+    "other-regions": 12,
+    "lachelein": 39,
+    "ludibrium": 13,
+    "orbis": 9,
+    "el-nath": 9,
+    "leafre": 9
   },
   "npc_by_town": {
     "lith-harbor": 14,
@@ -19,24 +26,33 @@
     "sleepywood": 7,
     "nautilus": 21,
     "maple-island": 21,
-    "ereve": 9
+    "ereve": 9,
+    "lachelein": 31,
+    "玩具城": 4,
+    "天空之城": 4,
+    "冰原雪域": 4,
+    "神木村": 4
   },
-  "frame_references": 2766,
-  "unique_referenced_pngs": 1364,
-  "unique_decoded_pixel_frames": 1364,
-  "complete_api_action_frame_sets": 198,
-  "complete_wz_numeric_frame_sets": 198,
-  "timing_and_origin_complete": 92,
-  "frames_missing_origin": 0,
-  "frames_missing_explicit_delay": 388,
+  "frame_references": 5326,
+  "unique_referenced_pngs": 2798,
+  "unique_decoded_pixel_frames": 2798,
+  "complete_api_action_frame_sets": 252,
+  "complete_wz_numeric_frame_sets": 274,
+  "timing_and_origin_complete": 115,
+  "frames_missing_origin": 73,
+  "frames_missing_explicit_delay": 1118,
   "existing_images_preserved_inventory_count": 156,
   "records_with_new_visual_frames_vs_existing_strips": {
-    "mobs": 41,
-    "npc": 148
+    "mobs": 57,
+    "npc": 195,
+    "bosses": 6,
+    "maps": 13
   },
   "new_unique_visual_sets_excluding_existing_and_duplicate_npcs": {
-    "mobs": 41,
-    "npc": 131
+    "mobs": 57,
+    "npc": 177,
+    "bosses": 6,
+    "maps": 13
   },
   "records_only_reusing_existing_visuals": [
     "mobs/100101",
@@ -102,6 +118,10 @@
     [
       "npc/12101",
       "npc/2101"
+    ],
+    [
+      "npc/3003230",
+      "npc/3003238"
     ]
   ],
   "duplicate_storage": [],

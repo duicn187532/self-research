@@ -10,7 +10,7 @@
 - [validation-report.json](validation-report.json)：實際數量、地區、完整度與驗證結果。
 - [candidates.json](candidates.json)：失敗下載或尚未取得項目，不計入已入庫數量。
 - [existing-inventory.json](existing-inventory.json)：本次以前就存在的圖片，只盤點不算新增。
-- 每個 `類型/地區/ID/GMS-83/asset.json` 提供個別素材資料。
+- 每個 `類型/地區/ID/版本/asset.json` 提供個別素材資料；目前包含 GMS/83 與 TWMS/256。
 
 原始 PNG 位元組直接保存，不縮放、不重新編碼。影格按 `index` 數值排序；不要用目錄排序重建動畫。相同 SHA-256 或相同尺寸與 RGBA 像素雜湊的圖檔只存一份，其他影格以 `github_path` 引用，播放時仍須保留每一個影格位置與各自延遲。編碼不同但像素相同的來源以 `source_png_sha256` 保留原下載雜湊。某些引用指向同一倉庫的既有素材。
 
@@ -28,7 +28,7 @@ NPC、普通怪物、精英怪、菁英 Boss、一般 Boss 分開。素材 ID／
 
 長期目標：NPC 150、普通怪物 200、精英怪 30、Boss 40、角色 30、寵物 20、地圖 30、UI／道具／技能／特效 100。目標不是本次已完成數量。
 
-P1 優先：拉契爾恩 NPC／場景、殺人鯨、露希妲、英雄團與皇家騎士團的版本與造型補全；各 Boss 階段獨立存放。P2：Back／Obj／Tile 獨立 PNG、寵物、UI、道具與技能特效。GMS 83 沒有拉契爾恩，不拿舊版本空結果冒充不存在，也不以其他場景替代。
+P1 已開始收錄拉契爾恩 NPC／場景、露希妲、戴米安、威爾，以及玩具城／時間塔、天空之城、冰原雪域與神木村。Boss 各階段獨立存放；場景共用資源集保留 Back／Obj／Tile 獨立 PNG。P2 後續擴充寵物、UI、道具與技能特效。
 
 ## 重現與驗證
 
@@ -38,6 +38,8 @@ P1 優先：拉契爾恩 NPC／場景、殺人鯨、露希妲、英雄團與皇�
 python assets/maple/collection/collect.py assets/maple/collection/batch-01.json --acknowledge-unconfirmed-rights
 python assets/maple/collection/repair_frames.py
 python assets/maple/collection/collect_nested_effects.py
+python assets/maple/collection/collect_maps.py assets/maple/collection/batch-04-maps.json
+python assets/maple/collection/collect_map_resource_batch.py assets/maple/collection/batch-04-map-resources.json
 python assets/maple/collection/enrich.py
 python assets/maple/collection/verify_wz_indices.py --prepare
 python assets/maple/collection/verify_wz_indices.py --apply

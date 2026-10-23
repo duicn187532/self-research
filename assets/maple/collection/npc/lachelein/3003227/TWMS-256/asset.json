@@ -1,0 +1,156 @@
+{
+  "id": "3003227",
+  "type": "npc",
+  "region": "lachelein",
+  "town": "lachelein",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": "皮利利面具",
+  "name_zh_tw_status": "unverified_translation",
+  "source_url": "https://maplestory.io/api/TWMS/256/npc/3003227",
+  "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Npc/3003227.img",
+  "wz_path": "Npc.wz/3003227.img",
+  "version": {
+    "region": "TWMS",
+    "version": "256"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "stand",
+      "frame_count": 4,
+      "expected_frame_count": 4,
+      "frames": [
+        {
+          "index": 0,
+          "width": 60,
+          "height": 86,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "4ac933eef7d988a7b3fba20a2207486d1ac58337b48aa9df7dd5ceeacfceded9",
+          "pixel_sha256": "d277c3bc0c97498050be6c4b3b93f2e511535decab9577f9f4645c18e31cc479",
+          "wz_path": "Npc.wz/3003227.img/stand/0",
+          "duration_ms": 180,
+          "origin": {
+            "x": 39,
+            "y": 86
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/lachelein/3003227/TWMS-256/stand/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 60,
+          "height": 87,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "cf03f1aa7a7b15b6f2f3e7c25b8646a4bd44f0270a0ba74701d5c6d18d626878",
+          "pixel_sha256": "54eff35a3e7e0020841daaed08893e8482ce516cf3b33b57032140ef69ea85b6",
+          "wz_path": "Npc.wz/3003227.img/stand/1",
+          "duration_ms": 180,
+          "origin": {
+            "x": 38,
+            "y": 87
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/lachelein/3003227/TWMS-256/stand/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 60,
+          "height": 86,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "2641449601cfe93da24e570b973acd51bd9fdd7bddac66fba12e40a1f35a6f42",
+          "pixel_sha256": "ca0c649177472edd6a70174a99f881a0819c22df693cd2f2b6cd962ebcb45c60",
+          "wz_path": "Npc.wz/3003227.img/stand/2",
+          "duration_ms": 180,
+          "origin": {
+            "x": 37,
+            "y": 86
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/lachelein/3003227/TWMS-256/stand/0002.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 3,
+          "width": 60,
+          "height": 85,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "03cc6273001716944928ac8b1f3fb0b35a03504a10b9832d558c43b6a04516bd",
+          "pixel_sha256": "23f03e7dd2a159a751b4084ff3e579934330de60700acb6eb4f1806ed35980c8",
+          "wz_path": "Npc.wz/3003227.img/stand/3",
+          "duration_ms": 180,
+          "origin": {
+            "x": 38,
+            "y": 85
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/lachelein/3003227/TWMS-256/stand/0003.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Npc/3003227.img/stand",
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "皮利利面具",
+  "role": null,
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "拉契爾恩市中心",
+      "streetName": "拉契爾恩",
+      "id": 450003000
+    },
+    {
+      "name": "市中心",
+      "streetName": "市中心",
+      "id": 450003710
+    }
+  ],
+  "expected_actions": {
+    "stand": 4
+  },
+  "source_metadata_sha256": "03ef7944002ea4566ab551560d81f945dc2baa9b28f9178896efa55c0cbed20d",
+  "source_archive_sha256": "71f618759fcc1d490da48d06fd3998de36709616a7db04c11a3bced232dcb90d",
+  "source_frame_indices": {
+    "stand": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "complete",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
+  },
+  "github_path": "assets/maple/collection/npc/lachelein/3003227/TWMS-256",
+  "status": "collected"
+}

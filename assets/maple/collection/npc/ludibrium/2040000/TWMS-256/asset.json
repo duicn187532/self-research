@@ -1,0 +1,407 @@
+{
+  "id": "2040000",
+  "type": "npc",
+  "region": "ludibrium",
+  "town": "玩具城",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": "車掌",
+  "name_zh_tw_status": "source_twms",
+  "source_url": "https://maplestory.io/api/TWMS/256/npc/2040000",
+  "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Npc/2040000.img",
+  "wz_path": "Npc.wz/2040000.img",
+  "version": {
+    "region": "TWMS",
+    "version": "256"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "smile",
+      "frame_count": 3,
+      "expected_frame_count": 3,
+      "frames": [
+        {
+          "index": 0,
+          "width": 50,
+          "height": 85,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "d740e829618662e97cbd41183feb2a9c6d9506efd6c163d961f4cf4b65ee8b4e",
+          "pixel_sha256": "4d1c5ee90a1345a8bd1a2ea5c19d1775242b519e6e89c4e1857c0177287f0099",
+          "wz_path": "Npc.wz/2040000.img/smile/0",
+          "duration_ms": 3000,
+          "origin": {
+            "x": 25,
+            "y": 85
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/ludibrium/2040000/TWMS-256/smile/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 50,
+          "height": 85,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "97a7edb8b97b2d4e9bb46fb3f896f7ca2495f46e4f38693ab1cedd3bcbc6579a",
+          "pixel_sha256": "8ed61bca00687080e775c85e1d05b2216027d286e379f2661eda1ec9bbe0c8f1",
+          "wz_path": "Npc.wz/2040000.img/smile/1",
+          "duration_ms": 120,
+          "origin": {
+            "x": 25,
+            "y": 85
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/ludibrium/2040000/TWMS-256/smile/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 50,
+          "height": 85,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "d740e829618662e97cbd41183feb2a9c6d9506efd6c163d961f4cf4b65ee8b4e",
+          "pixel_sha256": "4d1c5ee90a1345a8bd1a2ea5c19d1775242b519e6e89c4e1857c0177287f0099",
+          "wz_path": "Npc.wz/2040000.img/smile/2",
+          "duration_ms": 200,
+          "origin": {
+            "x": 25,
+            "y": 85
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/ludibrium/2040000/TWMS-256/smile/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "690dce2e0280a6e93bfd916d293750c5e4642d4e16848135c997db02d0042316"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Npc/2040000.img/smile",
+        "indices": [
+          0,
+          1,
+          2
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "stand",
+      "frame_count": 4,
+      "expected_frame_count": 4,
+      "frames": [
+        {
+          "index": 0,
+          "width": 50,
+          "height": 85,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "84e19f0dffda853c0e1856ef6b827c66239676c557454019132ff402e955fb5a",
+          "pixel_sha256": "a0b0717432f9cb7b836118d6bd6a3fe82c4dd5c814fecc76e986da1208e458ef",
+          "wz_path": "Npc.wz/2040000.img/stand/0",
+          "duration_ms": 3000,
+          "origin": {
+            "x": 25,
+            "y": 85
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/ludibrium/2040000/TWMS-256/stand/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 50,
+          "height": 85,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "1a8a3919719f9ae1a2dfa15dc1fb8a84a88f5f70f6dea146484126dc5e59caef",
+          "pixel_sha256": "a109a01d9e167f69513888e43092575a60ef218d2e01dd52b49e0f31965fc864",
+          "wz_path": "Npc.wz/2040000.img/stand/1",
+          "duration_ms": 120,
+          "origin": {
+            "x": 25,
+            "y": 85
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/ludibrium/2040000/TWMS-256/stand/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 50,
+          "height": 85,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "6d82ed292d0adfe18c807e514a8252323b217f03863499b96a1e6fc9a9014eac",
+          "pixel_sha256": "2f35cf0257c884f73bb69917ae5f52a170868dd82603992a55fd8f42ef0fce4e",
+          "wz_path": "Npc.wz/2040000.img/stand/2",
+          "duration_ms": 200,
+          "origin": {
+            "x": 25,
+            "y": 85
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/ludibrium/2040000/TWMS-256/stand/0002.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 3,
+          "width": 50,
+          "height": 85,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "1a8a3919719f9ae1a2dfa15dc1fb8a84a88f5f70f6dea146484126dc5e59caef",
+          "pixel_sha256": "a109a01d9e167f69513888e43092575a60ef218d2e01dd52b49e0f31965fc864",
+          "wz_path": "Npc.wz/2040000.img/stand/3",
+          "duration_ms": 120,
+          "origin": {
+            "x": 25,
+            "y": 85
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2040000/render/stand/3",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/ludibrium/2040000/TWMS-256/stand/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "b68f290ec9fcfde981778e3249930c319b4d44717593ddf2b745f02db4193dd1"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Npc/2040000.img/stand",
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "talk",
+      "frame_count": 7,
+      "expected_frame_count": 7,
+      "frames": [
+        {
+          "index": 0,
+          "width": 50,
+          "height": 85,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "84e19f0dffda853c0e1856ef6b827c66239676c557454019132ff402e955fb5a",
+          "pixel_sha256": "a0b0717432f9cb7b836118d6bd6a3fe82c4dd5c814fecc76e986da1208e458ef",
+          "wz_path": "Npc.wz/2040000.img/talk/0",
+          "duration_ms": 3000,
+          "origin": {
+            "x": 25,
+            "y": 85
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/ludibrium/2040000/TWMS-256/stand/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "f090b0c04e9e5c3a6e597b15f5850d3308cba6b5d74746d323a9922ab3e613b1"
+        },
+        {
+          "index": 1,
+          "width": 50,
+          "height": 85,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "46d08e8ebb5d888433d04e6e93237003a189985ebb1e286c555a1acd306d683b",
+          "pixel_sha256": "e4ade02d674a3a07c101c55ca22f7d56beebc418be0a135e74a50366f0f0bf76",
+          "wz_path": "Npc.wz/2040000.img/talk/1",
+          "duration_ms": 120,
+          "origin": {
+            "x": 25,
+            "y": 85
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/ludibrium/2040000/TWMS-256/talk/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 50,
+          "height": 85,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "84e19f0dffda853c0e1856ef6b827c66239676c557454019132ff402e955fb5a",
+          "pixel_sha256": "a0b0717432f9cb7b836118d6bd6a3fe82c4dd5c814fecc76e986da1208e458ef",
+          "wz_path": "Npc.wz/2040000.img/talk/2",
+          "duration_ms": 240,
+          "origin": {
+            "x": 25,
+            "y": 85
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/ludibrium/2040000/TWMS-256/stand/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "49059d555dd3a883fbf3d3ae91eb5bc1ba36c1f3244d12dd9c48cb5569ac745c"
+        },
+        {
+          "index": 3,
+          "width": 50,
+          "height": 85,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "46d08e8ebb5d888433d04e6e93237003a189985ebb1e286c555a1acd306d683b",
+          "pixel_sha256": "e4ade02d674a3a07c101c55ca22f7d56beebc418be0a135e74a50366f0f0bf76",
+          "wz_path": "Npc.wz/2040000.img/talk/3",
+          "duration_ms": 120,
+          "origin": {
+            "x": 25,
+            "y": 85
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2040000/render/talk/3",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/ludibrium/2040000/TWMS-256/talk/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "3d14eb4d4268b27db4732b8d2a3ac791fa48d71fd886bbba3af2ae87cde5a665"
+        },
+        {
+          "index": 4,
+          "width": 50,
+          "height": 85,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "84e19f0dffda853c0e1856ef6b827c66239676c557454019132ff402e955fb5a",
+          "pixel_sha256": "a0b0717432f9cb7b836118d6bd6a3fe82c4dd5c814fecc76e986da1208e458ef",
+          "wz_path": "Npc.wz/2040000.img/talk/4",
+          "duration_ms": 240,
+          "origin": {
+            "x": 25,
+            "y": 85
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2040000/render/talk/4",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/ludibrium/2040000/TWMS-256/stand/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "9e11bbc70e1f8cf7db8d5840783aa156f32c28b8628acbb52bb14dd536e3051a"
+        },
+        {
+          "index": 5,
+          "width": 50,
+          "height": 85,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "46d08e8ebb5d888433d04e6e93237003a189985ebb1e286c555a1acd306d683b",
+          "pixel_sha256": "e4ade02d674a3a07c101c55ca22f7d56beebc418be0a135e74a50366f0f0bf76",
+          "wz_path": "Npc.wz/2040000.img/talk/5",
+          "duration_ms": 120,
+          "origin": {
+            "x": 25,
+            "y": 85
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2040000/render/talk/5",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/ludibrium/2040000/TWMS-256/talk/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "6b9fd4cc68d5cc98f8f4df28a316a7f83580fa2ab2b0b1dff73dd1d990bed867"
+        },
+        {
+          "index": 6,
+          "width": 50,
+          "height": 85,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "46d08e8ebb5d888433d04e6e93237003a189985ebb1e286c555a1acd306d683b",
+          "pixel_sha256": "e4ade02d674a3a07c101c55ca22f7d56beebc418be0a135e74a50366f0f0bf76",
+          "wz_path": "Npc.wz/2040000.img/talk/6",
+          "duration_ms": 120,
+          "origin": {
+            "x": 25,
+            "y": 85
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2040000/render/talk/6",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/ludibrium/2040000/TWMS-256/talk/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "e930f00e394834dfe022407c7abe6c585ec747f9c98a9bc1b00649ec089aff63"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Npc/2040000.img/talk",
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "車掌",
+  "role": "售票員",
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "玩具城售票處",
+      "streetName": "玩具城",
+      "id": 220000100
+    }
+  ],
+  "expected_actions": {
+    "smile": 3,
+    "stand": 4,
+    "talk": 7
+  },
+  "source_metadata_sha256": "273f30142a43b9bed4f3c7c6f3b6284f74d830ecc2ffee3b2151f47a2405da30",
+  "source_archive_sha256": "62e677f1a08d327aabd8bd490b2ddfcf1dcca2cb91163b988c6ab91668038406",
+  "source_frame_indices": {
+    "smile": [
+      0,
+      1,
+      2
+    ],
+    "stand": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "talk": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ]
+  },
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "complete",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
+  },
+  "github_path": "assets/maple/collection/npc/ludibrium/2040000/TWMS-256",
+  "status": "collected"
+}

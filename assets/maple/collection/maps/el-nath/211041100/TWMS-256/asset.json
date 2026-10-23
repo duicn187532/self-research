@@ -1,0 +1,2556 @@
+{
+  "id": "211041100",
+  "type": "maps",
+  "region": "el-nath",
+  "town": "el-nath",
+  "name": "亡者之林Ⅰ",
+  "name_zh_tw": "亡者之林Ⅰ",
+  "name_zh_tw_status": "source_twms",
+  "source_url": "https://maplestory.io/api/TWMS/256/map/211041100",
+  "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Map/Map/Map2/211041100.img",
+  "wz_path": "Map.wz/Map/Map2/211041100.img",
+  "version": {
+    "region": "TWMS",
+    "version": "256"
+  },
+  "acquired_on": "2026-10-23",
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "exported-canvases",
+      "kind": "map_layers",
+      "frame_count": 1,
+      "expected_frame_count": null,
+      "count_matches_api": null,
+      "indices_contiguous": true,
+      "frames": [
+        {
+          "index": 0,
+          "source_archive_path": "Map-Map-Map2-211041100.img-miniMap-canvas.png",
+          "width": 266,
+          "height": 74,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5eb2f9be808f4423d806048e1e5282ffade669627f70a66cfee267917fa9f0e8",
+          "pixel_sha256": "d55839c62a2fd864358da37d4a4e112412dfb0d78f399c9cea92b4b8488a3c5a",
+          "github_path": "assets/maple/collection/maps/el-nath/211041100/TWMS-256/layers/Map-Map-Map2-211041100.img-miniMap-canvas.png",
+          "storage": "original_png",
+          "decode": "pass",
+          "duration_ms": null,
+          "origin": null
+        }
+      ]
+    }
+  ],
+  "source_metadata_sha256": "9d3434b7f9dcfd3d997823406863f45cd5ca225161736f2e18b2dd42012dc3b7",
+  "source_metadata": {
+    "backgroundMusic": "Bgm05/WolfWood",
+    "isReturnMap": false,
+    "returnMap": 211000000,
+    "portals": [
+      {
+        "portalName": "sp",
+        "toName": "",
+        "type": 0,
+        "toMap": 999999999,
+        "x": -19,
+        "y": 42,
+        "isStarForcePortal": false,
+        "index": 0,
+        "unknownExit": true,
+        "bounds": {
+          "x": -19,
+          "y": 42,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -19,
+            "y": 42,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 42,
+          "right": -18,
+          "bottom": 43,
+          "left": -19
+        }
+      },
+      null,
+      null
+    ],
+    "npcs": [],
+    "mobs": [
+      {
+        "x": 128,
+        "y": 154,
+        "walkAreaX1": -1060,
+        "walkAreaX2": 966,
+        "id": 5130107,
+        "footholdId": 48,
+        "foothold": {
+          "id": 48,
+          "next": 47,
+          "prev": 46,
+          "piece": -1,
+          "x1": 90,
+          "x2": 180,
+          "y1": 154,
+          "y2": 154,
+          "layerId": 5,
+          "groupId": 1
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/5130107",
+        "index": 0,
+        "position": {},
+        "bounds": {
+          "x": 128,
+          "y": 154,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 128,
+            "y": 154,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 154,
+          "right": 129,
+          "bottom": 155,
+          "left": 128
+        },
+        "flip": false
+      },
+      {
+        "x": 274,
+        "y": 154,
+        "walkAreaX1": -1060,
+        "walkAreaX2": 966,
+        "id": 5130107,
+        "footholdId": 43,
+        "foothold": {
+          "id": 43,
+          "next": 42,
+          "prev": 47,
+          "piece": -1,
+          "x1": 270,
+          "x2": 360,
+          "y1": 154,
+          "y2": 154,
+          "layerId": 5,
+          "groupId": 1
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/5130107",
+        "index": 1,
+        "position": {},
+        "bounds": {
+          "x": 274,
+          "y": 154,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 274,
+            "y": 154,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 154,
+          "right": 275,
+          "bottom": 155,
+          "left": 274
+        },
+        "flip": false
+      },
+      {
+        "x": 1949,
+        "y": -26,
+        "walkAreaX1": 1421,
+        "walkAreaX2": 2950,
+        "id": 5130107,
+        "footholdId": 77,
+        "foothold": {
+          "id": 77,
+          "next": 84,
+          "prev": 70,
+          "piece": -1,
+          "x1": 1890,
+          "x2": 1980,
+          "y1": -26,
+          "y2": -26,
+          "layerId": 5,
+          "groupId": 0
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/5130107",
+        "index": 10,
+        "position": {},
+        "bounds": {
+          "x": 1949,
+          "y": -26,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 1949,
+            "y": -26,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -26,
+          "right": 1950,
+          "bottom": -25,
+          "left": 1949
+        },
+        "flip": false
+      },
+      {
+        "x": 2119,
+        "y": -86,
+        "walkAreaX1": 1421,
+        "walkAreaX2": 2950,
+        "id": 5130107,
+        "footholdId": 81,
+        "foothold": {
+          "id": 81,
+          "next": 74,
+          "prev": 84,
+          "piece": -1,
+          "x1": 2070,
+          "x2": 2160,
+          "y1": -86,
+          "y2": -86,
+          "layerId": 5,
+          "groupId": 0
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/5130107",
+        "index": 11,
+        "position": {},
+        "bounds": {
+          "x": 2119,
+          "y": -86,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 2119,
+            "y": -86,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -86,
+          "right": 2120,
+          "bottom": -85,
+          "left": 2119
+        },
+        "flip": false
+      },
+      {
+        "x": 2275,
+        "y": -86,
+        "walkAreaX1": 1421,
+        "walkAreaX2": 2950,
+        "id": 5130107,
+        "footholdId": 75,
+        "foothold": {
+          "id": 75,
+          "next": 78,
+          "prev": 74,
+          "piece": -1,
+          "x1": 2250,
+          "x2": 2340,
+          "y1": -86,
+          "y2": -86,
+          "layerId": 5,
+          "groupId": 0
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/5130107",
+        "index": 12,
+        "position": {},
+        "bounds": {
+          "x": 2275,
+          "y": -86,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 2275,
+            "y": -86,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -86,
+          "right": 2276,
+          "bottom": -85,
+          "left": 2275
+        },
+        "flip": false
+      },
+      {
+        "x": -765,
+        "y": 94,
+        "walkAreaX1": -1060,
+        "walkAreaX2": 966,
+        "id": 5130107,
+        "footholdId": 60,
+        "foothold": {
+          "id": 60,
+          "next": 66,
+          "prev": 67,
+          "piece": -1,
+          "x1": -810,
+          "x2": -720,
+          "y1": 94,
+          "y2": 94,
+          "layerId": 5,
+          "groupId": 1
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/5130107",
+        "index": 13,
+        "position": {},
+        "bounds": {
+          "x": -765,
+          "y": 94,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -765,
+            "y": 94,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 94,
+          "right": -764,
+          "bottom": 95,
+          "left": -765
+        },
+        "flip": false
+      },
+      {
+        "x": -535,
+        "y": 34,
+        "walkAreaX1": -1060,
+        "walkAreaX2": 966,
+        "id": 5130107,
+        "footholdId": 65,
+        "foothold": {
+          "id": 65,
+          "next": 64,
+          "prev": 63,
+          "piece": -1,
+          "x1": -540,
+          "x2": -450,
+          "y1": 34,
+          "y2": 34,
+          "layerId": 5,
+          "groupId": 1
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/5130107",
+        "index": 14,
+        "position": {},
+        "bounds": {
+          "x": -535,
+          "y": 34,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -535,
+            "y": 34,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 34,
+          "right": -534,
+          "bottom": 35,
+          "left": -535
+        },
+        "flip": false
+      },
+      {
+        "x": -199,
+        "y": 94,
+        "walkAreaX1": -1060,
+        "walkAreaX2": 966,
+        "id": 5130107,
+        "footholdId": 62,
+        "foothold": {
+          "id": 62,
+          "next": 61,
+          "prev": 59,
+          "piece": -1,
+          "x1": -270,
+          "x2": -180,
+          "y1": 94,
+          "y2": 94,
+          "layerId": 5,
+          "groupId": 1
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/5130107",
+        "index": 15,
+        "position": {},
+        "bounds": {
+          "x": -199,
+          "y": 94,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -199,
+            "y": 94,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 94,
+          "right": -198,
+          "bottom": 95,
+          "left": -199
+        },
+        "flip": false
+      },
+      {
+        "x": 2330,
+        "y": -386,
+        "walkAreaX1": 1870,
+        "walkAreaX2": 2630,
+        "id": 5130107,
+        "footholdId": 19,
+        "foothold": {
+          "id": 19,
+          "next": 20,
+          "prev": 18,
+          "piece": -1,
+          "x1": 2250,
+          "x2": 2340,
+          "y1": -386,
+          "y2": -386,
+          "layerId": 3,
+          "groupId": 38
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/5130107",
+        "index": 16,
+        "position": {},
+        "bounds": {
+          "x": 2330,
+          "y": -386,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 2330,
+            "y": -386,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -386,
+          "right": 2331,
+          "bottom": -385,
+          "left": 2330
+        },
+        "flip": false
+      },
+      {
+        "x": 2796,
+        "y": 34,
+        "walkAreaX1": 1421,
+        "walkAreaX2": 2950,
+        "id": 5130107,
+        "footholdId": 82,
+        "foothold": {
+          "id": 82,
+          "next": 71,
+          "prev": 83,
+          "piece": -1,
+          "x1": 2790,
+          "x2": 2880,
+          "y1": 34,
+          "y2": 34,
+          "layerId": 5,
+          "groupId": 0
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/5130107",
+        "index": 17,
+        "position": {},
+        "bounds": {
+          "x": 2796,
+          "y": 34,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 2796,
+            "y": 34,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 34,
+          "right": 2797,
+          "bottom": 35,
+          "left": 2796
+        },
+        "flip": false
+      },
+      {
+        "x": 2556,
+        "y": -26,
+        "walkAreaX1": 1421,
+        "walkAreaX2": 2950,
+        "id": 5130107,
+        "footholdId": 80,
+        "foothold": {
+          "id": 80,
+          "next": 85,
+          "prev": 72,
+          "piece": -1,
+          "x1": 2520,
+          "x2": 2610,
+          "y1": -26,
+          "y2": -26,
+          "layerId": 5,
+          "groupId": 0
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/5130107",
+        "index": 18,
+        "position": {},
+        "bounds": {
+          "x": 2556,
+          "y": -26,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 2556,
+            "y": -26,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -26,
+          "right": 2557,
+          "bottom": -25,
+          "left": 2556
+        },
+        "flip": false
+      },
+      {
+        "x": -934,
+        "y": 154,
+        "walkAreaX1": -1060,
+        "walkAreaX2": 966,
+        "id": 5130107,
+        "footholdId": 68,
+        "foothold": {
+          "id": 68,
+          "next": 67,
+          "prev": 54,
+          "piece": -1,
+          "x1": -990,
+          "x2": -900,
+          "y1": 154,
+          "y2": 154,
+          "layerId": 5,
+          "groupId": 1
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/5130107",
+        "index": 19,
+        "position": {},
+        "bounds": {
+          "x": -934,
+          "y": 154,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -934,
+            "y": 154,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 154,
+          "right": -933,
+          "bottom": 155,
+          "left": -934
+        },
+        "flip": false
+      },
+      {
+        "x": -474,
+        "y": -326,
+        "walkAreaX1": -830,
+        "walkAreaX2": -160,
+        "id": 5130107,
+        "footholdId": 32,
+        "foothold": {
+          "id": 32,
+          "next": 30,
+          "prev": 31,
+          "piece": -1,
+          "x1": -540,
+          "x2": -450,
+          "y1": -326,
+          "y2": -326,
+          "layerId": 3,
+          "groupId": 35
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/5130107",
+        "index": 2,
+        "position": {},
+        "bounds": {
+          "x": -474,
+          "y": -326,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -474,
+            "y": -326,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -326,
+          "right": -473,
+          "bottom": -325,
+          "left": -474
+        },
+        "flip": false
+      },
+      {
+        "x": -781,
+        "y": -386,
+        "walkAreaX1": -830,
+        "walkAreaX2": -160,
+        "id": 5130107,
+        "footholdId": 29,
+        "foothold": {
+          "id": 29,
+          "next": 41,
+          "prev": 40,
+          "piece": -1,
+          "x1": -810,
+          "x2": -770,
+          "y1": -386,
+          "y2": -386,
+          "layerId": 3,
+          "groupId": 35
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/5130107",
+        "index": 20,
+        "position": {},
+        "bounds": {
+          "x": -781,
+          "y": -386,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -781,
+            "y": -386,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -386,
+          "right": -780,
+          "bottom": -385,
+          "left": -781
+        },
+        "flip": false
+      },
+      {
+        "x": -648,
+        "y": -386,
+        "walkAreaX1": -830,
+        "walkAreaX2": -160,
+        "id": 5130107,
+        "footholdId": 35,
+        "foothold": {
+          "id": 35,
+          "next": 31,
+          "prev": 41,
+          "piece": -1,
+          "x1": -720,
+          "x2": -630,
+          "y1": -386,
+          "y2": -386,
+          "layerId": 3,
+          "groupId": 35
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/5130107",
+        "index": 21,
+        "position": {},
+        "bounds": {
+          "x": -648,
+          "y": -386,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -648,
+            "y": -386,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -386,
+          "right": -647,
+          "bottom": -385,
+          "left": -648
+        },
+        "flip": false
+      },
+      {
+        "x": -297,
+        "y": -386,
+        "walkAreaX1": -830,
+        "walkAreaX2": -160,
+        "id": 5130107,
+        "footholdId": 33,
+        "foothold": {
+          "id": 33,
+          "next": 34,
+          "prev": 30,
+          "piece": -1,
+          "x1": -360,
+          "x2": -270,
+          "y1": -386,
+          "y2": -386,
+          "layerId": 3,
+          "groupId": 35
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/5130107",
+        "index": 22,
+        "position": {},
+        "bounds": {
+          "x": -297,
+          "y": -386,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": -297,
+            "y": -386,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -386,
+          "right": -296,
+          "bottom": -385,
+          "left": -297
+        },
+        "flip": false
+      },
+      {
+        "x": 2240,
+        "y": -386,
+        "walkAreaX1": 1870,
+        "walkAreaX2": 2630,
+        "id": 5130107,
+        "footholdId": 18,
+        "foothold": {
+          "id": 18,
+          "next": 19,
+          "prev": 17,
+          "piece": -1,
+          "x1": 2160,
+          "x2": 2250,
+          "y1": -386,
+          "y2": -386,
+          "layerId": 3,
+          "groupId": 38
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/5130107",
+        "index": 23,
+        "position": {},
+        "bounds": {
+          "x": 2240,
+          "y": -386,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 2240,
+            "y": -386,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -386,
+          "right": 2241,
+          "bottom": -385,
+          "left": 2240
+        },
+        "flip": false
+      },
+      {
+        "x": 1963,
+        "y": -446,
+        "walkAreaX1": 1870,
+        "walkAreaX2": 2630,
+        "id": 5130107,
+        "footholdId": 23,
+        "foothold": {
+          "id": 23,
+          "next": 16,
+          "prev": 22,
+          "piece": -1,
+          "x1": 1930,
+          "x2": 1980,
+          "y1": -446,
+          "y2": -446,
+          "layerId": 3,
+          "groupId": 38
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/5130107",
+        "index": 24,
+        "position": {},
+        "bounds": {
+          "x": 1963,
+          "y": -446,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 1963,
+            "y": -446,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -446,
+          "right": 1964,
+          "bottom": -445,
+          "left": 1963
+        },
+        "flip": false
+      },
+      {
+        "x": 2518,
+        "y": -446,
+        "walkAreaX1": 1870,
+        "walkAreaX2": 2630,
+        "id": 5130107,
+        "footholdId": 25,
+        "foothold": {
+          "id": 25,
+          "next": 24,
+          "prev": 20,
+          "piece": -1,
+          "x1": 2430,
+          "x2": 2520,
+          "y1": -446,
+          "y2": -446,
+          "layerId": 3,
+          "groupId": 38
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/5130107",
+        "index": 25,
+        "position": {},
+        "bounds": {
+          "x": 2518,
+          "y": -446,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 2518,
+            "y": -446,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": -446,
+          "right": 2519,
+          "bottom": -445,
+          "left": 2518
+        },
+        "flip": false
+      },
+      {
+        "x": 573,
+        "y": 94,
+        "walkAreaX1": -1060,
+        "walkAreaX2": 966,
+        "id": 5130107,
+        "footholdId": 51,
+        "foothold": {
+          "id": 51,
+          "next": 52,
+          "prev": 49,
+          "piece": -1,
+          "x1": 540,
+          "x2": 630,
+          "y1": 94,
+          "y2": 94,
+          "layerId": 5,
+          "groupId": 1
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/5130107",
+        "index": 3,
+        "position": {},
+        "bounds": {
+          "x": 573,
+          "y": 94,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 573,
+            "y": 94,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 94,
+          "right": 574,
+          "bottom": 95,
+          "left": 573
+        },
+        "flip": false
+      },
+      {
+        "x": 691,
+        "y": 94,
+        "walkAreaX1": -1060,
+        "walkAreaX2": 966,
+        "id": 5130107,
+        "footholdId": 52,
+        "foothold": {
+          "id": 52,
+          "next": 44,
+          "prev": 51,
+          "piece": -1,
+          "x1": 630,
+          "x2": 720,
+          "y1": 94,
+          "y2": 94,
+          "layerId": 5,
+          "groupId": 1
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/5130107",
+        "index": 4,
+        "position": {},
+        "bounds": {
+          "x": 691,
+          "y": 94,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 691,
+            "y": 94,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 94,
+          "right": 692,
+          "bottom": 95,
+          "left": 691
+        },
+        "flip": false
+      },
+      {
+        "x": 875,
+        "y": 34,
+        "walkAreaX1": -1060,
+        "walkAreaX2": 966,
+        "id": 5130107,
+        "footholdId": 45,
+        "foothold": {
+          "id": 45,
+          "next": 53,
+          "prev": 44,
+          "piece": -1,
+          "x1": 810,
+          "x2": 900,
+          "y1": 34,
+          "y2": 34,
+          "layerId": 5,
+          "groupId": 1
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/5130107",
+        "index": 5,
+        "position": {},
+        "bounds": {
+          "x": 875,
+          "y": 34,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 875,
+            "y": 34,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 34,
+          "right": 876,
+          "bottom": 35,
+          "left": 875
+        },
+        "flip": false
+      },
+      {
+        "x": 1101,
+        "y": 3,
+        "walkAreaX1": 1006,
+        "walkAreaX2": 1381,
+        "id": 5130107,
+        "footholdId": 89,
+        "foothold": {
+          "id": 89,
+          "next": 90,
+          "prev": 88,
+          "piece": 0,
+          "x1": 1060,
+          "x2": 1143,
+          "y1": 9,
+          "y2": -3,
+          "layerId": 5,
+          "groupId": 4
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/5130107",
+        "index": 6,
+        "position": {},
+        "bounds": {
+          "x": 1101,
+          "y": 3,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 1101,
+            "y": 3,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 3,
+          "right": 1102,
+          "bottom": 4,
+          "left": 1101
+        },
+        "flip": false
+      },
+      {
+        "x": 1268,
+        "y": 2,
+        "walkAreaX1": 1006,
+        "walkAreaX2": 1381,
+        "id": 5130107,
+        "footholdId": 91,
+        "foothold": {
+          "id": 91,
+          "next": 92,
+          "prev": 90,
+          "piece": 0,
+          "x1": 1217,
+          "x2": 1304,
+          "y1": -3,
+          "y2": 7,
+          "layerId": 5,
+          "groupId": 4
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/5130107",
+        "index": 7,
+        "position": {},
+        "bounds": {
+          "x": 1268,
+          "y": 2,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 1268,
+            "y": 2,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 2,
+          "right": 1269,
+          "bottom": 3,
+          "left": 1268
+        },
+        "flip": false
+      },
+      {
+        "x": 1448,
+        "y": 34,
+        "walkAreaX1": 1421,
+        "walkAreaX2": 2950,
+        "id": 5130107,
+        "footholdId": 86,
+        "foothold": {
+          "id": 86,
+          "next": 73,
+          "prev": 93,
+          "piece": -1,
+          "x1": 1401,
+          "x2": 1480,
+          "y1": 34,
+          "y2": 34,
+          "layerId": 5,
+          "groupId": 0
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/5130107",
+        "index": 8,
+        "position": {},
+        "bounds": {
+          "x": 1448,
+          "y": 34,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 1448,
+            "y": 34,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 34,
+          "right": 1449,
+          "bottom": 35,
+          "left": 1448
+        },
+        "flip": false
+      },
+      {
+        "x": 1648,
+        "y": 34,
+        "walkAreaX1": 1421,
+        "walkAreaX2": 2950,
+        "id": 5130107,
+        "footholdId": 69,
+        "foothold": {
+          "id": 69,
+          "next": 79,
+          "prev": 76,
+          "piece": -1,
+          "x1": 1620,
+          "x2": 1710,
+          "y1": 34,
+          "y2": 34,
+          "layerId": 5,
+          "groupId": 0
+        },
+        "hidden": false,
+        "type": 1,
+        "link": "/mob/5130107",
+        "index": 9,
+        "position": {},
+        "bounds": {
+          "x": 1648,
+          "y": 34,
+          "width": 1,
+          "height": 1,
+          "location": {
+            "x": 1648,
+            "y": 34,
+            "isEmpty": false
+          },
+          "size": {
+            "width": 1,
+            "height": 1,
+            "isEmpty": false
+          },
+          "isEmpty": false,
+          "top": 34,
+          "right": 1649,
+          "bottom": 35,
+          "left": 1648
+        },
+        "flip": false
+      }
+    ],
+    "mobRate": 0.7999999523162842,
+    "isTown": false,
+    "isSwim": false,
+    "mapMark": "ElNathDungeon",
+    "miniMap": {
+      "centerX": 1251,
+      "centerY": 747,
+      "height": 1187,
+      "width": 4269,
+      "magnification": 4,
+      "canvas": "iVBORw0KGgoAAAANSUhEUgAAAQoAAABKCAYAAABD5BoRAAAACXBIWXMAAA7EAAAOxAGVKw4bAAA2h0lEQVR4nO1962HjOA8tf9wGeEvgVwK3BKYEpQS5BLkEqwSrBKuEsIRhCcsSLlu4OAeg7DjOJLM7eeyu+X3ZZPyQKBAEgYPX/3H3cR/3cR9vjLuguI/7uI83x11Q3Md93Meb4y4o7uM+7uPNcRcU93Ef9/HmuAuK+7iP+3hz3AXFfdzHfbw57oLiPu7jPt4cd0FxH/dxH2+Ou6C4j/u4jzfHXVDcx328HEF+Kn6H4J9aba45l+Xf8svt3X9w3AXFfdzHxfDej961ILIBAqFBUrjQfCl1bBAezc34mH28uv/IuAuK+7iPi9FaW5r+OXjvhiojxhBFgOA9vB6dahyL+w+Nu6C4j/u4Pap3vtXa5hjcSTQLJ/8IPoSplvLwBfOBcIKQWr/g3ndBcR/38cootbV5GIaR0ESt9qvMXzEZUWjEJHJTVdMH41OxkruguI/7eH2IrKgwQYhiNuez/Dd/xUREo6H541ubYA61dhcU93Ef32VARHj+H/hEa7+8OWVzi7USgmgm0zzPe7lOxUsxxpRLyXLNdwGi8r0GXBX/q17+aJ+Lo94FxX3cxytDNuYY0+hLzs4AziQ/5b3fh0A4nk4/Sqm+1OKSSAt5tQ5DCjkXJxcvy7z/4x3XEa3GJ3PTUviI9PkhigWwkuY+YdwFxX3chw3sP5zcctoPogQc5U8REqtqACHKSd4m+dggW1M0g1pEKRhzXufXLjZO03FdVyCiBBngU5ULhXVZqKGIWgGAEi+3G1+HJjLJm0EUCNE+apOvOqg38tXKD8R4cLVCS2n4J77XzDXzu8e/UVDcJPx93MdrA6bBOB2esJdFIGDTBWISqt6LYhH6R8FbUd57kvdEVBQ/TdOw2+8e5e9ntsCQhpOc+IkXiJGvjaJQrGuWC0YHDQOgRxqnP0UYLSJMNrMmpTQcZMj3YaLgY26y2A38p0J4yKsyhRFaT2v8iMtr9vv9/uEjcJR/k6CASMUiYo2hHt4Fxo0hjAU1Nghffwl6/x0HwMF5v9uFODzFiBO7kZnwG6ghTnKIgWlMZKp5XYSOiSZJGmM8iXmxe3x8KDJwPdE0hij2RZHP4aCHYJBbONEKjCEV85A7uSbCRj6fctWwjAFululwmuXaQb4juoxblpm/Kz0vzRGrkOtm+YyH21YUCggzCK+PAlv/aYKii/YuvYVk7iTUeZTfCZsAC1ErQSes6Zcg1J8xsNldV0N/QSCCRsJUSQQF/PH/mcjCt4ZsNjnks5gdwUdqALKxc+HGHNIoJ1BrsjH9KptftAUnWoADoBj4XeePx9MP2dD7ZVkX2fcHmBsUBrQEMje2XJ/HWeEGN2Eh74ogimKmHESTSLLV4263c+M4UggUmQNNFhEqKUUKLjFneFP5uFswn2GEcJLXlw8LAvsUQeFtOHfGYjAqRaTaVZc2VsBTy8YXdU7tL6GlvHuEcKfaEGONQhx5HwsmZE4nLoxr0NOKfOaECDu5RkEILhZOPot/437+0o67vHefK34VINLfb9jjhwOiBY3R8Og7me/6ji+DJ4cqai/+NiFzHzrgkPhDlv2wLnNu+grkQH4sDwnnjmzcEVQsQnCw7pBgQgDoTBQcwreHp6dhEPVftJN4GsfJVwqLQkEB7wmlCrQMCA77GxteFmZaRABkuQ5eg3ISyIlBPlfJuWteZpgj+Bb4ep73NFdkzqPMeYaw+yjifIqgEF3qCdALQd+LYRguieeMOCAUJDbsw3Q8ASwSOb0rzbQJC6UNGWqdXUc+E/t78l9soAUn5/H4NEIno1QeRoTjumj2IhdD/g0hjHlBjRN7k3MQ+mMD/c99pyG8MU7HkzBPrGWhOosBRD34egqT8Nk87356jbbRrxnx7+P5kEM/P16/CGXCKSaQRVychIdodsgWhwniUpTNXKAxVLF5fTycnp7s8zAyZK8PFAykPS4oAgG/k3c0KfD3o2gR0BhwRlJIQJuQzwk3Y43JtwVSyelc6gUkUsC8Hzw+RVDITn9Iw/j/aFOJhDxMo0jHLDZboV8YPAugBxK0yqYuVNMabbrDNI3+4JwIaV6LErqqDdm/2/UDVRRE7YhhOBxOHhIaL41DoiDADzYYhZAIIywwjmMsupgrbicCelJh9v3sd5n0sn98lGf7EQGvCUNRMPos869y1rwhJBxUkXDIQNNE2HiYabV9R63p+w4RGMJt/5PDhQeQmCYjTq8UJ75daW44mizY9Di2lnUxnlPE8XgYyX8wHyIORAM3B+PRSt4O/BsXy8sKpfFBrB65ycdpDG+Nz8IoxL5bV9GWhxC9e3jccaNDakIzOBzg5ZGTfJ4V+BEBAbNiHI5ObD6VtGkknUBwSFjGv1wdivA2HQ5HEULFdzVOtAoKoNDUlJfDgAsLIfXw+Mg5VF5zle+eZGFXUTTKd034Qf4Bn9PbCXVhNf10QKNrKmczQoHVxKJGF9xnR+/8swdMFDlI/EmYysFtik2vQqK2ISVEU8EccHvjZ2gIOJAOx6PiC85MbFm+YVJenOeFICWAU3zmiM8uC4WEo3XxUtP5zPF5YGZrj7IBU5lxiHlyei4ZG9Lv531AUAkwHQV5HIGcWqGBRLPXvBumIxeEJkQwXNM2C8yLJFK5Mh5/pUARS5C2IwxOCCgFhZ0IiIc/YOvjRqK5wM0F8e33O2CiXye13zm4uyFInSHzb/nOgaRP0+FYSQBqvHD/BRHIT7ImwGxmBAOBDggOFsGcKt7QoMIownqFCeju4zyEn2XzT/v9I3nYfuq+7NWN6f2o/EWzADwVdo8Pl+tURRCEZaEJPUH6lCZ83HRP7IQXhed/KcDrI8enej3U1uNf7hJPpCgGEBNckv8jis1DEND+S6q2QcpSuxhGBK0gY0c2flFbL4kaLqr4fr9QM2GYKy4HlxHNmJXuLVgqRV1M2DGl336bx3c327Fx0xAUwiwUqHickEYxmmf/isDw8rDTvKyAacjEELyiEvsR+q7QSIQEsA9oagMg4UK3XKIQnpcZwvY/WazlrSFMC/WguWeM0wwHfRHu/WLDNwvUkC/AbIwWuHF5vei+yfhO7lEhU/1frovs+QEejkExBccgFZygXlQ6AL3C2CJRvFshsaFhEAitbhzF5quRJsxAr0ilptFUCwHusJi/+ptLhFcGcIp5/39RdcmZa5MxEcvLUF4A6911KsJzH2N8WoQucLtRCEOYUtiqvXycRn4PLrwoplmhDZ2AHdVdXr/Fqfbdxm8O1AGNAXZA+ECT+FYa3HcSFH00OcFm+Ppjin6/n8nM8KYW+owHIpA5o+oQhUBz8jloHgyNdRpRR3txTAgsqrmS6N8PoPyFQTMgxkE02Zm0KJXg5TDEUyk0KcQGPv2ANkah6ipde4FIO8y5WkRIIEyAAiLCtUfQLTFyEBdgMSfRMKBdpImeoLqfly+1jf9jQ/Xel0ICguNLgefvKCgwgBw8yOnZCee6zx92nTsTlG+JlvFCuENoyM8Wu+H+gQOA4+F4PEFI8EFq9eFwGCtxMBcNT4jjWH8YsBkH1xF2iAefiNXA1VZKo9cJOI6YZxZESG0tEswtRN6hoeFvhgK3u1fkZ+OvaBOoKwFLun9dBPdR5Dz+DVpDIFx7rzr+0fn+S8Z3FRQYzb2w/zjqxfvuxt/uHa//IwYwB9mwawjpCJOBAf0NQNeemhU2dIUGgFoFDrH+ZfPiUJLIf+DyDQR+G/IYiN9o+G+hGeIsOhACYlFXHL/uWrubG28MOKd/lcHodfIALyksimcqiBetsClOIYqhUzOkB9AF+/tLD7tvKyj+0Tv8dw471aEhIehmWefN40PsshaCvivdwVk3P7SFmPg+TAs4dfC6MCPjVyBgNHHR8TsAiC2yFSrvPq/Lbza//53jHeh31wS60CXRregMkOUBbj24/EStOyGuYlmW6BTg79GJ3Qz50vX4toLizqk66DbLy8MwjKKiZp8BziARiFCMaBQ1uB08dJpLUPIKxQF4zcyINI3ga0VMDFRIaggBziuTieTvtbLidIEDmSdaZ+g76d8x3sGjKDZzEhNRMTLvEXLcsTKobyuy2pFG7ujZM5nQHHAhHBAH9022wrcVFPfxbGRhov95VU0LBATTlJ1qGs8+iGSlvN64wPY5Ml6z7zOewnJu7uPXxnt2r2gLNY3DiFCUW+ac2HkliOJHpQKp4gWmNUK13fQLt/nw8W0Fxbegzvcbv4Msv3INaCHDVUxAsHyRzxAugxWTOUs5z1yeX8qY/cpRal2cL8gPOaF690WoCyCkKYjdiMjMZJ4n52r/wC187svGVwoK2GDVfl5W+HHO3YXF8/EF9EBwBdZp7rcXxmbpejGB3izh9reH95MVneqCAqGiiCFB6YfuHfg7AivYD8OFnXod3l0O/z1gJiyKpgF+KI7zZ61lFfVwP8mAEIa50TrYoXU57dLfawt8paDAgihwc2N8Gwp9o/ERnPPGNbFB0+VHWLfhsywVuVd7jvYjbKZAn0GoR1Mh8Xd6XTQ51k+lth6w9kueBe9D2my4VwaK6KZhYLYza1iIcBjGaWB+EQIKfZDPaLp5VSHRO5GB9oP7JuOrTQ8Q+eiUKN0NxPGtxOk3GR9Bjzdh+3OHrP6NZmEdnzG0LN3F/b1ntvDc1LU4XggLJB0PTPF5GbD0GjuhZWBD7UnZtHLy143/4HIex3GCoEJmLrQCbPkYYloWzdStTauE+TAitj6U/PhMOxYBcUCaDVPSPc0QN42jJpDZpBD96gv7hXQ6A8Ck4EIdvJq/RyjLVwmKy+ARKwN4FQvvHQIHfiXH4JoZtoAs9y8ZnyU8vSYjYbOM/SVkh0ExFsanO68HbH3sPHhf5NOjEFERdWKRAzrIhou+6+qt6qnbXE4pnnJmg54T4hXc+VR+yV82SqkFWd5ygS0ICteJsss14BUu5uGHbGgGr2p1qpDhMurXSGk8MhLFb65PBsuJ6jCuVg6vF0VA/QnAEFq9KhOMVuG3QRJImDzKCw9i3n2bHJtPqnB1FY0Ww1EWCER4zR0XLYf8l6LRPIqeOrqWmgmaf3TY9meMV4TPFIIKC6sW/SdqYCBF3wVWY3LTwZ1mLRLyUbILpe3HyvB9aAqtpnGC9hmGIR2RZ7muZY9UFXmtphh+0IWDln9n04hBTe5cQvHFEHV/52uFFGACFipry+k+NGAHTitRyab2zLI1TQC2xLrMFBRy38OQWiqoIKTlCQtEQhoSvBZbQVwlkrlAiUVoZW4kODpNUXB6dc49OvcfxCgQfm3CAlRYtRQF/cuQ+ngNABU2Nf7NMEKni/wrxnBDKXS5x1EYZadhjP+u8VmmB9LOEZwlAh0p6UAOkVJ9RA3XFKubFzneS81A8vHeb54abgn1m0UntWRiy9Byyrpk1uqRzbXmuq8WjAa8opcz1FB2XmewoFMIsw5a3uIngKX5MB1Eg6gtePQW1cdB4aQwjFq+AImFTU0EMbwG0TD+REOgcZrGpnXyIuSYvHfCd9mrVN5gABzvotcIGgOzPSjNENM4xqSBcxBMom0MyOG5NIe+cnyW6ZFNFQTVjhDUVhpsBB6U19UqsDCba+Hnf3IKvDqEf0VlTL62U8nrvy6Z6bPATHnt0BQ4rFarvkamobccfJND1Lec2yqbRjaWx2ereSb+zvQwldGdiyKjeOTodN9HDS1vswgnekLk9QE6OvqDyhyn84Oo9d+0rggOn85Hr80NXTtwHfbRcBbi3qzaNepVslBSxxWYZMd6KCJDplNlBrNeGrEtnmUcieTodzANHykgkP1czcQABooqZUiPjt71atpOtCZ+P6ThCJVkt9vNtXy9CfLZGIXmeGuASQDBa14gjUG5jjzT5vwrcfQigFE8YTDNc/t6b+zi7uNdAxsfpkfTnQEmxwnvRARH7JlpGkIs7ciCvp4xDVC7h+7bs0PhPfTG9h4uPlv0jtAH/RhC2A4LOXn3KB2VhgmntmzsJa5r7qalluiwoGq9mN/DAgDGUVXruTmmwxE9Ora6D61mLYvfhYXX4kdBE+sY74DIV4TTo1o2wq5HZC7nZjUzC7UOvI8HQU4NyrQuayE+MY3a2wNh9ckpThGQzi8fhlkCoZRQN7Mp8Pl0Ok1i4ZW1l8b6+0Nk2XhEhraS7H3xMF8FZrYO7wBAJ311fS/Taf/KxgbghVDZ9K6UsX/Y+JDHQAmxl8yykz3yw27qWcxY1OwhDkeWsdcqQFFT2CkcIpe0sS49Xh4NHNQo0LaZlFvvFfNmVAVO7djV96u5RJvhEz1zGHeblnnPk94wr2x06RnGG6FQjCcvy/5nQgJVtdHwS4WC1uJgiUbZ/L20PooeqfTzrOuKWihIytNAS02+I+i5lSVsLNaM2h8QBiyCTCGTWY8VJRqppJkZM9ALUlSQWA8Q9PsQ20ZMvIW1XUU7OR0OxwVVt//OgYd+Ia7lhO6lcYzDstbdZTDbz8anCgq4s4SNIDzjVTTa1qfDnRf/LznrZc3WFP2Ua9uETrvXhHx1NK3SdOPlNrOcmzarwWarLAgbRbuoTCy7DLjCMsJsQPRQMLdlhklQNYXa2jWQzVfT8PA6hQfcnfIKAe92jmeAEPnT07xg7Q3Eb5SU4p+wCJZcNnW81w29NKNYRPgnxV/YaEcGVX7TIFwbiBfALBgGrZy9bUsrFg8hOXLDqzcDwmwcoitr1Xoepnngur4Gah8r4yUiiy9FFkVWtyiNkKalHYFl5FX/9k0rMtJ9CskZ2Cd5fPrxY2jaa8FfaNzNWgD4zfJyJnFRrWme0cqB/F/WpaYU2OAIt3W/IHQ+txSeLJxYmkUW4Mn83XqYNXML/Z76gEyDhA3r2ucV++gnpPte4y/DGmw9EQaWGAytom/KvgtvINHC5wdRq7M10EVRnSgbbKKKEiO8BBNt8FbGq6IgrbOx1lJnRnsETAqzX1vzeetvseELAftiOh5PLLyD2j26Ufhssh+y3HSkZmBYgvtJ53HIiEFsDmgCUG/2yJcxlyU3MiweOfWXXM4l9iEk0GbUqqqp9yPRxIDnIsq5hGQ7Yg/WyctrBKuGWUaWA7BeII1Jwdynds+gTTwY1921E1RsY8dS9PYQsqyUICjTpHhGLr2sgLpeWbDIOyszQCEVTqenP3e7R7haRcbVWZ5OcSAUK0kJvVHfZSZ+helRgDIPbPKx6Q09RPh3bDSWmxU6yKlGZvnbGrsQ9IACyegUh1b1CMGFi0zYbVwXOS/yuoha90MWSui+7LbeGW+P3qT2XbkLf2HXw5t0mRX67oHTXc7GNKbR7TNwt/TkNAoxaGxBGoWpR7XntSoWED5sf61bKr+zqu3BVPLSNXTHfRkUk+SmA6KNUxPmR8STDslII6p4StA2qkif1a+5OmKMF8WLgEOwoQ6JROlC5PP6mWRTx1EWCqap7B1R+w/atcs58zw44hHDOFkZxdWwBtUsUC0edVuhqI6onp018hseIg2MatQUqtVzNdcqcQxNyvNbpy9WmUcfGQgj1A3ZqWKnHcUU4yCWkc3EEWGy7FmHhKUeWYQatA7EeVVDQdCWSnjtj2PaiMjXJ/nOzE5ma3mgEwG0pir1Ppb6EoxCJOouiAimb1rnCZfSq7kD152aLzt79XHR8Sui/bPXuBY5Cdv+Z2G2bwGd2sB2mjw0ZZjSrUJnRcVwXTDnIfMGKBNyJZEdYWBhmNKKlau7vvcWCJZCOMk2YZKTzeDRPh9vfO9XhQTOaByYPworCm/XvjmuadroQUrU+Igpqt8/qvbXEf1mCH/dJIB6C8JmrzenWZFUIKtmQukBYT007X5d+8d7+BuKhUoUFlBOdCv6xNoZ2gCpyfQSqog3dVwkztFSY+HB+JMCShQ92XB/HI7HIyoTy+m6bXyUVjR4QYv5yAamACirHNsDn0Xdoo1mMjGDqPU9IDCUPoUnegdTslWMx8iGUUBw6gKjPmmjBoJnlEOGQCY2dbVYimh4BjUF9itVrQGf4Xv2WXZXB91ReiR6fqebPCopsdQD2wCweVCt0+npKe2FAGK+sRWlCKyb+E3fE5d74yMFxa1Iyc3iQxybKkwYDWL7cKkuopszujp3Du7qn55QPceOvTcRr6+FmrRNoVdCkkmSfPkJxMk3uikhE1FUsyeUsUeW0TLPzwiHMN7D4fhU2Vw2QuV1QN2rlmE38ClonA1OzGxod0APqRZFovwobHpd9rVsud/eQo3X0upeGBBBYqxW1ZrTppd/wQwL8BqKaCjrwwYGU/3lmz7IPG5es9NZrVz4MBrCmhkrKM/N3S8qv64BbfTCPpgaUeiMub39betjwqBZC71mGzPEgThmq3oSs9J37Th2j4HwjFREmGP3eeRctTOWCIhKDSPEp6fjD+MdzNldOEioo8hJ7K05sH8aD3+KGov2EG5C86k1b6ZBMGGAMoDFwEzXAjdfMJflYdSGVUNSEwGfxfMMGs/hBnltKY3rrlXE3FYNHgWC4PnQjd/4XUVbz9dAOZAYdeOzzaDrLSh0nqgHi7L+CFLFKLVscRomn3pgnD4/Dy2dO+6n68FOY/H09OPPvp9E0/l/dAGzg15qfuNPCghIXf/48PAHsI7fLiiQBINmoAAt0YkKqjgasA6iqmdUht3vd9zCiphfRkXBTUZBIQf4QWzjab9kq6xdFS0Wad7tsGDuq4rTwxMU9eOgJyAqdQNNhh2IqUD16nZav9k4IuyWlb7pQycIF8LU6rnL9yRSQjaGb1x01XQhu8BwWpbOelAOetBi8XDiaak5bUCkEajPDutK8E6fN9WuCXllD6GJmDl+wWnZtPfDDgILNEGxWzkFXnQEYyNKxOvEkEQP2CHHoOTlvHMo0GgmPLNHL+nMWnpQWcuKvAWcSBSAurFW2tV9c0FIYyMpmNcudCRaH04r6SEKA6V0ymJWhwxAGpq7AfkjGyjykipwIUj0MrXH4ZmbJJ4fpUBgy3I97mcTUIHNm7zOmfOjdwEnflQBkyMKBuqu2mkfDS0o3PTa2KS9ixy7fEUrGRg0ahLCsdcUVW+F6krLotGb5Meg18g127yDQx1oejX9mVZ4Vsg8midNr+GdamDRethY+0CnLTi19YT3WuKwNcVGqBHJ/aDVYJy1OG3HoE2IruZMBDPzH9M0sKZsj98Q1vIILAM91LSJQfeXyo/fLSg8glDAtlkxEiDLA4i+sl1aHdBcpqszl4gynhWMKxt7QIDc/vERG9XcTIpC52UmQbRzs9qPWNRF1Cv0DRXNYZOs+vCrO8DVhVPheHySRZnhY0KjXgTSaSLOOehChMABFYfEnnxEip9nYH6xfqVK+B5dl62HMT031kpuOxGdO5+witZen+Qdm8BtEW04KGjlD8hDGlIcV7YZ4HMnyF6lE0A2P1+5M4N84k/Mc0jQdNwPbDTFAdqGzNMNKdqV3PEPodUodJ46nQ9HBhPqiWr4APrz4nuP8j6eH5tyMduYVbqjLhpPxWHkd9EoUxSnXGpe6+2myc3W3lymZPwE4Yj8jZ5bAWaFi5LCuWolAvAr9y0qd0VsQsUIcBvyBlv3BW5E9PEkyMhOdKsIjkTBgZtur2ftDOe9biw89zgN3JB9UxJnkfsnOawCO3jlrVet5rowD0Tut9eNLvMiLx4OKsD4XYRxRgNAvXt4eCAh1GyxHA8IDzsIk0Vngp9T0jaDvngKbGIPcl9qc0EFCWgmGhbvx3KJ8h0Ihz6PZ3OG9lahVR2JqyRqUXqdrqGss/J1NAyE7T3ljd8mKAAoySSPcoZ4qo0gTrFTSF01GptjL2gcfffl1HZAGL+c6PPecE0LQFEbMpitqMEoWjIs2GJppjrVMUhRgGKMplNbGgxcW+yq4PT09GNY0YwJtreZDKocbLEnA6L/RKAOMC9ARPY6bQTb9PTqp8jGVJX+9g7amSL9M1ABjyVHPvCNadSGafrMOMmXVW3QptIm8Hmqotry/HISrxtIy27ttN+1KVI027oR5FK/ArQcOX1UZRqGPzHxSzpr43bV0ApPz8gJ6rzOdCZ9Ko9PkQkT9B3SHBqI2MJzhiR/5uC4Oa6pgijcPyAfZI2h5UWGSWsIuZkzfnNPdvH6Pt5wb/LG+fu9VWXVjaf+Br7HvjLWoY70qhqpqQJqtVPBtASnYC6UNwhQCKhZHTm6HqCdcxvNVRMwU8AE2BbclaJ5MbSbOTPbssZ3dC3Im0ekMhTF81m1CbuzXqYv59zjO/C8/bnU9G3WHFmvm7l3dLl+i6CAaiyS9QQQCUyEBdPN57ejdRqnC/bpsJWtPOxHOUGznFggTjbbDExf11kBsTCQo1TOXNijkJJetQz1bdvmNWAHr4PhwDcghmg2AWi3RlfoiUGTYjyrbg4hzHYaq20NpFrmJVq0eb816Kf2LjxJmTkoM/YRsUHrAtD2Jt5QtR6m1ysyjNCCePyZsUzdT3DXKUgNSy6JYvTHUQayHE1FVKSdJ3F3QJq6KT+DWBmezFN8llPjks7YRIkuQWNEGZOYU7vynM5+E6zKqD6hIdNcdvt9ucp0/CueJnjDAGgjRPuAeeeswhwKVeimhZkkv5M3RIl0u0eFp8ZRmz8br2ieB6IlBwjDvfIKnptZpN5wAQ3jbqEqLqE4Ck/lmrQ9Avg/axsENQeqaXrOWWf6vAlDNbfiFq3Wu5nT7IDXY8+gUz5LMPPLGYvR+1PVkxKtB+qLOVsHdswP81EcJBldw+YMOYpWs9uV36NRCNcekXGnD9Q2abmp4RQcCrLscIrJQ6Er1WJVo4OhtwCKgEfMVl7eelG44+Go6pbZYyxJL9cbGDa7coHY/AfqGoQRAAA0h7V70kQJo56UlMZyXbmHqtPWNZpzVs3gME1kpHldtAW9AZSwyWEqi+W2ofskLGx2h1NJ7FUyoHNdItL95wFqph9QKxEEBJwAnlXFHjzrIp6Fgz/bI+tqdnvigoJZgmkv6KStIGyL7MA+jlvHL5zE1Wz1kRW4C0+GkjW85Badgb4js2Axlzru1dfmGZ1xGiG+AQEqOIXWBa7i3QVK8TvG3DRB4uQZqi3zJtjX6M5Es+p5/8jnOkwHnpR4vkiVPXPNdM56ml7yBug8c+0TadF5o0dH47lLmblpyLPNbSKvNw4mbdaVtMir0hk0LXYqB1ZKXxlABXOJIdryGXhMQMOTXAOHIj03sZsfTpsSIyHM9o3OLWxar0aOqtZwOp34fE37SSpOJgcEvCl6jWDmVd7mvF7MGQcfGnWvdlCQR6yCO80NaDPy/cWaL2P8LUHhNdJm7K6ZzZetEA8lK37286LAIzb+adL3TafABhzjZJJQHnhkhyoCUojqxftUF53iAbTbiqriuHYHu6FS9Y2fhmSI78DFeezYRVDgC/afhnHAZaKI8uGQqBlo9p4yCZC2NJmQgQ3s2+b68urtQzFUtxa6SWXNVA2MsUclY2OGgWouVErGYvipNZgBlOLUBnoQD0FHA2nVjaNhxTDlirnJDumgLcnFPlhE0z8eT9spoCdmo7Aj45oLckBVeIsajOZ2u6QzwMd5yduJqzbvoCrpFZ01QEjspv1uL8+6dH+k+70jCw3EmPdPisDrJpZdLks06okcWNpewT8+U9EWiAhSwoncNI8CvCAGnm6sUrn25i7kGt/iDYzLTvdwlwLHyVnzNbAuwB38oIcZ+FsBTcVE0LU8GS4RTXOjMHeKMfigOAlAcHicFb8IfB2FNhSHE740Yc0f8Mag/WBZVw+vxWqHWDQX9pmfsb4ywU2ggN+TJaVZnxfyBg53CDp2ZUd9jFXN7Wj4SHfT3hQUWBy4zaoNBKrAfQhgju2tIxgcfaoazegY1Kbr6qzWGnGUmMX87VSzrFgHVFbHTSDvpUY7bhqT2frqT54NtQ5BkXDaSnJNgHzYokl7IGz+d4KM46jqMzcrpGtxiqnZJqErStW7YmBk63gIAa2i2IlT0GvFdZxiJYcxGSqv0Xr02VsEHABTCBj2O40qBGNIBtaqfTiks7uNplZqYzDzgnZtC0T7gd6HpvPvGkYfxEsM7ebGCKpaqqehWaDOsNEIf6v3pScpibAZh5d0Dsqk/A7XsLL7O4TdNZ3VoY3AyzIbAT9qFAsdf+omBYVWnlGWiu0I1PsSdV1nExjW5b3TlVGQlq8BAbPvfWlpm59xgjNvKAgeTSM1rzuvS9fvFW90zQ8jhI7HKU7wK3RGtOVarbF2Uw2mu5oJpGYN/4aJQjPMeITYVc0U7rf4Wc2O5IhJTaO2k4SJdL0HEVXqVKBA64JRROyj/gSjAOQgm2JETRCqvE4TZVS6Wfw7wcAu3eAxsJ6Ww6hqknxk3pknD3sDgoIxBtGAyqxdyQ117am9kLjjMJhvV+0060C+odYA1kD03twmBP13vwZVTotnQLoCPtNVPAz1/avJQ5UsmR2KBr4xbveCIIAHoGQwhphZ0Bha2EIpsZeDub2GSW1I5vvgOXp0HvEadXLgc/M827xlIUdmQrruGEEEH+MLfDTMoSqdIXgBGMqpD81G8xNUcOLZ+3P3ZyRi7dUORZ5dT65i8/JbdLZQZCZiUHXV50bPkGd0NuCv/by+w28bPqj+hjnjlMaBAu/GFNVNDWHBNY0bm22bdpeXjc5QqbtHxNMd2TSLM4cbvKFaVdcyOjYTjA7XvNFq2sLGi+Fdl2vyS3SOyTRHZ2HdCnRW/q50t0K7VI1IzRrMR7Uo/zo/w5VrJw5CCLj3b+7BQb1bQSOc4ELdM5v2FYxCc/CzZp2wRETiAmHy6ldf9CSLg9mBypSIhW8m5UE0hLxmK/elYbHZUnU7wFjM7QS71xbTYt0x1IZK6nWwuF0AnozHd32RVSqSITqDeX+28yM7chMN5r1FkHW0ODH+PqqAi2bj2nxg9ybaw2pLjmbrFp7kClBBgwHDrHTbGsPApLBno1pcVXsBY/N+BjaBoeAkoAkEFR8qYjTfeFQVel2r0Vm/g7kyeQjzj5qB2NXDTiPQY6abbNjm0e1ebLRxuE3naPatqusDn1sR+gs6d1wm4ho11Vo/rOM2guHk5D+Bjxh7kIs9i5pJKKlzhK2OOaMT2nTgqZ+xoZKavHpgpA2j6DEOENyIWMTzHQ7TlvbNkGq64kcK8IUueBWuPWhKY2O0OxuySPF+2nq2ijAYBuNn/R8PVucsdFsxIMUo9BDBNcCTGjR4jnbtLlINJVcMBnN2XoVHsY5vOFS6ltSDxCisLAS887M9OK9B8PrGHhxH1Ti6Hqvenje8HuuybKc1VSks2OBVrTVkuZrt08NysThAl2nz2OvVkGHtkD1t148GVvYTi6oWpXjc7CK817uZq/23bO6ddSlU3zSuPTPAajWhpERaN1WZST8GGGZRXSdhKj1tNTS3zzlYai9Bpmw1A2DrmXtSTQF9VhB16wxO11vW6L6qgJkx+9nEkWvs9ppx2J9luhCkmHO2OTOar9QXdIY2AmGrAGegwMY15mXmRurXVaBWIxq7MMAYaKu/pDNV08XSn/v9Rr3fLTqT0T+4FDdrZKIDuxjyiN/YURgrRoWU7MFAw56yDfoO1BzUY4T1BcofRk+TEeA0vXHmFo3QrhwwpnZB53aONzD/Vvc80Gtwg871ghd7NKWCm5mxDMHcmM0C8/a7l7wBHr1MMye2RWEl/Oo05Bs8iAMP16JT4IKfKSSBiRX1vnWgnaaW8X4iRgHnwrDhbNd78LrTPfnZXnsdzDSPhbfYc2dgIwjWLAQVgQX9dCShDdNa7ZTTTmlt84L0uHpGUjYt9JFDgcXL7/WgKcu323y7mlgTaYf2CLSFfuZE+zmmc4fu7mXZUF6L5MT1IhdQbdjeaevFnIO6jRqes6mDu5SXqcTXncGxNLDzKNG94jXql292IuUtTNe57npV78L1nLXwyXBFZ6X9UvW5u3BhEJjZwRrqq0yLkxha0HX68y06V+Ic1+nPujleo7P8PZYbYfG/c8gzPsr8ftAEeWfKtnreNEhIPRu6JgxipskStlMTtv0tOkM7iyPWTDWBvkFv0bl2L0FKFg2qtCdm1vGTop/truVr3ridZp7p9lX+U74vpolc87O3GI7rOXchwCI7dP/qQd1e2YO3+LkLndtgplNVldV9zA8bTU0HoaFUtFWjGlnxxyTyftXstmoBJmrrZSNID6kwNRhqUYobFkE70kyGQCAU9z5H2fRgG1WF/BYpR5XYTkVuvlo3Zx1dejGZR8GCvuxaN+fsnNqTF5E93sCrm6nE7nln8L7w3gDVaolNgUCi2rvdxdlVRIbjXs2Z6uwNOlebdwe61Ad/bljc7eyu5dya83CDzjxJb6Q/azTkbTqvOEY/dqCgFcLZPS3/8L6UbdAZgn7ezXQZFku22lK2ndr76rq+zc8aqejVPQ7hauva8YVLOqsW4LdCNp2fowlxt53w5v6+wRuvpZkTM3dt86Rxvfxtfr4152f87LvWrzU7b+3BW/zc0ymfCQoWDwzhJMzgYctSelPV7RmpjgEanVj9pCSQgxMzaPFgumCcp0qfV329WTQdVKrdft4mjNGBuLWcU3NVO0huGjS1F9IfrkDGNViYKoSYPtSwLRrdgrljEStt9YO5x7DBgJsQKbab66mkLsHmOrahZoeGJqupBVuyK/EWaazJYc1v7qlqNnS38ULU4BY1F3o0jdvsZwzYzurzVxu5F1HhSWWxAIOBYcQiNoQ9ahi5t8Qj2JM82UbTXhJPV6L12ADmKt7MIl1wouHEj9rL9Gfa1zEYA8dN++on9Mc5PMhbYUSjnNpsfesWlahzDzbn5dmc8drSzHtwwV+dnnBT9xRxrNXjw+OWsu0tX8OVrccG13a2EGhoYjAnIPCPdJeqGXg0jUOzT7VrfNrMtZWmrsa2RPmeepG49jZnmp/r7Lp3p6eZg+e4qe1QgTscBXxv8XNrWnZPvWDRhIHSiCaQP0dz4lrUSE04dRrtjTe6YyATDlAaPhMUcHlaZQF4r2nnar5UNSJeuMm8vyDMRYorVTdgGvL5epEbYWhsznpzqsO4RoG6NmlyjKkdNFegDfhKQO8yLZcNU5zaZ800iGYJNrfScr3FbAR1L1jAkvrM441UYl4bG7wysUnV3WUx787VnIltjKriZs2TEF3fcix6VF0x9VJrKQ5hsL+bLcgVnaPWF8i9eiTBrx5ye0HndpvOqAGRLP25B8B19baPnv5Ms4Wc8Gvpz8KgcF1+aCsEYBQiBFbU/VBzVWsrMIAJ6yTPD/VfvXDhrAUBaAed03M6M7YAHjl5Js3EjK+mbNOEsQOpGm0ZrGXxEr2eDjQSRA5Bje92f7MD6zV+fu+cOyBfLcy8A8o/42dnyWXnILV4nnM4z1n3MbJez+ELPaL1BW/YiXClUbDKre+nBU9XgBqWwNIDNZ6n5VpW3FWKq4Ya6APjszi5tjiCYNhGiNvpS/ODgN3eIs3Spuo6syHx1RTDFgjU1cqOjFfblJdpudRWbAE1hqE/+8tU4my2mbq15ISPo7k8PX3mL+YMUwy1AMy8UZebbuYYewGTnnWK5LWiJtVqIbm36GzqirrNHMoQbc+9z79CZ0dcBRrPuls3/OXvpz+TSUP5hFpeIhRQIAgTQsl+jQcxbayne1PtXx7pQmQ0ZceyLulMvEXBOvIVXYoA0JG5fqaXN6WPG8UX8wTljUdwP6wDgrEQyduDqlpoG436IfEaP793zn3Da4j92Xulrth4k5/Bf4sV6I0/mTOAWgDExD3M7FAB0F7yhgGuVxpFE6HtkRocUk0aO2k+Yq3tdzst93aKazXm89spqCCJ2mFoQsUEGLPlxmGwk7lYIlY1EPFGWi7Tn3tRDkvq4UZ5mZbreO1krtYek6HBKsr4Gg6QLYy1C0WaFpv9602o3JozKbyZYb2KMp87r1rzwBleQhW1uB7jj0SuZjbQMzrL/SfM1YBUniymMbyXzt2N1kPee/IPzawhbMlMfyX9GeGlwiSJiNvHDSQSP8l9fXfn6hwCwb7OG/DsdNNirYrd3KLz0LEcu7i6RKsVr32ess0NltSccAam9xonVPONRooVqcCiiX2xoclHr/Dz7Tmnqzkj9ycCqaXJQVdr1I2NMIB8g58xsuEOrntgzBN3OWewHDNHa92wue6Nu+aNPq7BzCYX/wORl8AqWq4bSKI1HzoY8zwtt1jq62WKK1w266J4hgaaqK0+HY68Eb6jYa3OPCQahtw3Hx42doCyKWZwYBUz9Z6wYIidDiql9VTQuQXagt0HjDRg19TltBhOwtJiBLD0lMLq0GasmusAZusFSryVestW2OQwjaQFGmW1WV2N0UJnu8sTiwSzLFuRFKq9TlXJ/ox4fXcjNf7ItG89JxrjUbTpVP4FOifRJq7Tn2Gba/fstpWcx/Xw+q+kP2vEdvPug4doiAH0pE1d1P3JUxyxEnbqQshD4xstmKw2w7ysuEvHj7qnCgtKYN6CqLjZq4Z2d97o7kyCkqOtK3ImqttcxOfC0KxmdpGyfeZF8FfqodPm2ShWKlDDzdMGEm9lE1LcUsRB57WbTNSiwQtHjVCFUMs9iO58v2DPBvbB/eDt0EBFu1fRORXznkyHkfcbLHQB90uDdlDovIvv3/R6tM2F9zzFVV97npaL07snq1ymuHbwptHdoiizM99xsKScXHodh8oQ7p7pCOm3VJWScBGpaqMuzcY6XxrwovaVoyBRYlVL7Z1dns3DYEVmejOXfoJrOm/UEFbDB5B41Gs4dHdmpoZQNcLSqZqfLT03WuwDJleMBs/Tn9uW/tyfu1gz2mr25q30Z4JZFptSm2o73Q33XjrfTn++PefuomUU7Bvpz/26KKD7wf1HUVewacWylynbiQj+O3kjqFp+zc+5tw285I2mmMZabT1zL9uvNju1KqHBvii24X1zr6VsX885bh68n6fz69pkWze/XZfac9HExuvUeBofV/zMyOTOG/Ut3jAsxjn73TYhgfFKrkfYAk0uU1xvpeUiqWj3kxTX7gaspirT9ccHViYkOhw6CNNcL1JTenKVc4bqqjnA/pd+YHYbnrWHrHYknmXoUjQbHTabqqxW7ovE2eIlopodRNbtxB8s1PehaBTdYezuUrWROzCogT9aMFUDbao99+30Z57KtPnU5p9Mq0AQz3X6c0884sZ3PaYhbXEQ76Gz3/Cki/TnqJmg13NmwBWj+96R/mwxHK2xHcKHRWZikkiJh9a5BQNdpGz3KNFf4Y1bKdsveOPCramYQNsS6oZuy+NQAa8kVetfTdm+mrMm2OkG/Vk6f0+NL9bfSE0azfEIr6TG6/58zs/0eJT5nbwB/tLl7M4AHHAMSHtNo2C4swFk/YJd4txOy9UozNVwCwy6biwNmMBJ1Dj5ntqr9BbVysA7jXQMdgooEwCDOB0125TEhWpuiHUcUy/prqpi06zJdgF6IbQVX4R7rfRQWIT0LhrYFPxFaK6FXOMaq50I0Byg1kOdg7nRbcduw+O5kQOzZ1h5MJq8khoPxhwHYzS3pUFPJqCY9m15Jmca6QkETaNkvR82w2qFRbrqfIvOIMxoAWfnNGytBuUZom1zNhow/bm8TH/uYfjKC6p94DXZFLm7zj5k+B5v01O23YuU7eNhtBgHtdVXW99bvAHT4pqfQcNbvAFaHVlxe+Ha97TvZBhNXtXzsrNU/VdTtl+Zcw9B4We7aRfPhWJ6OD3NPNtLupEhBFbeb7E9iGsiepkC0Z43xnOafQ8DXyxAr3s4rlPjewg3KLRYukazPYrxSlKY2nOL1XXo0i/JAmxpuf55Wm4n2lZmDDEPVJFpaaMALtrA8wEeHneGngeqcWA8LNxunjeAlLY5EoGMIMhUhSY1TFoABNdQ7ETVYebz52yMoPEYPdhktjT3HkCmc1aXpjNcAJutFzhhXQdzn7FwStC4eQMb25BGH+wk3+11zj2J60BbtvR5NPSYITBmgkMjKYuluiuA1encFwVM8xqduyelWkivt5D2azr36EC6RXH8p+jVlCpbQllrGqNAtdfKafIaUa6R1AvE3IDgt5wBWxO5bPnY5rnwj+Zc5X6Bz1HUDGvyG9gPHgC079GHHYzEXK9548AaELf5+TZvXPCz9xs/r+bal/VtML16Ov9qdRtQpHkU3uh0/pU578n7fguoUz6q25ydSeXx0A9qalJcKwgO3O+Ph8fNi9VL/eF35+ce8Kf3u0qNN0xkb3uQeSe1ut4g6XZSmHBmNj+5VY+GkRVndrn3SV2SK9+XB1HIHXY3o/OZrOv3jw+KNBkqtyyzF6kGdo4GyaMqMnX3/byHDEh6Da4i+0fsHh8uzywUmg0WrELdscjxXprq0rvd47MYoLUuVhaNzWNezLm1Z3Usm30fHmLaBNXq01Xf0n7/mO05+Ez7srd4JT++e85beJ7eT2sMc6HG99L5lTk711WP53R2t+Z8FSbVdo/5GpT8KZ33es+Pjsq0ibb/CZ3ipmI+nzNUDtYaLbZWQsKEjXFrzsHqFXwAPzv3fjr/7TkLf3XHNO8n8/UL2+K49GLOu4eb/FxmGsTv2oOAS3DxV3M9REJedVrqrrCWL9etPWtJ1178cfF3J6oVVb34bKPz5trV9rKvxblAimGrN+/34lF+Pufn87zuAXLx2Xb5qr133Y3qZ3O+nif//mt0fv167kznm3N+4xrXc/4VOn/MaO2WUGr9veZeodHVnGu97u3y2/j56v036Pxb5nx5t+1Ly605v87Pv7YHv6pJ8X3cx338g8b/B0dcFB5JiIqcAAAAAElFTkSuQmCC"
+    },
+    "footholds": {
+      "84": {
+        "id": 84,
+        "next": 81,
+        "prev": 77,
+        "piece": -1,
+        "x1": 1980,
+        "x2": 2070,
+        "y1": -26,
+        "y2": -86,
+        "layerId": 5,
+        "groupId": 0
+      },
+      "67": {
+        "id": 67,
+        "next": 60,
+        "prev": 68,
+        "piece": -1,
+        "x1": -900,
+        "x2": -810,
+        "y1": 154,
+        "y2": 94,
+        "layerId": 5,
+        "groupId": 1
+      },
+      "24": {
+        "id": 24,
+        "next": 26,
+        "prev": 25,
+        "piece": -1,
+        "x1": 2520,
+        "x2": 2570,
+        "y1": -446,
+        "y2": -446,
+        "layerId": 3,
+        "groupId": 38
+      },
+      "54": {
+        "id": 54,
+        "next": 68,
+        "prev": 0,
+        "piece": -1,
+        "x1": -1080,
+        "x2": -990,
+        "y1": 154,
+        "y2": 154,
+        "layerId": 5,
+        "groupId": 1
+      },
+      "89": {
+        "id": 89,
+        "next": 90,
+        "prev": 88,
+        "piece": 0,
+        "x1": 1060,
+        "x2": 1143,
+        "y1": 9,
+        "y2": -3,
+        "layerId": 5,
+        "groupId": 4
+      },
+      "11": {
+        "id": 11,
+        "next": 12,
+        "prev": 10,
+        "piece": -1,
+        "x1": 900,
+        "x2": 940,
+        "y1": -326,
+        "y2": -326,
+        "layerId": 1,
+        "groupId": 32
+      },
+      "83": {
+        "id": 83,
+        "next": 82,
+        "prev": 85,
+        "piece": -1,
+        "x1": 2700,
+        "x2": 2790,
+        "y1": -26,
+        "y2": 34,
+        "layerId": 5,
+        "groupId": 0
+      },
+      "29": {
+        "id": 29,
+        "next": 41,
+        "prev": 40,
+        "piece": -1,
+        "x1": -810,
+        "x2": -770,
+        "y1": -386,
+        "y2": -386,
+        "layerId": 3,
+        "groupId": 35
+      },
+      "66": {
+        "id": 66,
+        "next": 63,
+        "prev": 60,
+        "piece": -1,
+        "x1": -720,
+        "x2": -630,
+        "y1": 94,
+        "y2": 34,
+        "layerId": 5,
+        "groupId": 1
+      },
+      "41": {
+        "id": 41,
+        "next": 35,
+        "prev": 29,
+        "piece": -1,
+        "x1": -770,
+        "x2": -720,
+        "y1": -386,
+        "y2": -386,
+        "layerId": 3,
+        "groupId": 35
+      },
+      "86": {
+        "id": 86,
+        "next": 73,
+        "prev": 93,
+        "piece": -1,
+        "x1": 1401,
+        "x2": 1480,
+        "y1": 34,
+        "y2": 34,
+        "layerId": 5,
+        "groupId": 0
+      },
+      "59": {
+        "id": 59,
+        "next": 62,
+        "prev": 64,
+        "piece": -1,
+        "x1": -360,
+        "x2": -270,
+        "y1": 34,
+        "y2": 94,
+        "layerId": 5,
+        "groupId": 1
+      },
+      "26": {
+        "id": 26,
+        "next": 27,
+        "prev": 24,
+        "piece": -1,
+        "x1": 2570,
+        "x2": 2610,
+        "y1": -446,
+        "y2": -446,
+        "layerId": 3,
+        "groupId": 38
+      },
+      "53": {
+        "id": 53,
+        "next": 50,
+        "prev": 45,
+        "piece": -1,
+        "x1": 900,
+        "x2": 950,
+        "y1": 34,
+        "y2": 34,
+        "layerId": 5,
+        "groupId": 1
+      },
+      "71": {
+        "id": 71,
+        "next": 0,
+        "prev": 82,
+        "piece": -1,
+        "x1": 2880,
+        "x2": 2970,
+        "y1": 34,
+        "y2": 34,
+        "layerId": 5,
+        "groupId": 0
+      },
+      "88": {
+        "id": 88,
+        "next": 89,
+        "prev": 87,
+        "piece": 0,
+        "x1": 999,
+        "x2": 1060,
+        "y1": 29,
+        "y2": 9,
+        "layerId": 5,
+        "groupId": 4
+      },
+      "9": {
+        "id": 9,
+        "next": 6,
+        "prev": 4,
+        "piece": -1,
+        "x1": 680,
+        "x2": 680,
+        "y1": -266,
+        "y2": -300,
+        "layerId": 1,
+        "groupId": 32
+      },
+      "56": {
+        "id": 56,
+        "next": 57,
+        "prev": 55,
+        "piece": -1,
+        "x1": -50,
+        "x2": -50,
+        "y1": 94,
+        "y2": 120,
+        "layerId": 5,
+        "groupId": 1
+      },
+      "13": {
+        "id": 13,
+        "next": 14,
+        "prev": 0,
+        "piece": -1,
+        "x1": 410,
+        "x2": 410,
+        "y1": -240,
+        "y2": -266,
+        "layerId": 1,
+        "groupId": 32
+      },
+      "40": {
+        "id": 40,
+        "next": 29,
+        "prev": 39,
+        "piece": -1,
+        "x1": -850,
+        "x2": -810,
+        "y1": -386,
+        "y2": -386,
+        "layerId": 3,
+        "groupId": 35
+      },
+      "3": {
+        "id": 3,
+        "next": 8,
+        "prev": 7,
+        "piece": -1,
+        "x1": 720,
+        "x2": 760,
+        "y1": -326,
+        "y2": -326,
+        "layerId": 1,
+        "groupId": 32
+      },
+      "85": {
+        "id": 85,
+        "next": 83,
+        "prev": 80,
+        "piece": -1,
+        "x1": 2610,
+        "x2": 2700,
+        "y1": -26,
+        "y2": -26,
+        "layerId": 5,
+        "groupId": 0
+      },
+      "58": {
+        "id": 58,
+        "next": 46,
+        "prev": 57,
+        "piece": -1,
+        "x1": -50,
+        "x2": 0,
+        "y1": 154,
+        "y2": 154,
+        "layerId": 5,
+        "groupId": 1
+      },
+      "25": {
+        "id": 25,
+        "next": 24,
+        "prev": 20,
+        "piece": -1,
+        "x1": 2430,
+        "x2": 2520,
+        "y1": -446,
+        "y2": -446,
+        "layerId": 3,
+        "groupId": 38
+      },
+      "43": {
+        "id": 43,
+        "next": 42,
+        "prev": 47,
+        "piece": -1,
+        "x1": 270,
+        "x2": 360,
+        "y1": 154,
+        "y2": 154,
+        "layerId": 5,
+        "groupId": 1
+      },
+      "70": {
+        "id": 70,
+        "next": 77,
+        "prev": 79,
+        "piece": -1,
+        "x1": 1800,
+        "x2": 1890,
+        "y1": -26,
+        "y2": -26,
+        "layerId": 5,
+        "groupId": 0
+      },
+      "6": {
+        "id": 6,
+        "next": 7,
+        "prev": 9,
+        "piece": -1,
+        "x1": 680,
+        "x2": 680,
+        "y1": -300,
+        "y2": -326,
+        "layerId": 1,
+        "groupId": 32
+      },
+      "8": {
+        "id": 8,
+        "next": 5,
+        "prev": 3,
+        "piece": -1,
+        "x1": 760,
+        "x2": 810,
+        "y1": -326,
+        "y2": -326,
+        "layerId": 1,
+        "groupId": 32
+      },
+      "18": {
+        "id": 18,
+        "next": 19,
+        "prev": 17,
+        "piece": -1,
+        "x1": 2160,
+        "x2": 2250,
+        "y1": -386,
+        "y2": -386,
+        "layerId": 3,
+        "groupId": 38
+      },
+      "55": {
+        "id": 55,
+        "next": 56,
+        "prev": 61,
+        "piece": -1,
+        "x1": -130,
+        "x2": -50,
+        "y1": 94,
+        "y2": 94,
+        "layerId": 5,
+        "groupId": 1
+      },
+      "73": {
+        "id": 73,
+        "next": 76,
+        "prev": 86,
+        "piece": -1,
+        "x1": 1480,
+        "x2": 1530,
+        "y1": 34,
+        "y2": 34,
+        "layerId": 5,
+        "groupId": 0
+      },
+      "12": {
+        "id": 12,
+        "next": 0,
+        "prev": 11,
+        "piece": -1,
+        "x1": 940,
+        "x2": 940,
+        "y1": -326,
+        "y2": -300,
+        "layerId": 1,
+        "groupId": 32
+      },
+      "30": {
+        "id": 30,
+        "next": 33,
+        "prev": 32,
+        "piece": -1,
+        "x1": -450,
+        "x2": -360,
+        "y1": -326,
+        "y2": -386,
+        "layerId": 3,
+        "groupId": 35
+      },
+      "2": {
+        "id": 2,
+        "next": 4,
+        "prev": 15,
+        "piece": -1,
+        "x1": 540,
+        "x2": 630,
+        "y1": -266,
+        "y2": -266,
+        "layerId": 1,
+        "groupId": 32
+      },
+      "48": {
+        "id": 48,
+        "next": 47,
+        "prev": 46,
+        "piece": -1,
+        "x1": 90,
+        "x2": 180,
+        "y1": 154,
+        "y2": 154,
+        "layerId": 5,
+        "groupId": 1
+      },
+      "15": {
+        "id": 15,
+        "next": 2,
+        "prev": 1,
+        "piece": -1,
+        "x1": 490,
+        "x2": 540,
+        "y1": -266,
+        "y2": -266,
+        "layerId": 1,
+        "groupId": 32
+      },
+      "42": {
+        "id": 42,
+        "next": 49,
+        "prev": 43,
+        "piece": -1,
+        "x1": 360,
+        "x2": 450,
+        "y1": 154,
+        "y2": 154,
+        "layerId": 5,
+        "groupId": 1
+      },
+      "60": {
+        "id": 60,
+        "next": 66,
+        "prev": 67,
+        "piece": -1,
+        "x1": -810,
+        "x2": -720,
+        "y1": 94,
+        "y2": 94,
+        "layerId": 5,
+        "groupId": 1
+      },
+      "5": {
+        "id": 5,
+        "next": 10,
+        "prev": 8,
+        "piece": -1,
+        "x1": 810,
+        "x2": 860,
+        "y1": -326,
+        "y2": -326,
+        "layerId": 1,
+        "groupId": 32
+      },
+      "87": {
+        "id": 87,
+        "next": 88,
+        "prev": 50,
+        "piece": 0,
+        "x1": 986,
+        "x2": 999,
+        "y1": 34,
+        "y2": 29,
+        "layerId": 5,
+        "groupId": 4
+      },
+      "78": {
+        "id": 78,
+        "next": 72,
+        "prev": 75,
+        "piece": -1,
+        "x1": 2340,
+        "x2": 2430,
+        "y1": -86,
+        "y2": -86,
+        "layerId": 5,
+        "groupId": 0
+      },
+      "27": {
+        "id": 27,
+        "next": 28,
+        "prev": 26,
+        "piece": -1,
+        "x1": 2610,
+        "x2": 2650,
+        "y1": -446,
+        "y2": -446,
+        "layerId": 3,
+        "groupId": 38
+      },
+      "45": {
+        "id": 45,
+        "next": 53,
+        "prev": 44,
+        "piece": -1,
+        "x1": 810,
+        "x2": 900,
+        "y1": 34,
+        "y2": 34,
+        "layerId": 5,
+        "groupId": 1
+      },
+      "72": {
+        "id": 72,
+        "next": 80,
+        "prev": 78,
+        "piece": -1,
+        "x1": 2430,
+        "x2": 2520,
+        "y1": -86,
+        "y2": -26,
+        "layerId": 5,
+        "groupId": 0
+      },
+      "57": {
+        "id": 57,
+        "next": 58,
+        "prev": 56,
+        "piece": -1,
+        "x1": -50,
+        "x2": -50,
+        "y1": 120,
+        "y2": 154,
+        "layerId": 5,
+        "groupId": 1
+      },
+      "75": {
+        "id": 75,
+        "next": 78,
+        "prev": 74,
+        "piece": -1,
+        "x1": 2250,
+        "x2": 2340,
+        "y1": -86,
+        "y2": -86,
+        "layerId": 5,
+        "groupId": 0
+      },
+      "14": {
+        "id": 14,
+        "next": 1,
+        "prev": 13,
+        "piece": -1,
+        "x1": 410,
+        "x2": 450,
+        "y1": -266,
+        "y2": -266,
+        "layerId": 1,
+        "groupId": 32
+      },
+      "32": {
+        "id": 32,
+        "next": 30,
+        "prev": 31,
+        "piece": -1,
+        "x1": -540,
+        "x2": -450,
+        "y1": -326,
+        "y2": -326,
+        "layerId": 3,
+        "groupId": 35
+      },
+      "17": {
+        "id": 17,
+        "next": 18,
+        "prev": 16,
+        "piece": -1,
+        "x1": 2070,
+        "x2": 2160,
+        "y1": -446,
+        "y2": -386,
+        "layerId": 3,
+        "groupId": 38
+      },
+      "44": {
+        "id": 44,
+        "next": 45,
+        "prev": 52,
+        "piece": -1,
+        "x1": 720,
+        "x2": 810,
+        "y1": 94,
+        "y2": 34,
+        "layerId": 5,
+        "groupId": 1
+      },
+      "62": {
+        "id": 62,
+        "next": 61,
+        "prev": 59,
+        "piece": -1,
+        "x1": -270,
+        "x2": -180,
+        "y1": 94,
+        "y2": 94,
+        "layerId": 5,
+        "groupId": 1
+      },
+      "91": {
+        "id": 91,
+        "next": 92,
+        "prev": 90,
+        "piece": 0,
+        "x1": 1217,
+        "x2": 1304,
+        "y1": -3,
+        "y2": 7,
+        "layerId": 5,
+        "groupId": 4
+      },
+      "47": {
+        "id": 47,
+        "next": 43,
+        "prev": 48,
+        "piece": -1,
+        "x1": 180,
+        "x2": 270,
+        "y1": 154,
+        "y2": 154,
+        "layerId": 5,
+        "groupId": 1
+      },
+      "19": {
+        "id": 19,
+        "next": 20,
+        "prev": 18,
+        "piece": -1,
+        "x1": 2250,
+        "x2": 2340,
+        "y1": -386,
+        "y2": -386,
+        "layerId": 3,
+        "groupId": 38
+      },
+      "74": {
+        "id": 74,
+        "next": 75,
+        "prev": 81,
+        "piece": -1,
+        "x1": 2160,
+        "x2": 2250,
+        "y1": -86,
+        "y2": -86,
+        "layerId": 5,
+        "groupId": 0
+      },
+      "31": {
+        "id": 31,
+        "next": 32,
+        "prev": 35,
+        "piece": -1,
+        "x1": -630,
+        "x2": -540,
+        "y1": -386,
+        "y2": -326,
+        "layerId": 3,
+        "groupId": 35
+      },
+      "49": {
+        "id": 49,
+        "next": 51,
+        "prev": 42,
+        "piece": -1,
+        "x1": 450,
+        "x2": 540,
+        "y1": 154,
+        "y2": 94,
+        "layerId": 5,
+        "groupId": 1
+      },
+      "77": {
+        "id": 77,
+        "next": 84,
+        "prev": 70,
+        "piece": -1,
+        "x1": 1890,
+        "x2": 1980,
+        "y1": -26,
+        "y2": -26,
+        "layerId": 5,
+        "groupId": 0
+      },
+      "16": {
+        "id": 16,
+        "next": 17,
+        "prev": 23,
+        "piece": -1,
+        "x1": 1980,
+        "x2": 2070,
+        "y1": -446,
+        "y2": -446,
+        "layerId": 3,
+        "groupId": 38
+      },
+      "34": {
+        "id": 34,
+        "next": 36,
+        "prev": 33,
+        "piece": -1,
+        "x1": -270,
+        "x2": -220,
+        "y1": -386,
+        "y2": -386,
+        "layerId": 3,
+        "groupId": 35
+      },
+      "61": {
+        "id": 61,
+        "next": 55,
+        "prev": 62,
+        "piece": -1,
+        "x1": -180,
+        "x2": -130,
+        "y1": 94,
+        "y2": 94,
+        "layerId": 5,
+        "groupId": 1
+      },
+      "79": {
+        "id": 79,
+        "next": 70,
+        "prev": 69,
+        "piece": -1,
+        "x1": 1710,
+        "x2": 1800,
+        "y1": 34,
+        "y2": -26,
+        "layerId": 5,
+        "groupId": 0
+      },
+      "90": {
+        "id": 90,
+        "next": 91,
+        "prev": 89,
+        "piece": 0,
+        "x1": 1143,
+        "x2": 1217,
+        "y1": -3,
+        "y2": -3,
+        "layerId": 5,
+        "groupId": 4
+      },
+      "46": {
+        "id": 46,
+        "next": 48,
+        "prev": 58,
+        "piece": -1,
+        "x1": 0,
+        "x2": 90,
+        "y1": 154,
+        "y2": 154,
+        "layerId": 5,
+        "groupId": 1
+      },
+      "64": {
+        "id": 64,
+        "next": 59,
+        "prev": 65,
+        "piece": -1,
+        "x1": -450,
+        "x2": -360,
+        "y1": 34,
+        "y2": 34,
+        "layerId": 5,
+        "groupId": 1
+      },
+      "21": {
+        "id": 21,
+        "next": 22,
+        "prev": 0,
+        "piece": -1,
+        "x1": 1850,
+        "x2": 1850,
+        "y1": -420,
+        "y2": -446,
+        "layerId": 3,
+        "groupId": 38
+      },
+      "93": {
+        "id": 93,
+        "next": 86,
+        "prev": 92,
+        "piece": 0,
+        "x1": 1380,
+        "x2": 1401,
+        "y1": 26,
+        "y2": 34,
+        "layerId": 5,
+        "groupId": 4
+      },
+      "39": {
+        "id": 39,
+        "next": 40,
+        "prev": 0,
+        "piece": -1,
+        "x1": -850,
+        "x2": -850,
+        "y1": -360,
+        "y2": -386,
+        "layerId": 3,
+        "groupId": 35
+      },
+      "76": {
+        "id": 76,
+        "next": 69,
+        "prev": 73,
+        "piece": -1,
+        "x1": 1530,
+        "x2": 1620,
+        "y1": 34,
+        "y2": 34,
+        "layerId": 5,
+        "groupId": 0
+      },
+      "33": {
+        "id": 33,
+        "next": 34,
+        "prev": 30,
+        "piece": -1,
+        "x1": -360,
+        "x2": -270,
+        "y1": -386,
+        "y2": -386,
+        "layerId": 3,
+        "groupId": 35
+      },
+      "51": {
+        "id": 51,
+        "next": 52,
+        "prev": 49,
+        "piece": -1,
+        "x1": 540,
+        "x2": 630,
+        "y1": 94,
+        "y2": 94,
+        "layerId": 5,
+        "groupId": 1
+      },
+      "69": {
+        "id": 69,
+        "next": 79,
+        "prev": 76,
+        "piece": -1,
+        "x1": 1620,
+        "x2": 1710,
+        "y1": 34,
+        "y2": 34,
+        "layerId": 5,
+        "groupId": 0
+      },
+      "80": {
+        "id": 80,
+        "next": 85,
+        "prev": 72,
+        "piece": -1,
+        "x1": 2520,
+        "x2": 2610,
+        "y1": -26,
+        "y2": -26,
+        "layerId": 5,
+        "groupId": 0
+      },
+      "36": {
+        "id": 36,
+        "next": 37,
+        "prev": 34,
+        "piece": -1,
+        "x1": -220,
+        "x2": -180,
+        "y1": -386,
+        "y2": -386,
+        "layerId": 3,
+        "groupId": 35
+      },
+      "63": {
+        "id": 63,
+        "next": 65,
+        "prev": 66,
+        "piece": -1,
+        "x1": -630,
+        "x2": -540,
+        "y1": 34,
+        "y2": 34,
+        "layerId": 5,
+        "groupId": 1
+      },
+      "20": {
+        "id": 20,
+        "next": 25,
+        "prev": 19,
+        "piece": -1,
+        "x1": 2340,
+        "x2": 2430,
+        "y1": -386,
+        "y2": -446,
+        "layerId": 3,
+        "groupId": 38
+      },
+      "1": {
+        "id": 1,
+        "next": 15,
+        "prev": 14,
+        "piece": -1,
+        "x1": 450,
+        "x2": 490,
+        "y1": -266,
+        "y2": -266,
+        "layerId": 1,
+        "groupId": 32
+      },
+      "92": {
+        "id": 92,
+        "next": 93,
+        "prev": 91,
+        "piece": 0,
+        "x1": 1304,
+        "x2": 1380,
+        "y1": 7,
+        "y2": 26,
+        "layerId": 5,
+        "groupId": 4
+      },
+      "38": {
+        "id": 38,
+        "next": 0,
+        "prev": 37,
+        "piece": -1,
+        "x1": -140,
+        "x2": -140,
+        "y1": -386,
+        "y2": -360,
+        "layerId": 3,
+        "groupId": 35
+      },
+      "23": {
+        "id": 23,
+        "next": 16,
+        "prev": 22,
+        "piece": -1,
+        "x1": 1930,
+        "x2": 1980,
+        "y1": -446,
+        "y2": -446,
+        "layerId": 3,
+        "groupId": 38
+      },
+      "50": {
+        "id": 50,
+        "next": 87,
+        "prev": 53,
+        "piece": -1,
+        "x1": 950,
+        "x2": 986,
+        "y1": 34,
+        "y2": 34,
+        "layerId": 5,
+        "groupId": 1
+      },
+      "4": {
+        "id": 4,
+        "next": 9,
+        "prev": 2,
+        "piece": -1,
+        "x1": 630,
+        "x2": 680,
+        "y1": -266,
+        "y2": -266,
+        "layerId": 1,
+        "groupId": 32
+      },
+      "68": {
+        "id": 68,
+        "next": 67,
+        "prev": 54,
+        "piece": -1,
+        "x1": -990,
+        "x2": -900,
+        "y1": 154,
+        "y2": 154,
+        "layerId": 5,
+        "groupId": 1
+      },
+      "35": {
+        "id": 35,
+        "next": 31,
+        "prev": 41,
+        "piece": -1,
+        "x1": -720,
+        "x2": -630,
+        "y1": -386,
+        "y2": -386,
+        "layerId": 3,
+        "groupId": 35
+      },
+      "7": {
+        "id": 7,
+        "next": 3,
+        "prev": 6,
+        "piece": -1,
+        "x1": 680,
+        "x2": 720,
+        "y1": -326,
+        "y2": -326,
+        "layerId": 1,
+        "groupId": 32
+      },
+      "10": {
+        "id": 10,
+        "next": 11,
+        "prev": 5,
+        "piece": -1,
+        "x1": 860,
+        "x2": 900,
+        "y1": -326,
+        "y2": -326,
+        "layerId": 1,
+        "groupId": 32
+      },
+      "82": {
+        "id": 82,
+        "next": 71,
+        "prev": 83,
+        "piece": -1,
+        "x1": 2790,
+        "x2": 2880,
+        "y1": 34,
+        "y2": 34,
+        "layerId": 5,
+        "groupId": 0
+      },
+      "28": {
+        "id": 28,
+        "next": 0,
+        "prev": 27,
+        "piece": -1,
+        "x1": 2650,
+        "x2": 2650,
+        "y1": -446,
+        "y2": -420,
+        "layerId": 3,
+        "groupId": 38
+      },
+      "65": {
+        "id": 65,
+        "next": 64,
+        "prev": 63,
+        "piece": -1,
+        "x1": -540,
+        "x2": -450,
+        "y1": 34,
+        "y2": 34,
+        "layerId": 5,
+        "groupId": 1
+      },
+      "22": {
+        "id": 22,
+        "next": 23,
+        "prev": 21,
+        "piece": -1,
+        "x1": 1850,
+        "x2": 1930,
+        "y1": -446,
+        "y2": -446,
+        "layerId": 3,
+        "groupId": 38
+      },
+      "52": {
+        "id": 52,
+        "next": 44,
+        "prev": 51,
+        "piece": -1,
+        "x1": 630,
+        "x2": 720,
+        "y1": 94,
+        "y2": 94,
+        "layerId": 5,
+        "groupId": 1
+      },
+      "81": {
+        "id": 81,
+        "next": 74,
+        "prev": 84,
+        "piece": -1,
+        "x1": 2070,
+        "x2": 2160,
+        "y1": -86,
+        "y2": -86,
+        "layerId": 5,
+        "groupId": 0
+      },
+      "37": {
+        "id": 37,
+        "next": 38,
+        "prev": 36,
+        "piece": -1,
+        "x1": -180,
+        "x2": -140,
+        "y1": -386,
+        "y2": -386,
+        "layerId": 3,
+        "groupId": 35
+      }
+    },
+    "vrBounds": {
+      "x": -1070,
+      "y": -806,
+      "width": 4030,
+      "height": 1150,
+      "location": {
+        "x": -1070,
+        "y": -806,
+        "isEmpty": false
+      },
+      "size": {
+        "width": 4030,
+        "height": 1150,
+        "isEmpty": false
+      },
+      "isEmpty": false,
+      "top": -806,
+      "right": 2960,
+      "bottom": 344,
+      "left": -1070
+    },
+    "returnMapName": {
+      "name": "冰原雪域",
+      "streetName": "冰原雪域山脈",
+      "id": 211000000
+    },
+    "ladderRopes": [
+      {
+        "x": -646,
+        "y1": -384,
+        "y2": -7,
+        "isLadder": false
+      },
+      {
+        "x": 2447,
+        "y1": -444,
+        "y2": -93,
+        "isLadder": false
+      },
+      {
+        "x": -334,
+        "y1": -384,
+        "y2": -5,
+        "isLadder": false
+      },
+      {
+        "x": 2059,
+        "y1": -444,
+        "y2": -112,
+        "isLadder": false
+      },
+      {
+        "x": 458,
+        "y1": -264,
+        "y2": 114,
+        "isLadder": false
+      },
+      {
+        "x": 794,
+        "y1": -324,
+        "y2": 2,
+        "isLadder": false
+      }
+    ],
+    "name": "亡者之林Ⅰ",
+    "streetName": "冰原雪域",
+    "id": 211041100
+  },
+  "source_archive_sha256": "1b3e78479645fe4d23cf1cd1342de3806f74af6d5656c002335b5aba1eec134b",
+  "composite": {
+    "source_url": "https://maplestory.io/api/TWMS/256/map/211041100/render/0?showBackgrounds=true&showPortals=true",
+    "github_path": "assets/maple/collection/maps/el-nath/211041100/TWMS-256/composite.png",
+    "width": 4140,
+    "height": 989,
+    "mode": "RGBA",
+    "has_transparency": true,
+    "sha256": "c714349b23dc049c4b743852704c67f5c3a1adf0bfe7c868701a46a5d92463c0",
+    "pixel_sha256": "ce3da2a0de0c3613ddc1f52f1664154b5adb55cb212f1ff7fe58866ae91765f5",
+    "decode": "pass"
+  },
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "all_wz_numeric_frame_nodes_present": true,
+    "timing_and_origin": "not_applicable",
+    "visual_playback": "not_applicable",
+    "original_wz_binary_compared": false,
+    "independent_resource_canvases": "pass"
+  },
+  "github_path": "assets/maple/collection/maps/el-nath/211041100/TWMS-256",
+  "status": "collected",
+  "resource_sets": [
+    {
+      "kind": "back",
+      "name": "snowyLightrock2",
+      "wz_path": "Map.wz/Back/snowyLightrock2.img",
+      "source_url": "https://maplestory.io/api/wz/export/TWMS/256/Map/Back/snowyLightrock2.img",
+      "canvas_count": 75,
+      "manifest_path": "assets/maple/collection/maps/el-nath/shared-resource-sets/TWMS-256/back/snowyLightrock2/resource-set.json"
+    },
+    {
+      "kind": "tile",
+      "name": "snowyDarkrock",
+      "wz_path": "Map.wz/Tile/snowyDarkrock.img",
+      "source_url": "https://maplestory.io/api/wz/export/TWMS/256/Map/Tile/snowyDarkrock.img",
+      "canvas_count": 20,
+      "manifest_path": "assets/maple/collection/maps/el-nath/shared-resource-sets/TWMS-256/tile/snowyDarkrock/resource-set.json"
+    }
+  ]
+}

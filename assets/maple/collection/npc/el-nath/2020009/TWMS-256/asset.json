@@ -1,0 +1,156 @@
+{
+  "id": "2020009",
+  "type": "npc",
+  "region": "el-nath",
+  "town": "冰原雪域",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": "羅貝亞",
+  "name_zh_tw_status": "source_twms",
+  "source_url": "https://maplestory.io/api/TWMS/256/npc/2020009",
+  "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Npc/2020009.img",
+  "wz_path": "Npc.wz/2020009.img",
+  "version": {
+    "region": "TWMS",
+    "version": "256"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "stand",
+      "frame_count": 4,
+      "expected_frame_count": 4,
+      "frames": [
+        {
+          "index": 0,
+          "width": 53,
+          "height": 86,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "165bb8dc2bb2584e80a7f1af3624a3454eb00a0a9f93dfe8d01450412659f25c",
+          "pixel_sha256": "5a36ce82f08c4e8658aaa48b6532712ddb32185d9c76181f864b800e805bc084",
+          "wz_path": "Npc.wz/2020009.img/stand/0",
+          "duration_ms": 500,
+          "origin": {
+            "x": 26,
+            "y": 98
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/el-nath/2020009/TWMS-256/stand/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 53,
+          "height": 86,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "165bb8dc2bb2584e80a7f1af3624a3454eb00a0a9f93dfe8d01450412659f25c",
+          "pixel_sha256": "5a36ce82f08c4e8658aaa48b6532712ddb32185d9c76181f864b800e805bc084",
+          "wz_path": "Npc.wz/2020009.img/stand/1",
+          "duration_ms": 120,
+          "origin": {
+            "x": 26,
+            "y": 97
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/el-nath/2020009/TWMS-256/stand/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "d83d4727cddc3c85fe34c7a454b753bea2133fdf2c5dcb5d8dc33226579c907a"
+        },
+        {
+          "index": 2,
+          "width": 53,
+          "height": 86,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "165bb8dc2bb2584e80a7f1af3624a3454eb00a0a9f93dfe8d01450412659f25c",
+          "pixel_sha256": "5a36ce82f08c4e8658aaa48b6532712ddb32185d9c76181f864b800e805bc084",
+          "wz_path": "Npc.wz/2020009.img/stand/2",
+          "duration_ms": 500,
+          "origin": {
+            "x": 26,
+            "y": 96
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/el-nath/2020009/TWMS-256/stand/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "fc22ddad5eec25fe94c786a29cc9ef82a481448e005fe1e16c79685695fecd38"
+        },
+        {
+          "index": 3,
+          "width": 53,
+          "height": 86,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "165bb8dc2bb2584e80a7f1af3624a3454eb00a0a9f93dfe8d01450412659f25c",
+          "pixel_sha256": "5a36ce82f08c4e8658aaa48b6532712ddb32185d9c76181f864b800e805bc084",
+          "wz_path": "Npc.wz/2020009.img/stand/3",
+          "duration_ms": 120,
+          "origin": {
+            "x": 26,
+            "y": 97
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/2020009/render/stand/3",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/el-nath/2020009/TWMS-256/stand/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "3b6610bcf5ecfc10cbf5ee730ffcd4645b4df2b028223a4133d719df9e6447cd"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/TWMS/256/Npc/2020009.img/stand",
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "羅貝亞",
+  "role": "3轉法師轉職官",
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "長老公館",
+      "streetName": "艾納斯島",
+      "id": 211000001
+    }
+  ],
+  "expected_actions": {
+    "stand": 4
+  },
+  "source_metadata_sha256": "2b0f3bb3c964df9e985c11dcba4ebf6a981134355cfba5729453d6254fa72637",
+  "source_archive_sha256": "6f1c93fe20e7ee1574ef19eec6b55b7ae8d2497b82c46a0a6effada9503f5926",
+  "source_frame_indices": {
+    "stand": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "complete",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
+  },
+  "github_path": "assets/maple/collection/npc/el-nath/2020009/TWMS-256",
+  "status": "collected"
+}

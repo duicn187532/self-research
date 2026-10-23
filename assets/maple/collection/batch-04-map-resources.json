@@ -1,0 +1,18 @@
+[
+  {"region":"ludibrium","kind":"Back","name":"toyCastle","maps":["220000000"]},
+  {"region":"ludibrium","kind":"Obj","name":"fantasticPark","maps":["220000000"]},
+  {"region":"ludibrium","kind":"Tile","name":"yellowToyCastle","maps":["220000000"]},
+  {"region":"ludibrium","kind":"Back","name":"toyCastleDungeon","maps":["220080000","220080001"]},
+  {"region":"ludibrium","kind":"Obj","name":"dungeon2","maps":["220080000","220080001"]},
+  {"region":"orbis","kind":"Back","name":"skyStation","maps":["200000000","200000100"]},
+  {"region":"orbis","kind":"Obj","name":"houseSS","maps":["200000000","200000100"]},
+  {"region":"orbis","kind":"Tile","name":"pastelBrick","maps":["200000000","200000100"]},
+  {"region":"el-nath","kind":"Back","name":"snowyLightrock","maps":["211000000"]},
+  {"region":"el-nath","kind":"Obj","name":"houseSLR","maps":["211000000"]},
+  {"region":"el-nath","kind":"Tile","name":"snowyLightrock","maps":["211000000"]},
+  {"region":"el-nath","kind":"Back","name":"snowyLightrock2","maps":["211041100"]},
+  {"region":"el-nath","kind":"Tile","name":"snowyDarkrock","maps":["211041100"]},
+  {"region":"leafre","kind":"Back","name":"minar","maps":["240000000"]},
+  {"region":"leafre","kind":"Obj","name":"houseLF","maps":["240000000"]},
+  {"region":"leafre","kind":"Tile","name":"minar","maps":["240000000"]}
+]
