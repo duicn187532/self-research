@@ -21,7 +21,7 @@
 
 ## Self Research OAuth 實際設定清單（PR：Top Bar）
 
-1. Supabase 建立專案後，執行此倉庫的 `study-sync/schema.sql`，並確認 `study_sync_entries` 表與 `study_sync_cas` 函數建立成功。
+1. Supabase 建立專案後，依序執行此倉庫的 `study-sync/schema.sql`、`study-sync/secure-invoker-rls.sql`，並確認 `study_sync_entries` 表與 `study_sync_cas` 函數建立成功。
 2. Supabase Dashboard → Authentication → URL Configuration：設定 Site URL 為 `https://duicn187532.github.io/self-research/`，並將以下值放進 Redirect URLs：
    - `https://duicn187532.github.io/self-research/`
    - `https://duicn187532.github.io/self-research/papers/*/index.html`
