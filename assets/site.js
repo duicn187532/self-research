@@ -1472,3 +1472,16 @@
 
 /* Optional study sync overlay: loaded after the existing page app. */
 (function(){var s=document.createElement('script');s.src=new URL('study-sync.js',document.currentScript.src).href;document.head.appendChild(s);})();
+
+/* Add a non-invasive critical-reading layer after the original app has initialised. */
+(function () {
+  var current = document.currentScript;
+  if (!current || !current.src) return;
+  var css = document.createElement("link");
+  css.rel = "stylesheet";
+  css.href = new URL("critical-reading.css?v=20261024a", current.src).href;
+  document.head.appendChild(css);
+  var js = document.createElement("script");
+  js.src = new URL("critical-reading.js?v=20261024a", current.src).href;
+  document.head.appendChild(js);
+})();
