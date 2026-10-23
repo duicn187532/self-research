@@ -1,0 +1,50 @@
+/* Critical-reading overlay. Does not change .sec, outline, battle or notes layouts. */
+.cr-card {
+  margin: 1.3rem 0 1.7rem;
+  padding: clamp(.85rem,2vw,1.25rem);
+  border: 1px solid var(--rule, #9a9a9a);
+  background: var(--surface, #fff);
+  color: var(--ink, #222);
+  border-radius: 8px;
+  font-family: var(--font-body, sans-serif);
+}
+.cr-heading { margin: 0 0 .5rem; font-size: clamp(1.1rem, 2.4vw, 1.4rem); line-height: 1.4; }
+.cr-caption { color: var(--muted, #555); line-height: 1.65; font-size: .88rem; }
+.cr-audit { padding: .7rem .8rem; margin: .85rem 0; border-left: 3px solid var(--warn, #c48a22); background: var(--surface-2, transparent); font-size: .88rem; line-height: 1.7; }
+.cr-audit a, .cr-ref a, .cr-pairout a { text-decoration: underline; text-underline-offset: 2px; }
+.cr-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 235px),1fr)); gap: .7rem; margin: .9rem 0; }
+.cr-dim { border: 1px solid var(--rule, #aaa); border-radius: 6px; padding: .75rem .85rem; min-width: 0; background: var(--paper, transparent); overflow-wrap: anywhere; }
+.cr-dim h3 { margin: 0 0 .45rem; font-size: 1rem; line-height: 1.4; }
+.cr-dim p { font-size: .92rem; margin: 0 0 .5rem; line-height: 1.65; }
+.cr-dim .cr-ref { margin-bottom: 0; font-size: .78rem; }
+.cr-kind { color: var(--muted, #555); }
+.cr-method, .cr-practice { margin-top: .7rem; border: 1px solid var(--rule, #aaa); border-radius: 6px; padding: .65rem .85rem; }
+.cr-method > summary, .cr-practice > summary { font-weight: 700; cursor: pointer; line-height: 1.5; padding: .2rem 0; }
+.cr-method ol { margin-bottom: 0; padding-left: 1.4rem; line-height: 1.9; }
+.cr-practice-body { padding-top: .8rem; }
+.cr-question { padding: .8rem 0; margin: .8rem 0; border: 0; border-top: 1px solid var(--rule, #aaa); min-width: 0; }
+.cr-question legend { font-weight: 650; padding: .25rem .2rem .2rem 0; line-height: 1.7; }
+.cr-options { display: flex; flex-wrap: wrap; gap: .4rem; }
+.cr-options .btn { max-width: 100%; white-space: normal; text-align: left; line-height: 1.6; }
+.cr-options .btn[aria-pressed="true"] { outline: 2px solid var(--accent, #3468a0); outline-offset: 1px; }
+.cr-feedback { line-height: 1.6; font-size: .88rem; margin: .65rem 0 .1rem; }
+.cr-feedback[data-correct="false"] { color: var(--warn, #8c5b0d); }
+.cr-checkbox { display: block; padding: .35rem .1rem; line-height: 1.6; cursor: pointer; }
+.cr-checkbox input { accent-color: var(--accent, #375fa3); width: 1.1rem; height: 1.1rem; vertical-align: middle; }
+.cr-selectrow { display: flex; gap: .6rem; align-items: center; flex-wrap: wrap; }
+.cr-selectrow select { font: inherit; color: var(--ink, #222); background: var(--surface, #fff); border: 1px solid var(--rule, #aaa); padding: .4rem; border-radius: 4px; max-width: 100%; }
+.cr-pairout { display: grid; grid-template-columns: minmax(125px, 180px) 1fr; gap: .65rem 1rem; margin: .9rem 0 0; line-height: 1.65; }
+.cr-pairout dt { font-weight: 700; }
+.cr-pairout dd { margin: 0; }
+@media (max-width: 600px) {
+  .cr-card { padding: .65rem; }
+  .cr-grid { grid-template-columns: minmax(0,1fr); }
+  .cr-pairout { display: block; }
+  .cr-pairout dt { margin-top: .8rem; }
+  .cr-pairout dd { margin: .15rem 0 0; }
+  .cr-options { display: grid; }
+  .cr-options .btn { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cr-card * { scroll-behavior: auto !important; }
+}
