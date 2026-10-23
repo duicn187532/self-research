@@ -71,8 +71,8 @@
       "metadata_evidence": "https://doi.org/10.1016/0004-3702(86)90080-9",
       "alternate_author_pdf": "https://www.dekleer.org/Publications/An%20Assumption-Based%20TMS.pdf",
       "metadata_status": "publisher_doi_checked",
-      "fulltext_status": "legacy_site_claim_not_rechecked",
-      "missing": "作者公開 PDF URL 已找到但本次未將掃描影像逐頁核對現有公式；舊教材聲明的使用者原始掃描版本未作雜湊比對"
+      "fulltext_status": "author_pdf_first_page_image_checked_remainder_pending",
+      "missing": "作者公開 PDF 影像第 1 頁已查看，文字上下顛倒；其餘 35 頁、公式、圖表與既有使用者掃描來源尚未逐頁對照及比對雜湊"
     }
   }
 }
