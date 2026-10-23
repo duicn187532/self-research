@@ -31,6 +31,8 @@ def main() -> int:
         "site.js": digest(ASSETS / "site.js"),
         "anim.js": digest(ASSETS / "anim.js"),
         "battle.js": digest(ASSETS / "battle.js"),
+        "reading-lab.js": digest(ASSETS / "reading-lab.js"),
+        "reading-lab.css": digest(ASSETS / "reading-lab.css"),
     }
     pages = [ROOT / "index.html", ROOT / "compare" / "index.html", *sorted(ROOT.glob("papers/*/index.html"))]
     changed = 0
