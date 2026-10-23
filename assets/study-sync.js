@@ -136,7 +136,7 @@
   }
   function render() {
     if (!ui.root) return;
-    var labelText = userId ? (needsReload ? '待重新載入' : '已同步登入') : '訪客模式';
+    var labelText = userId ? (needsReload ? '待重新載入' : '已登入') : '訪客模式';
     ui.labelText.textContent = labelText;
     ui.label.setAttribute('aria-label', '學習同步：' + labelText);
     ui.label.title = '學習同步：' + labelText;
