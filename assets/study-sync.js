@@ -95,16 +95,33 @@
   function message(text) { status = text; render(); }
   function styleUi() {
     var style = document.createElement('style');
-    style.textContent = '#study-sync-root{position:fixed;right:12px;bottom:12px;z-index:99990;font:14px/1.5 system-ui,sans-serif;color:#182235}' +
-      '#study-sync-root button{cursor:pointer;border:1px solid #9baac2;border-radius:8px;padding:7px 10px;background:#fff;color:#172337;font:inherit}' +
-      '#study-sync-root button:disabled{opacity:.5;cursor:not-allowed}' +
-      '#study-sync-root .ss-trigger{background:#163b5c;color:white;border:1px solid #83b7d4;box-shadow:0 3px 14px #0004}' +
-      '#study-sync-root .ss-panel{background:#fff;color:#182235;border:1px solid #a7b4c5;border-radius:12px;padding:14px;margin-bottom:8px;width:min(328px,calc(100vw - 24px));max-height:75vh;overflow:auto;box-shadow:0 8px 36px #0005}' +
+    style.textContent =
+      /* Place the control in the existing sticky top bar, not over lesson content. */
+      '#study-sync-root{display:inline-flex;align-items:center;flex:0 0 auto;font:inherit;min-width:0}' +
+      '#study-sync-root button{cursor:pointer;font:inherit}' +
+      '#study-sync-root .ss-trigger{display:inline-flex;align-items:center;justify-content:center;gap:.35rem;min-height:2.25rem;padding:0 .8rem;' +
+        'border:1px solid var(--rule,#9baac2);border-radius:999px;background:var(--paper,#fff);color:var(--ink,#182235);' +
+        'white-space:nowrap;font-size:var(--step--1,.85rem)}' +
+      '#study-sync-root .ss-trigger[aria-expanded="true"]{border-color:var(--accent,#347b78);color:var(--accent,#347b78)}' +
+      '#study-sync-root .ss-trigger:focus-visible,#study-sync-root .ss-panel button:focus-visible{outline:2px solid var(--accent,#347b78);outline-offset:2px}' +
+      '#study-sync-root .ss-panel{position:absolute;top:100%;right:max(12px,env(safe-area-inset-right,0px));' +
+        'z-index:30;box-sizing:border-box;width:min(340px,calc(100vw - 24px));max-height:min(75vh,650px);overflow-y:auto;' +
+        'margin-top:.4rem;padding:14px;border:1px solid var(--rule,#9baac2);border-radius:var(--radius,12px);' +
+        'background:var(--surface,#fff);color:var(--ink,#182235);box-shadow:var(--shadow,0 8px 36px #0005);' +
+        'font:14px/1.5 system-ui,sans-serif;overflow-wrap:anywhere}' +
       '#study-sync-root .ss-panel[hidden]{display:none}' +
+      '#study-sync-root .ss-panel button{padding:7px 10px;border:1px solid var(--rule,#9baac2);border-radius:8px;' +
+        'background:var(--paper,#fff);color:var(--ink,#182235)}' +
+      '#study-sync-root button:disabled{opacity:.5;cursor:not-allowed}' +
       '#study-sync-root .ss-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}' +
-      '#study-sync-root .ss-status{font-size:12px;margin:9px 0;color:#394962;overflow-wrap:anywhere}' +
+      '#study-sync-root .ss-status{font-size:12px;margin:9px 0;color:var(--muted,#394962);overflow-wrap:anywhere}' +
       '#study-sync-root .ss-conflict{padding:8px;border:1px solid #d49a59;border-radius:6px;margin:8px 0;overflow-wrap:anywhere}' +
-      '#study-sync-root .ss-heading{font-weight:700;font-size:16px}';
+      '#study-sync-root .ss-heading{font-weight:700;font-size:16px}' +
+      '@media(max-width:600px){#study-sync-root .ss-label{display:none}' +
+        '#study-sync-root .ss-trigger{min-width:2.25rem;padding:0 .55rem}' +
+        '#study-sync-root .ss-panel{font-size:14px}}' +
+      '@media(max-width:380px){#study-sync-root .ss-trigger{min-width:2rem;padding:0 .35rem}' +
+        '.toolbar-inner:has(#study-sync-root) .levels .seg button{padding:0 .3rem}}';
     document.head.appendChild(style);
   }
   function el(tag, cls, text) {
@@ -119,7 +136,10 @@
   }
   function render() {
     if (!ui.root) return;
-    ui.label.textContent = '☁ ' + (userId ? (needsReload ? '待重新載入' : '學習同步') : '訪客模式');
+    var labelText = userId ? (needsReload ? '待重新載入' : '已同步登入') : '訪客模式';
+    ui.labelText.textContent = labelText;
+    ui.label.setAttribute('aria-label', '學習同步：' + labelText);
+    ui.label.title = '學習同步：' + labelText;
     ui.status.textContent = status || (userId ? '已登入，進度將同步至雲端。' : '未登入：學習進度只保留在此瀏覽器。');
     ui.identity.textContent = userId ? ('帳號：' + ((session && session.user && session.user.email) || userId.slice(0, 8))) : '免登入可使用完整教材';
     ui.github.hidden = !!userId || !client;
@@ -169,14 +189,41 @@
     panel.appendChild(actions);
     ui.conflicts = el('div');
     panel.appendChild(ui.conflicts);
-    ui.label = button('☁ 訪客模式', function () {
+    panel.id = 'study-sync-panel';
+    ui.label = button('', function () {
       panel.hidden = !panel.hidden;
       ui.label.setAttribute('aria-expanded', String(!panel.hidden));
     });
     ui.label.className = 'ss-trigger';
+    ui.label.setAttribute('aria-controls', panel.id);
+    ui.label.setAttribute('aria-haspopup', 'true');
     ui.label.setAttribute('aria-expanded', 'false');
-    ui.root.appendChild(panel); ui.root.appendChild(ui.label);
-    document.body.appendChild(ui.root);
+    ui.label.appendChild(el('span', 'ss-icon', '☁'));
+    ui.labelText = el('span', 'ss-label', '訪客模式');
+    ui.label.appendChild(ui.labelText);
+    ui.root.appendChild(ui.label);
+    ui.root.appendChild(panel);
+    var toolbar = document.querySelector('.toolbar .toolbar-inner');
+    if (toolbar) toolbar.appendChild(ui.root);
+    else {
+      // Safety fallback for unusual pages without a toolbar.
+      ui.root.style.cssText = 'position:fixed;right:12px;top:12px;z-index:50';
+      ui.root.appendChild(panel);
+      document.body.appendChild(ui.root);
+    }
+    document.addEventListener('click', function (event) {
+      if (!panel.hidden && !ui.root.contains(event.target)) {
+        panel.hidden = true;
+        ui.label.setAttribute('aria-expanded', 'false');
+      }
+    });
+    ui.root.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && !panel.hidden) {
+        panel.hidden = true;
+        ui.label.setAttribute('aria-expanded', 'false');
+        ui.label.focus();
+      }
+    });
     render();
   }
   function backup() {
