@@ -34,15 +34,26 @@
           "sha256": "d47c36d164776d040c8ba1d1d69ebed67e3728c2380e489c0fafda6dd9246ed0",
           "pixel_sha256": "733367f554496a458bcb1278021687d35c65580a1600739ef2754ab5c2d69b28",
           "wz_path": "Npc.wz/1012100.img/stand/0",
-          "duration_ms": null,
-          "origin": null,
+          "duration_ms": 1200,
+          "origin": {
+            "x": 27,
+            "y": 71
+          },
           "decode": "pass",
           "github_path": "assets/maple/collection/npc/victoria/1012100/GMS-83/stand/0000.png",
           "storage": "original_png"
         }
       ],
       "count_matches_api": true,
-      "indices_contiguous": true
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/GMS/83/Npc/1012100.img/stand",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
     }
   ],
   "acquired_on": "2026-10-23",
@@ -65,9 +76,10 @@
     "decode": "pass",
     "sha256": "pass",
     "all_api_listed_action_frames_present": true,
-    "timing_and_origin": "not_retrieved",
+    "timing_and_origin": "complete",
     "visual_playback": "not_verified",
-    "original_wz_binary_compared": false
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
   },
   "github_path": "assets/maple/collection/npc/victoria/1012100/GMS-83",
   "status": "collected"

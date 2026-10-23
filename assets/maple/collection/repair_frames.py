@@ -4,7 +4,7 @@ import io
 import json
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from PIL import Image
-from collect import OUT, ROOT, fetch, dump
+from collect import OUT, ROOT, BASE, fetch, dump
 
 m=json.loads((OUT/'manifest.json').read_text(encoding='utf-8'))
 hashes={hashlib.sha256(p.read_bytes()).hexdigest():p.relative_to(ROOT).as_posix() for p in sorted((ROOT/'assets/maple').rglob('*.png'))}
@@ -16,12 +16,23 @@ for a in m['assets']:
             action={'name':name,'frame_count':0,'expected_frame_count':count,'frames':[]}
             a['actions'].append(action)
         present={f['index'] for f in action['frames']}
-        for index in range(count):
-            if index not in present: jobs.append((a,action,index))
+        verification=action.get('wz_index_verification')
+        if verification and not verification['error']:
+            indices=verification['indices']
+        elif count:
+            url=f'{BASE}/wz/GMS/83/{a["wz_path"].replace(".wz/","/")}/{name}'
+            try:
+                node=json.loads(fetch(url))
+                indices=sorted(int(x) for x in node['children'] if str(x).isdigit())
+            except Exception:
+                continue
+        else:indices=[]
+        for ordinal,index in enumerate(indices):
+            if index not in present: jobs.append((a,action,index,ordinal))
 
 def download(job):
-    a,action,index=job
-    url=a['source_url']+f'/render/{action["name"]}/{index}'
+    a,action,index,ordinal=job
+    url=a['source_url']+f'/render/{action["name"]}/{ordinal}'
     data=fetch(url)
     with Image.open(io.BytesIO(data)) as im:
         im.verify()
@@ -41,7 +52,7 @@ def download(job):
 with ThreadPoolExecutor(max_workers=6) as pool:
     pending={pool.submit(download,job):job for job in jobs}
     for number,future in enumerate(as_completed(pending),1):
-        a,action,index=pending[future]
+        a,action,index,ordinal=pending[future]
         try:
             data,f=future.result()
             if f['sha256'] in hashes:

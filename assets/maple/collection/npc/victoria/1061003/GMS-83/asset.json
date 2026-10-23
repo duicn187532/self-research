@@ -1,0 +1,90 @@
+{
+  "id": "1061003",
+  "type": "npc",
+  "region": "victoria",
+  "town": "sleepywood",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": null,
+  "name_zh_tw_status": "unavailable",
+  "source_url": "https://maplestory.io/api/GMS/83/npc/1061003",
+  "export_url": "https://maplestory.io/api/wz/export/GMS/83/Npc/1061003.img",
+  "wz_path": "Npc.wz/1061003.img",
+  "version": {
+    "region": "GMS",
+    "version": "83"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "stand",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 54,
+          "height": 72,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "989d8a41644f96343a707d62bfb78ff036f32ffe7c4a0272914165d3aa23777e",
+          "pixel_sha256": "2cb50b48334764d0a29bf221be6ddfa4d72eb722ebfb59448bf35f31300858d9",
+          "wz_path": "Npc.wz/1061003.img/stand/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 27,
+            "y": 72
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/victoria/1061002/GMS-83/stand/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "0b8af5c87db20f3099f1430162bd145341b6100002bac0eece0bb72080e6ca34",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/GMS/83/Npc/1061003.img/stand",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "Mr. Wetbottom",
+  "role": "Sauna Manager",
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "Entrance - Mushroom Town Training Camp",
+      "streetName": "Maple Road",
+      "id": 0
+    }
+  ],
+  "expected_actions": {
+    "stand": 1
+  },
+  "source_metadata_sha256": "697f2600dcddef0a2ea12ec2b47a1063f59850efc1b0ee642328338b285d20c0",
+  "source_archive_sha256": "b71b1c5b23d0abadd1c314b7159c280d811c05df9f6e67ecd881250b4cdcf7f7",
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "partial",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
+  },
+  "github_path": "assets/maple/collection/npc/victoria/1061003/GMS-83",
+  "status": "collected"
+}

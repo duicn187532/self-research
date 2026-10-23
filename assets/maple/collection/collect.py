@@ -23,11 +23,18 @@ VERSION = '83'
 DATE = '2026-10-23'
 
 def fetch(url):
+    cache_dir = OUT / '.download-cache'
+    cache_path = cache_dir / hashlib.sha256(url.encode()).hexdigest()
+    if cache_path.exists():
+        return cache_path.read_bytes()
     for attempt in range(2):
         try:
             req = urllib.request.Request(url, headers={'User-Agent': 'MapleCollectionResearch/1.0'})
             with urllib.request.urlopen(req, timeout=10) as response:
-                return response.read()
+                data = response.read()
+                cache_dir.mkdir(exist_ok=True)
+                cache_path.write_bytes(data)
+                return data
         except Exception as error:
             if isinstance(error, urllib.error.HTTPError) and error.code in (400,401,403,404):
                 raise
@@ -95,12 +102,22 @@ def prepare(spec):
         for action,count in entry['expected_actions'].items():
             if not re.fullmatch(r'[A-Za-z0-9_]+',action):
                 continue
+            if not count:
+                continue
+            try:
+                node_url=f'{BASE}/wz/GMS/{VERSION}/{package}/{wz_id}.img/{action}'
+                node=json.loads(fetch(node_url))
+                indices=sorted(int(x) for x in node['children'] if str(x).isdigit())
+                entry.setdefault('source_frame_indices',{})[action]=indices
+            except Exception as error:
+                entry.setdefault('index_lookup_errors',{})[action]=str(error)
+                continue
             failures = 0
-            for index in range(count):
+            for ordinal,index in enumerate(indices):
                 if (action,index) in present:
                     continue
                 # Export omits UOL aliases; the frame renderer resolves those nodes.
-                render_url=f'{url}/render/{action}/{index}'
+                render_url=f'{url}/render/{action}/{ordinal}'
                 try:
                     data=fetch(render_url)
                     with Image.open(io.BytesIO(data)) as im:
@@ -175,8 +192,8 @@ def collect(plan):
                     'count_matches_api': expected == len(values),
                     'indices_contiguous': [v['index'] for v in values] == list(range(len(values)))})
             complete = bool(entry['expected_actions']) and all(
-                name in actions and len(actions[name]) == count and
-                [f['index'] for f in actions[name]] == list(range(count))
+                count == 0 or (name in actions and len(actions[name]) == count and
+                [f['index'] for f in actions[name]] == entry.get('source_frame_indices',{}).get(name,list(range(count))))
                 for name, count in entry['expected_actions'].items())
             entry['validation'] = {'decode': 'pass', 'sha256': 'pass',
                 'all_api_listed_action_frames_present': complete,

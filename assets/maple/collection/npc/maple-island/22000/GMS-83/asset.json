@@ -1,0 +1,89 @@
+{
+  "id": "22000",
+  "type": "npc",
+  "region": "maple-island",
+  "town": "maple-island",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": null,
+  "name_zh_tw_status": "unavailable",
+  "source_url": "https://maplestory.io/api/GMS/83/npc/22000",
+  "export_url": "https://maplestory.io/api/wz/export/GMS/83/Npc/0022000.img",
+  "wz_path": "Npc.wz/0022000.img",
+  "version": {
+    "region": "GMS",
+    "version": "83"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "stand",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 67,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "6b96d9f92f5b96b8b64ab7790054134dc079c8a60f0e3d434c7d1c240a2c41d2",
+          "pixel_sha256": "eeef563641750b0cec6d2bda9452f79ec0e0afdf7dd34ed05309a13da368f523",
+          "wz_path": "Npc.wz/0022000.img/stand/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 23,
+            "y": 77
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/maple-island/22000/GMS-83/stand/0000.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/GMS/83/Npc/0022000.img/stand",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "Shanks",
+  "role": null,
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "Entrance - Mushroom Town Training Camp",
+      "streetName": "Maple Road",
+      "id": 0
+    }
+  ],
+  "expected_actions": {
+    "stand": 1
+  },
+  "source_metadata_sha256": "a99bec196aadd43fdd5333c2550313626c1bea9ef42fc8cb7517d9160e03451b",
+  "source_archive_sha256": "df28199a0bca7e51bc41c55f30c613da61ff23386ef718caa667e1aca637eaa8",
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "partial",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
+  },
+  "github_path": "assets/maple/collection/npc/maple-island/22000/GMS-83",
+  "status": "collected"
+}

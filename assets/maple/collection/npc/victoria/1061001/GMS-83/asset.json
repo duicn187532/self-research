@@ -1,0 +1,128 @@
+{
+  "id": "1061001",
+  "type": "npc",
+  "region": "victoria",
+  "town": "sleepywood",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": null,
+  "name_zh_tw_status": "unavailable",
+  "source_url": "https://maplestory.io/api/GMS/83/npc/1061001",
+  "export_url": "https://maplestory.io/api/wz/export/GMS/83/Npc/1061001.img",
+  "wz_path": "Npc.wz/1061001.img",
+  "version": {
+    "region": "GMS",
+    "version": "83"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "shop",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 61,
+          "height": 64,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "6f1bd47c7238c30c2f85fb41212c7adae03d138bcd05d28fadfe8cd49f0c3e23",
+          "pixel_sha256": "dc7788775b04a85237edce9569f975662035ded5343af96655e513d4017fa80e",
+          "wz_path": "Npc.wz/1061001.img/shop/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 30,
+            "y": 64
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/victoria/1061001/GMS-83/shop/0000.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/GMS/83/Npc/1061001.img/shop",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "stand",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 157,
+          "height": 123,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "63254f680937e0e7644c6983160a37a3d831d2dabbbe921e9449830ad6547fb8",
+          "pixel_sha256": "9af2e1882e69d8ec86d1ba1c903a13018ee4b69ff4a9243ed0b003c612e70316",
+          "wz_path": "Npc.wz/1061001.img/stand/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 78,
+            "y": 123
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/victoria/1061001/GMS-83/stand/0000.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/GMS/83/Npc/1061001.img/stand",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "24 Hr Mobile Store",
+  "role": null,
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "Entrance - Mushroom Town Training Camp",
+      "streetName": "Maple Road",
+      "id": 0
+    }
+  ],
+  "expected_actions": {
+    "shop": 1,
+    "stand": 1
+  },
+  "source_metadata_sha256": "6d43b9aa174cd25e3a7b910d0ad7cdf807bd433eda4c28913766083fc89e84b5",
+  "source_archive_sha256": "9ab32f31749f55ade7504c013d41dba6b6847ea341f02249bb8d6b40e518e0e4",
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "partial",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
+  },
+  "github_path": "assets/maple/collection/npc/victoria/1061001/GMS-83",
+  "status": "collected"
+}

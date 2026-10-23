@@ -1,0 +1,86 @@
+{
+  "id": "12100",
+  "type": "npc",
+  "region": "maple-island",
+  "town": "maple-island",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": null,
+  "name_zh_tw_status": "unavailable",
+  "source_url": "https://maplestory.io/api/GMS/83/npc/12100",
+  "export_url": "https://maplestory.io/api/wz/export/GMS/83/Npc/0012100.img",
+  "wz_path": "Npc.wz/0012100.img",
+  "version": {
+    "region": "GMS",
+    "version": "83"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "stand",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 54,
+          "height": 80,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "611b9af03b66348b2d8f0ccc763ca7945e134d3cfcac8ea58eea6d4939795966",
+          "pixel_sha256": "605a97e5149bf41f23f8af0832fe0bce2c24fe1ae6145631452c740510d51b69",
+          "wz_path": "Npc.wz/0012100.img/stand/0",
+          "duration_ms": 500,
+          "origin": {
+            "x": 26,
+            "y": 80
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/maple-island/12100/GMS-83/stand/0000.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/GMS/83/Npc/0012100.img/stand",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "Mai",
+  "role": null,
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "Entrance - Mushroom Town Training Camp",
+      "streetName": "Maple Road",
+      "id": 0
+    }
+  ],
+  "expected_actions": {
+    "stand": 1
+  },
+  "source_metadata_sha256": "86cef3d5d710c96852e4922026a45ec7eba1ad9d7a6ee5931da3f1a136621b0d",
+  "source_archive_sha256": "77266c06b299d2a365fc53f470332104605ea115aa93819c38a4c6dfbb4cde4c",
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "complete",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
+  },
+  "github_path": "assets/maple/collection/npc/maple-island/12100/GMS-83",
+  "status": "collected"
+}

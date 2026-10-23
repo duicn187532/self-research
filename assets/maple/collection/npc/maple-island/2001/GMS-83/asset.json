@@ -1,0 +1,100 @@
+{
+  "id": "2001",
+  "type": "npc",
+  "region": "maple-island",
+  "town": "maple-island",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": null,
+  "name_zh_tw_status": "unavailable",
+  "source_url": "https://maplestory.io/api/GMS/83/npc/2001",
+  "export_url": "https://maplestory.io/api/wz/export/GMS/83/Npc/0002001.img",
+  "wz_path": "Npc.wz/0002001.img",
+  "version": {
+    "region": "GMS",
+    "version": "83"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "stand",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 40,
+          "height": 58,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "0a7f12bc8178c6fff86c9f870bd6a97ba1a233aa97928d7c5f8811eef1a2e4df",
+          "pixel_sha256": "724959497cc4b8acff28301ac1fae2275cfbbb5813b0cce655fd1239a4a5d1c2",
+          "wz_path": "Npc.wz/0002001.img/stand/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 20,
+            "y": 58
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/victoria/1061004/GMS-83/stand/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "c35927265ee9d5cd0e3a817d0c1c920ecd993bb993a9a8675d3005c3c0e35222",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/GMS/83/Npc/0002001.img/stand",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "Sen",
+  "role": null,
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "Entrance - Mushroom Town Training Camp",
+      "streetName": "Maple Road",
+      "id": 0
+    },
+    {
+      "name": "Upper level of the Training Camp",
+      "streetName": "Maple Road",
+      "id": 1
+    },
+    {
+      "name": "Lower level of the Training Camp",
+      "streetName": "Maple Road",
+      "id": 2
+    }
+  ],
+  "expected_actions": {
+    "stand": 1
+  },
+  "source_metadata_sha256": "ccd33fd519d012d95c9dd6264812ede620e7b8fd192bb5f14d79e16564afcb75",
+  "source_archive_sha256": "f6375fbb17e800a3456ab367961ee352d7b98d780ee3d08038db5e5d17014cdf",
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "partial",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
+  },
+  "github_path": "assets/maple/collection/npc/maple-island/2001/GMS-83",
+  "status": "collected"
+}

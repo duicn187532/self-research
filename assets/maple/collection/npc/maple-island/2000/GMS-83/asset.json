@@ -1,0 +1,186 @@
+{
+  "id": "2000",
+  "type": "npc",
+  "region": "maple-island",
+  "town": "maple-island",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": null,
+  "name_zh_tw_status": "unavailable",
+  "source_url": "https://maplestory.io/api/GMS/83/npc/2000",
+  "export_url": "https://maplestory.io/api/wz/export/GMS/83/Npc/0002000.img",
+  "wz_path": "Npc.wz/0002000.img",
+  "version": {
+    "region": "GMS",
+    "version": "83"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "finger",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 56,
+          "height": 70,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "e438b889778c238a3ea0b2400b253f10f347ef18c54a03326db7c81cefa4ac61",
+          "pixel_sha256": "c8762900fc0717a6ad2563f47f9a4bfbde6dde6dbf7ed1dce8d009585364c37d",
+          "wz_path": "Npc.wz/0002000.img/finger/0",
+          "duration_ms": 5000,
+          "origin": {
+            "x": 26,
+            "y": 70
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/victoria/1002000/GMS-83/finger/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "24ed61e5a196c5b94e2ae23bb00c79a23bc73f9a3d6ba88b2d59c5aee87e652d"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/GMS/83/Npc/0002000.img/finger",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "stand",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 56,
+          "height": 70,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "38cf85fe2ad381e87b3ef89c8ca8738ccb4eb8aac4f0959cca7199c894f3f45d",
+          "pixel_sha256": "011a985b9814411b88f3fe0ecbabb7319130dc663737dbd5d57cf6fa1c9677ce",
+          "wz_path": "Npc.wz/0002000.img/stand/0",
+          "duration_ms": 5000,
+          "origin": {
+            "x": 26,
+            "y": 70
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/victoria/1002000/GMS-83/stand/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "baab664b362222dda0407208b17092fee2dbc641b477b852b3230684bd2e1cc0"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/GMS/83/Npc/0002000.img/stand",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "wink",
+      "frame_count": 2,
+      "expected_frame_count": 2,
+      "frames": [
+        {
+          "index": 0,
+          "width": 56,
+          "height": 70,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "006758a6d7a1f2a48aa58f04f33527d02b661bcc838764fa22c814ca4c7a5392",
+          "pixel_sha256": "79892244b42340e9790d68bfa853863ec6174c116f1b211bbdc153ca1dc46b79",
+          "wz_path": "Npc.wz/0002000.img/wink/0",
+          "duration_ms": 200,
+          "origin": {
+            "x": 26,
+            "y": 70
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/victoria/1002000/GMS-83/wink/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "948293804edf8523637a36bcce672154d3eaac0748d40d671843887d48548d9e"
+        },
+        {
+          "index": 1,
+          "width": 56,
+          "height": 70,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "38cf85fe2ad381e87b3ef89c8ca8738ccb4eb8aac4f0959cca7199c894f3f45d",
+          "pixel_sha256": "011a985b9814411b88f3fe0ecbabb7319130dc663737dbd5d57cf6fa1c9677ce",
+          "wz_path": "Npc.wz/0002000.img/wink/1",
+          "duration_ms": 4800,
+          "origin": {
+            "x": 26,
+            "y": 70
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/victoria/1002000/GMS-83/stand/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "677493ccb720581811a36b62f33fe2d3db59cc80fcbe76bb60365a75d7e2cac4"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/GMS/83/Npc/0002000.img/wink",
+        "indices": [
+          0,
+          1
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "Roger",
+  "role": null,
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "Entrance - Mushroom Town Training Camp",
+      "streetName": "Maple Road",
+      "id": 0
+    },
+    {
+      "name": "Upper level of the Training Camp",
+      "streetName": "Maple Road",
+      "id": 1
+    }
+  ],
+  "expected_actions": {
+    "finger": 1,
+    "stand": 1,
+    "wink": 2
+  },
+  "source_metadata_sha256": "471e67a9854c00889eaf958b3fa9e6a274fe0cdd89635508169a66be4df6e102",
+  "source_archive_sha256": "f7241d5b12ccb08c7d85b6e370c3ecfa17991226d977100852cf42ff114917db",
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "complete",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
+  },
+  "github_path": "assets/maple/collection/npc/maple-island/2000/GMS-83",
+  "status": "collected"
+}

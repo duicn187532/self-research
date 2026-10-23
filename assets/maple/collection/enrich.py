@@ -35,6 +35,7 @@ for a in manifest['assets']:
     complete=True
     for action in a['actions']:
         for f in action['frames']:
+            f.pop('metadata_issues',None)
             for field,target in [('delay','duration_ms'),('origin','origin')]:
                 result=cache[f['wz_path']+'/'+field]
                 f[target]=result['value']

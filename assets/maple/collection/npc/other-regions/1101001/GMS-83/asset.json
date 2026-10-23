@@ -1,0 +1,130 @@
+{
+  "id": "1101001",
+  "type": "npc",
+  "region": "other-regions",
+  "town": "ereve",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": null,
+  "name_zh_tw_status": "unavailable",
+  "source_url": "https://maplestory.io/api/GMS/83/npc/1101001",
+  "export_url": "https://maplestory.io/api/wz/export/GMS/83/Npc/1101001.img",
+  "wz_path": "Npc.wz/1101001.img",
+  "version": {
+    "region": "GMS",
+    "version": "83"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "stand",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 1,
+          "height": 121,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "6c451fe44a5c26ee0c3bb624ecde993034fa7e819fd632601607f6b78b70fff7",
+          "pixel_sha256": "f00a73318104b05bcd0a7f10cca3af073bd6381b98a40045e551bbd42cdc2629",
+          "wz_path": "Npc.wz/1101001.img/stand/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 0,
+            "y": 121
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/other-regions/1101001/GMS-83/stand/0000.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/GMS/83/Npc/1101001.img/stand",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "default",
+      "frame_count": 0,
+      "expected_frame_count": 0,
+      "frames": [],
+      "indices_contiguous": true,
+      "count_matches_api": true
+    },
+    {
+      "name": "info/default",
+      "expected_frame_count": null,
+      "frames": [
+        {
+          "index": 0,
+          "width": 131,
+          "height": 145,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "c1247c3a2925c931e495d59bbdeddaab663389a57177c9be32f3fbe65adde457",
+          "pixel_sha256": "8b25c3b3919d13ed4b384d6e8437f01dd184593c52144395a1ea9dcb957af879",
+          "wz_path": "Npc.wz/1101001.img/info/default",
+          "duration_ms": null,
+          "origin": {
+            "x": 64,
+            "y": 145
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/other-regions/1101001/GMS-83/info/default/0000.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        }
+      ],
+      "kind": "auxiliary_canvas",
+      "count_matches_api": null,
+      "frame_count": 1,
+      "indices_contiguous": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "Shinsoo",
+  "role": null,
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "Entrance - Mushroom Town Training Camp",
+      "streetName": "Maple Road",
+      "id": 0
+    }
+  ],
+  "expected_actions": {
+    "stand": 1,
+    "default": 0
+  },
+  "source_metadata_sha256": "199c7e858029d0709227aaccac163fada3828a3b3329e9aa45b53fd144b04bc9",
+  "source_archive_sha256": "dc42978d84b740c1b714e52c7c6d7853a5d7d033d1e856ee8211bed907e5beff",
+  "unmapped_export_nodes": [],
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "partial",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
+  },
+  "github_path": "assets/maple/collection/npc/other-regions/1101001/GMS-83",
+  "status": "collected"
+}

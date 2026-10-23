@@ -12,11 +12,11 @@
 - [existing-inventory.json](existing-inventory.json)：本次以前就存在的圖片，只盤點不算新增。
 - 每個 `類型/地區/ID/GMS-83/asset.json` 提供個別素材資料。
 
-原始 PNG 位元組直接保存，不縮放、不重新編碼。影格按 `index` 數值排序；不要用目錄排序重建動畫。相同 SHA-256 的圖檔只存一份，其他影格以 `github_path` 引用，播放時仍須保留每一個影格位置與各自延遲。某些引用指向同一倉庫的既有素材。
+原始 PNG 位元組直接保存，不縮放、不重新編碼。影格按 `index` 數值排序；不要用目錄排序重建動畫。相同 SHA-256 或相同尺寸與 RGBA 像素雜湊的圖檔只存一份，其他影格以 `github_path` 引用，播放時仍須保留每一個影格位置與各自延遲。編碼不同但像素相同的來源以 `source_png_sha256` 保留原下載雜湊。某些引用指向同一倉庫的既有素材。
 
 `duration_ms`、`origin` 是 WZ 節點查詢結果；`null` 表示未知，不能當成 0 或任意預設值。定位方式為以畫布座標減去 `origin.x/y` 決定繪製位置。未驗證的播放效果不宣稱完成。
 
-`all_api_listed_action_frames_present` 僅表示 API 所列動作數量與索引吻合，不保證來源 API 已包含該角色歷代全部動作。UOL 連結影格會由 API renderer 解析補抓，另標 `retrieval`；未下載原始 WZ binary 比對。GMS/83 是服務標示版本。
+`all_api_listed_action_frames_present` 僅表示 API 所列動作數量吻合，不保證來源 API 已包含該角色歷代全部動作。`all_wz_numeric_frame_nodes_present` 另逐動作查核 WZ 的實際數字節點；來源有跳號時保留跳號，不補造不存在的影格。UOL 連結影格會由 API renderer 解析補抓，另標 `retrieval`；renderer 的位置序號與 WZ 節點編號不同，必須按實際節點表映射。未下載原始 WZ binary 比對。GMS/83 是服務標示版本。
 
 英文名稱來自版本 API；台版名稱未有可靠對照時保留 null，已填中文仍標 `unverified_translation`。NPC 職責取 API `role`、`is_shop`，未提供者不臆測職責。`town` 是人工建立的蒐集分組，`source_locations` 是 API 回傳位置；部分 API 位置有明顯疑義，不能當成已驗證出生地。
 
@@ -37,7 +37,11 @@ P1 優先：拉契爾恩 NPC／場景、殺人鯨、露希妲、英雄團與皇�
 ```sh
 python assets/maple/collection/collect.py assets/maple/collection/batch-01.json --acknowledge-unconfirmed-rights
 python assets/maple/collection/repair_frames.py
+python assets/maple/collection/collect_nested_effects.py
 python assets/maple/collection/enrich.py
+python assets/maple/collection/verify_wz_indices.py --prepare
+python assets/maple/collection/verify_wz_indices.py --apply
+python assets/maple/collection/deduplicate.py
 python assets/maple/collection/validate.py
 ```
 

@@ -1,0 +1,459 @@
+{
+  "id": "20001",
+  "type": "npc",
+  "region": "maple-island",
+  "town": "maple-island",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": null,
+  "name_zh_tw_status": "unavailable",
+  "source_url": "https://maplestory.io/api/GMS/83/npc/20001",
+  "export_url": "https://maplestory.io/api/wz/export/GMS/83/Npc/0020001.img",
+  "wz_path": "Npc.wz/0020001.img",
+  "version": {
+    "region": "GMS",
+    "version": "83"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "rub",
+      "frame_count": 13,
+      "expected_frame_count": 13,
+      "frames": [
+        {
+          "index": 0,
+          "width": 53,
+          "height": 74,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "e07549201a19e779a935c03435d0e66dd42498ce9c2902371e7e8bb13f4b1c9f",
+          "pixel_sha256": "64cb0d12155ad7aa72e18e448166d7ce08312185466fd94f707ef412bcd5be31",
+          "wz_path": "Npc.wz/0020001.img/rub/0",
+          "duration_ms": 150,
+          "origin": {
+            "x": 28,
+            "y": 74
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/maple-island/20001/GMS-83/rub/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 53,
+          "height": 74,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "7c4319ff8a247a9436cf6caefc02d4b786ff5ac51ba0c0b5815ecdcb9576df38",
+          "pixel_sha256": "af73b3e8ae94025d61080bcbd80b949fbb828c306fdfa322d3293a1e3cf0b3f3",
+          "wz_path": "Npc.wz/0020001.img/rub/1",
+          "duration_ms": 100,
+          "origin": {
+            "x": 28,
+            "y": 74
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/maple-island/20001/GMS-83/rub/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 53,
+          "height": 74,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "db54445c0dd1914743b949f7f2ef646c1fd00a5c43ac9b5ca4f4a31597b8934d",
+          "pixel_sha256": "f3080186f3efb1b52c153e2ab125bdacebdd98d22bb8288154b56049ae76f23b",
+          "wz_path": "Npc.wz/0020001.img/rub/2",
+          "duration_ms": 150,
+          "origin": {
+            "x": 28,
+            "y": 74
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/maple-island/20001/GMS-83/rub/0002.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 3,
+          "width": 53,
+          "height": 74,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "7c4319ff8a247a9436cf6caefc02d4b786ff5ac51ba0c0b5815ecdcb9576df38",
+          "pixel_sha256": "af73b3e8ae94025d61080bcbd80b949fbb828c306fdfa322d3293a1e3cf0b3f3",
+          "wz_path": "Npc.wz/0020001.img/rub/3",
+          "duration_ms": 100,
+          "origin": {
+            "x": 28,
+            "y": 74
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/GMS/83/npc/20001/render/rub/3",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/maple-island/20001/GMS-83/rub/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "0680e513b07f0661f6c0587206e68f32f8da1ed49a9300fd0aa8d228bf9c16df"
+        },
+        {
+          "index": 4,
+          "width": 53,
+          "height": 74,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "e07549201a19e779a935c03435d0e66dd42498ce9c2902371e7e8bb13f4b1c9f",
+          "pixel_sha256": "64cb0d12155ad7aa72e18e448166d7ce08312185466fd94f707ef412bcd5be31",
+          "wz_path": "Npc.wz/0020001.img/rub/4",
+          "duration_ms": 150,
+          "origin": {
+            "x": 28,
+            "y": 74
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/GMS/83/npc/20001/render/rub/4",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/maple-island/20001/GMS-83/rub/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "ec6d24c5f7ac4ae6d18a439f630b4c28d63ec0f24a529939ed1eb4dee1077ede"
+        },
+        {
+          "index": 5,
+          "width": 53,
+          "height": 74,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "7c4319ff8a247a9436cf6caefc02d4b786ff5ac51ba0c0b5815ecdcb9576df38",
+          "pixel_sha256": "af73b3e8ae94025d61080bcbd80b949fbb828c306fdfa322d3293a1e3cf0b3f3",
+          "wz_path": "Npc.wz/0020001.img/rub/5",
+          "duration_ms": 100,
+          "origin": {
+            "x": 28,
+            "y": 74
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/GMS/83/npc/20001/render/rub/5",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/maple-island/20001/GMS-83/rub/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "685d575d01a303d939dbeaf90866d49536760bd635a0043a9222d0da6628fd88"
+        },
+        {
+          "index": 6,
+          "width": 53,
+          "height": 74,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "db54445c0dd1914743b949f7f2ef646c1fd00a5c43ac9b5ca4f4a31597b8934d",
+          "pixel_sha256": "f3080186f3efb1b52c153e2ab125bdacebdd98d22bb8288154b56049ae76f23b",
+          "wz_path": "Npc.wz/0020001.img/rub/6",
+          "duration_ms": 150,
+          "origin": {
+            "x": 28,
+            "y": 74
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/GMS/83/npc/20001/render/rub/6",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/maple-island/20001/GMS-83/rub/0002.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "2252525fc1f293218b08b92a2400bbff791911448b949a5d9d9c060173a26193"
+        },
+        {
+          "index": 7,
+          "width": 53,
+          "height": 74,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "7c4319ff8a247a9436cf6caefc02d4b786ff5ac51ba0c0b5815ecdcb9576df38",
+          "pixel_sha256": "af73b3e8ae94025d61080bcbd80b949fbb828c306fdfa322d3293a1e3cf0b3f3",
+          "wz_path": "Npc.wz/0020001.img/rub/7",
+          "duration_ms": 100,
+          "origin": {
+            "x": 28,
+            "y": 74
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/GMS/83/npc/20001/render/rub/7",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/maple-island/20001/GMS-83/rub/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "c6475502542b728f6e95d2c7ed1ec225d36602fd0425435c0979b22477116ced"
+        },
+        {
+          "index": 8,
+          "width": 53,
+          "height": 74,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "e07549201a19e779a935c03435d0e66dd42498ce9c2902371e7e8bb13f4b1c9f",
+          "pixel_sha256": "64cb0d12155ad7aa72e18e448166d7ce08312185466fd94f707ef412bcd5be31",
+          "wz_path": "Npc.wz/0020001.img/rub/8",
+          "duration_ms": 150,
+          "origin": {
+            "x": 28,
+            "y": 74
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/GMS/83/npc/20001/render/rub/8",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/maple-island/20001/GMS-83/rub/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "c087f0b96dda4c1b50313aa393417864e475de56d72db3529bf58173de1adfc5"
+        },
+        {
+          "index": 9,
+          "width": 53,
+          "height": 74,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "7c4319ff8a247a9436cf6caefc02d4b786ff5ac51ba0c0b5815ecdcb9576df38",
+          "pixel_sha256": "af73b3e8ae94025d61080bcbd80b949fbb828c306fdfa322d3293a1e3cf0b3f3",
+          "wz_path": "Npc.wz/0020001.img/rub/9",
+          "duration_ms": 100,
+          "origin": {
+            "x": 28,
+            "y": 74
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/GMS/83/npc/20001/render/rub/9",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/maple-island/20001/GMS-83/rub/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "4c0c1428fb470a53415ed33186bccc534c7a99ba7833155a3befb1b6f80d74fb"
+        },
+        {
+          "index": 10,
+          "width": 53,
+          "height": 74,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "db54445c0dd1914743b949f7f2ef646c1fd00a5c43ac9b5ca4f4a31597b8934d",
+          "pixel_sha256": "f3080186f3efb1b52c153e2ab125bdacebdd98d22bb8288154b56049ae76f23b",
+          "wz_path": "Npc.wz/0020001.img/rub/10",
+          "duration_ms": 150,
+          "origin": {
+            "x": 28,
+            "y": 74
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/GMS/83/npc/20001/render/rub/10",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/maple-island/20001/GMS-83/rub/0002.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "77cfeced83a73e2c61dd97f8b53f4e8d061151f1abc1cab69cf338103680c5d3"
+        },
+        {
+          "index": 11,
+          "width": 53,
+          "height": 74,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "7c4319ff8a247a9436cf6caefc02d4b786ff5ac51ba0c0b5815ecdcb9576df38",
+          "pixel_sha256": "af73b3e8ae94025d61080bcbd80b949fbb828c306fdfa322d3293a1e3cf0b3f3",
+          "wz_path": "Npc.wz/0020001.img/rub/11",
+          "duration_ms": 100,
+          "origin": {
+            "x": 28,
+            "y": 74
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/GMS/83/npc/20001/render/rub/11",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/maple-island/20001/GMS-83/rub/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "b275c4d0d3974dc5bc26f4d4ec000b69b76868164391bff796b65eb1f0a31d8c"
+        },
+        {
+          "index": 12,
+          "width": 53,
+          "height": 74,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "e07549201a19e779a935c03435d0e66dd42498ce9c2902371e7e8bb13f4b1c9f",
+          "pixel_sha256": "64cb0d12155ad7aa72e18e448166d7ce08312185466fd94f707ef412bcd5be31",
+          "wz_path": "Npc.wz/0020001.img/rub/12",
+          "duration_ms": 150,
+          "origin": {
+            "x": 28,
+            "y": 74
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/GMS/83/npc/20001/render/rub/12",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/maple-island/20001/GMS-83/rub/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "dda5573cbfcdcc723e494f3fca88a540f9e852a207ec6418d3277ad6a2d2f631"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/GMS/83/Npc/0020001.img/rub",
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "salute",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 55,
+          "height": 74,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "e72276f5eff4f5066bdbf5af3dcce7058c9f5ec5424f53b938359e90af6509dc",
+          "pixel_sha256": "6bfa0dd630896d66bbfc100a8d3d9cd0e53c109c5d89af49a4e5d2852f5f2cd0",
+          "wz_path": "Npc.wz/0020001.img/salute/0",
+          "duration_ms": 5000,
+          "origin": {
+            "x": 30,
+            "y": 74
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/maple-island/20001/GMS-83/salute/0000.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/GMS/83/Npc/0020001.img/salute",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "stand",
+      "frame_count": 3,
+      "expected_frame_count": 3,
+      "frames": [
+        {
+          "index": 0,
+          "width": 53,
+          "height": 74,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "db12daf2ead59e0bbd0ac29eed700f7e295c9a05b44fa726dd9234efd02f78d6",
+          "pixel_sha256": "346173dfb54aa15e6c57a2338959ac41fc6706b528299e0ed5b79bf2c476bd69",
+          "wz_path": "Npc.wz/0020001.img/stand/0",
+          "duration_ms": 1200,
+          "origin": {
+            "x": 28,
+            "y": 74
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/maple-island/20001/GMS-83/stand/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 53,
+          "height": 74,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "d32f5ec452478081d39460088fc0aaf8468a0f205bd9c46ae3367d5d1a5a7e22",
+          "pixel_sha256": "d0950cf4ef6553a835f23d6bd26656cae821c38779abfcae084be23af7b8c62e",
+          "wz_path": "Npc.wz/0020001.img/stand/1",
+          "duration_ms": 100,
+          "origin": {
+            "x": 28,
+            "y": 74
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/maple-island/20001/GMS-83/stand/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 53,
+          "height": 74,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "abe26efdb52a5afe508b6cda4ef630e11aeaef7be093dec1c33c64a811de03fd",
+          "pixel_sha256": "d2c3524f268de7b0534ca64027a5212d0f4f5c4a13b40f85f7c4318716cfb628",
+          "wz_path": "Npc.wz/0020001.img/stand/2",
+          "duration_ms": 150,
+          "origin": {
+            "x": 28,
+            "y": 74
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/maple-island/20001/GMS-83/stand/0002.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/GMS/83/Npc/0020001.img/stand",
+        "indices": [
+          0,
+          1,
+          2
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "Bari",
+  "role": null,
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "Entrance - Mushroom Town Training Camp",
+      "streetName": "Maple Road",
+      "id": 0
+    },
+    {
+      "name": "Upper level of the Training Camp",
+      "streetName": "Maple Road",
+      "id": 1
+    }
+  ],
+  "expected_actions": {
+    "rub": 13,
+    "salute": 1,
+    "stand": 3
+  },
+  "source_metadata_sha256": "debe38f94a0d9231abe61c457710b8e971d8a19d30adefaf56880821d69750ed",
+  "source_archive_sha256": "d3ac7017276dba99407436997b5975c7df2b571ccb978240211c5237b89174bb",
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "complete",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
+  },
+  "github_path": "assets/maple/collection/npc/maple-island/20001/GMS-83",
+  "status": "collected"
+}

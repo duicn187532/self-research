@@ -1,0 +1,89 @@
+{
+  "id": "1052004",
+  "type": "npc",
+  "region": "victoria",
+  "town": "kerning-city",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": null,
+  "name_zh_tw_status": "unavailable",
+  "source_url": "https://maplestory.io/api/GMS/83/npc/1052004",
+  "export_url": "https://maplestory.io/api/wz/export/GMS/83/Npc/1052004.img",
+  "wz_path": "Npc.wz/1052004.img",
+  "version": {
+    "region": "GMS",
+    "version": "83"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "stand",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 43,
+          "height": 74,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "13cb7dc045529e2cae7dffe90f2a419fa966420617a1f04c1b0166519794e791",
+          "pixel_sha256": "f452b187486a628439ffceb896e5fa3858c346f14107d4018cd378e7f80b85a1",
+          "wz_path": "Npc.wz/1052004.img/stand/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 21,
+            "y": 74
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/victoria/1052004/GMS-83/stand/0000.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/GMS/83/Npc/1052004.img/stand",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "Denma the Owner",
+  "role": "Plastic Surgeon",
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "Entrance - Mushroom Town Training Camp",
+      "streetName": "Maple Road",
+      "id": 0
+    }
+  ],
+  "expected_actions": {
+    "stand": 1
+  },
+  "source_metadata_sha256": "e5dd6dee6e2a831fac93e5f2d920fb893335c1cbaadb226ddeec4f7087cef3a7",
+  "source_archive_sha256": "46d4e4a289e43c563a6c8afb3ff744eb81a024d5ac6997578cb2c8d0a972fd27",
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "partial",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
+  },
+  "github_path": "assets/maple/collection/npc/victoria/1052004/GMS-83",
+  "status": "collected"
+}

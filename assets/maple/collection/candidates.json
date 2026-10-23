@@ -103,6 +103,45 @@
       "source_archive_sha256": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85",
       "status": "download_failed",
       "reason": "No mapped PNG frames in export"
+    },
+    {
+      "id": "2004",
+      "type": "npc",
+      "region": "maple-island",
+      "town": "maple-island",
+      "region_status": "curated_target_not_exclusive_spawn_location",
+      "name_zh_tw": null,
+      "name_zh_tw_status": "unavailable",
+      "source_url": "https://maplestory.io/api/GMS/83/npc/2004",
+      "export_url": "https://maplestory.io/api/wz/export/GMS/83/Npc/0002004.img",
+      "wz_path": "Npc.wz/0002004.img",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "license": {
+        "status": "redistribution_permission_unconfirmed",
+        "rights_holder": "Nexon",
+        "evidence_url": "https://maplestory.io/",
+        "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+      },
+      "actions": [],
+      "acquired_on": "2026-10-23",
+      "name": "Todd",
+      "role": null,
+      "is_shop": false,
+      "source_locations": [
+        {
+          "name": "Entrance - Mushroom Town Training Camp",
+          "streetName": "Maple Road",
+          "id": 0
+        }
+      ],
+      "expected_actions": {},
+      "source_metadata_sha256": "6280faef489a43d64c05433bb15a99f34dfcb16a36046ba7a49f81f7a58b16f7",
+      "source_archive_sha256": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85",
+      "status": "download_failed",
+      "reason": "No decodable PNG frames in export or frame renderer"
     }
   ]
 }

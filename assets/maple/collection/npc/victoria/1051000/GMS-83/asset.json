@@ -1,0 +1,89 @@
+{
+  "id": "1051000",
+  "type": "npc",
+  "region": "victoria",
+  "town": "kerning-city",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": null,
+  "name_zh_tw_status": "unavailable",
+  "source_url": "https://maplestory.io/api/GMS/83/npc/1051000",
+  "export_url": "https://maplestory.io/api/wz/export/GMS/83/Npc/1051000.img",
+  "wz_path": "Npc.wz/1051000.img",
+  "version": {
+    "region": "GMS",
+    "version": "83"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "stand",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 59,
+          "height": 91,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "4a1d811bf8ab24985f9be52262c228b6891c0a3a3590b63e2e90ba6c5d41c475",
+          "pixel_sha256": "3b03cd41168d6b6b838228d11433cd48ba695b78f5b7cb8c51e6adf0503ede3d",
+          "wz_path": "Npc.wz/1051000.img/stand/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 29,
+            "y": 91
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/victoria/1051000/GMS-83/stand/0000.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/GMS/83/Npc/1051000.img/stand",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "Cutthroat Manny",
+  "role": "Weapon Seller",
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "Entrance - Mushroom Town Training Camp",
+      "streetName": "Maple Road",
+      "id": 0
+    }
+  ],
+  "expected_actions": {
+    "stand": 1
+  },
+  "source_metadata_sha256": "1338f34528fa5cc3582caf23656f1ea7f8e5207c53d8087dcc224017e26ad684",
+  "source_archive_sha256": "c339b4403ebd3915c2c2747eb5216a0d4b58aaa3d257aaa62a027f3b9d27d31b",
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "partial",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
+  },
+  "github_path": "assets/maple/collection/npc/victoria/1051000/GMS-83",
+  "status": "collected"
+}

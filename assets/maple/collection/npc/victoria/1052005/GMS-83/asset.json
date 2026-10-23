@@ -1,0 +1,90 @@
+{
+  "id": "1052005",
+  "type": "npc",
+  "region": "victoria",
+  "town": "kerning-city",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": null,
+  "name_zh_tw_status": "unavailable",
+  "source_url": "https://maplestory.io/api/GMS/83/npc/1052005",
+  "export_url": "https://maplestory.io/api/wz/export/GMS/83/Npc/1052005.img",
+  "wz_path": "Npc.wz/1052005.img",
+  "version": {
+    "region": "GMS",
+    "version": "83"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "stand",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 51,
+          "height": 70,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "0819b8fe6193a8b65451660f32e261acf31933b504e1523ab8ea6b025480dbc5",
+          "pixel_sha256": "9dc1851cc0cce0d3ce12ae95f0cc3e703c16d7a224e8635079f1a13b056ce77d",
+          "wz_path": "Npc.wz/1052005.img/stand/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 25,
+            "y": 70
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/victoria/1012001/GMS-83/stand/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "d3bb4b44b0462d91bab363ada2127a22100687ebc5b478fb151f2fdf0652372c",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/GMS/83/Npc/1052005.img/stand",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "Dr. Feeble",
+  "role": "Doctor w/o License",
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "Entrance - Mushroom Town Training Camp",
+      "streetName": "Maple Road",
+      "id": 0
+    }
+  ],
+  "expected_actions": {
+    "stand": 1
+  },
+  "source_metadata_sha256": "82df53e9dcf14fc79c0056bc4cfc39a97ed9e1fd462c7e4b966c19a86f9459bc",
+  "source_archive_sha256": "fc92f0ec0715758c7525e72776de4a262f6b4ab6b931a31c4dc1a271d5d58def",
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "partial",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
+  },
+  "github_path": "assets/maple/collection/npc/victoria/1052005/GMS-83",
+  "status": "collected"
+}

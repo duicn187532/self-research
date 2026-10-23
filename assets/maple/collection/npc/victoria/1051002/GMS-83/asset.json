@@ -1,0 +1,89 @@
+{
+  "id": "1051002",
+  "type": "npc",
+  "region": "victoria",
+  "town": "kerning-city",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": null,
+  "name_zh_tw_status": "unavailable",
+  "source_url": "https://maplestory.io/api/GMS/83/npc/1051002",
+  "export_url": "https://maplestory.io/api/wz/export/GMS/83/Npc/1051002.img",
+  "wz_path": "Npc.wz/1051002.img",
+  "version": {
+    "region": "GMS",
+    "version": "83"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "stand",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 50,
+          "height": 69,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "9a903ca32e00c1d14e9fe9d0ddfdb69f8b6491b6b71d7f221f2306b9e252cfd9",
+          "pixel_sha256": "6c7ef6e5871ad5c0ab9b8d2ba3d95c3a3eef637cde8db7b6c60a9023bf68f916",
+          "wz_path": "Npc.wz/1051002.img/stand/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 25,
+            "y": 69
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/victoria/1051002/GMS-83/stand/0000.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/GMS/83/Npc/1051002.img/stand",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "Dr. Faymus",
+  "role": "Grocer",
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "Entrance - Mushroom Town Training Camp",
+      "streetName": "Maple Road",
+      "id": 0
+    }
+  ],
+  "expected_actions": {
+    "stand": 1
+  },
+  "source_metadata_sha256": "f6b3fb3f188ee324ddf365e03646dd9b7ee8a11677ca78e168fe12608f3ec8b7",
+  "source_archive_sha256": "7a7843167ec296fae8f4f8c5320b7f590aed38a8b3458a55cb07042096451d46",
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "partial",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
+  },
+  "github_path": "assets/maple/collection/npc/victoria/1051002/GMS-83",
+  "status": "collected"
+}

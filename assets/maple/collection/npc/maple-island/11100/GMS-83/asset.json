@@ -1,0 +1,206 @@
+{
+  "id": "11100",
+  "type": "npc",
+  "region": "maple-island",
+  "town": "maple-island",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": null,
+  "name_zh_tw_status": "unavailable",
+  "source_url": "https://maplestory.io/api/GMS/83/npc/11100",
+  "export_url": "https://maplestory.io/api/wz/export/GMS/83/Npc/0011100.img",
+  "wz_path": "Npc.wz/0011100.img",
+  "version": {
+    "region": "GMS",
+    "version": "83"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "arm",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 59,
+          "height": 69,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "d82ed36772898645e965319647b4cacbb8af60a291727e56823194610f5fcc0e",
+          "pixel_sha256": "8827425220a74704b4105cca4ec28d489dd0fd1d3ae4bf0cc9480cee082547f0",
+          "wz_path": "Npc.wz/0011100.img/arm/0",
+          "duration_ms": 5000,
+          "origin": {
+            "x": 27,
+            "y": 69
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/victoria/1001100/GMS-83/arm/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "c1a451b3698b2af4ef87203f387312b4c9627d76a8f76dfbcc057db7652a9ce1"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/GMS/83/Npc/0011100.img/arm",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "smile",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 59,
+          "height": 69,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "dab82a0ea661e6e57a64d3af109290871c56aa92a85514dd3fbdab2fccf9bac8",
+          "pixel_sha256": "cc7383000c005333dbe88340e2068d1ce3c40c183e9f7d13da9f3434fce1f441",
+          "wz_path": "Npc.wz/0011100.img/smile/0",
+          "duration_ms": 5000,
+          "origin": {
+            "x": 27,
+            "y": 69
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/victoria/1001100/GMS-83/smile/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "9725eda0e861a7ad7305f875e8884ab63a787ba3b75e84f36c85f85459a1aa30"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/GMS/83/Npc/0011100.img/smile",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "stand",
+      "frame_count": 3,
+      "expected_frame_count": 3,
+      "frames": [
+        {
+          "index": 0,
+          "width": 59,
+          "height": 69,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "d3fe4dba75f05c5c230ff1e395465866b7c3a4fe789e74c9bd9f2eca20e19513",
+          "pixel_sha256": "69d72dcabe168b45099c6ce701eab21fa3ea209e24b71f11344ec80a1d6d9c1f",
+          "wz_path": "Npc.wz/0011100.img/stand/0",
+          "duration_ms": 1200,
+          "origin": {
+            "x": 27,
+            "y": 69
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/victoria/1001100/GMS-83/stand/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "6b0a52e5c554562ff411378345ddbddf127d722b6dfaceafae87ce19d5adcdbb"
+        },
+        {
+          "index": 1,
+          "width": 59,
+          "height": 69,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "26920990155b37e72fa166947cca77bb2eb8673a9653a0dae2c01c37bc4b7900",
+          "pixel_sha256": "f03dd78671f4bd88902eb67fa636e56638c370b0dd614dfe8ba1df61a5f7cab9",
+          "wz_path": "Npc.wz/0011100.img/stand/1",
+          "duration_ms": 100,
+          "origin": {
+            "x": 27,
+            "y": 69
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/victoria/1001100/GMS-83/stand/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "37fccbeda6f1f1d71c310d029eb04bd74c8c5c996bedcd6b340c8901210edefb"
+        },
+        {
+          "index": 2,
+          "width": 59,
+          "height": 69,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "ecf5a186a7a208d6c34e755ff5db974f7a422e247e84cbd4144facdb29ee8299",
+          "pixel_sha256": "018b19079fc81317497961a5ac8bc4cc60163f393931b8f5ba17ccff3f9f08cd",
+          "wz_path": "Npc.wz/0011100.img/stand/2",
+          "duration_ms": 150,
+          "origin": {
+            "x": 27,
+            "y": 69
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/victoria/1001100/GMS-83/stand/0002.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "9e1e645fc89bd242d8345d7ad8bd2fb9a03e4a5a1e9f2e7c9d93077fc7a2d748"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/GMS/83/Npc/0011100.img/stand",
+        "indices": [
+          0,
+          1,
+          2
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "Lucy",
+  "role": "Grocer",
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "Entrance - Mushroom Town Training Camp",
+      "streetName": "Maple Road",
+      "id": 0
+    },
+    {
+      "name": "Upper level of the Training Camp",
+      "streetName": "Maple Road",
+      "id": 1
+    }
+  ],
+  "expected_actions": {
+    "arm": 1,
+    "smile": 1,
+    "stand": 3
+  },
+  "source_metadata_sha256": "5ebb50cf28e1494aa99455ed3625037e23b21d6e08e2ddbdfcba397af5efe7c4",
+  "source_archive_sha256": "45efa804ca2ef709127f37b4efcf0857d40de31dd5da3527362b7fde6169c47b",
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "complete",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
+  },
+  "github_path": "assets/maple/collection/npc/maple-island/11100/GMS-83",
+  "status": "collected"
+}

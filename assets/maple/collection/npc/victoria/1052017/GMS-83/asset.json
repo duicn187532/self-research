@@ -1,0 +1,89 @@
+{
+  "id": "1052017",
+  "type": "npc",
+  "region": "victoria",
+  "town": "kerning-city",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": null,
+  "name_zh_tw_status": "unavailable",
+  "source_url": "https://maplestory.io/api/GMS/83/npc/1052017",
+  "export_url": "https://maplestory.io/api/wz/export/GMS/83/Npc/1052017.img",
+  "wz_path": "Npc.wz/1052017.img",
+  "version": {
+    "region": "GMS",
+    "version": "83"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "stand",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 45,
+          "height": 71,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "80a6fc2f3662ae4545a9094fc6230119d22fd6250e15b3f5d3d1229ea6d2d18e",
+          "pixel_sha256": "8ee89a832e89555c1cdb3b4f33682ffb5c67c972b705a7a24eae35b3ef0536d4",
+          "wz_path": "Npc.wz/1052017.img/stand/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 22,
+            "y": 71
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/victoria/1052017/GMS-83/stand/0000.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/GMS/83/Npc/1052017.img/stand",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "Mr. Hong",
+  "role": "Storage Keeper",
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "Entrance - Mushroom Town Training Camp",
+      "streetName": "Maple Road",
+      "id": 0
+    }
+  ],
+  "expected_actions": {
+    "stand": 1
+  },
+  "source_metadata_sha256": "9a51dc2e0970b9c23fd43e499a394d7689feaa0bdf75d5465ddf4125e24e5294",
+  "source_archive_sha256": "fe462115279709d5eb7d00e0bb34b646a9afaf6740befcf1f31f67c100e33a84",
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "partial",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
+  },
+  "github_path": "assets/maple/collection/npc/victoria/1052017/GMS-83",
+  "status": "collected"
+}

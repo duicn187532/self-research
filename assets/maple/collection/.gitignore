@@ -1,2 +1,3 @@
 __pycache__/
 frame-metadata-cache.json
+.download-cache/

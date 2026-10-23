@@ -1,0 +1,845 @@
+{
+  "id": "1101005",
+  "type": "npc",
+  "region": "other-regions",
+  "town": "ereve",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": null,
+  "name_zh_tw_status": "unavailable",
+  "source_url": "https://maplestory.io/api/GMS/83/npc/1101005",
+  "export_url": "https://maplestory.io/api/wz/export/GMS/83/Npc/1101005.img",
+  "wz_path": "Npc.wz/1101005.img",
+  "version": {
+    "region": "GMS",
+    "version": "83"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "bow",
+      "frame_count": 8,
+      "expected_frame_count": 8,
+      "frames": [
+        {
+          "index": 0,
+          "width": 77,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "89bdd0b04ed88fb6a73776acdcc6c7b847c0584995aa926d6fd9a507bac0d485",
+          "pixel_sha256": "58ba4d535ceef27088ec12ced1dd607450db394a0bc2f129b60b5697bba5ce82",
+          "wz_path": "Npc.wz/1101005.img/bow/0",
+          "duration_ms": 210,
+          "origin": {
+            "x": 37,
+            "y": 74
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/other-regions/1101005/GMS-83/bow/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 78,
+          "height": 76,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "b0248bd4ac2c0b1fca40381701dc647381605dd0397ef8bfa6fb0f138e922b22",
+          "pixel_sha256": "029528a419effb44110e2002d5ce3e30f1bb05f2e8ea5b48c977c9217e26c7dc",
+          "wz_path": "Npc.wz/1101005.img/bow/1",
+          "duration_ms": 210,
+          "origin": {
+            "x": 38,
+            "y": 74
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/other-regions/1101005/GMS-83/bow/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 79,
+          "height": 76,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "62ba76f0ab9a25f9843530092610f37af3c46cc57c1866d3711bd2c736a730dd",
+          "pixel_sha256": "5301be66d4d444307ce1827f817dc708ba14897ef32cf20ece4d3542cd4055e4",
+          "wz_path": "Npc.wz/1101005.img/bow/2",
+          "duration_ms": 210,
+          "origin": {
+            "x": 39,
+            "y": 74
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/other-regions/1101005/GMS-83/bow/0002.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 3,
+          "width": 91,
+          "height": 82,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "6a731fc74487465664c3f0a99f1d95706caba8f22fcd3063b82f2b65f4c569c8",
+          "pixel_sha256": "224941387a7af3c566ef5ec3179b4bc35535cf7beebf06f392a803e5183d3f20",
+          "wz_path": "Npc.wz/1101005.img/bow/3",
+          "duration_ms": 210,
+          "origin": {
+            "x": 51,
+            "y": 74
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/other-regions/1101005/GMS-83/bow/0003.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 4,
+          "width": 91,
+          "height": 81,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "ef3035258d489781228ed2cc8f1b50f0522c9e3fb9811b35d561af24c3c85718",
+          "pixel_sha256": "7a439672124ecd80382d914de31fa1dac93b5a56eb4b0908ed4d105838f36110",
+          "wz_path": "Npc.wz/1101005.img/bow/4",
+          "duration_ms": 600,
+          "origin": {
+            "x": 51,
+            "y": 74
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/other-regions/1101005/GMS-83/bow/0004.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 5,
+          "width": 92,
+          "height": 82,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "e1714f968b7890e49c9d257fe658f07de0e607dccea1327152efa7549fbf2472",
+          "pixel_sha256": "9cb66a7ffd0ee0adaf92523ecae95b2eb61008c194cac0108eb7b136d14172e6",
+          "wz_path": "Npc.wz/1101005.img/bow/5",
+          "duration_ms": 210,
+          "origin": {
+            "x": 52,
+            "y": 74
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/other-regions/1101005/GMS-83/bow/0005.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 6,
+          "width": 78,
+          "height": 76,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "14edd0f81994fb28d77607779c05f28fa1eab6e465d1fe7d321d3f84ecd503af",
+          "pixel_sha256": "9b2d907b8ec67c8f47e2a2ff5b20157619e4b8697111d3e2c43d3c93e8a74439",
+          "wz_path": "Npc.wz/1101005.img/bow/6",
+          "duration_ms": 210,
+          "origin": {
+            "x": 38,
+            "y": 74
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/other-regions/1101005/GMS-83/bow/0006.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 7,
+          "width": 77,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "89bdd0b04ed88fb6a73776acdcc6c7b847c0584995aa926d6fd9a507bac0d485",
+          "pixel_sha256": "58ba4d535ceef27088ec12ced1dd607450db394a0bc2f129b60b5697bba5ce82",
+          "wz_path": "Npc.wz/1101005.img/bow/7",
+          "duration_ms": 210,
+          "origin": {
+            "x": 37,
+            "y": 74
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/other-regions/1101005/GMS-83/bow/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "a6da5c1aa776d1be3f3eecef8ae59684631d6ef194394b3a0d1740d6c66f9d0b"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/GMS/83/Npc/1101005.img/bow",
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "eye",
+      "frame_count": 8,
+      "expected_frame_count": 8,
+      "frames": [
+        {
+          "index": 0,
+          "width": 77,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "c7a4334b1f8987a0b506012ba529cc4cbfd84a2a0de08b3da918000dae8173a8",
+          "pixel_sha256": "e56b96cd62be69c228bada4c7dfc420fc2e1579e6b278212a3c253b4bc72fdc3",
+          "wz_path": "Npc.wz/1101005.img/eye/0",
+          "duration_ms": 150,
+          "origin": {
+            "x": 37,
+            "y": 74
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/other-regions/1101005/GMS-83/eye/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 77,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5a938d4b3035fb1a3eca28db385f866904a4d0ea90b689eed903f1fc109843ce",
+          "pixel_sha256": "2c9123d0d0cd601692e17763af4fdf19ab65ad36a1c1475224968377ff95d2f0",
+          "wz_path": "Npc.wz/1101005.img/eye/1",
+          "duration_ms": 150,
+          "origin": {
+            "x": 37,
+            "y": 74
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/other-regions/1101005/GMS-83/eye/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 77,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "a41e0bef9405381b1ddfe1219c64e9b777a9e053c8b0c2e81733c1df532925a0",
+          "pixel_sha256": "acc3b6f05d1a31dc0522f83ff3f9151f67c90d24a96ab0df189638ba40782fb5",
+          "wz_path": "Npc.wz/1101005.img/eye/2",
+          "duration_ms": 150,
+          "origin": {
+            "x": 37,
+            "y": 74
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/other-regions/1101005/GMS-83/eye/0002.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 3,
+          "width": 77,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "41fa711453827382bcdf113a6d1d02d79a187cd161e573508edbb9cb0d4df776",
+          "pixel_sha256": "49647ac07b2c79560e39b0fb0e9715481db164cef5c9a1cf6195e0a6cd8b7c60",
+          "wz_path": "Npc.wz/1101005.img/eye/3",
+          "duration_ms": 150,
+          "origin": {
+            "x": 37,
+            "y": 74
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/other-regions/1101005/GMS-83/eye/0003.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 4,
+          "width": 77,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "c7a4334b1f8987a0b506012ba529cc4cbfd84a2a0de08b3da918000dae8173a8",
+          "pixel_sha256": "e56b96cd62be69c228bada4c7dfc420fc2e1579e6b278212a3c253b4bc72fdc3",
+          "wz_path": "Npc.wz/1101005.img/eye/4",
+          "duration_ms": 150,
+          "origin": {
+            "x": 37,
+            "y": 74
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/GMS/83/npc/1101005/render/eye/4",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/other-regions/1101005/GMS-83/eye/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "e5cbdb14427d6f0ce8e0ef5d5e8b9ef12d9cb9eea1e4b69d336850925b1b8a1b"
+        },
+        {
+          "index": 5,
+          "width": 77,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5a938d4b3035fb1a3eca28db385f866904a4d0ea90b689eed903f1fc109843ce",
+          "pixel_sha256": "2c9123d0d0cd601692e17763af4fdf19ab65ad36a1c1475224968377ff95d2f0",
+          "wz_path": "Npc.wz/1101005.img/eye/5",
+          "duration_ms": 150,
+          "origin": {
+            "x": 37,
+            "y": 74
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/GMS/83/npc/1101005/render/eye/5",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/other-regions/1101005/GMS-83/eye/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "bafae16e80d43fb74a7c324d2df55eee0e69eadd68192c5cf4453e223e86aa5e"
+        },
+        {
+          "index": 6,
+          "width": 77,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "a41e0bef9405381b1ddfe1219c64e9b777a9e053c8b0c2e81733c1df532925a0",
+          "pixel_sha256": "acc3b6f05d1a31dc0522f83ff3f9151f67c90d24a96ab0df189638ba40782fb5",
+          "wz_path": "Npc.wz/1101005.img/eye/6",
+          "duration_ms": 150,
+          "origin": {
+            "x": 37,
+            "y": 74
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/GMS/83/npc/1101005/render/eye/6",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/other-regions/1101005/GMS-83/eye/0002.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "2a400ce954495f467cd797d9b959aa74cea1721fb0c552b53a3d3aa7a47930c0"
+        },
+        {
+          "index": 7,
+          "width": 77,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "41fa711453827382bcdf113a6d1d02d79a187cd161e573508edbb9cb0d4df776",
+          "pixel_sha256": "49647ac07b2c79560e39b0fb0e9715481db164cef5c9a1cf6195e0a6cd8b7c60",
+          "wz_path": "Npc.wz/1101005.img/eye/7",
+          "duration_ms": 150,
+          "origin": {
+            "x": 37,
+            "y": 74
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/GMS/83/npc/1101005/render/eye/7",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/other-regions/1101005/GMS-83/eye/0003.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "a52e0305990452b6314cdef188a6f3201d61efcc8b38733a2c8a3d9256696010"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/GMS/83/Npc/1101005.img/eye",
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "hand",
+      "frame_count": 6,
+      "expected_frame_count": 6,
+      "frames": [
+        {
+          "index": 0,
+          "width": 77,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "c7a4334b1f8987a0b506012ba529cc4cbfd84a2a0de08b3da918000dae8173a8",
+          "pixel_sha256": "e56b96cd62be69c228bada4c7dfc420fc2e1579e6b278212a3c253b4bc72fdc3",
+          "wz_path": "Npc.wz/1101005.img/hand/0",
+          "duration_ms": 180,
+          "origin": {
+            "x": 37,
+            "y": 74
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/other-regions/1101005/GMS-83/eye/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "4980b8e2364eb13c23671bc450aa9b66e8c90633a0d956052a64251127e7bede"
+        },
+        {
+          "index": 1,
+          "width": 77,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "b58319bd1848c2a6509bae5c715910fb9eeb57c03da79c867f6aeb172be7ddfa",
+          "pixel_sha256": "25e687c942a033bdc616002ed5d63955d4ab6e3e108e69dbb89ee3c32f38832e",
+          "wz_path": "Npc.wz/1101005.img/hand/1",
+          "duration_ms": 180,
+          "origin": {
+            "x": 37,
+            "y": 74
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/other-regions/1101005/GMS-83/hand/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 77,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "e9d6cdc562bcf6b7d7b0f342bd4a872fd3cb971c5a57dc7485058c3526ed9cb5",
+          "pixel_sha256": "812783d62e31a06fab8eefbf10b2d52196623cd35b91410285c2d182fa55c1ae",
+          "wz_path": "Npc.wz/1101005.img/hand/2",
+          "duration_ms": 180,
+          "origin": {
+            "x": 37,
+            "y": 74
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/other-regions/1101005/GMS-83/hand/0002.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 3,
+          "width": 77,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "199eceb3280fab9cd17f83f779aecbbece2ca084f224f2e3a9dfd71d10d01fa8",
+          "pixel_sha256": "dec9765d37bd27e02633fa93ecab1ae6e5e147be4740c66698ae1c54c20daae0",
+          "wz_path": "Npc.wz/1101005.img/hand/3",
+          "duration_ms": 180,
+          "origin": {
+            "x": 37,
+            "y": 74
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/other-regions/1101005/GMS-83/hand/0003.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 4,
+          "width": 77,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "15f259f34c19fe936657e0e874f928597206dcb722629eee17e63fd3d1b2ea8f",
+          "pixel_sha256": "bbe9de0da02ab7391fa79d880c194be1a3a9f8694b9f81ce1b8e14c0a29b2e4c",
+          "wz_path": "Npc.wz/1101005.img/hand/4",
+          "duration_ms": 180,
+          "origin": {
+            "x": 37,
+            "y": 74
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/other-regions/1101005/GMS-83/hand/0004.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 5,
+          "width": 77,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "9e0f9f06b15baf5f913485ba963edbb0b4bfbcb6df5b70c609dcc687c475faaa",
+          "pixel_sha256": "71ced490c542455492269426255988952069a566f7a8cb3402a28c79bab5bac8",
+          "wz_path": "Npc.wz/1101005.img/hand/5",
+          "duration_ms": 180,
+          "origin": {
+            "x": 37,
+            "y": 74
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/other-regions/1101005/GMS-83/hand/0005.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/GMS/83/Npc/1101005.img/hand",
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "say",
+      "frame_count": 12,
+      "expected_frame_count": 12,
+      "frames": [
+        {
+          "index": 0,
+          "width": 77,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "73a7d677574bb1da3005473079fc43c35d95d44eeb858ae0fc467fa148e59cca",
+          "pixel_sha256": "671727a275698c5e8f6789a6e19b8f4c47229ddc63f0e49f32242028baa9f891",
+          "wz_path": "Npc.wz/1101005.img/say/0",
+          "duration_ms": 240,
+          "origin": {
+            "x": 37,
+            "y": 74
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/other-regions/1101005/GMS-83/say/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 77,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5de293ffd28efb9540b4e5c7c972551ec09fd165d3bde5ccef69774aa3865d36",
+          "pixel_sha256": "0765b1b583ee27544e8ed926cfbb2e757735edb49c7faf1edaa25f906af51a85",
+          "wz_path": "Npc.wz/1101005.img/say/1",
+          "duration_ms": 240,
+          "origin": {
+            "x": 37,
+            "y": 74
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/other-regions/1101005/GMS-83/say/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 77,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "73a7d677574bb1da3005473079fc43c35d95d44eeb858ae0fc467fa148e59cca",
+          "pixel_sha256": "671727a275698c5e8f6789a6e19b8f4c47229ddc63f0e49f32242028baa9f891",
+          "wz_path": "Npc.wz/1101005.img/say/2",
+          "duration_ms": 240,
+          "origin": {
+            "x": 37,
+            "y": 74
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/GMS/83/npc/1101005/render/say/2",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/other-regions/1101005/GMS-83/say/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "2f4e57859f11ff7f76556fd441f9bbb7c44fe262075aca2ea1e3e58b8aa4b13f"
+        },
+        {
+          "index": 3,
+          "width": 77,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5de293ffd28efb9540b4e5c7c972551ec09fd165d3bde5ccef69774aa3865d36",
+          "pixel_sha256": "0765b1b583ee27544e8ed926cfbb2e757735edb49c7faf1edaa25f906af51a85",
+          "wz_path": "Npc.wz/1101005.img/say/3",
+          "duration_ms": 240,
+          "origin": {
+            "x": 37,
+            "y": 74
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/GMS/83/npc/1101005/render/say/3",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/other-regions/1101005/GMS-83/say/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "f7f8893a410eb9d26b226e60cafc1bf463016608af2df6321c6cfe9172c8904f"
+        },
+        {
+          "index": 4,
+          "width": 77,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "73a7d677574bb1da3005473079fc43c35d95d44eeb858ae0fc467fa148e59cca",
+          "pixel_sha256": "671727a275698c5e8f6789a6e19b8f4c47229ddc63f0e49f32242028baa9f891",
+          "wz_path": "Npc.wz/1101005.img/say/4",
+          "duration_ms": 240,
+          "origin": {
+            "x": 37,
+            "y": 74
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/GMS/83/npc/1101005/render/say/4",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/other-regions/1101005/GMS-83/say/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "c5e6c4217f1f489e3d111ff4932b32ca452187817dbd93dea3d251a64fc159fa"
+        },
+        {
+          "index": 5,
+          "width": 77,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5de293ffd28efb9540b4e5c7c972551ec09fd165d3bde5ccef69774aa3865d36",
+          "pixel_sha256": "0765b1b583ee27544e8ed926cfbb2e757735edb49c7faf1edaa25f906af51a85",
+          "wz_path": "Npc.wz/1101005.img/say/5",
+          "duration_ms": 240,
+          "origin": {
+            "x": 37,
+            "y": 74
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/GMS/83/npc/1101005/render/say/5",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/other-regions/1101005/GMS-83/say/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "83b65d74d051276a871ec36261254409e9511d71be3eee4d80895130b039c0d1"
+        },
+        {
+          "index": 6,
+          "width": 77,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "73a7d677574bb1da3005473079fc43c35d95d44eeb858ae0fc467fa148e59cca",
+          "pixel_sha256": "671727a275698c5e8f6789a6e19b8f4c47229ddc63f0e49f32242028baa9f891",
+          "wz_path": "Npc.wz/1101005.img/say/6",
+          "duration_ms": 240,
+          "origin": {
+            "x": 37,
+            "y": 74
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/GMS/83/npc/1101005/render/say/6",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/other-regions/1101005/GMS-83/say/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "fefe48b153fd22fe0ceb3aaee66298c954e46dbbfa2392e4b9227b082553fd07"
+        },
+        {
+          "index": 7,
+          "width": 77,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5de293ffd28efb9540b4e5c7c972551ec09fd165d3bde5ccef69774aa3865d36",
+          "pixel_sha256": "0765b1b583ee27544e8ed926cfbb2e757735edb49c7faf1edaa25f906af51a85",
+          "wz_path": "Npc.wz/1101005.img/say/7",
+          "duration_ms": 240,
+          "origin": {
+            "x": 37,
+            "y": 74
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/GMS/83/npc/1101005/render/say/7",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/other-regions/1101005/GMS-83/say/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "70794deeb7e1e693acf7ed173b84bd5ad5c8ffeaa70ca1f42cc7c49ea5e28ea0"
+        },
+        {
+          "index": 8,
+          "width": 77,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "73a7d677574bb1da3005473079fc43c35d95d44eeb858ae0fc467fa148e59cca",
+          "pixel_sha256": "671727a275698c5e8f6789a6e19b8f4c47229ddc63f0e49f32242028baa9f891",
+          "wz_path": "Npc.wz/1101005.img/say/8",
+          "duration_ms": 240,
+          "origin": {
+            "x": 37,
+            "y": 74
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/GMS/83/npc/1101005/render/say/8",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/other-regions/1101005/GMS-83/say/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "0e7469bc6a3c1c01089a8191a721f0266300773b2ae6c1722e70d5c36defefb3"
+        },
+        {
+          "index": 9,
+          "width": 77,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5de293ffd28efb9540b4e5c7c972551ec09fd165d3bde5ccef69774aa3865d36",
+          "pixel_sha256": "0765b1b583ee27544e8ed926cfbb2e757735edb49c7faf1edaa25f906af51a85",
+          "wz_path": "Npc.wz/1101005.img/say/9",
+          "duration_ms": 240,
+          "origin": {
+            "x": 37,
+            "y": 74
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/GMS/83/npc/1101005/render/say/9",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/other-regions/1101005/GMS-83/say/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "b3b2fdc32a0e5c3fafe2cbf4d87ff40c954957117bbb808ec02f5a119f9e3aff"
+        },
+        {
+          "index": 10,
+          "width": 77,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "73a7d677574bb1da3005473079fc43c35d95d44eeb858ae0fc467fa148e59cca",
+          "pixel_sha256": "671727a275698c5e8f6789a6e19b8f4c47229ddc63f0e49f32242028baa9f891",
+          "wz_path": "Npc.wz/1101005.img/say/10",
+          "duration_ms": 240,
+          "origin": {
+            "x": 37,
+            "y": 74
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/GMS/83/npc/1101005/render/say/10",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/other-regions/1101005/GMS-83/say/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "a60797225af6df332fa3086248173eb3740e4a8cd7c3e94f6a1d2c36fdefe4ba"
+        },
+        {
+          "index": 11,
+          "width": 77,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5de293ffd28efb9540b4e5c7c972551ec09fd165d3bde5ccef69774aa3865d36",
+          "pixel_sha256": "0765b1b583ee27544e8ed926cfbb2e757735edb49c7faf1edaa25f906af51a85",
+          "wz_path": "Npc.wz/1101005.img/say/11",
+          "duration_ms": 240,
+          "origin": {
+            "x": 37,
+            "y": 74
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/GMS/83/npc/1101005/render/say/11",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/other-regions/1101005/GMS-83/say/0001.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "7270c26ff04efe87753305adffe11d919c08e2e1bfda449b01fdc1dce161f191"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/GMS/83/Npc/1101005.img/say",
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    },
+    {
+      "name": "stand",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 77,
+          "height": 77,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "c7a4334b1f8987a0b506012ba529cc4cbfd84a2a0de08b3da918000dae8173a8",
+          "pixel_sha256": "e56b96cd62be69c228bada4c7dfc420fc2e1579e6b278212a3c253b4bc72fdc3",
+          "wz_path": "Npc.wz/1101005.img/stand/0",
+          "duration_ms": 3000,
+          "origin": {
+            "x": 37,
+            "y": 74
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/other-regions/1101005/GMS-83/eye/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "1b80ed2a2f48e1f1d478aa317d559be33a483f352836858a17533611887c62a5"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/GMS/83/Npc/1101005.img/stand",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "Irena",
+  "role": "The Chief Knight of the Wind",
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "Entrance - Mushroom Town Training Camp",
+      "streetName": "Maple Road",
+      "id": 0
+    }
+  ],
+  "expected_actions": {
+    "bow": 8,
+    "eye": 8,
+    "hand": 6,
+    "say": 12,
+    "stand": 1
+  },
+  "source_metadata_sha256": "f53cf1265e55984208f0217978e111b94346bf00dfc2046f14fc92195df777f3",
+  "source_archive_sha256": "dc3680d23bf0e2c23c862cfb041b4d2e21e86153a40e92187ed2590c288dfc9d",
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "complete",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
+  },
+  "github_path": "assets/maple/collection/npc/other-regions/1101005/GMS-83",
+  "status": "collected"
+}

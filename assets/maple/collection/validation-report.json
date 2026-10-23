@@ -1,24 +1,109 @@
 {
   "verified_on": "2026-10-23",
-  "entity_records": 120,
+  "entity_records": 198,
   "by_type": {
     "mobs": 47,
-    "npc": 73
+    "npc": 151
   },
   "by_region": {
-    "victoria": 120
+    "victoria": 168,
+    "maple-island": 21,
+    "other-regions": 9
   },
   "npc_by_town": {
     "lith-harbor": 14,
     "henesys": 28,
     "perion": 13,
-    "ellinia": 18
+    "ellinia": 18,
+    "kerning-city": 20,
+    "sleepywood": 7,
+    "nautilus": 21,
+    "maple-island": 21,
+    "ereve": 9
   },
-  "frame_references": 1376,
-  "unique_referenced_pngs": 1376,
-  "complete_api_action_frame_sets": 111,
-  "timing_and_origin_complete": 0,
+  "frame_references": 2766,
+  "unique_referenced_pngs": 1364,
+  "unique_decoded_pixel_frames": 1364,
+  "complete_api_action_frame_sets": 198,
+  "complete_wz_numeric_frame_sets": 198,
+  "timing_and_origin_complete": 92,
+  "frames_missing_origin": 0,
+  "frames_missing_explicit_delay": 388,
   "existing_images_preserved_inventory_count": 156,
+  "records_with_new_visual_frames_vs_existing_strips": {
+    "mobs": 41,
+    "npc": 148
+  },
+  "new_unique_visual_sets_excluding_existing_and_duplicate_npcs": {
+    "mobs": 41,
+    "npc": 131
+  },
+  "records_only_reusing_existing_visuals": [
+    "mobs/100101",
+    "mobs/1110100",
+    "mobs/1210101",
+    "mobs/1210102",
+    "mobs/1210103",
+    "mobs/210100",
+    "npc/1012100",
+    "npc/1022000",
+    "npc/1032001"
+  ],
+  "identical_visual_content_entity_groups": [
+    [
+      "npc/1001100",
+      "npc/11100"
+    ],
+    [
+      "npc/1002000",
+      "npc/1032003",
+      "npc/2000"
+    ],
+    [
+      "npc/1002006",
+      "npc/1032004",
+      "npc/2002",
+      "npc/2003"
+    ],
+    [
+      "npc/1002100",
+      "npc/20100",
+      "npc/2102"
+    ],
+    [
+      "npc/1010100",
+      "npc/2100",
+      "npc/2103"
+    ],
+    [
+      "npc/1012001",
+      "npc/1052005"
+    ],
+    [
+      "npc/1012003",
+      "npc/12000"
+    ],
+    [
+      "npc/1032008",
+      "npc/1032009"
+    ],
+    [
+      "npc/1052003",
+      "npc/10000"
+    ],
+    [
+      "npc/1061002",
+      "npc/1061003"
+    ],
+    [
+      "npc/1061004",
+      "npc/2001"
+    ],
+    [
+      "npc/12101",
+      "npc/2101"
+    ]
+  ],
   "duplicate_storage": [],
   "failures": []
 }

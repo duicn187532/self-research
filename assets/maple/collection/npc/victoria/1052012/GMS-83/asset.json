@@ -1,0 +1,89 @@
+{
+  "id": "1052012",
+  "type": "npc",
+  "region": "victoria",
+  "town": "kerning-city",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": null,
+  "name_zh_tw_status": "unavailable",
+  "source_url": "https://maplestory.io/api/GMS/83/npc/1052012",
+  "export_url": "https://maplestory.io/api/wz/export/GMS/83/Npc/1052012.img",
+  "wz_path": "Npc.wz/1052012.img",
+  "version": {
+    "region": "GMS",
+    "version": "83"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "stand",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 57,
+          "height": 69,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "c4f2992c526f4426eedc4e613392929718aedcec186dd161dccf65302d2c02b3",
+          "pixel_sha256": "d70a70344e1aadcf4d20039955270ba223bd079d602d53fb4ca295a7ac0c86e8",
+          "wz_path": "Npc.wz/1052012.img/stand/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 28,
+            "y": 69
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/victoria/1052012/GMS-83/stand/0000.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/GMS/83/Npc/1052012.img/stand",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "Mong from Kong",
+  "role": "Internet Cafe Worker",
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "Entrance - Mushroom Town Training Camp",
+      "streetName": "Maple Road",
+      "id": 0
+    }
+  ],
+  "expected_actions": {
+    "stand": 1
+  },
+  "source_metadata_sha256": "fe33653451746098b0ab07cb4b91ae030979f6ec148b18fa9424d1e671b413a1",
+  "source_archive_sha256": "0af15f0d6f851c0ec8dd346fc7320a08699f1ad3105ab47fe70d722f3f57d078",
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "partial",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
+  },
+  "github_path": "assets/maple/collection/npc/victoria/1052012/GMS-83",
+  "status": "collected"
+}

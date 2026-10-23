@@ -1,0 +1,89 @@
+{
+  "id": "1052001",
+  "type": "npc",
+  "region": "victoria",
+  "town": "kerning-city",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": "達克魯",
+  "name_zh_tw_status": "unverified_translation",
+  "source_url": "https://maplestory.io/api/GMS/83/npc/1052001",
+  "export_url": "https://maplestory.io/api/wz/export/GMS/83/Npc/1052001.img",
+  "wz_path": "Npc.wz/1052001.img",
+  "version": {
+    "region": "GMS",
+    "version": "83"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "stand",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 135,
+          "height": 174,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "90a0104fd52c342a1eb3bc34aa3c1769c79b68706a1f6c5499be613ddcf1f49c",
+          "pixel_sha256": "f6dd502f97cce1d4ec229f5281c25cbc4d6909aa3fca33dd875121680c25e114",
+          "wz_path": "Npc.wz/1052001.img/stand/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 67,
+            "y": 156
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/victoria/1052001/GMS-83/stand/0000.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/GMS/83/Npc/1052001.img/stand",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "Dark Lord",
+  "role": "Thief Instructor",
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "Entrance - Mushroom Town Training Camp",
+      "streetName": "Maple Road",
+      "id": 0
+    }
+  ],
+  "expected_actions": {
+    "stand": 1
+  },
+  "source_metadata_sha256": "bed6dd8a41c7c9c1a68550d006a2898190caec0d35cf3e39073d4d7ad8b1ef61",
+  "source_archive_sha256": "458c90a326f8f59fbf0010830f386fb3b680c704e9a79b9111b7fb9187843f34",
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "partial",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
+  },
+  "github_path": "assets/maple/collection/npc/victoria/1052001/GMS-83",
+  "status": "collected"
+}

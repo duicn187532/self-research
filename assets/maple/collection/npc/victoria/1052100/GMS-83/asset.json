@@ -1,0 +1,89 @@
+{
+  "id": "1052100",
+  "type": "npc",
+  "region": "victoria",
+  "town": "kerning-city",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": null,
+  "name_zh_tw_status": "unavailable",
+  "source_url": "https://maplestory.io/api/GMS/83/npc/1052100",
+  "export_url": "https://maplestory.io/api/wz/export/GMS/83/Npc/1052100.img",
+  "wz_path": "Npc.wz/1052100.img",
+  "version": {
+    "region": "GMS",
+    "version": "83"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "stand",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 56,
+          "height": 81,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "f75b52b1604e131d6213822704a0b948333e0d39072164b1d0eec64f6a1f01d9",
+          "pixel_sha256": "41e5321ec84d3408b680526915278c9d0e167aeb3082460a508a442c32a46d27",
+          "wz_path": "Npc.wz/1052100.img/stand/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 28,
+            "y": 81
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/npc/victoria/1052100/GMS-83/stand/0000.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/GMS/83/Npc/1052100.img/stand",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "Don Giovanni",
+  "role": "Hair Salon Owner",
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "Entrance - Mushroom Town Training Camp",
+      "streetName": "Maple Road",
+      "id": 0
+    }
+  ],
+  "expected_actions": {
+    "stand": 1
+  },
+  "source_metadata_sha256": "3cc515e43552bfda0236a06fcea5d1cd7ba6a1453853251a78702d9e0d86b635",
+  "source_archive_sha256": "3ba00ee64bbdf032678fd35a592155bce9686d77db9cb7e3b1677ec76755d6ab",
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "partial",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
+  },
+  "github_path": "assets/maple/collection/npc/victoria/1052100/GMS-83",
+  "status": "collected"
+}

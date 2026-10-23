@@ -34,15 +34,26 @@
           "sha256": "914c69e42df8f6d87ce22e0d7abe99a5717218da9d6a1700ff112a04ef154ac0",
           "pixel_sha256": "8054b82f093e3d0d3b11961fb19df27aab6b4a1f4c5fe058ffda93dabaa97774",
           "wz_path": "Npc.wz/1002006.img/finger/0",
-          "duration_ms": null,
-          "origin": null,
+          "duration_ms": 5000,
+          "origin": {
+            "x": 26,
+            "y": 70
+          },
           "decode": "pass",
           "github_path": "assets/maple/collection/npc/victoria/1002006/GMS-83/finger/0000.png",
           "storage": "sha256_reference"
         }
       ],
       "count_matches_api": true,
-      "indices_contiguous": true
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/GMS/83/Npc/1002006.img/finger",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
     },
     {
       "name": "heart",
@@ -58,8 +69,11 @@
           "sha256": "e2055d7325ebf93aea1377a2474479a035b653bc4aee18da289bac87d61f5471",
           "pixel_sha256": "399c598da134013325a43be00585e074a55e65bc1febb55a32ed7e0b3d217d15",
           "wz_path": "Npc.wz/1002006.img/heart/0",
-          "duration_ms": null,
-          "origin": null,
+          "duration_ms": 150,
+          "origin": {
+            "x": 26,
+            "y": 70
+          },
           "decode": "pass",
           "github_path": "assets/maple/collection/npc/victoria/1002006/GMS-83/heart/0000.png",
           "storage": "sha256_reference"
@@ -73,8 +87,11 @@
           "sha256": "02bb106e1b1f2a1e6bcca8712600a70dbfc6f39ebc65087c10ed6c5c30d2a85e",
           "pixel_sha256": "0795f977424a5b7e9f8ef9d21ebb84164eba20b04b033f0a6d865e1c5b7058a6",
           "wz_path": "Npc.wz/1002006.img/heart/1",
-          "duration_ms": null,
-          "origin": null,
+          "duration_ms": 150,
+          "origin": {
+            "x": 26,
+            "y": 71
+          },
           "decode": "pass",
           "github_path": "assets/maple/collection/npc/victoria/1002006/GMS-83/heart/0001.png",
           "storage": "sha256_reference"
@@ -88,8 +105,11 @@
           "sha256": "221cee282e180784a3d5aa02cb6b1884fdbafa9fc5f72104578707e947b8d397",
           "pixel_sha256": "0cd7df2d921cb9751f2d266f0de22e5e20372caa03b1017415d7e8894bc31cd4",
           "wz_path": "Npc.wz/1002006.img/heart/2",
-          "duration_ms": null,
-          "origin": null,
+          "duration_ms": 150,
+          "origin": {
+            "x": 26,
+            "y": 71
+          },
           "decode": "pass",
           "github_path": "assets/maple/collection/npc/victoria/1002006/GMS-83/heart/0002.png",
           "storage": "sha256_reference"
@@ -103,8 +123,11 @@
           "sha256": "463d50bc819e6204698c011dce55f19ab8d8a0f968b35245ddef86dbabb7273a",
           "pixel_sha256": "41d4819d42b5e23f6d80d13c8e1a430880e6d5c0c2f97d892958cbe9d89efdaa",
           "wz_path": "Npc.wz/1002006.img/heart/3",
-          "duration_ms": null,
-          "origin": null,
+          "duration_ms": 150,
+          "origin": {
+            "x": 26,
+            "y": 71
+          },
           "decode": "pass",
           "github_path": "assets/maple/collection/npc/victoria/1002006/GMS-83/heart/0003.png",
           "storage": "sha256_reference"
@@ -118,8 +141,11 @@
           "sha256": "88b5d969be2f2ad632a573f0fd6c8e329195d862dda879117f178eef9a4f6ec6",
           "pixel_sha256": "9d560eebe31eb834882f19f2f0b8f70bdef08f67ecb2ccdec713219ed49e548e",
           "wz_path": "Npc.wz/1002006.img/heart/4",
-          "duration_ms": null,
-          "origin": null,
+          "duration_ms": 150,
+          "origin": {
+            "x": 26,
+            "y": 71
+          },
           "decode": "pass",
           "github_path": "assets/maple/collection/npc/victoria/1002006/GMS-83/heart/0004.png",
           "storage": "sha256_reference"
@@ -133,8 +159,11 @@
           "sha256": "829dbcb26beb077d1ed73763f6aa5ec043fccb5540f2be46cea35f275217181c",
           "pixel_sha256": "e4c6e1476a53da22d49f5ae22013c324dabcd71ced4579403792a8b6c319eb27",
           "wz_path": "Npc.wz/1002006.img/heart/5",
-          "duration_ms": null,
-          "origin": null,
+          "duration_ms": 150,
+          "origin": {
+            "x": 26,
+            "y": 71
+          },
           "decode": "pass",
           "github_path": "assets/maple/collection/npc/victoria/1002006/GMS-83/heart/0005.png",
           "storage": "sha256_reference"
@@ -148,8 +177,11 @@
           "sha256": "8ada99a823ed06edf54ef6b571091f181d1a746e62e8b04bc4fb10e4960f49c2",
           "pixel_sha256": "0a7cd51f87764cfeb5bac97e2692d23e52019c6d8171b22be19b34738d7c79b7",
           "wz_path": "Npc.wz/1002006.img/heart/6",
-          "duration_ms": null,
-          "origin": null,
+          "duration_ms": 200,
+          "origin": {
+            "x": 26,
+            "y": 71
+          },
           "decode": "pass",
           "github_path": "assets/maple/collection/npc/victoria/1002006/GMS-83/heart/0006.png",
           "storage": "sha256_reference"
@@ -160,16 +192,20 @@
           "height": 70,
           "mode": "RGBA",
           "has_transparency": true,
-          "sha256": "5596fbac4e5355ff713a51b8b595797b3f1d2b656de66ebc5e1580b33ad0cb49",
+          "sha256": "e2055d7325ebf93aea1377a2474479a035b653bc4aee18da289bac87d61f5471",
           "pixel_sha256": "399c598da134013325a43be00585e074a55e65bc1febb55a32ed7e0b3d217d15",
           "wz_path": "Npc.wz/1002006.img/heart/7",
-          "duration_ms": null,
-          "origin": null,
+          "duration_ms": 150,
+          "origin": {
+            "x": 26,
+            "y": 70
+          },
           "decode": "pass",
           "source_url": "https://maplestory.io/api/GMS/83/npc/1002006/render/heart/7",
           "retrieval": "resolved_frame_renderer",
-          "github_path": "assets/maple/collection/npc/victoria/1002006/GMS-83/heart/0007.png",
-          "storage": "original_png"
+          "github_path": "assets/maple/collection/npc/victoria/1002006/GMS-83/heart/0000.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "5596fbac4e5355ff713a51b8b595797b3f1d2b656de66ebc5e1580b33ad0cb49"
         },
         {
           "index": 8,
@@ -180,15 +216,34 @@
           "sha256": "df0e972cbec621c58d7dc4cd0cfadc01756cca7118105070980f633e6bd13948",
           "pixel_sha256": "635e25886c8496f47d2c791aec0dbbfc4a9faff91270cc13850b3bf14c7fac37",
           "wz_path": "Npc.wz/1002006.img/heart/8",
-          "duration_ms": null,
-          "origin": null,
+          "duration_ms": 3750,
+          "origin": {
+            "x": 26,
+            "y": 70
+          },
           "decode": "pass",
           "github_path": "assets/maple/collection/npc/victoria/1002006/GMS-83/heart/0008.png",
           "storage": "sha256_reference"
         }
       ],
       "count_matches_api": true,
-      "indices_contiguous": true
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/GMS/83/Npc/1002006.img/heart",
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
     },
     {
       "name": "stand",
@@ -201,18 +256,30 @@
           "height": 70,
           "mode": "RGBA",
           "has_transparency": true,
-          "sha256": "9cbe324c7dca0709ac92fd61ade9f787438b11b746d373e6d7843d01a399afe6",
+          "sha256": "df0e972cbec621c58d7dc4cd0cfadc01756cca7118105070980f633e6bd13948",
           "pixel_sha256": "635e25886c8496f47d2c791aec0dbbfc4a9faff91270cc13850b3bf14c7fac37",
           "wz_path": "Npc.wz/1002006.img/stand/0",
-          "duration_ms": null,
-          "origin": null,
+          "duration_ms": 5000,
+          "origin": {
+            "x": 26,
+            "y": 70
+          },
           "decode": "pass",
-          "github_path": "assets/maple/collection/npc/victoria/1002006/GMS-83/stand/0000.png",
-          "storage": "sha256_reference"
+          "github_path": "assets/maple/collection/npc/victoria/1002006/GMS-83/heart/0008.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "9cbe324c7dca0709ac92fd61ade9f787438b11b746d373e6d7843d01a399afe6"
         }
       ],
       "count_matches_api": true,
-      "indices_contiguous": true
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/GMS/83/Npc/1002006.img/stand",
+        "indices": [
+          0
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
     },
     {
       "name": "wink",
@@ -228,8 +295,11 @@
           "sha256": "ac82fe0132367bdec01af3ec603f7e4a55a9d8f0170a65698e3be202c427e90d",
           "pixel_sha256": "3a252ec924524f30b5729fe9f5ce4f18b5379fa5b4f31387aa6198a07d98a80e",
           "wz_path": "Npc.wz/1002006.img/wink/0",
-          "duration_ms": null,
-          "origin": null,
+          "duration_ms": 200,
+          "origin": {
+            "x": 26,
+            "y": 70
+          },
           "decode": "pass",
           "github_path": "assets/maple/collection/npc/victoria/1002006/GMS-83/wink/0000.png",
           "storage": "sha256_reference"
@@ -240,18 +310,31 @@
           "height": 70,
           "mode": "RGBA",
           "has_transparency": true,
-          "sha256": "2b7a83666c7c1cf5789c3431292a11a13b4a11761ffe7f395ee875d4a2eb9bb2",
+          "sha256": "df0e972cbec621c58d7dc4cd0cfadc01756cca7118105070980f633e6bd13948",
           "pixel_sha256": "635e25886c8496f47d2c791aec0dbbfc4a9faff91270cc13850b3bf14c7fac37",
           "wz_path": "Npc.wz/1002006.img/wink/1",
-          "duration_ms": null,
-          "origin": null,
+          "duration_ms": 4800,
+          "origin": {
+            "x": 26,
+            "y": 70
+          },
           "decode": "pass",
-          "github_path": "assets/maple/collection/npc/victoria/1002006/GMS-83/wink/0001.png",
-          "storage": "sha256_reference"
+          "github_path": "assets/maple/collection/npc/victoria/1002006/GMS-83/heart/0008.png",
+          "storage": "identical_pixels_reference",
+          "source_png_sha256": "2b7a83666c7c1cf5789c3431292a11a13b4a11761ffe7f395ee875d4a2eb9bb2"
         }
       ],
       "count_matches_api": true,
-      "indices_contiguous": true
+      "indices_contiguous": true,
+      "wz_index_verification": {
+        "source_url": "https://maplestory.io/api/wz/GMS/83/Npc/1002006.img/wink",
+        "indices": [
+          0,
+          1
+        ],
+        "error": null
+      },
+      "wz_indices_match": true
     }
   ],
   "acquired_on": "2026-10-23",
@@ -277,9 +360,10 @@
     "decode": "pass",
     "sha256": "pass",
     "all_api_listed_action_frames_present": true,
-    "timing_and_origin": "not_retrieved",
+    "timing_and_origin": "complete",
     "visual_playback": "not_verified",
-    "original_wz_binary_compared": false
+    "original_wz_binary_compared": false,
+    "all_wz_numeric_frame_nodes_present": true
   },
   "github_path": "assets/maple/collection/npc/victoria/1002006/GMS-83",
   "status": "collected"
