@@ -8,6 +8,7 @@
 
 - [manifest.json](manifest.json)：實際下載、可解碼 PNG 的素材與影格；`collected` 表示已取得 API 所列動作的全部影格，`partial` 表示仍有缺漏。兩者均不代表授權已確認。
 - [validation-report.json](validation-report.json)：實際數量、地區、完整度與驗證結果。
+- [name-index.zh-TW.json](name-index.zh-TW.json)：供應用程式快速讀取的精簡台版中文名稱索引。
 - [candidates.json](candidates.json)：失敗下載或尚未取得項目，不計入已入庫數量。
 - [existing-inventory.json](existing-inventory.json)：本次以前就存在的圖片，只盤點不算新增。
 - 每個 `類型/地區/ID/版本/asset.json` 提供個別素材資料；目前包含 GMS/83 與 TWMS/256。
@@ -18,7 +19,7 @@
 
 `all_api_listed_action_frames_present` 僅表示 API 所列動作數量吻合，不保證來源 API 已包含該角色歷代全部動作。`all_wz_numeric_frame_nodes_present` 另逐動作查核 WZ 的實際數字節點；來源有跳號時保留跳號，不補造不存在的影格。UOL 連結影格會由 API renderer 解析補抓，另標 `retrieval`；renderer 的位置序號與 WZ 節點編號不同，必須按實際節點表映射。未下載原始 WZ binary 比對。GMS/83 是服務標示版本。
 
-英文名稱來自版本 API；台版名稱未有可靠對照時保留 null，已填中文仍標 `unverified_translation`。NPC 職責取 API `role`、`is_shop`，未提供者不臆測職責。`town` 是人工建立的蒐集分組，`source_locations` 是 API 回傳位置；部分 API 位置有明顯疑義，不能當成已驗證出生地。
+`name_zh_tw` 是 TWMS/256 相同素材 ID 的正式名稱，`display_name_zh_tw` 是應用程式優先顯示欄位；Boss 會在顯示名稱附上階段，但 `name_zh_tw` 保持正式角色名。應用程式可依序讀取 `display_name_zh_tw ?? name_zh_tw ?? name`。舊 GMS/83 美術以相同 ID 對照 TWMS/256，狀態標為 `source_twms_256_id_match`。NPC 職責取 API `role`、`is_shop`，未提供者不臆測職責。`town` 是人工建立的蒐集分組，`source_locations` 是 API 回傳位置；部分 API 位置有明顯疑義，不能當成已驗證出生地。
 
 ## 分類與數量
 
@@ -40,6 +41,7 @@ python assets/maple/collection/repair_frames.py
 python assets/maple/collection/collect_nested_effects.py
 python assets/maple/collection/collect_maps.py assets/maple/collection/batch-04-maps.json
 python assets/maple/collection/collect_map_resource_batch.py assets/maple/collection/batch-04-map-resources.json
+python assets/maple/collection/sync_tw_names.py
 python assets/maple/collection/enrich.py
 python assets/maple/collection/verify_wz_indices.py --prepare
 python assets/maple/collection/verify_wz_indices.py --apply

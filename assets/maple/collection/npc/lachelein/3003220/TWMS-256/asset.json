@@ -5,7 +5,7 @@
   "town": "lachelein",
   "region_status": "curated_target_not_exclusive_spawn_location",
   "name_zh_tw": "西瓜面具",
-  "name_zh_tw_status": "unverified_translation",
+  "name_zh_tw_status": "source_twms",
   "source_url": "https://maplestory.io/api/TWMS/256/npc/3003220",
   "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Npc/3003220.img",
   "wz_path": "Npc.wz/3003220.img",
@@ -342,5 +342,7 @@
     "all_wz_numeric_frame_nodes_present": true
   },
   "github_path": "assets/maple/collection/npc/lachelein/3003220/TWMS-256",
-  "status": "collected"
+  "status": "collected",
+  "name_zh_tw_source_url": "https://maplestory.io/api/TWMS/256/npc",
+  "display_name_zh_tw": "西瓜面具"
 }

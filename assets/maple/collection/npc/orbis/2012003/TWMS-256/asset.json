@@ -1008,5 +1008,7 @@
     "all_wz_numeric_frame_nodes_present": true
   },
   "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256",
-  "status": "collected"
+  "status": "collected",
+  "name_zh_tw_source_url": "https://maplestory.io/api/TWMS/256/npc",
+  "display_name_zh_tw": "妖精 娜麗"
 }

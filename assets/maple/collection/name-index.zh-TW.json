@@ -1,0 +1,3927 @@
+{
+  "schema_version": 1,
+  "locale": "zh-TW",
+  "preferred_field": "display_name_zh_tw",
+  "records": [
+    {
+      "key": "mobs/100100/GMS-83",
+      "type": "mobs",
+      "id": "100100",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "嫩寶",
+      "display_name_zh_tw": "嫩寶",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/100100/GMS-83"
+    },
+    {
+      "key": "mobs/100101/GMS-83",
+      "type": "mobs",
+      "id": "100101",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "藍寶",
+      "display_name_zh_tw": "藍寶",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/100101/GMS-83"
+    },
+    {
+      "key": "mobs/1110100/GMS-83",
+      "type": "mobs",
+      "id": "1110100",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "綠菇菇",
+      "display_name_zh_tw": "綠菇菇",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/1110100/GMS-83"
+    },
+    {
+      "key": "mobs/1110101/GMS-83",
+      "type": "mobs",
+      "id": "1110101",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "黑木妖",
+      "display_name_zh_tw": "黑木妖",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/1110101/GMS-83"
+    },
+    {
+      "key": "mobs/1120100/GMS-83",
+      "type": "mobs",
+      "id": "1120100",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "三眼章魚",
+      "display_name_zh_tw": "三眼章魚",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/1120100/GMS-83"
+    },
+    {
+      "key": "mobs/1130100/GMS-83",
+      "type": "mobs",
+      "id": "1130100",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "斧木妖",
+      "display_name_zh_tw": "斧木妖",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/1130100/GMS-83"
+    },
+    {
+      "key": "mobs/1140100/GMS-83",
+      "type": "mobs",
+      "id": "1140100",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "發芽木妖",
+      "display_name_zh_tw": "發芽木妖",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/1140100/GMS-83"
+    },
+    {
+      "key": "mobs/120100/GMS-83",
+      "type": "mobs",
+      "id": "120100",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "菇菇仔",
+      "display_name_zh_tw": "菇菇仔",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/120100/GMS-83"
+    },
+    {
+      "key": "mobs/1210100/GMS-83",
+      "type": "mobs",
+      "id": "1210100",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "肥肥",
+      "display_name_zh_tw": "肥肥",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/1210100/GMS-83"
+    },
+    {
+      "key": "mobs/1210101/GMS-83",
+      "type": "mobs",
+      "id": "1210101",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "緞帶肥肥",
+      "display_name_zh_tw": "緞帶肥肥",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/1210101/GMS-83"
+    },
+    {
+      "key": "mobs/1210102/GMS-83",
+      "type": "mobs",
+      "id": "1210102",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "菇菇寶貝",
+      "display_name_zh_tw": "菇菇寶貝",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/1210102/GMS-83"
+    },
+    {
+      "key": "mobs/1210103/GMS-83",
+      "type": "mobs",
+      "id": "1210103",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "藍水靈",
+      "display_name_zh_tw": "藍水靈",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/1210103/GMS-83"
+    },
+    {
+      "key": "mobs/130100/GMS-83",
+      "type": "mobs",
+      "id": "130100",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "木妖",
+      "display_name_zh_tw": "木妖",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/130100/GMS-83"
+    },
+    {
+      "key": "mobs/130101/GMS-83",
+      "type": "mobs",
+      "id": "130101",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "紅寶",
+      "display_name_zh_tw": "紅寶",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/130101/GMS-83"
+    },
+    {
+      "key": "mobs/210100/GMS-83",
+      "type": "mobs",
+      "id": "210100",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "綠水靈",
+      "display_name_zh_tw": "綠水靈",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/210100/GMS-83"
+    },
+    {
+      "key": "mobs/2110200/GMS-83",
+      "type": "mobs",
+      "id": "2110200",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "刺菇菇",
+      "display_name_zh_tw": "刺菇菇",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/2110200/GMS-83"
+    },
+    {
+      "key": "mobs/2130100/GMS-83",
+      "type": "mobs",
+      "id": "2130100",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "黑斧木妖",
+      "display_name_zh_tw": "黑斧木妖",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/2130100/GMS-83"
+    },
+    {
+      "key": "mobs/2130103/GMS-83",
+      "type": "mobs",
+      "id": "2130103",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "青蛇",
+      "display_name_zh_tw": "青蛇",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/2130103/GMS-83"
+    },
+    {
+      "key": "mobs/2220100/GMS-83",
+      "type": "mobs",
+      "id": "2220100",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "藍菇菇",
+      "display_name_zh_tw": "藍菇菇",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/2220100/GMS-83"
+    },
+    {
+      "key": "mobs/2230100/GMS-83",
+      "type": "mobs",
+      "id": "2230100",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "火獨眼獸",
+      "display_name_zh_tw": "火獨眼獸",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/2230100/GMS-83"
+    },
+    {
+      "key": "mobs/2230101/GMS-83",
+      "type": "mobs",
+      "id": "2230101",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "殭屍菇菇",
+      "display_name_zh_tw": "殭屍菇菇",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/2230101/GMS-83"
+    },
+    {
+      "key": "mobs/2230102/GMS-83",
+      "type": "mobs",
+      "id": "2230102",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "黑肥肥",
+      "display_name_zh_tw": "黑肥肥",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/2230102/GMS-83"
+    },
+    {
+      "key": "mobs/2230110/GMS-83",
+      "type": "mobs",
+      "id": "2230110",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "木面怪人",
+      "display_name_zh_tw": "木面怪人",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/2230110/GMS-83"
+    },
+    {
+      "key": "mobs/2230111/GMS-83",
+      "type": "mobs",
+      "id": "2230111",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "石面怪人",
+      "display_name_zh_tw": "石面怪人",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/2230111/GMS-83"
+    },
+    {
+      "key": "mobs/2300100/GMS-83",
+      "type": "mobs",
+      "id": "2300100",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "蝙蝠",
+      "display_name_zh_tw": "蝙蝠",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/2300100/GMS-83"
+    },
+    {
+      "key": "mobs/3110100/GMS-83",
+      "type": "mobs",
+      "id": "3110100",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "鱷魚",
+      "display_name_zh_tw": "鱷魚",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/3110100/GMS-83"
+    },
+    {
+      "key": "mobs/3210100/GMS-83",
+      "type": "mobs",
+      "id": "3210100",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "火肥肥",
+      "display_name_zh_tw": "火肥肥",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/3210100/GMS-83"
+    },
+    {
+      "key": "mobs/3210800/GMS-83",
+      "type": "mobs",
+      "id": "3210800",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "猴子",
+      "display_name_zh_tw": "猴子",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/3210800/GMS-83"
+    },
+    {
+      "key": "mobs/3230100/GMS-83",
+      "type": "mobs",
+      "id": "3230100",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "風獨眼獸",
+      "display_name_zh_tw": "風獨眼獸",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/3230100/GMS-83"
+    },
+    {
+      "key": "mobs/3230101/GMS-83",
+      "type": "mobs",
+      "id": "3230101",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "小幽靈",
+      "display_name_zh_tw": "小幽靈",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/3230101/GMS-83"
+    },
+    {
+      "key": "mobs/3230102/GMS-83",
+      "type": "mobs",
+      "id": "3230102",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "紅螃蟹",
+      "display_name_zh_tw": "紅螃蟹",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/3230102/GMS-83"
+    },
+    {
+      "key": "mobs/4130100/GMS-83",
+      "type": "mobs",
+      "id": "4130100",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "土龍",
+      "display_name_zh_tw": "土龍",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/4130100/GMS-83"
+    },
+    {
+      "key": "mobs/4130101/GMS-83",
+      "type": "mobs",
+      "id": "4130101",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "烏龜",
+      "display_name_zh_tw": "烏龜",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/4130101/GMS-83"
+    },
+    {
+      "key": "mobs/4230100/GMS-83",
+      "type": "mobs",
+      "id": "4230100",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "冰獨眼獸",
+      "display_name_zh_tw": "冰獨眼獸",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/4230100/GMS-83"
+    },
+    {
+      "key": "mobs/4230101/GMS-83",
+      "type": "mobs",
+      "id": "4230101",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "天使猴",
+      "display_name_zh_tw": "天使猴",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/4230101/GMS-83"
+    },
+    {
+      "key": "mobs/4230102/GMS-83",
+      "type": "mobs",
+      "id": "4230102",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "大幽靈",
+      "display_name_zh_tw": "大幽靈",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/4230102/GMS-83"
+    },
+    {
+      "key": "mobs/4230103/GMS-83",
+      "type": "mobs",
+      "id": "4230103",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "鋼之肥肥",
+      "display_name_zh_tw": "鋼之肥肥",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/4230103/GMS-83"
+    },
+    {
+      "key": "mobs/4230104/GMS-83",
+      "type": "mobs",
+      "id": "4230104",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "青螃蟹",
+      "display_name_zh_tw": "青螃蟹",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/4230104/GMS-83"
+    },
+    {
+      "key": "mobs/4230125/GMS-83",
+      "type": "mobs",
+      "id": "4230125",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "骷髏犬",
+      "display_name_zh_tw": "骷髏犬",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/4230125/GMS-83"
+    },
+    {
+      "key": "mobs/4230126/GMS-83",
+      "type": "mobs",
+      "id": "4230126",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "木乃伊犬",
+      "display_name_zh_tw": "木乃伊犬",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/4230126/GMS-83"
+    },
+    {
+      "key": "mobs/4230400/GMS-83",
+      "type": "mobs",
+      "id": "4230400",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "鋼之黑肥肥",
+      "display_name_zh_tw": "鋼之黑肥肥",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/4230400/GMS-83"
+    },
+    {
+      "key": "mobs/5130100/GMS-83",
+      "type": "mobs",
+      "id": "5130100",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "青龍",
+      "display_name_zh_tw": "青龍",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/5130100/GMS-83"
+    },
+    {
+      "key": "mobs/5130101/GMS-83",
+      "type": "mobs",
+      "id": "5130101",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "石巨人",
+      "display_name_zh_tw": "石巨人",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/5130101/GMS-83"
+    },
+    {
+      "key": "mobs/5130102/GMS-83",
+      "type": "mobs",
+      "id": "5130102",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "黑曜石巨人",
+      "display_name_zh_tw": "黑曜石巨人",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/5130102/GMS-83"
+    },
+    {
+      "key": "mobs/5130103/GMS-83",
+      "type": "mobs",
+      "id": "5130103",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "黑鱷魚",
+      "display_name_zh_tw": "黑鱷魚",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/5130103/GMS-83"
+    },
+    {
+      "key": "mobs/5150000/GMS-83",
+      "type": "mobs",
+      "id": "5150000",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "混種石巨人",
+      "display_name_zh_tw": "混種石巨人",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/5150000/GMS-83"
+    },
+    {
+      "key": "mobs/5150001/GMS-83",
+      "type": "mobs",
+      "id": "5150001",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "骷髏士兵",
+      "display_name_zh_tw": "骷髏士兵",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/mobs/victoria/5150001/GMS-83"
+    },
+    {
+      "key": "npc/1001000/GMS-83",
+      "type": "npc",
+      "id": "1001000",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "賽爾文",
+      "display_name_zh_tw": "賽爾文",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1001000/GMS-83"
+    },
+    {
+      "key": "npc/1001001/GMS-83",
+      "type": "npc",
+      "id": "1001001",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "娜塔莎",
+      "display_name_zh_tw": "娜塔莎",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1001001/GMS-83"
+    },
+    {
+      "key": "npc/1001100/GMS-83",
+      "type": "npc",
+      "id": "1001100",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "米娜",
+      "display_name_zh_tw": "米娜",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1001100/GMS-83"
+    },
+    {
+      "key": "npc/1002000/GMS-83",
+      "type": "npc",
+      "id": "1002000",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "比爾",
+      "display_name_zh_tw": "比爾",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1002000/GMS-83"
+    },
+    {
+      "key": "npc/1002001/GMS-83",
+      "type": "npc",
+      "id": "1002001",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "特奧",
+      "display_name_zh_tw": "特奧",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1002001/GMS-83"
+    },
+    {
+      "key": "npc/1002002/GMS-83",
+      "type": "npc",
+      "id": "1002002",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "佩森",
+      "display_name_zh_tw": "佩森",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1002002/GMS-83"
+    },
+    {
+      "key": "npc/1002003/GMS-83",
+      "type": "npc",
+      "id": "1002003",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "智慧爺爺",
+      "display_name_zh_tw": "智慧爺爺",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1002003/GMS-83"
+    },
+    {
+      "key": "npc/1002005/GMS-83",
+      "type": "npc",
+      "id": "1002005",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "倉庫老闆 金先生",
+      "display_name_zh_tw": "倉庫老闆 金先生",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1002005/GMS-83"
+    },
+    {
+      "key": "npc/1002006/GMS-83",
+      "type": "npc",
+      "id": "1002006",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "吉夫",
+      "display_name_zh_tw": "吉夫",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1002006/GMS-83"
+    },
+    {
+      "key": "npc/1002100/GMS-83",
+      "type": "npc",
+      "id": "1002100",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "珍",
+      "display_name_zh_tw": "珍",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1002100/GMS-83"
+    },
+    {
+      "key": "npc/1002101/GMS-83",
+      "type": "npc",
+      "id": "1002101",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "坤",
+      "display_name_zh_tw": "坤",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1002101/GMS-83"
+    },
+    {
+      "key": "npc/1002102/GMS-83",
+      "type": "npc",
+      "id": "1002102",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "伊爾斯",
+      "display_name_zh_tw": "伊爾斯",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1002102/GMS-83"
+    },
+    {
+      "key": "npc/1002103/GMS-83",
+      "type": "npc",
+      "id": "1002103",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "領袖阿爾",
+      "display_name_zh_tw": "領袖阿爾",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1002103/GMS-83"
+    },
+    {
+      "key": "npc/1002104/GMS-83",
+      "type": "npc",
+      "id": "1002104",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "特魯",
+      "display_name_zh_tw": "特魯",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1002104/GMS-83"
+    },
+    {
+      "key": "npc/1010100/GMS-83",
+      "type": "npc",
+      "id": "1010100",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "麗娜",
+      "display_name_zh_tw": "麗娜",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1010100/GMS-83"
+    },
+    {
+      "key": "npc/1011000/GMS-83",
+      "type": "npc",
+      "id": "1011000",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "克爾",
+      "display_name_zh_tw": "克爾",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1011000/GMS-83"
+    },
+    {
+      "key": "npc/1011001/GMS-83",
+      "type": "npc",
+      "id": "1011001",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "山姆",
+      "display_name_zh_tw": "山姆",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1011001/GMS-83"
+    },
+    {
+      "key": "npc/1011100/GMS-83",
+      "type": "npc",
+      "id": "1011100",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "露娜",
+      "display_name_zh_tw": "露娜",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1011100/GMS-83"
+    },
+    {
+      "key": "npc/1012001/GMS-83",
+      "type": "npc",
+      "id": "1012001",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "差不多院長",
+      "display_name_zh_tw": "差不多院長",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1012001/GMS-83"
+    },
+    {
+      "key": "npc/1012002/GMS-83",
+      "type": "npc",
+      "id": "1012002",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "比休斯",
+      "display_name_zh_tw": "比休斯",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1012002/GMS-83"
+    },
+    {
+      "key": "npc/1012003/GMS-83",
+      "type": "npc",
+      "id": "1012003",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "長老斯坦",
+      "display_name_zh_tw": "長老斯坦",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1012003/GMS-83"
+    },
+    {
+      "key": "npc/1012004/GMS-83",
+      "type": "npc",
+      "id": "1012004",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "科爾",
+      "display_name_zh_tw": "科爾",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1012004/GMS-83"
+    },
+    {
+      "key": "npc/1012005/GMS-83",
+      "type": "npc",
+      "id": "1012005",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "科洛伊",
+      "display_name_zh_tw": "科洛伊",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1012005/GMS-83"
+    },
+    {
+      "key": "npc/1012006/GMS-83",
+      "type": "npc",
+      "id": "1012006",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "寵物訓練師巴特斯",
+      "display_name_zh_tw": "寵物訓練師巴特斯",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1012006/GMS-83"
+    },
+    {
+      "key": "npc/1012007/GMS-83",
+      "type": "npc",
+      "id": "1012007",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "寵物訓練師巴羅德",
+      "display_name_zh_tw": "寵物訓練師巴羅德",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1012007/GMS-83"
+    },
+    {
+      "key": "npc/1012008/GMS-83",
+      "type": "npc",
+      "id": "1012008",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "凱茜",
+      "display_name_zh_tw": "凱茜",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1012008/GMS-83"
+    },
+    {
+      "key": "npc/1012009/GMS-83",
+      "type": "npc",
+      "id": "1012009",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "倉庫李老闆",
+      "display_name_zh_tw": "倉庫李老闆",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1012009/GMS-83"
+    },
+    {
+      "key": "npc/1012100/GMS-83",
+      "type": "npc",
+      "id": "1012100",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "赫麗娜",
+      "display_name_zh_tw": "赫麗娜",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1012100/GMS-83"
+    },
+    {
+      "key": "npc/1012101/GMS-83",
+      "type": "npc",
+      "id": "1012101",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "瑪亞",
+      "display_name_zh_tw": "瑪亞",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1012101/GMS-83"
+    },
+    {
+      "key": "npc/1012102/GMS-83",
+      "type": "npc",
+      "id": "1012102",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "皮亞",
+      "display_name_zh_tw": "皮亞",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1012102/GMS-83"
+    },
+    {
+      "key": "npc/1012103/GMS-83",
+      "type": "npc",
+      "id": "1012103",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "美髮師娜塔麗",
+      "display_name_zh_tw": "美髮師娜塔麗",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1012103/GMS-83"
+    },
+    {
+      "key": "npc/1012104/GMS-83",
+      "type": "npc",
+      "id": "1012104",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "伯麗特",
+      "display_name_zh_tw": "伯麗特",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1012104/GMS-83"
+    },
+    {
+      "key": "npc/1012105/GMS-83",
+      "type": "npc",
+      "id": "1012105",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "沃美妮",
+      "display_name_zh_tw": "沃美妮",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1012105/GMS-83"
+    },
+    {
+      "key": "npc/1012106/GMS-83",
+      "type": "npc",
+      "id": "1012106",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "明明夫人",
+      "display_name_zh_tw": "明明夫人",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1012106/GMS-83"
+    },
+    {
+      "key": "npc/1012107/GMS-83",
+      "type": "npc",
+      "id": "1012107",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "猶他",
+      "display_name_zh_tw": "猶他",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1012107/GMS-83"
+    },
+    {
+      "key": "npc/1012108/GMS-83",
+      "type": "npc",
+      "id": "1012108",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "卡蜜拉",
+      "display_name_zh_tw": "卡蜜拉",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1012108/GMS-83"
+    },
+    {
+      "key": "npc/1012109/GMS-83",
+      "type": "npc",
+      "id": "1012109",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "傑伊",
+      "display_name_zh_tw": "傑伊",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1012109/GMS-83"
+    },
+    {
+      "key": "npc/1012111/GMS-83",
+      "type": "npc",
+      "id": "1012111",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "布魯斯",
+      "display_name_zh_tw": "布魯斯",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1012111/GMS-83"
+    },
+    {
+      "key": "npc/1012112/GMS-83",
+      "type": "npc",
+      "id": "1012112",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "達爾利",
+      "display_name_zh_tw": "達爾利",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1012112/GMS-83"
+    },
+    {
+      "key": "npc/1012113/GMS-83",
+      "type": "npc",
+      "id": "1012113",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "達爾米",
+      "display_name_zh_tw": "達爾米",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1012113/GMS-83"
+    },
+    {
+      "key": "npc/1012114/GMS-83",
+      "type": "npc",
+      "id": "1012114",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "興兒",
+      "display_name_zh_tw": "興兒",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1012114/GMS-83"
+    },
+    {
+      "key": "npc/1012117/GMS-83",
+      "type": "npc",
+      "id": "1012117",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "比克‧艾德華",
+      "display_name_zh_tw": "比克‧艾德華",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1012117/GMS-83"
+    },
+    {
+      "key": "npc/1020000/GMS-83",
+      "type": "npc",
+      "id": "1020000",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "酋長",
+      "display_name_zh_tw": "酋長",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1020000/GMS-83"
+    },
+    {
+      "key": "npc/1021000/GMS-83",
+      "type": "npc",
+      "id": "1021000",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "利伯",
+      "display_name_zh_tw": "利伯",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1021000/GMS-83"
+    },
+    {
+      "key": "npc/1021001/GMS-83",
+      "type": "npc",
+      "id": "1021001",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "海里",
+      "display_name_zh_tw": "海里",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1021001/GMS-83"
+    },
+    {
+      "key": "npc/1021100/GMS-83",
+      "type": "npc",
+      "id": "1021100",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "格里高利",
+      "display_name_zh_tw": "格里高利",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1021100/GMS-83"
+    },
+    {
+      "key": "npc/1022000/GMS-83",
+      "type": "npc",
+      "id": "1022000",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "武術教練",
+      "display_name_zh_tw": "武術教練",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1022000/GMS-83"
+    },
+    {
+      "key": "npc/1022002/GMS-83",
+      "type": "npc",
+      "id": "1022002",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "麥吉",
+      "display_name_zh_tw": "麥吉",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1022002/GMS-83"
+    },
+    {
+      "key": "npc/1022003/GMS-83",
+      "type": "npc",
+      "id": "1022003",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "辛德",
+      "display_name_zh_tw": "辛德",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1022003/GMS-83"
+    },
+    {
+      "key": "npc/1022004/GMS-83",
+      "type": "npc",
+      "id": "1022004",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "史密斯",
+      "display_name_zh_tw": "史密斯",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1022004/GMS-83"
+    },
+    {
+      "key": "npc/1022005/GMS-83",
+      "type": "npc",
+      "id": "1022005",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "倉庫王老闆",
+      "display_name_zh_tw": "倉庫王老闆",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1022005/GMS-83"
+    },
+    {
+      "key": "npc/1022006/GMS-83",
+      "type": "npc",
+      "id": "1022006",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "溫斯頓",
+      "display_name_zh_tw": "溫斯頓",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1022006/GMS-83"
+    },
+    {
+      "key": "npc/1022007/GMS-83",
+      "type": "npc",
+      "id": "1022007",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "義安",
+      "display_name_zh_tw": "義安",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1022007/GMS-83"
+    },
+    {
+      "key": "npc/1022100/GMS-83",
+      "type": "npc",
+      "id": "1022100",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "索非亞",
+      "display_name_zh_tw": "索非亞",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1022100/GMS-83"
+    },
+    {
+      "key": "npc/1022101/GMS-83",
+      "type": "npc",
+      "id": "1022101",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "露妮",
+      "display_name_zh_tw": "露妮",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1022101/GMS-83"
+    },
+    {
+      "key": "npc/1031000/GMS-83",
+      "type": "npc",
+      "id": "1031000",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "妖精 佛羅拉",
+      "display_name_zh_tw": "妖精 佛羅拉",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1031000/GMS-83"
+    },
+    {
+      "key": "npc/1031001/GMS-83",
+      "type": "npc",
+      "id": "1031001",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "妖精 舍拉比",
+      "display_name_zh_tw": "妖精 舍拉比",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1031001/GMS-83"
+    },
+    {
+      "key": "npc/1031100/GMS-83",
+      "type": "npc",
+      "id": "1031100",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "妖精 蓮",
+      "display_name_zh_tw": "妖精 蓮",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1031100/GMS-83"
+    },
+    {
+      "key": "npc/1032001/GMS-83",
+      "type": "npc",
+      "id": "1032001",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "漢斯",
+      "display_name_zh_tw": "漢斯",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1032001/GMS-83"
+    },
+    {
+      "key": "npc/1032002/GMS-83",
+      "type": "npc",
+      "id": "1032002",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "易德",
+      "display_name_zh_tw": "易德",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1032002/GMS-83"
+    },
+    {
+      "key": "npc/1032003/GMS-83",
+      "type": "npc",
+      "id": "1032003",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "賽恩",
+      "display_name_zh_tw": "賽恩",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1032003/GMS-83"
+    },
+    {
+      "key": "npc/1032004/GMS-83",
+      "type": "npc",
+      "id": "1032004",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "路易士",
+      "display_name_zh_tw": "路易士",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1032004/GMS-83"
+    },
+    {
+      "key": "npc/1032006/GMS-83",
+      "type": "npc",
+      "id": "1032006",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "倉庫管理員朴先生",
+      "display_name_zh_tw": "倉庫管理員朴先生",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1032006/GMS-83"
+    },
+    {
+      "key": "npc/1032007/GMS-83",
+      "type": "npc",
+      "id": "1032007",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "售票員",
+      "display_name_zh_tw": "售票員",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1032007/GMS-83"
+    },
+    {
+      "key": "npc/1032008/GMS-83",
+      "type": "npc",
+      "id": "1032008",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "檢票員",
+      "display_name_zh_tw": "檢票員",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1032008/GMS-83"
+    },
+    {
+      "key": "npc/1032009/GMS-83",
+      "type": "npc",
+      "id": "1032009",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "船員 普林",
+      "display_name_zh_tw": "船員 普林",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1032009/GMS-83"
+    },
+    {
+      "key": "npc/1032100/GMS-83",
+      "type": "npc",
+      "id": "1032100",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "妖精 艾溫",
+      "display_name_zh_tw": "妖精 艾溫",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1032100/GMS-83"
+    },
+    {
+      "key": "npc/1032101/GMS-83",
+      "type": "npc",
+      "id": "1032101",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "妖精 羅雯",
+      "display_name_zh_tw": "妖精 羅雯",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1032101/GMS-83"
+    },
+    {
+      "key": "npc/1032102/GMS-83",
+      "type": "npc",
+      "id": "1032102",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "妖精 瑪麗",
+      "display_name_zh_tw": "妖精 瑪麗",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1032102/GMS-83"
+    },
+    {
+      "key": "npc/1032103/GMS-83",
+      "type": "npc",
+      "id": "1032103",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "艾摩斯",
+      "display_name_zh_tw": "艾摩斯",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1032103/GMS-83"
+    },
+    {
+      "key": "npc/1032104/GMS-83",
+      "type": "npc",
+      "id": "1032104",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "蓓蒂",
+      "display_name_zh_tw": "蓓蒂",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1032104/GMS-83"
+    },
+    {
+      "key": "npc/1032106/GMS-83",
+      "type": "npc",
+      "id": "1032106",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "妖精維英",
+      "display_name_zh_tw": "妖精維英",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1032106/GMS-83"
+    },
+    {
+      "key": "npc/1032107/GMS-83",
+      "type": "npc",
+      "id": "1032107",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "利普",
+      "display_name_zh_tw": "利普",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1032107/GMS-83"
+    },
+    {
+      "key": "npc/1051000/GMS-83",
+      "type": "npc",
+      "id": "1051000",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "曼斯塔",
+      "display_name_zh_tw": "曼斯塔",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1051000/GMS-83"
+    },
+    {
+      "key": "npc/1051001/GMS-83",
+      "type": "npc",
+      "id": "1051001",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "瑪帕",
+      "display_name_zh_tw": "瑪帕",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1051001/GMS-83"
+    },
+    {
+      "key": "npc/1051002/GMS-83",
+      "type": "npc",
+      "id": "1051002",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "銘仁",
+      "display_name_zh_tw": "銘仁",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1051002/GMS-83"
+    },
+    {
+      "key": "npc/1052000/GMS-83",
+      "type": "npc",
+      "id": "1052000",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "阿勒斯",
+      "display_name_zh_tw": "阿勒斯",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1052000/GMS-83"
+    },
+    {
+      "key": "npc/1052001/GMS-83",
+      "type": "npc",
+      "id": "1052001",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "達克魯",
+      "display_name_zh_tw": "達克魯",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1052001/GMS-83"
+    },
+    {
+      "key": "npc/1052002/GMS-83",
+      "type": "npc",
+      "id": "1052002",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "後街吉姆",
+      "display_name_zh_tw": "後街吉姆",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1052002/GMS-83"
+    },
+    {
+      "key": "npc/1052003/GMS-83",
+      "type": "npc",
+      "id": "1052003",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "克利思",
+      "display_name_zh_tw": "克利思",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1052003/GMS-83"
+    },
+    {
+      "key": "npc/1052004/GMS-83",
+      "type": "npc",
+      "id": "1052004",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "黛瑪院長",
+      "display_name_zh_tw": "黛瑪院長",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1052004/GMS-83"
+    },
+    {
+      "key": "npc/1052005/GMS-83",
+      "type": "npc",
+      "id": "1052005",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "差不多醫生",
+      "display_name_zh_tw": "差不多醫生",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1052005/GMS-83"
+    },
+    {
+      "key": "npc/1052006/GMS-83",
+      "type": "npc",
+      "id": "1052006",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "地鐵站 服務員",
+      "display_name_zh_tw": "地鐵站 服務員",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1052006/GMS-83"
+    },
+    {
+      "key": "npc/1052012/GMS-83",
+      "type": "npc",
+      "id": "1052012",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "馬龍",
+      "display_name_zh_tw": "馬龍",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1052012/GMS-83"
+    },
+    {
+      "key": "npc/1052015/GMS-83",
+      "type": "npc",
+      "id": "1052015",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "比利",
+      "display_name_zh_tw": "比利",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1052015/GMS-83"
+    },
+    {
+      "key": "npc/1052017/GMS-83",
+      "type": "npc",
+      "id": "1052017",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "倉庫洪老闆",
+      "display_name_zh_tw": "倉庫洪老闆",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1052017/GMS-83"
+    },
+    {
+      "key": "npc/1052100/GMS-83",
+      "type": "npc",
+      "id": "1052100",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "錢老闆",
+      "display_name_zh_tw": "錢老闆",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1052100/GMS-83"
+    },
+    {
+      "key": "npc/1052101/GMS-83",
+      "type": "npc",
+      "id": "1052101",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "安德里亞",
+      "display_name_zh_tw": "安德里亞",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1052101/GMS-83"
+    },
+    {
+      "key": "npc/1052102/GMS-83",
+      "type": "npc",
+      "id": "1052102",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "休咪",
+      "display_name_zh_tw": "休咪",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1052102/GMS-83"
+    },
+    {
+      "key": "npc/1052103/GMS-83",
+      "type": "npc",
+      "id": "1052103",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "內拉",
+      "display_name_zh_tw": "內拉",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1052103/GMS-83"
+    },
+    {
+      "key": "npc/1052104/GMS-83",
+      "type": "npc",
+      "id": "1052104",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "杜卡斯",
+      "display_name_zh_tw": "杜卡斯",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1052104/GMS-83"
+    },
+    {
+      "key": "npc/1052105/GMS-83",
+      "type": "npc",
+      "id": "1052105",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "神秘的女孩",
+      "display_name_zh_tw": "神秘的女孩",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1052105/GMS-83"
+    },
+    {
+      "key": "npc/1052106/GMS-83",
+      "type": "npc",
+      "id": "1052106",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "伊卡路斯",
+      "display_name_zh_tw": "伊卡路斯",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1052106/GMS-83"
+    },
+    {
+      "key": "npc/1061000/GMS-83",
+      "type": "npc",
+      "id": "1061000",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "克利斯拉瑪",
+      "display_name_zh_tw": "克利斯拉瑪",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1061000/GMS-83"
+    },
+    {
+      "key": "npc/1061001/GMS-83",
+      "type": "npc",
+      "id": "1061001",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "24小時 排擋",
+      "display_name_zh_tw": "24小時 排擋",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1061001/GMS-83"
+    },
+    {
+      "key": "npc/1061002/GMS-83",
+      "type": "npc",
+      "id": "1061002",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "豪素夫",
+      "display_name_zh_tw": "豪素夫",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1061002/GMS-83"
+    },
+    {
+      "key": "npc/1061003/GMS-83",
+      "type": "npc",
+      "id": "1061003",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "泰實夫",
+      "display_name_zh_tw": "泰實夫",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1061003/GMS-83"
+    },
+    {
+      "key": "npc/1061004/GMS-83",
+      "type": "npc",
+      "id": "1061004",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "洛尼",
+      "display_name_zh_tw": "洛尼",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1061004/GMS-83"
+    },
+    {
+      "key": "npc/1061005/GMS-83",
+      "type": "npc",
+      "id": "1061005",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "薩比特拉瑪",
+      "display_name_zh_tw": "薩比特拉瑪",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1061005/GMS-83"
+    },
+    {
+      "key": "npc/1061008/GMS-83",
+      "type": "npc",
+      "id": "1061008",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "倉庫吳老闆",
+      "display_name_zh_tw": "倉庫吳老闆",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1061008/GMS-83"
+    },
+    {
+      "key": "npc/1090000/GMS-83",
+      "type": "npc",
+      "id": "1090000",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "卡伊琳",
+      "display_name_zh_tw": "卡伊琳",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1090000/GMS-83"
+    },
+    {
+      "key": "npc/1091000/GMS-83",
+      "type": "npc",
+      "id": "1091000",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "摩根",
+      "display_name_zh_tw": "摩根",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1091000/GMS-83"
+    },
+    {
+      "key": "npc/1091001/GMS-83",
+      "type": "npc",
+      "id": "1091001",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "羅德斯",
+      "display_name_zh_tw": "羅德斯",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1091001/GMS-83"
+    },
+    {
+      "key": "npc/1091002/GMS-83",
+      "type": "npc",
+      "id": "1091002",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "蓋利",
+      "display_name_zh_tw": "蓋利",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1091002/GMS-83"
+    },
+    {
+      "key": "npc/1091003/GMS-83",
+      "type": "npc",
+      "id": "1091003",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "謝米歐",
+      "display_name_zh_tw": "謝米歐",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1091003/GMS-83"
+    },
+    {
+      "key": "npc/1091004/GMS-83",
+      "type": "npc",
+      "id": "1091004",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "守財奴",
+      "display_name_zh_tw": "守財奴",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1091004/GMS-83"
+    },
+    {
+      "key": "npc/1092000/GMS-83",
+      "type": "npc",
+      "id": "1092000",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "湯寶寶",
+      "display_name_zh_tw": "湯寶寶",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1092000/GMS-83"
+    },
+    {
+      "key": "npc/1092001/GMS-83",
+      "type": "npc",
+      "id": "1092001",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "寶妮",
+      "display_name_zh_tw": "寶妮",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1092001/GMS-83"
+    },
+    {
+      "key": "npc/1092002/GMS-83",
+      "type": "npc",
+      "id": "1092002",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "貝恩",
+      "display_name_zh_tw": "貝恩",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1092002/GMS-83"
+    },
+    {
+      "key": "npc/1092003/GMS-83",
+      "type": "npc",
+      "id": "1092003",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "查理斯",
+      "display_name_zh_tw": "查理斯",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1092003/GMS-83"
+    },
+    {
+      "key": "npc/1092004/GMS-83",
+      "type": "npc",
+      "id": "1092004",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "瞌睡蟲",
+      "display_name_zh_tw": "瞌睡蟲",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1092004/GMS-83"
+    },
+    {
+      "key": "npc/1092006/GMS-83",
+      "type": "npc",
+      "id": "1092006",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "黑巴克",
+      "display_name_zh_tw": "黑巴克",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1092006/GMS-83"
+    },
+    {
+      "key": "npc/1092007/GMS-83",
+      "type": "npc",
+      "id": "1092007",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "盲俠",
+      "display_name_zh_tw": "盲俠",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1092007/GMS-83"
+    },
+    {
+      "key": "npc/1092008/GMS-83",
+      "type": "npc",
+      "id": "1092008",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "萬人迷",
+      "display_name_zh_tw": "萬人迷",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1092008/GMS-83"
+    },
+    {
+      "key": "npc/1092009/GMS-83",
+      "type": "npc",
+      "id": "1092009",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "麗德",
+      "display_name_zh_tw": "麗德",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1092009/GMS-83"
+    },
+    {
+      "key": "npc/1092010/GMS-83",
+      "type": "npc",
+      "id": "1092010",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "傑克",
+      "display_name_zh_tw": "傑克",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1092010/GMS-83"
+    },
+    {
+      "key": "npc/1092011/GMS-83",
+      "type": "npc",
+      "id": "1092011",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "巴勒圖",
+      "display_name_zh_tw": "巴勒圖",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1092011/GMS-83"
+    },
+    {
+      "key": "npc/1092012/GMS-83",
+      "type": "npc",
+      "id": "1092012",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "老學者",
+      "display_name_zh_tw": "老學者",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1092012/GMS-83"
+    },
+    {
+      "key": "npc/1092013/GMS-83",
+      "type": "npc",
+      "id": "1092013",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "布希",
+      "display_name_zh_tw": "布希",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1092013/GMS-83"
+    },
+    {
+      "key": "npc/1092017/GMS-83",
+      "type": "npc",
+      "id": "1092017",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "無名商人",
+      "display_name_zh_tw": "無名商人",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1092017/GMS-83"
+    },
+    {
+      "key": "npc/1092019/GMS-83",
+      "type": "npc",
+      "id": "1092019",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "喬納森",
+      "display_name_zh_tw": "喬納森",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/victoria/1092019/GMS-83"
+    },
+    {
+      "key": "npc/10000/GMS-83",
+      "type": "npc",
+      "id": "10000",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "皮奧",
+      "display_name_zh_tw": "皮奧",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/maple-island/10000/GMS-83"
+    },
+    {
+      "key": "npc/11000/GMS-83",
+      "type": "npc",
+      "id": "11000",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "賽德",
+      "display_name_zh_tw": "賽德",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/maple-island/11000/GMS-83"
+    },
+    {
+      "key": "npc/11100/GMS-83",
+      "type": "npc",
+      "id": "11100",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "露西",
+      "display_name_zh_tw": "露西",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/maple-island/11100/GMS-83"
+    },
+    {
+      "key": "npc/12000/GMS-83",
+      "type": "npc",
+      "id": "12000",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "路卡斯",
+      "display_name_zh_tw": "路卡斯",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/maple-island/12000/GMS-83"
+    },
+    {
+      "key": "npc/12100/GMS-83",
+      "type": "npc",
+      "id": "12100",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "麥加",
+      "display_name_zh_tw": "麥加",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/maple-island/12100/GMS-83"
+    },
+    {
+      "key": "npc/12101/GMS-83",
+      "type": "npc",
+      "id": "12101",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "瑞恩",
+      "display_name_zh_tw": "瑞恩",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/maple-island/12101/GMS-83"
+    },
+    {
+      "key": "npc/2000/GMS-83",
+      "type": "npc",
+      "id": "2000",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "羅傑",
+      "display_name_zh_tw": "羅傑",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/maple-island/2000/GMS-83"
+    },
+    {
+      "key": "npc/20000/GMS-83",
+      "type": "npc",
+      "id": "20000",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "約翰",
+      "display_name_zh_tw": "約翰",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/maple-island/20000/GMS-83"
+    },
+    {
+      "key": "npc/20001/GMS-83",
+      "type": "npc",
+      "id": "20001",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "白瑞德",
+      "display_name_zh_tw": "白瑞德",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/maple-island/20001/GMS-83"
+    },
+    {
+      "key": "npc/20002/GMS-83",
+      "type": "npc",
+      "id": "20002",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "比格斯",
+      "display_name_zh_tw": "比格斯",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/maple-island/20002/GMS-83"
+    },
+    {
+      "key": "npc/2001/GMS-83",
+      "type": "npc",
+      "id": "2001",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "桑",
+      "display_name_zh_tw": "桑",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/maple-island/2001/GMS-83"
+    },
+    {
+      "key": "npc/2002/GMS-83",
+      "type": "npc",
+      "id": "2002",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "彼特",
+      "display_name_zh_tw": "彼特",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/maple-island/2002/GMS-83"
+    },
+    {
+      "key": "npc/2003/GMS-83",
+      "type": "npc",
+      "id": "2003",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "羅賓",
+      "display_name_zh_tw": "羅賓",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/maple-island/2003/GMS-83"
+    },
+    {
+      "key": "npc/2006/GMS-83",
+      "type": "npc",
+      "id": "2006",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "迪昂克",
+      "display_name_zh_tw": "迪昂克",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/maple-island/2006/GMS-83"
+    },
+    {
+      "key": "npc/20100/GMS-83",
+      "type": "npc",
+      "id": "20100",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "尤娜",
+      "display_name_zh_tw": "尤娜",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/maple-island/20100/GMS-83"
+    },
+    {
+      "key": "npc/2100/GMS-83",
+      "type": "npc",
+      "id": "2100",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "莎麗",
+      "display_name_zh_tw": "莎麗",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/maple-island/2100/GMS-83"
+    },
+    {
+      "key": "npc/21000/GMS-83",
+      "type": "npc",
+      "id": "21000",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "潘",
+      "display_name_zh_tw": "潘",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/maple-island/21000/GMS-83"
+    },
+    {
+      "key": "npc/2101/GMS-83",
+      "type": "npc",
+      "id": "2101",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "希娜",
+      "display_name_zh_tw": "希娜",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/maple-island/2101/GMS-83"
+    },
+    {
+      "key": "npc/2102/GMS-83",
+      "type": "npc",
+      "id": "2102",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "妮娜",
+      "display_name_zh_tw": "妮娜",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/maple-island/2102/GMS-83"
+    },
+    {
+      "key": "npc/2103/GMS-83",
+      "type": "npc",
+      "id": "2103",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "瑪麗亞",
+      "display_name_zh_tw": "瑪麗亞",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/maple-island/2103/GMS-83"
+    },
+    {
+      "key": "npc/22000/GMS-83",
+      "type": "npc",
+      "id": "22000",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "霸西力",
+      "display_name_zh_tw": "霸西力",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/maple-island/22000/GMS-83"
+    },
+    {
+      "key": "npc/1101000/GMS-83",
+      "type": "npc",
+      "id": "1101000",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "西格諾斯",
+      "display_name_zh_tw": "西格諾斯",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/other-regions/1101000/GMS-83"
+    },
+    {
+      "key": "npc/1101001/GMS-83",
+      "type": "npc",
+      "id": "1101001",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "神獸",
+      "display_name_zh_tw": "神獸",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/other-regions/1101001/GMS-83"
+    },
+    {
+      "key": "npc/1101002/GMS-83",
+      "type": "npc",
+      "id": "1101002",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "那因哈特",
+      "display_name_zh_tw": "那因哈特",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/other-regions/1101002/GMS-83"
+    },
+    {
+      "key": "npc/1101003/GMS-83",
+      "type": "npc",
+      "id": "1101003",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "米哈逸",
+      "display_name_zh_tw": "米哈逸",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/other-regions/1101003/GMS-83"
+    },
+    {
+      "key": "npc/1101004/GMS-83",
+      "type": "npc",
+      "id": "1101004",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "奧茲",
+      "display_name_zh_tw": "奧茲",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/other-regions/1101004/GMS-83"
+    },
+    {
+      "key": "npc/1101005/GMS-83",
+      "type": "npc",
+      "id": "1101005",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "伊麗娜",
+      "display_name_zh_tw": "伊麗娜",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/other-regions/1101005/GMS-83"
+    },
+    {
+      "key": "npc/1101006/GMS-83",
+      "type": "npc",
+      "id": "1101006",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "伊卡勒特",
+      "display_name_zh_tw": "伊卡勒特",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/other-regions/1101006/GMS-83"
+    },
+    {
+      "key": "npc/1101007/GMS-83",
+      "type": "npc",
+      "id": "1101007",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "鷹眼",
+      "display_name_zh_tw": "鷹眼",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/other-regions/1101007/GMS-83"
+    },
+    {
+      "key": "npc/1101008/GMS-83",
+      "type": "npc",
+      "id": "1101008",
+      "version": {
+        "region": "GMS",
+        "version": "83"
+      },
+      "name_zh_tw": "提酷",
+      "display_name_zh_tw": "提酷",
+      "variant_label_zh_tw": null,
+      "status": "source_twms_256_id_match",
+      "github_path": "assets/maple/collection/npc/other-regions/1101008/GMS-83"
+    },
+    {
+      "key": "npc/3003200/TWMS-256",
+      "type": "npc",
+      "id": "3003200",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "露希妲",
+      "display_name_zh_tw": "露希妲",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/lachelein/3003200/TWMS-256"
+    },
+    {
+      "key": "npc/3003201/TWMS-256",
+      "type": "npc",
+      "id": "3003201",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "防毒面具",
+      "display_name_zh_tw": "防毒面具",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/lachelein/3003201/TWMS-256"
+    },
+    {
+      "key": "npc/3003209/TWMS-256",
+      "type": "npc",
+      "id": "3003209",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "大爺",
+      "display_name_zh_tw": "大爺",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/lachelein/3003209/TWMS-256"
+    },
+    {
+      "key": "npc/3003211/TWMS-256",
+      "type": "npc",
+      "id": "3003211",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "黑面具",
+      "display_name_zh_tw": "黑面具",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/lachelein/3003211/TWMS-256"
+    },
+    {
+      "key": "npc/3003212/TWMS-256",
+      "type": "npc",
+      "id": "3003212",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "舞會面具",
+      "display_name_zh_tw": "舞會面具",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/lachelein/3003212/TWMS-256"
+    },
+    {
+      "key": "npc/3003213/TWMS-256",
+      "type": "npc",
+      "id": "3003213",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "伊莉莎白",
+      "display_name_zh_tw": "伊莉莎白",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/lachelein/3003213/TWMS-256"
+    },
+    {
+      "key": "npc/3003214/TWMS-256",
+      "type": "npc",
+      "id": "3003214",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "蝦蝦面具",
+      "display_name_zh_tw": "蝦蝦面具",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/lachelein/3003214/TWMS-256"
+    },
+    {
+      "key": "npc/3003220/TWMS-256",
+      "type": "npc",
+      "id": "3003220",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "西瓜面具",
+      "display_name_zh_tw": "西瓜面具",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/lachelein/3003220/TWMS-256"
+    },
+    {
+      "key": "npc/3003223/TWMS-256",
+      "type": "npc",
+      "id": "3003223",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "派伊面具",
+      "display_name_zh_tw": "派伊面具",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/lachelein/3003223/TWMS-256"
+    },
+    {
+      "key": "npc/3003224/TWMS-256",
+      "type": "npc",
+      "id": "3003224",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "舞會面具",
+      "display_name_zh_tw": "舞會面具",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/lachelein/3003224/TWMS-256"
+    },
+    {
+      "key": "npc/3003225/TWMS-256",
+      "type": "npc",
+      "id": "3003225",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "兔子面具",
+      "display_name_zh_tw": "兔子面具",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/lachelein/3003225/TWMS-256"
+    },
+    {
+      "key": "npc/3003226/TWMS-256",
+      "type": "npc",
+      "id": "3003226",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "貓咪面具",
+      "display_name_zh_tw": "貓咪面具",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/lachelein/3003226/TWMS-256"
+    },
+    {
+      "key": "npc/3003227/TWMS-256",
+      "type": "npc",
+      "id": "3003227",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "皮利利面具",
+      "display_name_zh_tw": "皮利利面具",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/lachelein/3003227/TWMS-256"
+    },
+    {
+      "key": "npc/3003228/TWMS-256",
+      "type": "npc",
+      "id": "3003228",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "美女面具",
+      "display_name_zh_tw": "美女面具",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/lachelein/3003228/TWMS-256"
+    },
+    {
+      "key": "npc/3003229/TWMS-256",
+      "type": "npc",
+      "id": "3003229",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "紳士貓面具",
+      "display_name_zh_tw": "紳士貓面具",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/lachelein/3003229/TWMS-256"
+    },
+    {
+      "key": "npc/3003230/TWMS-256",
+      "type": "npc",
+      "id": "3003230",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "居民",
+      "display_name_zh_tw": "居民",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/lachelein/3003230/TWMS-256"
+    },
+    {
+      "key": "npc/3003233/TWMS-256",
+      "type": "npc",
+      "id": "3003233",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "兔子面具",
+      "display_name_zh_tw": "兔子面具",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/lachelein/3003233/TWMS-256"
+    },
+    {
+      "key": "npc/3003234/TWMS-256",
+      "type": "npc",
+      "id": "3003234",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "氣球面具",
+      "display_name_zh_tw": "氣球面具",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/lachelein/3003234/TWMS-256"
+    },
+    {
+      "key": "npc/3003235/TWMS-256",
+      "type": "npc",
+      "id": "3003235",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "帥氣面具",
+      "display_name_zh_tw": "帥氣面具",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/lachelein/3003235/TWMS-256"
+    },
+    {
+      "key": "npc/3003236/TWMS-256",
+      "type": "npc",
+      "id": "3003236",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "美女面具",
+      "display_name_zh_tw": "美女面具",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/lachelein/3003236/TWMS-256"
+    },
+    {
+      "key": "npc/3003237/TWMS-256",
+      "type": "npc",
+      "id": "3003237",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "貓咪面具",
+      "display_name_zh_tw": "貓咪面具",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/lachelein/3003237/TWMS-256"
+    },
+    {
+      "key": "npc/3003238/TWMS-256",
+      "type": "npc",
+      "id": "3003238",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "大西瓜面具",
+      "display_name_zh_tw": "大西瓜面具",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/lachelein/3003238/TWMS-256"
+    },
+    {
+      "key": "npc/3003239/TWMS-256",
+      "type": "npc",
+      "id": "3003239",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "馬戲團面具",
+      "display_name_zh_tw": "馬戲團面具",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/lachelein/3003239/TWMS-256"
+    },
+    {
+      "key": "npc/3003240/TWMS-256",
+      "type": "npc",
+      "id": "3003240",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "紳士貓面具",
+      "display_name_zh_tw": "紳士貓面具",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/lachelein/3003240/TWMS-256"
+    },
+    {
+      "key": "npc/3003241/TWMS-256",
+      "type": "npc",
+      "id": "3003241",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "逼哩哩面具",
+      "display_name_zh_tw": "逼哩哩面具",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/lachelein/3003241/TWMS-256"
+    },
+    {
+      "key": "npc/3003242/TWMS-256",
+      "type": "npc",
+      "id": "3003242",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "皮利利面具",
+      "display_name_zh_tw": "皮利利面具",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/lachelein/3003242/TWMS-256"
+    },
+    {
+      "key": "npc/3003243/TWMS-256",
+      "type": "npc",
+      "id": "3003243",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "帥氣青年面具",
+      "display_name_zh_tw": "帥氣青年面具",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/lachelein/3003243/TWMS-256"
+    },
+    {
+      "key": "npc/3003244/TWMS-256",
+      "type": "npc",
+      "id": "3003244",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "鳥嘴假面",
+      "display_name_zh_tw": "鳥嘴假面",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/lachelein/3003244/TWMS-256"
+    },
+    {
+      "key": "npc/3003245/TWMS-256",
+      "type": "npc",
+      "id": "3003245",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "星星面具",
+      "display_name_zh_tw": "星星面具",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/lachelein/3003245/TWMS-256"
+    },
+    {
+      "key": "npc/3003246/TWMS-256",
+      "type": "npc",
+      "id": "3003246",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "紅花面具",
+      "display_name_zh_tw": "紅花面具",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/lachelein/3003246/TWMS-256"
+    },
+    {
+      "key": "npc/3003249/TWMS-256",
+      "type": "npc",
+      "id": "3003249",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "淨化者",
+      "display_name_zh_tw": "淨化者",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/lachelein/3003249/TWMS-256"
+    },
+    {
+      "key": "bosses/8880100/TWMS-256",
+      "type": "bosses",
+      "id": "8880100",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "戴米安",
+      "display_name_zh_tw": "戴米安（第一階段）",
+      "variant_label_zh_tw": "第一階段",
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/bosses/other-regions/8880100/TWMS-256"
+    },
+    {
+      "key": "bosses/8880150/TWMS-256",
+      "type": "bosses",
+      "id": "8880150",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "露希妲",
+      "display_name_zh_tw": "露希妲（第一階段）",
+      "variant_label_zh_tw": "第一階段",
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/bosses/lachelein/8880150/TWMS-256"
+    },
+    {
+      "key": "bosses/8880151/TWMS-256",
+      "type": "bosses",
+      "id": "8880151",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "露希妲",
+      "display_name_zh_tw": "露希妲（第二階段）",
+      "variant_label_zh_tw": "第二階段",
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/bosses/lachelein/8880151/TWMS-256"
+    },
+    {
+      "key": "bosses/8880152/TWMS-256",
+      "type": "bosses",
+      "id": "8880152",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "露希妲",
+      "display_name_zh_tw": "露希妲（第三形態）",
+      "variant_label_zh_tw": "第三形態",
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/bosses/lachelein/8880152/TWMS-256"
+    },
+    {
+      "key": "bosses/8880300/TWMS-256",
+      "type": "bosses",
+      "id": "8880300",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "威爾",
+      "display_name_zh_tw": "威爾（第一階段）",
+      "variant_label_zh_tw": "第一階段",
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/bosses/other-regions/8880300/TWMS-256"
+    },
+    {
+      "key": "bosses/8880301/TWMS-256",
+      "type": "bosses",
+      "id": "8880301",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "威爾",
+      "display_name_zh_tw": "威爾（第二階段）",
+      "variant_label_zh_tw": "第二階段",
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/bosses/other-regions/8880301/TWMS-256"
+    },
+    {
+      "key": "npc/2040000/TWMS-256",
+      "type": "npc",
+      "id": "2040000",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "車掌",
+      "display_name_zh_tw": "車掌",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/ludibrium/2040000/TWMS-256"
+    },
+    {
+      "key": "npc/2040001/TWMS-256",
+      "type": "npc",
+      "id": "2040001",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "玩具士兵-迪布",
+      "display_name_zh_tw": "玩具士兵-迪布",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/ludibrium/2040001/TWMS-256"
+    },
+    {
+      "key": "npc/2040002/TWMS-256",
+      "type": "npc",
+      "id": "2040002",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "玩具士兵-果伸",
+      "display_name_zh_tw": "玩具士兵-果伸",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/ludibrium/2040002/TWMS-256"
+    },
+    {
+      "key": "npc/2040015/TWMS-256",
+      "type": "npc",
+      "id": "2040015",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "廠長卡霍",
+      "display_name_zh_tw": "廠長卡霍",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/ludibrium/2040015/TWMS-256"
+    },
+    {
+      "key": "npc/2012003/TWMS-256",
+      "type": "npc",
+      "id": "2012003",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "妖精 娜麗",
+      "display_name_zh_tw": "妖精 娜麗",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/orbis/2012003/TWMS-256"
+    },
+    {
+      "key": "npc/2012004/TWMS-256",
+      "type": "npc",
+      "id": "2012004",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "妖精 諾麗",
+      "display_name_zh_tw": "妖精 諾麗",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/orbis/2012004/TWMS-256"
+    },
+    {
+      "key": "npc/2012011/TWMS-256",
+      "type": "npc",
+      "id": "2012011",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "妖精 克莉爾",
+      "display_name_zh_tw": "妖精 克莉爾",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/orbis/2012011/TWMS-256"
+    },
+    {
+      "key": "npc/2012012/TWMS-256",
+      "type": "npc",
+      "id": "2012012",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "麗莎",
+      "display_name_zh_tw": "麗莎",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/orbis/2012012/TWMS-256"
+    },
+    {
+      "key": "npc/2020000/TWMS-256",
+      "type": "npc",
+      "id": "2020000",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "伯堅",
+      "display_name_zh_tw": "伯堅",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/el-nath/2020000/TWMS-256"
+    },
+    {
+      "key": "npc/2020005/TWMS-256",
+      "type": "npc",
+      "id": "2020005",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "亞凱斯特",
+      "display_name_zh_tw": "亞凱斯特",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/el-nath/2020005/TWMS-256"
+    },
+    {
+      "key": "npc/2020008/TWMS-256",
+      "type": "npc",
+      "id": "2020008",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "泰勒斯",
+      "display_name_zh_tw": "泰勒斯",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/el-nath/2020008/TWMS-256"
+    },
+    {
+      "key": "npc/2020009/TWMS-256",
+      "type": "npc",
+      "id": "2020009",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "羅貝亞",
+      "display_name_zh_tw": "羅貝亞",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/el-nath/2020009/TWMS-256"
+    },
+    {
+      "key": "npc/2081000/TWMS-256",
+      "type": "npc",
+      "id": "2081000",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "村長塔塔曼",
+      "display_name_zh_tw": "村長塔塔曼",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/leafre/2081000/TWMS-256"
+    },
+    {
+      "key": "npc/2081001/TWMS-256",
+      "type": "npc",
+      "id": "2081001",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "庫摩",
+      "display_name_zh_tw": "庫摩",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/leafre/2081001/TWMS-256"
+    },
+    {
+      "key": "npc/2081002/TWMS-256",
+      "type": "npc",
+      "id": "2081002",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "依托",
+      "display_name_zh_tw": "依托",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/leafre/2081002/TWMS-256"
+    },
+    {
+      "key": "npc/2081007/TWMS-256",
+      "type": "npc",
+      "id": "2081007",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "騎士拉烏爾",
+      "display_name_zh_tw": "騎士拉烏爾",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/leafre/2081007/TWMS-256"
+    },
+    {
+      "key": "mobs/3210203/TWMS-256",
+      "type": "mobs",
+      "id": "3210203",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "發條貓熊",
+      "display_name_zh_tw": "發條貓熊",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/mobs/ludibrium/3210203/TWMS-256"
+    },
+    {
+      "key": "mobs/3210204/TWMS-256",
+      "type": "mobs",
+      "id": "3210204",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "玩具鴨",
+      "display_name_zh_tw": "玩具鴨",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/mobs/ludibrium/3210204/TWMS-256"
+    },
+    {
+      "key": "mobs/3210205/TWMS-256",
+      "type": "mobs",
+      "id": "3210205",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "黑色發條鼠",
+      "display_name_zh_tw": "黑色發條鼠",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/mobs/ludibrium/3210205/TWMS-256"
+    },
+    {
+      "key": "mobs/3210206/TWMS-256",
+      "type": "mobs",
+      "id": "3210206",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "黃色戰鬥機",
+      "display_name_zh_tw": "黃色戰鬥機",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/mobs/ludibrium/3210206/TWMS-256"
+    },
+    {
+      "key": "mobs/7130010/TWMS-256",
+      "type": "mobs",
+      "id": "7130010",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "[★] 怨靈發條熊",
+      "display_name_zh_tw": "[★] 怨靈發條熊",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/mobs/ludibrium/7130010/TWMS-256"
+    },
+    {
+      "key": "mobs/7130300/TWMS-256",
+      "type": "mobs",
+      "id": "7130300",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "[★] 怨靈發條熊隊長",
+      "display_name_zh_tw": "[★] 怨靈發條熊隊長",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/mobs/ludibrium/7130300/TWMS-256"
+    },
+    {
+      "key": "mobs/3210200/TWMS-256",
+      "type": "mobs",
+      "id": "3210200",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "幼紅獨角獅",
+      "display_name_zh_tw": "幼紅獨角獅",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/mobs/orbis/3210200/TWMS-256"
+    },
+    {
+      "key": "mobs/3210201/TWMS-256",
+      "type": "mobs",
+      "id": "3210201",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "幼黃獨角獅",
+      "display_name_zh_tw": "幼黃獨角獅",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/mobs/orbis/3210201/TWMS-256"
+    },
+    {
+      "key": "mobs/3210202/TWMS-256",
+      "type": "mobs",
+      "id": "3210202",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "幼藍獨角獅",
+      "display_name_zh_tw": "幼藍獨角獅",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/mobs/orbis/3210202/TWMS-256"
+    },
+    {
+      "key": "mobs/5100000/TWMS-256",
+      "type": "mobs",
+      "id": "5100000",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "小雪球",
+      "display_name_zh_tw": "小雪球",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/mobs/el-nath/5100000/TWMS-256"
+    },
+    {
+      "key": "mobs/5100002/TWMS-256",
+      "type": "mobs",
+      "id": "5100002",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "火精靈",
+      "display_name_zh_tw": "火精靈",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/mobs/el-nath/5100002/TWMS-256"
+    },
+    {
+      "key": "mobs/7130001/TWMS-256",
+      "type": "mobs",
+      "id": "7130001",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "[★] 地獄獵犬",
+      "display_name_zh_tw": "[★] 地獄獵犬",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/mobs/el-nath/7130001/TWMS-256"
+    },
+    {
+      "key": "mobs/7130002/TWMS-256",
+      "type": "mobs",
+      "id": "7130002",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "橡木甲蟲",
+      "display_name_zh_tw": "橡木甲蟲",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/mobs/leafre/7130002/TWMS-256"
+    },
+    {
+      "key": "mobs/7130003/TWMS-256",
+      "type": "mobs",
+      "id": "7130003",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "金屬甲蟲",
+      "display_name_zh_tw": "金屬甲蟲",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/mobs/leafre/7130003/TWMS-256"
+    },
+    {
+      "key": "mobs/7130500/TWMS-256",
+      "type": "mobs",
+      "id": "7130500",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "萊西",
+      "display_name_zh_tw": "萊西",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/mobs/leafre/7130500/TWMS-256"
+    },
+    {
+      "key": "mobs/7130501/TWMS-256",
+      "type": "mobs",
+      "id": "7130501",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "黑暗萊西",
+      "display_name_zh_tw": "黑暗萊西",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/mobs/leafre/7130501/TWMS-256"
+    },
+    {
+      "key": "maps/220000000/TWMS-256",
+      "type": "maps",
+      "id": "220000000",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "玩具城",
+      "display_name_zh_tw": "玩具城",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/maps/ludibrium/220000000/TWMS-256"
+    },
+    {
+      "key": "maps/220080000/TWMS-256",
+      "type": "maps",
+      "id": "220080000",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "時間塔",
+      "display_name_zh_tw": "時間塔",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/maps/ludibrium/220080000/TWMS-256"
+    },
+    {
+      "key": "maps/220080001/TWMS-256",
+      "type": "maps",
+      "id": "220080001",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "時間塔內部",
+      "display_name_zh_tw": "時間塔內部",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/maps/ludibrium/220080001/TWMS-256"
+    },
+    {
+      "key": "maps/200000000/TWMS-256",
+      "type": "maps",
+      "id": "200000000",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "天空之城",
+      "display_name_zh_tw": "天空之城",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/maps/orbis/200000000/TWMS-256"
+    },
+    {
+      "key": "maps/200000100/TWMS-256",
+      "type": "maps",
+      "id": "200000100",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "天空之城售票處",
+      "display_name_zh_tw": "天空之城售票處",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/maps/orbis/200000100/TWMS-256"
+    },
+    {
+      "key": "maps/211000000/TWMS-256",
+      "type": "maps",
+      "id": "211000000",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "冰原雪域",
+      "display_name_zh_tw": "冰原雪域",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/maps/el-nath/211000000/TWMS-256"
+    },
+    {
+      "key": "maps/211041100/TWMS-256",
+      "type": "maps",
+      "id": "211041100",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "亡者之林Ⅰ",
+      "display_name_zh_tw": "亡者之林Ⅰ",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/maps/el-nath/211041100/TWMS-256"
+    },
+    {
+      "key": "maps/240000000/TWMS-256",
+      "type": "maps",
+      "id": "240000000",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "神木村",
+      "display_name_zh_tw": "神木村",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/maps/leafre/240000000/TWMS-256"
+    },
+    {
+      "key": "maps/450003000/TWMS-256",
+      "type": "maps",
+      "id": "450003000",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "拉契爾恩市中心",
+      "display_name_zh_tw": "拉契爾恩市中心",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/maps/lachelein/450003000/TWMS-256"
+    },
+    {
+      "key": "maps/450003200/TWMS-256",
+      "type": "maps",
+      "id": "450003200",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "不法者街道1",
+      "display_name_zh_tw": "不法者街道1",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/maps/lachelein/450003200/TWMS-256"
+    },
+    {
+      "key": "maps/450003300/TWMS-256",
+      "type": "maps",
+      "id": "450003300",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "雞群遊樂場1",
+      "display_name_zh_tw": "雞群遊樂場1",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/maps/lachelein/450003300/TWMS-256"
+    },
+    {
+      "key": "maps/450003400/TWMS-256",
+      "type": "maps",
+      "id": "450003400",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "顯露本色之處1",
+      "display_name_zh_tw": "顯露本色之處1",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/maps/lachelein/450003400/TWMS-256"
+    },
+    {
+      "key": "maps/450003600/TWMS-256",
+      "type": "maps",
+      "id": "450003600",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "惡夢時間塔頂端",
+      "display_name_zh_tw": "惡夢時間塔頂端",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/maps/lachelein/450003600/TWMS-256"
+    }
+  ]
+}

@@ -4,8 +4,8 @@
   "region": "victoria",
   "town": "henesys",
   "region_status": "curated_target_not_exclusive_spawn_location",
-  "name_zh_tw": null,
-  "name_zh_tw_status": "unavailable",
+  "name_zh_tw": "傑伊",
+  "name_zh_tw_status": "source_twms_256_id_match",
   "source_url": "https://maplestory.io/api/GMS/83/npc/1012109",
   "export_url": "https://maplestory.io/api/wz/export/GMS/83/Npc/1012109.img",
   "wz_path": "Npc.wz/1012109.img",
@@ -409,5 +409,7 @@
     "all_wz_numeric_frame_nodes_present": true
   },
   "github_path": "assets/maple/collection/npc/victoria/1012109/GMS-83",
-  "status": "collected"
+  "status": "collected",
+  "name_zh_tw_source_url": "https://maplestory.io/api/TWMS/256/npc",
+  "display_name_zh_tw": "傑伊"
 }

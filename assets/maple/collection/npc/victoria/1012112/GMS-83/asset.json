@@ -4,8 +4,8 @@
   "region": "victoria",
   "town": "henesys",
   "region_status": "curated_target_not_exclusive_spawn_location",
-  "name_zh_tw": null,
-  "name_zh_tw_status": "unavailable",
+  "name_zh_tw": "達爾利",
+  "name_zh_tw_status": "source_twms_256_id_match",
   "source_url": "https://maplestory.io/api/GMS/83/npc/1012112",
   "export_url": "https://maplestory.io/api/wz/export/GMS/83/Npc/1012112.img",
   "wz_path": "Npc.wz/1012112.img",
@@ -567,5 +567,7 @@
       "index": 15,
       "error": "The read operation timed out"
     }
-  ]
+  ],
+  "name_zh_tw_source_url": "https://maplestory.io/api/TWMS/256/npc",
+  "display_name_zh_tw": "達爾利"
 }

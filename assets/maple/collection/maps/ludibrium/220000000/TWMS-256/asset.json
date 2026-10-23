@@ -6934,5 +6934,6 @@
       "canvas_count": 22,
       "manifest_path": "assets/maple/collection/maps/ludibrium/shared-resource-sets/TWMS-256/tile/yellowToyCastle/resource-set.json"
     }
-  ]
+  ],
+  "display_name_zh_tw": "玩具城"
 }

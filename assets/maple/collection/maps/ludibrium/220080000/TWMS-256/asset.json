@@ -645,5 +645,6 @@
       "canvas_count": 706,
       "manifest_path": "assets/maple/collection/maps/ludibrium/shared-resource-sets/TWMS-256/obj/dungeon2/resource-set.json"
     }
-  ]
+  ],
+  "display_name_zh_tw": "時間塔"
 }

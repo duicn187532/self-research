@@ -4,8 +4,8 @@
   "region": "other-regions",
   "town": "esfera",
   "region_status": "curated_target_not_exclusive_spawn_location",
-  "name_zh_tw": "威爾 第二階段",
-  "name_zh_tw_status": "unverified_translation",
+  "name_zh_tw": "威爾",
+  "name_zh_tw_status": "source_twms",
   "source_url": "https://maplestory.io/api/TWMS/256/mob/8880301",
   "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Mob/8880301.img",
   "wz_path": "Mob.wz/8880301.img",
@@ -10042,5 +10042,8 @@
     "all_wz_numeric_frame_nodes_present": false
   },
   "github_path": "assets/maple/collection/bosses/other-regions/8880301/TWMS-256",
-  "status": "partial"
+  "status": "partial",
+  "name_zh_tw_source_url": "https://maplestory.io/api/TWMS/256/mob",
+  "variant_label_zh_tw": "第二階段",
+  "display_name_zh_tw": "威爾（第二階段）"
 }

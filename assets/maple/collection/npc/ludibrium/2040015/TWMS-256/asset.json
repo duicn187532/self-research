@@ -154,5 +154,7 @@
     "all_wz_numeric_frame_nodes_present": true
   },
   "github_path": "assets/maple/collection/npc/ludibrium/2040015/TWMS-256",
-  "status": "collected"
+  "status": "collected",
+  "name_zh_tw_source_url": "https://maplestory.io/api/TWMS/256/npc",
+  "display_name_zh_tw": "廠長卡霍"
 }

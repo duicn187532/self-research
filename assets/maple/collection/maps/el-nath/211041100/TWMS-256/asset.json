@@ -2552,5 +2552,6 @@
       "canvas_count": 20,
       "manifest_path": "assets/maple/collection/maps/el-nath/shared-resource-sets/TWMS-256/tile/snowyDarkrock/resource-set.json"
     }
-  ]
+  ],
+  "display_name_zh_tw": "亡者之林Ⅰ"
 }

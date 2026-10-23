@@ -76,6 +76,10 @@ def main():
     new_content=Counter();existing_only=[]
     new_unique=Counter();seen_visual_groups=set()
     for a in manifest['assets']:
+        if not a.get('name_zh_tw') or not a.get('display_name_zh_tw'):
+            failures.append(f"missing Traditional Chinese name: {a['type']}/{a['id']}")
+        if a.get('name_zh_tw_status') not in ('source_twms','source_twms_256_id_match'):
+            failures.append(f"unverified Traditional Chinese name: {a['type']}/{a['id']}")
         visuals=set()
         for group in a['actions']:
             for f in group['frames']:

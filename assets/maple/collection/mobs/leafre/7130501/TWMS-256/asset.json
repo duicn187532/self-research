@@ -1752,5 +1752,7 @@
     "all_wz_numeric_frame_nodes_present": false
   },
   "github_path": "assets/maple/collection/mobs/leafre/7130501/TWMS-256",
-  "status": "partial"
+  "status": "partial",
+  "name_zh_tw_source_url": "https://maplestory.io/api/TWMS/256/mob",
+  "display_name_zh_tw": "黑暗萊西"
 }

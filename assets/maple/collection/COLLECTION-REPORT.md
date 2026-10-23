@@ -15,6 +15,8 @@ Boss 已入庫：戴米安第一階段、露希妲三個形態、威爾兩個形
 
 全庫目前有 **5,326 個動畫／地圖影格引用、2,798 張被這些紀錄引用的去重 PNG**；加上場景共用資源，`collection/` 實體共有 **5,226 張 PNG（約 196 MB）**。所有實體 PNG 均可解碼，檔案及像素 SHA-256、索引與重複存放檢查通過，`validation-report.json` 沒有失敗項目。
 
+280 筆素材均已依相同 ID 對照 TWMS/256 名稱索引，補齊 `name_zh_tw` 與供 App 使用的 `display_name_zh_tw`，沒有空名稱。Boss 的正式名稱與階段標籤分欄保存；精簡索引位於 [name-index.zh-TW.json](name-index.zh-TW.json)。
+
 ## 本次地區分布
 
 | 地區 | NPC | 普通怪物 | 地圖 |

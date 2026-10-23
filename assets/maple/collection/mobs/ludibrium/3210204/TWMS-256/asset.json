@@ -750,5 +750,7 @@
     "all_wz_numeric_frame_nodes_present": true
   },
   "github_path": "assets/maple/collection/mobs/ludibrium/3210204/TWMS-256",
-  "status": "collected"
+  "status": "collected",
+  "name_zh_tw_source_url": "https://maplestory.io/api/TWMS/256/mob",
+  "display_name_zh_tw": "玩具鴨"
 }

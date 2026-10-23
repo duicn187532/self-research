@@ -938,5 +938,6 @@
       "canvas_count": 20,
       "manifest_path": "assets/maple/collection/maps/orbis/shared-resource-sets/TWMS-256/tile/pastelBrick/resource-set.json"
     }
-  ]
+  ],
+  "display_name_zh_tw": "天空之城售票處"
 }

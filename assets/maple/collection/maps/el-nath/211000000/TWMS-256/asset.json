@@ -4344,5 +4344,6 @@
       "canvas_count": 20,
       "manifest_path": "assets/maple/collection/maps/el-nath/shared-resource-sets/TWMS-256/tile/snowyLightrock/resource-set.json"
     }
-  ]
+  ],
+  "display_name_zh_tw": "冰原雪域"
 }
