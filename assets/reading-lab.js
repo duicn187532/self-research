@@ -132,7 +132,12 @@
     l.textContent = "開啟指定版本 PDF（外部連結，未保證目前可用）";
     sourcePanel.appendChild(l);
   } else {
-    mount(sourcePanel, "p", "", "原始掃描 PDF 為既有教材記錄中的使用者提供版本；本站未附公用 PDF 直鏈，無法取得時請提供相同版本掃描檔。");
+    mount(sourcePanel, "p", "", "出版社 DOI 已查到；另有作者公開的掃描 PDF，首次頁面影像為上下顛倒，後續公式與整篇內容仍須逐頁核對。先前使用者掃描檔和作者版尚未做雜湊比對。");
+    var authorPdf = document.createElement("a");
+    authorPdf.href = "https://www.dekleer.org/Publications/An%20Assumption-Based%20TMS.pdf";
+    authorPdf.target = "_blank"; authorPdf.rel = "noopener noreferrer";
+    authorPdf.textContent = "作者公開掃描 PDF（影像已確認第一頁，非全文核對）";
+    sourcePanel.appendChild(authorPdf);
   }
   var dims = mount(main, "div", "reading-dim-grid");
   var types = ["問題定義", "方法步驟", "評測證據", "作者主張", "本站研究疑問"];
