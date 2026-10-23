@@ -11,6 +11,17 @@ reads in Traditional Chinese (台灣用語); keep original English technical ter
 
 ## 1. Get the full text first
 
+### 第一手來源與版本核對關卡
+
+1. 先固定論文版本，依序查指定 arXiv PDF / HTML、出版社或 DOI、作者公開版本、合法開放資源。逐項核對標題、作者、日期、版本；記錄 URL 與取得日期。
+2. PDF 與 HTML 相互檢查。公式、圖表、掃描或文字解析有歧義時，必須看 PDF **頁面影像**；標明頁碼／公式號／表號。文字萃取不等於完整核對。
+3. 無法取得全文則標示「原文缺失／待核對」，列已嘗試來源與缺少資料，請使用者提供相同版本 PDF。可靠摘要只能做背景草稿，每項標「二手資料／待核對」，不得捏造公式、數據、消融、作者貢獻、缺口。
+4. 嚴格區分**原文事實、作者主張、本站推導、示意假設、研究構想**。未提及不能當作未解決；需要獨立證據的 Gap 必須寫明推論界線。
+5. 在 scripts/research/source_manifest.json 記錄原版本與核對狀態。舊版原文失效時保留舊版紀錄，新版本須逐項再查，不能自動繼承已核對狀態。
+6. 新增或修改精讀頁時，在 assets/reading-lab.js 的 PAPERS 補齊五維摘要與各章節連結。方法互動要有狀態、逐步推演與預測，Benchmark 教學要分清觀測、因果解釋與未證主張。示例數值須明確標示虛構。
+7. 取得全文後必須再查公式、表格、圖像、資料集、基線、評分、消融、題庫與詳解，通過才能移除待核對。筆記不是原始論文證據。
+8. 不增加強制打字流程；保留原章節 ID 與 localStorage 的進度、戰鬥和備份相容性。更新後執行 check_reading_lab.py、check_links.py、題庫及瀏覽器驗收。
+
 ```bash
 python3 scripts/fetch_arxiv.py <id>v<N>        # writes _sources/<id>v<N>.txt
 ```
@@ -116,5 +127,4 @@ Never fill in an equation, number or hyperparameter that no source gave; write `
 
 ## Updating after the user reads the full text
 
-When the user pastes exported notes, apply their corrections, upgrade `src-2nd` tags to `src-abs`
-for anything they confirmed, fill `?` cells, and remove the `.notice` box once nothing unverified remains.
+Treat user-exported notes as review suggestions, never as proof. Do not change src-2nd to src-abs until evidence is checked in the exact version of the original PDF/HTML, including page images where formulas or tables are ambiguous. Keep unknown values and notices until independently resolved. Preserve historical verification when a new version appears, but mark the new version pending.

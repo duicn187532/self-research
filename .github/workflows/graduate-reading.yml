@@ -1,0 +1,43 @@
+name: Graduate paper reading checks
+
+on:
+  pull_request:
+    paths:
+      - "assets/**"
+      - "papers/**"
+      - "scripts/**"
+      - ".github/workflows/graduate-reading.yml"
+  push:
+    branches: [main]
+    paths:
+      - "assets/**"
+      - "papers/**"
+      - "scripts/**"
+      - ".github/workflows/graduate-reading.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Internal links and chapter anchors
+        run: python3 scripts/check_links.py
+      - name: Graduate reading lab integrity and source flags
+        run: python3 scripts/check_reading_lab.py
+      - name: JavaScript syntax and interactive behavior
+        run: |
+          node --check assets/reading-lab.js
+          node scripts/test_reading_lab.js
+      - name: Existing quiz bank correctness
+        run: python3 scripts/quiz/build.py
+      - name: Verify quiz outputs remain deterministic
+        run: git diff --exit-code -- 'papers/*/quiz.js'

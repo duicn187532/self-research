@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-10-24",
+  "scope": "本次新增互動導讀之來源稽核；不回溯推翻既有教材先前的核對紀錄",
+  "rules": [
+    "核對元資料（標題、作者、版本）不同於逐條全文核對",
+    "檢索摘要僅供背景；不能據以生成或認定公式、表格、數字或限制",
+    "若原文無法取得，標記缺失並要求相同版本 PDF；來源更新不得繼承舊版核對結果",
+    "圖表、公式、OCR 有疑義時須查看 PDF 原始頁面影像；文字解析無法取代影像核對",
+    "研究缺口必須註明推論邊界；未提及不等於未解決"
+  ],
+  "papers": {
+    "2501.13956": {
+      "title": "Zep: A Temporal Knowledge Graph Architecture for Agent Memory",
+      "version": "v1",
+      "authors": "Preston Rasmussen; Pavlo Paliychuk; Travis Beauvais; Jack Ryan; Daniel Chalef",
+      "metadata_evidence": "https://arxiv.org/abs/2501.13956",
+      "metadata_status": "arxiv_abstract_checked",
+      "fulltext_status": "legacy_site_claim_not_rechecked",
+      "missing": "本次未逐頁重查 PDF／HTML 的公式、評測數字和作者主張"
+    },
+    "2601.18642": {
+      "title": "FadeMem: Biologically-Inspired Forgetting for Efficient Agent Memory",
+      "version": "v2",
+      "authors": "Lei Wei; Xiao Peng; Xu Dong; Niantao Xie; Bin Wang",
+      "metadata_evidence": "https://arxiv.org/abs/2601.18642",
+      "metadata_status": "arxiv_abstract_checked",
+      "fulltext_status": "pdf_text_partially_checked_image_pending",
+      "missing": "本次可讀到指定版本 PDF 文字，但 PDF 頁面影像核對未成功；完整公式、表格與超參數尚未逐項覆核"
+    },
+    "2604.14362": {
+      "title": "APEX-MEM: Agentic Semi-Structured Memory with Temporal Reasoning for Long-Term Conversational AI",
+      "version": "v1",
+      "authors": "Pratyay Banerjee; Masud Moshtaghi; Shivashankar Subramanian; Amita Misra; Ankit Chadha",
+      "metadata_evidence": "https://arxiv.org/abs/2604.14362",
+      "metadata_status": "arxiv_abstract_checked",
+      "fulltext_status": "legacy_site_claim_not_rechecked",
+      "missing": "本次未逐頁重新核對完整 PDF、圖表與數據"
+    },
+    "2605.06527": {
+      "title": "STALE: Can LLM Agents Know When Their Memories Are No Longer Valid?",
+      "version": "v1",
+      "authors": "Hanxiang Chao; Yihan Bai; Rui Sheng; Tianle Li; Yushi Sun",
+      "metadata_evidence": "https://arxiv.org/abs/2605.06527",
+      "metadata_status": "arxiv_abstract_checked",
+      "fulltext_status": "legacy_site_claim_not_rechecked",
+      "missing": "本次未重查 PDF 附錄、統計表、評測題與內容限制"
+    },
+    "2606.30306": {
+      "title": "Always-OnAgents:A Survey of Persistent Memory, State, and Governance in LLMAgents",
+      "version": "v1",
+      "authors": "Tianyu Ding; Aditya Nannapaneni; Bingfan Liu; Ling Zhang",
+      "metadata_evidence": "https://arxiv.org/abs/2606.30306",
+      "metadata_status": "arxiv_abstract_checked",
+      "fulltext_status": "legacy_site_claim_not_rechecked",
+      "missing": "本次未逐條核對 PDF 綜述分類、統計與圖表"
+    },
+    "2608.19652": {
+      "title": "Can Agent Memory Systems Track Evolving State?",
+      "version": "v1",
+      "authors": "Xinyi Fan; Miri Liu; Ruozhen Yang; Siru Ouyang; Jiawei Han",
+      "metadata_evidence": "https://arxiv.org/abs/2608.19652",
+      "metadata_status": "secondary_search_only_pending_primary",
+      "fulltext_status": "legacy_site_claim_not_rechecked",
+      "missing": "本次 arXiv 摘要頁讀取失敗；須恢復來源存取，取得 PDF、核實版本與所有數字"
+    },
+    "dekleer-1986-atms": {
+      "title": "An assumption-based TMS",
+      "version": "Artificial Intelligence 28(2), 127-162 (1986)",
+      "authors": "Johan de Kleer",
+      "metadata_evidence": "https://doi.org/10.1016/0004-3702(86)90080-9",
+      "alternate_author_pdf": "https://www.dekleer.org/Publications/An%20Assumption-Based%20TMS.pdf",
+      "metadata_status": "publisher_doi_checked",
+      "fulltext_status": "author_pdf_first_page_image_checked_remainder_pending",
+      "missing": "作者公開 PDF 影像第 1 頁已查看，文字上下顛倒；其餘 35 頁、公式、圖表與既有使用者掃描來源尚未逐頁對照及比對雜湊"
+    }
+  }
+}
