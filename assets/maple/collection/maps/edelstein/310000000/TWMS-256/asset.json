@@ -1,0 +1,59 @@
+{
+  "id": "310000000",
+  "type": "maps",
+  "region": "edelstein",
+  "town": "edelstein",
+  "region_status": "curated_town_scene",
+  "name_zh_tw": "埃德爾斯坦",
+  "name_zh_tw_status": "maplestory.io_TWMS_256_map_id_match",
+  "source_url": "https://maplestory.io/api/TWMS/256/map/310000000",
+  "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Map/Map/Map3/310000000.img",
+  "render_url": "https://maplestory.io/api/TWMS/256/map/310000000/render",
+  "wz_path": "Map.wz/Map/Map3/310000000.img",
+  "version": {
+    "region": "TWMS",
+    "version": "256"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "rendered-composite",
+      "kind": "map_composite",
+      "frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 4804,
+          "height": 1695,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "77eae467890559315fbc22698ac824c12af90c7d8ca2b956555907c4a4bf745c",
+          "github_path": "assets/maple/collection/maps/edelstein/310000000/TWMS-256/composite.png",
+          "storage": "original_png",
+          "decode": "pass"
+        }
+      ]
+    }
+  ],
+  "source_metadata_sha256": "e4f309852eecfaa7c58a550ef6121d825702c40f3751486a2498afe64cbd0c6e",
+  "source_metadata": {
+    "name": "埃德爾斯坦",
+    "streetName": "黑色翅膀佔領地",
+    "id": 310000000,
+    "returnMap": 310000000
+  },
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "distinct_from_existing_collected_files": true,
+    "layer_separation": "not_provided_by_render_endpoint"
+  },
+  "github_path": "assets/maple/collection/maps/edelstein/310000000/TWMS-256",
+  "status": "collected",
+  "display_name_zh_tw": "埃德爾斯坦"
+}

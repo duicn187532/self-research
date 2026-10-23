@@ -185332,6 +185332,606 @@
         }
       ],
       "display_name_zh_tw": "惡夢時間塔頂端"
+    },
+    {
+      "id": "260000000",
+      "type": "maps",
+      "region": "ariant",
+      "town": "ariant",
+      "region_status": "curated_town_scene",
+      "name_zh_tw": "納希綠洲城",
+      "name_zh_tw_status": "maplestory.io_TWMS_256_map_id_match",
+      "source_url": "https://maplestory.io/api/TWMS/256/map/260000000",
+      "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Map/Map/Map2/260000000.img",
+      "render_url": "https://maplestory.io/api/TWMS/256/map/260000000/render",
+      "wz_path": "Map.wz/Map/Map2/260000000.img",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "license": {
+        "status": "redistribution_permission_unconfirmed",
+        "rights_holder": "Nexon",
+        "evidence_url": "https://maplestory.io/",
+        "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+      },
+      "actions": [
+        {
+          "name": "rendered-composite",
+          "kind": "map_composite",
+          "frame_count": 1,
+          "frames": [
+            {
+              "index": 0,
+              "width": 5778,
+              "height": 727,
+              "mode": "RGBA",
+              "has_transparency": true,
+              "sha256": "30481e4a9c852f6688c186e3c7ae9855346e0e41ea1a5bca594f00f0149f5538",
+              "github_path": "assets/maple/collection/maps/ariant/260000000/TWMS-256/composite.png",
+              "storage": "original_png",
+              "decode": "pass"
+            }
+          ]
+        }
+      ],
+      "source_metadata_sha256": "16032f7c4953529668b83de5ecfde36ae5c7f6ee22092ee53c2de23b9221a2b7",
+      "source_metadata": {
+        "name": "納希綠洲城",
+        "streetName": "炎熱之路",
+        "id": 260000000,
+        "returnMap": 260000000
+      },
+      "validation": {
+        "decode": "pass",
+        "sha256": "pass",
+        "distinct_from_existing_collected_files": true,
+        "layer_separation": "not_provided_by_render_endpoint",
+        "duplicate_paths": []
+      },
+      "github_path": "assets/maple/collection/maps/ariant/260000000/TWMS-256",
+      "status": "collected",
+      "display_name_zh_tw": "納希綠洲城"
+    },
+    {
+      "id": "310000000",
+      "type": "maps",
+      "region": "edelstein",
+      "town": "edelstein",
+      "region_status": "curated_town_scene",
+      "name_zh_tw": "埃德爾斯坦",
+      "name_zh_tw_status": "maplestory.io_TWMS_256_map_id_match",
+      "source_url": "https://maplestory.io/api/TWMS/256/map/310000000",
+      "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Map/Map/Map3/310000000.img",
+      "render_url": "https://maplestory.io/api/TWMS/256/map/310000000/render",
+      "wz_path": "Map.wz/Map/Map3/310000000.img",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "license": {
+        "status": "redistribution_permission_unconfirmed",
+        "rights_holder": "Nexon",
+        "evidence_url": "https://maplestory.io/",
+        "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+      },
+      "actions": [
+        {
+          "name": "rendered-composite",
+          "kind": "map_composite",
+          "frame_count": 1,
+          "frames": [
+            {
+              "index": 0,
+              "width": 4804,
+              "height": 1695,
+              "mode": "RGBA",
+              "has_transparency": true,
+              "sha256": "77eae467890559315fbc22698ac824c12af90c7d8ca2b956555907c4a4bf745c",
+              "github_path": "assets/maple/collection/maps/edelstein/310000000/TWMS-256/composite.png",
+              "storage": "original_png",
+              "decode": "pass"
+            }
+          ]
+        }
+      ],
+      "source_metadata_sha256": "e4f309852eecfaa7c58a550ef6121d825702c40f3751486a2498afe64cbd0c6e",
+      "source_metadata": {
+        "name": "埃德爾斯坦",
+        "streetName": "黑色翅膀佔領地",
+        "id": 310000000,
+        "returnMap": 310000000
+      },
+      "validation": {
+        "decode": "pass",
+        "sha256": "pass",
+        "distinct_from_existing_collected_files": true,
+        "layer_separation": "not_provided_by_render_endpoint",
+        "duplicate_paths": []
+      },
+      "github_path": "assets/maple/collection/maps/edelstein/310000000/TWMS-256",
+      "status": "collected",
+      "display_name_zh_tw": "埃德爾斯坦"
+    },
+    {
+      "id": "250000000",
+      "type": "maps",
+      "region": "mu-lung",
+      "town": "mu-lung",
+      "region_status": "curated_town_scene",
+      "name_zh_tw": "桃花仙境",
+      "name_zh_tw_status": "maplestory.io_TWMS_256_map_id_match",
+      "source_url": "https://maplestory.io/api/TWMS/256/map/250000000",
+      "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Map/Map/Map2/250000000.img",
+      "render_url": "https://maplestory.io/api/TWMS/256/map/250000000/render",
+      "wz_path": "Map.wz/Map/Map2/250000000.img",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "license": {
+        "status": "redistribution_permission_unconfirmed",
+        "rights_holder": "Nexon",
+        "evidence_url": "https://maplestory.io/",
+        "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+      },
+      "actions": [
+        {
+          "name": "rendered-composite",
+          "kind": "map_composite",
+          "frame_count": 1,
+          "frames": [
+            {
+              "index": 0,
+              "width": 7056,
+              "height": 1340,
+              "mode": "RGBA",
+              "has_transparency": true,
+              "sha256": "92e43e8b0b8b396b71a18a447414b77fd8fd7d7d4bfb57c09dd7f6435382dca7",
+              "github_path": "assets/maple/collection/maps/mu-lung/250000000/TWMS-256/composite.png",
+              "storage": "original_png",
+              "decode": "pass"
+            }
+          ]
+        }
+      ],
+      "source_metadata_sha256": "4e3e0bea4f9eeb5f4f25559a1fb91d7de441853b6c713ac4b335fe3ddb13b63d",
+      "source_metadata": {
+        "name": "桃花仙境",
+        "streetName": "武陵桃園",
+        "id": 250000000,
+        "returnMap": 250000000
+      },
+      "validation": {
+        "decode": "pass",
+        "sha256": "pass",
+        "distinct_from_existing_collected_files": true,
+        "layer_separation": "not_provided_by_render_endpoint",
+        "duplicate_paths": []
+      },
+      "github_path": "assets/maple/collection/maps/mu-lung/250000000/TWMS-256",
+      "status": "collected",
+      "display_name_zh_tw": "桃花仙境"
+    },
+    {
+      "id": "100000000",
+      "type": "maps",
+      "region": "victoria",
+      "town": "henesys",
+      "region_status": "curated_town_scene",
+      "name_zh_tw": "弓箭手村",
+      "name_zh_tw_status": "maplestory.io_TWMS_256_map_id_match",
+      "source_url": "https://maplestory.io/api/TWMS/256/map/100000000",
+      "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Map/Map/Map1/100000000.img",
+      "render_url": "https://maplestory.io/api/TWMS/256/map/100000000/render",
+      "wz_path": "Map.wz/Map/Map1/100000000.img",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "license": {
+        "status": "redistribution_permission_unconfirmed",
+        "rights_holder": "Nexon",
+        "evidence_url": "https://maplestory.io/",
+        "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+      },
+      "actions": [
+        {
+          "name": "rendered-composite",
+          "kind": "map_composite",
+          "frame_count": 1,
+          "frames": [
+            {
+              "index": 0,
+              "width": 5863,
+              "height": 1793,
+              "mode": "RGBA",
+              "has_transparency": true,
+              "sha256": "908cd228eba45b14700e9979e3a71f920b17de28645cd0c74b10940c2f651de5",
+              "github_path": "assets/maple/collection/maps/victoria/100000000/TWMS-256/composite.png",
+              "storage": "original_png",
+              "decode": "pass"
+            }
+          ]
+        }
+      ],
+      "source_metadata_sha256": "d2df84205384735ae4d241350e82abe70d592262ae990024fababbd9fc0e78d4",
+      "source_metadata": {
+        "name": "弓箭手村",
+        "streetName": "弓箭手村",
+        "id": 100000000,
+        "returnMap": 100000000
+      },
+      "validation": {
+        "decode": "pass",
+        "sha256": "pass",
+        "distinct_from_existing_collected_files": true,
+        "layer_separation": "not_provided_by_render_endpoint",
+        "duplicate_paths": []
+      },
+      "github_path": "assets/maple/collection/maps/victoria/100000000/TWMS-256",
+      "status": "collected",
+      "display_name_zh_tw": "弓箭手村"
+    },
+    {
+      "id": "101000000",
+      "type": "maps",
+      "region": "victoria",
+      "town": "ellinia",
+      "region_status": "curated_town_scene",
+      "name_zh_tw": "魔法森林",
+      "name_zh_tw_status": "maplestory.io_TWMS_256_map_id_match",
+      "source_url": "https://maplestory.io/api/TWMS/256/map/101000000",
+      "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Map/Map/Map1/101000000.img",
+      "render_url": "https://maplestory.io/api/TWMS/256/map/101000000/render",
+      "wz_path": "Map.wz/Map/Map1/101000000.img",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "license": {
+        "status": "redistribution_permission_unconfirmed",
+        "rights_holder": "Nexon",
+        "evidence_url": "https://maplestory.io/",
+        "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+      },
+      "actions": [
+        {
+          "name": "rendered-composite",
+          "kind": "map_composite",
+          "frame_count": 1,
+          "frames": [
+            {
+              "index": 0,
+              "width": 1612,
+              "height": 2404,
+              "mode": "RGBA",
+              "has_transparency": true,
+              "sha256": "e989fe6a5ee3c208de8ae3e5b9c14d11c0d7dd3acdfbfb53165f1210dc83cfa0",
+              "github_path": "assets/maple/collection/maps/victoria/101000000/TWMS-256/composite.png",
+              "storage": "original_png",
+              "decode": "pass"
+            }
+          ]
+        }
+      ],
+      "source_metadata_sha256": "a8aada1e695bc2e63b59ba214b6e696c4fc3e8531fda0c7b248db8959ab11fd4",
+      "source_metadata": {
+        "name": "魔法森林",
+        "streetName": "魔法森林",
+        "id": 101000000,
+        "returnMap": 101000000
+      },
+      "validation": {
+        "decode": "pass",
+        "sha256": "pass",
+        "distinct_from_existing_collected_files": true,
+        "layer_separation": "not_provided_by_render_endpoint",
+        "duplicate_paths": []
+      },
+      "github_path": "assets/maple/collection/maps/victoria/101000000/TWMS-256",
+      "status": "collected",
+      "display_name_zh_tw": "魔法森林"
+    },
+    {
+      "id": "102000000",
+      "type": "maps",
+      "region": "victoria",
+      "town": "perion",
+      "region_status": "curated_town_scene",
+      "name_zh_tw": "勇士之村",
+      "name_zh_tw_status": "maplestory.io_TWMS_256_map_id_match",
+      "source_url": "https://maplestory.io/api/TWMS/256/map/102000000",
+      "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Map/Map/Map1/102000000.img",
+      "render_url": "https://maplestory.io/api/TWMS/256/map/102000000/render",
+      "wz_path": "Map.wz/Map/Map1/102000000.img",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "license": {
+        "status": "redistribution_permission_unconfirmed",
+        "rights_holder": "Nexon",
+        "evidence_url": "https://maplestory.io/",
+        "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+      },
+      "actions": [
+        {
+          "name": "rendered-composite",
+          "kind": "map_composite",
+          "frame_count": 1,
+          "frames": [
+            {
+              "index": 0,
+              "width": 3078,
+              "height": 2138,
+              "mode": "RGBA",
+              "has_transparency": true,
+              "sha256": "8c309aa7f0211b4e0d16aa4a741364d6c0e366547be11a66c602b09dfe12edb4",
+              "github_path": "assets/maple/collection/maps/victoria/102000000/TWMS-256/composite.png",
+              "storage": "original_png",
+              "decode": "pass"
+            }
+          ]
+        }
+      ],
+      "source_metadata_sha256": "563d95c5d7b3875bbd1a8aca1eb134866afba1d454a4c202d3ab3e2c818fdd6a",
+      "source_metadata": {
+        "name": "勇士之村",
+        "streetName": "勇士之村",
+        "id": 102000000,
+        "returnMap": 102000000
+      },
+      "validation": {
+        "decode": "pass",
+        "sha256": "pass",
+        "distinct_from_existing_collected_files": true,
+        "layer_separation": "not_provided_by_render_endpoint",
+        "duplicate_paths": []
+      },
+      "github_path": "assets/maple/collection/maps/victoria/102000000/TWMS-256",
+      "status": "collected",
+      "display_name_zh_tw": "勇士之村"
+    },
+    {
+      "id": "103000000",
+      "type": "maps",
+      "region": "victoria",
+      "town": "kerning",
+      "region_status": "curated_town_scene",
+      "name_zh_tw": "墮落城市",
+      "name_zh_tw_status": "maplestory.io_TWMS_256_map_id_match",
+      "source_url": "https://maplestory.io/api/TWMS/256/map/103000000",
+      "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Map/Map/Map1/103000000.img",
+      "render_url": "https://maplestory.io/api/TWMS/256/map/103000000/render",
+      "wz_path": "Map.wz/Map/Map1/103000000.img",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "license": {
+        "status": "redistribution_permission_unconfirmed",
+        "rights_holder": "Nexon",
+        "evidence_url": "https://maplestory.io/",
+        "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+      },
+      "actions": [
+        {
+          "name": "rendered-composite",
+          "kind": "map_composite",
+          "frame_count": 1,
+          "frames": [
+            {
+              "index": 0,
+              "width": 3870,
+              "height": 1509,
+              "mode": "RGBA",
+              "has_transparency": true,
+              "sha256": "0735190724f43772800121afd076ad2b4263d2519a166ec63ef0122439f076ed",
+              "github_path": "assets/maple/collection/maps/victoria/103000000/TWMS-256/composite.png",
+              "storage": "original_png",
+              "decode": "pass"
+            }
+          ]
+        }
+      ],
+      "source_metadata_sha256": "10bb6b05541c427776e7a5e3dda9dbaaa402a055d1961f11bfb64874b18c60ba",
+      "source_metadata": {
+        "name": "墮落城市",
+        "streetName": "墮落城市",
+        "id": 103000000,
+        "returnMap": 103000000
+      },
+      "validation": {
+        "decode": "pass",
+        "sha256": "pass",
+        "distinct_from_existing_collected_files": true,
+        "layer_separation": "not_provided_by_render_endpoint",
+        "duplicate_paths": []
+      },
+      "github_path": "assets/maple/collection/maps/victoria/103000000/TWMS-256",
+      "status": "collected",
+      "display_name_zh_tw": "墮落城市"
+    },
+    {
+      "id": "104000000",
+      "type": "maps",
+      "region": "victoria",
+      "town": "lith-harbor",
+      "region_status": "curated_town_scene",
+      "name_zh_tw": "維多利亞港",
+      "name_zh_tw_status": "maplestory.io_TWMS_256_map_id_match",
+      "source_url": "https://maplestory.io/api/TWMS/256/map/104000000",
+      "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Map/Map/Map1/104000000.img",
+      "render_url": "https://maplestory.io/api/TWMS/256/map/104000000/render",
+      "wz_path": "Map.wz/Map/Map1/104000000.img",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "license": {
+        "status": "redistribution_permission_unconfirmed",
+        "rights_holder": "Nexon",
+        "evidence_url": "https://maplestory.io/",
+        "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+      },
+      "actions": [
+        {
+          "name": "rendered-composite",
+          "kind": "map_composite",
+          "frame_count": 1,
+          "frames": [
+            {
+              "index": 0,
+              "width": 4878,
+              "height": 1986,
+              "mode": "RGBA",
+              "has_transparency": true,
+              "sha256": "6d0c2aa6dc2d13e1cca8f1753c67606a22e8881b24f23a23a097f10b3b46b1e8",
+              "github_path": "assets/maple/collection/maps/victoria/104000000/TWMS-256/composite.png",
+              "storage": "original_png",
+              "decode": "pass"
+            }
+          ]
+        }
+      ],
+      "source_metadata_sha256": "2663ad4cce41e5106f1426ecc44af13c93add2b3a331e3ffffa02a12946aebb5",
+      "source_metadata": {
+        "name": "維多利亞港",
+        "streetName": "維多利亞港",
+        "id": 104000000,
+        "returnMap": 104000000
+      },
+      "validation": {
+        "decode": "pass",
+        "sha256": "pass",
+        "distinct_from_existing_collected_files": true,
+        "layer_separation": "not_provided_by_render_endpoint",
+        "duplicate_paths": []
+      },
+      "github_path": "assets/maple/collection/maps/victoria/104000000/TWMS-256",
+      "status": "collected",
+      "display_name_zh_tw": "維多利亞港"
+    },
+    {
+      "id": "105000000",
+      "type": "maps",
+      "region": "victoria",
+      "town": "sleepywood",
+      "region_status": "curated_town_scene",
+      "name_zh_tw": "奇幻村",
+      "name_zh_tw_status": "maplestory.io_TWMS_256_map_id_match",
+      "source_url": "https://maplestory.io/api/TWMS/256/map/105000000",
+      "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Map/Map/Map1/105000000.img",
+      "render_url": "https://maplestory.io/api/TWMS/256/map/105000000/render",
+      "wz_path": "Map.wz/Map/Map1/105000000.img",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "license": {
+        "status": "redistribution_permission_unconfirmed",
+        "rights_holder": "Nexon",
+        "evidence_url": "https://maplestory.io/",
+        "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+      },
+      "actions": [
+        {
+          "name": "rendered-composite",
+          "kind": "map_composite",
+          "frame_count": 1,
+          "frames": [
+            {
+              "index": 0,
+              "width": 2486,
+              "height": 1435,
+              "mode": "RGBA",
+              "has_transparency": true,
+              "sha256": "fc97deb0a7c9a551a9e5226aba1769ba4a6ba11d43b3789f61764b3290b1f86e",
+              "github_path": "assets/maple/collection/maps/victoria/105000000/TWMS-256/composite.png",
+              "storage": "original_png",
+              "decode": "pass"
+            }
+          ]
+        }
+      ],
+      "source_metadata_sha256": "c707b9153e1de64e67e39ad2644cf25923ee1ace97152f8de4644291d51fb067",
+      "source_metadata": {
+        "name": "奇幻村",
+        "streetName": "奇幻村",
+        "id": 105000000,
+        "returnMap": 105000000
+      },
+      "validation": {
+        "decode": "pass",
+        "sha256": "pass",
+        "distinct_from_existing_collected_files": true,
+        "layer_separation": "not_provided_by_render_endpoint",
+        "duplicate_paths": []
+      },
+      "github_path": "assets/maple/collection/maps/victoria/105000000/TWMS-256",
+      "status": "collected",
+      "display_name_zh_tw": "奇幻村"
+    },
+    {
+      "id": "120000000",
+      "type": "maps",
+      "region": "victoria",
+      "town": "nautilus",
+      "region_status": "curated_town_scene",
+      "name_zh_tw": "鯨魚號碼頭",
+      "name_zh_tw_status": "maplestory.io_TWMS_256_map_id_match",
+      "source_url": "https://maplestory.io/api/TWMS/256/map/120000000",
+      "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Map/Map/Map1/120000000.img",
+      "render_url": "https://maplestory.io/api/TWMS/256/map/120000000/render",
+      "wz_path": "Map.wz/Map/Map1/120000000.img",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "license": {
+        "status": "redistribution_permission_unconfirmed",
+        "rights_holder": "Nexon",
+        "evidence_url": "https://maplestory.io/",
+        "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+      },
+      "actions": [
+        {
+          "name": "rendered-composite",
+          "kind": "map_composite",
+          "frame_count": 1,
+          "frames": [
+            {
+              "index": 0,
+              "width": 4681,
+              "height": 1339,
+              "mode": "RGBA",
+              "has_transparency": true,
+              "sha256": "2ef835b5bf24ca375c8a522d5a54670f160e77a1c7389a957c43f643369150fa",
+              "github_path": "assets/maple/collection/maps/victoria/120000000/TWMS-256/composite.png",
+              "storage": "original_png",
+              "decode": "pass"
+            }
+          ]
+        }
+      ],
+      "source_metadata_sha256": "1bea2c64e0cf2373020760a0beeecd025c5f2d323f02d16d6ca5410aa21d9624",
+      "source_metadata": {
+        "name": "鯨魚號碼頭",
+        "streetName": "鯨魚號",
+        "id": 120000000,
+        "returnMap": 120000000
+      },
+      "validation": {
+        "decode": "pass",
+        "sha256": "pass",
+        "distinct_from_existing_collected_files": true,
+        "layer_separation": "not_provided_by_render_endpoint",
+        "duplicate_paths": []
+      },
+      "github_path": "assets/maple/collection/maps/victoria/120000000/TWMS-256",
+      "status": "collected",
+      "display_name_zh_tw": "鯨魚號碼頭"
     }
   ],
   "counting_policy": "Unique type/ID/version records; actions and frame aliases are not entities. IDs may still represent alternate costumes; species/character totals require identity review.",
@@ -185342,5 +185942,6 @@
     "fallback": "name",
     "locale": "zh-TW",
     "source_version": "TWMS/256"
-  }
+  },
+  "updated_on": "2026-10-24"
 }

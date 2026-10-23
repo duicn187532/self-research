@@ -20,6 +20,40 @@ SELECTION={
  'mob-hellhound':('mobs','7130001','地獄獵犬',{'stand':'stand','move':'move','hit':'hit1','die':'die1','attack':'attack1'}),
  'mob-metal-beetle':('mobs','7130003','金屬甲蟲',{'stand':'stand','move':'move','hit':'hit1','die':'die1','attack':'attack1','skill':'skill1'}),
  'mob-dark-rash':('mobs','7130501','黑暗萊西',{'stand':'stand','move':'move','hit':'hit1','die':'die1','attack':'attack1'}),
+ 'mob-fat-pig':('mobs','1210100','肥肥',{'stand':'stand','move':'move','hit':'hit1','die':'die1'}),
+ 'mob-ribbon-pig':('mobs','1210101','緞帶肥肥',{'stand':'stand','move':'move','hit':'hit1','die':'die1'}),
+ 'mob-blue-mushroom':('mobs','2220100','藍菇菇',{'stand':'stand','move':'move','hit':'hit1','die':'die1'}),
+ 'mob-green-slime':('mobs','210100','綠水靈',{'stand':'stand','move':'move','hit':'hit1','die':'die1'}),
+ 'mob-spiked-mushroom':('mobs','2110200','刺菇菇',{'stand':'stand','move':'move','hit':'hit1','die':'die1'}),
+ 'mob-fireboar-eye':('mobs','2230100','火獨眼獸',{'stand':'stand','move':'move','hit':'hit1','die':'die1'}),
+ 'mob-zombie-mushroom':('mobs','2230101','殭屍菇菇',{'stand':'stand','move':'move','hit':'hit1','die':'die1'}),
+ 'mob-black-pig':('mobs','2230102','黑肥肥',{'stand':'stand','move':'move','hit':'hit1','die':'die1'}),
+ 'mob-little-ghost':('mobs','3230101','小幽靈',{'stand':'stand','move':'move','hit':'hit1','die':'die1'}),
+ 'mob-crocodile':('mobs','3110100','鱷魚',{'stand':'stand','move':'move','hit':'hit1','die':'die1'}),
+ 'mob-angel-monkey':('mobs','4230101','天使猴',{'stand':'stand','move':'move','hit':'hit1','die':'die1','attack':'attack1'}),
+ 'mob-black-crystal-golem':('mobs','5130102','黑曜石巨人',{'stand':'stand','move':'move','hit':'hit1','die':'die1','skill':'skill1'}),
+ 'mob-mixed-golem':('mobs','5150000','混種石巨人',{'stand':'stand','move':'move','hit':'hit1','die':'die1','skill':'skill1'}),
+ 'mob-fire-spirit':('mobs','5100002','火精靈',{'stand':'stand','move':'move','hit':'hit1','die':'die1','attack':'attack1','skill':'skill1'}),
+ 'mob-clockwork-bear-captain':('mobs','7130300','怨靈發條熊隊長',{'stand':'stand','move':'move','hit':'hit1','die':'die1','attack':'attack1'}),
+ 'mob-young-yellow-cellion':('mobs','3210201','幼黃獨角獅',{'stand':'stand','move':'move','hit':'hit1','die':'die1'}),
+ 'npc-robin':('npc','2003','羅賓',{'stand':'stand'}),
+ 'npc-mai':('npc','12100','麥加',{'stand':'stand'}),
+ 'npc-pio':('npc','10000','皮奧',{'stand':'stand'}),
+ 'npc-roger':('npc','2000','羅傑',{'stand':'stand'}),
+ 'npc-john':('npc','20000','約翰',{'stand':'stand'}),
+ 'npc-al':('npc','1002103','領袖阿爾',{'stand':'stand'}),
+ 'npc-tru':('npc','1002104','特魯',{'stand':'stand'}),
+ 'npc-hines':('npc','1032001','漢斯',{'stand':'stand'}),
+ 'npc-dances-with-balrog':('npc','1022000','武術教練',{'stand':'stand'}),
+ 'npc-mcgigis':('npc','1022002','麥吉',{'stand':'stand'}),
+ 'npc-dark-lord':('npc','1052001','達克魯',{'stand':'stand'}),
+ 'npc-kyrin':('npc','1090000','卡伊琳',{'stand':'stand'}),
+ 'npc-icarus':('npc','1052106','伊卡路斯',{'stand':'stand'}),
+ 'npc-bartos':('npc','1012006','寵物訓練師巴特斯',{'stand':'stand'}),
+ 'npc-tobo':('npc','1092000','湯寶寶',{'stand':'stand'}),
+ 'npc-ticket-agent':('npc','1032007','售票員',{'stand':'stand'}),
+ 'npc-winston':('npc','1022006','溫斯頓',{'stand':'stand'}),
+ 'npc-elder-aron':('npc','1012001','差不多院長',{'stand':'stand'}),
   'mob-clockwork-panda':('mobs','3210203','發條貓熊',{'stand':'stand','move':'move','hit':'hit1','die':'die1'}),
  'mob-toy-duck':('mobs','3210204','玩具鴨',{'stand':'stand','move':'move','hit':'hit1','die':'die1'}),
  'mob-jr-cellion':('mobs','3210200','幼紅獨角獅',{'stand':'stand','move':'move','hit':'hit1','die':'die1'}),
@@ -52,7 +86,7 @@ prefix='window.MAPLE_SPRITES = '
 raw=table_path.read_text(encoding='utf-8').strip()
 start=raw.index(prefix)+len(prefix)
 table=json.loads(raw[start:].rstrip(';'))
-for obsolete in ('boss-lucid','boss-will'):
+for obsolete in ('boss-lucid','boss-will','npc-lucas','mob-orange-mushroom','mob-green-shroom'):
     table.pop(obsolete,None)
 
 def strip(asset, action_name, target):
@@ -74,7 +108,10 @@ def strip(asset, action_name, target):
 for key,(kind,ident,label,actions) in SELECTION.items():
     asset=assets[(ASSET_TYPE.get(kind,kind),ident)]
     spec={'label':label,'kind':{'mobs':'mob','bosses':'boss'}.get(kind,kind),'asset_id':ident,
-          'name_zh_tw':asset['name_zh_tw'],'acts':{}}
+          'name_zh_tw':asset['name_zh_tw'],'wz_path':asset.get('wz_path'),'source_url':asset.get('source_url'),
+          'version':asset.get('version'),'acts':{}}
+    if key.startswith(('npc-robin','npc-lucas','npc-mai','npc-pio','npc-roger','npc-john','npc-al','npc-tru','npc-hines','npc-dances-with-balrog','npc-mcgigis','npc-dark-lord','npc-kyrin','npc-icarus','npc-bartos','npc-tobo','npc-ticket-agent','npc-winston','npc-elder-aron')):
+        spec['featured']=True
     if spec['kind']=='npc':
         spec['role']=label
     for out_action,source_action in actions.items():
@@ -85,13 +122,18 @@ for key,(kind,ident,label,actions) in SELECTION.items():
         if say_action: spec['acts']['say']=strip(asset,say_action,OUT/f'spr-{key}-say.png')
     table[key]=spec
 
+# Preserve the pre-existing strip key; the separately versioned classic Pig is `mob-fat-pig`.
+table['mob-pig']={'label':'緞帶肥肥','kind':'mob','acts':{'stand':[69,49,3],'move':[67,50,3],'hit':[60,54,1],'die':[69,56,3]}}
+
 # Add versioned modern boss phases; these downloaded IDs are distinct and have complete combat actions.
 for key, ident, label, actions in (
  ('boss-lucid','8880150','露希妲',{'stand':'fly','move':'fly','hit':'hit1','die':'die1','attack':'skill1','skill':'skill3'}),
+ ('boss-lucid-phase2','8880151','露希妲（第二階段）',{'stand':'fly','hit':'hit1','die':'die1','attack':'skill1','skill':'skill3'}),
  ('boss-will','8880301','威爾',{'stand':'stand','move':'move','hit':'hit1','die':'die1','attack':'attack1','skill':'skill3'}),
 ):
     asset=assets[('bosses',ident)]
-    spec={'label':label,'kind':'boss','asset_id':ident,'name_zh_tw':asset['name_zh_tw'],'acts':{}}
+    spec={'label':label,'kind':'boss','asset_id':ident,'name_zh_tw':asset['name_zh_tw'],
+          'wz_path':asset.get('wz_path'),'source_url':asset.get('source_url'),'version':asset.get('version'),'acts':{}}
     for out_action,source_action in actions.items():
         spec['acts'][out_action]=strip(asset,source_action,OUT/f'spr-{key}-{out_action}.png')
     table[key]=spec
@@ -100,6 +142,8 @@ for key, ident, label, actions in (
 table['npc-clerk']['role']='彼特'
 table['npc-girl']['role']='內拉'
 table.pop('npc-chief',None)
+for key in ('npc-bowman','npc-wizard','npc-strategist','npc-knight','npc-flame','npc-wind','npc-night','npc-thunder','npc-lina','npc-elder-stan','npc-tatamo','npc-lucid','npc-cleaner','npc-girl'):
+    if key in table: table[key]['featured']=True
 for key,label in {
     'hero-1':'夜光','hero-2':'幻影俠盜','hero-3':'狂狼勇士','hero-4':'精靈遊俠',
     'hero-5':'隱月','hero-6':'龍魔導士','hero-7':'凱內西斯'
@@ -108,6 +152,16 @@ for key,label in {
 
 # The exact scenes already collected from the TWMS map index; rendered as distinct, responsive backdrops.
 table['scenes']={
+ 'henesys':{'label':'弓箭手村','asset_id':'100000000','path':'collection/maps/victoria/100000000/TWMS-256/composite.png'},
+ 'ellinia-town':{'label':'魔法森林','asset_id':'101000000','path':'collection/maps/victoria/101000000/TWMS-256/composite.png'},
+ 'perion':{'label':'勇士之村','asset_id':'102000000','path':'collection/maps/victoria/102000000/TWMS-256/composite.png'},
+ 'kerning':{'label':'墮落城市','asset_id':'103000000','path':'collection/maps/victoria/103000000/TWMS-256/composite.png'},
+ 'lith-harbor':{'label':'維多利亞港','asset_id':'104000000','path':'collection/maps/victoria/104000000/TWMS-256/composite.png'},
+ 'sleepywood':{'label':'奇幻村','asset_id':'105000000','path':'collection/maps/victoria/105000000/TWMS-256/composite.png'},
+ 'nautilus':{'label':'鯨魚號','asset_id':'120000000','path':'collection/maps/victoria/120000000/TWMS-256/composite.png'},
+ 'edelstein':{'label':'埃德爾斯坦','asset_id':'310000000','path':'collection/maps/edelstein/310000000/TWMS-256/composite.png'},
+ 'mu-lung':{'label':'桃花仙境','asset_id':'250000000','path':'collection/maps/mu-lung/250000000/TWMS-256/composite.png'},
+ 'ariant':{'label':'納希綠洲城','asset_id':'260000000','path':'collection/maps/ariant/260000000/TWMS-256/composite.png'},
  'ludibrium':{'label':'玩具城','asset_id':'220000000','path':'collection/maps/ludibrium/220000000/TWMS-256/composite.png'},
  'clocktower':{'label':'時間塔','asset_id':'220080000','path':'collection/maps/ludibrium/220080000/TWMS-256/composite.png'},
  'orbis':{'label':'天空之城','asset_id':'200000000','path':'collection/maps/orbis/200000000/TWMS-256/composite.png'},
@@ -119,7 +173,10 @@ table['scenes']={
 for key,scene in table['scenes'].items():
     source=OUT/scene['path']
     with Image.open(source) as im:
-        im=ImageOps.fit(im.convert('RGB'),(1600,760),method=Image.Resampling.LANCZOS,centering=(0.5,0.5))
+        rgba=im.convert('RGBA')
+        sky=Image.new('RGBA',rgba.size,(139,202,240,255))
+        sky.alpha_composite(rgba)
+        im=ImageOps.fit(sky.convert('RGB'),(1600,760),method=Image.Resampling.LANCZOS,centering=(0.5,0.5))
         im.save(OUT/f'scene-{key}.jpg',quality=78,optimize=True,progressive=True)
         im.resize((768,365),Image.Resampling.LANCZOS).save(OUT/f'scene-{key}-sm.jpg',quality=72,optimize=True,progressive=True)
 table_path.write_text(prefix+json.dumps(table,ensure_ascii=False,separators=(',',':'))+';\n',encoding='utf-8')

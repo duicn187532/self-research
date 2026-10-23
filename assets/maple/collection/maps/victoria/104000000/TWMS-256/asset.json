@@ -1,0 +1,59 @@
+{
+  "id": "104000000",
+  "type": "maps",
+  "region": "victoria",
+  "town": "lith-harbor",
+  "region_status": "curated_town_scene",
+  "name_zh_tw": "維多利亞港",
+  "name_zh_tw_status": "maplestory.io_TWMS_256_map_id_match",
+  "source_url": "https://maplestory.io/api/TWMS/256/map/104000000",
+  "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Map/Map/Map1/104000000.img",
+  "render_url": "https://maplestory.io/api/TWMS/256/map/104000000/render",
+  "wz_path": "Map.wz/Map/Map1/104000000.img",
+  "version": {
+    "region": "TWMS",
+    "version": "256"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "rendered-composite",
+      "kind": "map_composite",
+      "frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 4878,
+          "height": 1986,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "6d0c2aa6dc2d13e1cca8f1753c67606a22e8881b24f23a23a097f10b3b46b1e8",
+          "github_path": "assets/maple/collection/maps/victoria/104000000/TWMS-256/composite.png",
+          "storage": "original_png",
+          "decode": "pass"
+        }
+      ]
+    }
+  ],
+  "source_metadata_sha256": "2663ad4cce41e5106f1426ecc44af13c93add2b3a331e3ffffa02a12946aebb5",
+  "source_metadata": {
+    "name": "維多利亞港",
+    "streetName": "維多利亞港",
+    "id": 104000000,
+    "returnMap": 104000000
+  },
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "distinct_from_existing_collected_files": true,
+    "layer_separation": "not_provided_by_render_endpoint"
+  },
+  "github_path": "assets/maple/collection/maps/victoria/104000000/TWMS-256",
+  "status": "collected",
+  "display_name_zh_tw": "維多利亞港"
+}

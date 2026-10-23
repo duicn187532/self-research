@@ -1,0 +1,59 @@
+{
+  "id": "101000000",
+  "type": "maps",
+  "region": "victoria",
+  "town": "ellinia",
+  "region_status": "curated_town_scene",
+  "name_zh_tw": "魔法森林",
+  "name_zh_tw_status": "maplestory.io_TWMS_256_map_id_match",
+  "source_url": "https://maplestory.io/api/TWMS/256/map/101000000",
+  "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Map/Map/Map1/101000000.img",
+  "render_url": "https://maplestory.io/api/TWMS/256/map/101000000/render",
+  "wz_path": "Map.wz/Map/Map1/101000000.img",
+  "version": {
+    "region": "TWMS",
+    "version": "256"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "rendered-composite",
+      "kind": "map_composite",
+      "frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 1612,
+          "height": 2404,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "e989fe6a5ee3c208de8ae3e5b9c14d11c0d7dd3acdfbfb53165f1210dc83cfa0",
+          "github_path": "assets/maple/collection/maps/victoria/101000000/TWMS-256/composite.png",
+          "storage": "original_png",
+          "decode": "pass"
+        }
+      ]
+    }
+  ],
+  "source_metadata_sha256": "a8aada1e695bc2e63b59ba214b6e696c4fc3e8531fda0c7b248db8959ab11fd4",
+  "source_metadata": {
+    "name": "魔法森林",
+    "streetName": "魔法森林",
+    "id": 101000000,
+    "returnMap": 101000000
+  },
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "distinct_from_existing_collected_files": true,
+    "layer_separation": "not_provided_by_render_endpoint"
+  },
+  "github_path": "assets/maple/collection/maps/victoria/101000000/TWMS-256",
+  "status": "collected",
+  "display_name_zh_tw": "魔法森林"
+}

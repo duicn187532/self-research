@@ -1,0 +1,59 @@
+{
+  "id": "120000000",
+  "type": "maps",
+  "region": "victoria",
+  "town": "nautilus",
+  "region_status": "curated_town_scene",
+  "name_zh_tw": "鯨魚號碼頭",
+  "name_zh_tw_status": "maplestory.io_TWMS_256_map_id_match",
+  "source_url": "https://maplestory.io/api/TWMS/256/map/120000000",
+  "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Map/Map/Map1/120000000.img",
+  "render_url": "https://maplestory.io/api/TWMS/256/map/120000000/render",
+  "wz_path": "Map.wz/Map/Map1/120000000.img",
+  "version": {
+    "region": "TWMS",
+    "version": "256"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "rendered-composite",
+      "kind": "map_composite",
+      "frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 4681,
+          "height": 1339,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "2ef835b5bf24ca375c8a522d5a54670f160e77a1c7389a957c43f643369150fa",
+          "github_path": "assets/maple/collection/maps/victoria/120000000/TWMS-256/composite.png",
+          "storage": "original_png",
+          "decode": "pass"
+        }
+      ]
+    }
+  ],
+  "source_metadata_sha256": "1bea2c64e0cf2373020760a0beeecd025c5f2d323f02d16d6ca5410aa21d9624",
+  "source_metadata": {
+    "name": "鯨魚號碼頭",
+    "streetName": "鯨魚號",
+    "id": 120000000,
+    "returnMap": 120000000
+  },
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "distinct_from_existing_collected_files": true,
+    "layer_separation": "not_provided_by_render_endpoint"
+  },
+  "github_path": "assets/maple/collection/maps/victoria/120000000/TWMS-256",
+  "status": "collected",
+  "display_name_zh_tw": "鯨魚號碼頭"
+}

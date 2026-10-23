@@ -233,10 +233,10 @@
     var t = window.MAPLE_SPRITES || {};
     return Object.keys(t).filter(function (k) { return t[k].kind === kind; });
   }
-  var guideCast = ["npc-bowman", "npc-wizard", "npc-lina", "npc-strategist", "npc-knight", "npc-flame", "npc-wind", "npc-night", "npc-thunder", "npc-elder-stan", "npc-tatamo", "npc-conductor", "npc-lucid", "npc-cleaner", "npc-knight-mihile", "npc-knight-oz", "npc-knight-irena", "npc-knight-eckhart", "npc-knight-hawkeye"];
+  var guideCast = ["npc-bowman", "npc-wizard", "npc-lina", "npc-strategist", "npc-knight", "npc-flame", "npc-wind", "npc-night", "npc-thunder", "npc-elder-stan", "npc-tatamo", "npc-conductor", "npc-lucid", "npc-cleaner", "npc-knight-mihile", "npc-knight-oz", "npc-knight-irena", "npc-knight-eckhart", "npc-knight-hawkeye", "npc-robin", "npc-mai", "npc-pio", "npc-roger", "npc-john", "npc-al", "npc-tru", "npc-hines", "npc-dances-with-balrog", "npc-mcgigis", "npc-dark-lord", "npc-kyrin", "npc-icarus", "npc-bartos", "npc-tobo", "npc-winston", "npc-elder-aron"];
   function guideFor(key) {
     var all = window.MAPLE_SPRITES || {};
-    var list = guideCast.filter(function (n) { return all[n] && all[n].kind === "npc"; });
+    var list = guideCast.filter(function (n) { return all[n] && all[n].kind === "npc" && all[n].featured; });
     return list.length ? list[seedOf(key) % list.length] : sprites("npc")[seedOf(key) % Math.max(1, sprites("npc").length)];
   }
   function addGuide(host, key) {
@@ -1428,7 +1428,7 @@
     if (!paged || i < 0 || i >= sections.length) return;
     var changed = i !== current;
     current = i;
-    if (window.MAPLE_SPRITES && window.MAPLE_SPRITES.scenes) document.body.setAttribute("data-map-scene", ["ludibrium", "clocktower", "orbis", "el-nath", "leafre", "lachelein"][(seed + i) % 6]);
+    if (window.MAPLE_SPRITES && window.MAPLE_SPRITES.scenes) { var sceneKeys = Object.keys(window.MAPLE_SPRITES.scenes); document.body.setAttribute("data-map-scene", sceneKeys[(seed + i) % sceneKeys.length]); }
     sections.forEach(function (s, k) { if (k === i) s.removeAttribute("hidden"); else s.setAttribute("hidden", "until-found"); });
     if (head) { if (i === 0) head.removeAttribute("hidden"); else head.setAttribute("hidden", "until-found"); }
     drawPager();
