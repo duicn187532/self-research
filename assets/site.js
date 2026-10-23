@@ -233,6 +233,21 @@
     var t = window.MAPLE_SPRITES || {};
     return Object.keys(t).filter(function (k) { return t[k].kind === kind; });
   }
+  var guideCast = ["npc-bowman", "npc-wizard", "npc-lina", "npc-strategist", "npc-knight", "npc-flame", "npc-wind", "npc-night", "npc-thunder", "npc-elder-stan", "npc-tatamo", "npc-conductor", "npc-lucid", "npc-cleaner", "npc-knight-mihile", "npc-knight-oz", "npc-knight-irena", "npc-knight-eckhart", "npc-knight-hawkeye"];
+  function guideFor(key) {
+    var all = window.MAPLE_SPRITES || {};
+    var list = guideCast.filter(function (n) { return all[n] && all[n].kind === "npc"; });
+    return list.length ? list[seedOf(key) % list.length] : sprites("npc")[seedOf(key) % Math.max(1, sprites("npc").length)];
+  }
+  function addGuide(host, key) {
+    if (!host || host.querySelector(":scope > .npc-portrait")) return;
+    var name = guideFor(key);
+    if (!name) return;
+    var npc = document.createElement("span"); npc.className = "npc-portrait"; npc.setAttribute("aria-hidden", "true");
+    var fig = document.createElement("span"); fig.className = "npc-fig"; fig.appendChild(spriteEl(name, "say"));
+    var plate = document.createElement("span"); plate.className = "npc-name"; plate.textContent = window.MAPLE_SPRITES[name].role || window.MAPLE_SPRITES[name].label || "NPC";
+    npc.appendChild(fig); npc.appendChild(plate); host.prepend(npc); warm(name, "stand"); warm(name, "say");
+  }
   function seedOf(str) { var h = 7; for (var i = 0; i < str.length; i++) h = (h * 31 + str.charCodeAt(i)) >>> 0; return h; }
   function rotate(list, k) { k = list.length ? k % list.length : 0; return list.slice(k).concat(list.slice(0, k)); }
   function shuffle(list) { return list.map(function (x) { return [Math.random(), x]; }).sort(function (a, b) { return a[0] - b[0]; }).map(function (p) { return p[1]; }); }
@@ -922,7 +937,7 @@
     });
   }
   function addNpc(d) {
-    var npcs = rotate(sprites("npc"), seed), name = npcs[allDialogs.indexOf(d) % npcs.length];
+    var name = guideFor(paper + ":question:" + allDialogs.indexOf(d));
     if (!name) return;
     var npc = document.createElement("span");
     npc.className = "npc-portrait";
@@ -961,6 +976,8 @@
     if (!window.MAPLE_SPRITES || castDone[i] || !sections[i]) return;
     castDone[i] = true;
     addMob(sections[i]);
+    var guideHost = sections[i].querySelector(".claim, .lv-kid, .summary, .worked, .detail");
+    if (guideHost) addGuide(guideHost, paper + ":reading:" + i);
     sections[i].querySelectorAll(".check details").forEach(addNpc);
   }
   // while a page is read, the pages either side get their cast and fetch its strips
@@ -1022,6 +1039,7 @@
   }
   whenMaple(function () {
     if (!window.MAPLE_SPRITES) return;
+    if (head) addGuide(head, paper + ":opening");
     var family = (seed >> 1) % 2 ? "lucid" : "orca";
     var heroes = sprites("hero").filter(function (k) { return window.MAPLE_SPRITES[k].family === family; });
     outfits = shuffle(heroes.length ? heroes : sprites("hero"));
@@ -1242,13 +1260,29 @@
     var label = box.closest(".done");
     if (label) label.hidden = true;
     var art = null;
+    var heroArt = null, heroTimer = null;
+    function strikeHero() {
+      if (!heroArt || reduceMotion) return;
+      heroArt.classList.add("is-casting");
+      swapAct(heroArt.querySelector(".spr"), heroArt.dataset.hero, "move");
+      var fx = document.createElement("span"); fx.className = "fx-skill"; fx.setAttribute("aria-hidden", "true"); heroArt.appendChild(fx);
+      if (heroArt.animate) heroArt.animate([{ transform: "translateX(0)" }, { transform: "translateX(26px)" }, { transform: "translateX(0)" }], { duration: 420, easing: "ease-out" });
+      clearTimeout(heroTimer);
+      heroTimer = setTimeout(function () { heroArt.classList.remove("is-casting"); fx.remove(); swapAct(heroArt.querySelector(".spr"), heroArt.dataset.hero, "stand"); }, 520);
+    }
     function act(a, once) { if (art) swapAct(art.spr, art.name, a, once, once ? 140 : undefined); }
     var b = battles[s.id] = window.StudyBattle.mount(foot, {
       paper: paper, key: s.id, tier: t, set: t === "boss" ? bank.boss : bank.sections[s.id],
       name: secNames[s.id], names: secNames, foe: t === "boss" ? bank.boss.name : null,
       cleared: function () { return box.checked; },
-      onStart: function () { act("stand"); },
+      onStart: function () {
+        act("stand");
+        var heroes = sprites("hero").filter(function (h) { return window.MAPLE_SPRITES[h].family === "orca" || window.MAPLE_SPRITES[h].family === "lucid"; });
+        var heroName = heroes[(seed + sections.indexOf(s)) % Math.max(1, heroes.length)];
+        if (heroName) { heroArt = document.createElement("span"); heroArt.className = "bt-hero"; heroArt.dataset.hero = heroName; heroArt.setAttribute("aria-hidden", "true"); heroArt.appendChild(spriteEl(heroName, "stand")); b.setHero(heroArt); }
+      },
       onHit: function () {
+        strikeHero();
         act("hit");
         clearTimeout(b.hitT);
         b.hitT = setTimeout(function () { act("stand"); }, 450);
@@ -1265,6 +1299,7 @@
         drawBoard();
       },
       onLose: function () {
+        if (heroArt) { heroArt.classList.add("is-struck"); setTimeout(function () { if (heroArt) heroArt.classList.remove("is-struck"); }, 350); }
         act("stand");
         hud.chat([["戰鬥", "被打倒了。看完下面的解答、回到該節複習，隨時可以再挑戰。"]].concat(here()));
         drawBoard();
@@ -1393,6 +1428,7 @@
     if (!paged || i < 0 || i >= sections.length) return;
     var changed = i !== current;
     current = i;
+    if (window.MAPLE_SPRITES && window.MAPLE_SPRITES.scenes) document.body.setAttribute("data-map-scene", ["ludibrium", "clocktower", "orbis", "el-nath", "leafre", "lachelein"][(seed + i) % 6]);
     sections.forEach(function (s, k) { if (k === i) s.removeAttribute("hidden"); else s.setAttribute("hidden", "until-found"); });
     if (head) { if (i === 0) head.removeAttribute("hidden"); else head.setAttribute("hidden", "until-found"); }
     drawPager();

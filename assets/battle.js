@@ -109,6 +109,9 @@
     box.setAttribute("data-tier", cfg.tier);
     var head = el("div", "bt-head");
     head.appendChild(el("span", "bt-tier", tier.label));
+    var hero = el("span", "bt-hero");
+    hero.setAttribute("aria-hidden", "true");
+    head.appendChild(hero);
     var art = el("span", "bt-art");
     art.setAttribute("aria-hidden", "true");
     head.appendChild(art);
@@ -267,7 +270,8 @@
       art.textContent = "";
       if (node) art.appendChild(node);
     }
-    return { refresh: paintStatus, setFoe: setFoe };
+    function setHero(node) { hero.textContent = ""; if (node) hero.appendChild(node); }
+    return { refresh: paintStatus, setFoe: setFoe, setHero: setHero };
   }
 
   // ---------- the BOSS chapter's board: title, mastery by facet, this paper's record, questions to revisit ----------
