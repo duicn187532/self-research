@@ -440,8 +440,8 @@
   }
 
   // ---------- game sprites: monsters on the quest windows, NPCs in the dialogs, a hero on the title ----------
-  // assets/maple/sprites.js lists the strips. Each paper uses the cast of its actual town;
-  // the hero and pet can still change without changing the town's characters.
+  // assets/maple/sprites.js lists the strips. Each quest has a local guide, while
+  // reading levels and self-check dialogs bring in a small, authored visiting cast.
   // All of it is decoration, hidden from assistive tech and from clicks.
   var reduceMotion = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   function sprites(kind) {
@@ -449,24 +449,24 @@
     return Object.keys(t).filter(function (k) { return t[k].kind === kind; });
   }
   var PAPER_CAST = {
-    "2601.18642": { guide:"npc-hines", mobs:["mob-green-slime", "mob-spiked-mushroom"], boss:"boss-stumpy" },
-    "2501.13956": { guide:"npc-marcel", mobs:["mob-clockwork-panda", "mob-toy-duck", "mob-clockwork-fighter"], boss:"boss-papulatus" },
-    "2604.14362": { guide:"npc-dances-with-balrog", mobs:["mob-fire-boar", "mob-dark-wooden-mask", "mob-stone-golem"], boss:"boss-stumpy" },
-    "2605.06527": { guide:"npc-dark-lord", mobs:["mob-octopus", "mob-crocodile", "mob-little-ghost"], boss:"boss-king-slime" },
-    "2608.19652": { guide:"npc-gas-mask", mobs:["mob-dream-cleaner", "mob-paper-bag-resident", "mob-calina", "mob-angry-ballgoer"], boss:"boss-lucid" },
-    "2606.30306": { guide:"npc-kriel", mobs:["mob-jr-cellion", "mob-jr-cellion-blue", "mob-young-yellow-cellion"], boss:"boss-eliza" },
-    "dekleer-1986-atms": { guide:"npc-elder-stan", mobs:["mob-baby-snail", "mob-blue-mushroom", "mob-ribbon-pig"], boss:"boss-mushmom" }
+    "2601.18642": { guide:"npc-hines", readers:{ kid:"npc-lina", uni:"hero-6", grad:"npc-hines" }, checks:["npc-knight-oz", "hero-1"], mobs:["mob-green-slime", "mob-spiked-mushroom"], boss:"boss-stumpy" },
+    "2501.13956": { guide:"npc-marcel", readers:{ kid:"npc-conductor", uni:"hero-2", grad:"npc-marcel" }, checks:["npc-knight-eckhart", "hero-7"], mobs:["mob-clockwork-panda", "mob-toy-duck", "mob-clockwork-fighter"], boss:"boss-papulatus" },
+    "2604.14362": { guide:"npc-dances-with-balrog", readers:{ kid:"npc-winston", uni:"hero-3", grad:"npc-dances-with-balrog" }, checks:["npc-knight-mihile", "npc-strategist"], mobs:["mob-fire-boar", "mob-dark-wooden-mask", "mob-stone-golem"], boss:"boss-stumpy" },
+    "2605.06527": { guide:"npc-dark-lord", readers:{ kid:"npc-icarus", uni:"hero-5", grad:"npc-dark-lord" }, checks:["npc-knight-eckhart", "hero-7"], mobs:["mob-octopus", "mob-crocodile", "mob-little-ghost"], boss:"boss-king-slime" },
+    "2608.19652": { guide:"npc-gas-mask", readers:{ kid:"npc-cleaner", uni:"hero-1", grad:"npc-gas-mask" }, checks:["npc-knight-oz", "hero-4"], mobs:["mob-dream-cleaner", "mob-paper-bag-resident", "mob-calina", "mob-angry-ballgoer"], boss:"boss-lucid" },
+    "2606.30306": { guide:"npc-kriel", readers:{ kid:"npc-knight-irena", uni:"hero-6", grad:"npc-kriel" }, checks:["npc-knight-hawkeye", "hero-2"], mobs:["mob-jr-cellion", "mob-jr-cellion-blue", "mob-young-yellow-cellion"], boss:"boss-eliza" },
+    "dekleer-1986-atms": { guide:"npc-elder-stan", readers:{ kid:"npc-bowman", uni:"hero-4", grad:"npc-elder-stan" }, checks:["npc-strategist", "hero-5"], mobs:["mob-baby-snail", "mob-blue-mushroom", "mob-ribbon-pig"], boss:"boss-mushmom" }
   };
-  function guideFor(key) {
+  function guideFor(role, index) {
     var all = window.MAPLE_SPRITES || {};
-    var guide = PAPER_CAST[paper] && PAPER_CAST[paper].guide;
-    if (guide && all[guide]) return guide;
-    var list = sprites("npc");
-    return list.length ? list[seedOf(key) % list.length] : null;
+    var cast = PAPER_CAST[paper];
+    var chosen = cast && (role === "check" ? cast.checks[index % cast.checks.length] : cast.readers[role]);
+    if (chosen && all[chosen]) return chosen;
+    return cast && all[cast.guide] ? cast.guide : null;
   }
-  function addGuide(host, key) {
+  function addGuide(host, role) {
     if (!host || host.querySelector(":scope > .npc-portrait")) return;
-    var name = guideFor(key);
+    var name = guideFor(role, 0);
     if (!name) return;
     var npc = document.createElement("span"); npc.className = "npc-portrait"; npc.setAttribute("aria-hidden", "true");
     var fig = document.createElement("span"); fig.className = "npc-fig"; fig.appendChild(spriteEl(name, "say"));
@@ -1309,8 +1309,8 @@
       hud.chat(gainLines(g, "打倒了" + foe).concat([["提示", "按「下一節」繼續任務。"]], pageLines(sections.indexOf(s))));
     });
   }
-  function addNpc(d) {
-    var name = guideFor(paper + ":question:" + allDialogs.indexOf(d));
+  function addNpc(d, index) {
+    var name = guideFor("check", index);
     if (!name) return;
     var npc = document.createElement("span");
     npc.className = "npc-portrait";
@@ -1352,13 +1352,15 @@
     var explanation = sections[i].querySelector(".explain");
     var levels = explanation && explanation.querySelectorAll(":scope > .lv");
     if (levels && levels.length) {
-      addGuide(levels[0], paper + ":reading:" + i);
+      levels.forEach(function (host) {
+        var role = host.classList.contains("lv-kid") ? "kid" : host.classList.contains("lv-grad") ? "grad" : "uni";
+        addGuide(host, role);
+      });
     } else {
       var guideHost = explanation || sections[i].querySelector(".claim, .summary, .worked, .detail");
-      if (guideHost) addGuide(guideHost, paper + ":reading:" + i);
+      if (guideHost) addGuide(guideHost, "grad");
     }
-    var firstCheck = sections[i].querySelector(".check details");
-    if (firstCheck) addNpc(firstCheck);
+    sections[i].querySelectorAll(".check details").forEach(function (dialog, j) { addNpc(dialog, i + j); });
   }
   // while a page is read, the pages either side get their cast and fetch its strips
   function ahead(i) {
