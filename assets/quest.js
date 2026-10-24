@@ -31,6 +31,10 @@
       acceptedAt:[current.acceptedAt,legacy.acceptedAt].filter(Boolean).sort()[0] || '',
       reportedAt:[current.reportedAt,legacy.reportedAt].filter(Boolean).sort().pop() || '' };
   }
+  function nextStage() {
+    var battle = object(read('study:' + PAPER + ':battle', {}));
+    return STAGES.find(function (stage) { return !cleared(battle, stage.id); }) || null;
+  }
   function put(value) {
     try {
       localStorage.setItem(KEY, JSON.stringify(value));
@@ -108,7 +112,8 @@
     root.addEventListener('storage', render);
     render();
   }
-  root.StudyIntroQuest = { state:state, stages:STAGES.slice(), readProgress:progress, mount:mount };
+  root.StudyIntroQuest = { state:state, stages:STAGES.slice(), readProgress:progress,
+    nextStage:nextStage, mount:mount };
   if (typeof document !== 'undefined') {
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mount, { once:true });
     else mount();

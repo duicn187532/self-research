@@ -97,13 +97,29 @@
     add(title, paper);
     var beaten = t.filter(function (x) { return x.p !== "*"; }).length;
     RANKS.forEach(function (r) { if (beaten >= r[0]) add(r[1], "*"); });
-    S.set("study:titles", t);
-    return fresh;
+    return S.set("study:titles", t) ? fresh : [];
   }
   function log(entry) {
     var e = list(S.get("study:expedition", []));
     e.unshift(entry);
     S.set("study:expedition", e.slice(0, 120));
+  }
+
+  // The battle win is authoritative for quests. Never report one until every
+  // first answer and the outcome are durable in this browser.
+  function recordOutcome(cfg, round, win) {
+    if (round.statsDirty && !S.set("study:" + cfg.paper + ":qstat", round.stats)) return false;
+    var all = obj(S.get("study:" + cfg.paper + ":battle", {})), r = obj(all[cfg.key]);
+    if (win) { r.w = (r.w || 0) + 1; if (r.best === undefined || round.firstRight > r.best) r.best = round.firstRight; r.n = round.n; }
+    else r.l = (r.l || 0) + 1;
+    if (r.n === undefined) r.n = round.n;
+    if (r.best === undefined) r.best = 0;
+    r.at = ymd(new Date());
+    all[cfg.key] = r;
+    if (!S.set("study:" + cfg.paper + ":battle", all)) return false;
+    log({ at: new Date().toISOString(), p: cfg.paper, k: cfg.key, n: cfg.name || cfg.key,
+      tier: cfg.tier, win: win, sc: round.firstRight + "/" + round.n });
+    return true;
   }
 
   // ---------- one battle, mounted in a chapter's foot ----------
@@ -175,7 +191,8 @@
     }
     function start() {
       var picked = shuffle(qs).slice(0, ask);
-      round = { queue: picked, n: picked.length, hp: picked.length, hearts: tier.hearts, seen: {}, firstRight: 0, log: [] };
+      round = { queue: picked, n: picked.length, hp: picked.length, hearts: tier.hearts,
+        seen: {}, firstRight: 0, log: [], stats:qstat(cfg.paper), statsDirty:false };
       result.hidden = true;
       arena.hidden = false;
       go.hidden = true;
@@ -205,10 +222,12 @@
       var right = i === q.a;
       if (!round.seen[q.id]) {
         round.seen[q.id] = true;
-        var st = qstat(cfg.paper), s = st[q.id] || [0, 0, 0, right ? 1 : 0];
+        var st = round.statsDirty ? round.stats : qstat(cfg.paper);
+        var s = st[q.id] || [0, 0, 0, right ? 1 : 0];
         s[0]++; if (right) s[1]++; s[2] = right ? 1 : 0;
         st[q.id] = s;
-        S.set("study:" + cfg.paper + ":qstat", st);
+        round.stats = st;
+        round.statsDirty = !S.set("study:" + cfg.paper + ":qstat", st);
         if (right) round.firstRight++;
         round.log.push({ q: q, first: right });
       }
@@ -235,19 +254,14 @@
     }
     function finish() {
       var win = !round.hp;
-      var all = obj(S.get("study:" + cfg.paper + ":battle", {})), r = obj(all[cfg.key]);
-      if (win) { r.w = (r.w || 0) + 1; if (r.best === undefined || round.firstRight > r.best) r.best = round.firstRight; r.n = round.n; }
-      else r.l = (r.l || 0) + 1;
-      if (r.n === undefined) r.n = round.n;
-      if (r.best === undefined) r.best = 0;
-      r.at = ymd(new Date());
-      all[cfg.key] = r;
-      S.set("study:" + cfg.paper + ":battle", all);
-      log({ at: new Date().toISOString(), p: cfg.paper, k: cfg.key, n: cfg.name || cfg.key, tier: cfg.tier, win: win, sc: round.firstRight + "/" + round.n });
+      var saved = recordOutcome(cfg, round, win);
       arena.hidden = true;
       result.hidden = false;
       result.textContent = "";
-      var verdict = el("p", "bt-verdict", win ? "討伐成功！一次答對 " + round.firstRight + " / " + round.n : "被打倒了……一次答對 " + round.firstRight + " / " + round.n + "。複習下面的解答後再挑戰。");
+      var verdict = el("p", "bt-verdict", !saved ?
+        "這次答題未能保存，任務和稱號不會推進。請先匯出備份、檢查儲存空間，再挑戰一次。" :
+        win ? "討伐成功！一次答對 " + round.firstRight + " / " + round.n :
+        "被打倒了……一次答對 " + round.firstRight + " / " + round.n + "。複習下面的解答後再挑戰。");
       verdict.tabIndex = -1;
       result.appendChild(verdict);
       var ol = el("ol", "bt-review");
@@ -267,10 +281,10 @@
       paintStatus();
       tex(result);
       verdict.focus();
-      var res = { win: win, firstRight: round.firstRight, n: round.n };
+      var res = { win: win, saved:saved, firstRight: round.firstRight, n: round.n };
       round = null;
-      if (win && cfg.onWin) cfg.onWin(res);
-      if (!win && cfg.onLose) cfg.onLose(res);
+      if (saved && win && cfg.onWin) cfg.onWin(res);
+      if (saved && !win && cfg.onLose) cfg.onLose(res);
     }
     go.addEventListener("click", start);
     next.addEventListener("click", function () { if (!round.hp || !round.hearts) finish(); else show(); });
@@ -283,7 +297,8 @@
       if (node) art.appendChild(node);
     }
     function setHero(node) { hero.textContent = ""; if (node) hero.appendChild(node); }
-    return { refresh: paintStatus, setFoe: setFoe, setHero: setHero, artHost: art, feedbackHost: say };
+    return { refresh: paintStatus, setFoe: setFoe, setHero: setHero, artHost: art,
+      feedbackHost: say, resultHost: result };
   }
 
   // ---------- the BOSS chapter's board: title, mastery by facet, this paper's record, questions to revisit ----------

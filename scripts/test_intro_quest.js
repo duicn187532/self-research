@@ -25,6 +25,10 @@ ids.forEach(id=>{
 assert.equal(quest.state({},wins),'可回報','direct paper learning can be reported without a second acceptance step');
 assert.equal(quest.state({accepted:true},wins),'可回報');
 assert.equal(quest.state({reported:true},{}),'已完成','earned report does not disappear with a partial snapshot');
+saved.set('study:2601.18642:battle',JSON.stringify({'s-problem':{w:1}}));
+assert.equal(quest.nextStage().id,'s-decay','a win points at the next knowledge challenge');
+saved.set('study:2601.18642:battle',JSON.stringify(wins));
+assert.equal(quest.nextStage(),null,'all six wins lead back to the NPC for report');
 saved.set('study:quest:fademem-v1',JSON.stringify({version:1,accepted:true,reported:true}));
 saved.set('study:quest:fademem-v2',JSON.stringify({version:2,accepted:true,reported:false}));
 assert.equal(quest.readProgress().reported,true,'old completion survives the new quest format');

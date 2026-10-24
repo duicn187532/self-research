@@ -1122,6 +1122,13 @@
   // With a question bank, a chapter's tier comes from the bank: no entry, no monster (閱讀路線 keeps its box);
   // "elite" for the method and experiment chapters; "boss" for the cross-chapter BOSS chapter (s-boss).
   var bank = window.STUDY_QUIZ && window.STUDY_QUIZ.paper === paper && window.StudyBattle ? window.STUDY_QUIZ : null;
+  if (bank && bank.boss) {
+    var priorBattle = store.get("study:" + paper + ":battle", {});
+    var priorBoss = priorBattle && typeof priorBattle === "object" ? priorBattle["s-boss"] : null;
+    if (priorBoss && priorBoss.w > 0 &&
+        !window.StudyBattle.titles().some(function (entry) { return entry.p === paper; }))
+      window.StudyBattle.grant(paper, bank.title);
+  }
   function tierOf(s) {
     if (!bank) return null;
     if (s.id === "s-boss") return bank.boss ? "boss" : null;
@@ -1717,6 +1724,15 @@
         }, 2200);
         drawBoard();
         window.dispatchEvent(new CustomEvent("study-progress-change", { detail: { paper: paper } }));
+        if (paper === "2601.18642" && window.StudyIntroQuest &&
+            window.StudyIntroQuest.stages.some(function (stage) { return stage.id === s.id; })) {
+          var nextQuest = window.StudyIntroQuest.nextStage();
+          var questLink = document.createElement("a");
+          questLink.className = "btn bt-next-step";
+          questLink.href = nextQuest ? "#" + nextQuest.id : "../../index.html#intro-quest";
+          questLink.textContent = nextQuest ? "繼續任務：" + nextQuest.short : "回魔法森林回報任務";
+          b.resultHost.appendChild(questLink);
+        }
       },
       onLose: function () {
         if (heroArt) { heroArt.classList.add("is-struck"); setTimeout(function () { if (heroArt) heroArt.classList.remove("is-struck"); }, 350); }
