@@ -628,7 +628,8 @@
         // An empty array/string or zero must never wipe meaningful local work
         // merely because a second device or stale client reset that field.
         if (row.revision > 0 && row.value !== null &&
-            !meaningful(row.value) && meaningful(value)) {
+            !meaningful(row.value) && meaningful(value) &&
+            !(base && base.revision === row.revision && base.base === row.value)) {
           found[key] = { local:value, value:row.value, revision:row.revision };
           continue;
         }
