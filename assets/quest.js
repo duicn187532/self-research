@@ -47,7 +47,8 @@
   }
   function mount() {
     var paper = !!document.querySelector('[data-paper="' + PAPER + '"]');
-    var host = document.querySelector(paper ? '.paper-head' : '.shelf-head');
+    var host = paper ? document.querySelector('.paper-head') :
+      (document.querySelector('.world-quest-host') || document.querySelector('.shelf-head'));
     if (!host || document.getElementById('intro-quest')) return;
     var prefix = paper ? '../../' : '';
     function paperHref(id) { return paper ? '#' + id : 'papers/' + PAPER + '/index.html#' + id; }

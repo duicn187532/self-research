@@ -50,6 +50,9 @@
     else if (window.MathJax && window.MathJax.typesetPromise) window.MathJax.typesetPromise([node]).catch(function () {});
   }
   function ymd(d) { return d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2); }
+  function sequenceCorrect(order, n) {
+    return order.length === n && order.every(function (index, position) { return index === position; });
+  }
 
   var FACETS = { method: "方法理解", reason: "公式與情境推理", critique: "實驗批判" };
   // a normal monster asks one or two questions, an elite three, the BOSS five or six across chapters
@@ -203,24 +206,54 @@
     }
     function show() {
       var q = round.queue[0];
-      facet.textContent = (FACETS[q.facet] || "") + (cfg.tier === "boss" && q.src ? "　跨 " + list(q.src).length + " 節" : "");
+      facet.textContent = (FACETS[q.facet] || "") + (q.kind === "sequence" ? " · 排列研究步驟" : "") +
+        (cfg.tier === "boss" && q.src ? "　跨 " + list(q.src).length + " 節" : "");
       qEl.innerHTML = q.q;
       opts.textContent = "";
-      shuffle(q.opts.map(function (o, i) { return i; })).forEach(function (i) {
-        var b = html("button", "bt-opt", q.opts[i]);
-        b.type = "button";
-        b.setAttribute("data-i", i);
-        b.addEventListener("click", function () { choose(q, i, b); });
-        opts.appendChild(b);
-      });
+      if (q.kind === "sequence") {
+        var chosen = [], order = el("ol", "bt-order"), controls = el("div", "btn-row bt-order-actions");
+        var undo = el("button", "btn", "撤銷上一步"), submit = el("button", "btn", "確認順序");
+        undo.type = submit.type = "button";
+        function paintOrder() {
+          order.textContent = "";
+          chosen.forEach(function (i) { order.appendChild(el("li", null, q.steps[i])); });
+          undo.disabled = !chosen.length;
+          submit.disabled = chosen.length !== q.steps.length;
+          Array.prototype.forEach.call(opts.querySelectorAll("[data-i]"), function (b) {
+            b.disabled = chosen.indexOf(Number(b.getAttribute("data-i"))) !== -1;
+          });
+        }
+        shuffle(q.steps.map(function (step, i) { return i; })).forEach(function (i) {
+          var b = el("button", "bt-opt", q.steps[i]);
+          b.type = "button"; b.setAttribute("data-i", i);
+          b.addEventListener("click", function () { chosen.push(i); paintOrder(); });
+          opts.appendChild(b);
+        });
+        undo.addEventListener("click", function () { chosen.pop(); paintOrder(); });
+        submit.addEventListener("click", function () {
+          if (chosen.length !== q.steps.length) return;
+          choose(q, sequenceCorrect(chosen, q.steps.length), submit);
+        });
+        controls.appendChild(undo); controls.appendChild(submit);
+        opts.appendChild(el("p", "bt-order-hint", "依正確順序點選每一步，可撤銷後再確認。"));
+        opts.appendChild(order); opts.appendChild(controls);
+        paintOrder();
+      } else {
+        shuffle(q.opts.map(function (o, i) { return i; })).forEach(function (i) {
+          var b = html("button", "bt-opt", q.opts[i]);
+          b.type = "button";
+          b.setAttribute("data-i", i);
+          b.addEventListener("click", function () { choose(q, i === q.a, b); });
+          opts.appendChild(b);
+        });
+      }
       say.textContent = "";
       next.hidden = true;
       tex(arena);
       qEl.focus();
     }
-    function choose(q, i, btn) {
-      Array.prototype.forEach.call(opts.children, function (b) { b.disabled = true; });
-      var right = i === q.a;
+    function choose(q, right, btn) {
+      Array.prototype.forEach.call(opts.querySelectorAll("button"), function (b) { b.disabled = true; });
       if (!round.seen[q.id]) {
         round.seen[q.id] = true;
         var st = round.statsDirty ? round.stats : qstat(cfg.paper);
@@ -269,7 +302,11 @@
       round.log.forEach(function (it) {
         var li = el("li", it.first ? "is-right" : "is-wrong");
         li.appendChild(html("p", "bt-rq", '<span class="bt-mark">' + (it.first ? "一次答對" : "答錯過") + "</span> " + it.q.q));
-        li.appendChild(html("p", "bt-ra", "答案：" + it.q.opts[it.q.a]));
+        if (it.q.kind === "sequence") {
+          var answer = el("div", "bt-ra", "正確順序："), steps = el("ol");
+          it.q.steps.forEach(function (step) { steps.appendChild(el("li", null, step)); });
+          answer.appendChild(steps); li.appendChild(answer);
+        } else li.appendChild(html("p", "bt-ra", "答案：" + it.q.opts[it.q.a]));
         if (it.q.why) li.appendChild(html("p", "bt-why", it.q.why));
         var src = el("p", "bt-src", "出處：");
         linkTo(it.q.src || [cfg.key]).forEach(function (a, k) { if (k) src.appendChild(document.createTextNode("、")); src.appendChild(a); });
@@ -346,7 +383,11 @@
     redo.forEach(function (q) {
       var d = el("details", "bt-redo");
       d.appendChild(html("summary", null, q.q));
-      d.appendChild(html("p", "bt-ra", "答案：" + q.opts[q.a]));
+      if (q.kind === "sequence") {
+        var answer = el("div", "bt-ra", "正確順序："), steps = el("ol");
+        q.steps.forEach(function (step) { steps.appendChild(el("li", null, step)); });
+        answer.appendChild(steps); d.appendChild(answer);
+      } else d.appendChild(html("p", "bt-ra", "答案：" + q.opts[q.a]));
       if (q.why) d.appendChild(html("p", "bt-why", q.why));
       var src = el("p", "bt-src", "出處：");
       list(q.src).forEach(function (id, k) {

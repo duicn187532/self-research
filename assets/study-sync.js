@@ -148,6 +148,8 @@
       if (questVersion === 1) { quest.required = required; quest.total = required.length; }
       return JSON.stringify(quest);
     }
+    if (/:completedAt$/.test(key) && typeof a === 'string' && typeof b === 'string' &&
+        !isNaN(Date.parse(a)) && !isNaN(Date.parse(b))) return JSON.stringify(a < b ? a : b);
     // Do not silently choose one side for free-form writing.
     if (typeof a === 'string' || typeof b === 'string') fail();
     return JSON.stringify(mergeDeep(a, b, key));

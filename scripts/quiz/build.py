@@ -30,6 +30,12 @@ def Q(id, facet, q, opts, why, src=None):
     return {"id": id, "facet": facet, "q": q, "opts": list(opts), "a": 0, "why": why, "src": list(src) if src else None}
 
 
+def Sequence(id, facet, q, steps, why, src=None):
+    """A click-to-order question; steps are stored in their scientifically correct order."""
+    return {"id": id, "facet": facet, "kind": "sequence", "q": q,
+            "steps": list(steps), "why": why, "src": list(src) if src else None}
+
+
 def visible(text):
     """Length as read: a TeX span counts as two characters."""
     return len(re.sub(r"\\\(.*?\\\)", "xx", text))
@@ -47,12 +53,21 @@ def check(bank):
         if q["facet"] not in FACETS:
             problems.append(f"{q['id']}: facet {q['facet']}")
         facets.add(q["facet"])
-        if not 3 <= len(q["opts"]) <= 4 or len(set(q["opts"])) != len(q["opts"]):
-            problems.append(f"{q['id']}: needs 3 or 4 distinct options")
-        # the right answer must not stand out by length: a reader should not win by picking the longest
-        lens = [visible(o) for o in q["opts"]]
-        if lens[0] > 1.4 * max(lens[1:]):
-            problems.append(f"{q['id']}: the answer ({lens[0]}) is much longer than every distractor ({max(lens[1:])})")
+        if q.get("kind") == "sequence":
+            steps = q.get("steps", [])
+            if not 3 <= len(steps) <= 5 or len(set(steps)) != len(steps):
+                problems.append(f"{q['id']}: needs 3 to 5 distinct ordered steps")
+            if "opts" in q or "a" in q:
+                problems.append(f"{q['id']}: sequence must not have choice answers")
+        else:
+            opts = q.get("opts", [])
+            if not 3 <= len(opts) <= 4 or len(set(opts)) != len(opts):
+                problems.append(f"{q['id']}: needs 3 or 4 distinct options")
+            else:
+                # The right answer must not stand out by length.
+                lens = [visible(o) for o in opts]
+                if lens[0] > 1.4 * max(lens[1:]):
+                    problems.append(f"{q['id']}: the answer ({lens[0]}) is much longer than every distractor ({max(lens[1:])})")
         for s in q["src"] or [where]:
             if s not in ids:
                 problems.append(f"{q['id']}: src {s} not on the page")
@@ -84,8 +99,9 @@ def check(bank):
     if facets != FACETS:
         problems.append("the bank covers all three facets")
     qs = [q for c in bank["sections"].values() for q in c["qs"]] + boss
-    longest = sum(1 for q in qs if visible(q["opts"][0]) > max(visible(o) for o in q["opts"][1:]))
-    if longest > 0.5 * len(qs):
+    choice_qs = [q for q in qs if q.get("kind") != "sequence"]
+    longest = sum(1 for q in choice_qs if visible(q["opts"][0]) > max(visible(o) for o in q["opts"][1:]))
+    if longest > 0.5 * len(choice_qs):
         problems.append(f"the answer is the longest option in {longest} of {len(qs)} questions")
     return problems
 

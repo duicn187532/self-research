@@ -368,6 +368,43 @@ dl.gloss dd { margin: 0; color: var(--ink); }
 .tally { display: flex; flex-wrap: wrap; gap: 0.5rem 1.75rem; font-size: var(--step--1); color: var(--muted); }
 .tally b { font-family: var(--font-display); font-size: 1.5rem; color: var(--ink); font-variant-numeric: tabular-nums; margin-right: 0.3rem; }
 .shelf-groups { min-width: 0; display: grid; gap: 2.75rem; }
+.world-map { grid-column: 1 / -1; min-width: 0; padding: 1.2rem; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); }
+.world-map-head { margin-bottom: 1rem; }
+.world-map-head p, .research-codex > p { color: var(--muted); font-size: .9rem; }
+.world-map-layout { display: grid; grid-template-columns: minmax(11rem, 15rem) minmax(0, 1fr); gap: 1rem; }
+.world-map-places { display: grid; gap: .35rem; align-content: start; }
+.world-place { width: 100%; padding: .35rem .7rem; border: 1px solid var(--rule); border-radius: 7px; background: var(--paper); color: var(--ink); font: inherit; text-align: left; cursor: pointer; }
+.world-place:hover, .world-place[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
+.world-place[aria-pressed="true"] { font-weight: 700; }
+.world-map-detail { display: grid; grid-template-columns: minmax(0, 1fr) minmax(13rem, 1fr); gap: 1rem; min-width: 0; }
+.world-scene { min-height: 12rem; border-radius: 8px; overflow: hidden; background: var(--accent-soft); display: grid; place-items: center; }
+.world-scene img { display: block; width: 100%; height: 100%; min-height: 12rem; object-fit: cover; }
+.world-scene-fallback { font-weight: 700; }
+.world-detail-body { display: grid; gap: .45rem; align-content: center; justify-items: start; min-width: 0; }
+.world-paper-title { font-weight: 700; }
+.world-progress, .world-no-quest { color: var(--muted); font-size: .9rem; }
+.world-npc-link { display: inline-block; }
+.world-quest-host[hidden] { display: none; }
+.research-codex { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
+.research-codex h3 { margin-bottom: .25rem; }
+.codex-suggestion { margin: .8rem 0 1rem; padding: .6rem .8rem; border-left: 3px solid var(--accent); background: var(--accent-soft); }
+.codex-suggestion h4 { margin: 0; font-size: 1rem; }
+.codex-suggestion p { margin: .1rem 0; }
+.codex-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: .55rem; list-style: none; padding: 0; margin: 0; }
+.codex-list > li { padding: .5rem .65rem; border: 1px solid var(--rule); border-radius: 7px; background: var(--paper); }
+.codex-list > li > a { font-weight: 700; }
+.codex-count { display: block; color: var(--muted); font-size: .8rem; }
+.codex-facets { margin-top: .3rem; font-size: .82rem; }
+.codex-facets summary { cursor: pointer; color: var(--accent); }
+.codex-facets ul { margin: .3rem 0; padding-left: 1.2rem; }
+.codex-facets li span { display: block; color: var(--muted); }
+.codex-chapters { margin: .4rem 0 0; padding-left: 1.2rem; font-size: .82rem; }
+.codex-chapters li span { color: var(--muted); margin-left: .3rem; }
+@media (max-width: 720px) {
+  .world-map-layout, .world-map-detail { grid-template-columns: minmax(0, 1fr); }
+  .world-map-places { grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr)); }
+  .world-scene, .world-scene img { min-height: 10rem; max-height: 16rem; }
+}
 .shelf-group { display: grid; gap: 0.25rem; }
 .shelf-group > h2 {
   font-size: 0.8125rem; font-family: var(--font-body); letter-spacing: 0.12em; color: var(--muted);
@@ -678,6 +715,11 @@ table.repro td:nth-child(2) { white-space: nowrap; }
 .bt-opt:disabled { cursor: default; opacity: 0.7; }
 .bt-opt.is-right { opacity: 1; border-color: var(--ok); background: var(--ok-soft); }
 .bt-opt.is-wrong { opacity: 1; border-color: var(--warn); background: var(--warn-soft); }
+.bt-order-hint { margin: .2rem 0 0; color: var(--muted); font-size: .9rem; }
+.bt-order { min-height: 2rem; margin: 0; padding: .45rem .6rem .45rem 2rem; border: 1px dashed var(--rule); border-radius: var(--radius); }
+.bt-order li + li, .bt-ra li + li { margin-top: .3rem; }
+.bt-order-actions { margin-top: .15rem; }
+.bt-order-actions .btn:disabled { opacity: .55; cursor: default; }
 .bt-say { min-height: 1.4em; }
 .bt-say b { margin-right: 0.4rem; }
 .bt-hit-scene { position: relative; display: flex; align-items: end; justify-content: center; gap: 44px; max-width: 240px; min-height: 70px; margin: 0.4rem 0 0; padding: 3px 12px; border: 1px solid var(--rule); border-radius: 7px; background: linear-gradient(110deg, var(--paper), var(--accent-soft)); overflow: hidden; }

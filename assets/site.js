@@ -897,6 +897,8 @@
     if (/:(done|asked)$/.test(k) && Array.isArray(a) && Array.isArray(b))
       return JSON.stringify(a.concat(b.filter(function (x) { return a.indexOf(x) < 0; })));
     if (/:exp$/.test(k) && typeof a === "number" && typeof b === "number") return JSON.stringify(Math.max(a, b));
+    if (/:completedAt$/.test(k) && typeof a === "string" && typeof b === "string" &&
+        !isNaN(Date.parse(a)) && !isNaN(Date.parse(b))) return JSON.stringify(a < b ? a : b);
     if (/:grasp$/.test(k)) {
       var g = asObj(a), h = asObj(b);
       Object.keys(h).forEach(function (s) { if (!g[s] || (h[s] && h[s].at > g[s].at)) g[s] = h[s]; });
@@ -1096,6 +1098,7 @@
 
   // ---------- finished sections ----------
   var DONE_KEY = "study:" + paper + ":done";
+  var COMPLETED_AT_KEY = "study:" + paper + ":completedAt";
   var done = store.get(DONE_KEY, []);
   var countable = document.querySelectorAll("input[data-done]").length;
   var crumb = document.querySelector(".toolbar .crumb");
@@ -1162,6 +1165,8 @@
     store.set(EXP_KEY, mine);
     now = levelOf(others + mine);
     allDone.last = allDone();
+    if (allDone.last && !wasAll && !store.get(COMPLETED_AT_KEY, null))
+      store.set(COMPLETED_AT_KEY, new Date().toISOString());
     refreshProfile();
     renderProgress();
     return { gain: now.exp - before.exp, up: now.lv > before.lv, job: jobOf(now.lv) !== jobOf(before.lv), finished: allDone.last && !wasAll };
@@ -1956,4 +1961,4 @@
 })();
 
 /* Optional study sync overlay: loaded after the existing page app. */
-(function(){var s=document.createElement('script');s.src=new URL('study-sync.js?v=3152c6bb3a',document.currentScript.src).href;document.head.appendChild(s);})();
+(function(){var s=document.createElement('script');s.src=new URL('study-sync.js?v=2d9740015e',document.currentScript.src).href;document.head.appendChild(s);})();
