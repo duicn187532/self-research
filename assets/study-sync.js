@@ -84,9 +84,30 @@
     }
     fail(); // Text notes and program drafts require explicit resolution.
   }
+  function mergeStudyProfile(cloudValue, localValue) {
+    var remote = parse(cloudValue), local = parse(localValue);
+    if (!remote || !local || Array.isArray(remote) || Array.isArray(local) ||
+        typeof remote !== 'object' || typeof local !== 'object') fail();
+    var a = typeof remote.displayId === 'string' ? remote.displayId : '';
+    var b = typeof local.displayId === 'string' ? local.displayId : '';
+    if (a && b && a !== b) fail(); // Do not silently overwrite two different names.
+    var unlock = [];
+    [remote.unlockedJobs, local.unlockedJobs].forEach(function (list) {
+      if (Array.isArray(list)) list.forEach(function (job) {
+        if (typeof job === 'string' && unlock.indexOf(job) < 0) unlock.push(job);
+      });
+    });
+    var r = typeof remote.activeJob === 'string' ? remote.activeJob : '初心者';
+    var l = typeof local.activeJob === 'string' ? local.activeJob : '初心者';
+    if (r !== l && r !== '初心者' && l !== '初心者') fail();
+    var active = r !== '初心者' ? r : l;
+    if (active !== '初心者' && unlock.indexOf(active) < 0) active = '初心者';
+    return JSON.stringify({ displayId:a || b, activeJob:active, unlockedJobs:unlock });
+  }
   function mergeValues(key, cloudValue, localValue) {
     if (cloudValue === localValue) return cloudValue;
     if (cloudValue === null || localValue === null) fail();
+    if (key === 'study:profile') return mergeStudyProfile(cloudValue, localValue);
     var a = parse(cloudValue), b = parse(localValue);
     if (a === undefined || b === undefined) fail();
     // Do not silently choose one side for free-form writing.
