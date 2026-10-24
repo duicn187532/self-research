@@ -155,6 +155,16 @@ function reset() {
   assert.equal(merged.reported,true);
   assert.deepEqual(merged.required,['s-route','s-boss']);
   assert.equal(merged.acceptedAt,'2026-10-20T00:00:00Z');
+  const v2=JSON.parse(ctx.mergeValues('study:quest:fademem-v2',
+    JSON.stringify({version:2,accepted:true,reported:true}),
+    JSON.stringify({version:2,accepted:true,reported:false})));
+  assert.equal(v2.reported,true);
+  const uncertain=JSON.parse(ctx.mergeValues('study:fade:qstat',
+    JSON.stringify({q1:[2,1,1,1]}),JSON.stringify({q1:[3,1,0,1]})));
+  assert.equal(uncertain.q1[2],0,'conflicting last-answer flags cannot claim mastery');
+  const last=JSON.parse(ctx.mergeValues('study:fade:last',
+    JSON.stringify({id:'s-boss',at:20}),JSON.stringify({id:'s-problem',at:10})));
+  assert.equal(last.id,'s-boss','resume from the most recently visited section');
   // 10. The same account recovers its lesson records after the logout clear.
   reset();
   ctx.userId=null; ctx.initialized=false; ctx.migrateLegacyId=()=>{};

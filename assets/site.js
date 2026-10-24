@@ -555,7 +555,11 @@
       wrap.appendChild(walker);
       // the patrol runs on the compositor: plain pixel values, no custom properties in the frames
       if (walk && walker.animate) {
-        var d = Math.max(0, (window.innerWidth < 600 ? 110 : 170) - Number(spr.style.getPropertyValue("--w"))) + "px";
+        var routeWidth = window.innerWidth < 600 ? 110 : 170;
+        var spriteWidth = Number(spr.style.getPropertyValue("--w"));
+        // Wide monster frames otherwise protrude past the right edge on phones.
+        if (spriteWidth > routeWidth) walker.style.left = (routeWidth - spriteWidth) + "px";
+        var d = Math.max(0, routeWidth - spriteWidth) + "px";
         walker.patrol = walker.animate([
           { transform: "translateX(0) scaleX(-1)", offset: 0 }, { transform: "translateX(" + d + ") scaleX(-1)", offset: 0.46 },
           { transform: "translateX(" + d + ") scaleX(1)", offset: 0.5 }, { transform: "translateX(0) scaleX(1)", offset: 0.96 },
@@ -681,14 +685,20 @@
   if (startLink) {
     var startedPaper = shelf.map(function (c) {
       var done = store.get("study:" + c.id + ":done", []);
-      return { c: c, done: Array.isArray(done) ? done : [] };
-    }).find(function (x) { return x.done.length > 0 && x.done.length < x.c.total; });
+      var last = store.get("study:" + c.id + ":last", null);
+      if (!last || typeof last.id !== "string" || !/^s-[a-z0-9-]+$/.test(last.id) ||
+          !Number.isFinite(last.at) || last.at < 0) last = null;
+      return { c: c, done: Array.isArray(done) ? done : [], last: last };
+    }).filter(function (x) { return x.done.length < x.c.total && (x.done.length > 0 || x.last); })
+      .sort(function (a, b) { return (b.last ? b.last.at : 0) - (a.last ? a.last.at : 0); })[0];
     if (startedPaper) {
       var toc = store.get("study:" + startedPaper.c.id + ":toc", []);
       var next = Array.isArray(toc) ? toc.find(function (entry) { return Array.isArray(entry) && !startedPaper.done.includes(entry[0]); }) : null;
-      startLink.href = startedPaper.c.href + (next ? "#" + encodeURIComponent(next[0]) : "");
+      var target = startedPaper.last || (next ? { id: next[0], title: next[1] } : null);
+      startLink.href = startedPaper.c.href + (target ? "#" + encodeURIComponent(target.id) : "");
       startLink.textContent = "繼續閱讀「" + startedPaper.c.short + "」";
-      if (startDetail) startDetail.textContent = "已完成 " + startedPaper.done.length + " / " + startedPaper.c.total + " 節" + (next ? "，下一節：" + next[1] : "");
+      if (startDetail) startDetail.textContent = "已完成 " + startedPaper.done.length + " / " + startedPaper.c.total + " 節" +
+        (target ? "，上次停在：" + (target.title || target.id) : "");
     }
   }
   var reviewList = document.getElementById("review-list"), due = [];
@@ -833,6 +843,8 @@
   function merged(k, mine, theirs) {
     if (mine === null) return theirs;
     var a = parsed(mine, null), b = parsed(theirs, null);
+    if (/:last$/.test(k) && a && b && Number.isFinite(a.at) && Number.isFinite(b.at))
+      return a.at >= b.at ? mine : theirs;
     if (k === "study:titles" && Array.isArray(a) && Array.isArray(b)) {
       var titles = a.slice();
       b.forEach(function (item) { if (item && !titles.some(function (x) { return x && x.t === item.t && x.p === item.p; })) titles.push(item); });
@@ -850,7 +862,9 @@
       Object.keys(b).forEach(function (id) {
         if (!Array.isArray(stats[id])) { stats[id] = b[id]; return; }
         if (!Array.isArray(b[id]) || b[id].length !== stats[id].length) return;
-        stats[id] = stats[id].map(function (n, i) { return Math.max(Number(n) || 0, Number(b[id][i]) || 0); });
+        stats[id] = stats[id].map(function (n, i) {
+          return i === 2 && n !== b[id][i] ? 0 : Math.max(Number(n) || 0, Number(b[id][i]) || 0);
+        });
       });
       return JSON.stringify(stats);
     }
@@ -870,13 +884,15 @@
       (Array.isArray(b.unlockedJobs) ? b.unlockedJobs : []).forEach(function (job) { if (jobs.indexOf(job) < 0) jobs.push(job); });
       return JSON.stringify({ displayId:a.displayId || b.displayId || "", activeJob:a.activeJob || b.activeJob || "初心者", unlockedJobs:jobs });
     }
-    if (k === "study:quest:fademem-v1" && a && b && a.version === 1 && b.version === 1) {
+    if (/^study:quest:fademem-v[12]$/.test(k) && a && b && a.version === b.version && a.version === Number(k.slice(-1))) {
       var ids = Array.isArray(a.required) ? a.required.slice() : [];
       (Array.isArray(b.required) ? b.required : []).forEach(function (id) { if (ids.indexOf(id) < 0) ids.push(id); });
-      return JSON.stringify({ version:1, accepted:!!(a.accepted || b.accepted),
-        reported:!!(a.reported || b.reported), required:ids, total:ids.length,
+      var quest = { version:a.version, accepted:!!(a.accepted || b.accepted),
+        reported:!!(a.reported || b.reported),
         acceptedAt:[a.acceptedAt,b.acceptedAt].filter(Boolean).sort()[0] || "",
-        reportedAt:[a.reportedAt,b.reportedAt].filter(Boolean).sort().pop() || "" });
+        reportedAt:[a.reportedAt,b.reportedAt].filter(Boolean).sort().pop() || "" };
+      if (a.version === 1) { quest.required = ids; quest.total = ids.length; }
+      return JSON.stringify(quest);
     }
     if (/:(done|asked)$/.test(k) && Array.isArray(a) && Array.isArray(b))
       return JSON.stringify(a.concat(b.filter(function (x) { return a.indexOf(x) < 0; })));
@@ -1106,6 +1122,13 @@
   // With a question bank, a chapter's tier comes from the bank: no entry, no monster (閱讀路線 keeps its box);
   // "elite" for the method and experiment chapters; "boss" for the cross-chapter BOSS chapter (s-boss).
   var bank = window.STUDY_QUIZ && window.STUDY_QUIZ.paper === paper && window.StudyBattle ? window.STUDY_QUIZ : null;
+  if (bank && bank.boss) {
+    var priorBattle = store.get("study:" + paper + ":battle", {});
+    var priorBoss = priorBattle && typeof priorBattle === "object" ? priorBattle["s-boss"] : null;
+    if (priorBoss && priorBoss.w > 0 &&
+        !window.StudyBattle.titles().some(function (entry) { return entry.p === paper; }))
+      window.StudyBattle.grant(paper, bank.title);
+  }
   function tierOf(s) {
     if (!bank) return null;
     if (s.id === "s-boss") return bank.boss ? "boss" : null;
@@ -1701,6 +1724,15 @@
         }, 2200);
         drawBoard();
         window.dispatchEvent(new CustomEvent("study-progress-change", { detail: { paper: paper } }));
+        if (paper === "2601.18642" && window.StudyIntroQuest &&
+            window.StudyIntroQuest.stages.some(function (stage) { return stage.id === s.id; })) {
+          var nextQuest = window.StudyIntroQuest.nextStage();
+          var questLink = document.createElement("a");
+          questLink.className = "btn bt-next-step";
+          questLink.href = nextQuest ? "#" + nextQuest.id : "../../index.html#intro-quest";
+          questLink.textContent = nextQuest ? "繼續任務：" + nextQuest.short : "回魔法森林回報任務";
+          b.resultHost.appendChild(questLink);
+        }
       },
       onLose: function () {
         if (heroArt) { heroArt.classList.add("is-struck"); setTimeout(function () { if (heroArt) heroArt.classList.remove("is-struck"); }, 350); }
@@ -1773,11 +1805,19 @@
   }
 
   // ---------- highlight the section being read ----------
+  var lastSeenKey = "study:" + paper + ":last";
+  var lastSeen = store.get(lastSeenKey, null);
+  function rememberSection(s) {
+    if (!s || lastSeen && lastSeen.id === s.id && Date.now() - lastSeen.at < 1500) return;
+    lastSeen = { id: s.id, title: s.getAttribute("data-short") || s.querySelector("h2").textContent.trim(), at: Date.now() };
+    store.set(lastSeenKey, lastSeen);
+  }
   if ("IntersectionObserver" in window && outline) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (!e.isIntersecting || !links[e.target.id]) return;
         Object.keys(links).forEach(function (id) { links[id].a.classList.toggle("active", id === e.target.id); });
+        if (!paged) rememberSection(e.target);
       });
     }, { rootMargin: "-20% 0px -70% 0px" });
     sections.forEach(function (s) { io.observe(s); });
@@ -1831,6 +1871,7 @@
     if (!paged || i < 0 || i >= sections.length) return;
     var changed = i !== current;
     current = i;
+    rememberSection(sections[i]);
     if (window.MAPLE_SPRITES && window.MAPLE_SPRITES.scenes) {
       var zones = PAPER_SCENES[paper] || ["henesys"];
       var phase = Math.min(zones.length - 1, Math.floor(i * zones.length / sections.length));
@@ -1915,4 +1956,4 @@
 })();
 
 /* Optional study sync overlay: loaded after the existing page app. */
-(function(){var s=document.createElement('script');s.src=new URL('study-sync.js?v=36e9feee80',document.currentScript.src).href;document.head.appendChild(s);})();
+(function(){var s=document.createElement('script');s.src=new URL('study-sync.js?v=3152c6bb3a',document.currentScript.src).href;document.head.appendChild(s);})();
