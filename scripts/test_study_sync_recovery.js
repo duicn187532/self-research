@@ -100,6 +100,15 @@ function reset() {
   assert.equal(localStorage.getItem(key),packed(['s1','s2']));
   assert.ok(ctx.conflicts[key], 'remote empty value must ask the user to resolve');
 
+  // 4b. An explicit decision to retain local work must allow the next CAS upload,
+  // rather than rediscovering the same blank remote conflict forever.
+  ctx.meta[key] = {revision:4, base:'[]'};
+  ctx.conflicts = {};
+  cloud = mockCloud([{storage_key:key,value:'[]',revision:4}]);
+  assert.equal(await ctx.sync(true), true);
+  assert.equal(cloud.writes.length, 1);
+  assert.equal(cloud.writes[0].p_value, packed(['s1','s2']));
+
   // 5. Previously saved logout backup is discoverable for the SAME signed-in user.
   reset();
   const snapshotKey='__study_sync_logout_backup:self-research:test-user:1000';
