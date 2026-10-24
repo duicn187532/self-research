@@ -1593,4 +1593,4 @@
 })();
 
 /* Optional study sync overlay: loaded after the existing page app. */
-(function(){var s=document.createElement('script');s.src=new URL('study-sync.js',document.currentScript.src).href;document.head.appendChild(s);})();
+(function(){var s=document.createElement('script');s.src=new URL('study-sync.js?v=20261024a',document.currentScript.src).href;document.head.appendChild(s);})();
