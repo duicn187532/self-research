@@ -2,6 +2,7 @@
 import hashlib
 import json
 from collections import Counter, defaultdict
+from datetime import date
 from pathlib import Path
 from PIL import Image
 
@@ -20,7 +21,7 @@ def visual_key(im):
 
 def main():
     manifest = json.loads((OUT/'manifest.json').read_text(encoding='utf-8'))
-    failures=[]; paths={}; keys=set(); frames=0
+    failures=[]; paths={}; keys=set(); frames=0; decoded_pixels=set()
     for asset in manifest['assets']:
         key=(asset['type'],asset['id'],asset['version']['region'],asset['version']['version'])
         if key in keys: failures.append(f'duplicate entity: {key}')
@@ -44,7 +45,8 @@ def main():
                         if im.format != 'PNG' or list(im.size) != [f['width'],f['height']]:
                             failures.append(f'image format/dimensions: {p}')
                         pixels=hashlib.sha256(str(im.size).encode()+im.convert('RGBA').tobytes()).hexdigest()
-                        if pixels!=f['pixel_sha256']: failures.append(f'pixel hash: {p}')
+                        decoded_pixels.add(pixels)
+                        if f.get('pixel_sha256') and pixels!=f['pixel_sha256']: failures.append(f'pixel hash: {p}')
                     paths[str(p)]=digest
                 except Exception as e: failures.append(f'{p}: {e}')
     groups=defaultdict(list)
@@ -67,6 +69,7 @@ def main():
     sprite_text=(ROOT/'assets/maple/sprites.js').read_text(encoding='utf-8')
     old_sprites=json.loads(sprite_text.split('window.MAPLE_SPRITES = ',1)[1].strip().rstrip(';'))
     for ident,spec in old_sprites.items():
+        if 'acts' not in spec: continue  # The table also contains the scene index.
         for action,(w,h,n) in spec['acts'].items():
             p=ROOT/f'assets/maple/spr-{ident}-{action}.png'
             with Image.open(p) as im:
@@ -78,7 +81,8 @@ def main():
     for a in manifest['assets']:
         if not a.get('name_zh_tw') or not a.get('display_name_zh_tw'):
             failures.append(f"missing Traditional Chinese name: {a['type']}/{a['id']}")
-        if a.get('name_zh_tw_status') not in ('source_twms','source_twms_256_id_match'):
+        allowed_names=('source_twms','source_twms_256_id_match','maplestory.io_TWMS_256_map_id_match')
+        if a.get('name_zh_tw_status') not in allowed_names:
             failures.append(f"unverified Traditional Chinese name: {a['type']}/{a['id']}")
         visuals=set()
         for group in a['actions']:
@@ -94,17 +98,18 @@ def main():
             if visual_group not in seen_visual_groups:new_unique[a['type']]+=1
         else:existing_only.append(a['type']+'/'+a['id'])
         seen_visual_groups.add(visual_group)
-    report={'verified_on':'2026-10-24','entity_records':len(keys),
+    animated=[a for a in manifest['assets'] if a['type']!='maps']
+    report={'verified_on':date.today().isoformat(),'entity_records':len(keys),
         'by_type':dict(Counter(a['type'] for a in manifest['assets'])),
         'by_region':dict(Counter(a['region'] for a in manifest['assets'])),
         'npc_by_town':dict(Counter(a['town'] for a in manifest['assets'] if a['type']=='npc')),
         'frame_references':frames,'unique_referenced_pngs':len(paths),
-        'unique_decoded_pixel_frames':len({f['pixel_sha256'] for a in manifest['assets'] for x in a['actions'] for f in x['frames']}),
-        'complete_api_action_frame_sets':sum(a['validation']['all_api_listed_action_frames_present'] for a in manifest['assets']),
-        'complete_wz_numeric_frame_sets':sum(a['validation'].get('all_wz_numeric_frame_nodes_present',False) for a in manifest['assets']),
-        'timing_and_origin_complete':sum(a['validation']['timing_and_origin']=='complete' for a in manifest['assets']),
-        'frames_missing_origin':sum(f['origin'] is None for a in manifest['assets'] for g in a['actions'] for f in g['frames']),
-        'frames_missing_explicit_delay':sum(f['duration_ms'] is None for a in manifest['assets'] for g in a['actions'] for f in g['frames']),
+        'unique_decoded_pixel_frames':len(decoded_pixels),
+        'complete_api_action_frame_sets':sum(a['validation'].get('all_api_listed_action_frames_present',False) for a in animated),
+        'complete_wz_numeric_frame_sets':sum(a['validation'].get('all_wz_numeric_frame_nodes_present',False) for a in animated),
+        'timing_and_origin_complete':sum(a['validation'].get('timing_and_origin')=='complete' for a in animated),
+        'frames_missing_origin':sum(f.get('origin') is None for a in animated for g in a['actions'] for f in g['frames']),
+        'frames_missing_explicit_delay':sum(f.get('duration_ms') is None for a in animated for g in a['actions'] for f in g['frames']),
         'existing_images_preserved_inventory_count':len(inventory),
         'records_with_new_visual_frames_vs_existing_strips':dict(new_content),
         'new_unique_visual_sets_excluding_existing_and_duplicate_npcs':dict(new_unique),

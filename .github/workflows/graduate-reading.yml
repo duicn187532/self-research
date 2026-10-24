@@ -61,6 +61,7 @@ jobs:
           node scripts/test_shelf_progress.js
           node scripts/test_world_learning.js
           node scripts/test_world_quests.js
+          node scripts/test_maple_art_direction.js
       - name: Existing quiz bank correctness
         run: python3 scripts/quiz/build.py
       - name: Verify quiz outputs remain deterministic

@@ -440,19 +440,29 @@
   }
 
   // ---------- game sprites: monsters on the quest windows, NPCs in the dialogs, a hero on the title ----------
-  // assets/maple/sprites.js lists the strips (scripts/setup_maple.py builds them). A paper keeps its own
-  // monsters and NPCs, picked from its id; the hero, the pet and the shelf's monsters change every visit.
+  // assets/maple/sprites.js lists the strips. Each paper uses the cast of its actual town;
+  // the hero and pet can still change without changing the town's characters.
   // All of it is decoration, hidden from assistive tech and from clicks.
   var reduceMotion = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   function sprites(kind) {
     var t = window.MAPLE_SPRITES || {};
     return Object.keys(t).filter(function (k) { return t[k].kind === kind; });
   }
-  var guideCast = ["npc-bowman", "npc-wizard", "npc-lina", "npc-strategist", "npc-knight", "npc-flame", "npc-wind", "npc-night", "npc-thunder", "npc-elder-stan", "npc-tatamo", "npc-conductor", "npc-lucid", "npc-cleaner", "npc-knight-mihile", "npc-knight-oz", "npc-knight-irena", "npc-knight-eckhart", "npc-knight-hawkeye", "npc-robin", "npc-mai", "npc-pio", "npc-roger", "npc-john", "npc-al", "npc-tru", "npc-hines", "npc-dances-with-balrog", "npc-mcgigis", "npc-dark-lord", "npc-kyrin", "npc-icarus", "npc-bartos", "npc-tobo", "npc-winston", "npc-elder-aron"];
+  var PAPER_CAST = {
+    "2601.18642": { guide:"npc-hines", mobs:["mob-green-slime", "mob-spiked-mushroom"], boss:"boss-stumpy" },
+    "2501.13956": { guide:"npc-marcel", mobs:["mob-clockwork-panda", "mob-toy-duck", "mob-clockwork-fighter"], boss:"boss-papulatus" },
+    "2604.14362": { guide:"npc-dances-with-balrog", mobs:["mob-fire-boar", "mob-dark-wooden-mask", "mob-stone-golem"], boss:"boss-stumpy" },
+    "2605.06527": { guide:"npc-dark-lord", mobs:["mob-octopus", "mob-crocodile", "mob-little-ghost"], boss:"boss-king-slime" },
+    "2608.19652": { guide:"npc-gas-mask", mobs:["mob-dream-cleaner", "mob-paper-bag-resident", "mob-calina", "mob-angry-ballgoer"], boss:"boss-lucid" },
+    "2606.30306": { guide:"npc-kriel", mobs:["mob-jr-cellion", "mob-jr-cellion-blue", "mob-young-yellow-cellion"], boss:"boss-eliza" },
+    "dekleer-1986-atms": { guide:"npc-elder-stan", mobs:["mob-baby-snail", "mob-blue-mushroom", "mob-ribbon-pig"], boss:"boss-mushmom" }
+  };
   function guideFor(key) {
     var all = window.MAPLE_SPRITES || {};
-    var list = guideCast.filter(function (n) { return all[n] && all[n].kind === "npc" && all[n].featured; });
-    return list.length ? list[seedOf(key) % list.length] : sprites("npc")[seedOf(key) % Math.max(1, sprites("npc").length)];
+    var guide = PAPER_CAST[paper] && PAPER_CAST[paper].guide;
+    if (guide && all[guide]) return guide;
+    var list = sprites("npc");
+    return list.length ? list[seedOf(key) % list.length] : null;
   }
   function addGuide(host, key) {
     if (!host || host.querySelector(":scope > .npc-portrait")) return;
@@ -1245,10 +1255,8 @@
     fitRail();
   }
   // The cast for this paper, built a page at a time as you reach it, so a phone only fetches the
-  // sprites it shows: a monster on each section that can be finished (with a question bank, one on each
-  // chapter with a battle, of its tier; without, one elite midway and a boss on the last), NPCs taking turns in the self-check dialogs, and the protagonist with a pet, who
-  // goes with you from page to page. A paper's protagonist is 殺人鯨 or 露希妲, picked from its id
-  // (the outfit changes every visit); its monsters and NPCs are picked from the id too.
+  // sprites it shows: chapter enemies and a boss from that paper's region, its local guide,
+  // and the protagonist with a pet who goes with you from page to page.
   var seed = seedOf(paper), castDone = {}, party = null;
   var PAPER_SCENES = {
     "2501.13956": ["ludibrium", "clocktower"], "2601.18642": ["ellinia-town"],
@@ -1261,17 +1269,19 @@
   function mobFor(s) {
     var i = quests.indexOf(s);
     if (i < 0) return null;
-    var mobs = rotate(sprites("mob"), seed), elites = sprites("elite"), bosses = rotate(sprites("boss"), seed);
+    var region = PAPER_CAST[paper];
+    if (!region) return null;
+    var mobs = region.mobs.filter(function (name) { return !!window.MAPLE_SPRITES[name]; });
+    var boss = window.MAPLE_SPRITES[region.boss] && region.boss;
+    var regular = mobs.length ? mobs[i % mobs.length] : null;
     if (bank) {
       var t = tierOf(s);
       if (!t) return null;
-      if (t === "boss" && bosses.length) return { name: bosses[(seed + i) % bosses.length], big: true };
-      if (t === "elite" && elites.length) return { name: elites[(seed + i) % elites.length], big: true };
-      return mobs.length ? { name: mobs[i % mobs.length], big: false } : null;
+      if (t === "boss" && boss) return { name: boss, big: true };
+      return regular ? { name: regular, big: t === "elite" } : null;
     }
-    if (i === quests.length - 1 && bosses.length && quests.length > 1) return { name: bosses[(seed + i) % bosses.length], big: true };
-    if (i === Math.floor(quests.length / 2) && elites.length && quests.length > 3) return { name: elites[seed % elites.length], big: true };
-    return mobs.length ? { name: mobs[i % mobs.length], big: false } : null;
+    if (i === quests.length - 1 && boss && quests.length > 1) return { name: boss, big: true };
+    return regular ? { name: regular, big: i === Math.floor(quests.length / 2) && quests.length > 3 } : null;
   }
   var mobOf = {};
   function addMob(s) {
@@ -1280,12 +1290,16 @@
     s.classList.toggle("has-big", m.big);
     var p = mobOf[s.id] = perch(s, [m.name], "walk");
     var box = s.querySelector("input[data-done]");
-    // the page leaves room above the window for the monster's tallest frame, none once it is beaten
-    var acts = window.MAPLE_SPRITES[m.name].acts, tall = Math.max.apply(null, Object.keys(acts).map(function (a) { return acts[a][1]; }));
-    s.style.setProperty("--mob-h", box.checked ? 0 : tall);
+    // Reserve space for the actions shown in this chapter. A very tall boss fits the
+    // reading window instead of forcing hundreds of pixels of empty scroll.
+    var acts = window.MAPLE_SPRITES[m.name].acts;
+    var tall = Math.max.apply(null, ["stand", "move", "hit", "die"].filter(function (a) { return acts[a]; }).map(function (a) { return acts[a][1]; }));
+    var scale = Math.min(1, 280 / tall), displayHeight = Math.ceil(tall * scale);
+    s.style.setProperty("--mob-scale", scale);
+    s.style.setProperty("--mob-h", box.checked ? 0 : displayHeight);
     if (box.checked) p.wrap.hidden = true;
     box.addEventListener("change", function () {
-      if (!box.checked) { s.style.setProperty("--mob-h", tall); respawn(p); return; }
+      if (!box.checked) { s.style.setProperty("--mob-h", displayHeight); respawn(p); return; }
       // the gain was summed by the box's first listener; the monster tells it
       var g = lastGain || { gain: 0 };
       g.told = true;
@@ -1338,12 +1352,13 @@
     var explanation = sections[i].querySelector(".explain");
     var levels = explanation && explanation.querySelectorAll(":scope > .lv");
     if (levels && levels.length) {
-      levels.forEach(function (host) { addGuide(host, paper + ":reading:" + i + ":" + host.className); });
+      addGuide(levels[0], paper + ":reading:" + i);
     } else {
       var guideHost = explanation || sections[i].querySelector(".claim, .summary, .worked, .detail");
       if (guideHost) addGuide(guideHost, paper + ":reading:" + i);
     }
-    sections[i].querySelectorAll(".check details").forEach(addNpc);
+    var firstCheck = sections[i].querySelector(".check details");
+    if (firstCheck) addNpc(firstCheck);
   }
   // while a page is read, the pages either side get their cast and fetch its strips
   function ahead(i) {
@@ -1398,7 +1413,6 @@
   }
   whenMaple(function () {
     if (!window.MAPLE_SPRITES) return;
-    if (head) addGuide(head, paper + ":opening");
     var heroes = sprites("hero"), pets = sprites("pet");
     var savedHero = store.get("study:hero", "");
     var hero = heroes.indexOf(savedHero) >= 0 ? savedHero : heroes[seed % heroes.length];
@@ -1858,11 +1872,9 @@
     var changed = i !== current;
     current = i;
     rememberSection(sections[i]);
-    if (window.MAPLE_SPRITES && window.MAPLE_SPRITES.scenes) {
-      var zones = PAPER_SCENES[paper] || ["henesys"];
-      var phase = Math.min(zones.length - 1, Math.floor(i * zones.length / sections.length));
-      document.body.setAttribute("data-map-scene", zones[phase]);
-    }
+    var zones = PAPER_SCENES[paper] || ["henesys"];
+    var phase = Math.min(zones.length - 1, Math.floor(i * zones.length / sections.length));
+    document.body.setAttribute("data-map-scene", zones[phase]);
     sections.forEach(function (s, k) { if (k === i) s.removeAttribute("hidden"); else s.setAttribute("hidden", "until-found"); });
     if (paper === "2601.18642") window.StudyMathTypeset(sections[i]);
     if (head) { if (i === 0) head.removeAttribute("hidden"); else head.setAttribute("hidden", "until-found"); }

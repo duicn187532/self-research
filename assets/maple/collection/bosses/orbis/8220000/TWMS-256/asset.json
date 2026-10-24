@@ -1,0 +1,2227 @@
+{
+  "id": "8220000",
+  "type": "bosses",
+  "region": "orbis",
+  "town": "orbis",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": "艾利傑",
+  "name_zh_tw_status": "source_twms",
+  "source_url": "https://maplestory.io/api/TWMS/256/mob/8220000",
+  "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Mob/8220000.img",
+  "wz_path": "Mob.wz/8220000.img",
+  "version": {
+    "region": "TWMS",
+    "version": "256"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "attack1",
+      "frame_count": 30,
+      "expected_frame_count": 30,
+      "frames": [
+        {
+          "index": 0,
+          "width": 161,
+          "height": 124,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "bdc33c9f65a6dbcdb3362b448fb372a6571773e5f30beb509fdccf3cb825191e",
+          "pixel_sha256": "6b2a32a9554d56c685d34b4f358be53a6a2230de483aa312b13e8dd81a48f891",
+          "wz_path": "Mob.wz/8220000.img/attack1/0",
+          "duration_ms": 120,
+          "origin": {
+            "x": 72,
+            "y": 124
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 153,
+          "height": 124,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "ccaa92b6bd1bca41d32e5601f5668d70820cd9c37794dbce26b455cfa5b9849e",
+          "pixel_sha256": "b412ebe532e6e96f3d63ab3d6da61fe92138f562c330404f4e238eb80c463cac",
+          "wz_path": "Mob.wz/8220000.img/attack1/1",
+          "duration_ms": 120,
+          "origin": {
+            "x": 72,
+            "y": 124
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 158,
+          "height": 131,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "d46ea4861b86714a30a7a92e22120b1a3cdaffee7a8cc6e41afc480051c61083",
+          "pixel_sha256": "24ae4cbaa23c9f359dde7c38431ad8309bbc5389db72fb8d16699271d72a7930",
+          "wz_path": "Mob.wz/8220000.img/attack1/2",
+          "duration_ms": 120,
+          "origin": {
+            "x": 74,
+            "y": 125
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/0002.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 3,
+          "width": 168,
+          "height": 139,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "cb6a52bf1cf5628d5382cce2204c94be524bfc09f108d742a4b405315f506dec",
+          "pixel_sha256": "c749c527c463d439a2b9ba9668b130a903dc2f9e9df5a757220b8bb0b11c25b6",
+          "wz_path": "Mob.wz/8220000.img/attack1/3",
+          "duration_ms": 120,
+          "origin": {
+            "x": 79,
+            "y": 129
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/0003.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 4,
+          "width": 181,
+          "height": 144,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "ea462cbce88742b29081072f1a7d185b2d650ad364962b606cb401b66c78b9a7",
+          "pixel_sha256": "0c9777f10f77d59bebfe5ec1fecc8e38119e5cc02e94b9bde68c05a643f767e5",
+          "wz_path": "Mob.wz/8220000.img/attack1/4",
+          "duration_ms": 120,
+          "origin": {
+            "x": 81,
+            "y": 132
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/0004.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 5,
+          "width": 189,
+          "height": 146,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "6845cd39549c10bc7916e9074fa01f0fb31c8368ac5e7ddcb6f3b52e4a5af5c8",
+          "pixel_sha256": "6bc7559766b7ff2aab0a3d867f7cdeab0592b62eaaf2f78366461dabbb88c7d6",
+          "wz_path": "Mob.wz/8220000.img/attack1/5",
+          "duration_ms": 120,
+          "origin": {
+            "x": 82,
+            "y": 133
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/0005.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 6,
+          "width": 172,
+          "height": 154,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "93d3748836416e5fb763f0ba74b90693d952ae47c3c75f79e0589cc40f8e89c5",
+          "pixel_sha256": "6f5f616713a697c25c96e86e7a751dfb9743ad5c4e16c9a06d7f453c656c612f",
+          "wz_path": "Mob.wz/8220000.img/attack1/6",
+          "duration_ms": 120,
+          "origin": {
+            "x": 73,
+            "y": 142
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/0006.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 7,
+          "width": 159,
+          "height": 151,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "dc63949d835b082f1285e1baffd8b461dbe11f5453a3b7e48e125a6270971f9d",
+          "pixel_sha256": "c7914f4a4bd32a9aed7a6399443f7b06e7cfefe8d495a266199215dc2e168229",
+          "wz_path": "Mob.wz/8220000.img/attack1/7",
+          "duration_ms": 120,
+          "origin": {
+            "x": 70,
+            "y": 141
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/0007.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 8,
+          "width": 147,
+          "height": 141,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "65ee03500e073b644dc6738f0fc14700a1f105dfe7951abfc013740ec95857fa",
+          "pixel_sha256": "2799f47bc9e4dfab3ac67ce0fbba566181f70d107a030cb371edb970fd2c6dec",
+          "wz_path": "Mob.wz/8220000.img/attack1/8",
+          "duration_ms": 120,
+          "origin": {
+            "x": 64,
+            "y": 136
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/0008.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 9,
+          "width": 154,
+          "height": 123,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "d0c149fafc5010247faa42b06b15a4a97e5f3fe9fd103c7dabb70f09cab56e4c",
+          "pixel_sha256": "ec7eac63590ae4b4b40adaf31a9aec79c49527ddd74a0f2db017499d0301362d",
+          "wz_path": "Mob.wz/8220000.img/attack1/9",
+          "duration_ms": 120,
+          "origin": {
+            "x": 73,
+            "y": 121
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/0009.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 10,
+          "width": 162,
+          "height": 124,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "a6e8bda836e551411eed9650d78357ada2c1e2df5f9194651f7577a21f5aa00c",
+          "pixel_sha256": "c43c5a545e7620fb02c51ef834c54097b0fae19d019ca14b603ab478dd8e4630",
+          "wz_path": "Mob.wz/8220000.img/attack1/10",
+          "duration_ms": 120,
+          "origin": {
+            "x": 73,
+            "y": 121
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/0010.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 11,
+          "width": 170,
+          "height": 124,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "e47e73b0f67a1d4a6f20758de95d035c9b4472f5113da8b38d24013f1a7bca1b",
+          "pixel_sha256": "35091707fa2cfdfac955fd9be3250997744149fafa1799a864f3860cff491f7f",
+          "wz_path": "Mob.wz/8220000.img/attack1/11",
+          "duration_ms": 120,
+          "origin": {
+            "x": 73,
+            "y": 121
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/0011.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 12,
+          "width": 171,
+          "height": 129,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "992c08544ad30cf9d668eb1e64566575132c701c9e57e631ff7c5a23145e2928",
+          "pixel_sha256": "a980c9ebe1336ee1dd550d2ddca4608fad2ee4f60d4054037770f20fea1d93d7",
+          "wz_path": "Mob.wz/8220000.img/attack1/12",
+          "duration_ms": 120,
+          "origin": {
+            "x": 82,
+            "y": 124
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/0012.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 13,
+          "width": 166,
+          "height": 130,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "ccabb94f73ad5d7f88cb56b86127d569054ce2c6f9d00481ff734d2e32d43db8",
+          "pixel_sha256": "667c7a33efec8548d735a8e620dd7579286efdfb7ac2b8770cf16ad6f3e6da55",
+          "wz_path": "Mob.wz/8220000.img/attack1/13",
+          "duration_ms": 120,
+          "origin": {
+            "x": 85,
+            "y": 124
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/0013.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 14,
+          "width": 155,
+          "height": 124,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "0c43efe5b9f3640c543b5baa173f9f402b4338c3425258a6bfb755f341985fa6",
+          "pixel_sha256": "a464346724992a55c7e8b80d05d41af0ed0d8f7e9a75c3a23dd621ba05ce3219",
+          "wz_path": "Mob.wz/8220000.img/attack1/14",
+          "duration_ms": 120,
+          "origin": {
+            "x": 75,
+            "y": 124
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/0014.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 15,
+          "width": 153,
+          "height": 123,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "bf1140eb0fb7aa66b1f69b16cff4a474259147702d94317a3f17cc2415e529ec",
+          "pixel_sha256": "78c1c69226e32371adaf2db016e2efc7930a70eb91ca802014ad26eb98bbf778",
+          "wz_path": "Mob.wz/8220000.img/attack1/15",
+          "duration_ms": 120,
+          "origin": {
+            "x": 72,
+            "y": 123
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/0015.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 16,
+          "width": 161,
+          "height": 124,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "b16c6b7438c266d71e5ff3cb19b302b93a754d629e3fa3347d91d3e2a4cc4224",
+          "pixel_sha256": "3d0e51c6eb24a4cb6b7dc9554257b9e841c6d7998e518fea728bbdd104ee23dd",
+          "wz_path": "Mob.wz/8220000.img/attack1/16",
+          "duration_ms": 120,
+          "origin": {
+            "x": 72,
+            "y": 124
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/0016.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 17,
+          "width": 169,
+          "height": 124,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "c31632aac8beff3db4542a7f0afd6fad6441b990e9651c644c16ff1dc11205f4",
+          "pixel_sha256": "79e495aec68a9525f41a650ae3fb162d424a31766a9fd4444b193aadb65dcde4",
+          "wz_path": "Mob.wz/8220000.img/attack1/17",
+          "duration_ms": 120,
+          "origin": {
+            "x": 72,
+            "y": 124
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/0017.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 18,
+          "width": 161,
+          "height": 124,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "d1023f13b306fff350d4358bf82ccce8d5c0a2f8d5c80b78e78d7864f9612fe7",
+          "pixel_sha256": "38f9b5f7e5f2887db9121fc97feff5a9c7b29db2987ebaa63cd59ee1ea703883",
+          "wz_path": "Mob.wz/8220000.img/attack1/18",
+          "duration_ms": 120,
+          "origin": {
+            "x": 72,
+            "y": 124
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8220000/render/attack1/18",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/0018.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 19,
+          "width": 153,
+          "height": 124,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "b792a8210b2ba23e64a23ba90ce00a6654b2db9072a5c293202ea09337e3f1a6",
+          "pixel_sha256": "0dfb34952aaf1d9f4e1c95e51c815afa15adaa51916f2b6dc591ce6227b9ecaa",
+          "wz_path": "Mob.wz/8220000.img/attack1/19",
+          "duration_ms": 120,
+          "origin": {
+            "x": 72,
+            "y": 124
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8220000/render/attack1/19",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/0019.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 20,
+          "width": 152,
+          "height": 124,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "df37479660ca8dc11bddc38dc58cd45d1bf18711973385fee4f54fc29ae18292",
+          "pixel_sha256": "9aa7e1174c59ce7874f2081e03d04c3ac1bde05cb12790e096330a9e5ccd8ecb",
+          "wz_path": "Mob.wz/8220000.img/attack1/20",
+          "duration_ms": 120,
+          "origin": {
+            "x": 72,
+            "y": 124
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8220000/render/attack1/20",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/0020.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 21,
+          "width": 153,
+          "height": 123,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "7dcd99a22b89efb3b40d0cbb56982d044b9c794b88ad7ef1e3913eb51383d737",
+          "pixel_sha256": "278172ea7da55354eb5322d8ecae9f16c10a5824e3933ca6dff2ddc87326b841",
+          "wz_path": "Mob.wz/8220000.img/attack1/21",
+          "duration_ms": 120,
+          "origin": {
+            "x": 72,
+            "y": 123
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8220000/render/attack1/21",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/0021.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 22,
+          "width": 161,
+          "height": 124,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "50194e21ef9b2fa0b296b81f1c33b75bcab094fa863945b6624395e23d94625f",
+          "pixel_sha256": "218e0d7b64da3cc6d92650eac062c8cdebefeb6d84495c7555b654b31e2b0ff1",
+          "wz_path": "Mob.wz/8220000.img/attack1/22",
+          "duration_ms": 120,
+          "origin": {
+            "x": 72,
+            "y": 124
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8220000/render/attack1/22",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/0022.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 23,
+          "width": 169,
+          "height": 124,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "4fd7919f915d57d3a10c6ca9d2ad9be0780d6495de8b437d94b9893bcbd31dde",
+          "pixel_sha256": "f6907b954a179645ace29a4ecac4920457a42ba806a78cfba16324dd8c027672",
+          "wz_path": "Mob.wz/8220000.img/attack1/23",
+          "duration_ms": 120,
+          "origin": {
+            "x": 72,
+            "y": 124
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8220000/render/attack1/23",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/0023.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 24,
+          "width": 161,
+          "height": 124,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "25f5949d069328f3206b8ba2408a77e51acea57f9ad22133a7fd535b43869934",
+          "pixel_sha256": "38f9b5f7e5f2887db9121fc97feff5a9c7b29db2987ebaa63cd59ee1ea703883",
+          "wz_path": "Mob.wz/8220000.img/attack1/24",
+          "duration_ms": 120,
+          "origin": {
+            "x": 72,
+            "y": 124
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8220000/render/attack1/24",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/0024.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 25,
+          "width": 153,
+          "height": 124,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "41d6b197d22905ab9009d72fec68f4597adfe9604339bee1255118537813d85c",
+          "pixel_sha256": "0dfb34952aaf1d9f4e1c95e51c815afa15adaa51916f2b6dc591ce6227b9ecaa",
+          "wz_path": "Mob.wz/8220000.img/attack1/25",
+          "duration_ms": 120,
+          "origin": {
+            "x": 72,
+            "y": 124
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8220000/render/attack1/25",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/0025.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 26,
+          "width": 152,
+          "height": 124,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "7bd2148a1dc63d2bedb05c8a4930a475ce61e03366e122f1da2bd6244a26fc68",
+          "pixel_sha256": "9aa7e1174c59ce7874f2081e03d04c3ac1bde05cb12790e096330a9e5ccd8ecb",
+          "wz_path": "Mob.wz/8220000.img/attack1/26",
+          "duration_ms": 120,
+          "origin": {
+            "x": 72,
+            "y": 124
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8220000/render/attack1/26",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/0026.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 27,
+          "width": 153,
+          "height": 123,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "f245e1eb8d762dd5cf94c96bdc934f1bff00e9117fd2cd41d5d8e3b27142d324",
+          "pixel_sha256": "278172ea7da55354eb5322d8ecae9f16c10a5824e3933ca6dff2ddc87326b841",
+          "wz_path": "Mob.wz/8220000.img/attack1/27",
+          "duration_ms": 120,
+          "origin": {
+            "x": 72,
+            "y": 123
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8220000/render/attack1/27",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/0027.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 28,
+          "width": 161,
+          "height": 124,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "f5b78053e14639f29326aba91cfd37f8939093f926257662e2e2061b3fbff788",
+          "pixel_sha256": "218e0d7b64da3cc6d92650eac062c8cdebefeb6d84495c7555b654b31e2b0ff1",
+          "wz_path": "Mob.wz/8220000.img/attack1/28",
+          "duration_ms": 120,
+          "origin": {
+            "x": 72,
+            "y": 124
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8220000/render/attack1/28",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/0028.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 29,
+          "width": 169,
+          "height": 124,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "f32c3f894062c9af17d08235cb666ba3fa01e2bb3e41032b2407fef120581d72",
+          "pixel_sha256": "f6907b954a179645ace29a4ecac4920457a42ba806a78cfba16324dd8c027672",
+          "wz_path": "Mob.wz/8220000.img/attack1/29",
+          "duration_ms": 120,
+          "origin": {
+            "x": 72,
+            "y": 124
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8220000/render/attack1/29",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/0029.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true
+    },
+    {
+      "name": "attack1/info/areaWarning",
+      "frame_count": 15,
+      "expected_frame_count": null,
+      "frames": [
+        {
+          "index": 0,
+          "width": 51,
+          "height": 26,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "98a19ddb59305e32776d49aad77199deb877d0089ca1b7bce3fea8ec4dcb6227",
+          "pixel_sha256": "acc4a6d642fa48ed32d0a81b41d3ed548ea76e7f712aa33ecb47c855f16c880c",
+          "wz_path": "Mob.wz/8220000.img/attack1/info/areaWarning/0",
+          "duration_ms": 120,
+          "origin": {
+            "x": 24,
+            "y": 35
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/info/areaWarning/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 51,
+          "height": 33,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "e7e429eaa3f03200f20e3797d3b5bfebc017c92714330954e55f168bbcab1a5a",
+          "pixel_sha256": "370a137c027b41c62571135063283daafea736cfbf781509d84d764b32c8fdd6",
+          "wz_path": "Mob.wz/8220000.img/attack1/info/areaWarning/1",
+          "duration_ms": 120,
+          "origin": {
+            "x": 24,
+            "y": 42
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/info/areaWarning/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 52,
+          "height": 43,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "e2b00a1dfd0d081dd3cafb221d94c5ab0f0bb3061b05295ede6de782a82b1e65",
+          "pixel_sha256": "13bab428d27b41c409fa24c04fd9d3a2f8c2d0befd6c3cf2dcb79cf5b8922b14",
+          "wz_path": "Mob.wz/8220000.img/attack1/info/areaWarning/2",
+          "duration_ms": 120,
+          "origin": {
+            "x": 24,
+            "y": 52
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/info/areaWarning/0002.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 3,
+          "width": 53,
+          "height": 55,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "ae1de3ff5e59aeb91ead0662b5552a77e7179862aafe73679a6510d8a8d64a0f",
+          "pixel_sha256": "79e4a4553a23082eb2858b75650fb79250ac969fce668d6e3356e64bac9bc219",
+          "wz_path": "Mob.wz/8220000.img/attack1/info/areaWarning/3",
+          "duration_ms": 120,
+          "origin": {
+            "x": 25,
+            "y": 62
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/info/areaWarning/0003.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 4,
+          "width": 54,
+          "height": 55,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "a46711c7ce933150c4adb9ea973c221972ee6aee2c441354ca23e843d6d8ef64",
+          "pixel_sha256": "31e453eba1aca54f00296e746780520a819fc785eca366e06544eae24ab92e7d",
+          "wz_path": "Mob.wz/8220000.img/attack1/info/areaWarning/4",
+          "duration_ms": 120,
+          "origin": {
+            "x": 25,
+            "y": 63
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/info/areaWarning/0004.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 5,
+          "width": 53,
+          "height": 55,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "b0ef6d4f01c39fb17b8bb5dabe7a27b594031c180d81fa9a9bf395e98e0debfb",
+          "pixel_sha256": "8007db4426a0dac61ba5d31f02eff587f56039e19ce3cfb7f6a391c9b25bcd82",
+          "wz_path": "Mob.wz/8220000.img/attack1/info/areaWarning/5",
+          "duration_ms": 120,
+          "origin": {
+            "x": 26,
+            "y": 63
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/info/areaWarning/0005.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 6,
+          "width": 51,
+          "height": 55,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "7bd878e392b4378b44000bbafe7e10617c8567f7b9fb9d8b5eb7a6427b17db44",
+          "pixel_sha256": "5fd38208dc62c713c6dc4589f79f07af2ec6522f5a6ec519d375788b68dfb73c",
+          "wz_path": "Mob.wz/8220000.img/attack1/info/areaWarning/6",
+          "duration_ms": 360,
+          "origin": {
+            "x": 24,
+            "y": 63
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/info/areaWarning/0006.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 7,
+          "width": 58,
+          "height": 56,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "b1fb91f603cee4322a35fbc1db595e010b4aa75910b40c1d5bf8e142d9c23f30",
+          "pixel_sha256": "f71fcf12821f678541e2d60c97914910d2b69c48e2a58255e75d9b0e9d21123f",
+          "wz_path": "Mob.wz/8220000.img/attack1/info/areaWarning/7",
+          "duration_ms": 120,
+          "origin": {
+            "x": 31,
+            "y": 63
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/info/areaWarning/0007.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 8,
+          "width": 86,
+          "height": 59,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "912fbdc8eb4d6a25631623f31a584c349b4bfd7e48d820d6144d9dd30f363f09",
+          "pixel_sha256": "d11c566c6e8e2a2471e5d6f6aca30841ed5d79e99a4db06eed8ba4c47007df77",
+          "wz_path": "Mob.wz/8220000.img/attack1/info/areaWarning/8",
+          "duration_ms": 120,
+          "origin": {
+            "x": 46,
+            "y": 67
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/info/areaWarning/0008.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 9,
+          "width": 93,
+          "height": 58,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "8b6f5876746347202d53b669751cb38b94bc50b5700ffe131f95d33e8194c3bd",
+          "pixel_sha256": "0f6d9bb6cdbb6f4c5e5cefd213352b8babd6d28125b42ff5da7f2e0ff2b0f62d",
+          "wz_path": "Mob.wz/8220000.img/attack1/info/areaWarning/9",
+          "duration_ms": 120,
+          "origin": {
+            "x": 46,
+            "y": 66
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/info/areaWarning/0009.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 10,
+          "width": 85,
+          "height": 68,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "9ce0364e135aada2dd8ae840ff2c33b16a8be42a64661c1a76e4309b9868f08d",
+          "pixel_sha256": "7a2ac0d9a26cda10a30004024006b9fae4e81ae0bc46e67f2a838620c79a241d",
+          "wz_path": "Mob.wz/8220000.img/attack1/info/areaWarning/10",
+          "duration_ms": 120,
+          "origin": {
+            "x": 39,
+            "y": 76
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/info/areaWarning/0010.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 11,
+          "width": 84,
+          "height": 72,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "adfd27ff63c4dcbf459d62ef4f5bffda5a8cb20207090c6e067b20ac144d85b5",
+          "pixel_sha256": "242596525119fb86a66957e7e0d4b1bb9b2c80cf24a4fd84f04cd67847431ccf",
+          "wz_path": "Mob.wz/8220000.img/attack1/info/areaWarning/11",
+          "duration_ms": 120,
+          "origin": {
+            "x": 38,
+            "y": 80
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/info/areaWarning/0011.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 12,
+          "width": 77,
+          "height": 72,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5cd415f6def72cf7743380f27b300115006783c39832335a62db7f2eca4709d3",
+          "pixel_sha256": "485da999c796620444365fd756fc3b7cdf429f7b6624552f36455225106975a2",
+          "wz_path": "Mob.wz/8220000.img/attack1/info/areaWarning/12",
+          "duration_ms": 120,
+          "origin": {
+            "x": 37,
+            "y": 80
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/info/areaWarning/0012.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 13,
+          "width": 81,
+          "height": 72,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "7bdc7df4c269647c9fe7da283da2bace5ceff2dd5249e4a15ae5cf1f9d22bc46",
+          "pixel_sha256": "781ffbde0d5923e3591676fd5100ab59665181caa042d6591d9bf9f26cccc75a",
+          "wz_path": "Mob.wz/8220000.img/attack1/info/areaWarning/13",
+          "duration_ms": 120,
+          "origin": {
+            "x": 40,
+            "y": 80
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/info/areaWarning/0013.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 14,
+          "width": 74,
+          "height": 67,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "40d7b8321a03e08b3872a421a5531f7c6fa08f89c874f0869c9b14755fe6a8ae",
+          "pixel_sha256": "364c4c9751a4fceec1271c446233dd07081e93a1a14560f7ee9b2bfd250dd218",
+          "wz_path": "Mob.wz/8220000.img/attack1/info/areaWarning/14",
+          "duration_ms": 120,
+          "origin": {
+            "x": 33,
+            "y": 79
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/info/areaWarning/0014.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": false,
+      "indices_contiguous": true
+    },
+    {
+      "name": "attack1/info/effect",
+      "frame_count": 6,
+      "expected_frame_count": null,
+      "frames": [
+        {
+          "index": 0,
+          "width": 1,
+          "height": 1,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "e4933f6a1f3b48f0c95eb20d3195a70b358b69b01e3fe82639032611ca90b3ea",
+          "pixel_sha256": "a79246fb5dcd05b249389b79a05343236b9a541a75c1c474ae9433a8f882e3c4",
+          "wz_path": "Mob.wz/8220000.img/attack1/info/effect/0",
+          "duration_ms": 90,
+          "origin": {
+            "x": 2,
+            "y": 2
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/info/effect/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 1,
+          "height": 1,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "dea70b5e9aa767d634a3b6c50f2455ad4b8410df8fe13c6223d93b5c7e57d965",
+          "pixel_sha256": "a79246fb5dcd05b249389b79a05343236b9a541a75c1c474ae9433a8f882e3c4",
+          "wz_path": "Mob.wz/8220000.img/attack1/info/effect/1",
+          "duration_ms": 90,
+          "origin": {
+            "x": 2,
+            "y": 2
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/info/effect/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 1,
+          "height": 1,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "678b66d6953e3ac16e097b4df6c801f272c96fd014dbe813d68d2f4f5d046642",
+          "pixel_sha256": "a79246fb5dcd05b249389b79a05343236b9a541a75c1c474ae9433a8f882e3c4",
+          "wz_path": "Mob.wz/8220000.img/attack1/info/effect/2",
+          "duration_ms": 90,
+          "origin": {
+            "x": 2,
+            "y": 2
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/info/effect/0002.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 3,
+          "width": 1,
+          "height": 1,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5c759761cfdf592db917054081d730031cc9d37bfc7cd771fc757fc3c12acff1",
+          "pixel_sha256": "a79246fb5dcd05b249389b79a05343236b9a541a75c1c474ae9433a8f882e3c4",
+          "wz_path": "Mob.wz/8220000.img/attack1/info/effect/3",
+          "duration_ms": 90,
+          "origin": {
+            "x": 2,
+            "y": 2
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/info/effect/0003.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 4,
+          "width": 1,
+          "height": 1,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "dde4f80bcd73261dd54f124bf35b9652bfbc8a919f7653e678c40efff57ea1e0",
+          "pixel_sha256": "a79246fb5dcd05b249389b79a05343236b9a541a75c1c474ae9433a8f882e3c4",
+          "wz_path": "Mob.wz/8220000.img/attack1/info/effect/4",
+          "duration_ms": 90,
+          "origin": {
+            "x": 2,
+            "y": 2
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/info/effect/0004.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 5,
+          "width": 1,
+          "height": 1,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "41a2c271cc0741b41e362a5c335e9ff8e382a4538d4c7bf6e10e9c0ba6ca3a0f",
+          "pixel_sha256": "a79246fb5dcd05b249389b79a05343236b9a541a75c1c474ae9433a8f882e3c4",
+          "wz_path": "Mob.wz/8220000.img/attack1/info/effect/5",
+          "duration_ms": 90,
+          "origin": {
+            "x": 2,
+            "y": 2
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/attack1/info/effect/0005.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": false,
+      "indices_contiguous": true
+    },
+    {
+      "name": "die1",
+      "frame_count": 12,
+      "expected_frame_count": 12,
+      "frames": [
+        {
+          "index": 0,
+          "width": 154,
+          "height": 121,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "57ddf46b5df30b0ee5a925d41a0070b8b401c4c661f8d40173af7e7bf716edc7",
+          "pixel_sha256": "e659603f223c17fe5525a3b6a38e1d8df2500147d4c4068808fbabfd5e9e025f",
+          "wz_path": "Mob.wz/8220000.img/die1/0",
+          "duration_ms": 150,
+          "origin": {
+            "x": 66,
+            "y": 121
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/die1/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 167,
+          "height": 128,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "35c3be096d3a2b62aaffedc3cd098a56faac6e8b099b88ba822cad7f52716e68",
+          "pixel_sha256": "7be71bfb763b0ba8c0b7ccd78889b80e8d9cf287d372633e69381ccdbfa58ff9",
+          "wz_path": "Mob.wz/8220000.img/die1/1",
+          "duration_ms": 150,
+          "origin": {
+            "x": 79,
+            "y": 128
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/die1/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 164,
+          "height": 125,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5378ac4efa618dd2c8917dcd292743d40be61077091cdf8d7f33719a254b8a59",
+          "pixel_sha256": "6011a2c304507c91b76e2885e7e0e833ff9d2962c8bcc75642488e54e14ef138",
+          "wz_path": "Mob.wz/8220000.img/die1/2",
+          "duration_ms": 150,
+          "origin": {
+            "x": 76,
+            "y": 125
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/die1/0002.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 3,
+          "width": 159,
+          "height": 124,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "72b3f9ad99ae916bd98ea32e189b709c5eb582add0f91d54f543555f9149bf10",
+          "pixel_sha256": "86d6bab7f7f1b3c20d2e169cf559e3abd3214c1870171858072cd329b52673c3",
+          "wz_path": "Mob.wz/8220000.img/die1/3",
+          "duration_ms": 150,
+          "origin": {
+            "x": 71,
+            "y": 124
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/die1/0003.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 4,
+          "width": 157,
+          "height": 124,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "08cc79e44d7489dbc6afb64443019e22c0838f6d6f4f44a2f1d08ed1b61405ef",
+          "pixel_sha256": "16dde6b5822b3836c71911387e5f7e3be4f370a44841ef8574ab3c7f7290749f",
+          "wz_path": "Mob.wz/8220000.img/die1/4",
+          "duration_ms": 150,
+          "origin": {
+            "x": 67,
+            "y": 122
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/die1/0004.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 5,
+          "width": 159,
+          "height": 126,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "e979ac27695589e96a6137a6435226482066d303d39e74f1cae32e27ae7c5ebd",
+          "pixel_sha256": "10e007511ca20142e2292fcad871c0c7ef7d7c1b4cfefb7e8923416c8d7fd62e",
+          "wz_path": "Mob.wz/8220000.img/die1/5",
+          "duration_ms": 150,
+          "origin": {
+            "x": 68,
+            "y": 123
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/die1/0005.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 6,
+          "width": 140,
+          "height": 111,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "b0c3953b0612e4c331dfb43c3518c65b034b0d350ae61b477772164c5d82e142",
+          "pixel_sha256": "af67f6d835b4dc594312aee07be67fed35aad050976cd0e4e5e81bdff8b1459c",
+          "wz_path": "Mob.wz/8220000.img/die1/6",
+          "duration_ms": 150,
+          "origin": {
+            "x": 58,
+            "y": 115
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/die1/0006.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 7,
+          "width": 126,
+          "height": 108,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "305c480e2119bcb38a3600f6bf304e1ff3663f1dfeab981fd4b1b14ad9c57240",
+          "pixel_sha256": "58525d8f3d161b5bbc8d144d90df8306d6d6173d58671695c746e18c02a7d9e6",
+          "wz_path": "Mob.wz/8220000.img/die1/7",
+          "duration_ms": 150,
+          "origin": {
+            "x": 54,
+            "y": 120
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/die1/0007.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 8,
+          "width": 109,
+          "height": 123,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "6b5d0ce48033c010bd17a14a409fe581c9f7173381ba5a3b0c48cd4ce4d9c8ef",
+          "pixel_sha256": "f558f6a53533ec9ece9ecb8664e2f0b40a0bcc1b191536702a0195e186fd4e20",
+          "wz_path": "Mob.wz/8220000.img/die1/8",
+          "duration_ms": 150,
+          "origin": {
+            "x": 48,
+            "y": 148
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/die1/0008.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 10,
+          "width": 144,
+          "height": 145,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "676d83a2d2fa91bd118926d25bc0d56719a9ae8626c685a9513fca4e8129b060",
+          "pixel_sha256": "ec6d5cf0d9ff8dbea0e13f0634c57e5ccb70be7ea1f1d67ca6bb0e9e096fd41c",
+          "wz_path": "Mob.wz/8220000.img/die1/10",
+          "duration_ms": 150,
+          "origin": {
+            "x": 67,
+            "y": 137
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/die1/0010.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 11,
+          "width": 142,
+          "height": 141,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "1e62a624c8befe28e7225dec9c20263ad3bd61118262e15e84b173c1ee33de93",
+          "pixel_sha256": "3321342348ce26407d8ce0aa75eea24f195278e5a79c4aa7950492fe2f25b133",
+          "wz_path": "Mob.wz/8220000.img/die1/11",
+          "duration_ms": 150,
+          "origin": {
+            "x": 66,
+            "y": 135
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/die1/0011.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 12,
+          "width": 138,
+          "height": 138,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "98b74bc1eeeacf7bdf052bd4e21b5ef393a8c8fd82b0838a49c7813bdf2111ee",
+          "pixel_sha256": "b07e1110cda726f988205d497249a7ba33f12e43a64ba15380746513b8bae11a",
+          "wz_path": "Mob.wz/8220000.img/die1/12",
+          "duration_ms": 150,
+          "origin": {
+            "x": 64,
+            "y": 134
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/die1/0012.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": false
+    },
+    {
+      "name": "hit1",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 154,
+          "height": 121,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "ee90800f07579f7bc769ebd82e39b668581496f890f21eda83f13c0304c05337",
+          "pixel_sha256": "e659603f223c17fe5525a3b6a38e1d8df2500147d4c4068808fbabfd5e9e025f",
+          "wz_path": "Mob.wz/8220000.img/hit1/0",
+          "duration_ms": 300,
+          "origin": {
+            "x": 66,
+            "y": 121
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/hit1/0000.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true
+    },
+    {
+      "name": "jump",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 159,
+          "height": 122,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "cdce11fb9e423a14b825955f9cd03845f080905151b7a48f0f2447c91d661805",
+          "pixel_sha256": "7515311c93c53e7f35b0399306a8236f2a5830e1535b1c69f1ca37ee68e9edd3",
+          "wz_path": "Mob.wz/8220000.img/jump/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 72,
+            "y": 122
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/jump/0000.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true
+    },
+    {
+      "name": "move",
+      "frame_count": 6,
+      "expected_frame_count": 6,
+      "frames": [
+        {
+          "index": 0,
+          "width": 154,
+          "height": 123,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "765c6f06391dc0ac3401a2d7c3d2f90a1f73641f7b0ced452b1e85975bd25dc7",
+          "pixel_sha256": "2bae8ce03083ab0f70e6dd78fa948bb3adf28f1c944a049300c26885e1390867",
+          "wz_path": "Mob.wz/8220000.img/move/0",
+          "duration_ms": 150,
+          "origin": {
+            "x": 72,
+            "y": 123
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/move/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 153,
+          "height": 122,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "ee68178452517c6aafb8668f30c37290c80cb151060f09083f3e835f58feb9d3",
+          "pixel_sha256": "4f7d1fe720aa0af9eff5c9ff2e3a2902eeb9fc3de70fd554fc281018f9c4d2a8",
+          "wz_path": "Mob.wz/8220000.img/move/1",
+          "duration_ms": 150,
+          "origin": {
+            "x": 72,
+            "y": 122
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/move/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 154,
+          "height": 122,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5f55679229dc0b5ee33a7b6b984a8d565b942fe901863a89ff2c570e3dddb6cf",
+          "pixel_sha256": "c1d0a5726a9512c3d561187ce6c8e1b698778e24d1b9ad58c76d960f8c048507",
+          "wz_path": "Mob.wz/8220000.img/move/2",
+          "duration_ms": 150,
+          "origin": {
+            "x": 72,
+            "y": 122
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/move/0002.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 3,
+          "width": 162,
+          "height": 123,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "66d2294f18501780b98924a5fe3c1602599c91c044b3423fed134a44e67b0113",
+          "pixel_sha256": "315d4b306c6bb1911306f4458012fc7ab1121ff10b2bad0650eab5f45d6dc60a",
+          "wz_path": "Mob.wz/8220000.img/move/3",
+          "duration_ms": 150,
+          "origin": {
+            "x": 72,
+            "y": 123
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/move/0003.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 4,
+          "width": 170,
+          "height": 122,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "04b1c1dc1443d9bc4874dc2c6efce34b5dd2f3848b823fbe7a158985096a2325",
+          "pixel_sha256": "1d34022a943132c3375933d3330ab68fa8d0919f26f775588e6f508e1dfe24da",
+          "wz_path": "Mob.wz/8220000.img/move/4",
+          "duration_ms": 150,
+          "origin": {
+            "x": 72,
+            "y": 122
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/move/0004.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 5,
+          "width": 159,
+          "height": 122,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "abd93b4e65ea9c516e2491e0235cd52fc0b07b803ab1de51bb86b341af15fad3",
+          "pixel_sha256": "7515311c93c53e7f35b0399306a8236f2a5830e1535b1c69f1ca37ee68e9edd3",
+          "wz_path": "Mob.wz/8220000.img/move/5",
+          "duration_ms": 150,
+          "origin": {
+            "x": 72,
+            "y": 122
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/move/0005.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true
+    },
+    {
+      "name": "skill1",
+      "frame_count": 18,
+      "expected_frame_count": 18,
+      "frames": [
+        {
+          "index": 0,
+          "width": 161,
+          "height": 124,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "afe438bfe8bfad284e7fa4a2a72c83e1b1e657b3e4f3079b27ca50b9b0c5dff8",
+          "pixel_sha256": "6b2a32a9554d56c685d34b4f358be53a6a2230de483aa312b13e8dd81a48f891",
+          "wz_path": "Mob.wz/8220000.img/skill1/0",
+          "duration_ms": 120,
+          "origin": {
+            "x": 72,
+            "y": 124
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/skill1/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 153,
+          "height": 124,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "f1ad2c2ee47a723ee67ebabf7ecfb1409bf6015ea83727020564a27d262ba807",
+          "pixel_sha256": "b412ebe532e6e96f3d63ab3d6da61fe92138f562c330404f4e238eb80c463cac",
+          "wz_path": "Mob.wz/8220000.img/skill1/1",
+          "duration_ms": 120,
+          "origin": {
+            "x": 72,
+            "y": 124
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/skill1/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 158,
+          "height": 131,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "49a656ba98db8568b2cca61f378a8225196f3519a6965de85547e07253080445",
+          "pixel_sha256": "24ae4cbaa23c9f359dde7c38431ad8309bbc5389db72fb8d16699271d72a7930",
+          "wz_path": "Mob.wz/8220000.img/skill1/2",
+          "duration_ms": 120,
+          "origin": {
+            "x": 74,
+            "y": 125
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/skill1/0002.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 3,
+          "width": 168,
+          "height": 139,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "92dd54a489a822470e042c3d431ef4e56edb35c3ebe046f499eb788efee6b760",
+          "pixel_sha256": "c749c527c463d439a2b9ba9668b130a903dc2f9e9df5a757220b8bb0b11c25b6",
+          "wz_path": "Mob.wz/8220000.img/skill1/3",
+          "duration_ms": 120,
+          "origin": {
+            "x": 79,
+            "y": 129
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/skill1/0003.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 4,
+          "width": 181,
+          "height": 144,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "8e4d4a1e2b6d3593538c6a8625990a51682e97f504372c2bcdc29dfde587064c",
+          "pixel_sha256": "0c9777f10f77d59bebfe5ec1fecc8e38119e5cc02e94b9bde68c05a643f767e5",
+          "wz_path": "Mob.wz/8220000.img/skill1/4",
+          "duration_ms": 120,
+          "origin": {
+            "x": 81,
+            "y": 132
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/skill1/0004.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 5,
+          "width": 189,
+          "height": 146,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5d602e24686a10e568a786eab8e6e3ee3c8048ce9c3d93046f462391bd8e3031",
+          "pixel_sha256": "6bc7559766b7ff2aab0a3d867f7cdeab0592b62eaaf2f78366461dabbb88c7d6",
+          "wz_path": "Mob.wz/8220000.img/skill1/5",
+          "duration_ms": 120,
+          "origin": {
+            "x": 82,
+            "y": 133
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/skill1/0005.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 6,
+          "width": 172,
+          "height": 154,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "787f75d9980d14298697a8d78bab7753708dca8cbdac272c73ed5b89270619d2",
+          "pixel_sha256": "6f5f616713a697c25c96e86e7a751dfb9743ad5c4e16c9a06d7f453c656c612f",
+          "wz_path": "Mob.wz/8220000.img/skill1/6",
+          "duration_ms": 120,
+          "origin": {
+            "x": 73,
+            "y": 142
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/skill1/0006.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 7,
+          "width": 159,
+          "height": 151,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "756905b57a2bdf9122cc98ae87ce8fd7c112e4bb1e9c9d6952c95c00765e9661",
+          "pixel_sha256": "c7914f4a4bd32a9aed7a6399443f7b06e7cfefe8d495a266199215dc2e168229",
+          "wz_path": "Mob.wz/8220000.img/skill1/7",
+          "duration_ms": 120,
+          "origin": {
+            "x": 70,
+            "y": 141
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/skill1/0007.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 8,
+          "width": 147,
+          "height": 141,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "f01f760d7b1ab19b4bc9c88855f832207e5e18a4c8e09a1facfcbd5aa85fc323",
+          "pixel_sha256": "2799f47bc9e4dfab3ac67ce0fbba566181f70d107a030cb371edb970fd2c6dec",
+          "wz_path": "Mob.wz/8220000.img/skill1/8",
+          "duration_ms": 120,
+          "origin": {
+            "x": 64,
+            "y": 136
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/skill1/0008.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 9,
+          "width": 154,
+          "height": 123,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "ae8ae57cd89a8de491a3cd70acfa0b7af6b360d9d2314653d13e902d0984034f",
+          "pixel_sha256": "ec7eac63590ae4b4b40adaf31a9aec79c49527ddd74a0f2db017499d0301362d",
+          "wz_path": "Mob.wz/8220000.img/skill1/9",
+          "duration_ms": 120,
+          "origin": {
+            "x": 73,
+            "y": 121
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/skill1/0009.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 10,
+          "width": 162,
+          "height": 124,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "a65132382119a1449d668864fa9716b2994fcd8bc16bbc7bd3bbdc4786635802",
+          "pixel_sha256": "c43c5a545e7620fb02c51ef834c54097b0fae19d019ca14b603ab478dd8e4630",
+          "wz_path": "Mob.wz/8220000.img/skill1/10",
+          "duration_ms": 120,
+          "origin": {
+            "x": 73,
+            "y": 121
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/skill1/0010.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 11,
+          "width": 170,
+          "height": 124,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "e2faf0fc5b132f8339ca3243cd83adb74e591972fd872a9c3b46f1a627efd58c",
+          "pixel_sha256": "35091707fa2cfdfac955fd9be3250997744149fafa1799a864f3860cff491f7f",
+          "wz_path": "Mob.wz/8220000.img/skill1/11",
+          "duration_ms": 120,
+          "origin": {
+            "x": 73,
+            "y": 121
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/skill1/0011.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 12,
+          "width": 171,
+          "height": 129,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "c0fa9e9c23d17288a6559422fca11754106cba3f24cdc82ea288c20024fda8c9",
+          "pixel_sha256": "a980c9ebe1336ee1dd550d2ddca4608fad2ee4f60d4054037770f20fea1d93d7",
+          "wz_path": "Mob.wz/8220000.img/skill1/12",
+          "duration_ms": 120,
+          "origin": {
+            "x": 82,
+            "y": 124
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/skill1/0012.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 13,
+          "width": 166,
+          "height": 130,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "b6b8d5a53ec4bd236dc0b2e2506bf5913757f8b8d76bcc863d7d33b293c59ee9",
+          "pixel_sha256": "667c7a33efec8548d735a8e620dd7579286efdfb7ac2b8770cf16ad6f3e6da55",
+          "wz_path": "Mob.wz/8220000.img/skill1/13",
+          "duration_ms": 120,
+          "origin": {
+            "x": 85,
+            "y": 124
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/skill1/0013.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 14,
+          "width": 155,
+          "height": 124,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "1fac00959a2318c3d69c6e68c3ed4e3d3956164ac44875bb267eba35d7668f41",
+          "pixel_sha256": "a464346724992a55c7e8b80d05d41af0ed0d8f7e9a75c3a23dd621ba05ce3219",
+          "wz_path": "Mob.wz/8220000.img/skill1/14",
+          "duration_ms": 120,
+          "origin": {
+            "x": 75,
+            "y": 124
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/skill1/0014.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 15,
+          "width": 153,
+          "height": 123,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "7c0d0f54d5a4d780c7014955e7292651599e21a7e0403cef1c00527bbfbccfbd",
+          "pixel_sha256": "78c1c69226e32371adaf2db016e2efc7930a70eb91ca802014ad26eb98bbf778",
+          "wz_path": "Mob.wz/8220000.img/skill1/15",
+          "duration_ms": 120,
+          "origin": {
+            "x": 72,
+            "y": 123
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/skill1/0015.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 16,
+          "width": 161,
+          "height": 124,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "8b5c05fbd4a85134f98b7a4799557f7801404b57fd75d8b10126c1485dd147ec",
+          "pixel_sha256": "3d0e51c6eb24a4cb6b7dc9554257b9e841c6d7998e518fea728bbdd104ee23dd",
+          "wz_path": "Mob.wz/8220000.img/skill1/16",
+          "duration_ms": 120,
+          "origin": {
+            "x": 72,
+            "y": 124
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/skill1/0016.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 17,
+          "width": 169,
+          "height": 124,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "79df1dba69fc12bb83037d69a9a0751bd38b3f154b5fc249fdc2de63a945181b",
+          "pixel_sha256": "79e495aec68a9525f41a650ae3fb162d424a31766a9fd4444b193aadb65dcde4",
+          "wz_path": "Mob.wz/8220000.img/skill1/17",
+          "duration_ms": 120,
+          "origin": {
+            "x": 72,
+            "y": 124
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/skill1/0017.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true
+    },
+    {
+      "name": "skill2",
+      "frame_count": 12,
+      "expected_frame_count": 12,
+      "frames": [
+        {
+          "index": 0,
+          "width": 161,
+          "height": 124,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "972fe6d4cd585395d153bb118d2b85ff1e6b936ab96e08861aef2012332b1d88",
+          "pixel_sha256": "6b2a32a9554d56c685d34b4f358be53a6a2230de483aa312b13e8dd81a48f891",
+          "wz_path": "Mob.wz/8220000.img/skill2/0",
+          "duration_ms": 120,
+          "origin": {
+            "x": 72,
+            "y": 124
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8220000/render/skill2/0",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/skill2/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 153,
+          "height": 124,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "dd9c1646f07d7f282736632474d1ea7243a238ee133a45d4c93a100aa8b2f918",
+          "pixel_sha256": "b412ebe532e6e96f3d63ab3d6da61fe92138f562c330404f4e238eb80c463cac",
+          "wz_path": "Mob.wz/8220000.img/skill2/1",
+          "duration_ms": 120,
+          "origin": {
+            "x": 72,
+            "y": 124
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8220000/render/skill2/1",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/skill2/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 158,
+          "height": 131,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "3ec1839e8299422c0e99b27eed9149780f5c5f264550a5bf77a4985724d92a5d",
+          "pixel_sha256": "24ae4cbaa23c9f359dde7c38431ad8309bbc5389db72fb8d16699271d72a7930",
+          "wz_path": "Mob.wz/8220000.img/skill2/2",
+          "duration_ms": 120,
+          "origin": {
+            "x": 74,
+            "y": 125
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8220000/render/skill2/2",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/skill2/0002.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 3,
+          "width": 168,
+          "height": 139,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "bc56f1c386e91a37c6afee168d29de0c376d85a1330715f4f4c3f9f555ff4fae",
+          "pixel_sha256": "c749c527c463d439a2b9ba9668b130a903dc2f9e9df5a757220b8bb0b11c25b6",
+          "wz_path": "Mob.wz/8220000.img/skill2/3",
+          "duration_ms": 120,
+          "origin": {
+            "x": 79,
+            "y": 129
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8220000/render/skill2/3",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/skill2/0003.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 4,
+          "width": 181,
+          "height": 144,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "b1470945a659cbcc41cdf621e5e71abe237b9af22df9d966010aa7d84d251da0",
+          "pixel_sha256": "0c9777f10f77d59bebfe5ec1fecc8e38119e5cc02e94b9bde68c05a643f767e5",
+          "wz_path": "Mob.wz/8220000.img/skill2/4",
+          "duration_ms": 120,
+          "origin": {
+            "x": 81,
+            "y": 132
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8220000/render/skill2/4",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/skill2/0004.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 5,
+          "width": 189,
+          "height": 146,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "25f0d5884349206fd02ec62e74b0e86d5cd98eb9c21f261e3a01f2c57675831b",
+          "pixel_sha256": "6bc7559766b7ff2aab0a3d867f7cdeab0592b62eaaf2f78366461dabbb88c7d6",
+          "wz_path": "Mob.wz/8220000.img/skill2/5",
+          "duration_ms": 120,
+          "origin": {
+            "x": 82,
+            "y": 133
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8220000/render/skill2/5",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/skill2/0005.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 6,
+          "width": 172,
+          "height": 154,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "937936c040c4fd29e9c70cb1926582a07c7fabe55d1aa794994d6cf63e4cdcc1",
+          "pixel_sha256": "6f5f616713a697c25c96e86e7a751dfb9743ad5c4e16c9a06d7f453c656c612f",
+          "wz_path": "Mob.wz/8220000.img/skill2/6",
+          "duration_ms": 120,
+          "origin": {
+            "x": 82,
+            "y": 133
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8220000/render/skill2/6",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/skill2/0006.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 7,
+          "width": 159,
+          "height": 151,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "f06a8dc8045d90a9e1571b97e54e9e14e40b4b4d5250a69278980ab1875f9bd7",
+          "pixel_sha256": "c7914f4a4bd32a9aed7a6399443f7b06e7cfefe8d495a266199215dc2e168229",
+          "wz_path": "Mob.wz/8220000.img/skill2/7",
+          "duration_ms": 120,
+          "origin": {
+            "x": 81,
+            "y": 132
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8220000/render/skill2/7",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/skill2/0007.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 8,
+          "width": 147,
+          "height": 141,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "e546864293b9e6ff7cbebef9e248db6ccd873cda0af4a5321f88113ef13eca0e",
+          "pixel_sha256": "2799f47bc9e4dfab3ac67ce0fbba566181f70d107a030cb371edb970fd2c6dec",
+          "wz_path": "Mob.wz/8220000.img/skill2/8",
+          "duration_ms": 120,
+          "origin": {
+            "x": 79,
+            "y": 129
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8220000/render/skill2/8",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/skill2/0008.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 9,
+          "width": 154,
+          "height": 123,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "7f238917eab226885c95168d1f696c463023c7c2d417ab91fb879c5e45de8c6e",
+          "pixel_sha256": "ec7eac63590ae4b4b40adaf31a9aec79c49527ddd74a0f2db017499d0301362d",
+          "wz_path": "Mob.wz/8220000.img/skill2/9",
+          "duration_ms": 120,
+          "origin": {
+            "x": 74,
+            "y": 125
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8220000/render/skill2/9",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/skill2/0009.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 10,
+          "width": 162,
+          "height": 124,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "424b55f5b4bf8e8fa4b4bcae158d191aea9089679b56d57db05c2d4a148bcb9b",
+          "pixel_sha256": "c43c5a545e7620fb02c51ef834c54097b0fae19d019ca14b603ab478dd8e4630",
+          "wz_path": "Mob.wz/8220000.img/skill2/10",
+          "duration_ms": 120,
+          "origin": {
+            "x": 72,
+            "y": 124
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8220000/render/skill2/10",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/skill2/0010.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 11,
+          "width": 170,
+          "height": 124,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "6555e454d21096e411a340b610963b0ee0fb1bd89eadcc6221d8fd90903f79aa",
+          "pixel_sha256": "35091707fa2cfdfac955fd9be3250997744149fafa1799a864f3860cff491f7f",
+          "wz_path": "Mob.wz/8220000.img/skill2/11",
+          "duration_ms": 120,
+          "origin": {
+            "x": 72,
+            "y": 124
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/mob/8220000/render/skill2/11",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/skill2/0011.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true
+    },
+    {
+      "name": "stand",
+      "frame_count": 6,
+      "expected_frame_count": 6,
+      "frames": [
+        {
+          "index": 0,
+          "width": 161,
+          "height": 124,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "8116d61f3550f1fd743b3c98b57917104bd304114b20cd6484b2a34c7bbc664f",
+          "pixel_sha256": "38f9b5f7e5f2887db9121fc97feff5a9c7b29db2987ebaa63cd59ee1ea703883",
+          "wz_path": "Mob.wz/8220000.img/stand/0",
+          "duration_ms": 120,
+          "origin": {
+            "x": 72,
+            "y": 124
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/stand/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 153,
+          "height": 124,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "20bed4b9b7e2aa4113f09cc33b49ad7454827a63d17a6da773f13853cf1ac116",
+          "pixel_sha256": "0dfb34952aaf1d9f4e1c95e51c815afa15adaa51916f2b6dc591ce6227b9ecaa",
+          "wz_path": "Mob.wz/8220000.img/stand/1",
+          "duration_ms": 120,
+          "origin": {
+            "x": 72,
+            "y": 124
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/stand/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 152,
+          "height": 124,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "20bb37341d9a1c75682318b99fe086faf0e31d68175b1ea24a5665997e109e43",
+          "pixel_sha256": "9aa7e1174c59ce7874f2081e03d04c3ac1bde05cb12790e096330a9e5ccd8ecb",
+          "wz_path": "Mob.wz/8220000.img/stand/2",
+          "duration_ms": 120,
+          "origin": {
+            "x": 72,
+            "y": 124
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/stand/0002.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 3,
+          "width": 153,
+          "height": 123,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "0729a5d611bc40731c482f5e7fd4ae4fbdb6b551aaa277a12037ebd587f48252",
+          "pixel_sha256": "278172ea7da55354eb5322d8ecae9f16c10a5824e3933ca6dff2ddc87326b841",
+          "wz_path": "Mob.wz/8220000.img/stand/3",
+          "duration_ms": 120,
+          "origin": {
+            "x": 72,
+            "y": 123
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/stand/0003.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 4,
+          "width": 161,
+          "height": 124,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "1901babdeee81ad25a25c4baa0e365cb7937b06a53e28896289990e7a23d8c4a",
+          "pixel_sha256": "218e0d7b64da3cc6d92650eac062c8cdebefeb6d84495c7555b654b31e2b0ff1",
+          "wz_path": "Mob.wz/8220000.img/stand/4",
+          "duration_ms": 120,
+          "origin": {
+            "x": 72,
+            "y": 124
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/stand/0004.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 5,
+          "width": 169,
+          "height": 124,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "697ee75582eeb47a9e57a43f492a371f2679814b517355668c629c1d0a83dd78",
+          "pixel_sha256": "f6907b954a179645ace29a4ecac4920457a42ba806a78cfba16324dd8c027672",
+          "wz_path": "Mob.wz/8220000.img/stand/5",
+          "duration_ms": 120,
+          "origin": {
+            "x": 72,
+            "y": 124
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256/stand/0005.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "艾利傑",
+  "role": null,
+  "is_shop": null,
+  "source_locations": [
+    200010302,
+    200010300
+  ],
+  "expected_actions": {
+    "attack1": 30,
+    "die1": 12,
+    "hit1": 1,
+    "jump": 1,
+    "move": 6,
+    "skill1": 18,
+    "skill2": 12,
+    "stand": 6
+  },
+  "source_metadata_sha256": "7bbac603c41a730dbfe10a8b683a1961566ca07820350d097755060f727343a7",
+  "source_archive_sha256": "6be33d30407d697666972345f98f0582c61d5eaa9e8fccee29a0fd20cc0c6053",
+  "source_frame_indices": {
+    "attack1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29
+    ],
+    "die1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11,
+      12
+    ],
+    "hit1": [
+      0
+    ],
+    "jump": [
+      0
+    ],
+    "move": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "skill1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ],
+    "skill2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "stand": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "partial",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false
+  },
+  "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256",
+  "status": "collected",
+  "name_zh_tw_source_url": "https://maplestory.io/api/TWMS/256/mob",
+  "display_name_zh_tw": "艾利傑"
+}

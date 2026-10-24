@@ -7,7 +7,7 @@
     ['Gap', '追問研究缺口'], ['Boss', '跨章節整合']
   ];
   var QUESTS = [
-    { paper:'2501.13956', town:'玩具城', npc:'玩具士兵－迪布', art:'toy-soldier', frame:[45,156], scale:.7,
+    { paper:'2501.13956', town:'玩具城', npc:'馬賽爾', art:'marcel', frame:[56,105], scale:.9,
       title:'追蹤會變動的事實', reward:'時序圖譜守門人',
       chapters:['s-problem','s-graph','s-dmr','s-lme','s-critique','s-boss'] },
     { paper:'2604.14362', town:'勇士之村', npc:'武術教練', art:'dances-with-balrog', frame:[81,88], scale:1,
@@ -16,10 +16,10 @@
     { paper:'2605.06527', town:'墮落城市', npc:'達克魯', art:'dark-lord', frame:[135,174], scale:.6,
       title:'找出未明說的過期記憶', reward:'隱性衝突偵探',
       chapters:['s-problem','s-cupmem','s-probe','s-results','s-gap','s-boss'] },
-    { paper:'2608.19652', town:'夢都', npc:'露希妲', art:'lucid', frame:[65,87], scale:1,
+    { paper:'2608.19652', town:'拉契爾恩', npc:'防毒面具', art:'gas-mask', frame:[78,86], scale:1,
       title:'讓依賴的狀態跟上變化', reward:'狀態漂移獵人',
       chapters:['s-problem','s-method','s-wrapper','s-results','s-critique','s-boss'] },
-    { paper:'2606.30306', town:'天空之城', npc:'妖精克莉爾', art:'kriel', frame:[170,140], scale:.58,
+    { paper:'2606.30306', town:'天空之城', npc:'妖精 克莉爾', art:'kriel', frame:[170,140], scale:.58,
       title:'盤點持久代理的設計邊界', reward:'持久狀態治理官',
       chapters:['s-thesis','s-axes','s-corpus','s-front','s-critique','s-boss'] },
     { paper:'dekleer-1986-atms', town:'弓箭手村', npc:'長老斯坦', art:'elder-stan', frame:[51,73], scale:1.35,
