@@ -22,10 +22,10 @@
   --sml: #a9552e;
   --shadow: 0 1px 2px rgba(44, 49, 46, 0.05), 0 6px 18px -10px rgba(44, 49, 46, 0.16);
 
-  --font-display: "Noto Serif TC", "Songti TC", "PMingLiU", Georgia, serif;
-  --font-body: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
-  --font-hand: "BiauKai", "DFKai-SB", "Kaiti TC", "LXGW WenKai TC", var(--font-display);
-  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --font-display: "Songti TC", "PMingLiU", Georgia, serif;
+  --font-body: "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+  --font-hand: "BiauKai", "DFKai-SB", "Kaiti TC", var(--font-display);
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, monospace;
 
   --step--1: 0.8125rem;
   --step-0: 1.0625rem;
@@ -361,6 +361,9 @@ dl.gloss dd { margin: 0; color: var(--ink); }
 @media (max-width: 900px) { .shelf-page { grid-template-columns: minmax(0, 1fr); padding-block: 1.75rem 4rem; } }
 .shelf-head { grid-column: 1 / -1; display: grid; gap: 0.9rem; max-width: 46rem; }
 .shelf-head h1 { font-size: clamp(2.1rem, 1.4rem + 2.8vw, 3rem); }
+.shelf-start { display: grid; gap: 0.3rem; justify-items: start; }
+.shelf-start .btn { font-weight: 700; }
+.shelf-start small { color: var(--muted); line-height: 1.5; }
 .shelf-head p { color: var(--muted); }
 .tally { display: flex; flex-wrap: wrap; gap: 0.5rem 1.75rem; font-size: var(--step--1); color: var(--muted); }
 .tally b { font-family: var(--font-display); font-size: 1.5rem; color: var(--ink); font-variant-numeric: tabular-nums; margin-right: 0.3rem; }
@@ -1145,6 +1148,12 @@ table.bench-tbl th[scope="rowgroup"], table.bench-tbl th[scope="row"] { color: v
 }
 @media (max-width: 960px) and (prefers-reduced-motion: reduce) { :root[data-skin="maple"] .rail { transition: none; } }
 @media (max-width: 720px) {
+  :root[data-skin="maple"] .shelf-head { margin-top: 42px; }
+  :root[data-skin="maple"] .shelf-page .shelf-head {
+    border-width: 62px 36px 24px 35px;
+    border-image-width: 62px 36px 24px 35px;
+  }
+  :root[data-skin="maple"] .shelf-head > .perch { bottom: calc(100% + 4px); transform: scale(0.65); transform-origin: left bottom; }
   :root[data-skin="maple"] .sec { padding: 2px 4px 10px; }
   /* thick game frames: let the windows use the page gutter so the text column stays wide */
   :root[data-skin="maple"] :is(.sec, .paper-head, .shelf-head, .shelf-aside > div, .card) { margin-inline: -10px; }

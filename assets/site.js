@@ -639,6 +639,20 @@
     return { id: el.getAttribute("data-progress-for"), el: el, total: Number(el.getAttribute("data-total")) || 0,
       href: card ? card.getAttribute("href") : "", title: title, short: title.split("：")[0] };
   });
+  var startLink = document.getElementById("shelf-start-link"), startDetail = document.getElementById("shelf-start-detail");
+  if (startLink) {
+    var startedPaper = shelf.map(function (c) {
+      var done = store.get("study:" + c.id + ":done", []);
+      return { c: c, done: Array.isArray(done) ? done : [] };
+    }).find(function (x) { return x.done.length > 0 && x.done.length < x.c.total; });
+    if (startedPaper) {
+      var toc = store.get("study:" + startedPaper.c.id + ":toc", []);
+      var next = Array.isArray(toc) ? toc.find(function (entry) { return Array.isArray(entry) && !startedPaper.done.includes(entry[0]); }) : null;
+      startLink.href = startedPaper.c.href + (next ? "#" + encodeURIComponent(next[0]) : "");
+      startLink.textContent = "繼續閱讀「" + startedPaper.c.short + "」";
+      if (startDetail) startDetail.textContent = "已完成 " + startedPaper.done.length + " / " + startedPaper.c.total + " 節" + (next ? "，下一節：" + next[1] : "");
+    }
+  }
   var reviewList = document.getElementById("review-list"), due = [];
   shelf.forEach(function (c) {
     var g = asObj(store.get("study:" + c.id + ":grasp", {}));

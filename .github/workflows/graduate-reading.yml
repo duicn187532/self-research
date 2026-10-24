@@ -3,6 +3,8 @@ name: Graduate paper reading checks
 on:
   pull_request:
     paths:
+      - "index.html"
+      - "compare/**"
       - "assets/**"
       - "papers/**"
       - "scripts/**"
@@ -10,6 +12,8 @@ on:
   push:
     branches: [main]
     paths:
+      - "index.html"
+      - "compare/**"
       - "assets/**"
       - "papers/**"
       - "scripts/**"
@@ -40,7 +44,6 @@ jobs:
           node --check assets/study-sync.js
           node scripts/test_reading_lab.js
           node scripts/test_study_profile.js
-          node scripts/test_study_sync_recovery.js
           node scripts/test_study_sync_recovery.js
       - name: Existing quiz bank correctness
         run: python3 scripts/quiz/build.py
