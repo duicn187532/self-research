@@ -407,6 +407,7 @@
     if (!userId) return [];
     var prefixes = [
       '__study_sync_logout_backup:' + scope + ':' + userId + ':',
+      '__study_sync_account_switch_backup:' + scope + ':' + userId + ':',
       '__study_sync_first_backup:' + scope + ':' + userId
     ];
     var result = [];
@@ -533,8 +534,10 @@
     }
     // Archive and remove signed-in data before returning to guest mode. Without
     // this, the next account could accidentally import the previous user's cache.
-    write('__study_sync_logout_backup:' + scope + ':' + userId + ':' + Date.now(),
-      { exported: new Date().toISOString(), entries: entries() });
+    if (!write('__study_sync_logout_backup:' + scope + ':' + userId + ':' + Date.now(),
+      { exported: new Date().toISOString(), entries: entries() })) {
+      message('瀏覽器無法儲存登出備份，已取消登出。請先匯出 JSON。'); return;
+    }
     var result = await client.auth.signOut();
     if (result.error) { message('登出失敗：' + result.error.message); return; }
     Object.keys(entries()).forEach(function (k) { localStorage.removeItem(k); });
@@ -621,6 +624,13 @@
           if (!meaningful(value)) continue;
           // Recover non-empty local values through the normal optimistic CAS path.
           base = null;
+        }
+        // An empty array/string or zero must never wipe meaningful local work
+        // merely because a second device or stale client reset that field.
+        if (row.revision > 0 && row.value !== null &&
+            !meaningful(row.value) && meaningful(value)) {
+          found[key] = { local:value, value:row.value, revision:row.revision };
+          continue;
         }
         if (meaningful(row.value) && !meaningful(value)) {
           localSet(key, row.value); downloaded++;
