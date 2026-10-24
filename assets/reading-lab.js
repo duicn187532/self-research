@@ -114,14 +114,33 @@
     parent.appendChild(el);
     return el;
   }
-  var main = node("div", "reading-lab");
+  var firstSection = data.dims[0][2][0];
+  var paperTitle = document.querySelector(".paper-head h1");
+  if (paperTitle) {
+    var paperStart = node("p", "reading-paper-start");
+    paperStart.appendChild(link(firstSection, "開始閱讀：" + (document.getElementById(firstSection)?.getAttribute("data-short") || "第一個問題")));
+    paperStart.appendChild(document.createTextNode("　"));
+    paperStart.appendChild(link("s-route", "先看閱讀路線"));
+    paperTitle.insertAdjacentElement("afterend", paperStart);
+  }
+  var quickStart = node("p", "reading-quick-start");
+  quickStart.appendChild(link(firstSection, "直接開始：" + (document.getElementById(firstSection)?.getAttribute("data-short") || "第一個問題")));
+  origin.insertAdjacentElement("afterend", quickStart);
+
+  var claim = document.querySelector(".paper-head .claim");
+  if (claim) {
+    var note = node("p", "reading-verification-note", "核對範圍：頁首聲明描述既有教材；本次新增的五維導讀與練習尚未重新逐項對照原文，標為待覆核。原文版本：" + data.version + "。");
+    claim.appendChild(note);
+  }
+
+  var main = node("details", "reading-lab");
   main.id = "reading-lab";
-  origin.insertAdjacentElement("afterend", main);
-  mount(main, "h3", "reading-lab-title", "五維精讀導航");
-  mount(main, "p", "reading-lab-intro", "先掌握 Problem／Method／Benchmark／Contribution／Gap，再進入章節與既有動畫。以下為本站對既有教材的濃縮導讀，不是新的論文原文查驗。");
+  quickStart.insertAdjacentElement("afterend", main);
+  mount(main, "summary", "reading-lab-title", "展開進階導讀與練習（選用）");
+  mount(main, "p", "reading-lab-intro", "五維精讀導航：Problem／Method／Benchmark／Contribution／Gap。以下為本站對既有教材的濃縮導讀，不是新的論文原文查驗。");
 
   var source = mount(main, "details", "reading-source");
-  var sourceSummary = mount(source, "summary", "", "原文與核對狀態（點開）");
+  var sourceSummary = mount(source, "summary", "", "原文版本與新增導讀的核對狀態");
   var sourcePanel = mount(source, "div", "reading-source-body");
   mount(sourcePanel, "p", "", "本站既有教材頁首有過往全文核對聲明；這次改版沒有重新取得並逐頁比對原始 PDF，因此新加入的五維摘要一律保留「本站整理／本次待覆核」標記。不可據此宣稱本次完成論文數字、公式或作者資訊複核。");
   mount(sourcePanel, "p", "", "原文版本：" + data.version + "。核對時必須對照標題、作者、版本日期，並逐項核查公式、圖表與結果。來源若失效，保留原版本紀錄，將新版標為待核對。");

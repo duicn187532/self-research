@@ -1,5 +1,13 @@
 /* Reading Lab only: neutral in both original and Maple skins; no changes to progress HUD. */
 .reading-lab { border:1px solid var(--rule, #b8b8b8); border-radius:12px; padding:clamp(12px,2.6vw,22px); margin:1.2rem 0 1.8rem; background:var(--surface, #fff); color:var(--ink, #202735); line-height:1.7; }
+.reading-quick-start { margin:.9rem 0 .3rem; }
+.reading-paper-start { display:flex; flex-wrap:wrap; align-items:center; gap:.3rem .8rem; margin:.2rem 0; }
+.reading-paper-start a:first-child { display:inline-block; padding:.45rem .8rem; border-radius:5px; background:var(--accent); color:var(--surface); font-weight:700; text-decoration:none; }
+.reading-paper-start a:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.reading-quick-start a { display:inline-block; font-weight:700; color:var(--accent); text-underline-offset:3px; }
+.reading-lab > summary { cursor:pointer; font-weight:700; font-size:1.05rem; }
+.reading-lab > summary:focus-visible,.reading-quick-start a:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.reading-verification-note { font-weight:600; }
 .reading-lab * { box-sizing:border-box; }
 .reading-lab h3,.reading-lab h4 { margin:.15rem 0 .6rem; line-height:1.5; color:var(--ink, #202735); }
 .reading-lab h3 { font-size:1.25rem; }
