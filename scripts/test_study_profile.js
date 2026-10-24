@@ -73,7 +73,7 @@ assert.equal(api.setActiveJob("忘卻之羽"), true, "renamed achievements stay 
 
 
 const sync = fs.readFileSync("assets/study-sync.js", "utf8");
-const mergeSrc = between(sync, "  function mergeStudyProfile(", "  function mergeValues(");
+const mergeSrc = between(sync, "  var LEGACY_PROFILE_JOBS = {", "  function mergeValues(");
 const ctx = {
   parse: JSON.parse,
   fail() { throw new Error("CONFLICT"); }
