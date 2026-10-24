@@ -81,7 +81,8 @@
     });
     var rec = obj(S.get("study:" + paper + ":battle", {})), cleared = 0, chapters = Object.keys(obj(bank.sections)).length;
     Object.keys(obj(bank.sections)).forEach(function (k) { if (rec[k] && rec[k].w) cleared++; });
-    var sum = { total: qs.length, mastered: m, facets: f, chapters: chapters, cleared: cleared,
+    var sum = { total: qs.length, questionIds:qs.map(function (q) { return q.id; }),
+      mastered: m, facets: f, chapters: chapters, cleared: cleared,
       boss: !!(rec["s-boss"] && rec["s-boss"].w), title: bank.title || "" };
     S.set("study:" + paper + ":quizsum", sum);
     return sum;
@@ -362,6 +363,21 @@
 
   // ---------- the shelf's panel: titles, each paper's mastery, the latest rounds ----------
   // papers: [{ id, short, href }]
+  function shelfProgress(paper, cache) {
+    var stats = qstat(paper), battles = obj(S.get("study:" + paper + ":battle", {}));
+    var total = cache && Number.isFinite(cache.total) && cache.total > 0 ? cache.total : 0;
+    var ids = list(cache && cache.questionIds);
+    var exact = total > 0 && ids.length === total &&
+      ids.every(function (id) { return typeof id === "string"; }) && new Set(ids).size === ids.length;
+    if (!exact) ids = Object.keys(stats);
+    var current = ids.filter(function (id) { return mastered(stats[id]); }).length;
+    // Historic caches predate question IDs. Until the paper is opened again,
+    // never show more mastery than either its old cache or current answers prove.
+    var masteredCount = exact ? current : Math.min(current, Number(cache && cache.mastered) || 0);
+    return { total:total, mastered:Math.min(total, masteredCount), exact:exact,
+      boss:!!(battles["s-boss"] && battles["s-boss"].w),
+      hasWork:Object.keys(stats).length > 0 || Object.keys(battles).length > 0 };
+  }
   function shelf(host, papers) {
     host.textContent = "";
     var t = titles();
@@ -371,8 +387,19 @@
     host.appendChild(chips);
     var any = false;
     papers.forEach(function (p) {
-      var sum = S.get("study:" + p.id + ":quizsum", null);
-      if (!sum || !sum.total) return;
+      var sum = shelfProgress(p.id, S.get("study:" + p.id + ":quizsum", null));
+      if (!sum.total) {
+        if (sum.hasWork) {
+          any = true;
+          var update = el("p", "bt-note");
+          var updateLink = el("a", null, p.short + "：已有挑戰紀錄，開啟論文更新熟練度統計");
+          updateLink.href = p.href + "#s-boss";
+          update.appendChild(updateLink);
+          if (sum.boss) update.appendChild(el("span", "bt-crown", "　BOSS ✓"));
+          host.appendChild(update);
+        }
+        return;
+      }
       any = true;
       var row = bar(p.short, sum.mastered, sum.total);
       row.querySelector(".bt-meter-label").textContent = "";
@@ -381,6 +408,7 @@
       row.querySelector(".bt-meter-label").appendChild(a);
       if (sum.boss) row.appendChild(el("span", "bt-crown", "BOSS ✓"));
       host.appendChild(row);
+      if (!sum.exact) host.appendChild(el("p", "bt-note", p.short + "：舊版題庫快取，數字採保守估算；開啟論文可更新。"));
     });
     if (!any) host.appendChild(el("p", "bt-note", "打開一篇論文、挑戰章節怪物後，這裡會列出每篇的研究熟練度。"));
     var e = list(S.get("study:expedition", [])).slice(0, 6);

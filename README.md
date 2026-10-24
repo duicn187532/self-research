@@ -4,7 +4,7 @@
 
 書架上的漢斯會派出 FadeMem 示範任務：從 Problem、Method、Benchmark、Contribution、Gap 各完成一場對應的既有知識戰鬥，再通過跨章節 Boss 挑戰，回到書架或論文頁回報。卡片會指出下一關，戰勝後也可直接前往下一關；其餘章節仍可自由閱讀，不必先完成整篇才能回報。任務顯示未接取、進行中、可回報、已完成四種狀態；直接從論文進入並完成挑戰也會成為可回報。回報不重複發 EXP。短稱號仍依原規則在整篇 15 節完成後解鎖。
 
-進度欄位、備份與同步合併規則見 [進度契約](docs/progress-contract.md)。新增的回歸測試可用 `node scripts/test_intro_quest.js`、`node scripts/test_storage_failure.js`、`node scripts/test_backup_merge.js` 與 `node scripts/test_study_sync_recovery.js` 執行。
+進度欄位、備份與同步合併規則見 [進度契約](docs/progress-contract.md)。新增的回歸測試可用 `node scripts/test_intro_quest.js`、`node scripts/test_storage_failure.js`、`node scripts/test_backup_merge.js`、`node scripts/test_study_sync_recovery.js`、`node scripts/test_battle_persistence.js` 與 `node scripts/test_shelf_progress.js` 執行。
 
 一個幫助精讀論文的靜態網站。每篇論文一頁，同一段內容提供三種解釋深度（五歲 / 大學生 / 研究生，依 [ELI5 skill](.claude/skills/eli5/SKILL.md)），公式逐符號拆解，每節附自我檢測、筆記欄與閱讀進度。
 
