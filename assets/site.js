@@ -137,7 +137,7 @@
     var wrap = document.createElement("div");
     wrap.className = "appear";
     wrap.innerHTML =
-      '<button type="button" class="appear-btn" aria-expanded="false" aria-controls="appear-panel">' +
+      '<button type="button" class="appear-btn" aria-label="外觀設定" aria-expanded="false" aria-controls="appear-panel">' +
       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
       '<circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg><span class="t">外觀</span></button>' +
       '<div class="appear-panel" id="appear-panel" role="group" aria-label="外觀設定" hidden>' +
@@ -921,13 +921,19 @@
   document.querySelectorAll("textarea[data-bench-note]").forEach(function (ta) {
     var key = "study:bench:note", status = ta.parentNode.querySelector(".saved"), timer;
     ta.value = store.get(key, "");
+    function save() {
+      if (!timer) return;
+      clearTimeout(timer); timer = null;
+      var ok = store.set(key, ta.value);
+      if (status) status.textContent = ok ? "已存在這個瀏覽器" : "這個瀏覽器不允許儲存，請記得匯出";
+    }
     ta.addEventListener("input", function () {
       clearTimeout(timer);
-      timer = setTimeout(function () {
-        var ok = store.set(key, ta.value);
-        if (status) status.textContent = ok ? "已存在這個瀏覽器" : "這個瀏覽器不允許儲存，請記得匯出";
-      }, 400);
+      if (status) status.textContent = "儲存中…";
+      timer = setTimeout(save, 400);
     });
+    ta.addEventListener("blur", save);
+    window.addEventListener("pagehide", save);
   });
 
   if (!paper) return;
@@ -1038,10 +1044,33 @@
   // the chapter list slides in from the left; picking a chapter, the shade or Esc puts it away.
   var narrow = window.matchMedia ? window.matchMedia("(max-width: 960px)") : null;
   var mapBtn = null, homeLink = document.querySelector(".toolbar .home");
+  var mapInert = [];
   function drawerMode() { return root.getAttribute("data-skin") === "maple" && !!narrow && narrow.matches; }
   function openMap(v) {
+    if (v && !drawerMode()) v = false;
+    if (v === root.classList.contains("map-open")) return;
+    mapInert.forEach(function (entry) { entry[0].inert = entry[1]; });
+    mapInert = [];
     root.classList.toggle("map-open", v);
     if (mapBtn) mapBtn.setAttribute("aria-expanded", String(v));
+    if (railDetails) {
+      var rail = railDetails.closest(".rail");
+      if (v) {
+        rail.setAttribute("role", "dialog");
+        rail.setAttribute("aria-modal", "true");
+        for (var child = rail; child && child !== document.body; child = child.parentElement) {
+          Array.prototype.forEach.call(child.parentElement.children, function (sibling) {
+            if (sibling === child || sibling.classList.contains("map-scrim")) return;
+            mapInert.push([sibling, sibling.inert]); sibling.inert = true;
+          });
+        }
+        var first = rail.querySelector("a[href], summary, button:not([disabled])");
+        if (first) first.focus();
+      } else {
+        rail.removeAttribute("role"); rail.removeAttribute("aria-modal");
+        if (mapBtn && document.activeElement && rail.contains(document.activeElement)) mapBtn.focus();
+      }
+    }
   }
   if (railDetails && railSummary && homeLink) {
     mapBtn = document.createElement("button");
@@ -1064,6 +1093,15 @@
     railSummary.addEventListener("click", function (e) { if (drawerMode()) { e.preventDefault(); openMap(false); } });
     if (outline) outline.addEventListener("click", function (e) { if (drawerMode() && e.target.closest("a")) openMap(false); });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape" && root.classList.contains("map-open")) { openMap(false); mapBtn.focus(); } });
+    document.addEventListener("keydown", function (e) {
+      if (e.key !== "Tab" || !root.classList.contains("map-open")) return;
+      var rail = railDetails.closest(".rail");
+      var items = Array.prototype.filter.call(rail.querySelectorAll('a[href], summary, button:not([disabled]), [tabindex]:not([tabindex="-1"])'), function (el) { return el.getClientRects().length; });
+      if (!items.length) return;
+      var first = items[0], last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
     var fitRail = function () {
       openMap(false);
       railDetails.open = drawerMode() || !(narrow && narrow.matches);
@@ -1106,7 +1144,6 @@
     var acts = window.MAPLE_SPRITES[m.name].acts, tall = Math.max.apply(null, Object.keys(acts).map(function (a) { return acts[a][1]; }));
     s.style.setProperty("--mob-h", box.checked ? 0 : tall);
     if (box.checked) p.wrap.hidden = true;
-    later(function () { warm(m.name, "hit"); warm(m.name, "die"); });
     box.addEventListener("change", function () {
       if (!box.checked) { s.style.setProperty("--mob-h", tall); respawn(p); return; }
       // the gain was summed by the box's first listener; the monster tells it
@@ -1295,7 +1332,7 @@
       asked.push(k);
       store.set(ASK_KEY, asked);
       var g = award();
-      if (g.gain > 0) { cheer(g.up); hud.chat(gainLines(g, "回答了自我檢測").concat(here())); }
+      if (g.gain > 0) { cheer(g.up); hud.chat(gainLines(g, "查看了解答").concat(here())); }
     });
   });
 
@@ -1306,16 +1343,21 @@
     var status = ta.parentNode.querySelector(".saved");
     ta.value = store.get(noteKey(id), "");
     var timer;
+    function save() {
+      if (!timer) return;
+      clearTimeout(timer); timer = null;
+      var ok = store.set(noteKey(id), ta.value);
+      if (status) status.textContent = ok ? "已存在這個瀏覽器" : "這個瀏覽器不允許儲存，請記得匯出";
+      var g = award();
+      if (g.gain > 0) { cheer(g.up); hud.chat(gainLines(g, "寫了筆記").concat(here())); }
+    }
     ta.addEventListener("input", function () {
       clearTimeout(timer);
-      timer = setTimeout(function () {
-        var ok = store.set(noteKey(id), ta.value);
-        if (status) status.textContent = ok ? "已存在這個瀏覽器" : "這個瀏覽器不允許儲存，請記得匯出";
-        // a section's first note earns EXP once; emptying it takes that back
-        var g = award();
-        if (g.gain > 0) { cheer(g.up); hud.chat(gainLines(g, "寫了筆記").concat(here())); }
-      }, 400);
+      if (status) status.textContent = "儲存中…";
+      timer = setTimeout(save, 400);
     });
+    ta.addEventListener("blur", save);
+    window.addEventListener("pagehide", save);
   });
 
   // ---------- understanding, kept apart from "read": 理解 / 部分理解 / 需要複習, with a review date ----------
@@ -1418,13 +1460,19 @@
     var status = document.createElement("span");
     status.className = "saved";
     var timer;
+    function save() {
+      if (!timer) return;
+      clearTimeout(timer); timer = null;
+      if (ta.value.trim()) tries[k] = { q: q, a: ta.value }; else delete tries[k];
+      status.textContent = store.set(TRY_KEY, tries) ? "已存在這個瀏覽器" : "這個瀏覽器不允許儲存";
+    }
     ta.addEventListener("input", function () {
       clearTimeout(timer);
-      timer = setTimeout(function () {
-        if (ta.value.trim()) tries[k] = { q: q, a: ta.value }; else delete tries[k];
-        status.textContent = store.set(TRY_KEY, tries) ? "已存在這個瀏覽器" : "這個瀏覽器不允許儲存";
-      }, 400);
+      status.textContent = "儲存中…";
+      timer = setTimeout(save, 400);
     });
+    ta.addEventListener("blur", save);
+    window.addEventListener("pagehide", save);
     wrap.appendChild(lab);
     wrap.appendChild(ta);
     wrap.appendChild(status);
@@ -1479,6 +1527,7 @@
       cleared: function () { return box.checked; },
       onStart: function () {
         act("stand");
+        if (art) warm(art.name, "hit");
         var heroes = sprites("hero").filter(function (h) { return window.MAPLE_SPRITES[h].family === "orca" || window.MAPLE_SPRITES[h].family === "lucid"; });
         var heroName = heroes[(seed + sections.indexOf(s)) % Math.max(1, heroes.length)];
         if (heroName) { heroArt = document.createElement("span"); heroArt.className = "bt-hero-actor"; heroArt.dataset.hero = heroName; heroArt.setAttribute("aria-hidden", "true"); heroArt.appendChild(spriteEl(heroName, "stand")); b.setHero(heroArt); }
@@ -1491,6 +1540,7 @@
       },
       onWin: function () {
         clearTimeout(b.hitT);
+        if (art) warm(art.name, "die");
         act("die", true);
         var fresh = t === "boss" ? window.StudyBattle.grant(paper, bank.title) : [];
         if (!box.checked) { box.checked = true; box.dispatchEvent(new Event("change")); }
@@ -1514,7 +1564,6 @@
       art = { name: m.name, spr: spriteEl(m.name, "stand") };
       b.foe = t === "boss" && bank.boss.name ? bank.boss.name : (window.MAPLE_SPRITES[m.name].label || null);
       b.setFoe(b.foe, art.spr);
-      ["hit", "die"].forEach(function (a) { later(function () { warm(m.name, a); }); });
     });
   });
   drawBoard();

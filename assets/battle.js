@@ -190,6 +190,7 @@
       say.textContent = "";
       next.hidden = true;
       tex(arena);
+      qEl.focus();
     }
     function choose(q, i, btn) {
       Array.prototype.forEach.call(opts.children, function (b) { b.disabled = true; });
@@ -238,7 +239,9 @@
       arena.hidden = true;
       result.hidden = false;
       result.textContent = "";
-      result.appendChild(el("p", "bt-verdict", win ? "討伐成功！一次答對 " + round.firstRight + " / " + round.n : "被打倒了……一次答對 " + round.firstRight + " / " + round.n + "。複習下面的解答後再挑戰。"));
+      var verdict = el("p", "bt-verdict", win ? "討伐成功！一次答對 " + round.firstRight + " / " + round.n : "被打倒了……一次答對 " + round.firstRight + " / " + round.n + "。複習下面的解答後再挑戰。");
+      verdict.tabIndex = -1;
+      result.appendChild(verdict);
       var ol = el("ol", "bt-review");
       round.log.forEach(function (it) {
         var li = el("li", it.first ? "is-right" : "is-wrong");
@@ -255,6 +258,7 @@
       go.hidden = false;
       paintStatus();
       tex(result);
+      verdict.focus();
       var res = { win: win, firstRight: round.firstRight, n: round.n };
       round = null;
       if (win && cfg.onWin) cfg.onWin(res);
@@ -262,7 +266,7 @@
     }
     go.addEventListener("click", start);
     next.addEventListener("click", function () { if (!round.hp || !round.hearts) finish(); else show(); });
-    quit.addEventListener("click", function () { round = null; arena.hidden = true; go.hidden = false; paintStatus(); });
+    quit.addEventListener("click", function () { round = null; arena.hidden = true; go.hidden = false; paintStatus(); go.focus(); });
     paintStatus();
     // site.js hands over the monster's name and picture once the game art has loaded
     function setFoe(name, node) {
