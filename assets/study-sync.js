@@ -178,6 +178,7 @@
     ui.label.title = userId ? '冒險者 ID：' + labelText : '登入與學習同步';
     ui.status.textContent = status || (userId ? '已登入，進度將同步至雲端。' : '未登入：學習進度只保留在此瀏覽器。');
     ui.identity.textContent = userId ? ('已登入 · 冒險者 ID：' + (id || '尚未設定')) : '免登入可使用完整教材';
+    ui.guideText.textContent = userId ? '已辨識冒險者身分！可在這裡檢查雲端存檔。' : '歡迎來到公會！登入後即可跨裝置接續精讀任務。';
     ui.idForm.hidden = !userId;
     if (document.activeElement !== ui.idInput) ui.idInput.value = id;
     ui.github.hidden = !!userId || !client;
@@ -208,6 +209,16 @@
     var panel = el('section', 'ss-panel'); panel.hidden = true;
     panel.setAttribute('aria-label', '學習進度同步');
     panel.appendChild(el('div', 'ss-heading', '學習進度同步'));
+    var guide = el('div', 'ss-guide');
+    var npc = el('img'); npc.src = mapleArt + 'spr-npc-robin-stand.png';
+    npc.alt = '冒險者公會的存檔管理員'; npc.loading = 'lazy';
+    guide.appendChild(npc);
+    var dialogue = el('div', 'ss-guide-text');
+    dialogue.appendChild(el('div', 'ss-guide-title', '冒險者公會 · 存檔管理員'));
+    ui.guideText = el('div', '', '登入後即可在不同裝置接續精讀任務。');
+    dialogue.appendChild(ui.guideText);
+    guide.appendChild(dialogue);
+    panel.appendChild(guide);
     ui.identity = el('div', 'ss-status');
     ui.status = el('div', 'ss-status');
     ui.offline = el('div', 'ss-status', '尚未設定 Supabase；目前維持原有訪客儲存模式。');
