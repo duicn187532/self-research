@@ -131,6 +131,10 @@
       '#study-sync-root .ss-id-form input{box-sizing:border-box;width:100%;min-height:38px;padding:6px 8px;' +
         'border:1px solid var(--rule,#9baac2);border-radius:5px;background:var(--surface,#fff);color:var(--ink,#182235);font:inherit}' +
       '#study-sync-root .ss-id-form small{color:var(--muted,#394962)}' +
+      '#study-sync-root .ss-job-form{display:grid;gap:6px;padding:9px 0;border-bottom:1px solid var(--rule,#9baac2)}' +
+      '#study-sync-root .ss-job-form label{font-weight:700}' +
+      '#study-sync-root .ss-job-form select{box-sizing:border-box;width:100%;min-height:38px;padding:5px 8px;border:1px solid var(--rule,#9baac2);border-radius:5px;background:var(--surface,#fff);color:var(--ink,#182235);font:inherit}' +
+      '#study-sync-root .ss-job-form small{color:var(--muted,#394962)}' +
       '@media(max-width:600px){#study-sync-root .ss-label{display:inline-block;max-width:7ch;overflow:hidden;text-overflow:ellipsis}' +
         '#study-sync-root .ss-trigger{min-width:2.25rem;padding:0 .55rem}' +
         '#study-sync-root .ss-panel{font-size:14px}}' +
@@ -148,38 +152,85 @@
     var x = el('button', '', text);
     x.type = 'button'; x.addEventListener('click', fn); return x;
   }
-  function displayId() {
+  // StudyProfile owns the portable profile; Supabase metadata is legacy fallback for old IDs.
+  function profileApi() { return window.StudyProfile || null; }
+  function profileData() {
+    var api = profileApi();
+    return api ? api.get() : { displayId:"", activeJob:"初心者", unlockedJobs:[] };
+  }
+  function metadataId() {
     var data = session && session.user && session.user.user_metadata;
     var id = data && data.study_display_id;
     return typeof id === 'string' && /^[\p{L}\p{N}_-]{2,20}$/u.test(id) ? id : '';
   }
+  function displayId() { return profileData().displayId || metadataId(); }
+  function refreshJobChoices() {
+    if (!ui.jobSelect || !profileApi()) return;
+    var p = profileData(), options = ['初心者'].concat(p.unlockedJobs);
+    if (ui.jobSelect.options.length !== options.length ||
+        Array.from(ui.jobSelect.options).some(function (o, i) { return o.value !== options[i]; })) {
+      ui.jobSelect.replaceChildren();
+      options.forEach(function (job) {
+        var option = el('option', '', job);
+        option.value = job;
+        ui.jobSelect.appendChild(option);
+      });
+    }
+    ui.jobSelect.value = p.activeJob;
+    ui.jobSelect.disabled = p.unlockedJobs.length === 0;
+    ui.jobNote.textContent = p.unlockedJobs.length ?
+      '已解鎖 ' + p.unlockedJobs.length + ' 個研究職業，可自由裝備已獲得的稱號。' :
+      '尚未完成整篇論文，職業為「初心者」。完成所有研讀章節即可解鎖。';
+  }
   async function saveDisplayId(event) {
     event.preventDefault();
-    if (!userId || !client) return;
     var id = ui.idInput.value.trim().normalize('NFKC');
     if (!/^[\p{L}\p{N}_-]{2,20}$/u.test(id)) {
       message('ID 須為 2–20 字，可用中英文字、數字、底線或連字號。'); return;
     }
     ui.idSubmit.disabled = true;
     try {
-      var result = await client.auth.updateUser({ data: { study_display_id: id } });
-      if (result.error) throw result.error;
-      session = { user: result.data.user };
-      message('冒險者 ID 已儲存，其他裝置登入同一帳號後也會顯示。');
+      if (userId && client) {
+        // Keep legacy metadata for older clients. Never save on failure.
+        var result = await client.auth.updateUser({ data: { study_display_id: id } });
+        if (result.error) throw result.error;
+        session = { user: result.data.user };
+      }
+      if (!profileApi() || !profileApi().setDisplayId(id)) throw Error('無法儲存角色資料');
+      message(userId ? '冒險者 ID 已儲存，將同步至其他裝置。' : '冒險者 ID 已儲存在本機；登入後可跨裝置同步。');
+      if (userId) sync(true);
     } catch (e) { message('ID 儲存失敗：' + e.message); }
     finally { ui.idSubmit.disabled = false; }
+  }
+  function selectJob() {
+    var api = profileApi();
+    if (!api || !api.setActiveJob(ui.jobSelect.value)) {
+      message('此職業尚未解鎖。');
+      refreshJobChoices();
+      return;
+    }
+    message('已裝備研究職業「' + ui.jobSelect.value + '」！');
+    if (userId) sync(true);
+  }
+  function migrateLegacyId() {
+    var api = profileApi();
+    if (!api || !userId || !metadataId()) return;
+    // Existing users stored their display ID in auth.user_metadata. Preserve it
+    // when adopting the portable study:profile instead of resetting it.
+    if (!api.get().displayId) api.setDisplayId(metadataId());
   }
   function render() {
     if (!ui.root) return;
     var id = displayId();
-    var labelText = userId ? (id || '設定 ID') : '登入';
+    var labelText = userId ? '已登入' : '登入';
     ui.labelText.textContent = labelText;
     ui.label.setAttribute('aria-label', userId ? '冒險者 ID：' + labelText + '；學習同步設定' : '登入與學習同步');
     ui.label.title = userId ? '冒險者 ID：' + labelText : '登入與學習同步';
     ui.status.textContent = status || (userId ? '已登入，進度將同步至雲端。' : '未登入：學習進度只保留在此瀏覽器。');
-    ui.identity.textContent = userId ? ('已登入 · 冒險者 ID：' + (id || '尚未設定')) : '免登入可使用完整教材';
+    ui.identity.textContent = userId ? ('已登入 · 冒險者 ID：' + (id || '尚未設定')) : '訪客模式 · ' + (id || '未命名冒險者');
     ui.guideText.textContent = userId ? '已辨識冒險者身分！可在這裡檢查雲端存檔。' : '歡迎來到公會！登入後即可跨裝置接續精讀任務。';
-    ui.idForm.hidden = !userId;
+    ui.idForm.hidden = false;
+    refreshJobChoices();
     if (document.activeElement !== ui.idInput) ui.idInput.value = id;
     ui.github.hidden = !!userId || !client;
     ui.google.hidden = !!userId || !client;
@@ -235,6 +286,16 @@
     ui.idForm.appendChild(ui.idSubmit);
     ui.idForm.addEventListener('submit', saveDisplayId);
     panel.appendChild(ui.idForm);
+    var jobRow = el('div', 'ss-job-form');
+    var jobLabel = el('label', '', '研究職業（成就稱號）');
+    jobLabel.htmlFor = 'study-active-job';
+    ui.jobSelect = el('select'); ui.jobSelect.id = 'study-active-job';
+    ui.jobSelect.addEventListener('change', selectJob);
+    ui.jobNote = el('small', '', '完成整篇論文後，即可解鎖研究職業。');
+    jobRow.appendChild(jobLabel);
+    jobRow.appendChild(ui.jobSelect);
+    jobRow.appendChild(ui.jobNote);
+    panel.appendChild(jobRow);
     var actions = el('div', 'ss-actions');
     ui.github = button('GitHub 登入', function () { login('github'); });
     ui.google = button('Google 登入', function () { login('google'); });
@@ -335,6 +396,7 @@
     localStorage.setItem(ownerKey, next || 'guest');
     userId = next;
     session = user ? { user: user } : null;
+    migrateLegacyId();
     meta = userId ? read(storageKey(), {}) : {};
     conflicts = {};
     initialized = true;
@@ -444,6 +506,8 @@
   }
   async function setup() {
     createUi();
+    window.addEventListener('study-profile-change', function () { render(); });
+    window.addEventListener('storage', function (event) { if (event.key === 'study:profile') render(); });
     try { await loadScript(configUrl); }
     catch (_) { message('同步設定檔尚未部署，仍可使用訪客模式。'); return; }
     var c = window.STUDY_SYNC_CONFIG || {};
