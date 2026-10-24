@@ -216,6 +216,96 @@
   // titles change at the levels the game's job advancements would
   var JOBS = [[1, "新手讀者"], [10, "見習研究員"], [20, "研究員"], [30, "資深研究員"], [50, "精讀大師"]];
   function jobOf(lv) { var t = JOBS[0][1]; JOBS.forEach(function (j) { if (lv >= j[0]) t = j[1]; }); return t; }
+  // Research-job achievements are awarded for completing ALL readable quests in one paper.
+  // Battle/BOSS titles (study:titles) remain a separate achievement system.
+  var PROFILE_KEY = "study:profile";
+  var PAPER_JOBS = [
+    { id:"2501.13956", total:15, job:"時序織網師" },
+    { id:"2601.18642", total:15, job:"遺忘調律師" },
+    { id:"2604.14362", total:16, job:"記憶錨定師" },
+    { id:"2605.06527", total:16, job:"過期記憶偵查員" },
+    { id:"2608.19652", total:17, job:"狀態追蹤師" },
+    { id:"2606.30306", total:16, job:"常駐智能體守護者" },
+    { id:"dekleer-1986-atms", total:16, job:"真值維護師" }
+  ];
+  var NOVICE_JOB = "初心者";
+  function validDisplayId(s) {
+    return typeof s === "string" && /^[\p{L}\p{N}_-]{2,20}$/u.test(s);
+  }
+  function profileBase() {
+    var x = store.get(PROFILE_KEY, {});
+    x = x && typeof x === "object" && !Array.isArray(x) ? x : {};
+    var names = PAPER_JOBS.map(function (p) { return p.job; });
+    var unlocked = Array.isArray(x.unlockedJobs) ? x.unlockedJobs.filter(function (v, i, a) {
+      return names.indexOf(v) >= 0 && a.indexOf(v) === i;
+    }) : [];
+    return {
+      displayId: validDisplayId(x.displayId) ? x.displayId : "",
+      activeJob: typeof x.activeJob === "string" ? x.activeJob : NOVICE_JOB,
+      unlockedJobs: unlocked
+    };
+  }
+  function completedJob(p) {
+    var done = store.get("study:" + p.id + ":done", []);
+    if (!Array.isArray(done)) return false;
+    var unique = new Set(done.filter(function (id) { return typeof id === "string" && id.length > 0; }));
+    var toc = store.get("study:" + p.id + ":toc", null);
+    // Use the recorded real section IDs whenever available; unrelated/duplicated IDs do not count.
+    if (Array.isArray(toc) && toc.length === p.total &&
+        toc.every(function (row) { return Array.isArray(row) && typeof row[0] === "string"; }))
+      return toc.every(function (row) { return unique.has(row[0]); });
+    return unique.size >= p.total; // Older progress may predate the saved table of contents.
+  }
+  function emitProfile(profile) {
+    window.dispatchEvent(new CustomEvent("study-profile-change", { detail: profile }));
+  }
+  function refreshProfile() {
+    var current = profileBase(), past = current.unlockedJobs.length;
+    PAPER_JOBS.forEach(function (p) {
+      if (completedJob(p) && current.unlockedJobs.indexOf(p.job) < 0) current.unlockedJobs.push(p.job);
+    });
+    if (current.unlockedJobs.indexOf(current.activeJob) < 0 && current.activeJob !== NOVICE_JOB)
+      current.activeJob = current.unlockedJobs[0] || NOVICE_JOB;
+    if (!past && current.unlockedJobs.length && current.activeJob === NOVICE_JOB)
+      current.activeJob = current.unlockedJobs[0]; // first graduation equips its job automatically
+    var saved = store.get(PROFILE_KEY, null);
+    if (JSON.stringify(saved) !== JSON.stringify(current)) {
+      if (store.set(PROFILE_KEY, current)) emitProfile(current);
+    }
+    return current;
+  }
+  function setProfileDisplayId(id) {
+    if (id !== "" && !validDisplayId(id)) return false;
+    var p = refreshProfile();
+    if (p.displayId !== id) {
+      p.displayId = id;
+      store.set(PROFILE_KEY, p);
+      emitProfile(p);
+    }
+    return true;
+  }
+  function equipResearchJob(job) {
+    var p = refreshProfile();
+    if (job !== NOVICE_JOB && p.unlockedJobs.indexOf(job) < 0) return false;
+    if (p.activeJob !== job) {
+      p.activeJob = job;
+      store.set(PROFILE_KEY, p);
+      emitProfile(p);
+    }
+    return true;
+  }
+  window.StudyProfile = {
+    get: refreshProfile,
+    setDisplayId: setProfileDisplayId,
+    setActiveJob: equipResearchJob,
+    jobs: PAPER_JOBS.slice()
+  };
+  window.addEventListener("storage", function (event) {
+    if (event.key === PROFILE_KEY || event.key && /^study:[^:]+:done$/.test(event.key)) {
+      refreshProfile();
+      emitProfile(profileBase());
+    }
+  });
   // every paper's EXP but one: its cached sum, or for a paper read before EXP existed, its finished sections
   function storedExp(except) {
     var per = {};
@@ -238,19 +328,25 @@
   function makeHud(job, name, notice) {
     var hud = document.createElement("div");
     hud.className = "hud";
-    hud.setAttribute("aria-hidden", "true");
+    // Character identity is meaningful; announce it while preserving the visual HUD.
     hud.innerHTML = '<div class="hud-chat"><b>[公告]</b> <span></span></div><div class="hud-row">' +
-      '<div class="hud-left"><span class="hud-lv"></span><span class="hud-name"><span></span><b></b></span></div>' +
+      '<div class="hud-left"><span class="hud-lv"></span><span class="hud-name"><b class="hud-player-name"></b><span class="hud-job"></span></span></div>' +
       '<div class="hud-gp"><div class="hud-exp"><span class="hud-gray"></span><span class="hud-num"></span></div></div></div>';
     var chatTag = hud.querySelector(".hud-chat b"), chatText = hud.querySelector(".hud-chat span");
     chatText.textContent = notice;
-    hud.querySelector(".hud-name span").textContent = job;
-    hud.querySelector(".hud-name b").textContent = name;
+    function drawIdentity() {
+      var p = refreshProfile();
+      hud.querySelector(".hud-player-name").textContent = p.displayId || "未命名冒險者";
+      hud.querySelector(".hud-job").textContent = p.activeJob || NOVICE_JOB;
+      hud.setAttribute("aria-label", "冒險者 " + (p.displayId || "未命名冒險者") + "，職業 " + p.activeJob);
+    }
+    drawIdentity();
+    window.addEventListener("study-profile-change", drawIdentity);
     document.body.appendChild(hud);
     var last = levelOf(0);
     function draw() {
       var lvNow = last.lv, pct = last.into / last.need;
-      hud.querySelector(".hud-name span").textContent = jobOf(lvNow);
+      drawIdentity();
       hud.querySelector(".hud-num").textContent = last.into + " / " + last.need + " [" + (pct * 100).toFixed(2) + "%]";
       // the bar's coloured interior starts 25px left of the box, under the "EXP." label
       hud.querySelector(".hud-gray").style.left = "calc(" + (pct * 100) + "% + " + (25 * pct - 25) + "px)";
@@ -897,14 +993,19 @@
     store.set(EXP_KEY, mine);
     now = levelOf(others + mine);
     allDone.last = allDone();
+    refreshProfile();
     renderProgress();
     return { gain: now.exp - before.exp, up: now.lv > before.lv, job: jobOf(now.lv) !== jobOf(before.lv), finished: allDone.last && !wasAll };
   }
   allDone.last = allDone();
   function gainLines(g, first) {
     var lines = [["系統", first + "，獲得經驗值 +" + g.gain]];
-    if (g.finished) lines.push(["系統", "任務完成！整篇讀完，額外獲得 +" + EXP.paper]);
-    if (g.up) lines.unshift(["系統", "等級提升！LV." + now.lv + (g.job ? "　轉職為「" + jobOf(now.lv) + "」" : "")]);
+    if (g.finished) {
+      lines.push(["系統", "任務完成！整篇讀完，額外獲得 +" + EXP.paper]);
+      var earned = PAPER_JOBS.find(function (p) { return p.id === paper; });
+      if (earned) lines.push(["轉職", "解鎖研究職業「" + earned.job + "」！"]);
+    }
+    if (g.up) lines.unshift(["系統", "等級提升！LV." + now.lv + (g.job ? "　研究階級提升至「" + jobOf(now.lv) + "」" : "")]);
     return lines;
   }
   function here() { return pageLines(current >= 0 ? current : 0); }
@@ -1593,4 +1694,4 @@
 })();
 
 /* Optional study sync overlay: loaded after the existing page app. */
-(function(){var s=document.createElement('script');s.src=new URL('study-sync.js?v=20261024a',document.currentScript.src).href;document.head.appendChild(s);})();
+(function(){var s=document.createElement('script');s.src=new URL('study-sync.js?v=20261024c',document.currentScript.src).href;document.head.appendChild(s);})();

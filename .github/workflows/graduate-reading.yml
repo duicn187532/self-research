@@ -36,7 +36,10 @@ jobs:
       - name: JavaScript syntax and interactive behavior
         run: |
           node --check assets/reading-lab.js
+          node --check assets/site.js
+          node --check assets/study-sync.js
           node scripts/test_reading_lab.js
+          node scripts/test_study_profile.js
       - name: Existing quiz bank correctness
         run: python3 scripts/quiz/build.py
       - name: Verify quiz outputs remain deterministic
