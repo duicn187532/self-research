@@ -1360,3 +1360,32 @@ table.bench-tbl th[scope="rowgroup"], table.bench-tbl th[scope="row"] { color: v
   :root[data-skin="maple"] .hud-name{left:79px;right:3px}
   :root[data-skin="maple"] .hud-gp{margin-right:1px;padding:0 1px}
 }
+
+
+/* iPhone: dialogue-style paper heading must NOT keep the desktop 150px portrait gutter.
+   Other NPC balloons already use the mobile border widths; the paper intro needs the same rule. */
+@media (max-width:720px) {
+  :root[data-skin="maple"] .column.is-paged > .paper-head:has(> .npc-portrait),
+  :root[data-skin="maple"] .paper-head:has(> .npc-portrait) {
+    box-sizing:border-box;
+    min-width:0;width:auto;
+    min-height:0;
+    margin-top:76px;
+    padding:5px 7px 9px;
+    border-width:28px 14px 58px 16px;
+    border-image:url("maple/win9.png") 28 22 58 24 fill / 28px 14px 58px 16px stretch repeat;
+  }
+  :root[data-skin="maple"] .paper-head:has(> .npc-portrait) > :not(.npc-portrait) {
+    min-width:0;max-width:100%;
+    overflow-wrap:anywhere;
+  }
+  :root[data-skin="maple"] .paper-head:has(> .npc-portrait) h1 {
+    font-size:clamp(1.45rem,6.2vw,2rem);
+    line-height:1.38;
+    overflow-wrap:anywhere;
+  }
+  :root[data-skin="maple"] .paper-head:has(> .npc-portrait) .npc-portrait {
+    left:0;bottom:calc(100% + 23px);top:auto;
+    width:auto;max-width:calc(100vw - 36px);
+  }
+}
