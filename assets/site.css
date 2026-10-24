@@ -1318,3 +1318,45 @@ table.bench-tbl th[scope="rowgroup"], table.bench-tbl th[scope="row"] { color: v
     width:min(340px,calc(100vw - 20px));
   }
 }
+
+
+/* Research identity: the HUD shows the adventurer ID and equipped paper job, not the EXP rank.
+   Keep the complete values in the character menu; clamp visually within the pixel-art frame. */
+:root[data-skin="maple"] .hud-name{min-width:0;gap:1px;line-height:1.1;top:5px}
+:root[data-skin="maple"] .hud-player-name{
+  display:block;color:#fff8df;font-size:12px;font-weight:900;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  text-shadow:-1px -1px #12223e,1px -1px #12223e,-1px 1px #12223e,1px 1px #12223e;
+}
+:root[data-skin="maple"] .hud-job{
+  display:block;color:#ffe47d;font-size:11px;font-weight:800;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  text-shadow:-1px -1px #594021,1px -1px #594021,-1px 1px #594021,1px 1px #594021;
+}
+:root[data-skin="maple"] #study-sync-root .ss-job-form label{color:#1c2b44;font-weight:900}
+:root[data-skin="maple"] #study-sync-root .ss-job-form small{color:#4c5e6c}
+:root[data-skin="maple"] #study-sync-root .ss-job-form select{
+  color:#1c2b44;background:#fffef7;border:1px solid #8b9a9e;
+  border-radius:2px;font-size:16px;min-height:39px;max-width:100%;
+}
+:root[data-skin="maple"] #study-sync-root .ss-job-form select:disabled{opacity:.8}
+@media(max-width:720px){
+  /* Previously mobile hid the entire name and job; allocate a compact game stat panel. */
+  :root[data-skin="maple"] .hud-left{
+    width:clamp(151px,44vw,181px);background-size:207px 42px;
+  }
+  :root[data-skin="maple"] .hud-name{
+    display:flex;left:80px;right:4px;top:5px;gap:1px;
+  }
+  :root[data-skin="maple"] .hud-player-name{font-size:11px;line-height:13px}
+  :root[data-skin="maple"] .hud-job{font-size:10px;line-height:12px}
+  :root[data-skin="maple"] .hud-gp{
+    min-width:0;flex:1 1 0;margin-right:2px;padding:0 3px;
+  }
+  :root[data-skin="maple"] .hud-num{font-size:10px}
+}
+@media(max-width:360px){
+  :root[data-skin="maple"] .hud-left{width:151px}
+  :root[data-skin="maple"] .hud-name{left:79px;right:3px}
+  :root[data-skin="maple"] .hud-gp{margin-right:1px;padding:0 1px}
+}
