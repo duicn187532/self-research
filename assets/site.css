@@ -1198,3 +1198,123 @@ table.bench-tbl th[scope="rowgroup"], table.bench-tbl th[scope="row"] { color: v
   :root[data-skin="maple"] .seg button { padding: 0 4px; font-size: 0.75rem; }
   :root[data-skin="maple"] .toolbar-inner { gap: 4px; }
 }
+
+
+/* Compact explanation-mode selector. One Top Bar button on desktop and phone. */
+.toolbar .levels{flex:0 0 auto;min-width:0}
+.toolbar .levels .levels-label[hidden]{display:none}
+.level-picker{position:static;display:inline-flex;align-items:center}
+.level-trigger{display:inline-flex;align-items:center;justify-content:center;gap:.35rem;min-height:2.25rem;padding:0 .7rem;white-space:nowrap;cursor:pointer;font:inherit;font-size:var(--step--1);background:var(--paper);color:var(--ink);border:1px solid var(--rule);border-radius:999px}
+.level-trigger[aria-expanded="true"]{color:var(--accent);border-color:var(--accent)}
+.level-trigger:focus-visible,.level-panel button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.level-current{min-width:3ch;text-align:center}
+.level-chevron{font-size:.8em}
+.level-panel{position:absolute;right:max(16px,env(safe-area-inset-right,0px));top:100%;z-index:26;box-sizing:border-box;width:min(280px,calc(100vw - 32px));max-height:min(70vh,420px);overflow:auto;margin-top:.4rem;background:var(--surface);color:var(--ink);border:1px solid var(--rule);border-radius:var(--radius);box-shadow:var(--shadow);padding:12px}
+.level-panel[hidden]{display:none}
+.level-panel-title{display:block;font-size:.9rem;margin:0 0 10px}
+.level-panel .seg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;background:none;border:0;border-radius:0;padding:0}
+.level-panel .seg button{min-width:0;min-height:38px;text-align:center;white-space:nowrap;padding:3px 9px}
+@media(max-width:600px){
+  .toolbar-inner:has(.level-picker){flex-wrap:nowrap;gap:.25rem;min-width:0}
+  .toolbar .levels{margin-left:auto}
+  .level-glyph{display:none}
+  .level-trigger{padding:0 .55rem;min-height:34px;gap:.25rem}
+  .level-panel .seg button{min-height:40px}
+  .toolbar-inner:has(.level-picker) .appear{flex:0 0 auto}
+}
+@media(max-width:380px){
+  .level-trigger{padding:0 .35rem}
+  .toolbar-inner:has(.level-picker){gap:3px}
+}
+/* Reuse the existing MapleStory HUD button/window slices for the mode picker. */
+:root[data-skin="maple"] .level-trigger{border-style:solid;border-width:2px 3px;border-radius:0;border-image:url("maple/bt-blue-normal.png") 2 3 fill / 2px 3px stretch;background:none;color:#fff;text-shadow:-1px 0 #1a4f80,1px 0 #1a4f80,0 -1px #1a4f80,0 1px #1a4f80;font-weight:800;min-height:34px;height:34px}
+:root[data-skin="maple"] .level-trigger:hover{border-image-source:url("maple/bt-blue-hover.png")}
+:root[data-skin="maple"] .level-trigger[aria-expanded="true"]{border-image-source:url("maple/bt-blue-pressed.png");color:#fff}
+:root[data-skin="maple"] .level-panel{border-style:solid;border-width:28px 22px 34px 24px;border-radius:0;border-image:url("maple/win9s.png") 28 22 34 24 fill / 28px 22px 34px 24px stretch repeat;background:none;box-shadow:none;color:#1c2b44;padding:3px 2px 3px 1px}
+:root[data-skin="maple"] .level-panel-title{font-size:12px;color:#495569;margin:0 0 8px}
+:root[data-skin="maple"] .level-panel .seg{gap:5px}
+:root[data-skin="maple"] .level-panel .seg button{min-height:36px}
+
+
+/* MapleStory guild window for authentication and cloud save, using existing assets. */
+#study-sync-root .ss-label{display:inline-block;max-width:9ch;overflow:hidden;text-overflow:ellipsis;vertical-align:middle}
+#study-sync-root .ss-guide{display:none}
+@media(max-width:600px){
+  #study-sync-root .ss-label{display:none!important}
+  #study-sync-root .ss-trigger{width:34px!important;min-width:34px!important;padding:0 5px!important}
+}
+@media(max-width:380px){
+  #study-sync-root .ss-trigger{width:32px!important;min-width:32px!important}
+}
+:root[data-skin="maple"] #study-sync-root .ss-panel{
+  border-style:solid;border-width:28px 22px 34px 24px;border-radius:0;
+  border-image:url("maple/win9s.png") 28 22 34 24 fill / 28px 22px 34px 24px stretch repeat;
+  background:none;box-shadow:none;color:#27394f;padding:4px 2px 5px 1px;
+  font:13px/1.55 system-ui,"Noto Sans TC",sans-serif;
+  max-height:min(78dvh,680px);
+}
+:root[data-skin="maple"] #study-sync-root .ss-heading{
+  position:relative;margin:0 0 9px;padding-left:30px;min-height:26px;
+  display:flex;align-items:center;font-size:17px;color:#1c2b44;font-weight:900;
+  border-bottom:2px solid #bb5662;
+}
+:root[data-skin="maple"] #study-sync-root .ss-heading::before{
+  content:"";position:absolute;left:0;top:1px;width:25px;height:23px;
+  background:url("maple/spr-quest-open-stand.png") center / contain no-repeat;
+}
+:root[data-skin="maple"] #study-sync-root .ss-guide{
+  display:flex;align-items:center;gap:8px;margin:0 0 10px;padding:7px 8px;
+  border:1px solid #b5b8b2;background:linear-gradient(#f5f4e9,#e9ebdb);min-height:52px;
+}
+:root[data-skin="maple"] #study-sync-root .ss-guide img{
+  width:46px;height:54px;object-fit:contain;image-rendering:pixelated;flex:none;
+}
+:root[data-skin="maple"] #study-sync-root .ss-guide-text{font-size:12px;color:#273c4f}
+:root[data-skin="maple"] #study-sync-root .ss-guide-title{
+  font-size:12px;font-weight:900;color:#8d4526;margin-bottom:2px;
+}
+:root[data-skin="maple"] #study-sync-root .ss-status{
+  color:#435568;font-size:12px;margin:7px 0;overflow-wrap:anywhere;
+}
+:root[data-skin="maple"] #study-sync-root .ss-id-form{
+  border-color:#8f988d;padding:8px 0;gap:6px;
+}
+:root[data-skin="maple"] #study-sync-root .ss-id-form label{
+  color:#1c2b44;font-weight:900;
+}
+:root[data-skin="maple"] #study-sync-root .ss-id-form small{color:#4c5e6c}
+:root[data-skin="maple"] #study-sync-root .ss-id-form input{
+  background:#fffef7;border:1px solid #8b9a9e;border-radius:2px;
+  color:#1c2b44;font-size:16px;min-height:39px;
+}
+:root[data-skin="maple"] #study-sync-root .ss-panel button{
+  border-style:solid;border-width:2px 3px;border-radius:0;
+  border-image:url("maple/bt-navy-normal.png") 2 3 fill / 2px 3px stretch;
+  background:none;color:white;font-weight:800;min-height:36px;
+  text-shadow:-1px 0 #0b1d33,1px 0 #0b1d33,0 -1px #0b1d33,0 1px #0b1d33;
+  padding:4px 10px;
+}
+:root[data-skin="maple"] #study-sync-root .ss-panel button:hover:not(:disabled){
+  border-image-source:url("maple/bt-navy-hover.png");
+}
+:root[data-skin="maple"] #study-sync-root .ss-panel button:active{
+  border-image-source:url("maple/bt-navy-pressed.png");
+}
+:root[data-skin="maple"] #study-sync-root .ss-id-form button,
+:root[data-skin="maple"] #study-sync-root .ss-actions button:first-child{
+  border-image-source:url("maple/bt-orange-normal.png");
+  text-shadow:-1px 0 #8a3c00,1px 0 #8a3c00,0 -1px #8a3c00,0 1px #8a3c00;
+}
+:root[data-skin="maple"] #study-sync-root .ss-id-form button:hover:not(:disabled),
+:root[data-skin="maple"] #study-sync-root .ss-actions button:first-child:hover:not(:disabled){
+  border-image-source:url("maple/bt-orange-hover.png");
+}
+:root[data-skin="maple"] #study-sync-root .ss-conflict{
+  border-color:#d69959;background:#fff9e8;color:#6d421b;
+}
+@media(max-width:600px){
+  :root[data-skin="maple"] #study-sync-root .ss-panel{
+    right:max(10px,env(safe-area-inset-right,0px));
+    width:min(340px,calc(100vw - 20px));
+  }
+}

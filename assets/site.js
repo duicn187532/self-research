@@ -38,6 +38,72 @@
   });
   setLevel(store.get(LEVEL_KEY, "uni"));
 
+  // Collapse the four explanation-depth buttons into one compact toolbar control.
+  // Move the existing buttons so their data-level-btn handlers and storage behaviour survive.
+  (function mountLevelPicker() {
+    var levels = document.querySelector(".toolbar .levels");
+    if (!levels || levels.querySelector(".level-picker")) return;
+    var seg = levels.querySelector(".seg");
+    if (!seg || seg.querySelectorAll("[data-level-btn]").length !== 4) return;
+    var label = levels.querySelector(".levels-label");
+    if (label) label.hidden = true;
+    var wrap = document.createElement("div");
+    wrap.className = "level-picker";
+    var trigger = document.createElement("button");
+    trigger.type = "button";
+    trigger.className = "level-trigger";
+    trigger.setAttribute("aria-expanded", "false");
+    trigger.setAttribute("aria-haspopup", "true");
+    trigger.setAttribute("aria-controls", "level-picker-panel");
+    trigger.innerHTML = '<span aria-hidden="true" class="level-glyph">▤</span>' +
+      '<span class="level-current"></span><span aria-hidden="true" class="level-chevron">▾</span>';
+    var panel = document.createElement("div");
+    panel.className = "level-panel";
+    panel.id = "level-picker-panel";
+    panel.hidden = true;
+    var title = document.createElement("strong");
+    title.className = "level-panel-title";
+    title.textContent = "選擇解釋深度";
+    panel.appendChild(title);
+    panel.appendChild(seg);
+    wrap.appendChild(trigger);
+    wrap.appendChild(panel);
+    levels.appendChild(wrap);
+    var names = {kid:"五歲", uni:"大學生", grad:"研究生", all:"對照"};
+    function update() {
+      var v = document.documentElement.getAttribute("data-level") || "uni";
+      trigger.querySelector(".level-current").textContent = names[v] || "模式";
+      trigger.setAttribute("aria-label", "解釋深度：" + (names[v] || v) + "，點擊切換");
+    }
+    function open(v) {
+      panel.hidden = !v;
+      trigger.setAttribute("aria-expanded", String(v));
+      if (v) {
+        var active = panel.querySelector('[aria-pressed="true"]');
+        (active || panel.querySelector("[data-level-btn]")).focus();
+      }
+    }
+    trigger.addEventListener("click", function () { open(panel.hidden); });
+    trigger.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowDown" || e.key === "Enter" && panel.hidden) {
+        e.preventDefault(); open(true);
+      }
+    });
+    seg.querySelectorAll("[data-level-btn]").forEach(function (button) {
+      button.addEventListener("click", function () { update(); open(false); trigger.focus(); });
+    });
+    panel.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") { open(false); trigger.focus(); }
+    });
+    document.addEventListener("click", function (e) {
+      if (!panel.hidden && !wrap.contains(e.target)) open(false);
+    });
+    window.addEventListener("storage", function (e) {
+      if (e.key === LEVEL_KEY) update();
+    });
+    update();
+  })();
+
   // ---------- appearance: style (study / maple) and colour mode (system / light / dark) ----------
   // The 楓葉冒險 skin is drawn with game art in assets/maple/ (scripts/setup_maple.py builds it).
   // It is the default, and it is offered only when that art loads, so the inlined single-file
@@ -1527,4 +1593,4 @@
 })();
 
 /* Optional study sync overlay: loaded after the existing page app. */
-(function(){var s=document.createElement('script');s.src=new URL('study-sync.js',document.currentScript.src).href;document.head.appendChild(s);})();
+(function(){var s=document.createElement('script');s.src=new URL('study-sync.js?v=20261024a',document.currentScript.src).href;document.head.appendChild(s);})();
