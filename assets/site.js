@@ -956,6 +956,7 @@
   var railDetails = document.querySelector(".rail details");
   if (railDetails && window.matchMedia && window.matchMedia("(max-width: 960px)").matches) railDetails.open = false;
   var sections = Array.prototype.slice.call(document.querySelectorAll("section.sec[id]"));
+  sections.forEach(function (s, i) { s.setAttribute("data-chapter", (i + 1) + " / " + sections.length); });
   var outline = document.getElementById("outline");
   var links = {};
   if (outline) {
@@ -986,6 +987,16 @@
   // ---------- experience on this paper ----------
   var quests = sections.filter(function (s) { return s.querySelector("input[data-done]"); });
   var EXP_KEY = "study:" + paper + ":exp", ASK_KEY = "study:" + paper + ":asked";
+  var NOTE_AWARDS_KEY = "study:" + paper + ":note-awards";
+  var noteAreas = Array.prototype.slice.call(document.querySelectorAll("textarea[data-note]"));
+  var noteIds = noteAreas.map(function (ta) { return ta.getAttribute("data-note"); });
+  var noteAwards = store.get(NOTE_AWARDS_KEY, null);
+  if (!Array.isArray(noteAwards)) {
+    noteAwards = noteAreas.filter(function (ta) {
+      return String(store.get("study:" + paper + ":note:" + ta.getAttribute("data-note"), "")).trim();
+    }).map(function (ta) { return ta.getAttribute("data-note"); });
+    store.set(NOTE_AWARDS_KEY, noteAwards);
+  } else noteAwards = noteAwards.filter(function (id, i) { return noteIds.indexOf(id) >= 0 && noteAwards.indexOf(id) === i; });
   var firstVisit = store.get(EXP_KEY, null) === null;
   var asked = store.get(ASK_KEY, []);
   var others = storedExp(paper);
@@ -1014,9 +1025,7 @@
     quests.forEach(function (s) { if (isDone(s)) e += EXP.section + bonusOf(s); });
     if (allDone()) e += EXP.paper;
     e += asked.length * EXP.ask;
-    document.querySelectorAll("textarea[data-note]").forEach(function (ta) {
-      if (String(store.get(noteKey(ta.getAttribute("data-note")), "")).trim()) e += EXP.note;
-    });
+    e += noteAwards.length * EXP.note;
     return e;
   }
   var mine = paperExp(), now = levelOf(others + mine), lastGain = null;
@@ -1305,17 +1314,19 @@
       warm("fx-digits", "stand");
     });
   });
+  function completedCount() { return done.filter(function (id) { return document.querySelector('input[data-done="' + id + '"]'); }).length; }
   function renderProgress() {
     Object.keys(links).forEach(function (id) {
       links[id].tick.textContent = done.indexOf(id) >= 0 ? "✓" : "";
       links[id].a.classList.toggle("is-done", done.indexOf(id) >= 0);
     });
-    var n = done.filter(function (id) { return document.querySelector('input[data-done="' + id + '"]'); }).length;
+    var n = completedCount();
     var bar = document.getElementById("progress-bar");
     var txt = document.getElementById("progress-text");
     if (bar) bar.style.width = (countable ? (100 * n) / countable : 0) + "%";
-    if (txt) txt.textContent = n + " / " + countable;
+    if (txt) txt.textContent = "已完成 " + n + " / " + countable + " 任務";
     if (mapBtn) mapBtn.querySelector(".map-num").textContent = n + "/" + countable;
+    if (mapBtn) mapBtn.setAttribute("aria-label", "章節地圖，已完成 " + n + " / " + countable + " 任務" + (current >= 0 ? "，目前第 " + (current + 1) + " / " + sections.length + " 節" : ""));
     hud(now);
     // the minimap's name band carries the reader's level and title (a phone's status bar has no room for it)
     if (names) names.firstChild.textContent = "LV." + now.lv + " " + jobOf(now.lv);
@@ -1362,6 +1373,10 @@
       clearTimeout(timer); timer = null;
       var ok = store.set(noteKey(id), ta.value);
       if (status) status.textContent = ok ? "已存在這個瀏覽器" : "這個瀏覽器不允許儲存，請記得匯出";
+      if (ok && ta.value.trim() && noteAwards.indexOf(id) < 0) {
+        noteAwards.push(id);
+        if (!store.set(NOTE_AWARDS_KEY, noteAwards)) noteAwards.pop();
+      }
       var g = award();
       if (g.gain > 0) { cheer(g.up); hud.chat(gainLines(g, "寫了筆記").concat(here())); }
     }
@@ -1653,14 +1668,13 @@
   var head = document.querySelector(".paper-head");
   var column = document.querySelector(".column");
   var current = -1, paged = false, entered = false;
-  function pad(i) { return (i < 10 ? "0" : "") + i; }
   function titleOf(i) { var s = sections[i]; return s ? s.getAttribute("data-short") || s.querySelector("h2").textContent : ""; }
   // what the chat line says on a page: where you are, a key point (the 五歲 explanation's first
   // sentence), the self-check question, and a nudge
   function pageLines(i) {
     var s = sections[i];
     if (!s) return [];
-    var lines = [["任務", "QUEST " + pad(i) + "　" + s.querySelector("h2").textContent.trim()]];
+    var lines = [["章節", "第 " + (i + 1) + " / " + sections.length + " 節　" + s.querySelector("h2").textContent.trim()]];
     var kid = s.querySelector(".lv-kid p"), claim = s.querySelector(".claim p");
     if (kid) lines.push(["重點", firstSentence(kid)]);
     else if (claim) lines.push(["重點", firstSentence(claim)]);
@@ -1668,7 +1682,7 @@
     // the question only: the NPC's name plate also sits inside the summary
     if (q) lines.push(["提問", Array.prototype.filter.call(q.childNodes, function (n) { return !(n.classList && n.classList.contains("npc-portrait")); })
       .map(function (n) { return n.textContent; }).join("").trim()]);
-    lines.push(["提示", s.querySelector("input[data-done]") ? "讀完按「讀完這節」打倒怪物，再按「下一節」。" : "按「下一節」繼續。"]);
+    lines.push(["提示", tierOf(s) ? "準備好後按「開始討伐」，完成挑戰再前往下一節。" : s.querySelector("input[data-done]") ? "讀完後按「讀完這節」，再按「下一節」。" : "按「下一節」繼續。"]);
     return lines;
   }
   var pager = document.createElement("nav");
@@ -1685,7 +1699,8 @@
     nextBtn.disabled = i >= last;
     prevBtn.querySelector("small").textContent = i > 0 ? titleOf(i - 1) : "";
     nextBtn.querySelector("small").textContent = i < last ? titleOf(i + 1) : "已是最後一節";
-    pager.querySelector(".pg-at").textContent = "QUEST " + pad(i) + " / " + pad(last);
+    pager.querySelector(".pg-at").textContent = "章節 " + (i + 1) + " / " + sections.length;
+    if (mapBtn) mapBtn.setAttribute("aria-label", "章節地圖，已完成 " + completedCount() + " / " + countable + " 任務，目前第 " + (i + 1) + " / " + sections.length + " 節");
     var box = sections[i] && sections[i].querySelector("input[data-done]");
     nextBtn.classList.toggle("is-ready", !box || box.checked);
   }
@@ -1764,7 +1779,7 @@
       if (start < 0) start = 0;
     }
     turnTo(start, false);
-    if (start > 0) hud.chat([["系統", "從上次讀到的地方繼續：QUEST " + pad(start) + "　" + titleOf(start)]].concat(pageLines(start)));
+    if (start > 0) hud.chat([["系統", "從上次讀到的地方繼續：第 " + (start + 1) + " 節　" + titleOf(start)]].concat(pageLines(start)));
   }
   skinHooks.push(setPaged);
   setPaged();

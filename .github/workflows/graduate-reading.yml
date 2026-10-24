@@ -44,6 +44,7 @@ jobs:
           node --check assets/study-sync.js
           node scripts/test_reading_lab.js
           node scripts/test_study_profile.js
+          node scripts/test_note_awards.js
           node scripts/test_study_sync_recovery.js
       - name: Existing quiz bank correctness
         run: python3 scripts/quiz/build.py

@@ -899,7 +899,6 @@ table.bench-tbl th[scope="rowgroup"], table.bench-tbl th[scope="row"] { color: v
 :root[data-skin="maple"] .mini-names { display: flex; flex-direction: column; line-height: 1.25; min-width: 0; font-size: 12px; font-weight: 700; color: #ffffff; text-shadow: var(--outline); }
 :root[data-skin="maple"] .mini-names span { font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 :root[data-skin="maple"] .rail .progress-text { font-size: 11px; margin-left: auto; color: #ffffff; text-shadow: var(--outline); font-family: var(--font-body); font-weight: 700; }
-:root[data-skin="maple"] .rail .progress-text::before { content: "任務 "; }
 :root[data-skin="maple"] .rail summary::after { font-size: 11px; font-weight: 700; color: #3d2604; background: linear-gradient(#ffe39a, #f2b13b); border: 1px solid #a8711a; border-radius: 2px; padding: 0 5px; line-height: 16px; }
 :root[data-skin="maple"] .progress { margin: 0; height: 6px; border-radius: 0; background: #1c2024; }
 :root[data-skin="maple"] .progress > span { background: linear-gradient(#e2f25c, #9cc11a); }
@@ -916,7 +915,7 @@ table.bench-tbl th[scope="rowgroup"], table.bench-tbl th[scope="row"] { color: v
 :root[data-skin="maple"] .column { counter-reset: quest -1; gap: 5rem; }
 :root[data-skin="maple"] .sec { position: relative; padding: 4px 14px 14px; counter-increment: quest; }
 :root[data-skin="maple"] .sec::after {
-  content: "QUEST " counter(quest, decimal-leading-zero); position: absolute; left: -10px; bottom: -46px;
+  content: "章節 " attr(data-chapter); position: absolute; left: -10px; bottom: -46px;
   font-size: 12px; font-weight: 900; letter-spacing: 0.06em; color: #ffffff; text-shadow: var(--outline); line-height: 20px;
 }
 :root[data-skin="maple"] .sec-head { display: block; position: static; border-top: 0; padding: 0 0 10px; border-bottom: 2px solid #c9302c; }
