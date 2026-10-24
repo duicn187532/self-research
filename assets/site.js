@@ -220,14 +220,27 @@
   // Battle/BOSS titles (study:titles) remain a separate achievement system.
   var PROFILE_KEY = "study:profile";
   var PAPER_JOBS = [
-    { id:"2501.13956", total:15, job:"時序織網師" },
-    { id:"2601.18642", total:15, job:"遺忘調律師" },
-    { id:"2604.14362", total:16, job:"記憶錨定師" },
-    { id:"2605.06527", total:16, job:"過期記憶偵查員" },
-    { id:"2608.19652", total:17, job:"狀態追蹤師" },
-    { id:"2606.30306", total:16, job:"常駐智能體守護者" },
-    { id:"dekleer-1986-atms", total:16, job:"真值維護師" }
+    { id:"2501.13956", total:15, job:"時序行者" },
+    { id:"2601.18642", total:15, job:"忘卻之羽" },
+    { id:"2604.14362", total:16, job:"永恆之錨" },
+    { id:"2605.06527", total:16, job:"破妄者" },
+    { id:"2608.19652", total:17, job:"變界旅人" },
+    { id:"2606.30306", total:16, job:"不眠守望" },
+    { id:"dekleer-1986-atms", total:16, job:"真理之眼" }
   ];
+  // Upgrade previously earned titles from pre-October 2026 profiles without losing achievements.
+  var LEGACY_JOBS = {
+    "時序織網師":"時序行者",
+    "遺忘調律師":"忘卻之羽",
+    "記憶錨定師":"永恆之錨",
+    "過期記憶偵查員":"破妄者",
+    "狀態追蹤師":"變界旅人",
+    "常駐智能體守護者":"不眠守望",
+    "真值維護師":"真理之眼"
+  };
+  function canonicalJob(value) {
+    return typeof value === "string" ? (LEGACY_JOBS[value] || value) : "";
+  }
   var NOVICE_JOB = "初心者";
   function validDisplayId(s) {
     return typeof s === "string" && /^[\p{L}\p{N}_-]{2,20}$/u.test(s);
@@ -236,12 +249,14 @@
     var x = store.get(PROFILE_KEY, {});
     x = x && typeof x === "object" && !Array.isArray(x) ? x : {};
     var names = PAPER_JOBS.map(function (p) { return p.job; });
-    var unlocked = Array.isArray(x.unlockedJobs) ? x.unlockedJobs.filter(function (v, i, a) {
-      return names.indexOf(v) >= 0 && a.indexOf(v) === i;
-    }) : [];
+    var unlocked = [];
+    if (Array.isArray(x.unlockedJobs)) x.unlockedJobs.forEach(function (name) {
+      var title = canonicalJob(name);
+      if (names.indexOf(title) >= 0 && unlocked.indexOf(title) < 0) unlocked.push(title);
+    });
     return {
       displayId: validDisplayId(x.displayId) ? x.displayId : "",
-      activeJob: typeof x.activeJob === "string" ? x.activeJob : NOVICE_JOB,
+      activeJob: canonicalJob(x.activeJob) || NOVICE_JOB,
       unlockedJobs: unlocked
     };
   }
