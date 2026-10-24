@@ -1365,7 +1365,7 @@ table.bench-tbl th[scope="rowgroup"], table.bench-tbl th[scope="row"] { color: v
 /* iPhone: dialogue-style paper heading must NOT keep the desktop 150px portrait gutter.
    Other NPC balloons already use the mobile border widths; the paper intro needs the same rule. */
 @media (max-width:720px) {
-  :root[data-skin="maple"] .column.is-paged > .paper-head:has(> .npc-portrait),
+  :root[data-skin="maple"] .column.is-paged > .paper-head:not([hidden]):has(> .npc-portrait),
   :root[data-skin="maple"] .paper-head:has(> .npc-portrait) {
     box-sizing:border-box;
     min-width:0;width:auto;
