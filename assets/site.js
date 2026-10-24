@@ -681,26 +681,6 @@
     return { id: el.getAttribute("data-progress-for"), el: el, total: Number(el.getAttribute("data-total")) || 0,
       href: card ? card.getAttribute("href") : "", title: title, short: title.split("：")[0] };
   });
-  var startLink = document.getElementById("shelf-start-link"), startDetail = document.getElementById("shelf-start-detail");
-  if (startLink) {
-    var startedPaper = shelf.map(function (c) {
-      var done = store.get("study:" + c.id + ":done", []);
-      var last = store.get("study:" + c.id + ":last", null);
-      if (!last || typeof last.id !== "string" || !/^s-[a-z0-9-]+$/.test(last.id) ||
-          !Number.isFinite(last.at) || last.at < 0) last = null;
-      return { c: c, done: Array.isArray(done) ? done : [], last: last };
-    }).filter(function (x) { return x.done.length < x.c.total && (x.done.length > 0 || x.last); })
-      .sort(function (a, b) { return (b.last ? b.last.at : 0) - (a.last ? a.last.at : 0); })[0];
-    if (startedPaper) {
-      var toc = store.get("study:" + startedPaper.c.id + ":toc", []);
-      var next = Array.isArray(toc) ? toc.find(function (entry) { return Array.isArray(entry) && !startedPaper.done.includes(entry[0]); }) : null;
-      var target = startedPaper.last || (next ? { id: next[0], title: next[1] } : null);
-      startLink.href = startedPaper.c.href + (target ? "#" + encodeURIComponent(target.id) : "");
-      startLink.textContent = "繼續閱讀「" + startedPaper.c.short + "」";
-      if (startDetail) startDetail.textContent = "已完成 " + startedPaper.done.length + " / " + startedPaper.c.total + " 節" +
-        (target ? "，上次停在：" + (target.title || target.id) : "");
-    }
-  }
   var reviewList = document.getElementById("review-list"), due = [];
   shelf.forEach(function (c) {
     var g = asObj(store.get("study:" + c.id + ":grasp", {}));
@@ -884,14 +864,15 @@
       (Array.isArray(b.unlockedJobs) ? b.unlockedJobs : []).forEach(function (job) { if (jobs.indexOf(job) < 0) jobs.push(job); });
       return JSON.stringify({ displayId:a.displayId || b.displayId || "", activeJob:a.activeJob || b.activeJob || "初心者", unlockedJobs:jobs });
     }
-    if (/^study:quest:fademem-v[12]$/.test(k) && a && b && a.version === b.version && a.version === Number(k.slice(-1))) {
+    if (/^study:quest:(?:fademem-v[12]|[a-z0-9.-]+:v1)$/.test(k) && a && b &&
+        a.version === b.version && a.version === (k === 'study:quest:fademem-v2' ? 2 : 1)) {
       var ids = Array.isArray(a.required) ? a.required.slice() : [];
       (Array.isArray(b.required) ? b.required : []).forEach(function (id) { if (ids.indexOf(id) < 0) ids.push(id); });
       var quest = { version:a.version, accepted:!!(a.accepted || b.accepted),
         reported:!!(a.reported || b.reported),
         acceptedAt:[a.acceptedAt,b.acceptedAt].filter(Boolean).sort()[0] || "",
         reportedAt:[a.reportedAt,b.reportedAt].filter(Boolean).sort().pop() || "" };
-      if (a.version === 1) { quest.required = ids; quest.total = ids.length; }
+      if (k === 'study:quest:fademem-v1') { quest.required = ids; quest.total = ids.length; }
       return JSON.stringify(quest);
     }
     if (/:(done|asked)$/.test(k) && Array.isArray(a) && Array.isArray(b))
@@ -1961,4 +1942,4 @@
 })();
 
 /* Optional study sync overlay: loaded after the existing page app. */
-(function(){var s=document.createElement('script');s.src=new URL('study-sync.js?v=2d9740015e',document.currentScript.src).href;document.head.appendChild(s);})();
+(function(){var s=document.createElement('script');s.src=new URL('study-sync.js?v=c85c121563',document.currentScript.src).href;document.head.appendChild(s);})();

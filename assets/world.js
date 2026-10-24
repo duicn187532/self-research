@@ -2,7 +2,7 @@
 (function (root) {
   'use strict';
   var PLACES = [
-    { id:'2601.18642', scene:'ellinia-town', name:'魔法森林', topic:'遺忘與雙層記憶', npc:true },
+    { id:'2601.18642', scene:'ellinia-town', name:'魔法森林', topic:'遺忘與雙層記憶' },
     { id:'2501.13956', scene:'ludibrium', name:'玩具城', topic:'時序知識圖譜' },
     { id:'2604.14362', scene:'perion', name:'勇士之村', topic:'只增不刪的記憶' },
     { id:'2605.06527', scene:'kerning', name:'墮落城市', topic:'過期記憶診斷' },
@@ -67,14 +67,28 @@
   }
   function mount() {
     var nav = document.getElementById('world-map-places'), detail = document.getElementById('world-map-detail');
-    var codex = document.getElementById('codex-body'), questHost = document.querySelector('.world-quest-host');
-    if (!nav || !detail || !codex) return;
-    var selected = PLACES[0];
+    var codex = document.getElementById('codex-body'), nextAction = document.getElementById('next-action');
+    var questHost = document.querySelector('.world-quest-host');
+    if (!nav || !detail || !codex || !nextAction) return;
+    var css = document.querySelector('link[href*="assets/site.css"]');
+    var cacheKey = (css && css.getAttribute('href').match(/[?&]v=(\w+)/) || [])[1];
+    function sceneUrl(name, small) {
+      return 'assets/maple/scene-' + name + (small ? '-sm' : '') + '.jpg' + (cacheKey ? '?v=' + cacheKey : '');
+    }
+    function fromHash(fallback) {
+      var id = (location.hash || '').replace(/^#quest-/, '');
+      return PLACES.find(function (place) { return place.id === id; }) || fallback;
+    }
+    var selected = fromHash(PLACES[0]);
     var buttons = [];
     PLACES.forEach(function (place) {
       var button = el('button', 'world-place', place.name);
       button.type = 'button';
-      button.addEventListener('click', function () { selected = place; render(); });
+      button.addEventListener('click', function () {
+        selected = place;
+        if (history.replaceState) history.replaceState(null, '', '#quest-' + place.id);
+        render();
+      });
       nav.appendChild(button); buttons.push(button);
     });
     function renderDetail() {
@@ -83,7 +97,9 @@
       var art = el('div', 'world-scene'), img = document.createElement('img');
       img.alt = selected.name + '場景'; img.loading = 'lazy'; img.decoding = 'async';
       img.onerror = function () { img.hidden = true; art.appendChild(el('span', 'world-scene-fallback', selected.name)); };
-      img.src = 'assets/maple/scene-' + selected.scene + '-sm.jpg';
+      img.src = sceneUrl(selected.scene, true);
+      img.srcset = sceneUrl(selected.scene, true) + ' 768w, ' + sceneUrl(selected.scene, false) + ' 1600w';
+      img.sizes = '(max-width: 720px) calc(100vw - 64px), (max-width: 1150px) 45vw, 600px';
       art.appendChild(img); detail.appendChild(art);
       var body = el('div', 'world-detail-body');
       body.appendChild(el('h3', null, selected.name + ' · ' + selected.topic));
@@ -91,16 +107,21 @@
       body.appendChild(el('p', 'world-progress', '已讀 ' + Math.min(info.done.length, info.total) + ' / ' + info.total +
         ' 節 · 已挑戰 ' + seen.length + ' 個章節' + (due.length ? ' · ' + due.length + ' 節待複習' : '')));
       body.appendChild(link('進入論文', info.href, 'btn'));
-      if (selected.npc) body.appendChild(link('與漢斯對話，查看研究任務', '#intro-quest', 'world-npc-link'));
-      else body.appendChild(el('p', 'world-no-quest', '這座城鎮可自由閱讀與挑戰章節；目前的研究主線在魔法森林。'));
       detail.appendChild(body);
-      if (questHost) questHost.hidden = !selected.npc;
+      if (questHost) Array.prototype.forEach.call(questHost.querySelectorAll('[data-quest-paper]'), function (box) {
+        box.hidden = box.getAttribute('data-quest-paper') !== selected.id;
+        if (!box.hidden) {
+          var portrait = box.querySelector('img[data-src]');
+          if (portrait) { portrait.src = portrait.dataset.src; portrait.removeAttribute('data-src'); }
+        }
+      });
       buttons.forEach(function (button, i) {
         button.setAttribute('aria-pressed', String(PLACES[i] === selected));
       });
     }
     function renderCodex() {
       codex.textContent = '';
+      nextAction.textContent = '';
       var allDue = [];
       PLACES.forEach(function (place) { allDue = allDue.concat(dueChapters(place, data(place))); });
       allDue.sort(function (a, b) { return a.rec.due.localeCompare(b.rec.due); });
@@ -111,23 +132,19 @@
         suggestion.appendChild(el('p', null, '先回顧到期的章節，再決定是否已理解。'));
         suggestion.appendChild(link(first.place.name + ' · ' + chapterName(first.info, first.id), first.info.href + '#' + first.id));
       } else {
-        var stage = root.StudyIntroQuest && root.StudyIntroQuest.nextStage();
-        var quest = root.StudyIntroQuest && root.StudyIntroQuest.readProgress();
-        if (stage && quest && quest.accepted && !quest.reported) {
-          suggestion.appendChild(el('p', null, '繼續漢斯的研究任務。'));
-          suggestion.appendChild(link(stage.short, data(PLACES[0]).href + '#' + stage.id));
-        } else {
           var unfinished = PLACES.map(function (place) {
             var info = data(place), last = object(info.last);
             return { place:place, info:info, target:nextUnread(info), at:Number.isFinite(last.at) ? last.at : 0 };
           }).filter(function (entry) { return entry.info.done.length < entry.info.total && entry.at > 0; })
             .sort(function (a, b) { return b.at - a.at; })[0];
-          suggestion.appendChild(el('p', null, unfinished ? '接著讀尚未完成的章節。' : '挑一篇論文，先找出研究問題。'));
-          suggestion.appendChild(link(unfinished ? unfinished.place.name + ' · 繼續閱讀' : '從 FadeMem 開始',
-            unfinished ? unfinished.info.href + (unfinished.target ? '#' + unfinished.target : '') : data(PLACES[0]).href));
-        }
+          if (unfinished) {
+            suggestion.appendChild(el('p', null, '接著讀尚未完成的章節。'));
+            suggestion.appendChild(link(unfinished.place.name + ' · 繼續閱讀',
+              unfinished.info.href + (unfinished.target ? '#' + unfinished.target : '')));
+          }
       }
-      codex.appendChild(suggestion);
+      nextAction.hidden = !suggestion.querySelector('a');
+      if (!nextAction.hidden) nextAction.appendChild(suggestion);
       var list = el('ul', 'codex-list');
       PLACES.forEach(function (place) {
         var info = data(place), seen = battles(info), li = el('li');
@@ -177,6 +194,7 @@
     root.addEventListener('study-progress-change', render);
     root.addEventListener('storage', render);
     root.addEventListener('study-local-write', render);
+    root.addEventListener('hashchange', function () { selected = fromHash(selected); render(); });
     render();
   }
   root.StudyWorld = { places:PLACES.slice(), mount:mount };

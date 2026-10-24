@@ -1,0 +1,6 @@
+[
+  {"region":"victoria","kind":"Back","name":"grassySoil_new","maps":["100000000"]},
+  {"region":"victoria","kind":"Back","name":"shineWood","maps":["101000000"]},
+  {"region":"victoria","kind":"Back","name":"dryRock","maps":["102000000"]},
+  {"region":"victoria","kind":"Back","name":"sunsetCity","maps":["103000000"]}
+]

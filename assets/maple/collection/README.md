@@ -1,6 +1,6 @@
 # 楓之谷素材 collection
 
-此目錄為獨立素材庫；既有 `assets/maple/` 素材、網站 UI、CSS、JS、教材與遊戲邏輯不在本次修改範圍。
+此目錄保存來源素材與出處；網站使用的衍生圖另放在 `assets/maple/`，UI、教材與遊戲邏輯則位於網站程式內。
 
 **原版美術公開再散布授權未確認。** 依倉庫擁有者 2026-10-23 的明確指示公開存放；這不構成權利人的授權。使用前請讀 [RIGHTS.md](RIGHTS.md)。
 
@@ -31,6 +31,8 @@ NPC、普通怪物、精英怪、菁英 Boss、一般 Boss 分開。素材 ID／
 
 P1 已開始收錄拉契爾恩 NPC／場景、露希妲、戴米安、威爾，以及玩具城／時間塔、天空之城、冰原雪域與神木村。Boss 各階段獨立存放；場景共用資源集保留 Back／Obj／Tile 獨立 PNG。P2 後續擴充寵物、UI、道具與技能特效。
 
+`batch-05-town-backgrounds.json` 補收弓箭手村、魔法森林、勇士之村與墮落城市的 TWMS/256 `Map.wz/Back` 資源集。`scripts/build_collection_sprites.py` 將這些資源與既有玩具城、時間塔、天空之城、拉契爾恩的 Back 畫布疊在透明場景前景後方，輸出網站用 1600×760 與 768×365 場景圖。這是靜態編排，未重現遊戲內背景視差座標。原始 PNG 與匯出 URL、SHA-256 分別保存在各 `resource-set.json`，合成的 JPEG 是衍生品。
+
 ## 重現與驗證
 
 需要 Python 3.10+ 與 Pillow。這些是離線素材整理工具，不是網站程式。
@@ -41,6 +43,7 @@ python assets/maple/collection/repair_frames.py
 python assets/maple/collection/collect_nested_effects.py
 python assets/maple/collection/collect_maps.py assets/maple/collection/batch-04-maps.json
 python assets/maple/collection/collect_map_resource_batch.py assets/maple/collection/batch-04-map-resources.json
+python assets/maple/collection/collect_map_resource_batch.py assets/maple/collection/batch-05-town-backgrounds.json
 python assets/maple/collection/sync_tw_names.py
 python assets/maple/collection/enrich.py
 python assets/maple/collection/verify_wz_indices.py --prepare

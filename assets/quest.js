@@ -53,6 +53,7 @@
     var prefix = paper ? '../../' : '';
     function paperHref(id) { return paper ? '#' + id : 'papers/' + PAPER + '/index.html#' + id; }
     var box = document.createElement('section'); box.id = 'intro-quest'; box.className = 'intro-quest';
+    box.setAttribute('data-quest-paper', PAPER);
     box.setAttribute('aria-label', '魔法森林研究任務');
     var portrait = document.createElement('span'); portrait.className = 'intro-quest-portrait';
     var img = document.createElement('img'); img.src = prefix + 'assets/maple/spr-npc-hines-stand.png';

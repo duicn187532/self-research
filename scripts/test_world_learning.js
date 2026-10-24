@@ -14,11 +14,12 @@ vm.runInNewContext(worldSource, {
 const places = Array.from(worldWindow.StudyWorld.places);
 assert.equal(places.length, 7);
 assert.equal(new Set(places.map(place => place.id)).size, 7);
-assert.equal(places.filter(place => place.npc).length, 1);
-assert.equal(places.find(place => place.npc).id, '2601.18642');
+assert.equal(places.filter(place => place.npc).length, 0);
 const shelf = fs.readFileSync('index.html', 'utf8');
 assert.match(shelf, /class="world-quest-host"/);
 assert.match(shelf, /id="research-codex"/);
+assert.match(shelf, /id="paper-catalog"/);
+assert.match(shelf, /src="assets\/world-quests\.js/);
 assert.match(shelf, /src="assets\/reading-lab\.js/);
 const dimensions = {};
 vm.runInNewContext(fs.readFileSync('assets/reading-lab.js','utf8'),

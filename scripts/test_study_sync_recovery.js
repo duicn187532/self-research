@@ -159,6 +159,12 @@ function reset() {
     JSON.stringify({version:2,accepted:true,reported:true}),
     JSON.stringify({version:2,accepted:true,reported:false})));
   assert.equal(v2.reported,true);
+  const townQuest=JSON.parse(ctx.mergeValues('study:quest:2501.13956:v1',
+    JSON.stringify({version:1,accepted:true,reported:true,acceptedAt:'2026-10-20'}),
+    JSON.stringify({version:1,accepted:true,reported:false,acceptedAt:'2026-10-21'})));
+  assert.equal(townQuest.reported,true);
+  assert.equal(townQuest.acceptedAt,'2026-10-20');
+  assert.equal(Object.hasOwn(townQuest,'required'),false);
   const uncertain=JSON.parse(ctx.mergeValues('study:fade:qstat',
     JSON.stringify({q1:[2,1,1,1]}),JSON.stringify({q1:[3,1,0,1]})));
   assert.equal(uncertain.q1[2],0,'conflicting last-answer flags cannot claim mastery');
