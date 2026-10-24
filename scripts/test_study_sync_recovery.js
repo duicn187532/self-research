@@ -50,7 +50,7 @@ const mockCloud = rows => {
   const writes = [];
   let signedOut = false;
   ctx.client = {
-    from() { return {select() { return {async eq() {return {data:rows}}; }; }}; },
+    from() { return {select() { return {async eq() {return {data:rows}; }}; }}; },
     async rpc(_, args) {
       writes.push(args);
       assert.notEqual(args.p_value, null, 'RPC must never receive a NULL deletion');
