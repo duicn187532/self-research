@@ -74,4 +74,4 @@ assert.equal(merged.activeJob, "時序織網師", "non-beginner equipped job sur
 assert.deepEqual(merged.unlockedJobs, ["時序織網師", "遺忘調律師"]);
 assert.throws(() => ctx.mergeStudyProfile(JSON.stringify(cloud), JSON.stringify({ ...local, displayId:"另一人" })), /CONFLICT/, "different names are not overwritten silently");
 assert.throws(() => ctx.mergeStudyProfile(JSON.stringify(cloud), JSON.stringify({ ...local, activeJob:"遺忘調律師" })), /CONFLICT/, "competing manually equipped jobs require resolution");
-console.log("Study profile: 15 functional checks passed.");
+console.log("Study profile: all functional regression assertions passed.");
