@@ -33,6 +33,8 @@ P1 已開始收錄拉契爾恩 NPC／場景、露希妲、戴米安、威爾，�
 
 `batch-05-town-backgrounds.json` 補收弓箭手村、魔法森林、勇士之村與墮落城市的 TWMS/256 `Map.wz/Back` 資源集。`scripts/build_collection_sprites.py` 將這些資源與既有玩具城、時間塔、天空之城、拉契爾恩的 Back 畫布疊在透明場景前景後方，輸出網站用 1600×760 與 768×365 場景圖。這是靜態編排，未重現遊戲內背景視差座標。原始 PNG 與匯出 URL、SHA-256 分別保存在各 `resource-set.json`，合成的 JPEG 是衍生品。
 
+`batch-06-art-direction.json` 補收六個城鎮／周邊的任務導師、一般怪物與地區首領。網站中的導讀 NPC 與戰鬥素材依論文所屬城鎮固定，避免跨區隨機抽角。馬賽爾的來源位置是玩具城（220000000）；拉契爾恩版防毒面具（3003202）的來源位置是市中心（450003000）。後者的來源 API 僅成功輸出站立影格，`partial` 狀態及缺漏影格保留在紀錄中；網站只使用已取得的站立圖。樹妖王有非網站使用的巢狀影格缺漏，網站所需的 stand／move／hit／die 已取得。
+
 ## 重現與驗證
 
 需要 Python 3.10+ 與 Pillow。這些是離線素材整理工具，不是網站程式。
@@ -44,6 +46,7 @@ python assets/maple/collection/collect_nested_effects.py
 python assets/maple/collection/collect_maps.py assets/maple/collection/batch-04-maps.json
 python assets/maple/collection/collect_map_resource_batch.py assets/maple/collection/batch-04-map-resources.json
 python assets/maple/collection/collect_map_resource_batch.py assets/maple/collection/batch-05-town-backgrounds.json
+python assets/maple/collection/collect.py assets/maple/collection/batch-06-art-direction.json --acknowledge-unconfirmed-rights
 python assets/maple/collection/sync_tw_names.py
 python assets/maple/collection/enrich.py
 python assets/maple/collection/verify_wz_indices.py --prepare

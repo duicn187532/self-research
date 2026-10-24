@@ -1,0 +1,1074 @@
+{
+  "id": "9300003",
+  "type": "bosses",
+  "region": "victoria",
+  "town": "kerning-city",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": "超級綠水靈",
+  "name_zh_tw_status": "source_twms",
+  "source_url": "https://maplestory.io/api/TWMS/256/mob/9300003",
+  "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Mob/9300003.img",
+  "wz_path": "Mob.wz/9300003.img",
+  "version": {
+    "region": "TWMS",
+    "version": "256"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "attack1",
+      "frame_count": 8,
+      "expected_frame_count": 8,
+      "frames": [
+        {
+          "index": 0,
+          "width": 206,
+          "height": 142,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "d39675afbde53212b2d111b53b17ae821053611d9391654821539d452e9ef284",
+          "pixel_sha256": "c624e68be6ec6a862f96f71ae8d891dc942cd56ca910203f094b6ef1549b3820",
+          "wz_path": "Mob.wz/9300003.img/attack1/0",
+          "duration_ms": 300,
+          "origin": {
+            "x": 73,
+            "y": 142
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/attack1/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 219,
+          "height": 153,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "bdbad4decd3900258da5d1199611c1d1fc7f305162bfe0027d13a2bd0fe7099a",
+          "pixel_sha256": "7c89da9bb37a8e4eb182671fe0e8a771aaecbdaa46bf4bf2014165205b57ea58",
+          "wz_path": "Mob.wz/9300003.img/attack1/1",
+          "duration_ms": 100,
+          "origin": {
+            "x": 75,
+            "y": 153
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/attack1/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 173,
+          "height": 180,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "4989c81af8d22e322ca608175bcf5015a2f2e6e6712301a9f0bba115e9bcccac",
+          "pixel_sha256": "2410fa4a99c52774138e10730c1adcc6e5088f2ac9120708bd8d5d269bf00a30",
+          "wz_path": "Mob.wz/9300003.img/attack1/2",
+          "duration_ms": 100,
+          "origin": {
+            "x": 75,
+            "y": 180
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/attack1/0002.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 3,
+          "width": 178,
+          "height": 189,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "9564272e98197c4a8cb197d54abed4fa0945ea127ae45e6070cc0ab66b5495f5",
+          "pixel_sha256": "1e43a729810a9583dc213a11b369f20c652cc3795c40ab760f25207f381fcd1f",
+          "wz_path": "Mob.wz/9300003.img/attack1/3",
+          "duration_ms": 150,
+          "origin": {
+            "x": 71,
+            "y": 230
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/attack1/0003.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 4,
+          "width": 231,
+          "height": 208,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "d4e6ebd7e166cfe168e37e54f9c02031c73c45d707500db814d10397b19bb397",
+          "pixel_sha256": "2f0aac66236107b35702c6d58f64ac6241a6e12415744d22dd904bd74ca4800c",
+          "wz_path": "Mob.wz/9300003.img/attack1/4",
+          "duration_ms": 150,
+          "origin": {
+            "x": 71,
+            "y": 225
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/attack1/0004.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 5,
+          "width": 202,
+          "height": 245,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "d5c467a2e4335e34c0192e187d98b2d428a062605c4ca338da802902f9cf1660",
+          "pixel_sha256": "d633ad748afcab2d035bb2bbd2490a611384aa446027a2dd4679410027da57b0",
+          "wz_path": "Mob.wz/9300003.img/attack1/5",
+          "duration_ms": 100,
+          "origin": {
+            "x": 71,
+            "y": 254
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/attack1/0005.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 6,
+          "width": 186,
+          "height": 216,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "518e3d8ed45e59c5502803a28950567c4bb01a47dc055cc8007dca0669f5fc13",
+          "pixel_sha256": "16c6cfa894f1a1ba33a29a17918381dae0d5242a7162a534621a0b9f4d25d08a",
+          "wz_path": "Mob.wz/9300003.img/attack1/6",
+          "duration_ms": 100,
+          "origin": {
+            "x": 75,
+            "y": 216
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/attack1/0006.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 7,
+          "width": 206,
+          "height": 142,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "2ee2f14bf0930499a550086e50ec9667bfb9426b89894d92d5c8c0f2003f392c",
+          "pixel_sha256": "c624e68be6ec6a862f96f71ae8d891dc942cd56ca910203f094b6ef1549b3820",
+          "wz_path": "Mob.wz/9300003.img/attack1/7",
+          "duration_ms": 500,
+          "origin": {
+            "x": 73,
+            "y": 142
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/attack1/0007.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true
+    },
+    {
+      "name": "attack1/info/effect",
+      "frame_count": 10,
+      "expected_frame_count": null,
+      "frames": [
+        {
+          "index": 0,
+          "width": 206,
+          "height": 127,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "d92b5ca875a27f9cf2e6deaa1f1e3d15394012a167dae25f8cb442ce0aea98ed",
+          "pixel_sha256": "71622339c09079a84d05d3f2198b0f319d5e6cb14b569f829132bfdfddc66676",
+          "wz_path": "Mob.wz/9300003.img/attack1/info/effect/0",
+          "duration_ms": 50,
+          "origin": {
+            "x": 94,
+            "y": 120
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/attack1/info/effect/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 217,
+          "height": 129,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "8be9ff28f9cac8c3341f34b3fc04f11201c33d25eeade958f083dcba6a5824eb",
+          "pixel_sha256": "e7c4ee374b1c0f287e657db4746f49ffa202f7c6dc066da0a4974db30af4123a",
+          "wz_path": "Mob.wz/9300003.img/attack1/info/effect/1",
+          "duration_ms": 50,
+          "origin": {
+            "x": 98,
+            "y": 123
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/attack1/info/effect/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 230,
+          "height": 142,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "6b2964b45beed81430021f6dd3a4958c25040f9d159835180e3c9c704db75065",
+          "pixel_sha256": "24dfe34a13bc74e1e22cbe5a6b85efd638783c8e1a918863addf85c32293d429",
+          "wz_path": "Mob.wz/9300003.img/attack1/info/effect/2",
+          "duration_ms": 100,
+          "origin": {
+            "x": 104,
+            "y": 136
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/attack1/info/effect/0002.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 3,
+          "width": 142,
+          "height": 86,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "1abdc0250507d07d8c65b7ffa59c58571e2d0e1335a94d3e2903901c2207cd5d",
+          "pixel_sha256": "b21d93be9fca2a35487a2076a5e50f55f549d6bbe471cbe77f9f95e9f083a921",
+          "wz_path": "Mob.wz/9300003.img/attack1/info/effect/3",
+          "duration_ms": 75,
+          "origin": {
+            "x": 69,
+            "y": 79
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/attack1/info/effect/0003.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 4,
+          "width": 153,
+          "height": 86,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "a71920a8f4dd187cdd0ff60a9d28dd3adecd4a688d5d92201a46fa96dcaef8f5",
+          "pixel_sha256": "aaf7ce4cf679e6d02a41570af9495f5979cbd1a2bdd94b0679c937a36330d424",
+          "wz_path": "Mob.wz/9300003.img/attack1/info/effect/4",
+          "duration_ms": 75,
+          "origin": {
+            "x": 75,
+            "y": 79
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/attack1/info/effect/0004.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 5,
+          "width": 158,
+          "height": 75,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "08c1b69df1803c41438c920cafa28a161f0a1b0774ff9961318a6089f3570cdf",
+          "pixel_sha256": "06c1d9dd39b8839ab74d25b34c4a8a72f44f1f23eeb2e4afd7039c85d65dab1e",
+          "wz_path": "Mob.wz/9300003.img/attack1/info/effect/5",
+          "duration_ms": 150,
+          "origin": {
+            "x": 78,
+            "y": 71
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/attack1/info/effect/0005.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 6,
+          "width": 166,
+          "height": 75,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5449a777cfdff9d1ee7a873d6d6b1595a2199ce5644b56cd88970358d98f8685",
+          "pixel_sha256": "2810d163d61f8d69521163fd2ae9fb8c4f447ab5c7e164aa52a1853478d00b0d",
+          "wz_path": "Mob.wz/9300003.img/attack1/info/effect/6",
+          "duration_ms": 100,
+          "origin": {
+            "x": 83,
+            "y": 72
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/attack1/info/effect/0006.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 7,
+          "width": 191,
+          "height": 51,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "11d065b7770c0bccf4a8bf74124b86189c77719b883b9592ed657b34bce52e89",
+          "pixel_sha256": "5a1ae9e0f57683b1375e72d322b8b57d7b16dd188c53f9c22ba8c8fefdf76982",
+          "wz_path": "Mob.wz/9300003.img/attack1/info/effect/7",
+          "duration_ms": 100,
+          "origin": {
+            "x": 97,
+            "y": 48
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/attack1/info/effect/0007.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 8,
+          "width": 201,
+          "height": 54,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "0067bb878f5353eb890ceff43e89dd93c60a89e6a35078da0500bebc0c2d1c33",
+          "pixel_sha256": "71cf2d31bd770c38fb49f0768f2d268212529d5fcdc43b8353ce519c0bb3b6a1",
+          "wz_path": "Mob.wz/9300003.img/attack1/info/effect/8",
+          "duration_ms": 100,
+          "origin": {
+            "x": 103,
+            "y": 50
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/attack1/info/effect/0008.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 9,
+          "width": 202,
+          "height": 56,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "7159b63aca580f6c69d449d7f06673984439abf13e970d8cbf99cec5dd68c412",
+          "pixel_sha256": "cf111a245b8c106bc2b5727d61ae13bb58df83f8a522fbe723297d58b3ea7dd7",
+          "wz_path": "Mob.wz/9300003.img/attack1/info/effect/9",
+          "duration_ms": 100,
+          "origin": {
+            "x": 103,
+            "y": 56
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/attack1/info/effect/0009.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": false,
+      "indices_contiguous": true
+    },
+    {
+      "name": "attack1/info/hit",
+      "frame_count": 1,
+      "expected_frame_count": null,
+      "frames": [
+        {
+          "index": 0,
+          "width": 1,
+          "height": 1,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "51d216c39fe4f92fc07643074525679cc3d8c84eabef2c025aa304a5b66d3c0d",
+          "pixel_sha256": "e59f4a597079f0d6efca86d61b5bba72f03815d39d419aeffed55e60dd13b384",
+          "wz_path": "Mob.wz/9300003.img/attack1/info/hit/0",
+          "duration_ms": 50,
+          "origin": {
+            "x": 0,
+            "y": 0
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/attack1/info/hit/0000.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": false,
+      "indices_contiguous": true
+    },
+    {
+      "name": "die1",
+      "frame_count": 8,
+      "expected_frame_count": 8,
+      "frames": [
+        {
+          "index": 0,
+          "width": 182,
+          "height": 218,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "4e785e286d271bd28efd75209190b6b467d84f7cc688191ca1d89263dae8906f",
+          "pixel_sha256": "d5070c6571b4f9650df9d8f192b03238a910fd5a6d91248dee4c421cb695ad9d",
+          "wz_path": "Mob.wz/9300003.img/die1/0",
+          "duration_ms": 80,
+          "origin": {
+            "x": 66,
+            "y": 218
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/die1/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 182,
+          "height": 218,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "1f1fe9108c291552ca4586234c49859b56087f45d838a8fee3f5c2909a5ca643",
+          "pixel_sha256": "bbe572c64df421c1e55646bdc080410893bbecfc7bd1955733932dbdd545835f",
+          "wz_path": "Mob.wz/9300003.img/die1/1",
+          "duration_ms": 80,
+          "origin": {
+            "x": 66,
+            "y": 218
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/die1/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 182,
+          "height": 218,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "af66f03fb41782c9779b3538a889f2d90e2083887f678f20ef2632749000f59a",
+          "pixel_sha256": "38bbd88b0652b84a2eab067401777dbbbcad75240c6636ba1d4aa1c0a82fd157",
+          "wz_path": "Mob.wz/9300003.img/die1/2",
+          "duration_ms": 80,
+          "origin": {
+            "x": 66,
+            "y": 218
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/die1/0002.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 3,
+          "width": 206,
+          "height": 242,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "01ed6055f28946c7e7ff08f7984870561c3958a8a9977261821db17a0bea4109",
+          "pixel_sha256": "3a086fd6eb3cb39e05748b02d73b27e4ef349caf0b7216c605322f8b06fdd850",
+          "wz_path": "Mob.wz/9300003.img/die1/3",
+          "duration_ms": 130,
+          "origin": {
+            "x": 90,
+            "y": 218
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/die1/0003.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 4,
+          "width": 248,
+          "height": 253,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "e100189eb71a8d2afc42d6c121e21d7793ac55002e20c57013aacba9d424cd10",
+          "pixel_sha256": "a8a2de5e3998ede5fe97d70ab996e42908403049abda10e9ad84dc9c8937c856",
+          "wz_path": "Mob.wz/9300003.img/die1/4",
+          "duration_ms": 130,
+          "origin": {
+            "x": 123,
+            "y": 218
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/die1/0004.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 5,
+          "width": 246,
+          "height": 252,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "adf33d3d1fc03b63d7a552f47d36a2da85b60e4965a7992afef0474b86516a5c",
+          "pixel_sha256": "6f034456ae4b782697e121df6539f3e9054e365df5816bf58654f5b04f4d01ba",
+          "wz_path": "Mob.wz/9300003.img/die1/5",
+          "duration_ms": 130,
+          "origin": {
+            "x": 122,
+            "y": 218
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/die1/0005.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 6,
+          "width": 231,
+          "height": 248,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "b3374e53d58d64918cde2891703f513a0b3d0ee87a317aaee5da492644791bd5",
+          "pixel_sha256": "d3dc4fe8531a8bde23e95fa404be900094d277446dff314424236d882695bad6",
+          "wz_path": "Mob.wz/9300003.img/die1/6",
+          "duration_ms": 140,
+          "origin": {
+            "x": 115,
+            "y": 218
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/die1/0006.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 7,
+          "width": 195,
+          "height": 172,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "a4395598c97d0edd1a885c398ddc8210e7024e4eb80345ea65e0170178b962c0",
+          "pixel_sha256": "a4dc518044ad4696c2cc8f24e5ace483b5715d52c807532ff3c6e3a32d2d585b",
+          "wz_path": "Mob.wz/9300003.img/die1/7",
+          "duration_ms": 150,
+          "origin": {
+            "x": 102,
+            "y": 153
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/die1/0007.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true
+    },
+    {
+      "name": "hit1",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 182,
+          "height": 218,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "bcbfaffb975bada246ec787d06432dc1d74b4b2079ec2e50754508f3aa769e4f",
+          "pixel_sha256": "d5070c6571b4f9650df9d8f192b03238a910fd5a6d91248dee4c421cb695ad9d",
+          "wz_path": "Mob.wz/9300003.img/hit1/0",
+          "duration_ms": 600,
+          "origin": {
+            "x": 66,
+            "y": 218
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/hit1/0000.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true
+    },
+    {
+      "name": "jump",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 231,
+          "height": 208,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "63b3a188e9069d79f1d4c228d88df5c428b31a1fa9bd471518c73581d21db3e9",
+          "pixel_sha256": "2f0aac66236107b35702c6d58f64ac6241a6e12415744d22dd904bd74ca4800c",
+          "wz_path": "Mob.wz/9300003.img/jump/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 71,
+            "y": 155
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/jump/0000.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true
+    },
+    {
+      "name": "move",
+      "frame_count": 7,
+      "expected_frame_count": 7,
+      "frames": [
+        {
+          "index": 0,
+          "width": 219,
+          "height": 153,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "89ee07f06c9590382d1961b05ef25adbabd15f72d10280b0542a2574fc752b46",
+          "pixel_sha256": "7c89da9bb37a8e4eb182671fe0e8a771aaecbdaa46bf4bf2014165205b57ea58",
+          "wz_path": "Mob.wz/9300003.img/move/0",
+          "duration_ms": 200,
+          "origin": {
+            "x": 75,
+            "y": 153
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/move/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 173,
+          "height": 180,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "2b213179dbe1bd682e3204fa8ac9f1766326263efc011c68fee3dae8dd091998",
+          "pixel_sha256": "2410fa4a99c52774138e10730c1adcc6e5088f2ac9120708bd8d5d269bf00a30",
+          "wz_path": "Mob.wz/9300003.img/move/1",
+          "duration_ms": 50,
+          "origin": {
+            "x": 75,
+            "y": 180
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/move/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 178,
+          "height": 189,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "422ac42933d7ba31dc2bd8423a99e210407f30098a88e2d1bfa3daafabc397cf",
+          "pixel_sha256": "1e43a729810a9583dc213a11b369f20c652cc3795c40ab760f25207f381fcd1f",
+          "wz_path": "Mob.wz/9300003.img/move/2",
+          "duration_ms": 150,
+          "origin": {
+            "x": 71,
+            "y": 230
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/move/0002.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 3,
+          "width": 231,
+          "height": 208,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "7712ce4ecbfc06b8178a2a754273e7a72f3ba51f3f73f4d4de04841b18410044",
+          "pixel_sha256": "2f0aac66236107b35702c6d58f64ac6241a6e12415744d22dd904bd74ca4800c",
+          "wz_path": "Mob.wz/9300003.img/move/3",
+          "duration_ms": 150,
+          "origin": {
+            "x": 71,
+            "y": 225
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/move/0003.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 4,
+          "width": 202,
+          "height": 245,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "9f033cf712023d4d79eecf2b79f22818d6c200ac1b290bb9285496df8d53b947",
+          "pixel_sha256": "d633ad748afcab2d035bb2bbd2490a611384aa446027a2dd4679410027da57b0",
+          "wz_path": "Mob.wz/9300003.img/move/4",
+          "duration_ms": 100,
+          "origin": {
+            "x": 71,
+            "y": 254
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/move/0004.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 5,
+          "width": 186,
+          "height": 216,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "20ddece4889a0c718282f39547159f6fc99d515f00e8afee5d993e42621035c5",
+          "pixel_sha256": "16c6cfa894f1a1ba33a29a17918381dae0d5242a7162a534621a0b9f4d25d08a",
+          "wz_path": "Mob.wz/9300003.img/move/5",
+          "duration_ms": 100,
+          "origin": {
+            "x": 75,
+            "y": 216
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/move/0005.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 6,
+          "width": 206,
+          "height": 142,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "a52f25f1ddf5d3342aa68004e72fdf9b6b21ca6606846f1369c616a3e560a803",
+          "pixel_sha256": "c624e68be6ec6a862f96f71ae8d891dc942cd56ca910203f094b6ef1549b3820",
+          "wz_path": "Mob.wz/9300003.img/move/6",
+          "duration_ms": 300,
+          "origin": {
+            "x": 73,
+            "y": 142
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/move/0006.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true
+    },
+    {
+      "name": "skill1",
+      "frame_count": 11,
+      "expected_frame_count": 11,
+      "frames": [
+        {
+          "index": 0,
+          "width": 206,
+          "height": 142,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "9e57724ed5911f89214897acb006fc28076382630328aa112c0bfdc48b0f0c7a",
+          "pixel_sha256": "c624e68be6ec6a862f96f71ae8d891dc942cd56ca910203f094b6ef1549b3820",
+          "wz_path": "Mob.wz/9300003.img/skill1/0",
+          "duration_ms": 120,
+          "origin": {
+            "x": 73,
+            "y": 142
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/skill1/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 150,
+          "height": 226,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "6c458b7fa2cc6d551686ee196882a0d06318d2f679e0edec9a5db5c35477f8ef",
+          "pixel_sha256": "25ce309ea36b5271b25b3965c0f0eeb1f436f51f5fb4597be1442dacbe816937",
+          "wz_path": "Mob.wz/9300003.img/skill1/1",
+          "duration_ms": 120,
+          "origin": {
+            "x": 73,
+            "y": 226
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/skill1/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 150,
+          "height": 224,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "40aa2fee526353250eb27eb8d6f564c22712465042902b1234b38d3bbc489f5d",
+          "pixel_sha256": "b345f662e916985b06935428445d11eb7f3fdcb8f85e36570a554b682318ce70",
+          "wz_path": "Mob.wz/9300003.img/skill1/2",
+          "duration_ms": 120,
+          "origin": {
+            "x": 73,
+            "y": 224
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/skill1/0002.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 3,
+          "width": 150,
+          "height": 224,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "d74a4eccac05a83224656a3384339311c3a3760d98b6e06d9aeb203b539b13ae",
+          "pixel_sha256": "147c8e6ab5e72fe2edcd51de6de157ac1c0b7650686163d805b7b11db2cf2854",
+          "wz_path": "Mob.wz/9300003.img/skill1/3",
+          "duration_ms": 120,
+          "origin": {
+            "x": 73,
+            "y": 224
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/skill1/0003.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 4,
+          "width": 150,
+          "height": 234,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "8a1cecba7f418151c0d24725e665942d12e618ec2f790ae676713a391bc2cc1b",
+          "pixel_sha256": "8d833372c068fc9797b41c32353a2ab4ef5e23c429e505bdd5cfdf5cf272cd66",
+          "wz_path": "Mob.wz/9300003.img/skill1/4",
+          "duration_ms": 120,
+          "origin": {
+            "x": 73,
+            "y": 234
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/skill1/0004.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 5,
+          "width": 150,
+          "height": 240,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "705cf1606a15e168697031e575448c6096ed968b8cf680b020d6f15818b6ce30",
+          "pixel_sha256": "e53990204521481609447676ef0d68095b6083ec35666f410511bbc23d92256f",
+          "wz_path": "Mob.wz/9300003.img/skill1/5",
+          "duration_ms": 120,
+          "origin": {
+            "x": 73,
+            "y": 240
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/skill1/0005.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 6,
+          "width": 150,
+          "height": 250,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "46b3aee5fdecd7809818d0c7fc5a37bd3e85a10afddf3d6135e9321ccd29f3a7",
+          "pixel_sha256": "44d46ef7a86a8a0bf5c92c47ae5e0980b3f36203b0ccd69592cacf8d5f83c81b",
+          "wz_path": "Mob.wz/9300003.img/skill1/6",
+          "duration_ms": 120,
+          "origin": {
+            "x": 73,
+            "y": 250
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/skill1/0006.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 7,
+          "width": 150,
+          "height": 264,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "6b4a024229c999b273d5cc29815d1300ee15750322287f989adfae2eefc4c5d4",
+          "pixel_sha256": "f643eb829ab79d0e6db02c340c482c4881abca48637a204f1901cb8703a567b9",
+          "wz_path": "Mob.wz/9300003.img/skill1/7",
+          "duration_ms": 120,
+          "origin": {
+            "x": 73,
+            "y": 264
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/skill1/0007.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 8,
+          "width": 160,
+          "height": 280,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "ca6d86acd4538cf4b6e58c51f300d26ed067631d75891703bb17859e73c07184",
+          "pixel_sha256": "fc46e4744e1266b1d69483259fa808e64bd176f3ce32a4fdea8d7c448ddc75c5",
+          "wz_path": "Mob.wz/9300003.img/skill1/8",
+          "duration_ms": 120,
+          "origin": {
+            "x": 73,
+            "y": 280
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/skill1/0008.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 9,
+          "width": 159,
+          "height": 279,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "1791b610049f2bf22885ec176ce8220d6cd513c47cf2f3fe519216eaf5ff1659",
+          "pixel_sha256": "f0537711465374b8f93cf486e688eecda04be723573be68e9d828a5969879cb9",
+          "wz_path": "Mob.wz/9300003.img/skill1/9",
+          "duration_ms": 120,
+          "origin": {
+            "x": 73,
+            "y": 279
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/skill1/0009.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 10,
+          "width": 150,
+          "height": 224,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "de985eb8c17aea58edc6f0faa97fa6194a340a24e7ecb479a49384cf2b465ef5",
+          "pixel_sha256": "b345f662e916985b06935428445d11eb7f3fdcb8f85e36570a554b682318ce70",
+          "wz_path": "Mob.wz/9300003.img/skill1/10",
+          "duration_ms": 120,
+          "origin": {
+            "x": 73,
+            "y": 224
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/skill1/0010.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true
+    },
+    {
+      "name": "stand",
+      "frame_count": 2,
+      "expected_frame_count": 2,
+      "frames": [
+        {
+          "index": 0,
+          "width": 206,
+          "height": 142,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "22f621f975013e71e8dbc6570dc1c1a35461eab5f0396fc8c1a2a1973b486315",
+          "pixel_sha256": "c624e68be6ec6a862f96f71ae8d891dc942cd56ca910203f094b6ef1549b3820",
+          "wz_path": "Mob.wz/9300003.img/stand/0",
+          "duration_ms": 300,
+          "origin": {
+            "x": 73,
+            "y": 142
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/stand/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 219,
+          "height": 139,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "230ecd5889d0199e9ba8a4faa3a800965aa7e69fadea88e1bc082d52af0c2c42",
+          "pixel_sha256": "aad2e21f7d6eeb588d27b2451fbc6b5041dc9d537539146c0989fcbb72cb0a30",
+          "wz_path": "Mob.wz/9300003.img/stand/1",
+          "duration_ms": 250,
+          "origin": {
+            "x": 76,
+            "y": 139
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256/stand/0001.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "超級綠水靈",
+  "role": null,
+  "is_shop": null,
+  "source_locations": [
+    103000804
+  ],
+  "expected_actions": {
+    "attack1": 8,
+    "die1": 8,
+    "hit1": 1,
+    "jump": 1,
+    "move": 7,
+    "skill1": 11,
+    "stand": 2
+  },
+  "source_metadata_sha256": "421b895499eb0139e8324dc272c5d69fe187ef721cc6b88a2acf4f7ec9ed4535",
+  "source_archive_sha256": "ec37cc0f9ea819884a37871eeed7d2e2578eee641ff0a887b45a38d48b663999",
+  "source_frame_indices": {
+    "attack1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "die1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "hit1": [
+      0
+    ],
+    "jump": [
+      0
+    ],
+    "move": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "skill1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "stand": [
+      0,
+      1
+    ]
+  },
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "partial",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false
+  },
+  "github_path": "assets/maple/collection/bosses/victoria/9300003/TWMS-256",
+  "status": "collected",
+  "name_zh_tw_source_url": "https://maplestory.io/api/TWMS/256/mob",
+  "display_name_zh_tw": "超級綠水靈"
+}

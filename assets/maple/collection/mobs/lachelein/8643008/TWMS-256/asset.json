@@ -1,0 +1,1148 @@
+{
+  "id": "8643008",
+  "type": "mobs",
+  "region": "lachelein",
+  "town": "lachelein",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": "生氣的舞會居民",
+  "name_zh_tw_status": "source_twms",
+  "source_url": "https://maplestory.io/api/TWMS/256/mob/8643008",
+  "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Mob/8643008.img",
+  "wz_path": "Mob.wz/8643008.img",
+  "version": {
+    "region": "TWMS",
+    "version": "256"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "attack1",
+      "frame_count": 15,
+      "expected_frame_count": 15,
+      "frames": [
+        {
+          "index": 0,
+          "width": 119,
+          "height": 129,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "fbcf8654f2f4aa3e9668fa6aa9050c6eccc8e5e03474f3070c4f08f279da5098",
+          "pixel_sha256": "28ac3a4e54383f5fb8c8b5503d728187ebe5ab52f187ea29b456ca8aac087ae6",
+          "wz_path": "Mob.wz/8643008.img/attack1/0",
+          "duration_ms": 90,
+          "origin": {
+            "x": 70,
+            "y": 129
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/attack1/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 142,
+          "height": 130,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5df24799c99597a96a098e5bf1de44f4c93b446d360be6141be1be68f6ff175e",
+          "pixel_sha256": "dd3fc6f15cf36ac3246678f75c6435cf148c8bbd27f6acedccf82282b1586b82",
+          "wz_path": "Mob.wz/8643008.img/attack1/1",
+          "duration_ms": 90,
+          "origin": {
+            "x": 81,
+            "y": 130
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/attack1/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 101,
+          "height": 134,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "2f57255b28050100008f9610883aa124cb50c49e13fac4a207913f5a5c4a9010",
+          "pixel_sha256": "af40b65c50757a734658697b0cf9b9b47e010b2069e59f9de9839ea69e4f8082",
+          "wz_path": "Mob.wz/8643008.img/attack1/2",
+          "duration_ms": 90,
+          "origin": {
+            "x": 40,
+            "y": 134
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/attack1/0002.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 3,
+          "width": 100,
+          "height": 137,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "c77aaae5a8c091e65115956261d3c03f91211d87230c224b02970ebf536cf8ea",
+          "pixel_sha256": "eacb026f57ad7a2d39fd818aa1dd95b80c5ed5a33b99b2cc911be20c861d58a8",
+          "wz_path": "Mob.wz/8643008.img/attack1/3",
+          "duration_ms": 90,
+          "origin": {
+            "x": 39,
+            "y": 137
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/attack1/0003.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 4,
+          "width": 100,
+          "height": 138,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "415271a8b6c6dd80a16984576249c935724abcc045a21339e9198bbc5b040e78",
+          "pixel_sha256": "b26cf59c30ae7eae013df7e1bb468629cd63c5e899b8120bd0b3012f8eac0d75",
+          "wz_path": "Mob.wz/8643008.img/attack1/4",
+          "duration_ms": 90,
+          "origin": {
+            "x": 39,
+            "y": 138
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/attack1/0004.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 5,
+          "width": 121,
+          "height": 149,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "89b6dd8f5b970e1d74eee41bf225048508a00dc944145e2264dc96963e3bf46f",
+          "pixel_sha256": "b1e60bc2941a6d4947bb1e72a2cddb0a76e3fa8986ee881c0924f794e6b28ee0",
+          "wz_path": "Mob.wz/8643008.img/attack1/5",
+          "duration_ms": 90,
+          "origin": {
+            "x": 59,
+            "y": 147
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/attack1/0005.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 6,
+          "width": 255,
+          "height": 184,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "4618e8bb51b7dc4c2beeaf33a5a71b792aa1ea758c26e1d045c96e907da917a6",
+          "pixel_sha256": "c89ba07aca08588611dd8c43cddd32ab39160eaf9d084bfcc0bd85428a052d0b",
+          "wz_path": "Mob.wz/8643008.img/attack1/6",
+          "duration_ms": 90,
+          "origin": {
+            "x": 155,
+            "y": 160
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/attack1/0006.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 7,
+          "width": 260,
+          "height": 176,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "ad950a24c920ddd6bd4db40c686636c7cc61aa9e10e874a8cde0b86eac2525ab",
+          "pixel_sha256": "4eb949e1277e21f9253afcc0878e41a79e10b4590f4cd9891c60741aed38b78b",
+          "wz_path": "Mob.wz/8643008.img/attack1/7",
+          "duration_ms": 90,
+          "origin": {
+            "x": 154,
+            "y": 152
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/attack1/0007.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 8,
+          "width": 335,
+          "height": 179,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "39f763c33a8517053a954e9850e5019596a8412e0aaa01db9c2e159f93c83d7b",
+          "pixel_sha256": "47b3eaffe825a105ac16f524838bd4b3e742d235d85a453873347ce51ede130b",
+          "wz_path": "Mob.wz/8643008.img/attack1/8",
+          "duration_ms": 90,
+          "origin": {
+            "x": 226,
+            "y": 150
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/attack1/0008.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 9,
+          "width": 342,
+          "height": 173,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "acb9c2506bd1c35e02693d2a1e73d46932eab78fca730c326efb6fa6e20d477a",
+          "pixel_sha256": "fb0b01cee243cf83376cf21eefc80be00698f5a5cd76031515e50383938cca8c",
+          "wz_path": "Mob.wz/8643008.img/attack1/9",
+          "duration_ms": 90,
+          "origin": {
+            "x": 233,
+            "y": 146
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/attack1/0009.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 10,
+          "width": 339,
+          "height": 143,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "a8f74e3e6c37f89155b7474c9ab237fa4ef185f0249badeb52836ce33f9fba3f",
+          "pixel_sha256": "a464eed2c54858f21fa8b0d7380911042642c5dc38654bcdbe8bb2aef1073acb",
+          "wz_path": "Mob.wz/8643008.img/attack1/10",
+          "duration_ms": 90,
+          "origin": {
+            "x": 228,
+            "y": 128
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/attack1/0010.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 11,
+          "width": 312,
+          "height": 141,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "d29cf49d36f9ce1d9566793961c7b1af1b67582cbb2ff54926f32318395012d8",
+          "pixel_sha256": "a9b0331892cccdc808acf521dc58b0449886a4ff8c57b84ed03804a3f9ec5547",
+          "wz_path": "Mob.wz/8643008.img/attack1/11",
+          "duration_ms": 90,
+          "origin": {
+            "x": 227,
+            "y": 125
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/attack1/0011.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 12,
+          "width": 265,
+          "height": 163,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "13c71e58ce0d25b45c777c37c9b19d545ece523a7322b515a4a2f7f774e6b3d0",
+          "pixel_sha256": "49186be363a4c28e6baf7e85f2ee9365888d6fce13aee894eab04d03023fe0fd",
+          "wz_path": "Mob.wz/8643008.img/attack1/12",
+          "duration_ms": 90,
+          "origin": {
+            "x": 175,
+            "y": 148
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/attack1/0012.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 13,
+          "width": 264,
+          "height": 153,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "e279a57915b4d628bf0ebaa4e40e149f36dc592f5a51ba44f3e7922ee52deee2",
+          "pixel_sha256": "a4914a658c14ad51a34f21eda23ae8206306ec1c97435c8096aeb27ad861739a",
+          "wz_path": "Mob.wz/8643008.img/attack1/13",
+          "duration_ms": 90,
+          "origin": {
+            "x": 173,
+            "y": 140
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/attack1/0013.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 14,
+          "width": 222,
+          "height": 136,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "fdf6bc268ad881408e0b56dcdcc3643e613a668f5f598467d4e5ee19187dde02",
+          "pixel_sha256": "6bcd8d3f163cd06755b06524c1e094d3b2ea630361c49d5fd51ae6cf2cdd5276",
+          "wz_path": "Mob.wz/8643008.img/attack1/14",
+          "duration_ms": 90,
+          "origin": {
+            "x": 123,
+            "y": 134
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/attack1/0014.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true
+    },
+    {
+      "name": "attack1/info/hit",
+      "frame_count": 5,
+      "expected_frame_count": null,
+      "frames": [
+        {
+          "index": 0,
+          "width": 165,
+          "height": 160,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "d77bfe0a64a2145ee0e5a0f49f0b10aa37d4065ab68e5401d21da507b5baf8b1",
+          "pixel_sha256": "d4e87ada1df7b1d32361f30b11cfcf1525a1772600c640069e5cb1ce316ca216",
+          "wz_path": "Mob.wz/8643008.img/attack1/info/hit/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 79,
+            "y": 125
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/attack1/info/hit/0000.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        },
+        {
+          "index": 1,
+          "width": 181,
+          "height": 154,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "dfef4278eb8416755a7b17a1c521b45c3db869c7a18bb23ba2b17493ed014b54",
+          "pixel_sha256": "d58f068d05600bb60248c5bcde8f376b10d9e49fb296c126272427f24a6633a9",
+          "wz_path": "Mob.wz/8643008.img/attack1/info/hit/1",
+          "duration_ms": null,
+          "origin": {
+            "x": 91,
+            "y": 119
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/attack1/info/hit/0001.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        },
+        {
+          "index": 2,
+          "width": 185,
+          "height": 151,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "ee8c1ac8c8055dd03f811ac459358374a38af5f64d6bce16a202f9842bce4de5",
+          "pixel_sha256": "e17855bf487d73327e3e92aa7ebb131c952aafaf22640c6b8618b26f824d924e",
+          "wz_path": "Mob.wz/8643008.img/attack1/info/hit/2",
+          "duration_ms": null,
+          "origin": {
+            "x": 91,
+            "y": 118
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/attack1/info/hit/0002.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        },
+        {
+          "index": 3,
+          "width": 187,
+          "height": 144,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "50a2167573eb802dbdf1ff5bf594535ba55fe23dbc160482a02f26f0a5e1aa79",
+          "pixel_sha256": "f00655f2f95c509e1ffd9c5a05ba48b94b0267c2d23c4ccc465f724681922dbd",
+          "wz_path": "Mob.wz/8643008.img/attack1/info/hit/3",
+          "duration_ms": null,
+          "origin": {
+            "x": 93,
+            "y": 118
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/attack1/info/hit/0003.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        },
+        {
+          "index": 4,
+          "width": 84,
+          "height": 65,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "34543135c5edc05e80d093175a84fa48fd5dc55e2a3de6e1cd6f39721071c092",
+          "pixel_sha256": "81cae4a8f72ddca63c9f1b1e5730aede0cd52fc5d13d11dc90e3624237835919",
+          "wz_path": "Mob.wz/8643008.img/attack1/info/hit/4",
+          "duration_ms": null,
+          "origin": {
+            "x": 24,
+            "y": 101
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/attack1/info/hit/0004.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        }
+      ],
+      "count_matches_api": false,
+      "indices_contiguous": true
+    },
+    {
+      "name": "die1",
+      "frame_count": 17,
+      "expected_frame_count": 17,
+      "frames": [
+        {
+          "index": 0,
+          "width": 119,
+          "height": 129,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "6efea7df0d0f9564d6075be347baa167e8adece92d82641cc35db407738f74b1",
+          "pixel_sha256": "28ac3a4e54383f5fb8c8b5503d728187ebe5ab52f187ea29b456ca8aac087ae6",
+          "wz_path": "Mob.wz/8643008.img/die1/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 70,
+            "y": 129
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/die1/0000.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        },
+        {
+          "index": 1,
+          "width": 144,
+          "height": 173,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "adea132e959473f8b0746d58bd72a675f55ea083ee544fae8eb94ccc37e4a71f",
+          "pixel_sha256": "a7a2eba3e16da632de2ee33530344d359d250316a082b98d63ca98f95816516f",
+          "wz_path": "Mob.wz/8643008.img/die1/1",
+          "duration_ms": null,
+          "origin": {
+            "x": 53,
+            "y": 171
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/die1/0001.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        },
+        {
+          "index": 2,
+          "width": 150,
+          "height": 197,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "eba7fa35497d60ee608c7287cf33aabdc217ccb90f9285be66c473abfa29c988",
+          "pixel_sha256": "260678077c9fde880e3c91feee500544f3065bb96ff711a97330f3f0291e68d8",
+          "wz_path": "Mob.wz/8643008.img/die1/2",
+          "duration_ms": null,
+          "origin": {
+            "x": 50,
+            "y": 190
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/die1/0002.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        },
+        {
+          "index": 3,
+          "width": 154,
+          "height": 201,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "dd1700f0a7b51025caac89b26bde13a0f77684a98936856820f2c40e7168b712",
+          "pixel_sha256": "d007fe3f34137a38eb83f5f1244d1c3f334e110d0b67d87111be629ed207dfb5",
+          "wz_path": "Mob.wz/8643008.img/die1/3",
+          "duration_ms": null,
+          "origin": {
+            "x": 47,
+            "y": 193
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/die1/0003.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        },
+        {
+          "index": 4,
+          "width": 155,
+          "height": 199,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "fc4bcbaf739819e4de578b5b0b74e70595c2e50d9e3b8d5758421c9bf0607ce7",
+          "pixel_sha256": "2f2373859b5731f2f0437bbe1eb0d4e79ad5ad159df54b932c278b26a7dbfc22",
+          "wz_path": "Mob.wz/8643008.img/die1/4",
+          "duration_ms": null,
+          "origin": {
+            "x": 45,
+            "y": 191
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/die1/0004.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        },
+        {
+          "index": 5,
+          "width": 180,
+          "height": 162,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "324976242779899e6abc4be9a07a9563ba619712c9935969732538d522b67555",
+          "pixel_sha256": "35d84f088c6ab871119af03df788990abf05c11418f4f72817ad86b3772fef9c",
+          "wz_path": "Mob.wz/8643008.img/die1/5",
+          "duration_ms": null,
+          "origin": {
+            "x": 45,
+            "y": 153
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/die1/0005.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        },
+        {
+          "index": 6,
+          "width": 157,
+          "height": 151,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "19aaeb71bbe8d5cbb2b6cea41a4577fe8ed19980b702b1337f52347cdc57f453",
+          "pixel_sha256": "23b9a65ccea664fa1bb5c5268578deb9edc7410f3af37070739d10c9b5ac722a",
+          "wz_path": "Mob.wz/8643008.img/die1/6",
+          "duration_ms": null,
+          "origin": {
+            "x": 44,
+            "y": 142
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/die1/0006.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        },
+        {
+          "index": 7,
+          "width": 157,
+          "height": 151,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5c7be4e59db3e0774c8420ca0b0bad0bb1bcaf14c6f91ec0e6bace037981e0d2",
+          "pixel_sha256": "547170a031d750af67a7cef17a85ff77db2ddd491e525d52d0963815b82b8617",
+          "wz_path": "Mob.wz/8643008.img/die1/7",
+          "duration_ms": null,
+          "origin": {
+            "x": 43,
+            "y": 142
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/die1/0007.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        },
+        {
+          "index": 8,
+          "width": 157,
+          "height": 148,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5019a5825de2a268c3f31e5c3d80e7718cd01031c4956a7acc4138936f6f0451",
+          "pixel_sha256": "dd4953be5375ab6cc7241a3b2185091eb7ddd4c93045b6bd1ce41e34b6f62933",
+          "wz_path": "Mob.wz/8643008.img/die1/8",
+          "duration_ms": null,
+          "origin": {
+            "x": 43,
+            "y": 139
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/die1/0008.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        },
+        {
+          "index": 9,
+          "width": 157,
+          "height": 142,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "14dc14b8a152d92cf28d6794a5e8caa4ce19b8730d6dcb4d191f647f8b1184c4",
+          "pixel_sha256": "af2f26cf1ac53a9ab7f0497cc0174ed197fc40225e371d1b22b106e0b90aa277",
+          "wz_path": "Mob.wz/8643008.img/die1/9",
+          "duration_ms": null,
+          "origin": {
+            "x": 43,
+            "y": 133
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/die1/0009.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        },
+        {
+          "index": 10,
+          "width": 155,
+          "height": 133,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "9ddbbbbd1cee239f5adb19986eac4289c33922fffaa76a701662bed14a2a8a6e",
+          "pixel_sha256": "e336b77087ef15c7f78781882120edafa1f1ff2ff61abc6ca38bd1eea9760d09",
+          "wz_path": "Mob.wz/8643008.img/die1/10",
+          "duration_ms": null,
+          "origin": {
+            "x": 42,
+            "y": 125
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/die1/0010.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        },
+        {
+          "index": 11,
+          "width": 158,
+          "height": 132,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "7c500939799d0c1c3944e0cb90f214dc9ab50ddcc7780fcbd38fb8f498754b47",
+          "pixel_sha256": "46facf75ca11af84669b589d03955ddac60f1186e2ad9f2cea3c2b0f9d3da623",
+          "wz_path": "Mob.wz/8643008.img/die1/11",
+          "duration_ms": null,
+          "origin": {
+            "x": 45,
+            "y": 124
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/die1/0011.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        },
+        {
+          "index": 12,
+          "width": 222,
+          "height": 131,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "79f079d89567651b01887f7bb8c76389d83baf0346ae2508e2f87580221e6b57",
+          "pixel_sha256": "240307566bea2311ff14352ff37854845d5ee87344767b4701b38c2ff16ef334",
+          "wz_path": "Mob.wz/8643008.img/die1/12",
+          "duration_ms": null,
+          "origin": {
+            "x": 110,
+            "y": 124
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/die1/0012.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        },
+        {
+          "index": 13,
+          "width": 195,
+          "height": 66,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "fc6a3732295b061deba1353d75650d8ecd374b388616ec41f7214621e8165e2c",
+          "pixel_sha256": "eb9884c4d0a37668e5435670329b7e31bba43ccb422797869e98a100e95e7f55",
+          "wz_path": "Mob.wz/8643008.img/die1/13",
+          "duration_ms": null,
+          "origin": {
+            "x": 103,
+            "y": 61
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/die1/0013.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        },
+        {
+          "index": 14,
+          "width": 121,
+          "height": 65,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "d036fd1053bb736092d76ccf69677cac29c40e3da9a70b932e6e17141c606ba2",
+          "pixel_sha256": "521f2c926bddf13f0039e220e0257952cce2916f5830cfbb81437ad04f5fa49d",
+          "wz_path": "Mob.wz/8643008.img/die1/14",
+          "duration_ms": null,
+          "origin": {
+            "x": 51,
+            "y": 60
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/die1/0014.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        },
+        {
+          "index": 15,
+          "width": 118,
+          "height": 64,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "884f5f3cd6073dee007564211b90a11818eab717f0fcb621db27cd0f54c725fa",
+          "pixel_sha256": "a76aab76f043df6f855dbb00fe2df619a4f17b45972cde9fefcc0e005f8543d4",
+          "wz_path": "Mob.wz/8643008.img/die1/15",
+          "duration_ms": null,
+          "origin": {
+            "x": 45,
+            "y": 59
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/die1/0015.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        },
+        {
+          "index": 16,
+          "width": 76,
+          "height": 62,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "0c9f3013db6ca0ce5d8eddf6384ea21106716ded8335688eee369b3e068626e0",
+          "pixel_sha256": "f43db23300ed5d064bf81a0ca776a2399a17f7c2d5543f8e14ab118625cc408c",
+          "wz_path": "Mob.wz/8643008.img/die1/16",
+          "duration_ms": null,
+          "origin": {
+            "x": 33,
+            "y": 58
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/die1/0016.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true
+    },
+    {
+      "name": "hit1",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 143,
+          "height": 155,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "73094c0959034275afdc04171239dbdb62a9b97284095c87e4d39d6b34c3dc2b",
+          "pixel_sha256": "e4b1b32f028911c3bec62d1c62eddad70796b01d8d09d4572b244bc88bc5a95b",
+          "wz_path": "Mob.wz/8643008.img/hit1/0",
+          "duration_ms": 300,
+          "origin": {
+            "x": 52,
+            "y": 153
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/hit1/0000.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true
+    },
+    {
+      "name": "move",
+      "frame_count": 6,
+      "expected_frame_count": 6,
+      "frames": [
+        {
+          "index": 0,
+          "width": 141,
+          "height": 130,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "7412b21ce134fc549b3e48aee220ef9e1e0e8943ebc211667da9d2e2bf67bc1e",
+          "pixel_sha256": "810a53d827ff43ae3d0ce97cb28cf51cee731bbf1ad8c3449b1e0d099cc4add0",
+          "wz_path": "Mob.wz/8643008.img/move/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 81,
+            "y": 130
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/move/0000.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        },
+        {
+          "index": 1,
+          "width": 141,
+          "height": 132,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "c4c73a8e448ed91ab61cfb52d98881d264a63e9e7d9da76781b799a7ef1d5dd6",
+          "pixel_sha256": "054d751f59e7d3f1c6c0b3c90aba9faada0119e86191013907189d7445f59cf5",
+          "wz_path": "Mob.wz/8643008.img/move/1",
+          "duration_ms": null,
+          "origin": {
+            "x": 81,
+            "y": 132
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/move/0001.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        },
+        {
+          "index": 2,
+          "width": 141,
+          "height": 131,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "4978ffdbea6bbbd23f715f0739f8f7124758abec938c6b1ff5ceedd6487da7fc",
+          "pixel_sha256": "9f928fc9da91df7ab7e57ab7aa6441a0c1b4d0d9122cb29543ed778a01f1376c",
+          "wz_path": "Mob.wz/8643008.img/move/2",
+          "duration_ms": null,
+          "origin": {
+            "x": 81,
+            "y": 131
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/move/0002.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        },
+        {
+          "index": 3,
+          "width": 141,
+          "height": 130,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "126baa57b7e6c553ad2809a3cf094ecddae7b49030b2d1c514ace940822f320b",
+          "pixel_sha256": "975a1031cd0504ede9bbfbb9bbb1ff18752cfa2bfc190497e230c720fcf97343",
+          "wz_path": "Mob.wz/8643008.img/move/3",
+          "duration_ms": null,
+          "origin": {
+            "x": 81,
+            "y": 130
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/move/0003.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        },
+        {
+          "index": 4,
+          "width": 141,
+          "height": 132,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "4adbc78c11227ab7aca56f08e3827559c7abc36801748b7cfaefe3f05888647c",
+          "pixel_sha256": "b985790f07aa3e64a6cb5164dcb5a1be811594be3bcc39a65bcb46072cfaa2c1",
+          "wz_path": "Mob.wz/8643008.img/move/4",
+          "duration_ms": null,
+          "origin": {
+            "x": 81,
+            "y": 132
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/move/0004.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        },
+        {
+          "index": 5,
+          "width": 141,
+          "height": 131,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "a4b174dcd628ed2efcb4a870e570ec997d9b9995b850fe53f005f46b7e432c07",
+          "pixel_sha256": "1966e739046e65a0d0a132aa2fb09723e522c89f4f3d24531c383ea68cb297a8",
+          "wz_path": "Mob.wz/8643008.img/move/5",
+          "duration_ms": null,
+          "origin": {
+            "x": 81,
+            "y": 131
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/move/0005.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true
+    },
+    {
+      "name": "stand",
+      "frame_count": 6,
+      "expected_frame_count": 6,
+      "frames": [
+        {
+          "index": 0,
+          "width": 119,
+          "height": 129,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "626875eb9036c333dac146598491a9ca0de0adb621cccefbbe5dad929fe3c1a5",
+          "pixel_sha256": "28ac3a4e54383f5fb8c8b5503d728187ebe5ab52f187ea29b456ca8aac087ae6",
+          "wz_path": "Mob.wz/8643008.img/stand/0",
+          "duration_ms": 150,
+          "origin": {
+            "x": 70,
+            "y": 129
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/stand/0000.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 1,
+          "width": 119,
+          "height": 129,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "21a08f1bae71941a6b838d86a4016d190e1646c89c4c0c4fac0d556e8e128acc",
+          "pixel_sha256": "ad14e373aba87bed4164e702cd7b60630fd5044cc9eb0072a49bcf0cf92cfbf7",
+          "wz_path": "Mob.wz/8643008.img/stand/1",
+          "duration_ms": 150,
+          "origin": {
+            "x": 70,
+            "y": 128
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/stand/0001.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 2,
+          "width": 119,
+          "height": 127,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "49f50e24ed4944df6dfa52dcd50c3dffe92b9752eb3494b4fee0572906ab1334",
+          "pixel_sha256": "e415861744205b37891556a5a8637237d8cb247c2a86f50a40b285955d08876c",
+          "wz_path": "Mob.wz/8643008.img/stand/2",
+          "duration_ms": 150,
+          "origin": {
+            "x": 70,
+            "y": 127
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/stand/0002.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 3,
+          "width": 119,
+          "height": 128,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "ef93008bdea04cfdb7d9c1822d3b67c1b29436c3de98f88a952afe480354a5dd",
+          "pixel_sha256": "515221a82400da2173ff7b60fc569af841ec9d87bc78e67165003db76d0426c4",
+          "wz_path": "Mob.wz/8643008.img/stand/3",
+          "duration_ms": 150,
+          "origin": {
+            "x": 70,
+            "y": 128
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/stand/0003.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 4,
+          "width": 119,
+          "height": 129,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "5e516d8ce43dddeba5574f9b287f464ad1d7ac99009fcaf569c11c5517d180bd",
+          "pixel_sha256": "446420855bb10c7feb05a3ea8151fe8cbfa47d8e7302297d952bda44d6f55e71",
+          "wz_path": "Mob.wz/8643008.img/stand/4",
+          "duration_ms": 150,
+          "origin": {
+            "x": 70,
+            "y": 129
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/stand/0004.png",
+          "storage": "original_png"
+        },
+        {
+          "index": 5,
+          "width": 119,
+          "height": 130,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "a5335b627ed9fbe5cb5e946ea43f886759a8eb516b0821dd2df6d442a5bb9752",
+          "pixel_sha256": "afd24e7b393eb8ce665490d1474fa79b5c5b923ff9008680c8ac71a8843b93b1",
+          "wz_path": "Mob.wz/8643008.img/stand/5",
+          "duration_ms": 150,
+          "origin": {
+            "x": 70,
+            "y": 130
+          },
+          "decode": "pass",
+          "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256/stand/0005.png",
+          "storage": "original_png"
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "生氣的舞會居民",
+  "role": null,
+  "is_shop": null,
+  "source_locations": [
+    450003400,
+    450003420
+  ],
+  "expected_actions": {
+    "attack1": 15,
+    "die1": 17,
+    "hit1": 1,
+    "move": 6,
+    "stand": 6
+  },
+  "source_metadata_sha256": "099c140235e759db0e0bbecbcfc383fc785c0bfe23f292f001afd86cc14fdefa",
+  "source_archive_sha256": "45e6f171aa2980cf7869a3a0e9721c96fae4e9d8d2e2873b2e54024394a21013",
+  "source_frame_indices": {
+    "attack1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "die1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "hit1": [
+      0
+    ],
+    "move": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "stand": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": true,
+    "timing_and_origin": "partial",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false
+  },
+  "github_path": "assets/maple/collection/mobs/lachelein/8643008/TWMS-256",
+  "status": "collected",
+  "name_zh_tw_source_url": "https://maplestory.io/api/TWMS/256/mob",
+  "display_name_zh_tw": "生氣的舞會居民"
+}

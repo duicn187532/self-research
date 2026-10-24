@@ -1,0 +1,13 @@
+[
+  ["npc", 2041004, "ludibrium", "ludibrium", "馬賽爾", "TWMS", "256"],
+  ["npc", 3003202, "lachelein", "lachelein", "防毒面具", "TWMS", "256"],
+  ["mobs", 8643000, "lachelein", "lachelein", "淨化者", "TWMS", "256"],
+  ["mobs", 8643001, "lachelein", "lachelein", "紙袋後街居民", "TWMS", "256"],
+  ["mobs", 8643003, "lachelein", "lachelein", "卡利納", "TWMS", "256"],
+  ["mobs", 8643008, "lachelein", "lachelein", "生氣的舞會居民", "TWMS", "256"],
+  ["bosses", 3220000, "victoria", "ellinia-perion", "樹妖王", "TWMS", "256"],
+  ["bosses", 6130101, "victoria", "henesys", "蘑菇王", "TWMS", "256"],
+  ["bosses", 9300003, "victoria", "kerning-city", "超級綠水靈", "TWMS", "256"],
+  ["bosses", 8500002, "ludibrium", "ludibrium-clocktower", "拉圖斯", "TWMS", "256"],
+  ["bosses", 8220000, "orbis", "orbis", "艾利傑", "TWMS", "256"]
+]

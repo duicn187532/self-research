@@ -6,7 +6,7 @@
     { id:'2501.13956', scene:'ludibrium', name:'玩具城', topic:'時序知識圖譜' },
     { id:'2604.14362', scene:'perion', name:'勇士之村', topic:'只增不刪的記憶' },
     { id:'2605.06527', scene:'kerning', name:'墮落城市', topic:'過期記憶診斷' },
-    { id:'2608.19652', scene:'lachelein', name:'夢都', topic:'依賴與狀態更新' },
+    { id:'2608.19652', scene:'lachelein', name:'拉契爾恩', topic:'依賴與狀態更新' },
     { id:'2606.30306', scene:'orbis', name:'天空之城', topic:'持久代理綜述' },
     { id:'dekleer-1986-atms', scene:'henesys', name:'弓箭手村', topic:'假設與真值維護' }
   ];
@@ -93,6 +93,7 @@
     });
     function renderDetail() {
       var info = data(selected), seen = battles(info), due = dueChapters(selected, info);
+      document.body.setAttribute('data-map-scene', selected.scene);
       detail.textContent = '';
       var art = el('div', 'world-scene'), img = document.createElement('img');
       img.alt = selected.name + '場景'; img.loading = 'lazy'; img.decoding = 'async';

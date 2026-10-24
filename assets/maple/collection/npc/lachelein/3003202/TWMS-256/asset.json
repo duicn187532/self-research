@@ -1,0 +1,132 @@
+{
+  "id": "3003202",
+  "type": "npc",
+  "region": "lachelein",
+  "town": "lachelein",
+  "region_status": "curated_target_not_exclusive_spawn_location",
+  "name_zh_tw": "防毒面具",
+  "name_zh_tw_status": "source_twms",
+  "source_url": "https://maplestory.io/api/TWMS/256/npc/3003202",
+  "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Npc/3003202.img",
+  "wz_path": "Npc.wz/3003202.img",
+  "version": {
+    "region": "TWMS",
+    "version": "256"
+  },
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "evidence_url": "https://maplestory.io/",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "stand",
+      "frame_count": 1,
+      "expected_frame_count": 1,
+      "frames": [
+        {
+          "index": 0,
+          "width": 78,
+          "height": 86,
+          "mode": "RGBA",
+          "has_transparency": true,
+          "sha256": "69493a336f01803ca6a1059d492fc1753e84718bb12259c7d7410f18ee7b2bc5",
+          "pixel_sha256": "5fc2ad5725fe4544e91ad60b3b73a71462acf96fb9be0ba6e5f8dc313c063cf5",
+          "wz_path": "Npc.wz/3003202.img/stand/0",
+          "duration_ms": null,
+          "origin": {
+            "x": 43,
+            "y": 86
+          },
+          "decode": "pass",
+          "source_url": "https://maplestory.io/api/TWMS/256/npc/3003202/render/stand/0",
+          "retrieval": "resolved_frame_renderer",
+          "github_path": "assets/maple/collection/npc/lachelein/3003202/TWMS-256/stand/0000.png",
+          "storage": "original_png",
+          "metadata_issues": {
+            "delay": "HTTP Error 404: Not Found"
+          }
+        }
+      ],
+      "count_matches_api": true,
+      "indices_contiguous": true
+    }
+  ],
+  "acquired_on": "2026-10-23",
+  "name": "防毒面具",
+  "role": null,
+  "is_shop": false,
+  "source_locations": [
+    {
+      "name": "拉契爾恩市中心",
+      "streetName": "拉契爾恩",
+      "id": 450003000
+    },
+    {
+      "name": "市中心",
+      "streetName": "市中心",
+      "id": 450003710
+    }
+  ],
+  "expected_actions": {
+    "condition1": 1,
+    "condition2": 1,
+    "condition3": 1,
+    "condition4": 1,
+    "stand": 1
+  },
+  "source_metadata_sha256": "b9652d98351595a4e2cfeeda4d3d662dc539e89d90030ddf6af6c19f90f0702a",
+  "source_archive_sha256": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85",
+  "source_frame_indices": {
+    "condition1": [
+      34308
+    ],
+    "condition2": [
+      34306
+    ],
+    "condition3": [
+      34306
+    ],
+    "condition4": [
+      34300
+    ],
+    "stand": [
+      0
+    ]
+  },
+  "missing_frames": [
+    {
+      "action": "condition1",
+      "index": 34308,
+      "error": "HTTP Error 400: Bad Request"
+    },
+    {
+      "action": "condition2",
+      "index": 34306,
+      "error": "HTTP Error 400: Bad Request"
+    },
+    {
+      "action": "condition3",
+      "index": 34306,
+      "error": "HTTP Error 400: Bad Request"
+    },
+    {
+      "action": "condition4",
+      "index": 34300,
+      "error": "HTTP Error 400: Bad Request"
+    }
+  ],
+  "validation": {
+    "decode": "pass",
+    "sha256": "pass",
+    "all_api_listed_action_frames_present": false,
+    "timing_and_origin": "partial",
+    "visual_playback": "not_verified",
+    "original_wz_binary_compared": false
+  },
+  "github_path": "assets/maple/collection/npc/lachelein/3003202/TWMS-256",
+  "status": "partial",
+  "name_zh_tw_source_url": "https://maplestory.io/api/TWMS/256/npc",
+  "display_name_zh_tw": "防毒面具"
+}
