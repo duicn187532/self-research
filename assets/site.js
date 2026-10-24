@@ -23,6 +23,12 @@
   var root = document.documentElement;
   var paperEl = document.querySelector("[data-paper]");
   var paper = paperEl ? paperEl.getAttribute("data-paper") : null;
+  var mathQueue = Promise.resolve();
+  window.StudyMathTypeset = function (node) {
+    if (!node || !window.MathJax || !window.MathJax.typesetPromise) return mathQueue;
+    mathQueue = mathQueue.catch(function () {}).then(function () { return window.MathJax.typesetPromise([node]); });
+    return mathQueue.catch(function () {});
+  };
 
   // ---------- explanation level (shared across papers) ----------
   var LEVEL_KEY = "study:level";
@@ -957,6 +963,24 @@
   if (railDetails && window.matchMedia && window.matchMedia("(max-width: 960px)").matches) railDetails.open = false;
   var sections = Array.prototype.slice.call(document.querySelectorAll("section.sec[id]"));
   sections.forEach(function (s, i) { s.setAttribute("data-chapter", (i + 1) + " / " + sections.length); });
+  if (paper === "2601.18642") window.addEventListener("load", function () {
+    if (!window.MathJax || !window.MathJax.typesetPromise) return;
+    var ready = window.MathJax.startup && window.MathJax.startup.promise || Promise.resolve();
+    ready.then(function () {
+      if ("IntersectionObserver" in window) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting || entry.target.hasAttribute("hidden")) return;
+            window.StudyMathTypeset(entry.target);
+            observer.unobserve(entry.target);
+          });
+        }, { rootMargin: "600px 0px" });
+        sections.forEach(function (s) { observer.observe(s); });
+      } else sections.forEach(window.StudyMathTypeset);
+      var visible = sections.find(function (s) { return !s.hasAttribute("hidden"); });
+      if (visible) window.StudyMathTypeset(visible);
+    }).catch(function () {});
+  });
   var outline = document.getElementById("outline");
   var links = {};
   if (outline) {
@@ -1710,6 +1734,7 @@
     current = i;
     if (window.MAPLE_SPRITES && window.MAPLE_SPRITES.scenes) { var sceneKeys = Object.keys(window.MAPLE_SPRITES.scenes); document.body.setAttribute("data-map-scene", sceneKeys[(seed + i) % sceneKeys.length]); }
     sections.forEach(function (s, k) { if (k === i) s.removeAttribute("hidden"); else s.setAttribute("hidden", "until-found"); });
+    if (paper === "2601.18642") window.StudyMathTypeset(sections[i]);
     if (head) { if (i === 0) head.removeAttribute("hidden"); else head.setAttribute("hidden", "until-found"); }
     drawPager();
     castFor(i);

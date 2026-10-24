@@ -39,7 +39,8 @@
   }
   function html(tag, cls, markup) { var e = el(tag, cls); e.innerHTML = markup; return e; }
   function tex(node) {
-    if (window.MathJax && window.MathJax.typesetPromise) window.MathJax.typesetPromise([node]).catch(function () {});
+    if (window.StudyMathTypeset) window.StudyMathTypeset(node);
+    else if (window.MathJax && window.MathJax.typesetPromise) window.MathJax.typesetPromise([node]).catch(function () {});
   }
   function ymd(d) { return d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2); }
 

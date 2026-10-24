@@ -105,9 +105,8 @@
       count.textContent = (i + 1) + " / " + cfg.steps.length;
       bPrev.disabled = i === 0;
       bNext.disabled = i === cfg.steps.length - 1;
-      if (window.MathJax && window.MathJax.typesetPromise) {
-        window.MathJax.typesetPromise([cap]).catch(function () {});
-      }
+      if (window.StudyMathTypeset) window.StudyMathTypeset(cap);
+      else if (window.MathJax && window.MathJax.typesetPromise) window.MathJax.typesetPromise([cap]).catch(function () {});
     }
 
     function stop() { if (timer) { clearInterval(timer); timer = null; } bPlay.textContent = "自動播放"; }
