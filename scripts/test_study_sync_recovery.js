@@ -41,6 +41,7 @@ vm.runInContext(
   between('  function read(key, fallback) {', '  function styleUi() {') +
   between('  function recoverySnapshots() {', '  function backup() {') +
   between('  async function logout() {', '  function switchUser(') +
+  between('  function switchUser(next, user) {', '  function storeMeta() {') +
   between('  async function cas(key, value, revision) {', '  async function setup() {'),
   ctx, {timeout:2000}
 );
@@ -146,5 +147,29 @@ function reset() {
   assert.equal(localStorage.getItem(key),null);
   assert.ok(Array.from(localStorage.cache.keys()).some(k =>
     k.startsWith('__study_sync_logout_backup:self-research:test-user:')));
-  console.log('Study sync recovery: 8 data-preservation scenarios passed.');
+  // 9. Quest completion on either device must survive a conflicting sync.
+  const questKey='study:quest:fademem-v1';
+  const remoteQuest=JSON.stringify({version:1,accepted:true,reported:true,required:['s-route'],acceptedAt:'2026-10-20T00:00:00Z'});
+  const localQuest=JSON.stringify({version:1,accepted:true,reported:false,required:['s-route','s-boss'],acceptedAt:'2026-10-21T00:00:00Z'});
+  const merged=JSON.parse(ctx.mergeValues(questKey,remoteQuest,localQuest));
+  assert.equal(merged.reported,true);
+  assert.deepEqual(merged.required,['s-route','s-boss']);
+  assert.equal(merged.acceptedAt,'2026-10-20T00:00:00Z');
+  // 10. The same account recovers its lesson records after the logout clear.
+  reset();
+  ctx.userId=null; ctx.initialized=false; ctx.migrateLegacyId=()=>{};
+  localStorage.setItem(ctx.ownerKey,'guest');
+  cloud=mockCloud([
+    {storage_key:key,value:packed(['s1','s2']),revision:4},
+    {storage_key:'study:fade:exp',value:'350',revision:2},
+    {storage_key:questKey,value:remoteQuest,revision:3}
+  ]);
+  ctx.switchUser('test-user',{id:'test-user'});
+  await new Promise(resolve=>setImmediate(resolve));
+  assert.equal(localStorage.getItem(key),packed(['s1','s2']));
+  assert.equal(localStorage.getItem('study:fade:exp'),'350');
+  assert.equal(JSON.parse(localStorage.getItem(questKey)).reported,true);
+  assert.equal(ctx.needsReload,true);
+  assert.equal(cloud.writes.length,0);
+  console.log('Study sync recovery: 10 data-preservation scenarios passed.');
 })().catch(err=>{console.error(err);process.exitCode=1;});

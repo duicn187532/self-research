@@ -1,5 +1,11 @@
 # self-research · 論文精讀室
 
+## 魔法森林示範任務
+
+書架上的漢斯會派出 FadeMem 精讀任務：接取後讀完 15 節、通過原有的跨章節 Boss 挑戰，再回到書架或論文頁回報。任務顯示未接取、進行中、可回報、已完成四種狀態；從書架或論文列表進入都讀取同一份章節與戰鬥紀錄。回報不重複發 EXP。既有七篇教材與章節戰鬥維持原流程。
+
+進度欄位、備份與同步合併規則見 [進度契約](docs/progress-contract.md)。新增的回歸測試可用 `node scripts/test_intro_quest.js`、`node scripts/test_storage_failure.js`、`node scripts/test_backup_merge.js` 與 `node scripts/test_study_sync_recovery.js` 執行。
+
 一個幫助精讀論文的靜態網站。每篇論文一頁，同一段內容提供三種解釋深度（五歲 / 大學生 / 研究生，依 [ELI5 skill](.claude/skills/eli5/SKILL.md)），公式逐符號拆解，每節附自我檢測、筆記欄與閱讀進度。
 
 ## 研究生五維精讀與證據識讀（2026-10-24 新增）

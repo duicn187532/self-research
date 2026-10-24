@@ -24,8 +24,15 @@
       catch (e) { return fallback; }
     },
     set: function (k, v) {
-      try { localStorage.setItem(k, JSON.stringify(v)); return true; }
-      catch (e) { return false; }
+      try {
+        localStorage.setItem(k, JSON.stringify(v));
+        window.dispatchEvent(new CustomEvent('study-local-write', { detail: { key: k } }));
+        return true;
+      }
+      catch (e) {
+        window.dispatchEvent(new CustomEvent('study-save-error', { detail: { key: k } }));
+        return false;
+      }
     }
   };
   function obj(v) { return v && typeof v === "object" && !Array.isArray(v) ? v : {}; }

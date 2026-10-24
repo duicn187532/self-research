@@ -10,6 +10,7 @@
   var ownerKey = '__study_sync_owner_v1:' + scope;
   var userId = null, client = null, session = null, syncing = false, needsReload = false;
   var meta = {}, conflicts = {}, status = '', initial = true, lastSync = 0, initialized = false;
+  var pendingTimer = null;
   var ui = {}, known = null;
   var schema = 'study_sync_entries';
 
@@ -125,6 +126,18 @@
     if (key === 'study:profile') return mergeStudyProfile(cloudValue, localValue);
     var a = parse(cloudValue), b = parse(localValue);
     if (a === undefined || b === undefined) fail();
+    if (key === 'study:quest:fademem-v1') {
+      if (!a || !b || typeof a !== 'object' || typeof b !== 'object' ||
+          Array.isArray(a) || Array.isArray(b) || a.version > 1 || b.version > 1) fail();
+      var required = [];
+      [a.required, b.required].forEach(function (xs) { if (Array.isArray(xs)) xs.forEach(function (id) {
+        if (typeof id === 'string' && required.indexOf(id) < 0) required.push(id);
+      }); });
+      return JSON.stringify({ version:1, accepted:!!(a.accepted || b.accepted),
+        reported:!!(a.reported || b.reported), required:required, total:required.length,
+        acceptedAt:[a.acceptedAt,b.acceptedAt].filter(Boolean).sort()[0] || '',
+        reportedAt:[a.reportedAt,b.reportedAt].filter(Boolean).sort().pop() || '' });
+    }
     // Do not silently choose one side for free-form writing.
     if (typeof a === 'string' || typeof b === 'string') fail();
     return JSON.stringify(mergeDeep(a, b, key));
@@ -721,6 +734,12 @@
       switchUser(result.data.session && result.data.session.user ? result.data.session.user.id : null,
         result.data.session && result.data.session.user);
       window.addEventListener('online', function () { sync(true); });
+      window.addEventListener('study-local-write', function () {
+        if (!userId) return;
+        message('待同步：新進度已保存在此瀏覽器。');
+        clearTimeout(pendingTimer);
+        pendingTimer = setTimeout(function () { sync(true); }, 1200);
+      });
       window.addEventListener('focus', function () { sync(false); });
       window.addEventListener('storage', function () { sync(false); });
       setInterval(function () { if (!document.hidden) sync(false); }, 15000);
