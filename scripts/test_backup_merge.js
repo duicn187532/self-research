@@ -20,6 +20,12 @@ assert.equal(merge('study:titles',[],[{t:'遺忘曲線馴服者',p:'fade'}]).len
 assert.equal(merge('study:profile',{displayId:'A',unlockedJobs:[]},{displayId:'A',unlockedJobs:['忘卻之羽']}).unlockedJobs[0],'忘卻之羽');
 assert.equal(merge('study:quest:fademem-v1',{version:1,accepted:true,reported:false,required:['s1']},{version:1,accepted:true,reported:true,required:['s1']}).reported,true);
 assert.equal(merge('study:quest:fademem-v2',{version:2,accepted:true,reported:false},{version:2,accepted:true,reported:true}).reported,true);
+const townQuest=merge('study:quest:2501.13956:v1',
+  {version:1,accepted:true,reported:false,acceptedAt:'2026-10-21'},
+  {version:1,accepted:true,reported:true,acceptedAt:'2026-10-22',reportedAt:'2026-10-23'});
+assert.equal(townQuest.reported,true);
+assert.equal(townQuest.acceptedAt,'2026-10-21');
+assert.equal(Object.hasOwn(townQuest,'required'),false);
 assert.equal(merge('study:fade:last',{id:'s-problem',at:10},{id:'s-boss',at:20}).id,'s-boss');
 assert.equal(merge('study:fade:completedAt','2026-10-24T09:00:00.000Z','2026-10-23T09:00:00.000Z'),
   '2026-10-23T09:00:00.000Z','backup keeps the earliest completion date');

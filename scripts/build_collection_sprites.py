@@ -170,13 +170,49 @@ table['scenes']={
  'lachelein':{'label':'拉契爾恩','asset_id':'450003000','path':'collection/maps/lachelein/450003000/TWMS-256/composite.png'}
 }
 
+def back_canvas(region, name, frame):
+    folder=COL/'maps'/region/'shared-resource-sets'/'TWMS-256'/'back'
+    manifest=folder/name/'resource-set.json' if name else folder/'resource-set.json'
+    record=json.loads(manifest.read_text(encoding='utf-8'))
+    match=next(row for row in record['canvases'] if row['source_archive_path'].endswith('.img-'+frame+'.png'))
+    with Image.open(ROOT/match['github_path']) as source:
+        return source.convert('RGBA')
+
+def authentic_backdrop(key):
+    # The map API's composite omits WZ Back layers. These are curated static
+    # arrangements of the matching TWMS-256 canvases, not exact WZ parallax positions.
+    specs={
+      'henesys':('victoria','grassySoil_new','back-0', [('back-3',(100,115,1100,288)),('back-3',(920,175,850,222))]),
+      'ellinia-town':('victoria','shineWood','back-0', [('back-4',(-100,-155,440,1117)),('back-1',(1240,-85,440,607))]),
+      'perion':('victoria','dryRock','back-1', []),
+      'kerning':('victoria','sunsetCity','back-0', []),
+      'ludibrium':('ludibrium','toyCastle','back-1', [('back-6',(90,40,750,435)),('back-6',(960,100,690,400))]),
+      'clocktower':('ludibrium','toyCastleDungeon','back-0', []),
+      'orbis':('orbis','skyStation','back-1', [('back-4',(95,45,450,387)),('back-4',(1080,110,420,361)),('back-19',(785,35,440,712))]),
+      'lachelein':('lachelein','','back-2', [('back-4',(0,0,1600,760))]),
+    }
+    if key not in specs: return None
+    region,name,base,overlays=specs[key]
+    sky=Image.new('RGBA',(1600,760),(139,202,240,255))
+    sky.alpha_composite(back_canvas(region,name,base).resize((1600,760),Image.Resampling.BILINEAR))
+    for frame,(x,y,w,h) in overlays:
+        layer=back_canvas(region,name,frame).resize((w,h),Image.Resampling.LANCZOS)
+        sky.paste(layer,(x,y),layer)
+    return sky
+
 for key,scene in table['scenes'].items():
     source=OUT/scene['path']
     with Image.open(source) as im:
         rgba=im.convert('RGBA')
-        sky=Image.new('RGBA',rgba.size,(139,202,240,255))
-        sky.alpha_composite(rgba)
-        im=ImageOps.fit(sky.convert('RGB'),(1600,760),method=Image.Resampling.LANCZOS,centering=(0.5,0.5))
+        sky=authentic_backdrop(key)
+        if sky is None:
+            sky=Image.new('RGBA',rgba.size,(139,202,240,255))
+            sky.alpha_composite(rgba)
+            im=ImageOps.fit(sky.convert('RGB'),(1600,760),method=Image.Resampling.LANCZOS,centering=(0.5,0.5))
+        else:
+            foreground=ImageOps.fit(rgba,(1600,760),method=Image.Resampling.LANCZOS,centering=(0.5,0.5))
+            sky.alpha_composite(foreground)
+            im=sky.convert('RGB')
         im.save(OUT/f'scene-{key}.jpg',quality=78,optimize=True,progressive=True)
         im.resize((768,365),Image.Resampling.LANCZOS).save(OUT/f'scene-{key}-sm.jpg',quality=72,optimize=True,progressive=True)
 table_path.write_text(prefix+json.dumps(table,ensure_ascii=False,separators=(',',':'))+';\n',encoding='utf-8')

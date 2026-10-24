@@ -133,19 +133,20 @@
     if (/:last$/.test(key) && a && b && typeof a.id === 'string' && typeof b.id === 'string' &&
         Number.isFinite(a.at) && Number.isFinite(b.at))
       return a.at > b.at ? cloudValue : localValue;
-    if (key === 'study:quest:fademem-v1' || key === 'study:quest:fademem-v2') {
-      var questVersion = key.slice(-1) === '2' ? 2 : 1;
+    if (/^study:quest:(?:fademem-v[12]|[a-z0-9.-]+:v1)$/.test(key)) {
+      var questVersion = key === 'study:quest:fademem-v2' ? 2 : 1;
+      var legacyQuest = key === 'study:quest:fademem-v1';
       if (!a || !b || typeof a !== 'object' || typeof b !== 'object' ||
           Array.isArray(a) || Array.isArray(b) || a.version !== questVersion || b.version !== questVersion) fail();
       var required = [];
-      if (questVersion === 1) [a.required, b.required].forEach(function (xs) { if (Array.isArray(xs)) xs.forEach(function (id) {
+      if (legacyQuest) [a.required, b.required].forEach(function (xs) { if (Array.isArray(xs)) xs.forEach(function (id) {
         if (typeof id === 'string' && required.indexOf(id) < 0) required.push(id);
       }); });
       var quest = { version:questVersion, accepted:!!(a.accepted || b.accepted),
         reported:!!(a.reported || b.reported),
         acceptedAt:[a.acceptedAt,b.acceptedAt].filter(Boolean).sort()[0] || '',
         reportedAt:[a.reportedAt,b.reportedAt].filter(Boolean).sort().pop() || '' };
-      if (questVersion === 1) { quest.required = required; quest.total = required.length; }
+      if (legacyQuest) { quest.required = required; quest.total = required.length; }
       return JSON.stringify(quest);
     }
     if (/:completedAt$/.test(key) && typeof a === 'string' && typeof b === 'string' &&

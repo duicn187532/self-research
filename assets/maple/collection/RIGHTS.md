@@ -12,6 +12,6 @@
 - [日本 MapleStory FAQ](https://maplestory.nexon.co.jp/faq/23/) 與其連結的 [著作權指南](https://jp.nexon.com/rule/copyright.aspx)：有網站圖片、截圖及二次創作使用說明；未據此推定 GMS 原始 WZ 全影格素材包可公開再散布。
 - [API 匯出實作](https://github.com/crrio/maplestory.io/blob/master/maplestory.io/Controllers/API/WZController.cs)：確認匯出方式；程式授權不等於遊戲美術授權。
 
-原始圖檔直接保存 API 匯出位元組，未縮放、重繪或重新壓縮。GMS/83 是來源 API 的版本標籤，未以原版遊戲安裝檔獨立核實。沒有下載完整遊戲客戶端。
+原始圖檔直接保存 API 匯出位元組，未縮放、重繪或重新壓縮。GMS/83 與 TWMS/256 是來源 API 的版本標籤，未以原版遊戲安裝檔獨立核實；網站場景 JPEG 是另行標示的衍生合成圖。沒有下載完整遊戲客戶端。
 
 既有 `assets/maple/` 圖檔的存在不構成授權證據；本次完整保留，也不追認既有素材授權。

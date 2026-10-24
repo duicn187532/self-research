@@ -51,9 +51,21 @@
     "decode": "pass",
     "sha256": "pass",
     "distinct_from_existing_collected_files": true,
-    "layer_separation": "not_provided_by_render_endpoint"
+    "layer_separation": "not_provided_by_render_endpoint",
+    "duplicate_paths": [],
+    "independent_resource_canvases": "pass"
   },
   "github_path": "assets/maple/collection/maps/victoria/100000000/TWMS-256",
   "status": "collected",
-  "display_name_zh_tw": "弓箭手村"
+  "display_name_zh_tw": "弓箭手村",
+  "resource_sets": [
+    {
+      "kind": "back",
+      "name": "grassySoil_new",
+      "wz_path": "Map.wz/Back/grassySoil_new.img",
+      "source_url": "https://maplestory.io/api/wz/export/TWMS/256/Map/Back/grassySoil_new.img",
+      "canvas_count": 23,
+      "manifest_path": "assets/maple/collection/maps/victoria/shared-resource-sets/TWMS-256/back/grassySoil_new/resource-set.json"
+    }
+  ]
 }

@@ -34,6 +34,14 @@ def main() -> int:
     if updated_site != site_source:
         site_path.write_text(updated_site, encoding="utf-8")
     maple = sorted(p for p in (ASSETS / "maple").glob("*") if p.is_file())
+    # Scene URLs live in CSS, so an updated backdrop must also get a new image URL.
+    css_path = ASSETS / "site.css"
+    css_source = css_path.read_text(encoding="utf-8")
+    maple_stamp = digest(*maple)
+    updated_css = re.sub(r'(url\("maple/scene-[\w-]+\.jpg)(?:\?v=\w+)?("\))',
+                         lambda match: match.group(1) + '?v=' + maple_stamp + match.group(2), css_source)
+    if updated_css != css_source:
+        css_path.write_text(updated_css, encoding="utf-8")
     stamps = {
         "site.css": digest(ASSETS / "site.css", *maple),
         "site.js": digest(ASSETS / "site.js"),
@@ -41,6 +49,7 @@ def main() -> int:
         "battle.js": digest(ASSETS / "battle.js"),
         "quest.js": digest(ASSETS / "quest.js"),
         "world.js": digest(ASSETS / "world.js"),
+        "world-quests.js": digest(ASSETS / "world-quests.js"),
         "reading-lab.js": digest(ASSETS / "reading-lab.js"),
         "reading-lab.css": digest(ASSETS / "reading-lab.css"),
     }

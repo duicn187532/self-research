@@ -185567,11 +185567,22 @@
         "sha256": "pass",
         "distinct_from_existing_collected_files": true,
         "layer_separation": "not_provided_by_render_endpoint",
-        "duplicate_paths": []
+        "duplicate_paths": [],
+        "independent_resource_canvases": "pass"
       },
       "github_path": "assets/maple/collection/maps/victoria/100000000/TWMS-256",
       "status": "collected",
-      "display_name_zh_tw": "弓箭手村"
+      "display_name_zh_tw": "弓箭手村",
+      "resource_sets": [
+        {
+          "kind": "back",
+          "name": "grassySoil_new",
+          "wz_path": "Map.wz/Back/grassySoil_new.img",
+          "source_url": "https://maplestory.io/api/wz/export/TWMS/256/Map/Back/grassySoil_new.img",
+          "canvas_count": 23,
+          "manifest_path": "assets/maple/collection/maps/victoria/shared-resource-sets/TWMS-256/back/grassySoil_new/resource-set.json"
+        }
+      ]
     },
     {
       "id": "101000000",
@@ -185627,11 +185638,22 @@
         "sha256": "pass",
         "distinct_from_existing_collected_files": true,
         "layer_separation": "not_provided_by_render_endpoint",
-        "duplicate_paths": []
+        "duplicate_paths": [],
+        "independent_resource_canvases": "pass"
       },
       "github_path": "assets/maple/collection/maps/victoria/101000000/TWMS-256",
       "status": "collected",
-      "display_name_zh_tw": "魔法森林"
+      "display_name_zh_tw": "魔法森林",
+      "resource_sets": [
+        {
+          "kind": "back",
+          "name": "shineWood",
+          "wz_path": "Map.wz/Back/shineWood.img",
+          "source_url": "https://maplestory.io/api/wz/export/TWMS/256/Map/Back/shineWood.img",
+          "canvas_count": 38,
+          "manifest_path": "assets/maple/collection/maps/victoria/shared-resource-sets/TWMS-256/back/shineWood/resource-set.json"
+        }
+      ]
     },
     {
       "id": "102000000",
@@ -185687,11 +185709,22 @@
         "sha256": "pass",
         "distinct_from_existing_collected_files": true,
         "layer_separation": "not_provided_by_render_endpoint",
-        "duplicate_paths": []
+        "duplicate_paths": [],
+        "independent_resource_canvases": "pass"
       },
       "github_path": "assets/maple/collection/maps/victoria/102000000/TWMS-256",
       "status": "collected",
-      "display_name_zh_tw": "勇士之村"
+      "display_name_zh_tw": "勇士之村",
+      "resource_sets": [
+        {
+          "kind": "back",
+          "name": "dryRock",
+          "wz_path": "Map.wz/Back/dryRock.img",
+          "source_url": "https://maplestory.io/api/wz/export/TWMS/256/Map/Back/dryRock.img",
+          "canvas_count": 28,
+          "manifest_path": "assets/maple/collection/maps/victoria/shared-resource-sets/TWMS-256/back/dryRock/resource-set.json"
+        }
+      ]
     },
     {
       "id": "103000000",
@@ -185747,11 +185780,22 @@
         "sha256": "pass",
         "distinct_from_existing_collected_files": true,
         "layer_separation": "not_provided_by_render_endpoint",
-        "duplicate_paths": []
+        "duplicate_paths": [],
+        "independent_resource_canvases": "pass"
       },
       "github_path": "assets/maple/collection/maps/victoria/103000000/TWMS-256",
       "status": "collected",
-      "display_name_zh_tw": "墮落城市"
+      "display_name_zh_tw": "墮落城市",
+      "resource_sets": [
+        {
+          "kind": "back",
+          "name": "sunsetCity",
+          "wz_path": "Map.wz/Back/sunsetCity.img",
+          "source_url": "https://maplestory.io/api/wz/export/TWMS/256/Map/Back/sunsetCity.img",
+          "canvas_count": 13,
+          "manifest_path": "assets/maple/collection/maps/victoria/shared-resource-sets/TWMS-256/back/sunsetCity/resource-set.json"
+        }
+      ]
     },
     {
       "id": "104000000",

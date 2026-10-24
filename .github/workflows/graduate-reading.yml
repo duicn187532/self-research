@@ -48,6 +48,7 @@ jobs:
           node --check assets/battle.js
           node --check assets/quest.js
           node --check assets/world.js
+          node --check assets/world-quests.js
           node scripts/test_reading_lab.js
           node scripts/test_study_profile.js
           node scripts/test_note_awards.js
@@ -59,6 +60,7 @@ jobs:
           node scripts/test_battle_persistence.js
           node scripts/test_shelf_progress.js
           node scripts/test_world_learning.js
+          node scripts/test_world_quests.js
       - name: Existing quiz bank correctness
         run: python3 scripts/quiz/build.py
       - name: Verify quiz outputs remain deterministic
