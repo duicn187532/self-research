@@ -40,6 +40,7 @@ def main() -> int:
         "anim.js": digest(ASSETS / "anim.js"),
         "battle.js": digest(ASSETS / "battle.js"),
         "quest.js": digest(ASSETS / "quest.js"),
+        "world.js": digest(ASSETS / "world.js"),
         "reading-lab.js": digest(ASSETS / "reading-lab.js"),
         "reading-lab.css": digest(ASSETS / "reading-lab.css"),
     }

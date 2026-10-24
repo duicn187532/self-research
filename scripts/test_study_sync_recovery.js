@@ -165,6 +165,9 @@ function reset() {
   const last=JSON.parse(ctx.mergeValues('study:fade:last',
     JSON.stringify({id:'s-boss',at:20}),JSON.stringify({id:'s-problem',at:10})));
   assert.equal(last.id,'s-boss','resume from the most recently visited section');
+  assert.equal(JSON.parse(ctx.mergeValues('study:fade:completedAt',
+    JSON.stringify('2026-10-24T09:00:00.000Z'), JSON.stringify('2026-10-23T09:00:00.000Z'))),
+    '2026-10-23T09:00:00.000Z','cloud merge keeps the earliest completion date');
   // 10. The same account recovers its lesson records after the logout clear.
   reset();
   ctx.userId=null; ctx.initialized=false; ctx.migrateLegacyId=()=>{};

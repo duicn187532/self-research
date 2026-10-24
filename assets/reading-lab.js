@@ -4,8 +4,7 @@
 (function () {
   "use strict";
   var host = document.querySelector("[data-paper]");
-  if (!host) return;
-  var id = host.getAttribute("data-paper");
+  var id = host ? host.getAttribute("data-paper") : null;
   var PAPERS = {
     "2501.13956": {
       short: "Zep", version: "2501.13956v1",
@@ -92,6 +91,11 @@
       method: "s-algo"
     }
   };
+  // Share only the established five research dimensions with the shelf codex.
+  if (typeof window !== "undefined") window.StudyResearchDimensions = Object.fromEntries(Object.keys(PAPERS).map(function (paperId) {
+    return [paperId, PAPERS[paperId].dims.map(function (row) { return { name:row[0], sections:row[2].slice() }; })];
+  }));
+  if (!host) return;
   var data = PAPERS[id];
   var route = document.getElementById("s-route");
   if (!data || !route) return;

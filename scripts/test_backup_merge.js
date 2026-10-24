@@ -21,4 +21,6 @@ assert.equal(merge('study:profile',{displayId:'A',unlockedJobs:[]},{displayId:'A
 assert.equal(merge('study:quest:fademem-v1',{version:1,accepted:true,reported:false,required:['s1']},{version:1,accepted:true,reported:true,required:['s1']}).reported,true);
 assert.equal(merge('study:quest:fademem-v2',{version:2,accepted:true,reported:false},{version:2,accepted:true,reported:true}).reported,true);
 assert.equal(merge('study:fade:last',{id:'s-problem',at:10},{id:'s-boss',at:20}).id,'s-boss');
-console.log('Backup merge: 10 progress-preservation cases passed.');
+assert.equal(merge('study:fade:completedAt','2026-10-24T09:00:00.000Z','2026-10-23T09:00:00.000Z'),
+  '2026-10-23T09:00:00.000Z','backup keeps the earliest completion date');
+console.log('Backup merge: 11 progress-preservation cases passed.');
