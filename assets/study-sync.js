@@ -159,6 +159,10 @@
       '#study-sync-root .ss-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}' +
       '#study-sync-root .ss-status{font-size:12px;margin:9px 0;color:var(--muted,#394962);overflow-wrap:anywhere}' +
       '#study-sync-root .ss-conflict{padding:8px;border:1px solid #d49a59;border-radius:6px;margin:8px 0;overflow-wrap:anywhere}' +
+      '#study-sync-root .ss-recovery{margin-top:12px;padding:10px;border:1px solid #d49a59;border-radius:7px;background:var(--paper,#f8f7e7);color:var(--ink,#182235);font-size:12px}' +
+      '#study-sync-root .ss-recovery[hidden]{display:none}' +
+      '#study-sync-root .ss-recovery p{margin:5px 0 8px}' +
+      '#study-sync-root .ss-recovery select{width:100%;min-height:36px;max-width:100%;padding:5px;border:1px solid #9baac2;border-radius:5px;background:#fff;color:#182235;font:inherit}' +
       '#study-sync-root .ss-heading{font-weight:700;font-size:16px}' +
       '#study-sync-root .ss-id-form{display:grid;gap:6px;padding:9px 0;border-block:1px solid var(--rule,#9baac2)}' +
       '#study-sync-root .ss-id-form[hidden]{display:none}' +
@@ -273,6 +277,7 @@
     ui.now.hidden = !userId;
     ui.reload.hidden = !needsReload;
     ui.offline.hidden = !!client;
+    renderRecovery();
     ui.conflicts.replaceChildren();
     var keys = Object.keys(conflicts);
     if (keys.length) {
@@ -342,6 +347,21 @@
     actions.appendChild(ui.logout);
     actions.appendChild(button('匯出本機與衝突備份', backup));
     panel.appendChild(actions);
+    ui.recoveryBox = el('div', 'ss-recovery');
+    ui.recoveryBox.hidden = true;
+    ui.recoveryBox.appendChild(el('strong', '', '歷史存檔救援'));
+    ui.recoveryBox.appendChild(el('p', '', '若登出後進度歸零，請選登出前的存檔進行安全合併。'));
+    ui.recoverySelect = el('select');
+    ui.recoverySelect.setAttribute('aria-label', '選擇歷史存檔');
+    ui.recoveryBox.appendChild(ui.recoverySelect);
+    var recoverActions = el('div','ss-actions');
+    recoverActions.appendChild(button('預覽並下載存檔', function () {
+      var snap = read(ui.recoverySelect.value, null);
+      if (snap) downloadRecovery(snap, 'self-research-recovery.json');
+    }));
+    recoverActions.appendChild(button('合併恢復進度', restoreSnapshot));
+    ui.recoveryBox.appendChild(recoverActions);
+    panel.appendChild(ui.recoveryBox);
     ui.conflicts = el('div');
     panel.appendChild(ui.conflicts);
     panel.id = 'study-sync-panel';
@@ -381,6 +401,107 @@
     });
     render();
   }
+  // A previous sign-out saved durable local snapshots. Keep them available to the
+  // authenticated owner, even if a later (buggy) sync erased the live progress.
+  function recoverySnapshots() {
+    if (!userId) return [];
+    var prefixes = [
+      '__study_sync_logout_backup:' + scope + ':' + userId + ':',
+      '__study_sync_account_switch_backup:' + scope + ':' + userId + ':',
+      '__study_sync_first_backup:' + scope + ':' + userId
+    ];
+    var result = [];
+    try {
+      for (var i = 0; i < localStorage.length; i++) {
+        var key = localStorage.key(i);
+        if (!key || !prefixes.some(function (p) { return key.indexOf(p) === 0; })) continue;
+        var snap = read(key, null);
+        if (!snap || !snap.entries || typeof snap.entries !== 'object') continue;
+        var count = Object.keys(snap.entries).filter(valid).length;
+        if (!count) continue;
+        var progress = Object.keys(snap.entries).reduce(function (n, k) {
+          if (!/:done$/.test(k)) return n;
+          var list = parse(snap.entries[k]);
+          return n + (Array.isArray(list) ? list.length : 0);
+        }, 0);
+        result.push({ key:key, when:snap.exported || '', keys:count, progress:progress });
+      }
+    } catch (_) { /* browser may block storage enumeration */ }
+    result.sort(function (a,b) { return a.key < b.key ? 1 : -1; });
+    return result;
+  }
+  function meaningful(value) {
+    if (value === null || value === undefined) return false;
+    var parsed = parse(value);
+    if (Array.isArray(parsed)) return parsed.length > 0;
+    if (parsed && typeof parsed === 'object') return Object.keys(parsed).length > 0;
+    if (typeof parsed === 'string') return parsed.trim().length > 0;
+    if (typeof parsed === 'number') return parsed !== 0;
+    return !!parsed;
+  }
+  function downloadRecovery(snapshot, filename) {
+    var url = URL.createObjectURL(new Blob([JSON.stringify(snapshot, null, 2)], {type:'application/json'}));
+    var anchor = document.createElement('a');
+    anchor.href = url; anchor.download = filename;
+    anchor.click(); setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+  }
+  function restoreSnapshot() {
+    if (!userId || !ui.recoverySelect) return;
+    var key = ui.recoverySelect.value;
+    var choice = recoverySnapshots().find(function (s) { return s.key === key; });
+    var snap = choice && read(key, null);
+    if (!snap || !snap.entries) { message('找不到選取的存檔。'); return; }
+    var incoming = snap.entries;
+    var howMany = Object.keys(incoming).filter(valid).length;
+    if (!window.confirm('要從此歷史存檔合併 ' + howMany + ' 筆學習資料嗎？\n'
+      + '不會刪除目前內容；若筆記有不同內容，保留目前版本。\n'
+      + '操作前會保存一份本機快照。')) return;
+    // Persistent undo point, created BEFORE touching any lesson keys.
+    var safetyKey = '__study_sync_before_restore:' + scope + ':' + userId + ':' + Date.now();
+    var before = { exported:new Date().toISOString(), entries:entries() };
+    if (!write(safetyKey, before)) {
+      message('無法建立還原前備份，已停止操作。'); return;
+    }
+    var applied = 0, skipped = 0;
+    Object.keys(incoming).filter(valid).forEach(function (k) {
+      var old = incoming[k], now = raw(k);
+      if (!meaningful(old)) return;
+      var result = old;
+      if (meaningful(now)) {
+        if (now === old) return;
+        try { result = mergeValues(k, now, old); }
+        catch (_) {
+          // Distinct free-text versions require manual comparison; never overwrite.
+          skipped++; return;
+        }
+      }
+      if (now !== result && result !== null) {
+        try { localStorage.setItem(k, result); applied++; }
+        catch (_) { skipped++; }
+      }
+    });
+    // Preserve changed state for a manual retry if the cloud is temporarily offline.
+    downloadRecovery(before, scope + '-before-restore.json');
+    message('已從歷史存檔合併 ' + applied + ' 筆；' + skipped
+      + ' 筆不同內容未覆蓋。請重新載入後按「立即同步」。');
+    needsReload = applied > 0;
+    render();
+  }
+  function renderRecovery() {
+    if (!ui.recoveryBox) return;
+    var snaps = recoverySnapshots();
+    ui.recoveryBox.hidden = !snaps.length;
+    if (!snaps.length) return;
+    var selected = ui.recoverySelect.value;
+    ui.recoverySelect.replaceChildren();
+    snaps.forEach(function (snap, i) {
+      var op = el('option', '', (snap.when ? snap.when.replace('T',' ').slice(0,19) : '首次備份')
+        + ' · ' + snap.keys + ' 筆紀錄 · ' + snap.progress + ' 節');
+      op.value = snap.key;
+      ui.recoverySelect.appendChild(op);
+    });
+    if (snaps.some(function (x) { return x.key === selected; })) ui.recoverySelect.value = selected;
+  }
   function backup() {
     var data = { format: 'study-sync-backup-v1', app: scope,
       exported: new Date().toISOString(), entries: entries(), conflicts: conflicts };
@@ -406,14 +527,17 @@
   }
   async function logout() {
     if (Object.keys(conflicts).length) { message('請先處理衝突並下載備份，再登出。'); return; }
-    await sync(true);
-    if (Object.keys(conflicts).length || status.indexOf('失敗') !== -1) {
+    if (syncing) { message('同步仍在進行，請完成後再登出。'); return; }
+    var good = await sync(true);
+    if (!good || Object.keys(conflicts).length || needsReload) {
       message('同步未完成；為保護本機資料，已取消登出。'); return;
     }
     // Archive and remove signed-in data before returning to guest mode. Without
     // this, the next account could accidentally import the previous user's cache.
-    write('__study_sync_logout_backup:' + scope + ':' + userId + ':' + Date.now(),
-      { exported: new Date().toISOString(), entries: entries() });
+    if (!write('__study_sync_logout_backup:' + scope + ':' + userId + ':' + Date.now(),
+      { exported: new Date().toISOString(), entries: entries() })) {
+      message('瀏覽器無法儲存登出備份，已取消登出。請先匯出 JSON。'); return;
+    }
     var result = await client.auth.signOut();
     if (result.error) { message('登出失敗：' + result.error.message); return; }
     Object.keys(entries()).forEach(function (k) { localStorage.removeItem(k); });
@@ -425,7 +549,13 @@
     var old = raw(ownerKey) || 'guest';
     // Never import one signed-in account's cached progress into another account.
     if (old !== 'guest' && old !== next) {
-      Object.keys(entries()).forEach(function (k) { localStorage.removeItem(k); });
+      // Preserve previous account's progress even on forced account switching.
+      var stash = {exported:new Date().toISOString(), entries:entries()};
+      if (Object.keys(stash.entries).length &&
+          !write('__study_sync_account_switch_backup:' + scope + ':' + old + ':' + Date.now(), stash)) {
+        message('無法備份原帳號資料，已取消切換。'); return;
+      }
+      Object.keys(stash.entries).forEach(function (k) { localStorage.removeItem(k); });
       needsReload = true;
     }
     localStorage.setItem(ownerKey, next || 'guest');
@@ -462,6 +592,7 @@
     else message('已採用雲端資料，請重新載入頁面套用。');
   }
   async function cas(key, value, revision) {
+    if (value === null) throw Error('拒絕空值覆蓋雲端學習資料');
     var r = await client.rpc('study_sync_cas', {
       p_app_id: scope, p_storage_key: key,
       p_value: value, p_expected_revision: revision
@@ -470,7 +601,7 @@
     return r.data && r.data[0];
   }
   async function sync(force) {
-    if (!userId || !client || syncing || needsReload) return;
+    if (!userId || !client || syncing || needsReload) return false;
     if (!force && Date.now() - lastSync < 6000) return;
     syncing = true;
     message('正在同步…');
@@ -487,6 +618,25 @@
         var value = Object.prototype.hasOwnProperty.call(local, key) ? local[key] : null;
         var base = meta[key];
         var target = value;
+        // Older clients accidentally uploaded null tombstones on logout. They are
+        // not authoritative deletions. Never erase a surviving local value for null.
+        if (row.revision > 0 && row.value === null) {
+          if (!meaningful(value)) continue;
+          // Recover non-empty local values through the normal optimistic CAS path.
+          base = null;
+        }
+        // An empty array/string or zero must never wipe meaningful local work
+        // merely because a second device or stale client reset that field.
+        if (row.revision > 0 && row.value !== null &&
+            !meaningful(row.value) && meaningful(value)) {
+          found[key] = { local:value, value:row.value, revision:row.revision };
+          continue;
+        }
+        if (meaningful(row.value) && !meaningful(value)) {
+          localSet(key, row.value); downloaded++;
+          meta[key] = { revision:row.revision, base:row.value };
+          continue;
+        }
         if (value === row.value) {
           meta[key] = { revision: row.revision, base: value };
           continue;
@@ -505,6 +655,7 @@
         try {
           if (base && base.revision === row.revision) target = value;
           else if (row.revision === 0) target = value;
+          else if (row.value === null && meaningful(value)) target = value;
           else target = mergeValues(key, row.value, value);
         } catch (_) {
           found[key] = { local: value, value: row.value, revision: row.revision };
@@ -524,7 +675,7 @@
           }
           if (!answer) throw Error('同步服務未回傳版本');
           row = { revision: Number(answer.revision), value: answer.value };
-          try { target = mergeValues(key, row.value, target); }
+          try { target = row.value === null && meaningful(target) ? target : mergeValues(key, row.value, target); }
           catch (_) { break; }
         }
         if (!success) found[key] = { local: value, value: row.value, revision: row.revision };
@@ -535,8 +686,10 @@
       message(Object.keys(found).length ? '有版本衝突，需選擇保留版本。' :
         needsReload ? '已取得雲端變更，請重新載入套用。' :
         '已同步（上傳 ' + uploaded + ' 筆，下載 ' + downloaded + ' 筆）');
+      return !Object.keys(found).length && !needsReload;
     } catch (e) {
       message('同步失敗：' + (e && e.message ? e.message : '網路或設定問題') + '；本機進度仍保留。');
+      return false;
     } finally { syncing = false; }
   }
   async function setup() {
