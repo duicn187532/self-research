@@ -84,6 +84,19 @@
     }
     fail(); // Text notes and program drafts require explicit resolution.
   }
+  // Normalize historic cloud records before merging with the shorter job names.
+  var LEGACY_PROFILE_JOBS = {
+    "時序織網師":"時序行者",
+    "遺忘調律師":"忘卻之羽",
+    "記憶錨定師":"永恆之錨",
+    "過期記憶偵查員":"破妄者",
+    "狀態追蹤師":"變界旅人",
+    "常駐智能體守護者":"不眠守望",
+    "真值維護師":"真理之眼"
+  };
+  function canonicalProfileJob(title) {
+    return typeof title === 'string' ? (LEGACY_PROFILE_JOBS[title] || title) : '';
+  }
   function mergeStudyProfile(cloudValue, localValue) {
     var remote = parse(cloudValue), local = parse(localValue);
     if (!remote || !local || Array.isArray(remote) || Array.isArray(local) ||
@@ -94,11 +107,12 @@
     var unlock = [];
     [remote.unlockedJobs, local.unlockedJobs].forEach(function (list) {
       if (Array.isArray(list)) list.forEach(function (job) {
-        if (typeof job === 'string' && unlock.indexOf(job) < 0) unlock.push(job);
+        job = canonicalProfileJob(job);
+        if (job && unlock.indexOf(job) < 0) unlock.push(job);
       });
     });
-    var r = typeof remote.activeJob === 'string' ? remote.activeJob : '初心者';
-    var l = typeof local.activeJob === 'string' ? local.activeJob : '初心者';
+    var r = canonicalProfileJob(remote.activeJob) || '初心者';
+    var l = canonicalProfileJob(local.activeJob) || '初心者';
     if (r !== l && r !== '初心者' && l !== '初心者') fail();
     var active = r !== '初心者' ? r : l;
     if (active !== '初心者' && unlock.indexOf(active) < 0) active = '初心者';

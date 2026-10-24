@@ -43,12 +43,12 @@ function mark(id, total, completed) {
 mark("2501.13956", 15, 14);
 assert.equal(api.get().activeJob, "初心者", "partial paper doesn't unlock");
 mark("2501.13956", 15, 15);
-assert.equal(api.get().activeJob, "時序織網師", "first complete paper auto equips its job");
-assert.deepEqual(plain(api.get().unlockedJobs), ["時序織網師"]);
+assert.equal(api.get().activeJob, "時序行者", "first complete paper auto equips its job");
+assert.deepEqual(plain(api.get().unlockedJobs), ["時序行者"]);
 mark("2601.18642", 15, 15);
 assert.equal(api.get().unlockedJobs.length, 2, "second paper adds another job");
-assert.equal(api.setActiveJob("遺忘調律師"), true);
-assert.equal(api.get().activeJob, "遺忘調律師", "select unlocked job");
+assert.equal(api.setActiveJob("忘卻之羽"), true);
+assert.equal(api.get().activeJob, "忘卻之羽", "select unlocked job");
 assert.equal(api.setActiveJob("初心者"), true, "beginner remains optional");
 mark("2501.13956", 15, 0);
 assert.equal(api.get().unlockedJobs.length, 2, "previously earned job not revoked by unchecking");
@@ -56,22 +56,44 @@ assert.equal(api.get().activeJob, "初心者", "user's manual beginner choice pe
 saved.delete("study:profile");
 mark("2501.13956", 15, 14);
 store.set("study:2501.13956:done", Array(15).fill("s-1"));
-assert.equal(api.get().activeJob, "遺忘調律師", "duplicate IDs cannot fake paper completion");
+assert.equal(api.get().activeJob, "忘卻之羽", "duplicate IDs cannot fake paper completion");
 assert.ok(dispatched.length >= 2, "profile updates notify HUD");
+// Previously unlocked long names must be migrated rather than silently revoked.
+saved.delete("study:2601.18642:done");
+saved.delete("study:2501.13956:done");
+saved.set("study:profile", {
+  displayId: "八萬", activeJob: "時序織網師",
+  unlockedJobs: ["時序織網師", "遺忘調律師", "時序行者"]
+});
+const upgraded = api.get();
+assert.equal(upgraded.activeJob, "時序行者", "historical equipped title migrates");
+assert.deepEqual(plain(upgraded.unlockedJobs), ["時序行者", "忘卻之羽"], "historical unlocks migrate and deduplicate");
+assert.equal(saved.get("study:profile").activeJob, "時序行者", "migration saved locally");
+assert.equal(api.setActiveJob("忘卻之羽"), true, "renamed achievements stay equipable");
+
 
 const sync = fs.readFileSync("assets/study-sync.js", "utf8");
-const mergeSrc = between(sync, "  function mergeStudyProfile(", "  function mergeValues(");
+const mergeSrc = between(sync, "  var LEGACY_PROFILE_JOBS = {", "  function mergeValues(");
 const ctx = {
   parse: JSON.parse,
   fail() { throw new Error("CONFLICT"); }
 };
 vm.runInNewContext(mergeSrc, ctx, { timeout: 2000 });
-const cloud = { displayId:"八萬", activeJob:"時序織網師", unlockedJobs:["時序織網師"] };
-const local = { displayId:"", activeJob:"初心者", unlockedJobs:["遺忘調律師"] };
+const cloud = { displayId:"八萬", activeJob:"時序行者", unlockedJobs:["時序行者"] };
+const local = { displayId:"", activeJob:"初心者", unlockedJobs:["忘卻之羽"] };
 const merged = JSON.parse(ctx.mergeStudyProfile(JSON.stringify(cloud), JSON.stringify(local)));
 assert.equal(merged.displayId, "八萬", "new device's empty default must not erase account name");
-assert.equal(merged.activeJob, "時序織網師", "non-beginner equipped job survives new device");
-assert.deepEqual(merged.unlockedJobs, ["時序織網師", "遺忘調律師"]);
+assert.equal(merged.activeJob, "時序行者", "non-beginner equipped job survives new device");
+assert.deepEqual(merged.unlockedJobs, ["時序行者", "忘卻之羽"]);
+const oldCloud = { displayId:"八萬", activeJob:"時序織網師", unlockedJobs:["時序織網師", "遺忘調律師"] };
+const upgradedCloud = JSON.parse(ctx.mergeStudyProfile(JSON.stringify(oldCloud), JSON.stringify(local)));
+assert.equal(upgradedCloud.activeJob, "時序行者", "old cloud job canonicalizes");
+assert.deepEqual(upgradedCloud.unlockedJobs, ["時序行者", "忘卻之羽"], "old cloud unlocks canonicalize");
+const mixedCloud = JSON.parse(ctx.mergeStudyProfile(
+  JSON.stringify(oldCloud), JSON.stringify({ displayId:"八萬", activeJob:"時序行者", unlockedJobs:["時序行者"] })));
+assert.equal(mixedCloud.activeJob, "時序行者", "old/new spelling same equipped job is not a conflict");
+assert.deepEqual(mixedCloud.unlockedJobs, ["時序行者", "忘卻之羽"], "mixed spellings do not duplicate jobs");
+
 assert.throws(() => ctx.mergeStudyProfile(JSON.stringify(cloud), JSON.stringify({ ...local, displayId:"另一人" })), /CONFLICT/, "different names are not overwritten silently");
-assert.throws(() => ctx.mergeStudyProfile(JSON.stringify(cloud), JSON.stringify({ ...local, activeJob:"遺忘調律師" })), /CONFLICT/, "competing manually equipped jobs require resolution");
+assert.throws(() => ctx.mergeStudyProfile(JSON.stringify(cloud), JSON.stringify({ ...local, activeJob:"忘卻之羽" })), /CONFLICT/, "competing manually equipped jobs require resolution");
 console.log("Study profile: all functional regression assertions passed.");
