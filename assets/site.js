@@ -249,7 +249,12 @@
     var done = store.get("study:" + p.id + ":done", []);
     if (!Array.isArray(done)) return false;
     var unique = new Set(done.filter(function (id) { return typeof id === "string" && id.length > 0; }));
-    return unique.size >= p.total;
+    var toc = store.get("study:" + p.id + ":toc", null);
+    // Use the recorded real section IDs whenever available; unrelated/duplicated IDs do not count.
+    if (Array.isArray(toc) && toc.length === p.total &&
+        toc.every(function (row) { return Array.isArray(row) && typeof row[0] === "string"; }))
+      return toc.every(function (row) { return unique.has(row[0]); });
+    return unique.size >= p.total; // Older progress may predate the saved table of contents.
   }
   function emitProfile(profile) {
     window.dispatchEvent(new CustomEvent("study-profile-change", { detail: profile }));
@@ -265,8 +270,7 @@
       current.activeJob = current.unlockedJobs[0]; // first graduation equips its job automatically
     var saved = store.get(PROFILE_KEY, null);
     if (JSON.stringify(saved) !== JSON.stringify(current)) {
-      store.set(PROFILE_KEY, current);
-      emitProfile(current);
+      if (store.set(PROFILE_KEY, current)) emitProfile(current);
     }
     return current;
   }
