@@ -427,7 +427,10 @@
         result.push({ key:key, when:snap.exported || '', keys:count, progress:progress });
       }
     } catch (_) { /* browser may block storage enumeration */ }
-    result.sort(function (a,b) { return a.key < b.key ? 1 : -1; });
+    result.sort(function (a,b) {
+      // Suggest the most complete historical snapshot first, not the newest empty one.
+      return b.progress - a.progress || b.keys - a.keys || (a.key < b.key ? 1 : -1);
+    });
     return result;
   }
   function meaningful(value) {
