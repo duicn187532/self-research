@@ -115,23 +115,9 @@
     return el;
   }
   var firstSection = data.dims[0][2][0];
-  var paperTitle = document.querySelector(".paper-head h1");
-  if (paperTitle) {
-    var paperStart = node("p", "reading-paper-start");
-    paperStart.appendChild(link(firstSection, "開始閱讀：" + (document.getElementById(firstSection)?.getAttribute("data-short") || "第一個問題")));
-    paperStart.appendChild(document.createTextNode("　"));
-    paperStart.appendChild(link("s-route", "先看閱讀路線"));
-    paperTitle.insertAdjacentElement("afterend", paperStart);
-  }
   var quickStart = node("p", "reading-quick-start");
   quickStart.appendChild(link(firstSection, "直接開始：" + (document.getElementById(firstSection)?.getAttribute("data-short") || "第一個問題")));
   origin.insertAdjacentElement("afterend", quickStart);
-
-  var claim = document.querySelector(".paper-head .claim");
-  if (claim) {
-    var note = node("p", "reading-verification-note", "核對範圍：頁首聲明描述既有教材；本次新增的五維導讀與練習尚未重新逐項對照原文，標為待覆核。原文版本：" + data.version + "。");
-    claim.appendChild(note);
-  }
 
   var main = node("details", "reading-lab");
   main.id = "reading-lab";

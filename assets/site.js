@@ -136,6 +136,8 @@
     else root.removeAttribute("data-theme");
   }
   var skin = store.get(SKIN_KEY, "maple"), mode = store.get(MODE_KEY, "system");
+  var focusReading = store.get("study:focus-reading", false) === true;
+  root.classList.toggle("focus-reading", focusReading && !!paper);
   applyMode(mode);
   var openAppear = null, skinRow = null;
   var bar = document.querySelector(".toolbar-inner");
@@ -152,6 +154,8 @@
       '<p>「楓葉冒險」用楓之谷的遊戲美術，內容與原本相同。</p></div>' +
       '<div class="row"><span>色彩</span><div class="seg">' +
       '<button type="button" data-mode-btn="system">跟隨系統</button><button type="button" data-mode-btn="light">淺色</button><button type="button" data-mode-btn="dark">深色</button></div></div>' +
+      '<div class="row row-focus"' + (paper ? '' : ' hidden') + '><span>閱讀</span><div class="seg"><button type="button" class="focus-reading-btn" aria-pressed="false">專注閱讀</button></div></div>' +
+      '<div class="row row-hero" hidden><label for="hero-choice">角色造型</label><select id="hero-choice" class="hero-choice"></select></div>' +
       '<p>設定只存在這個瀏覽器。</p></div>';
     bar.appendChild(wrap);
     var btn = wrap.querySelector(".appear-btn"), panel = wrap.querySelector(".appear-panel");
@@ -159,6 +163,8 @@
     var sync = function () {
       wrap.querySelectorAll("[data-skin-btn]").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-skin-btn") === skin)); });
       wrap.querySelectorAll("[data-mode-btn]").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-mode-btn") === mode)); });
+      var focusBtn = wrap.querySelector(".focus-reading-btn");
+      if (focusBtn) focusBtn.setAttribute("aria-pressed", String(focusReading));
     };
     openAppear = function (v) { panel.hidden = !v; btn.setAttribute("aria-expanded", String(v)); };
     btn.addEventListener("click", function () { openAppear(panel.hidden); });
@@ -167,6 +173,13 @@
     });
     wrap.querySelectorAll("[data-mode-btn]").forEach(function (b) {
       b.addEventListener("click", function () { mode = b.getAttribute("data-mode-btn"); applyMode(mode); store.set(MODE_KEY, mode); sync(); });
+    });
+    var focusBtn = wrap.querySelector(".focus-reading-btn");
+    focusBtn.addEventListener("click", function () {
+      focusReading = !focusReading;
+      root.classList.toggle("focus-reading", focusReading);
+      store.set("study:focus-reading", focusReading);
+      sync();
     });
     document.addEventListener("click", function (e) { if (!panel.hidden && !wrap.contains(e.target)) openAppear(false); });
     panel.addEventListener("keydown", function (e) { if (e.key === "Escape") { openAppear(false); btn.focus(); } });
@@ -1162,7 +1175,13 @@
   // chapter with a battle, of its tier; without, one elite midway and a boss on the last), NPCs taking turns in the self-check dialogs, and the protagonist with a pet, who
   // goes with you from page to page. A paper's protagonist is 殺人鯨 or 露希妲, picked from its id
   // (the outfit changes every visit); its monsters and NPCs are picked from the id too.
-  var seed = seedOf(paper), castDone = {}, party = null, outfits = [];
+  var seed = seedOf(paper), castDone = {}, party = null;
+  var PAPER_SCENES = {
+    "2501.13956": ["ludibrium", "clocktower"], "2601.18642": ["ellinia-town"],
+    "2604.14362": ["perion"], "2605.06527": ["kerning"],
+    "2606.30306": ["orbis"], "2608.19652": ["lachelein"],
+    "dekleer-1986-atms": ["henesys"]
+  };
   var later = window.requestIdleCallback ? function (fn) { window.requestIdleCallback(fn, { timeout: 2000 }); } : function (fn) { setTimeout(fn, 600); };
   var allDialogs = Array.prototype.slice.call(document.querySelectorAll(".check details"));
   function mobFor(s) {
@@ -1254,6 +1273,8 @@
   }
   // while a page is read, the pages either side get their cast and fetch its strips
   function ahead(i) {
+    var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    if (connection && (connection.saveData || /(?:slow-)?2g/.test(connection.effectiveType || ""))) return;
     later(function () {
       [i + 1, i - 1].forEach(function (k) {
         if (!sections[k] || castDone[k] || !window.MAPLE_SPRITES) return;
@@ -1276,15 +1297,7 @@
     var acts = window.MAPLE_SPRITES[party.cast[0].name].acts;
     pager.style.setProperty("--hero-h", Math.max(acts.stand[1], acts.cheer ? acts.cheer[1] : 0));
   }
-  // each page dresses the protagonist in the next of their outfits, so a read shows all of them
-  function dress(i) {
-    if (!party || outfits.length < 2) return;
-    var hero = party.cast[0], name = outfits[i % outfits.length];
-    if (name === hero.name) return;
-    hero.name = name;
-    swapAct(hero.spr, name, "stand");
-    heroRoom();
-  }
+  function dress() { heroRoom(); }
   // a gain: the protagonist cheers, and the level-up light plays when the level went up
   function cheer(up) {
     if (!party || reduceMotion) return;
@@ -1312,10 +1325,10 @@
   whenMaple(function () {
     if (!window.MAPLE_SPRITES) return;
     if (head) addGuide(head, paper + ":opening");
-    var family = (seed >> 1) % 2 ? "lucid" : "orca";
-    var heroes = sprites("hero").filter(function (k) { return window.MAPLE_SPRITES[k].family === family; });
-    outfits = shuffle(heroes.length ? heroes : sprites("hero"));
-    var hero = outfits[0], pet = shuffle(sprites("pet"))[0];
+    var heroes = sprites("hero"), pets = sprites("pet");
+    var savedHero = store.get("study:hero", "");
+    var hero = heroes.indexOf(savedHero) >= 0 ? savedHero : heroes[seed % heroes.length];
+    var pet = pets.length ? pets[seed % pets.length] : null;
     if (hero) {
       party = perch(document.createElement("span"), pet ? [hero, pet] : [hero], "party");
       party.wrap.remove();
@@ -1330,7 +1343,25 @@
     placeParty();
     heroRoom();
     if (current >= 0) { castFor(current); dress(current); ahead(current); }
-    later(function () { outfits.forEach(function (o) { warm(o, "stand"); warm(o, "cheer"); }); });
+    var heroChoice = document.querySelector(".hero-choice");
+    if (heroChoice && party) {
+      var heroRow = heroChoice.closest(".row");
+      heroRow.hidden = false;
+      heroes.forEach(function (name) {
+        var option = document.createElement("option");
+        option.value = name;
+        option.textContent = (window.MAPLE_SPRITES[name].label || name) + (/[23]$/.test(name) ? " · 造型 " + name.slice(-1) : "");
+        heroChoice.appendChild(option);
+      });
+      heroChoice.value = hero;
+      heroChoice.addEventListener("change", function () {
+        var name = heroChoice.value;
+        store.set("study:hero", name);
+        party.cast[0].name = name;
+        swapAct(party.cast[0].spr, name, "stand");
+        heroRoom();
+      });
+    }
     // fetch the level-up and damage strips while idle, so the first finished section plays at once
     later(function () {
       warm("fx-levelup", "stand");
@@ -1581,8 +1612,7 @@
       onStart: function () {
         act("stand");
         if (art) warm(art.name, "hit");
-        var heroes = sprites("hero").filter(function (h) { return window.MAPLE_SPRITES[h].family === "orca" || window.MAPLE_SPRITES[h].family === "lucid"; });
-        var heroName = heroes[(seed + sections.indexOf(s)) % Math.max(1, heroes.length)];
+        var heroName = party && party.cast[0].name;
         if (heroName) { heroArt = document.createElement("span"); heroArt.className = "bt-hero-actor"; heroArt.dataset.hero = heroName; heroArt.setAttribute("aria-hidden", "true"); heroArt.appendChild(spriteEl(heroName, "stand")); b.setHero(heroArt); }
       },
       onHit: function () {
@@ -1732,7 +1762,11 @@
     if (!paged || i < 0 || i >= sections.length) return;
     var changed = i !== current;
     current = i;
-    if (window.MAPLE_SPRITES && window.MAPLE_SPRITES.scenes) { var sceneKeys = Object.keys(window.MAPLE_SPRITES.scenes); document.body.setAttribute("data-map-scene", sceneKeys[(seed + i) % sceneKeys.length]); }
+    if (window.MAPLE_SPRITES && window.MAPLE_SPRITES.scenes) {
+      var zones = PAPER_SCENES[paper] || ["henesys"];
+      var phase = Math.min(zones.length - 1, Math.floor(i * zones.length / sections.length));
+      document.body.setAttribute("data-map-scene", zones[phase]);
+    }
     sections.forEach(function (s, k) { if (k === i) s.removeAttribute("hidden"); else s.setAttribute("hidden", "until-found"); });
     if (paper === "2601.18642") window.StudyMathTypeset(sections[i]);
     if (head) { if (i === 0) head.removeAttribute("hidden"); else head.setAttribute("hidden", "until-found"); }

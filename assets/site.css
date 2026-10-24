@@ -728,6 +728,24 @@ table.matrix th[scope="row"] { position: sticky; left: 0; z-index: 1; background
 table.matrix td { text-align: center; padding: 0.3rem 0.4rem; font-size: 1.05rem; }
 table.matrix td a { display: block; text-decoration: none; }
 table.matrix tbody tr + tr { border-top: 1px solid var(--rule); }
+.compare-full-matrix > summary { cursor: pointer; font-weight: 700; margin: 0.5rem 0; }
+.compare-mobile { display: none; }
+@media (max-width: 760px) {
+  .compare-mobile { display: grid; gap: 0.8rem; padding: 0.8rem; margin: 1rem 0; border: 1px solid var(--rule); background: var(--surface); }
+  .compare-mobile > label { display: grid; gap: 0.25rem; font-weight: 700; }
+  .compare-mobile select { width: 100%; min-height: 44px; padding: 0.35rem; font: inherit; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); }
+  .compare-mobile fieldset { display: flex; flex-wrap: wrap; gap: 0.35rem 0.7rem; min-width: 0; border: 1px solid var(--rule); }
+  .compare-mobile legend { font-weight: 700; }
+  .compare-mobile fieldset label { display: inline-flex; align-items: center; gap: 0.25rem; min-height: 44px; }
+  .compare-mobile input { width: 20px; height: 20px; accent-color: var(--accent); }
+  .compare-mobile-notice { margin: 0; color: var(--warn); }
+  .compare-mobile-notice:empty { display: none; }
+  .compare-mobile-cards { display: grid; gap: 0.6rem; }
+  .compare-mobile-cards article { padding: 0.7rem; border: 1px solid var(--rule); background: var(--paper); }
+  .compare-mobile-cards h3, .compare-mobile-cards p { margin: 0 0 0.35rem; }
+  .compare-mobile-cards a { font-weight: 700; }
+}
+@media (min-width: 761px) { .compare-full-matrix > summary { display: none; } }
 .mx-y a { color: var(--ok); } .mx-p a { color: var(--accent); } .mx-x a { color: var(--warn); } .mx-n a { color: var(--muted); }
 .mx-hint { display: none; margin: 0; font-size: var(--step--1); color: var(--muted); }
 @media (max-width: 860px) { .mx-hint { display: block; } }
@@ -1373,8 +1391,8 @@ table.bench-tbl th[scope="rowgroup"], table.bench-tbl th[scope="row"] { color: v
 /* iPhone: dialogue-style paper heading must NOT keep the desktop 150px portrait gutter.
    Other NPC balloons already use the mobile border widths; the paper intro needs the same rule. */
 @media (max-width:720px) {
-  :root[data-skin="maple"] .column.is-paged > .paper-head:not([hidden]):has(> .npc-portrait),
-  :root[data-skin="maple"] .paper-head:not([hidden]):has(> .npc-portrait) {
+  :root[data-skin="maple"] .column.is-paged > .paper-head:not([hidden]),
+  :root[data-skin="maple"] .paper-head:not([hidden]) {
     box-sizing:border-box;
     min-width:0;width:auto;
     min-height:0;
@@ -1383,11 +1401,11 @@ table.bench-tbl th[scope="rowgroup"], table.bench-tbl th[scope="row"] { color: v
     border-width:28px 14px 58px 16px;
     border-image:url("maple/win9.png") 28 22 58 24 fill / 28px 14px 58px 16px stretch repeat;
   }
-  :root[data-skin="maple"] .paper-head:has(> .npc-portrait) > :not(.npc-portrait) {
+  :root[data-skin="maple"] .paper-head > :not(.npc-portrait) {
     min-width:0;max-width:100%;
     overflow-wrap:anywhere;
   }
-  :root[data-skin="maple"] .paper-head:has(> .npc-portrait) h1 {
+  :root[data-skin="maple"] .paper-head h1 {
     font-size:clamp(1.45rem,6.2vw,2rem);
     line-height:1.38;
     overflow-wrap:anywhere;
@@ -1397,3 +1415,16 @@ table.bench-tbl th[scope="rowgroup"], table.bench-tbl th[scope="row"] { color: v
     width:auto;max-width:calc(100vw - 36px);
   }
 }
+
+/* Optional reading focus: keep chapter controls and save feedback, remove game scenery. */
+:root.focus-reading[data-skin="maple"] :is(.hud, .perch, .npc-portrait, .pg-portal) { display: none !important; }
+:root.focus-reading[data-skin="maple"] body { padding-bottom: env(safe-area-inset-bottom, 0px); }
+:root.focus-reading[data-skin="maple"] .column.is-paged > .sec:not([hidden]) { margin-top: 1.5rem; }
+:root.focus-reading[data-skin="maple"] .check details:has(.npc-portrait),
+:root.focus-reading[data-skin="maple"] .paper-head:has(> .npc-portrait),
+:root.focus-reading[data-skin="maple"] :is(.lv, .explain, .claim, .summary, .worked, .detail):has(> .npc-portrait) {
+  min-height: 0; border-width: 28px 22px 58px 24px;
+  border-image: url("maple/win9.png") 28 22 58 24 fill / 28px 22px 58px 24px stretch repeat;
+}
+:root.focus-reading[data-skin="maple"] :is(.lv, .explain, .claim, .summary, .worked, .detail):has(> .npc-portrait)::after { display: none; }
+.appear-panel .hero-choice { width: 100%; min-height: 36px; padding: 0.25rem; font: inherit; color: var(--ink); background: var(--surface); border: 1px solid var(--rule); }

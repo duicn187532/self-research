@@ -56,12 +56,8 @@ for (const id of ids) {
   heading.className = "sec-head";
   section.appendChild(heading);
   section.querySelector = () => heading;
-  const paperTitle = makeNode("h1");
-  const claim = makeNode("div");
   const document = {
-    querySelector: selector => selector === "[data-paper]" ? { getAttribute: () => id }
-      : selector === ".paper-head h1" ? paperTitle
-      : selector === ".paper-head .claim" ? claim : null,
+    querySelector: selector => selector === "[data-paper]" ? { getAttribute: () => id } : null,
     getElementById: name => name === "s-route" ? section : { getAttribute: () => name },
     createElement: makeNode,
     createTextNode: value => ({ tag: "#text", textContent: value, children: [] })
@@ -70,8 +66,6 @@ for (const id of ids) {
   vm.runInNewContext(source, { document }, { timeout: 2000 });
   const quickStart = heading.inserted;
   assert.equal(quickStart.className, "reading-quick-start", id + ": direct reading entry");
-  assert.equal(paperTitle.inserted.className, "reading-paper-start", id + ": paper heading has start action");
-  assert.match(claim.children[0].textContent, /新增的五維導讀與練習尚未重新逐項對照原文/, id + ": verification scope is visible");
   const app = quickStart.inserted;
   assert.ok(app, id + ": must mount after reading-route heading");
   assert.equal(app.tag, "details", id + ": advanced lab starts folded");

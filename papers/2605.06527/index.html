@@ -8,8 +8,13 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="論文精讀室">
 <title>STALE 精讀</title>
+<meta name="description" content="STALE 與 CUPMem 精讀：Agent 如何辨識過期記憶與隱性衝突。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="STALE 精讀">
+<meta property="og:description" content="STALE 與 CUPMem 精讀：Agent 如何辨識過期記憶與隱性衝突。">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="../../assets/site.css?v=20261024i">
+<link rel="stylesheet" href="../../assets/site.css?v=20261024k">
 <script>try{var r=document.documentElement;r.setAttribute("data-host-theme",r.getAttribute("data-theme")||"");if(JSON.parse(localStorage.getItem("study:skin"))!=="study")r.setAttribute("data-skin","maple");var m=JSON.parse(localStorage.getItem("study:mode"));if(m==="light"||m==="dark")r.setAttribute("data-theme",m);}catch(e){}</script>
 
 <style>
@@ -72,6 +77,7 @@
     <div class="paper-head">
       <div class="eyebrow"><span class="mono">arXiv 2605.06527v1</span><span>cs.CL</span><span>v1 2026-05-07</span><span>37 頁：正文 10 頁、附錄 A–H 24 頁</span></div>
       <h1>STALE：LLM Agent 知道自己的記憶過期了嗎？</h1>
+      <p class="reading-paper-start"><a href="#s-problem">開始閱讀：問題：隱性衝突</a>　<a href="#s-route">先看閱讀路線</a></p>
       <p lang="en"><em>STALE: Can LLM Agents Know When Their Memories Are No Longer Valid?</em></p>
       <p class="authors">Hanxiang Chao*、Yihan Bai*、Rui Sheng、Tianle Li、Yushi Sun（通訊作者）<br>武漢大學、香港中文大學、香港科技大學　<span class="mono">*</span> 同等貢獻</p>
       <div class="links">
@@ -82,6 +88,7 @@
       </div>
       <div class="claim" role="note">
         <span class="claim-label">核對狀態</span>
+        <p class="reading-verification-note">核對範圍：既有教材頁首保留過往核對聲明；本次新增的五維導讀與練習尚未重新逐項對照原文，標為待覆核。原文版本：2605.06527v1。</p>
         <p>本頁已對照 arXiv v1 PDF 全文（含附錄 A–H）逐條核對。所有數字、定義、提示詞都標出在原文的位置，Table 2 的 Overall 欄已逐列驗算。標「導讀補充」的是本頁的推導、背景知識或評論。</p>
         <div class="legend">
           <span><span class="src src-abs">原文 §3.2</span> 出自論文，標明位置</span>
@@ -865,7 +872,7 @@
 
 <script src="quiz.js?v=3585c66ff3"></script>
 <script src="../../assets/battle.js?v=20261024j"></script>
-<script src="../../assets/site.js?v=20261024j"></script>
+<script src="../../assets/site.js?v=20261024k"></script>
 <script src="../../assets/anim.js?v=20261024j"></script>
 <script>
 // STALE side-by-side animation (section s-anim): retrieval-style memory vs CUPMem write-side adjudication.
@@ -1060,6 +1067,6 @@
   draw();
 })();
 </script>
-<script src="../../assets/reading-lab.js?v=20261024b"></script>
+<script src="../../assets/reading-lab.js?v=20261024c"></script>
 </body>
 </html>

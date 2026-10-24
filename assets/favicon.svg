@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="論文精讀室">
+  <rect width="64" height="64" rx="13" fill="#254f73"/>
+  <path d="M14 12h29a7 7 0 0 1 7 7v35H21a7 7 0 0 0-7 4z" fill="#f8f2dc"/>
+  <path d="M14 12v46a7 7 0 0 1 7-7h29" fill="none" stroke="#d6bb77" stroke-width="4"/>
+  <path d="M22 24h20M22 31h16M22 38h19" stroke="#427189" stroke-width="3" stroke-linecap="round"/>
+  <path d="M45 7c-4 1-7 4-8 8 4-1 7-3 8-8zm-2 8c1-4 5-6 9-5-1 4-4 7-9 5z" fill="#da5536"/>
+</svg>

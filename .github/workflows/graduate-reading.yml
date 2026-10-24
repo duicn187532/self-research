@@ -36,10 +36,13 @@ jobs:
       - name: Internal links and chapter anchors
         run: python3 scripts/check_links.py
       - name: Graduate reading lab integrity and source flags
-        run: python3 scripts/check_reading_lab.py
+        run: |
+          python3 scripts/check_reading_lab.py
+          python3 scripts/source_status.py --check
       - name: JavaScript syntax and interactive behavior
         run: |
           node --check assets/reading-lab.js
+          node --check assets/compare-mobile.js
           node --check assets/site.js
           node --check assets/study-sync.js
           node scripts/test_reading_lab.js
