@@ -10,11 +10,30 @@
       catch (e) { return fallback; }
     },
     set: function (k, v) {
-      try { localStorage.setItem(k, JSON.stringify(v)); return true; }
-      catch (e) { return false; }
+      try {
+        localStorage.setItem(k, JSON.stringify(v));
+        if (k.indexOf("study:") === 0) window.dispatchEvent(new CustomEvent("study-local-write", { detail: { key: k } }));
+        return true;
+      }
+      catch (e) {
+        if (k.indexOf("study:") === 0) {
+          window.dispatchEvent(new CustomEvent("study-save-error", { detail: { key: k } }));
+        }
+        return false;
+      }
     }
   };
   window.StudyStore = store;
+  window.addEventListener("study-save-error", function () {
+    var warning = document.getElementById("study-save-warning");
+    if (!warning) {
+      warning = document.createElement("div");
+      warning.id = "study-save-warning";
+      warning.setAttribute("role", "alert");
+      document.body.appendChild(warning);
+    }
+    warning.textContent = "進度無法寫入此瀏覽器。請先匯出備份並檢查儲存空間；此頁新操作可能無法保留。";
+  });
   // dates for the review schedule, as local YYYY-MM-DD strings, which sort as they read
   function ymd(d) { return d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2); }
   function today() { return ymd(new Date()); }
@@ -814,6 +833,51 @@
   function merged(k, mine, theirs) {
     if (mine === null) return theirs;
     var a = parsed(mine, null), b = parsed(theirs, null);
+    if (k === "study:titles" && Array.isArray(a) && Array.isArray(b)) {
+      var titles = a.slice();
+      b.forEach(function (item) { if (item && !titles.some(function (x) { return x && x.t === item.t && x.p === item.p; })) titles.push(item); });
+      return JSON.stringify(titles);
+    }
+    if (k === "study:expedition" && Array.isArray(a) && Array.isArray(b)) {
+      var logs = a.slice();
+      b.forEach(function (item) { if (!logs.some(function (x) { return JSON.stringify(x) === JSON.stringify(item); })) logs.push(item); });
+      return JSON.stringify(logs.sort(function (x, y) { return String(y.at || "").localeCompare(String(x.at || "")); }).slice(0, 120));
+    }
+    if (/:note-awards$/.test(k) && Array.isArray(a) && Array.isArray(b))
+      return JSON.stringify(a.concat(b.filter(function (x) { return a.indexOf(x) < 0; })));
+    if (/:qstat$/.test(k) && a && b && typeof a === "object" && typeof b === "object") {
+      var stats = Object.assign({}, a);
+      Object.keys(b).forEach(function (id) {
+        if (!Array.isArray(stats[id])) { stats[id] = b[id]; return; }
+        if (!Array.isArray(b[id]) || b[id].length !== stats[id].length) return;
+        stats[id] = stats[id].map(function (n, i) { return Math.max(Number(n) || 0, Number(b[id][i]) || 0); });
+      });
+      return JSON.stringify(stats);
+    }
+    if (/:battle$/.test(k) && a && b && typeof a === "object" && typeof b === "object") {
+      var battles = Object.assign({}, a);
+      Object.keys(b).forEach(function (id) {
+        if (!battles[id]) { battles[id] = b[id]; return; }
+        var x = battles[id], y = b[id];
+        battles[id] = { w:Math.max(x.w || 0, y.w || 0), l:Math.max(x.l || 0, y.l || 0),
+          best:Math.max(x.best || 0, y.best || 0), n:Math.max(x.n || 0, y.n || 0),
+          at:String(x.at || "") > String(y.at || "") ? x.at : y.at };
+      });
+      return JSON.stringify(battles);
+    }
+    if (k === "study:profile" && a && b && typeof a === "object" && typeof b === "object") {
+      var jobs = Array.isArray(a.unlockedJobs) ? a.unlockedJobs.slice() : [];
+      (Array.isArray(b.unlockedJobs) ? b.unlockedJobs : []).forEach(function (job) { if (jobs.indexOf(job) < 0) jobs.push(job); });
+      return JSON.stringify({ displayId:a.displayId || b.displayId || "", activeJob:a.activeJob || b.activeJob || "初心者", unlockedJobs:jobs });
+    }
+    if (k === "study:quest:fademem-v1" && a && b && a.version === 1 && b.version === 1) {
+      var ids = Array.isArray(a.required) ? a.required.slice() : [];
+      (Array.isArray(b.required) ? b.required : []).forEach(function (id) { if (ids.indexOf(id) < 0) ids.push(id); });
+      return JSON.stringify({ version:1, accepted:!!(a.accepted || b.accepted),
+        reported:!!(a.reported || b.reported), required:ids, total:ids.length,
+        acceptedAt:[a.acceptedAt,b.acceptedAt].filter(Boolean).sort()[0] || "",
+        reportedAt:[a.reportedAt,b.reportedAt].filter(Boolean).sort().pop() || "" });
+    }
     if (/:(done|asked)$/.test(k) && Array.isArray(a) && Array.isArray(b))
       return JSON.stringify(a.concat(b.filter(function (x) { return a.indexOf(x) < 0; })));
     if (/:exp$/.test(k) && typeof a === "number" && typeof b === "number") return JSON.stringify(Math.max(a, b));
@@ -860,8 +924,9 @@
         if (v !== before[k]) { localStorage.setItem(k, v); n++; }
       });
     } catch (e) {
+      Object.keys(data).forEach(function (k) { if (!(k in before)) try { localStorage.removeItem(k); } catch (x) {} });
       Object.keys(before).forEach(function (k) { try { localStorage.setItem(k, before[k]); } catch (x) {} });
-      say("寫入時儲存空間不足，已放回原本的資料，沒有還原。");
+      say("寫入時儲存空間不足，已嘗試放回原本的資料。若儲存空間仍不可用，請用還原前快照或下載的備份核對。");
       return;
     }
     say("已還原，更新了 " + n + " 個項目。重新整理頁面後就會看到。若結果不對，可以按「復原到上次還原之前」。");
@@ -1390,11 +1455,14 @@
     var id = box.getAttribute("data-done");
     box.checked = done.indexOf(id) >= 0;
     box.addEventListener("change", function () {
-      done = done.filter(function (x) { return x !== id; });
-      if (box.checked) done.push(id);
-      store.set(DONE_KEY, done);
+      var previous = done.slice();
+      var nextDone = done.filter(function (x) { return x !== id; });
+      if (box.checked) nextDone.push(id);
+      if (!store.set(DONE_KEY, nextDone)) { box.checked = previous.indexOf(id) >= 0; return; }
+      done = nextDone;
       renderProgress();
       var g = lastGain = award();
+      window.dispatchEvent(new CustomEvent("study-progress-change", { detail: { paper: paper } }));
       // without a monster on this section (no sprites, or the original style) say it here
       if (g.gain > 0) setTimeout(function () {
         if (g.told) return;
@@ -1632,6 +1700,7 @@
           hud.chat(fresh.map(function (x) { return ["稱號", "獲得稱號「" + x + "」"]; }).concat(here()));
         }, 2200);
         drawBoard();
+        window.dispatchEvent(new CustomEvent("study-progress-change", { detail: { paper: paper } }));
       },
       onLose: function () {
         if (heroArt) { heroArt.classList.add("is-struck"); setTimeout(function () { if (heroArt) heroArt.classList.remove("is-struck"); }, 350); }
@@ -1846,4 +1915,4 @@
 })();
 
 /* Optional study sync overlay: loaded after the existing page app. */
-(function(){var s=document.createElement('script');s.src=new URL('study-sync.js?v=20261024g',document.currentScript.src).href;document.head.appendChild(s);})();
+(function(){var s=document.createElement('script');s.src=new URL('study-sync.js?v=36e9feee80',document.currentScript.src).href;document.head.appendChild(s);})();

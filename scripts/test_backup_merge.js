@@ -1,0 +1,20 @@
+// Importing a backup must retain battle, quest and title achievements from both sides.
+const fs = require('node:fs');
+const vm = require('node:vm');
+const assert = require('node:assert/strict');
+const source = fs.readFileSync('assets/site.js','utf8');
+const start=source.indexOf('  function merged(k, mine, theirs) {');
+const end=source.indexOf('  // notes and answers that are here',start);
+assert.ok(start>=0 && end>start);
+const ctx={parsed:(s,f)=>{try{return JSON.parse(s)}catch{return f}},asObj:x=>x&&typeof x==='object'?x:{},isNoteKey:k=>k.includes(':note:')};
+vm.createContext(ctx);
+vm.runInContext(source.slice(start,end),ctx);
+const merge=(key,a,b)=>JSON.parse(ctx.merged(key,JSON.stringify(a),JSON.stringify(b)));
+assert.deepEqual(JSON.parse(JSON.stringify(merge('study:fade:done',['s1'],['s2']))),['s1','s2']);
+assert.equal(merge('study:fade:battle',{'s-boss':{w:1,l:0,best:4,n:6,at:'2026-10-20'}},{'s-boss':{w:0,l:2,best:2,n:6,at:'2026-10-21'}})['s-boss'].w,1);
+assert.equal(merge('study:fade:battle',{}, {'s-boss':{w:1}})['s-boss'].w,1);
+assert.equal(merge('study:fade:qstat',{}, {'q1':[1,1,1,1]}).q1[1],1);
+assert.equal(merge('study:titles',[],[{t:'遺忘曲線馴服者',p:'fade'}]).length,1);
+assert.equal(merge('study:profile',{displayId:'A',unlockedJobs:[]},{displayId:'A',unlockedJobs:['忘卻之羽']}).unlockedJobs[0],'忘卻之羽');
+assert.equal(merge('study:quest:fademem-v1',{version:1,accepted:true,reported:false,required:['s1']},{version:1,accepted:true,reported:true,required:['s1']}).reported,true);
+console.log('Backup merge: 7 progress-preservation cases passed.');
