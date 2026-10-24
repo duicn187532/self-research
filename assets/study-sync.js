@@ -65,7 +65,11 @@
     if (Array.isArray(a) && Array.isArray(b)) {
       if (path.indexOf(':qstat.') !== -1) {
         if (a.length !== b.length) fail();
-        return a.map(function (x, i) { return mergeDeep(x, b[i], path + '.' + i); });
+        return a.map(function (x, i) {
+          // Slot 2 means "most recent answer was right". Without answer timestamps,
+          // two disagreeing devices cannot prove which answer came last.
+          return i === 2 && x !== b[i] ? 0 : mergeDeep(x, b[i], path + '.' + i);
+        });
       }
       var z = a.slice();
       b.forEach(function (x) { if (!z.some(function (y) { return equal(x, y); })) z.push(x); });
@@ -126,17 +130,23 @@
     if (key === 'study:profile') return mergeStudyProfile(cloudValue, localValue);
     var a = parse(cloudValue), b = parse(localValue);
     if (a === undefined || b === undefined) fail();
-    if (key === 'study:quest:fademem-v1') {
+    if (/:last$/.test(key) && a && b && typeof a.id === 'string' && typeof b.id === 'string' &&
+        Number.isFinite(a.at) && Number.isFinite(b.at))
+      return a.at > b.at ? cloudValue : localValue;
+    if (key === 'study:quest:fademem-v1' || key === 'study:quest:fademem-v2') {
+      var questVersion = key.slice(-1) === '2' ? 2 : 1;
       if (!a || !b || typeof a !== 'object' || typeof b !== 'object' ||
-          Array.isArray(a) || Array.isArray(b) || a.version > 1 || b.version > 1) fail();
+          Array.isArray(a) || Array.isArray(b) || a.version !== questVersion || b.version !== questVersion) fail();
       var required = [];
-      [a.required, b.required].forEach(function (xs) { if (Array.isArray(xs)) xs.forEach(function (id) {
+      if (questVersion === 1) [a.required, b.required].forEach(function (xs) { if (Array.isArray(xs)) xs.forEach(function (id) {
         if (typeof id === 'string' && required.indexOf(id) < 0) required.push(id);
       }); });
-      return JSON.stringify({ version:1, accepted:!!(a.accepted || b.accepted),
-        reported:!!(a.reported || b.reported), required:required, total:required.length,
+      var quest = { version:questVersion, accepted:!!(a.accepted || b.accepted),
+        reported:!!(a.reported || b.reported),
         acceptedAt:[a.acceptedAt,b.acceptedAt].filter(Boolean).sort()[0] || '',
-        reportedAt:[a.reportedAt,b.reportedAt].filter(Boolean).sort().pop() || '' });
+        reportedAt:[a.reportedAt,b.reportedAt].filter(Boolean).sort().pop() || '' };
+      if (questVersion === 1) { quest.required = required; quest.total = required.length; }
+      return JSON.stringify(quest);
     }
     // Do not silently choose one side for free-form writing.
     if (typeof a === 'string' || typeof b === 'string') fail();

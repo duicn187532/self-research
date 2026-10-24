@@ -1430,12 +1430,20 @@ table.bench-tbl th[scope="rowgroup"], table.bench-tbl th[scope="row"] { color: v
 .appear-panel .hero-choice { width: 100%; min-height: 36px; padding: 0.25rem; font: inherit; color: var(--ink); background: var(--surface); border: 1px solid var(--rule); }
 /* Introductory map quest keeps its text legible in both reading skins. */
 .intro-quest{display:flex;align-items:flex-start;gap:16px;max-width:100%;box-sizing:border-box;margin:18px 0;padding:16px;border:2px solid #a58255;border-radius:10px;background:#fff9eb;color:#243047}
-.intro-quest img{width:56px;max-height:76px;object-fit:contain;image-rendering:pixelated;flex:none}
+.intro-quest-portrait{display:block;flex:0 0 43px;width:43px;height:87px;overflow:hidden;color:#593c24;font-size:.8rem;font-weight:700}
+.intro-quest-portrait img{display:block;width:308px;max-width:none;height:157px;max-height:none;transform:scale(.55);transform-origin:top left;image-rendering:pixelated}
 .intro-quest-body{min-width:0;flex:1}
 .intro-quest h2{font-size:1.1rem;margin:0 0 8px;color:inherit}
-.intro-quest p{margin:0 0 9px;overflow-wrap:anywhere}
+.intro-quest p{margin:0 0 9px;color:#243047;overflow-wrap:anywhere}
 .intro-quest-status{font-weight:700}
+.intro-quest-meter{display:block;width:100%;height:10px;margin:7px 0 12px;border:0;appearance:none;background:#decdb0;accent-color:#d47e34}
+.intro-quest-meter::-webkit-progress-bar{background:#decdb0;border-radius:8px}
+.intro-quest-meter::-webkit-progress-value{background:#c76b25;border-radius:8px}
+.intro-quest-meter::-moz-progress-bar{background:#c76b25;border-radius:8px}
 .intro-quest-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.intro-quest-actions .btn{max-width:100%;box-sizing:border-box;white-space:normal}
+.intro-quest-actions .btn{max-width:100%;box-sizing:border-box;white-space:normal;background:#315b51;color:#fff}
+.intro-quest-details{margin-top:10px}.intro-quest-details summary{cursor:pointer;font-weight:700}
+.intro-quest-details ol{margin:9px 0;padding-left:1.5rem}.intro-quest-details li{margin:4px 0}
+.intro-quest-details li.is-done>a::before{content:"✓ ";color:#2b7352;font-weight:800}
 #study-save-warning{position:fixed;left:12px;right:12px;bottom:12px;z-index:10000;max-width:720px;margin:auto;padding:12px 16px;background:#7b2525;color:#fff;border:2px solid #fff;border-radius:8px;box-shadow:0 4px 24px #0006;overflow-wrap:anywhere}
-@media(max-width:450px){.intro-quest{gap:9px;padding:11px}.intro-quest img{width:38px}.intro-quest-actions{display:grid;grid-template-columns:1fr}.intro-quest-actions .btn{width:100%}}
+@media(max-width:450px){.intro-quest{gap:9px;padding:11px}.intro-quest-actions{display:grid;grid-template-columns:1fr}.intro-quest-actions .btn{width:100%}}

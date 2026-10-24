@@ -2,7 +2,7 @@
 
 ## 魔法森林示範任務
 
-書架上的漢斯會派出 FadeMem 精讀任務：接取後讀完 15 節、通過原有的跨章節 Boss 挑戰，再回到書架或論文頁回報。任務顯示未接取、進行中、可回報、已完成四種狀態；從書架或論文列表進入都讀取同一份章節與戰鬥紀錄。回報不重複發 EXP。既有七篇教材與章節戰鬥維持原流程。
+書架上的漢斯會派出 FadeMem 示範任務：從 Problem、Method、Benchmark、Contribution、Gap 各完成一場對應的既有知識戰鬥，再通過跨章節 Boss 挑戰，回到書架或論文頁回報。卡片會指出下一關；其餘章節仍可自由閱讀，不必先完成整篇才能回報。任務顯示未接取、進行中、可回報、已完成四種狀態；直接從論文進入並完成挑戰也會成為可回報。回報不重複發 EXP。短稱號仍依原規則在整篇 15 節完成後解鎖。
 
 進度欄位、備份與同步合併規則見 [進度契約](docs/progress-contract.md)。新增的回歸測試可用 `node scripts/test_intro_quest.js`、`node scripts/test_storage_failure.js`、`node scripts/test_backup_merge.js` 與 `node scripts/test_study_sync_recovery.js` 執行。
 

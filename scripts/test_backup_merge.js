@@ -14,7 +14,11 @@ assert.deepEqual(JSON.parse(JSON.stringify(merge('study:fade:done',['s1'],['s2']
 assert.equal(merge('study:fade:battle',{'s-boss':{w:1,l:0,best:4,n:6,at:'2026-10-20'}},{'s-boss':{w:0,l:2,best:2,n:6,at:'2026-10-21'}})['s-boss'].w,1);
 assert.equal(merge('study:fade:battle',{}, {'s-boss':{w:1}})['s-boss'].w,1);
 assert.equal(merge('study:fade:qstat',{}, {'q1':[1,1,1,1]}).q1[1],1);
+assert.equal(merge('study:fade:qstat',{'q1':[2,1,1,1]},{'q1':[3,1,0,1]}).q1[2],0,
+  'conflicting latest answers must not create false mastery');
 assert.equal(merge('study:titles',[],[{t:'遺忘曲線馴服者',p:'fade'}]).length,1);
 assert.equal(merge('study:profile',{displayId:'A',unlockedJobs:[]},{displayId:'A',unlockedJobs:['忘卻之羽']}).unlockedJobs[0],'忘卻之羽');
 assert.equal(merge('study:quest:fademem-v1',{version:1,accepted:true,reported:false,required:['s1']},{version:1,accepted:true,reported:true,required:['s1']}).reported,true);
-console.log('Backup merge: 7 progress-preservation cases passed.');
+assert.equal(merge('study:quest:fademem-v2',{version:2,accepted:true,reported:false},{version:2,accepted:true,reported:true}).reported,true);
+assert.equal(merge('study:fade:last',{id:'s-problem',at:10},{id:'s-boss',at:20}).id,'s-boss');
+console.log('Backup merge: 10 progress-preservation cases passed.');
