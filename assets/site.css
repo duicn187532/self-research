@@ -865,46 +865,46 @@ table.bench-tbl th[scope="rowgroup"], table.bench-tbl th[scope="row"] { color: v
    scene under a navy shade. */
 :root[data-skin="maple"] body::after {
   content: ""; position: fixed; left: 0; right: 0; top: 0; height: 100vh; height: 100lvh; z-index: 0; pointer-events: none;
-  background: url("maple/scene-day.jpg?v=32c1a621f6") center bottom / cover no-repeat;
+  background: url("maple/scene-day.jpg?v=c83efa4984") center bottom / cover no-repeat;
 }
-:root[data-skin="maple"] body:has([data-scene="ellinia"])::after { background-image: url("maple/scene-ellinia.jpg?v=32c1a621f6"); }
-:root[data-skin="maple"] body[data-map-scene="ludibrium"]::after { background-image: url("maple/scene-ludibrium.jpg?v=32c1a621f6"); }
-:root[data-skin="maple"] body[data-map-scene="clocktower"]::after { background-image: url("maple/scene-clocktower.jpg?v=32c1a621f6"); }
-:root[data-skin="maple"] body[data-map-scene="orbis"]::after { background-image: url("maple/scene-orbis.jpg?v=32c1a621f6"); }
-:root[data-skin="maple"] body[data-map-scene="el-nath"]::after { background-image: url("maple/scene-el-nath.jpg?v=32c1a621f6"); }
-:root[data-skin="maple"] body[data-map-scene="leafre"]::after { background-image: url("maple/scene-leafre.jpg?v=32c1a621f6"); }
-:root[data-skin="maple"] body[data-map-scene="lachelein"]::after { background-image: url("maple/scene-lachelein.jpg?v=32c1a621f6"); }
-:root[data-skin="maple"] body[data-map-scene="henesys"]::after { background-image: url("maple/scene-henesys.jpg?v=32c1a621f6"); }
-:root[data-skin="maple"] body[data-map-scene="ellinia-town"]::after { background-image: url("maple/scene-ellinia-town.jpg?v=32c1a621f6"); }
-:root[data-skin="maple"] body[data-map-scene="perion"]::after { background-image: url("maple/scene-perion.jpg?v=32c1a621f6"); }
-:root[data-skin="maple"] body[data-map-scene="kerning"]::after { background-image: url("maple/scene-kerning.jpg?v=32c1a621f6"); }
-:root[data-skin="maple"] body[data-map-scene="lith-harbor"]::after { background-image: url("maple/scene-lith-harbor.jpg?v=32c1a621f6"); }
-:root[data-skin="maple"] body[data-map-scene="sleepywood"]::after { background-image: url("maple/scene-sleepywood.jpg?v=32c1a621f6"); }
-:root[data-skin="maple"] body[data-map-scene="nautilus"]::after { background-image: url("maple/scene-nautilus.jpg?v=32c1a621f6"); }
-:root[data-skin="maple"] body[data-map-scene="edelstein"]::after { background-image: url("maple/scene-edelstein.jpg?v=32c1a621f6"); }
-:root[data-skin="maple"] body[data-map-scene="mu-lung"]::after { background-image: url("maple/scene-mu-lung.jpg?v=32c1a621f6"); }
-:root[data-skin="maple"] body[data-map-scene="ariant"]::after { background-image: url("maple/scene-ariant.jpg?v=32c1a621f6"); }
-:root[data-skin="maple"] body:has(.shelf-page):not([data-map-scene])::after { background-image: url("maple/scene-login.jpg?v=32c1a621f6"); }
+:root[data-skin="maple"] body:has([data-scene="ellinia"])::after { background-image: url("maple/scene-ellinia.jpg?v=c83efa4984"); }
+:root[data-skin="maple"] body[data-map-scene="ludibrium"]::after { background-image: url("maple/scene-ludibrium.jpg?v=c83efa4984"); }
+:root[data-skin="maple"] body[data-map-scene="clocktower"]::after { background-image: url("maple/scene-clocktower.jpg?v=c83efa4984"); }
+:root[data-skin="maple"] body[data-map-scene="orbis"]::after { background-image: url("maple/scene-orbis.jpg?v=c83efa4984"); }
+:root[data-skin="maple"] body[data-map-scene="el-nath"]::after { background-image: url("maple/scene-el-nath.jpg?v=c83efa4984"); }
+:root[data-skin="maple"] body[data-map-scene="leafre"]::after { background-image: url("maple/scene-leafre.jpg?v=c83efa4984"); }
+:root[data-skin="maple"] body[data-map-scene="lachelein"]::after { background-image: url("maple/scene-lachelein.jpg?v=c83efa4984"); }
+:root[data-skin="maple"] body[data-map-scene="henesys"]::after { background-image: url("maple/scene-henesys.jpg?v=c83efa4984"); }
+:root[data-skin="maple"] body[data-map-scene="ellinia-town"]::after { background-image: url("maple/scene-ellinia-town.jpg?v=c83efa4984"); }
+:root[data-skin="maple"] body[data-map-scene="perion"]::after { background-image: url("maple/scene-perion.jpg?v=c83efa4984"); }
+:root[data-skin="maple"] body[data-map-scene="kerning"]::after { background-image: url("maple/scene-kerning.jpg?v=c83efa4984"); }
+:root[data-skin="maple"] body[data-map-scene="lith-harbor"]::after { background-image: url("maple/scene-lith-harbor.jpg?v=c83efa4984"); }
+:root[data-skin="maple"] body[data-map-scene="sleepywood"]::after { background-image: url("maple/scene-sleepywood.jpg?v=c83efa4984"); }
+:root[data-skin="maple"] body[data-map-scene="nautilus"]::after { background-image: url("maple/scene-nautilus.jpg?v=c83efa4984"); }
+:root[data-skin="maple"] body[data-map-scene="edelstein"]::after { background-image: url("maple/scene-edelstein.jpg?v=c83efa4984"); }
+:root[data-skin="maple"] body[data-map-scene="mu-lung"]::after { background-image: url("maple/scene-mu-lung.jpg?v=c83efa4984"); }
+:root[data-skin="maple"] body[data-map-scene="ariant"]::after { background-image: url("maple/scene-ariant.jpg?v=c83efa4984"); }
+:root[data-skin="maple"] body:has(.shelf-page):not([data-map-scene])::after { background-image: url("maple/scene-login.jpg?v=c83efa4984"); }
 @media (max-width: 600px) {
-  :root[data-skin="maple"] body::after { background-image: url("maple/scene-day-sm.jpg?v=32c1a621f6"); }
-  :root[data-skin="maple"] body:has([data-scene="ellinia"])::after { background-image: url("maple/scene-ellinia-sm.jpg?v=32c1a621f6"); }
-  :root[data-skin="maple"] body:has(.shelf-page):not([data-map-scene])::after { background-image: url("maple/scene-login-sm.jpg?v=32c1a621f6"); }
-  :root[data-skin="maple"] body[data-map-scene="ludibrium"]::after { background-image: url("maple/scene-ludibrium-sm.jpg?v=32c1a621f6"); }
-  :root[data-skin="maple"] body[data-map-scene="clocktower"]::after { background-image: url("maple/scene-clocktower-sm.jpg?v=32c1a621f6"); }
-  :root[data-skin="maple"] body[data-map-scene="orbis"]::after { background-image: url("maple/scene-orbis-sm.jpg?v=32c1a621f6"); }
-  :root[data-skin="maple"] body[data-map-scene="el-nath"]::after { background-image: url("maple/scene-el-nath-sm.jpg?v=32c1a621f6"); }
-  :root[data-skin="maple"] body[data-map-scene="leafre"]::after { background-image: url("maple/scene-leafre-sm.jpg?v=32c1a621f6"); }
-  :root[data-skin="maple"] body[data-map-scene="lachelein"]::after { background-image: url("maple/scene-lachelein-sm.jpg?v=32c1a621f6"); }
-  :root[data-skin="maple"] body[data-map-scene="henesys"]::after { background-image: url("maple/scene-henesys-sm.jpg?v=32c1a621f6"); }
-  :root[data-skin="maple"] body[data-map-scene="ellinia-town"]::after { background-image: url("maple/scene-ellinia-town-sm.jpg?v=32c1a621f6"); }
-  :root[data-skin="maple"] body[data-map-scene="perion"]::after { background-image: url("maple/scene-perion-sm.jpg?v=32c1a621f6"); }
-  :root[data-skin="maple"] body[data-map-scene="kerning"]::after { background-image: url("maple/scene-kerning-sm.jpg?v=32c1a621f6"); }
-  :root[data-skin="maple"] body[data-map-scene="lith-harbor"]::after { background-image: url("maple/scene-lith-harbor-sm.jpg?v=32c1a621f6"); }
-  :root[data-skin="maple"] body[data-map-scene="sleepywood"]::after { background-image: url("maple/scene-sleepywood-sm.jpg?v=32c1a621f6"); }
-  :root[data-skin="maple"] body[data-map-scene="nautilus"]::after { background-image: url("maple/scene-nautilus-sm.jpg?v=32c1a621f6"); }
-  :root[data-skin="maple"] body[data-map-scene="edelstein"]::after { background-image: url("maple/scene-edelstein-sm.jpg?v=32c1a621f6"); }
-  :root[data-skin="maple"] body[data-map-scene="mu-lung"]::after { background-image: url("maple/scene-mu-lung-sm.jpg?v=32c1a621f6"); }
-  :root[data-skin="maple"] body[data-map-scene="ariant"]::after { background-image: url("maple/scene-ariant-sm.jpg?v=32c1a621f6"); }
+  :root[data-skin="maple"] body::after { background-image: url("maple/scene-day-sm.jpg?v=c83efa4984"); }
+  :root[data-skin="maple"] body:has([data-scene="ellinia"])::after { background-image: url("maple/scene-ellinia-sm.jpg?v=c83efa4984"); }
+  :root[data-skin="maple"] body:has(.shelf-page):not([data-map-scene])::after { background-image: url("maple/scene-login-sm.jpg?v=c83efa4984"); }
+  :root[data-skin="maple"] body[data-map-scene="ludibrium"]::after { background-image: url("maple/scene-ludibrium-sm.jpg?v=c83efa4984"); }
+  :root[data-skin="maple"] body[data-map-scene="clocktower"]::after { background-image: url("maple/scene-clocktower-sm.jpg?v=c83efa4984"); }
+  :root[data-skin="maple"] body[data-map-scene="orbis"]::after { background-image: url("maple/scene-orbis-sm.jpg?v=c83efa4984"); }
+  :root[data-skin="maple"] body[data-map-scene="el-nath"]::after { background-image: url("maple/scene-el-nath-sm.jpg?v=c83efa4984"); }
+  :root[data-skin="maple"] body[data-map-scene="leafre"]::after { background-image: url("maple/scene-leafre-sm.jpg?v=c83efa4984"); }
+  :root[data-skin="maple"] body[data-map-scene="lachelein"]::after { background-image: url("maple/scene-lachelein-sm.jpg?v=c83efa4984"); }
+  :root[data-skin="maple"] body[data-map-scene="henesys"]::after { background-image: url("maple/scene-henesys-sm.jpg?v=c83efa4984"); }
+  :root[data-skin="maple"] body[data-map-scene="ellinia-town"]::after { background-image: url("maple/scene-ellinia-town-sm.jpg?v=c83efa4984"); }
+  :root[data-skin="maple"] body[data-map-scene="perion"]::after { background-image: url("maple/scene-perion-sm.jpg?v=c83efa4984"); }
+  :root[data-skin="maple"] body[data-map-scene="kerning"]::after { background-image: url("maple/scene-kerning-sm.jpg?v=c83efa4984"); }
+  :root[data-skin="maple"] body[data-map-scene="lith-harbor"]::after { background-image: url("maple/scene-lith-harbor-sm.jpg?v=c83efa4984"); }
+  :root[data-skin="maple"] body[data-map-scene="sleepywood"]::after { background-image: url("maple/scene-sleepywood-sm.jpg?v=c83efa4984"); }
+  :root[data-skin="maple"] body[data-map-scene="nautilus"]::after { background-image: url("maple/scene-nautilus-sm.jpg?v=c83efa4984"); }
+  :root[data-skin="maple"] body[data-map-scene="edelstein"]::after { background-image: url("maple/scene-edelstein-sm.jpg?v=c83efa4984"); }
+  :root[data-skin="maple"] body[data-map-scene="mu-lung"]::after { background-image: url("maple/scene-mu-lung-sm.jpg?v=c83efa4984"); }
+  :root[data-skin="maple"] body[data-map-scene="ariant"]::after { background-image: url("maple/scene-ariant-sm.jpg?v=c83efa4984"); }
 }
 :root[data-skin="maple"][data-theme="dark"] body::after { box-shadow: inset 0 0 0 100vmax rgba(10, 16, 52, 0.68); }
 @media (prefers-color-scheme: dark) {
