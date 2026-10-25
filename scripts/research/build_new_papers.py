@@ -5,6 +5,7 @@ source anchors, checks and progress controls cannot silently drift apart.
 """
 from html import escape
 from pathlib import Path
+from new_paper_sources import CHAPTERS, OPENING
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -134,11 +135,22 @@ STYLE = """<style>
 .lesson-mini output{display:block;margin-top:.6rem;font-weight:700;color:var(--ink)}
 .lesson-mini .state{display:grid;gap:.4rem;margin-top:.8rem}.lesson-mini .state span{padding:.4rem;border-left:3px solid var(--accent);background:var(--paper)}
 .lesson-mini button{font:inherit;padding:.4rem .8rem;border:1px solid var(--accent);background:var(--accent-soft);color:var(--ink);border-radius:5px;cursor:pointer}
+.paper-source{margin:1.15rem 0 1.35rem;padding:1rem 1.2rem;border:1px solid var(--rule);border-left:4px solid var(--accent);border-radius:6px;background:var(--surface)}
+.paper-source h2,.paper-source h3{margin:.15rem 0 .75rem;line-height:1.35}
+.paper-source h2{font-size:1.2rem}.paper-source h3{font-size:1.05rem}
+.paper-source p{margin:.65rem 0;line-height:1.75}
+.paper-source .source-head{display:flex;flex-wrap:wrap;gap:.4rem .8rem;align-items:center;justify-content:space-between;margin-bottom:.6rem}
+.paper-source .source-head a{font-size:.88rem}
+.paper-source .math-block{overflow-x:auto;margin:.8rem 0;padding:.55rem .35rem;background:var(--paper);border:1px solid var(--rule)}
+.paper-source .table-wrap{margin:.85rem 0}
+.guide-heading{margin:1.25rem 0 .4rem;font-size:1rem;color:var(--muted)}
 </style>"""
 
-def section_html(index, row):
+def section_html(pid, index, row):
     sid, title, source, kid, uni, grad, q, answer = row
     short = title.split("：")[-1]
+    source_notes = CHAPTERS[pid][sid]
+    source_box = f'''<div class="paper-source"><div class="source-head"><span class="src src-abs">原文 {escape(source)}</span><a href="{PAPERS[pid]['pdf']}" target="_blank" rel="noopener">核對原文 PDF ↗</a></div><h3>原文方法與證據</h3>{source_notes}</div>'''
     extra = ""
     if sid == "s-fama":
         extra = """<div class="lesson-mini" id="fama-lab"><h3>FAMA 手算工作台 <span class="src src-mine">本站依原文公式實作</span></h3>
@@ -160,9 +172,10 @@ def section_html(index, row):
 <div class="state"><span id="scope-record"></span><span id="scope-result" role="status" aria-live="polite"></span></div></div>"""
     return f'''<section class="sec" id="{sid}" data-short="{escape(short)}">
 <div class="sec-head"><span class="sec-num">{index:02d}</span><h2>{escape(title)}</h2></div>
-<p class="readout"><span class="src src-abs">原文 {escape(source)}</span></p>
-<div class="explain"><div class="lv lv-kid"><p>{kid}</p></div><div class="lv lv-uni"><p>{uni}</p></div><div class="lv lv-grad"><p>{grad}</p></div></div>
+{source_box}
 {extra}
+<h3 class="guide-heading">分層導讀</h3>
+<div class="explain"><div class="lv lv-kid"><p>{kid}</p></div><div class="lv lv-uni"><p>{uni}</p></div><div class="lv lv-grad"><p>{grad}</p></div></div>
 <div class="check"><span class="check-title">自我檢測</span><details><summary>{escape(q)}</summary><div><p>{answer}</p></div></details></div>
 <div class="desk-foot"><div class="note"><label for="note-{sid}">筆記</label><textarea id="note-{sid}" data-note="{sid}" placeholder="記下推導、疑問與反例"></textarea><span class="saved"></span></div><label class="done"><input type="checkbox" data-done="{sid}"> 讀完這節</label></div>
 </section>'''
@@ -170,15 +183,24 @@ def section_html(index, row):
 def build(pid, p):
     title = escape(p["title"])
     count = len(p["sections"]) + 4  # reading route, substantive sections, boss, research, glossary
-    sections = "\n".join(section_html(i, row) for i, row in enumerate(p["sections"], 1))
+    assert {row[0] for row in p["sections"]} == set(CHAPTERS[pid]), pid + " source analysis mismatch"
+    sections = "\n".join(section_html(pid, i, row) for i, row in enumerate(p["sections"], 1))
     terms = "\n".join(f"<dt>{escape(k)}</dt><dd>{escape(v)}</dd>" for k, v in p["glossary"])
     html = f'''<!doctype html>
 <html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><title>{title} · 論文精讀室</title><meta name="description" content="{title}：原文核對、分層解釋、互動推演與研究批判。"><link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/site.css"><link rel="stylesheet" href="../../assets/reading-lab.css">{STYLE}
 <script>try{{var r=document.documentElement;r.setAttribute("data-host-theme",r.getAttribute("data-theme")||"");if(JSON.parse(localStorage.getItem("study:skin"))!=="study")r.setAttribute("data-skin","maple");var m=JSON.parse(localStorage.getItem("study:mode"));if(m==="light"||m==="dark")r.setAttribute("data-theme",m)}}catch(e){{}}</script>
 <script>window.MathJax={{tex:{{inlineMath:[["\\\\(","\\\\)"]],displayMath:[["\\\\[","\\\\]"]]}},svg:{{fontCache:"global"}}}}</script><script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script></head>
-<body><div data-paper="{pid}" data-scene="{p['scene']}"><header class="toolbar gutter"><div class="toolbar-inner"><a class="home" href="../../index.html">論文精讀室</a><span class="crumb">{p['short']} · {pid}</span><div class="levels" role="group" aria-label="解釋深度"><span class="levels-label">解釋深度</span><div class="seg"><button type="button" data-level-btn="kid" aria-pressed="false">五歲</button><button type="button" data-level-btn="uni" aria-pressed="true">大學生</button><button type="button" data-level-btn="grad" aria-pressed="false">研究生</button><button type="button" data-level-btn="all" aria-pressed="false">對照</button></div></div></div></header>
+<body data-map-scene="{p['scene']}"><div data-paper="{pid}" data-scene="{p['scene']}"><header class="toolbar gutter"><div class="toolbar-inner"><a class="home" href="../../index.html">論文精讀室</a><span class="crumb">{p['short']} · {pid}</span><div class="levels" role="group" aria-label="解釋深度"><span class="levels-label">解釋深度</span><div class="seg"><button type="button" data-level-btn="kid" aria-pressed="false">五歲</button><button type="button" data-level-btn="uni" aria-pressed="true">大學生</button><button type="button" data-level-btn="grad" aria-pressed="false">研究生</button><button type="button" data-level-btn="all" aria-pressed="false">對照</button></div></div></div></header>
 <div class="desk gutter"><nav class="rail" aria-label="章節"><details open><summary>章節 <span class="progress-text" id="progress-text">0 / {count}</span></summary><div class="progress"><span id="progress-bar"></span></div><ol id="outline"></ol></details></nav><main class="column">
-<div class="paper-head"><div class="eyebrow"><span class="mono">{escape(p['meta'])}</span></div><h1>{title}</h1><p class="reading-paper-start"><a href="#s-problem">開始閱讀</a>　<a href="#s-overview">先看閱讀路線</a></p><p lang="en"><em>{escape(p['english'])}</em></p><p class="authors">{escape(p['authors'])}</p><div class="links"><a href="{p['source']}" target="_blank" rel="noopener">正式來源</a><a href="{p['pdf']}" target="_blank" rel="noopener">原文 PDF</a></div><div class="claim" role="note"><span class="claim-label">核對狀態</span><p>本新增教材依上列原文 PDF 的正文、實驗表及限制節編寫；來源版本與發表狀態見頁首。數字依表格逐項摘錄，本站示例與研究建議均另行標示。現有其他七篇的核對狀態不由本次更新繼承。</p><div class="legend"><span><span class="src src-abs">原文 §</span> 原論文或正式版表格</span><span><span class="src src-mine">本站分析</span> 教學示例、推論與研究建議</span></div></div></div>
+<div class="paper-head">
+<div class="eyebrow"><span class="mono">{escape(p['meta'])}</span></div>
+<h1>{title}</h1>
+<p class="reading-paper-start"><a href="#s-problem">開始閱讀</a>　<a href="#s-overview">先看閱讀路線</a></p>
+<p lang="en"><em>{escape(p['english'])}</em></p><p class="authors">{escape(p['authors'])}</p>
+<div class="links"><a href="{p['source']}" target="_blank" rel="noopener">正式來源</a><a href="{p['pdf']}" target="_blank" rel="noopener">原文 PDF</a></div>
+<div class="paper-source opening-source">{OPENING[pid]}</div>
+<div class="claim" role="note"><span class="claim-label">核對狀態</span><p>本新增教材依上列原文 PDF 的正文、實驗表及限制節編寫；來源版本與發表狀態見頁首。數字依表格逐項摘錄，本站示例與研究建議均另行標示。現有其他七篇的核對狀態不由本次更新繼承。</p><div class="legend"><span><span class="src src-abs">原文 §</span> 原論文或正式版表格</span><span><span class="src src-mine">本站分析</span> 教學示例、推論與研究建議</span></div></div>
+</div>
 <section class="sec" id="s-overview" data-short="閱讀路線"><div class="sec-head"><span class="sec-num">00</span><h2>這篇怎麼讀</h2></div><div class="prose"><p>{p['intro']}</p><p>{p['route']}</p><p>學習目標：能說明研究問題、重建關鍵方法或評分、核對至少一項表格結果，並指出一個不能由證據推出的結論。可先選五歲版建立直覺，再切大學生版讀機制，最後用研究生版檢查形式與限制。</p></div><div class="desk-foot"><div class="note"><label for="note-overview">閱讀目的</label><textarea id="note-overview" data-note="s-overview"></textarea><span class="saved"></span></div><label class="done"><input type="checkbox" data-done="s-overview"> 讀完這節</label></div></section>
 {sections}
 <section class="sec sec-boss" id="s-boss" data-short="BOSS：綜合挑戰"><div class="sec-head"><span class="sec-num">B</span><h2>BOSS：跨章節綜合挑戰</h2></div><p>結合問題、方法、公式與證據作答。打完會顯示逐題理由和對應章節，可重試。</p><div class="boss-board" id="boss-board" aria-live="polite"></div><div class="desk-foot"><label class="done"><input type="checkbox" data-done="s-boss"> 擊敗 BOSS</label></div></section>

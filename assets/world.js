@@ -98,7 +98,7 @@
       document.body.setAttribute('data-map-scene', selected.scene);
       detail.textContent = '';
       var art = el('div', 'world-scene'), img = document.createElement('img');
-      img.alt = selected.name + '場景'; img.loading = 'lazy'; img.decoding = 'async';
+      img.alt = selected.name + '場景'; img.loading = 'eager'; img.decoding = 'async';
       img.onerror = function () { img.hidden = true; art.appendChild(el('span', 'world-scene-fallback', selected.name)); };
       img.src = sceneUrl(selected.scene, true);
       img.srcset = sceneUrl(selected.scene, true) + ' 768w, ' + sceneUrl(selected.scene, false) + ' 1600w';

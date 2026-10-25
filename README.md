@@ -38,7 +38,7 @@ python3 scripts/quiz/build.py
 | [2604.14362](papers/2604.14362/index.html) | APEX-MEM: Agentic Semi-Structured Memory with Temporal Reasoning for Long-Term Conversational AI | 已對照 v1 PDF 核對 |
 | [de Kleer 1986](papers/dekleer-1986-atms/index.html) | An Assumption-based TMS (Artificial Intelligence 28, 1986) | 已對照掃描 PDF 頁面影像核對 |
 
-新增的 Memora 與 CASK 各有 13 個可記錄進度的章節、26 道章節／BOSS 題、三層解釋、關鍵原文數值表，以及 FAMA 計算器／作用範圍提交模擬器。教材原始內容可由 `python scripts/research/build_new_papers.py` 重建；題庫原始碼在 `scripts/quiz/q_memora.py` 和 `scripts/quiz/q_cask.py`。來源與未完成驗證項目見 `scripts/research/source_manifest.json`。
+新增的 Memora 與 CASK 各有 13 個可記錄進度的章節、26 道章節／BOSS 題、三層解釋、關鍵原文數值表，以及 FAMA 計算器／作用範圍提交模擬器。頁首先展示原文研究核心與公式，各章也先列來源、方法或數據分析，再進入分層導讀。教材由 `python scripts/research/build_new_papers.py` 重建；逐章原文分析在 `scripts/research/new_paper_sources.py`，題庫原始碼在 `scripts/quiz/q_memora.py` 和 `scripts/quiz/q_cask.py`。來源與未完成驗證項目見 `scripts/research/source_manifest.json`。
 
 楓之谷主場與導師刻意避開原七篇：Memora 用神木村、村長塔塔曼與戴米安；CASK 用海盜船諾特勒斯號、卡伊琳與威爾。這些場景與角色已在既有 `assets/maple/` 素材庫中，新增頁不依賴遠端圖片。怪物也選用尚未分配給原七篇的素材，並在 `assets/site.js` 中逐篇配置。
 
