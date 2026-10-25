@@ -1,9 +1,9 @@
 {
   "verified_on": "2026-10-25",
-  "entity_records": 301,
+  "entity_records": 302,
   "by_type": {
     "mobs": 67,
-    "npc": 200,
+    "npc": 201,
     "bosses": 11,
     "maps": 23
   },
@@ -18,7 +18,8 @@
     "leafre": 9,
     "ariant": 1,
     "edelstein": 1,
-    "mu-lung": 1
+    "mu-lung": 1,
+    "friends-world": 1
   },
   "npc_by_town": {
     "lith-harbor": 14,
@@ -35,17 +36,18 @@
     "天空之城": 4,
     "冰原雪域": 4,
     "神木村": 4,
-    "ludibrium": 1
+    "ludibrium": 1,
+    "friends-world": 1
   },
-  "frame_references": 6007,
-  "unique_referenced_pngs": 3479,
-  "unique_decoded_pixel_frames": 3338,
+  "frame_references": 6008,
+  "unique_referenced_pngs": 3480,
+  "unique_decoded_pixel_frames": 3339,
   "complete_api_action_frame_sets": 248,
   "complete_wz_numeric_frame_sets": 261,
-  "timing_and_origin_complete": 117,
+  "timing_and_origin_complete": 118,
   "frames_missing_origin": 60,
   "frames_missing_explicit_delay": 1287,
-  "existing_images_preserved_inventory_count": 459,
+  "existing_images_preserved_inventory_count": 471,
   "records_with_new_visual_frames_vs_existing_strips": {
     "mobs": 40,
     "npc": 184,
@@ -101,7 +103,8 @@
     "mobs/3210202",
     "mobs/7130001",
     "npc/2041004",
-    "npc/3003202"
+    "npc/3003202",
+    "npc/9400804"
   ],
   "identical_visual_content_entity_groups": [
     [

@@ -200788,6 +200788,113 @@
       "status": "collected",
       "name_zh_tw_source_url": "https://maplestory.io/api/TWMS/256/mob",
       "display_name_zh_tw": "艾利傑"
+    },
+    {
+      "id": "9400804",
+      "type": "npc",
+      "region": "friends-world",
+      "town": "friends-world",
+      "region_status": "curated_target_not_exclusive_spawn_location",
+      "name_zh_tw": "凱內西斯",
+      "name_zh_tw_status": "source_twms",
+      "source_url": "https://maplestory.io/api/TWMS/256/npc/9400804",
+      "export_url": "https://maplestory.io/api/wz/export/TWMS/256/Npc/9400804.img",
+      "wz_path": "Npc.wz/9400804.img",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "license": {
+        "status": "redistribution_permission_unconfirmed",
+        "rights_holder": "Nexon",
+        "evidence_url": "https://maplestory.io/",
+        "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+      },
+      "actions": [
+        {
+          "name": "stand",
+          "frame_count": 1,
+          "expected_frame_count": 1,
+          "frames": [
+            {
+              "index": 0,
+              "width": 51,
+              "height": 76,
+              "mode": "RGBA",
+              "has_transparency": true,
+              "sha256": "41fdeddd6d8e94dd2c47133237b09111891eaa3dcb30c93614ed864851578bf0",
+              "pixel_sha256": "63a9e9de249ad8d05c7306e9c2f10f41615382ae693ad7530286a9ff057d73d4",
+              "wz_path": "Npc.wz/9400804.img/stand/0",
+              "duration_ms": 90,
+              "origin": {
+                "x": 25,
+                "y": 76
+              },
+              "decode": "pass",
+              "github_path": "assets/maple/collection/npc/friends-world/9400804/TWMS-256/stand/0000.png",
+              "storage": "original_png"
+            }
+          ],
+          "count_matches_api": true,
+          "indices_contiguous": true
+        }
+      ],
+      "acquired_on": "2026-10-23",
+      "name": "凱內西斯",
+      "role": null,
+      "is_shop": false,
+      "source_locations": [],
+      "expected_actions": {
+        "condition1": 1,
+        "condition2": 1,
+        "condition3": 1,
+        "stand": 1
+      },
+      "source_metadata_sha256": "8458e732104cf21bb0132c25dea856a5df59010b61ade151deb25bc321cadcaa",
+      "source_archive_sha256": "3aad0d29171c2681b9eca4f2b52d2f4b4ac2fe62708be98aa91e253ac546efb9",
+      "source_frame_indices": {
+        "condition1": [
+          64435
+        ],
+        "condition2": [
+          64433
+        ],
+        "condition3": [
+          64433
+        ],
+        "stand": [
+          0
+        ]
+      },
+      "missing_frames": [
+        {
+          "action": "condition1",
+          "index": 64435,
+          "error": "HTTP Error 400: Bad Request"
+        },
+        {
+          "action": "condition2",
+          "index": 64433,
+          "error": "HTTP Error 400: Bad Request"
+        },
+        {
+          "action": "condition3",
+          "index": 64433,
+          "error": "HTTP Error 400: Bad Request"
+        }
+      ],
+      "validation": {
+        "decode": "pass",
+        "sha256": "pass",
+        "all_api_listed_action_frames_present": false,
+        "timing_and_origin": "complete",
+        "visual_playback": "not_verified",
+        "original_wz_binary_compared": false
+      },
+      "github_path": "assets/maple/collection/npc/friends-world/9400804/TWMS-256",
+      "status": "partial",
+      "name_zh_tw_source_url": "https://maplestory.io/api/TWMS/256/npc",
+      "display_name_zh_tw": "凱內西斯"
     }
   ],
   "counting_policy": "Unique type/ID/version records; actions and frame aliases are not entities. IDs may still represent alternate costumes; species/character totals require identity review.",

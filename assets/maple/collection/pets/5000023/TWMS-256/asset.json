@@ -1,0 +1,129 @@
+{
+  "type": "pets",
+  "id": "5000023",
+  "name_zh_tw": "小企鵝",
+  "name_zh_tw_status": "source_twms",
+  "version": {
+    "region": "TWMS",
+    "version": "256"
+  },
+  "source_url": "https://maplestory.io/api/TWMS/256/pet/5000023",
+  "source_response_sha256": "5f8c6ea63b4e2e2099c4b7ae5a57c86c2a58a9c6ddd0f2c62754ccb0b59eb2fd",
+  "wz_path": "Pet.wz/5000023.img",
+  "acquired_on": "2026-10-25",
+  "license": {
+    "status": "redistribution_permission_unconfirmed",
+    "rights_holder": "Nexon",
+    "publication_basis": "owner_explicit_instruction_2026-10-23_not_a_copyright_license"
+  },
+  "actions": [
+    {
+      "name": "stand",
+      "source_action": "stand0",
+      "frames": [
+        {
+          "index": 0,
+          "width": 33,
+          "height": 38,
+          "duration_ms": 1200,
+          "origin": {
+            "x": 17,
+            "y": 38
+          },
+          "sha256": "9b35a638920d86d0133bbad534890d877ca1d5ceb46c278470a9bd35fdf262d2",
+          "github_path": "assets/maple/collection/pets/5000023/TWMS-256/stand0/0000.png"
+        },
+        {
+          "index": 1,
+          "width": 33,
+          "height": 38,
+          "duration_ms": 120,
+          "origin": {
+            "x": 17,
+            "y": 38
+          },
+          "sha256": "45d9c6a43ab323c3abdf76a371a35add1e098c5265355d6fb802ec545c9cc6d8",
+          "github_path": "assets/maple/collection/pets/5000023/TWMS-256/stand0/0001.png"
+        },
+        {
+          "index": 2,
+          "width": 33,
+          "height": 38,
+          "duration_ms": 120,
+          "origin": {
+            "x": 17,
+            "y": 38
+          },
+          "sha256": "a3cd754333b7e14607c62f9665a148647f3f8020be40b2aa3ee6f0021e34ed21",
+          "github_path": "assets/maple/collection/pets/5000023/TWMS-256/stand0/0002.png"
+        }
+      ]
+    },
+    {
+      "name": "move",
+      "source_action": "move",
+      "frames": [
+        {
+          "index": 0,
+          "width": 33,
+          "height": 38,
+          "duration_ms": 150,
+          "origin": {
+            "x": 17,
+            "y": 38
+          },
+          "sha256": "ccf864a360eb958da93583c995d0f1fdeb715dc97e465a7dd6967e9cfaeccde6",
+          "github_path": "assets/maple/collection/pets/5000023/TWMS-256/move/0000.png"
+        },
+        {
+          "index": 1,
+          "width": 32,
+          "height": 39,
+          "duration_ms": 150,
+          "origin": {
+            "x": 17,
+            "y": 39
+          },
+          "sha256": "eabe28e6b832fc643a78f28e04716fe1b033abbd2a4d28a6a9b165b39aae1eff",
+          "github_path": "assets/maple/collection/pets/5000023/TWMS-256/move/0001.png"
+        },
+        {
+          "index": 2,
+          "width": 33,
+          "height": 38,
+          "duration_ms": 150,
+          "origin": {
+            "x": 17,
+            "y": 38
+          },
+          "sha256": "cb02fb23dd2cd9dcbaca4e3d7bcbd872c62aeeb06335071313a015205783bc1a",
+          "github_path": "assets/maple/collection/pets/5000023/TWMS-256/move/0002.png"
+        },
+        {
+          "index": 3,
+          "width": 32,
+          "height": 38,
+          "duration_ms": 150,
+          "origin": {
+            "x": 16,
+            "y": 38
+          },
+          "sha256": "0be099af1a2e3d316570ee7c4782f36995fdf7efb744ab845660d36d93a0687d",
+          "github_path": "assets/maple/collection/pets/5000023/TWMS-256/move/0003.png"
+        },
+        {
+          "index": 4,
+          "width": 33,
+          "height": 39,
+          "duration_ms": 60,
+          "origin": {
+            "x": 17,
+            "y": 39
+          },
+          "sha256": "0e1d2781055d42dfc174e55c07a00015d3044300171a952b1551b03c99d93f7c",
+          "github_path": "assets/maple/collection/pets/5000023/TWMS-256/move/0004.png"
+        }
+      ]
+    }
+  ]
+}

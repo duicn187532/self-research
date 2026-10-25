@@ -7,6 +7,7 @@ ROOT=Path(__file__).resolve().parents[1]
 COL=ROOT/'assets/maple/collection'
 OUT=ROOT/'assets/maple'
 SELECTION={
+ 'hero-7':('npc','9400804','凱內西斯',{'stand':'stand'}),
  'mob-baby-snail':('mobs','100100','嫩寶',{'stand':'stand','move':'move','hit':'hit1','die':'die1'}),
  'mob-dark-wooden-mask':('mobs','1110101','黑木妖',{'stand':'stand','move':'move','hit':'hit1','die':'die1'}),
  'mob-octopus':('mobs','1120100','三眼章魚',{'stand':'stand','move':'move','hit':'hit1','die':'die1'}),
@@ -118,7 +119,7 @@ def strip(asset, action_name, target):
 
 for key,(kind,ident,label,actions) in SELECTION.items():
     asset=assets[(ASSET_TYPE.get(kind,kind),ident)]
-    spec={'label':label,'kind':{'mobs':'mob','bosses':'boss'}.get(kind,kind),'asset_id':ident,
+    spec={'label':label,'kind':'hero' if key=='hero-7' else {'mobs':'mob','bosses':'boss'}.get(kind,kind),'asset_id':ident,
           'name_zh_tw':asset['name_zh_tw'],'wz_path':asset.get('wz_path'),'source_url':asset.get('source_url'),
           'version':asset.get('version'),'acts':{}}
     if key.startswith(('npc-robin','npc-lucas','npc-mai','npc-pio','npc-roger','npc-john','npc-al','npc-tru','npc-hines','npc-dances-with-balrog','npc-mcgigis','npc-dark-lord','npc-kyrin','npc-icarus','npc-bartos','npc-tobo','npc-ticket-agent','npc-winston','npc-elder-aron')):
@@ -132,6 +133,23 @@ for key,(kind,ident,label,actions) in SELECTION.items():
         say_action=next((a for a in ('say','talk','smile','wink','heart','swing','magic','bow','hand','sword','cough','move') if any(x['name']==a for x in asset['actions'])),None)
         if say_action: spec['acts']['say']=strip(asset,say_action,OUT/f'spr-{key}-say.png')
     table[key]=spec
+
+pet_manifest=json.loads((COL/'pets'/'manifest.json').read_text(encoding='utf-8'))
+pet_assets={a['id']:a for a in pet_manifest['assets']}
+for key,ident in (
+    ('pet-puppy','5000001'),('pet-pink-bunny','5000002'),
+    ('pet-black-kitty','5000004'),('pet-panda','5000008'),
+    ('pet-yeti','5000020'),('pet-penguin','5000023'),
+):
+    asset=pet_assets[ident]
+    table[key]={'label':asset['name_zh_tw'],'kind':'pet','asset_id':ident,
+                'name_zh_tw':asset['name_zh_tw'],'source_url':asset['source_url'],
+                'version':asset['version'],'acts':{
+                    action:strip(asset,action,OUT/f'spr-{key}-{action}.png')
+                    for action in ('stand','move')
+                }}
+table['pet-husky']['label']='哈士奇'
+table['pet-dino']['label']='迪諾龍'
 
 # Preserve the pre-existing strip key; the separately versioned classic Pig is `mob-fat-pig`.
 table['mob-pig']={'label':'緞帶肥肥','kind':'mob','acts':{'stand':[69,49,3],'move':[67,50,3],'hit':[60,54,1],'die':[69,56,3]}}

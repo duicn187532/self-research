@@ -56,7 +56,7 @@
     if (b === undefined || b === null) return a;
     if (path === 'last' || path === 'theme' || path === 'study:level' ||
         path === 'study:mode' || path === 'study:skin' ||
-        path === 'study:hero' || path === 'study:focus-reading') return b;
+        path === 'study:hero' || path === 'study:pet' || path === 'study:focus-reading') return b;
     if (typeof a === 'boolean' && typeof b === 'boolean') {
       if (/done|solved|complete/.test(path)) return a || b;
       fail();

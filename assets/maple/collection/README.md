@@ -10,7 +10,7 @@
 - [validation-report.json](validation-report.json)：實際數量、地區、完整度與驗證結果。
 - [name-index.zh-TW.json](name-index.zh-TW.json)：供應用程式快速讀取的精簡台版中文名稱索引。
 - [candidates.json](candidates.json)：失敗下載或尚未取得項目，不計入已入庫數量。
-- [existing-inventory.json](existing-inventory.json)：本次以前就存在的圖片，只盤點不算新增。
+- [existing-inventory.json](existing-inventory.json)：驗證當下 `assets/maple/` 頂層圖片的快照，包含網站衍生圖；只盤點，不計入來源素材數量。
 - 每個 `類型/地區/ID/版本/asset.json` 提供個別素材資料；目前包含 GMS/83 與 TWMS/256。
 
 原始 PNG 位元組直接保存，不縮放、不重新編碼。影格按 `index` 數值排序；不要用目錄排序重建動畫。相同 SHA-256 或相同尺寸與 RGBA 像素雜湊的圖檔只存一份，其他影格以 `github_path` 引用，播放時仍須保留每一個影格位置與各自延遲。編碼不同但像素相同的來源以 `source_png_sha256` 保留原下載雜湊。某些引用指向同一倉庫的既有素材。
@@ -29,11 +29,15 @@ NPC、普通怪物、精英怪、菁英 Boss、一般 Boss 分開。素材 ID／
 
 長期目標：NPC 150、普通怪物 200、精英怪 30、Boss 40、角色 30、寵物 20、地圖 30、UI／道具／技能／特效 100。目標不是本次已完成數量。
 
-P1 已開始收錄拉契爾恩 NPC／場景、露希妲、戴米安、威爾，以及玩具城／時間塔、天空之城、冰原雪域與神木村。Boss 各階段獨立存放；場景共用資源集保留 Back／Obj／Tile 獨立 PNG。P2 後續擴充寵物、UI、道具與技能特效。
+P1 已開始收錄拉契爾恩 NPC／場景、露希妲、戴米安、威爾，以及玩具城／時間塔、天空之城、冰原雪域與神木村。Boss 各階段獨立存放；場景共用資源集保留 Back／Obj／Tile 獨立 PNG。P2 已補收六種寵物；UI、道具與技能特效仍待擴充。
 
 `batch-05-town-backgrounds.json` 補收弓箭手村、魔法森林、勇士之村與墮落城市的 TWMS/256 `Map.wz/Back` 資源集。`scripts/build_collection_sprites.py` 將這些資源與既有玩具城、時間塔、天空之城、拉契爾恩的 Back 畫布疊在透明場景前景後方，輸出網站用 1600×760 與 768×365 場景圖。這是靜態編排，未重現遊戲內背景視差座標。原始 PNG 與匯出 URL、SHA-256 分別保存在各 `resource-set.json`，合成的 JPEG 是衍生品。
 
 `batch-06-art-direction.json` 補收六個城鎮／周邊的任務導師、一般怪物與地區首領。網站中的導讀 NPC 與戰鬥素材依論文所屬城鎮固定，避免跨區隨機抽角。馬賽爾的來源位置是玩具城（220000000）；拉契爾恩版防毒面具（3003202）的來源位置是市中心（450003000）。後者的來源 API 僅成功輸出站立影格，`partial` 狀態及缺漏影格保留在紀錄中；網站只使用已取得的站立圖。樹妖王有非網站使用的巢狀影格缺漏，網站所需的 stand／move／hit／die 已取得。
+
+`batch-07-kinesis.json` 以 TWMS/256 NPC 9400804 的站立圖修正誤標為凱內西斯的鳥形角色。來源的 condition 影格無法由 API 輸出，紀錄維持 `partial`；網站只使用已核對的站立圖。導讀角色改為每篇論文各有角色池，依章節穩定輪替，保留當地任務導師與跨地區來訪角色。
+
+`collect_pets.py` 從 TWMS/256 Pet API 收錄褐色小狗、粉紅兔子、黑色小貓、熊貓、雪吉拉與小企鵝的站立、移動影格。原始 PNG、名稱、版本、來源 URL、雜湊、影格延遲與原點存於 `pets/`，網站衍生動畫條帶由 `scripts/build_collection_sprites.py` 建立；原有哈士奇與迪諾龍保留。
 
 ## 重現與驗證
 
@@ -47,6 +51,8 @@ python assets/maple/collection/collect_maps.py assets/maple/collection/batch-04-
 python assets/maple/collection/collect_map_resource_batch.py assets/maple/collection/batch-04-map-resources.json
 python assets/maple/collection/collect_map_resource_batch.py assets/maple/collection/batch-05-town-backgrounds.json
 python assets/maple/collection/collect.py assets/maple/collection/batch-06-art-direction.json --acknowledge-unconfirmed-rights
+python assets/maple/collection/collect.py assets/maple/collection/batch-07-kinesis.json --acknowledge-unconfirmed-rights
+python assets/maple/collection/collect_pets.py --acknowledge-unconfirmed-rights
 python assets/maple/collection/sync_tw_names.py
 python assets/maple/collection/enrich.py
 python assets/maple/collection/verify_wz_indices.py --prepare

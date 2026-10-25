@@ -175,6 +175,7 @@
       '<button type="button" data-mode-btn="system">跟隨系統</button><button type="button" data-mode-btn="light">淺色</button><button type="button" data-mode-btn="dark">深色</button></div></div>' +
       '<div class="row row-focus"' + (paper ? '' : ' hidden') + '><span>閱讀</span><div class="seg"><button type="button" class="focus-reading-btn" aria-pressed="false">專注閱讀</button></div></div>' +
       '<div class="row row-hero" hidden><label for="hero-choice">角色造型</label><select id="hero-choice" class="hero-choice"></select></div>' +
+      '<div class="row row-pet" hidden><label for="pet-choice">同行寵物</label><select id="pet-choice" class="pet-choice"></select></div>' +
       '<p>設定只存在這個瀏覽器。</p></div>';
     bar.appendChild(wrap);
     var btn = wrap.querySelector(".appear-btn"), panel = wrap.querySelector(".appear-panel");
@@ -449,24 +450,25 @@
     return Object.keys(t).filter(function (k) { return t[k].kind === kind; });
   }
   var PAPER_CAST = {
-    "2601.18642": { guide:"npc-hines", readers:{ kid:"npc-lina", uni:"hero-6", grad:"npc-hines" }, checks:["npc-knight-oz", "hero-1"], mobs:["mob-green-slime", "mob-spiked-mushroom"], boss:"boss-stumpy" },
-    "2501.13956": { guide:"npc-marcel", readers:{ kid:"npc-conductor", uni:"hero-2", grad:"npc-marcel" }, checks:["npc-knight-eckhart", "hero-7"], mobs:["mob-clockwork-panda", "mob-toy-duck", "mob-clockwork-fighter"], boss:"boss-papulatus" },
-    "2604.14362": { guide:"npc-dances-with-balrog", readers:{ kid:"npc-winston", uni:"hero-3", grad:"npc-dances-with-balrog" }, checks:["npc-knight-mihile", "npc-strategist"], mobs:["mob-fire-boar", "mob-dark-wooden-mask", "mob-stone-golem"], boss:"boss-stumpy" },
-    "2605.06527": { guide:"npc-dark-lord", readers:{ kid:"npc-icarus", uni:"hero-5", grad:"npc-dark-lord" }, checks:["npc-knight-eckhart", "hero-7"], mobs:["mob-octopus", "mob-crocodile", "mob-little-ghost"], boss:"boss-king-slime" },
-    "2608.19652": { guide:"npc-gas-mask", readers:{ kid:"npc-cleaner", uni:"hero-1", grad:"npc-gas-mask" }, checks:["npc-knight-oz", "hero-4"], mobs:["mob-dream-cleaner", "mob-paper-bag-resident", "mob-calina", "mob-angry-ballgoer"], boss:"boss-lucid" },
-    "2606.30306": { guide:"npc-kriel", readers:{ kid:"npc-knight-irena", uni:"hero-6", grad:"npc-kriel" }, checks:["npc-knight-hawkeye", "hero-2"], mobs:["mob-jr-cellion", "mob-jr-cellion-blue", "mob-young-yellow-cellion"], boss:"boss-eliza" },
-    "dekleer-1986-atms": { guide:"npc-elder-stan", readers:{ kid:"npc-bowman", uni:"hero-4", grad:"npc-elder-stan" }, checks:["npc-strategist", "hero-5"], mobs:["mob-baby-snail", "mob-blue-mushroom", "mob-ribbon-pig"], boss:"boss-mushmom" }
+    "2601.18642": { guide:"npc-hines", readers:{ kid:["npc-lina","npc-robin","npc-bartos","npc-pio"], uni:["hero-6","npc-knight-oz","hero-1"], grad:["npc-hines","npc-strategist","npc-elder-stan","npc-kriel","npc-tru"] }, checks:["npc-knight-irena","hero-4","npc-mai","npc-john"], mobs:["mob-green-slime", "mob-spiked-mushroom"], boss:"boss-stumpy" },
+    "2501.13956": { guide:"npc-marcel", readers:{ kid:["npc-conductor","npc-toy-soldier","npc-pio","npc-lina"], uni:["hero-2","npc-knight-eckhart","hero-7"], grad:["npc-marcel","npc-kriel","npc-tru","npc-hines","npc-strategist"] }, checks:["npc-knight-hawkeye","hero-3","npc-icarus","npc-roben"], mobs:["mob-clockwork-panda", "mob-toy-duck", "mob-clockwork-fighter"], boss:"boss-papulatus" },
+    "2604.14362": { guide:"npc-dances-with-balrog", readers:{ kid:["npc-winston","npc-mcgigis","npc-robin","npc-roger"], uni:["hero-3","npc-knight-mihile","hero-5"], grad:["npc-dances-with-balrog","npc-strategist","npc-hines","npc-elder-stan","npc-tru"] }, checks:["npc-knight-eckhart","npc-elder-aron","hero-1","npc-pio"], mobs:["mob-fire-boar", "mob-dark-wooden-mask", "mob-stone-golem"], boss:"boss-stumpy" },
+    "2605.06527": { guide:"npc-dark-lord", readers:{ kid:["npc-icarus","npc-john","npc-girl","npc-roger"], uni:["hero-5","npc-knight-eckhart","hero-7"], grad:["npc-dark-lord","npc-tru","npc-strategist","npc-hines","npc-elder-stan"] }, checks:["npc-knight-hawkeye","hero-2","npc-kyrin","npc-ticket-agent"], mobs:["mob-octopus", "mob-crocodile", "mob-little-ghost"], boss:"boss-king-slime" },
+    "2608.19652": { guide:"npc-gas-mask", readers:{ kid:["npc-cleaner","npc-lina","npc-mai","npc-robin"], uni:["hero-1","npc-knight-oz","hero-4"], grad:["npc-gas-mask","npc-hines","npc-strategist","npc-kriel","npc-tru"] }, checks:["npc-knight-eckhart","hero-7","npc-roben","npc-conductor"], mobs:["mob-dream-cleaner", "mob-paper-bag-resident", "mob-calina", "mob-angry-ballgoer"], boss:"boss-lucid" },
+    "2606.30306": { guide:"npc-kriel", readers:{ kid:["npc-knight-irena","npc-roben","npc-robin","npc-pio"], uni:["hero-6","npc-knight-hawkeye","hero-2"], grad:["npc-kriel","npc-strategist","npc-elder-stan","npc-hines","npc-tru"] }, checks:["npc-knight-oz","hero-1","npc-tatamo","npc-mai"], mobs:["mob-jr-cellion", "mob-jr-cellion-blue", "mob-young-yellow-cellion"], boss:"boss-eliza" },
+    "dekleer-1986-atms": { guide:"npc-elder-stan", readers:{ kid:["npc-bowman","npc-elder-aron","npc-pio","npc-robin"], uni:["hero-4","npc-knight-irena","hero-5"], grad:["npc-elder-stan","npc-hines","npc-strategist","npc-tru","npc-kriel"] }, checks:["npc-knight-mihile","hero-3","npc-lina","npc-bartos"], mobs:["mob-baby-snail", "mob-blue-mushroom", "mob-ribbon-pig"], boss:"boss-mushmom" }
   };
   function guideFor(role, index) {
     var all = window.MAPLE_SPRITES || {};
     var cast = PAPER_CAST[paper];
-    var chosen = cast && (role === "check" ? cast.checks[index % cast.checks.length] : cast.readers[role]);
+    var pool = cast && (role === "check" ? cast.checks : cast.readers[role]);
+    var chosen = pool && pool.length ? pool[(index + seedOf(paper + ":" + role)) % pool.length] : null;
     if (chosen && all[chosen]) return chosen;
     return cast && all[cast.guide] ? cast.guide : null;
   }
-  function addGuide(host, role) {
+  function addGuide(host, role, index) {
     if (!host || host.querySelector(":scope > .npc-portrait")) return;
-    var name = guideFor(role, 0);
+    var name = guideFor(role, index);
     if (!name) return;
     var npc = document.createElement("span"); npc.className = "npc-portrait"; npc.setAttribute("aria-hidden", "true");
     var fig = document.createElement("span"); fig.className = "npc-fig"; fig.appendChild(spriteEl(name, "say"));
@@ -1354,11 +1356,11 @@
     if (levels && levels.length) {
       levels.forEach(function (host) {
         var role = host.classList.contains("lv-kid") ? "kid" : host.classList.contains("lv-grad") ? "grad" : "uni";
-        addGuide(host, role);
+        addGuide(host, role, i);
       });
     } else {
       var guideHost = explanation || sections[i].querySelector(".claim, .summary, .worked, .detail");
-      if (guideHost) addGuide(guideHost, "grad");
+      if (guideHost) addGuide(guideHost, "grad", i);
     }
     sections[i].querySelectorAll(".check details").forEach(function (dialog, j) { addNpc(dialog, i + j); });
   }
@@ -1418,7 +1420,8 @@
     var heroes = sprites("hero"), pets = sprites("pet");
     var savedHero = store.get("study:hero", "");
     var hero = heroes.indexOf(savedHero) >= 0 ? savedHero : heroes[seed % heroes.length];
-    var pet = pets.length ? pets[seed % pets.length] : null;
+    var savedPet = store.get("study:pet", "");
+    var pet = pets.indexOf(savedPet) >= 0 ? savedPet : (pets.length ? pets[seed % pets.length] : null);
     if (hero) {
       party = perch(document.createElement("span"), pet ? [hero, pet] : [hero], "party");
       party.wrap.remove();
@@ -1450,6 +1453,24 @@
         party.cast[0].name = name;
         swapAct(party.cast[0].spr, name, "stand");
         heroRoom();
+      });
+    }
+    var petChoice = document.querySelector(".pet-choice");
+    if (petChoice && pet && party.cast[1]) {
+      petChoice.closest(".row").hidden = false;
+      pets.forEach(function (name) {
+        var option = document.createElement("option");
+        option.value = name;
+        option.textContent = window.MAPLE_SPRITES[name].label || name;
+        petChoice.appendChild(option);
+      });
+      petChoice.value = pet;
+      petChoice.addEventListener("change", function () {
+        var name = petChoice.value;
+        store.set("study:pet", name);
+        party.cast[1].name = name;
+        swapAct(party.cast[1].spr, name, "stand");
+        warm(name, "move");
       });
     }
     // fetch the level-up and damage strips while idle, so the first finished section plays at once
@@ -1956,4 +1977,4 @@
 })();
 
 /* Optional study sync overlay: loaded after the existing page app. */
-(function(){var s=document.createElement('script');s.src=new URL('study-sync.js?v=c85c121563',document.currentScript.src).href;document.head.appendChild(s);})();
+(function(){var s=document.createElement('script');s.src=new URL('study-sync.js?v=4635f44d7c',document.currentScript.src).href;document.head.appendChild(s);})();

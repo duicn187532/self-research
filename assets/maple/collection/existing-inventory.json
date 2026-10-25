@@ -1581,10 +1581,10 @@
   },
   {
     "github_path": "assets/maple/spr-hero-7-stand.png",
-    "width": 75,
-    "height": 82,
+    "width": 51,
+    "height": 76,
     "mode": "RGBA",
-    "sha256": "36f1f2bb945b1ca9e922e887ff7d59ad7b43091106f8f4a2fb17362d24035b48",
+    "sha256": "8d6410154b51e6a40fc419fa7530ea6d3be375aee14bee9b1765b606de8b2c8a",
     "decode": "pass",
     "new_asset": false,
     "rights_status": "not_reassessed"
@@ -4470,6 +4470,26 @@
     "rights_status": "not_reassessed"
   },
   {
+    "github_path": "assets/maple/spr-pet-black-kitty-move.png",
+    "width": 123,
+    "height": 40,
+    "mode": "RGBA",
+    "sha256": "d14133aa5c7d255243aab18f517f18cc3215033134920fd8578c82682b971c5a",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-pet-black-kitty-stand.png",
+    "width": 114,
+    "height": 39,
+    "mode": "RGBA",
+    "sha256": "510902cfc6f994482262d41559b72b6f665215138b08bbe95bc985149641417a",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
     "github_path": "assets/maple/spr-pet-dino-move.png",
     "width": 240,
     "height": 43,
@@ -4505,6 +4525,106 @@
     "height": 37,
     "mode": "RGBA",
     "sha256": "fe47f912e9284f7656ba169ac34bec26d727b3a6da9758a9df8a5c800f7313ac",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-pet-panda-move.png",
+    "width": 129,
+    "height": 34,
+    "mode": "RGBA",
+    "sha256": "f1784597a81f6f234ed3088666791b580e6589ba902a2a790c256f132bf3dd68",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-pet-panda-stand.png",
+    "width": 123,
+    "height": 33,
+    "mode": "RGBA",
+    "sha256": "346f6b0489ab0d629e6eaf18346f0c12179568466a20705b61ba0bae502b1d95",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-pet-penguin-move.png",
+    "width": 165,
+    "height": 39,
+    "mode": "RGBA",
+    "sha256": "50cf4a7aa043d00da865561f43f85b35a3fd4f540b9b5b96c181cade03a59986",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-pet-penguin-stand.png",
+    "width": 99,
+    "height": 38,
+    "mode": "RGBA",
+    "sha256": "fc1524a1c486d090f93ec61f542f13eee59a8fa110e3eee57bad77ff5aae1ce7",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-pet-pink-bunny-move.png",
+    "width": 180,
+    "height": 49,
+    "mode": "RGBA",
+    "sha256": "65672893701417fd11863ad0e6319ab95998d7bddd79dd46e87baaa7507a7299",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-pet-pink-bunny-stand.png",
+    "width": 120,
+    "height": 41,
+    "mode": "RGBA",
+    "sha256": "911b474cddb132cbf902ffdf3bed4f38feb9422df9c6037ca1e909165d16927f",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-pet-puppy-move.png",
+    "width": 150,
+    "height": 31,
+    "mode": "RGBA",
+    "sha256": "c58ed6c64470026b08d8e0a6b33037641bda1f4bff5758a80890958a2b37cbe4",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-pet-puppy-stand.png",
+    "width": 147,
+    "height": 30,
+    "mode": "RGBA",
+    "sha256": "c3fe89a1ca225ecdaad60f1663f07ed7bc1d5fc0e1606ca93f1fba296101d23e",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-pet-yeti-move.png",
+    "width": 248,
+    "height": 49,
+    "mode": "RGBA",
+    "sha256": "d8c34de5cb90edff67ad2b5c8cbd76d8a314d4b0ff900485dd4eec75e85fd68b",
+    "decode": "pass",
+    "new_asset": false,
+    "rights_status": "not_reassessed"
+  },
+  {
+    "github_path": "assets/maple/spr-pet-yeti-stand.png",
+    "width": 196,
+    "height": 49,
+    "mode": "RGBA",
+    "sha256": "7120cabe162b1e6de721923d9f2aab1ec91d08b38d856a4ce566c8aac02af066",
     "decode": "pass",
     "new_asset": false,
     "rights_status": "not_reassessed"
