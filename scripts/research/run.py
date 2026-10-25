@@ -1,6 +1,7 @@
 """Regenerate every paper's 研究者進階分析 section (s-research) from the rd_*.py data files.
 
     python3 scripts/research/run.py            # from the repo root
+    python3 scripts/research/build_legacy_audits.py  # seven source-first cards
     python3 scripts/research/build_compare.py  # then the workbench, compare/index.html
     python3 scripts/stamp_assets.py
 

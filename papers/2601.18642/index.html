@@ -14,7 +14,7 @@
 <meta property="og:description" content="FadeMem 仿生遺忘論文精讀：雙層記憶、衰減公式、實驗與批判。">
 <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="../../assets/site.css?v=b139cbfac1">
+<link rel="stylesheet" href="../../assets/site.css?v=9a541d8f98">
 <script>try{var r=document.documentElement;r.setAttribute("data-host-theme",r.getAttribute("data-theme")||"");if(JSON.parse(localStorage.getItem("study:skin"))!=="study")r.setAttribute("data-skin","maple");var m=JSON.parse(localStorage.getItem("study:mode"));if(m==="light"||m==="dark")r.setAttribute("data-theme",m);}catch(e){}</script>
 
 <style>
@@ -84,10 +84,19 @@
         <a href="https://arxiv.org/html/2601.18642v2" target="_blank" rel="noopener">HTML 全文</a>
         <a href="https://arxiv.org/pdf/2601.18642v2" target="_blank" rel="noopener">PDF</a>
       </div>
+      <!-- legacy-source-audit:start -->
+      <aside class="source-audit" aria-label="原文核對摘要">
+        <div class="source-audit-head"><h2>先讀原文：方法、結果與證據邊界</h2><a href="https://arxiv.org/pdf/2601.18642v2" target="_blank" rel="noopener">核對 arXiv 2601.18642v2 PDF ↗</a></div>
+        <p class="source-audit-scope">原文 5 頁。本次重查 §2 的 Eq. 1–14、§3 的 Tables 1–3 與 Fig. 2 原始頁面；未獨立重跑三個資料集。</p>
+        <p><span class='src src-abs'>原文 §2、Eq. 4–6</span> FadeMem 以兩層記憶、依重要性調整的衰減率、LLM 衝突裁決與融合管理記憶。核心衰減為 <span class='source-audit-formula'>v<sub>i</sub>(t) = v<sub>i</sub>(0) exp[−λ<sub>i</sub>(t−τ<sub>i</sub>)<sup>β<sub>i</sub></sup>]，λ<sub>i</sub> = λ<sub>base</sub>e<sup>−μ I<sub>i</sub>(t)</sup></span>。原文給 LML／SML 的形狀參數 0.8／1.2；『仿生』是設計動機，並非神經科學模型驗證。</p>
+        <div class="table-wrap"><table class="results"><caption>本次原文核對：主張、原文單位與不能推出的結論</caption><thead><tr><th>主張</th><th>原文定位與結果</th><th>推論邊界</th></tr></thead><tbody><tr><th scope='row'>保留與容量</th><td>Table 1：關鍵事實保留 82.1%；storage used 55.0%</td><td>45% 是相對於 100% 儲存的減量，不是答題準確率增益。</td></tr><tr><th scope='row'>跨資料集</th><td>Table 3：LoCoMo multi-hop F1 29.43、SRR 0.45</td><td>與固定窗、LangChain、Mem0、MemGPT 的設定比較，不能直接外推真實代理。</td></tr><tr><th scope='row'>組件消融</th><td>Fig. 2：完整模型 multi-hop 29.43；w/o Fusion 13.63</td><td>圖中數值由頁面影像核對，移除組件是整體配置比較。</td></tr></tbody></table></div>
+        <p><span class='src src-mine'>審核結論</span> Eq. 3 的雙門檻中間區間沒有公式分支；教材把『維持原層』明確標為由 hysteresis 文字推得。部分 decay／融合超參數與服務版本未完整固定，不能把可手算公式等同完整實驗可重現。</p>
+      </aside>
+      <!-- legacy-source-audit:end -->
       <div class="claim" role="note">
         <span class="claim-label">核對狀態</span>
-        <p class="reading-verification-note">核對範圍：既有教材頁首保留過往核對聲明；本次新增的五維導讀與練習尚未重新逐項對照原文，標為待覆核。原文版本：2601.18642v2。</p>
-        <p>本頁已對照 arXiv v2 PDF 全文逐條核對。所有公式、數字、超參數都標出在原文的位置。標「導讀補充」的是本頁自己的推導、背景知識或評論，論文裡沒有。論文沒給的數值一律寫「未提供」，不做猜測。</p>
+        <p class="reading-verification-note">本次重查 §2 的 Eq. 1–14、§3 的 Tables 1–3 與 Fig. 2 原始頁面；未獨立重跑三個資料集。來源版本：arXiv 2601.18642v2。詳見上方逐項核對卡；教材示例與作者實驗結果分開標示。</p>
+        <p>既有教材先前核對紀錄：本頁已對照 arXiv v2 PDF 全文逐條核對。所有公式、數字、超參數都標出在原文的位置。標「導讀補充」的是本頁自己的推導、背景知識或評論，論文裡沒有。論文沒給的數值一律寫「未提供」，不做猜測。</p>
         <div class="legend">
           <span><span class="src src-abs">原文 Eq.4</span> 出自論文，標明位置</span>
           <span><span class="src src-mine">導讀補充</span> 本頁的推導、背景或評論</span>
@@ -1052,7 +1061,7 @@
   draw();
 })();
 </script>
-<script src="../../assets/reading-lab.js?v=541b5a5d21"></script>
+<script src="../../assets/reading-lab.js?v=b0f90b2552"></script>
 <script src="../../assets/world-quests.js?v=73d57c3af5"></script>
 </body>
 </html>

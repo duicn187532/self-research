@@ -14,7 +14,7 @@
 <meta property="og:description" content="StateMem 精讀：狀態取代、依賴傳播與記憶評測。">
 <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="../../assets/site.css?v=b139cbfac1">
+<link rel="stylesheet" href="../../assets/site.css?v=9a541d8f98">
 <script>try{var r=document.documentElement;r.setAttribute("data-host-theme",r.getAttribute("data-theme")||"");if(JSON.parse(localStorage.getItem("study:skin"))!=="study")r.setAttribute("data-skin","maple");var m=JSON.parse(localStorage.getItem("study:mode"));if(m==="light"||m==="dark")r.setAttribute("data-theme",m);}catch(e){}</script>
 
 <style>
@@ -110,10 +110,19 @@
         <a href="https://arxiv.org/abs/2608.19652" target="_blank" rel="noopener">arXiv 摘要頁</a>
         <a href="https://arxiv.org/pdf/2608.19652v1" target="_blank" rel="noopener">PDF</a>
       </div>
+      <!-- legacy-source-audit:start -->
+      <aside class="source-audit" aria-label="原文核對摘要">
+        <div class="source-audit-head"><h2>先讀原文：方法、結果與證據邊界</h2><a href="https://arxiv.org/pdf/2608.19652v1" target="_blank" rel="noopener">核對 arXiv 2608.19652v1 PDF ↗</a></div>
+        <p class="source-audit-scope">原文 23 頁。本次重查 §3–6、PDF 第 19 頁 Table 10 與附錄的分母說明；原先無法取得的 arXiv 主來源現已核對。</p>
+        <p><span class='src src-abs'>原文 §3–5</span> StateMemBench 把『追蹤目前有效狀態』與單純回想分開：234 個多 session 情境產生 322 個可評分 probe，closed-pool 評分辨認目前版本、過期版本與其他錯誤。StateMem 追蹤 supersession 與依賴關係，查詢時重算受影響的衍生狀態；StateMemWrapper 是另一種只調回答提示的處理。</p>
+        <div class="table-wrap"><table class="results"><caption>本次原文核對：主張、原文單位與不能推出的結論</caption><thead><tr><th>主張</th><th>原文定位與結果</th><th>推論邊界</th></tr></thead><tbody><tr><th scope='row'>DeepSeek-V4-Flash</th><td>Table 10：同骨幹最佳基線 0.205→StateMem 0.363</td><td>約 1.8 倍是該設定的 current-state accuracy，不是所有任務的普遍倍數。</td></tr><tr><th scope='row'>Qwen-3.5-9B</th><td>Table 10：記憶系統基線 0.149→StateMem 0.233</td><td>約 1.6 倍；與前列不同骨幹與比較集合，不能合併分母。</td></tr><tr><th scope='row'>評分單位</th><td>Table 10：n=322 probes；status 116、sequence 72、salience 51、anti-trap 39、compound 44</td><td>234 是情境數，322 才是此表的評分 probe 數。</td></tr></tbody></table></div>
+        <p><span class='src src-mine'>審核結論</span> Table 10 的原始列與分母已對照頁面影像。作者在 Limitations 說 StateMemBench 為合成資料，且設定長度約 3k／7–15k tokens，尚未達真實長期部署的所有情境；本站不可把封閉候選池的結果讀成開放世界正確率。</p>
+      </aside>
+      <!-- legacy-source-audit:end -->
       <div class="claim" role="note">
         <span class="claim-label">核對狀態</span>
-        <p class="reading-verification-note">核對範圍：既有教材頁首保留過往核對聲明；本次新增的五維導讀與練習尚未重新逐項對照原文，標為待覆核。原文版本：2608.19652v1。</p>
-        <p>本頁已對照 arXiv v1 PDF 全文（含附錄 A–I）逐條核對。Table 10 每一列的 Overall 都用 horizon、類別、領域三種權重各驗算一次；Table 14／15 每列加總與 drift-rate 已驗算；Table 6 和 Table 13 的「修好 − 弄壞」已逐格對照。驗算時發現原文幾處數字對不上，集中列在第 15 節。原文說會釋出評測集與標註工具，但 PDF 裡沒有給連結（未提供）。</p>
+        <p class="reading-verification-note">本次重查 §3–6、PDF 第 19 頁 Table 10 與附錄的分母說明；原先無法取得的 arXiv 主來源現已核對。來源版本：arXiv 2608.19652v1。詳見上方逐項核對卡；教材示例與作者實驗結果分開標示。</p>
+        <p>既有教材先前核對紀錄：本頁已對照 arXiv v1 PDF 全文（含附錄 A–I）逐條核對。Table 10 每一列的 Overall 都用 horizon、類別、領域三種權重各驗算一次；Table 14／15 每列加總與 drift-rate 已驗算；Table 6 和 Table 13 的「修好 − 弄壞」已逐格對照。驗算時發現原文幾處數字對不上，集中列在第 15 節。原文說會釋出評測集與標註工具，但 PDF 裡沒有給連結（未提供）。</p>
         <div class="legend">
           <span><span class="src src-abs">原文 §3.2</span> 出自論文，標明位置</span>
           <span><span class="src src-mine">導讀補充</span> 本頁的推導、背景或評論</span>
@@ -1545,7 +1554,7 @@
   });
 })();
 </script>
-<script src="../../assets/reading-lab.js?v=541b5a5d21"></script>
+<script src="../../assets/reading-lab.js?v=b0f90b2552"></script>
 <script src="../../assets/world-quests.js?v=73d57c3af5"></script>
 </body>
 </html>

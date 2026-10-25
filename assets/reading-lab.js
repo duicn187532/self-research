@@ -7,7 +7,7 @@
   var id = host ? host.getAttribute("data-paper") : null;
   var PAPERS = {
     "2501.13956": {
-      short: "Zep", version: "2501.13956v1",
+      short: "Zep", version: "2501.13956v1", auditStatus: "targeted",
       dims: [
         ["Problem", "動態對話、商業資料與知識更新，不符合靜態 RAG 的語料假設。", ["s-problem"]],
         ["Method", "Graphiti 以 episode、語意實體／事實邊、社群組成時序圖；擷取、解析、標記有效時間後檢索。", ["s-graph","s-episode","s-fact","s-anim"]],
@@ -19,7 +19,7 @@
       method: "s-anim"
     },
     "2601.18642": {
-      short: "FadeMem", version: "2601.18642v2",
+      short: "FadeMem", version: "2601.18642v2", auditStatus: "targeted",
       dims: [
         ["Problem", "長期 Agent 記憶面臨無差別保留、上下文過載與重要資訊遺失的取捨。", ["s-problem"]],
         ["Method", "雙層 SML／LML、重要性評分與強度衰減；寫入時再處理衝突與融合。精確公式見相應章節。", ["s-arch","s-decay","s-conflict","s-fusion","s-anim"]],
@@ -31,7 +31,7 @@
       method: "s-anim"
     },
     "2604.14362": {
-      short: "APEX-MEM", version: "2604.14362v1",
+      short: "APEX-MEM", version: "2604.14362v1", auditStatus: "targeted",
       dims: [
         ["Problem", "長期對話需要可保留歷史、處理時間與複雜關聯的記憶，直接覆蓋舊事實可能抹除脈絡。", ["s-problem"]],
         ["Method", "事件錨定的半結構化屬性圖與時間資訊；寫入時保留版本，查詢時由代理使用工具判讀。", ["s-graph","s-extract","s-tools","s-anim"]],
@@ -43,7 +43,7 @@
       method: "s-anim"
     },
     "2605.06527": {
-      short: "STALE", version: "2605.06527v1",
+      short: "STALE", version: "2605.06527v1", auditStatus: "targeted",
       dims: [
         ["Problem", "即使沒有明示『舊資訊作廢』，新事件也可能造成跨屬性的隱性記憶失效。", ["s-problem","s-taxonomy"]],
         ["Method", "以 Type I／II 衝突分類、STALE 評測與 CUPMem 更新裁決器探討狀態新舊衝突。", ["s-formal","s-cupmem","s-anim"]],
@@ -55,7 +55,7 @@
       method: "s-anim"
     },
     "2606.30306": {
-      short: "Always-On 綜述", version: "2606.30306v1",
+      short: "Always-On 綜述", version: "2606.30306v1", auditStatus: "targeted",
       dims: [
         ["Problem", "持久代理不只要記憶內容，還需要狀態管理、可恢復性、有效性與治理邊界。", ["s-thesis","s-bound"]],
         ["Method", "綜述的分析架構：六個狀態軸、生命週期、儲存基底及治理評測；不是單一可重跑模型。", ["s-axes","s-life","s-sub","s-aoep"]],
@@ -67,7 +67,7 @@
       method: "s-life"
     },
     "2608.19652": {
-      short: "StateMem", version: "2608.19652v1",
+      short: "StateMem", version: "2608.19652v1", auditStatus: "targeted",
       dims: [
         ["Problem", "長對話中已被明示替代的狀態仍可能殘留，並污染依賴它的後續答案。", ["s-problem","s-label"]],
         ["Method", "TurnEncoder 形成狀態單元；StateStore 管理取代與依賴；Rechecker 標記需重新計算的狀態。", ["s-method","s-anim"]],
@@ -103,7 +103,7 @@
       method: "s-key"
     },
     "dekleer-1986-atms": {
-      short: "ATMS", version: "Artificial Intelligence 28 (1986), 127–162",
+      short: "ATMS", version: "Artificial Intelligence 28 (1986), 127–162", auditStatus: "targeted",
       dims: [
         ["Problem", "傳統 TMS 聚焦單一信念情境，切換假設或遇到矛盾時易反覆維護。", ["s-tms","s-limits"]],
         ["Method", "以 justification、assumption environment、最小 label 及 nogood 追蹤各命題在哪些情境下可推出。", ["s-defs","s-labels","s-algo"]],
@@ -156,7 +156,7 @@
   var source = mount(main, "details", "reading-source");
   var sourceSummary = mount(source, "summary", "", "原文版本與新增導讀的核對狀態");
   var sourcePanel = mount(source, "div", "reading-source-body");
-  mount(sourcePanel, "p", "", data.verified ? "本篇新增教材已核對所列原文 PDF；導讀屬本站整理，推導與後續研究假說不代表作者結論。" : "本站既有教材頁首有過往全文核對聲明；這次改版沒有重新取得並逐頁比對原始 PDF，因此新加入的五維摘要一律保留「本站整理／本次待覆核」標記。不可據此宣稱本次完成論文數字、公式或作者資訊複核。");
+  mount(sourcePanel, "p", "", data.verified ? "本篇新增教材已核對所列原文 PDF；導讀屬本站整理，推導與後續研究假說不代表作者結論。" : data.auditStatus === "targeted" ? "本次已取得指定版本 PDF，核對核心方法、公式與主要圖表；逐篇核對範圍、推論邊界及剩餘限制見頁首原文核對卡。五維導讀是本站摘要，研究疑問不是作者結論。" : "本站既有教材有過往核對聲明；新加入的摘要若未逐項核對原文，仍標示為待覆核。");
   mount(sourcePanel, "p", "", "原文版本：" + data.version + "。核對時必須對照標題、作者、版本日期，並逐項核查公式、圖表與結果。來源若失效，保留原版本紀錄，將新版標為待核對。");
   if (id !== "dekleer-1986-atms") {
     var l = document.createElement("a");
@@ -165,11 +165,11 @@
     l.textContent = "開啟指定版本 PDF（外部連結，未保證目前可用）";
     sourcePanel.appendChild(l);
   } else {
-    mount(sourcePanel, "p", "", "出版社 DOI 已查到；另有作者公開的掃描 PDF，首次頁面影像為上下顛倒，後續公式與整篇內容仍須逐頁核對。先前使用者掃描檔和作者版尚未做雜湊比對。");
+    mount(sourcePanel, "p", "", "作者公開的 36 頁掃描 PDF 已取得；第 1 頁倒置，本次另對照 §4.4 節點與標籤的頁面影像。先前使用者掃描檔和作者版尚未做雜湊比對，未宣稱全書重新逐頁核對。");
     var authorPdf = document.createElement("a");
     authorPdf.href = "https://www.dekleer.org/Publications/An%20Assumption-Based%20TMS.pdf";
     authorPdf.target = "_blank"; authorPdf.rel = "noopener noreferrer";
-    authorPdf.textContent = "作者公開掃描 PDF（影像已確認第一頁，非全文核對）";
+    authorPdf.textContent = "作者公開掃描 PDF（核對範圍見頁首）";
     sourcePanel.appendChild(authorPdf);
   }
   var dims = mount(main, "div", "reading-dim-grid");
@@ -184,7 +184,7 @@
       if (j) refs.appendChild(document.createTextNode(" · "));
       refs.appendChild(link(ref, document.getElementById(ref)?.getAttribute("data-short") || ref));
     });
-    var status = i === 4 ? "本站推導／非作者結論" : data.verified ? (i === 3 ? "作者主張／已核對原文" : "本站摘述／已核對原文") : i === 3 ? "作者主張／本次待覆核" : "本站摘述／本次待覆核";
+    var status = i === 4 ? "本站推導／非作者結論" : data.verified ? (i === 3 ? "作者主張／已核對原文" : "本站摘述／已核對原文") : data.auditStatus === "targeted" ? (i === 3 ? "作者主張／核心證據已核對" : "本站摘述／核心內容已核對") : i === 3 ? "作者主張／本次待覆核" : "本站摘述／本次待覆核";
     mount(card, "span", "reading-provenance", status);
   });
 
