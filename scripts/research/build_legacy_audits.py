@@ -6,9 +6,12 @@ idempotent while leaving the existing chapter content, quizzes and notes intact.
 from html import escape
 from pathlib import Path
 import re
+import sys
 from legacy_source_audits import AUDITS
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "scripts"))
+from source_status import STATUS, render
 BEGIN = "<!-- legacy-source-audit:start -->"
 END = "<!-- legacy-source-audit:end -->"
 
@@ -35,7 +38,7 @@ for pid, audit in AUDITS.items():
     html = re.sub(r"\s*<!-- legacy-source-audit:start -->.*?<!-- legacy-source-audit:end -->", "", html, count=1, flags=re.S)
     old_note = re.search(r'<p class="reading-verification-note">.*?</p>', html, flags=re.S)
     assert old_note, pid + " verification note missing"
-    replacement = f'<p class="reading-verification-note">{escape(audit["scope"])}來源版本：{escape(audit["version"])}。詳見上方逐項核對卡；教材示例與作者實驗結果分開標示。</p>'
+    replacement = f'<p class="reading-verification-note">{escape(render(STATUS[pid]))}</p>'
     html = html[:old_note.start()] + replacement + html[old_note.end():]
     # The prior full-text statements are preserved as historical records, not
     # silently promoted to an independently repeated 2026 review of every page.

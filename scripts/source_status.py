@@ -10,8 +10,7 @@ STATUS = json.loads((ROOT / "papers/source-status.json").read_text(encoding="utf
 
 
 def render(item):
-    return ("核對範圍：" + item["existing_material"] + "；" + item["new_guides"] +
-            "，標為待覆核。原文版本：" + item["source_version"] + "。")
+    return item["note"]
 
 
 def main(check):
