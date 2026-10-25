@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><title>從回想走向遺忘：Memora 如何評測個人化長期記憶 · 論文精讀室</title><meta name="description" content="從回想走向遺忘：Memora 如何評測個人化長期記憶：原文核對、分層解釋、互動推演與研究批判。"><link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/site.css?v=17f192497a"><link rel="stylesheet" href="../../assets/reading-lab.css?v=fb4f4fa023"><style>
+.lesson-mini{border:1px solid var(--rule);border-radius:8px;padding:1rem;margin:1rem 0;background:var(--surface)}
+.lesson-mini label{display:inline-flex;gap:.35rem;align-items:center;margin:.3rem .8rem .3rem 0}
+.lesson-mini input,.lesson-mini select{font:inherit;max-width:7rem;background:var(--paper);color:var(--ink);border:1px solid var(--rule);border-radius:4px;padding:.25rem}
+.lesson-mini output{display:block;margin-top:.6rem;font-weight:700;color:var(--ink)}
+.lesson-mini .state{display:grid;gap:.4rem;margin-top:.8rem}.lesson-mini .state span{padding:.4rem;border-left:3px solid var(--accent);background:var(--paper)}
+.lesson-mini button{font:inherit;padding:.4rem .8rem;border:1px solid var(--accent);background:var(--accent-soft);color:var(--ink);border-radius:5px;cursor:pointer}
+</style>
+<script>try{var r=document.documentElement;r.setAttribute("data-host-theme",r.getAttribute("data-theme")||"");if(JSON.parse(localStorage.getItem("study:skin"))!=="study")r.setAttribute("data-skin","maple");var m=JSON.parse(localStorage.getItem("study:mode"));if(m==="light"||m==="dark")r.setAttribute("data-theme",m)}catch(e){}</script>
+<script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},svg:{fontCache:"global"}}</script><script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script></head>
+<body><div data-paper="2604.20006" data-scene="leafre"><header class="toolbar gutter"><div class="toolbar-inner"><a class="home" href="../../index.html">論文精讀室</a><span class="crumb">Memora · 2604.20006</span><div class="levels" role="group" aria-label="解釋深度"><span class="levels-label">解釋深度</span><div class="seg"><button type="button" data-level-btn="kid" aria-pressed="false">五歲</button><button type="button" data-level-btn="uni" aria-pressed="true">大學生</button><button type="button" data-level-btn="grad" aria-pressed="false">研究生</button><button type="button" data-level-btn="all" aria-pressed="false">對照</button></div></div></div></header>
+<div class="desk gutter"><nav class="rail" aria-label="章節"><details open><summary>章節 <span class="progress-text" id="progress-text">0 / 13</span></summary><div class="progress"><span id="progress-bar"></span></div><ol id="outline"></ol></details></nav><main class="column">
+<div class="paper-head"><div class="eyebrow"><span class="mono">Findings of ACL 2026 · 26814–26841 · DOI 10.18653/v1/2026.findings-acl.1337</span></div><h1>從回想走向遺忘：Memora 如何評測個人化長期記憶</h1><p class="reading-paper-start"><a href="#s-problem">開始閱讀</a>　<a href="#s-overview">先看閱讀路線</a></p><p lang="en"><em>From Recall to Forgetting: Benchmarking Long-Term Memory for Personalized Agents</em></p><p class="authors">Md Nayem Uddin、Kumar Shubham、Eduardo Blanco、Chitta Baral、Gengyu Wang</p><div class="links"><a href="https://aclanthology.org/2026.findings-acl.1337/" target="_blank" rel="noopener">正式來源</a><a href="https://aclanthology.org/2026.findings-acl.1337.pdf" target="_blank" rel="noopener">原文 PDF</a></div><div class="claim" role="note"><span class="claim-label">核對狀態</span><p>本新增教材依上列原文 PDF 的正文、實驗表及限制節編寫；來源版本與發表狀態見頁首。數字依表格逐項摘錄，本站示例與研究建議均另行標示。現有其他七篇的核對狀態不由本次更新繼承。</p><div class="legend"><span><span class="src src-abs">原文 §</span> 原論文或正式版表格</span><span><span class="src src-mine">本站分析</span> 教學示例、推論與研究建議</span></div></div></div>
+<section class="sec" id="s-overview" data-short="閱讀路線"><div class="sec-head"><span class="sec-num">00</span><h2>這篇怎麼讀</h2></div><div class="prose"><p>一套記憶系統能背出舊事，不代表它知道哪件事已經被使用者改掉。Memora 把跨 session 整合、更新／刪除與三種下游任務放在同一個壓力測試裡。</p><p>先看問題與資料生成，再親手算 FAMA；接著讀實驗表，最後判斷合成資料和 LLM 裁判能支持多大的結論。</p><p>學習目標：能說明研究問題、重建關鍵方法或評分、核對至少一項表格結果，並指出一個不能由證據推出的結論。可先選五歲版建立直覺，再切大學生版讀機制，最後用研究生版檢查形式與限制。</p></div><div class="desk-foot"><div class="note"><label for="note-overview">閱讀目的</label><textarea id="note-overview" data-note="s-overview"></textarea><span class="saved"></span></div><label class="done"><input type="checkbox" data-done="s-overview"> 讀完這節</label></div></section>
+<section class="sec" id="s-problem" data-short="回想不等於維護現況">
+<div class="sec-head"><span class="sec-num">01</span><h2>問題：回想不等於維護現況</h2></div>
+<p class="readout"><span class="src src-abs">原文 §1–2、Table 1</span></p>
+<div class="explain"><div class="lv lv-kid"><p>朋友記得你曾說喜歡某餐廳，卻忘了你上週說已經對它過敏。答對舊回憶仍可能給出錯建議。這個比喻只說明版本衝突，沒有模擬實驗資料的生成程序。</p></div><div class="lv lv-uni"><p>作者指出常用評測多考孤立回想。Table 1 中 LoCoMo 平均只需整合 1.3 個 session，更新／刪除平均 0；LongMemEval 的對應值為 1.9 與 2.0。Memora 刻意增加兩種壓力：跨 session 的 memory consolidation 和 memory mutation。這些是資料集題目層級的統計，不能讀成系統準確率。</p></div><div class="lv lv-grad"><p>問題可寫成：在時刻 t 的歷史 Hₜ 中，回答 q 時需取用多個仍有效的事實，並排除已被 update/delete 的版本。這和只做 retrieval 不同；若檢索器把舊值也找回來，後續仍須裁決有效性。論文沒有提出新的記憶演算法，而是提出 benchmark 與評分。</p></div></div>
+
+<div class="check"><span class="check-title">自我檢測</span><details><summary>LoCoMo 的 1.3 是準確率嗎？</summary><div><p>不是；它是每題平均需要整合的歷史 session 數。</p></div></details></div>
+<div class="desk-foot"><div class="note"><label for="note-s-problem">筆記</label><textarea id="note-s-problem" data-note="s-problem" placeholder="記下推導、疑問與反例"></textarea><span class="saved"></span></div><label class="done"><input type="checkbox" data-done="s-problem"> 讀完這節</label></div>
+</section>
+<section class="sec" id="s-data" data-short="狀態軌跡先於對話">
+<div class="sec-head"><span class="sec-num">02</span><h2>資料怎麼造：狀態軌跡先於對話</h2></div>
+<p class="readout"><span class="src src-abs">原文 §3.1–3.3、Figure 2</span></p>
+<div class="explain"><div class="lv lv-kid"><p>先在帳本寫清楚『喜好改了、目標完成了』，再把帳本變成對話。這樣出題時知道目前哪一版才有效。帳本是合成資料的真值，不是真人記憶。</p></div><div class="lv lv-uni"><p>流程是種子人物與記憶實體 → session 模擬器決定新增、更新、刪除或中性互動 → 記錄每個 session 前後的記憶狀態 → 多代理提示生成對話。記憶分為偏好、活動、目標；共有 10 個專業人物設定。先有可追蹤狀態再生成文字，才有辦法明確知道失效的內容。</p></div><div class="lv lv-grad"><p>這種生成順序降低標註歧義，也造成重要的外推限制：使用者真實話語可能暗示、反諷、跨人稱或互相矛盾，模擬器的操作類型卻事先已知。評測的是在受控狀態演化下的記憶能力，不是現實部署的全部難題。</p></div></div>
+
+<div class="check"><span class="check-title">自我檢測</span><details><summary>為什麼不能只由最終對話倒推答案？</summary><div><p>因為更新與刪除的有效時點可能模糊；明確狀態軌跡提供可檢查的 gold。</p></div></details></div>
+<div class="desk-foot"><div class="note"><label for="note-s-data">筆記</label><textarea id="note-s-data" data-note="s-data" placeholder="記下推導、疑問與反例"></textarea><span class="saved"></span></div><label class="done"><input type="checkbox" data-done="s-data"> 讀完這節</label></div>
+</section>
+<section class="sec" id="s-scale" data-short="三種時間跨度">
+<div class="sec-head"><span class="sec-num">03</span><h2>規模與難度：三種時間跨度</h2></div>
+<p class="readout"><span class="src src-abs">原文 Table 1–2</span></p>
+<div class="explain"><div class="lv lv-kid"><p>一週、數月、季度的故事越長，舊事越多；但『資料變長』和『更新變多』一起變，不能只怪其中一項。</p></div><div class="lv lv-uni"><p>Table 2 每個跨度都有 10 個 persona；每人平均 session 數為 155／615／1991，平均記憶操作數為 103.2／374.3／1171.4。memory-grounded 問題數是 150／150／300，故不同跨度分數應各自正規化。Table 1 的季度題目平均需整合 28.4 個 session、最多 309；更新／刪除平均 14.8、最多 94。</p></div><div class="lv lv-grad"><p>注意 Table 1 的『mutation 14.8』是每道問題需要處理的更新／刪除數；Table 2 的『operations 1171.4』是每個 persona 軌跡中的所有新增／更新／刪除平均數，兩者分母與涵蓋操作不同。由於時間跨度、session 數、操作數一起變，這個設計能顯示長歷史下的壓力，不能單獨識別某一因素的因果效應。</p></div></div>
+
+<div class="check"><span class="check-title">自我檢測</span><details><summary>季度的 94 和 1171.4 為何不同？</summary><div><p>94 是單題最多相關更新／刪除；1171.4 是每人完整軌跡的平均全部記憶操作。</p></div></details></div>
+<div class="desk-foot"><div class="note"><label for="note-s-scale">筆記</label><textarea id="note-s-scale" data-note="s-scale" placeholder="記下推導、疑問與反例"></textarea><span class="saved"></span></div><label class="done"><input type="checkbox" data-done="s-scale"> 讀完這節</label></div>
+</section>
+<section class="sec" id="s-tasks" data-short="三種任務與資料品質">
+<div class="sec-head"><span class="sec-num">04</span><h2>三種任務與資料品質</h2></div>
+<p class="readout"><span class="src src-abs">原文 §3.4–3.6、§4.2、附錄 C</span></p>
+<div class="explain"><div class="lv lv-kid"><p>同一段長期相處，可能問『我以前說過什麼』、『依我現在情況推論什麼』，或『現在推薦什麼』；三題需要的記憶不一樣。</p></div><div class="lv lv-uni"><p>Remembering 回想已知資訊；Reasoning 跨記憶推理；Recommending 根據有效偏好建議。每題配有應出現的 presence criteria 與應排除的 absence criteria。作者用自動 grounding 檢查、人類評估及三個 LLM 裁判多數決；裁判與人類標註的平均一致率為 88.3%，人類間 Cohen κ 為 0.86–0.90。</p></div><div class="lv lv-grad"><p>88.3% 表示所抽查 criterion 的標註一致，不保證所有題目在三種跨度或所有錯誤類別都同樣可靠。criterion 的顆粒度和題目生成方式會影響 FAMA；評閱開放式回答時，『合理改寫』是否等於滿足 criterion 也取決於裁判。</p></div></div>
+
+<div class="check"><span class="check-title">自我檢測</span><details><summary>推薦題只要提到一個有效偏好就算完全正確嗎？</summary><div><p>不一定；分數由該題所有 presence 與 absence criteria 共同決定。</p></div></details></div>
+<div class="desk-foot"><div class="note"><label for="note-s-tasks">筆記</label><textarea id="note-s-tasks" data-note="s-tasks" placeholder="記下推導、疑問與反例"></textarea><span class="saved"></span></div><label class="done"><input type="checkbox" data-done="s-tasks"> 讀完這節</label></div>
+</section>
+<section class="sec" id="s-fama" data-short="把『不該用的舊資訊』扣回來">
+<div class="sec-head"><span class="sec-num">05</span><h2>FAMA：把『不該用的舊資訊』扣回來</h2></div>
+<p class="readout"><span class="src src-abs">原文 §4.2、公式 (1)</span></p>
+<div class="explain"><div class="lv lv-kid"><p>回答一題，不能只算寫對幾項，也要看有沒有把過期資訊寫進去。下方計算器用簡化的二元 criterion 實例重現原文公式。</p></div><div class="lv lv-uni"><p>對每題，MPA 是應包含有效記憶的 criterion 通過比例；FAA 是應排除舊記憶的 criterion 通過比例。λ 是 absence criteria 在兩類 criterion 中所占比例。FAMA = max(0, MPA − λ(1 − FAA))，所以漏掉有效內容會少得分，錯用舊內容會再扣分。三個任務分開把逐題 FAMA 平均並換成 0–100。</p></div><div class="lv lv-grad"><p>設 presence 通過 3/4、absence 通過 1/2，則 \(\lambda=2/(4+2)=1/3\)，\(\mathrm{FAMA}=\max(0,3/4-(1/3)(1-1/2))=7/12\approx0.583\)。\(\lambda\) 隨每題 criterion 數量而變，不是論文固定調好的超參數。當題目完全沒有其中一類 criterion 時，須先檢查資料規則；本文給出的公式未單獨討論零分母處理，本站互動示範要求兩類各至少一項。</p></div></div>
+<div class="lesson-mini" id="fama-lab"><h3>FAMA 手算工作台 <span class="src src-mine">本站依原文公式實作</span></h3>
+<p>設定每題兩類 criterion 的通過數；下方即時計算 MPA、FAA、λ 與 FAMA。兩類至少各 1 項。</p>
+<label>有效項總數 <input type="number" id="fp" min="1" max="20" value="4"></label><label>有效項通過 <input type="number" id="fph" min="0" max="20" value="3"></label>
+<label>舊項總數 <input type="number" id="fa" min="1" max="20" value="2"></label><label>舊項成功排除 <input type="number" id="fah" min="0" max="20" value="1"></label>
+<output id="fama-out" aria-live="polite"></output></div>
+<div class="check"><span class="check-title">自我檢測</span><details><summary>只要 FAA=1，FAMA 就一定是 1 嗎？</summary><div><p>不一定；此時扣分為零，但分數仍等於 MPA，可能小於 1。</p></div></details></div>
+<div class="desk-foot"><div class="note"><label for="note-s-fama">筆記</label><textarea id="note-s-fama" data-note="s-fama" placeholder="記下推導、疑問與反例"></textarea><span class="saved"></span></div><label class="done"><input type="checkbox" data-done="s-fama"> 讀完這節</label></div>
+</section>
+<section class="sec" id="s-penalty" data-short="只算記得會高估多少">
+<div class="sec-head"><span class="sec-num">06</span><h2>Table 5：只算記得會高估多少</h2></div>
+<p class="readout"><span class="src src-abs">原文 §5、Table 5</span></p>
+<div class="explain"><div class="lv lv-kid"><p>如果只檢查回答有沒有提到該提的資訊，看起來可能不錯；但若把早就作廢的偏好也講出來，就得扣分。</p></div><div class="lv lv-uni"><p>Table 5 把三任務的 memory-presence 分數相加，括號裡是套用 FAMA 後的減分。月度 MemoryOS 為 112.8（減 28.4），A-Mem 112.0（減 29.5），Nemori 105.4（減 15.4）；扣完分別約 84.4、82.5、90.0，因此只看『有沒有提到應有資訊』會改變系統排序。注意此表分數是三任務加總，最大 300。</p></div><div class="lv lv-grad"><p>作者報告直接 LLM 的平均扣分從週 32.6 降到季 17.8，解釋為長歷史超過 context 時，相關資訊整體被省略，連錯用舊資訊的機會也變少；記憶代理的平均扣分則從週 18.2 增至季 29.5，提示舊內容可被持續取回。這是作者對觀察模式的機制解釋，Table 5 本身不做單因子因果識別。月度 Nemori 的 105.4−15.4=90.0，與 Table 3 的 44.08+45.90+0.00=89.98 的四捨五入一致。</p></div></div>
+<div class="table-wrap"><table class="results"><caption>月度：Table 5 的三任務合計 presence 與 FAMA 減分（分）</caption><thead><tr><th>記憶代理</th><th class="num">Presence</th><th class="num">FAMA 減分</th><th class="num">扣後約值</th></tr></thead><tbody><tr><td>MemoryOS</td><td class="num">112.8</td><td class="num">28.4</td><td class="num">84.4</td></tr><tr><td>A-Mem</td><td class="num">112.0</td><td class="num">29.5</td><td class="num">82.5</td></tr><tr><td>Nemori</td><td class="num">105.4</td><td class="num">15.4</td><td class="num">90.0</td></tr></tbody></table></div>
+<div class="check"><span class="check-title">自我檢測</span><details><summary>月度 A-Mem 的 112.0 與 Nemori 的 105.4，套 FAMA 後誰較高？</summary><div><p>Nemori 約 90.0；A-Mem 約 82.5。只看 presence 的排序會翻轉。</p></div></details></div>
+<div class="desk-foot"><div class="note"><label for="note-s-penalty">筆記</label><textarea id="note-s-penalty" data-note="s-penalty" placeholder="記下推導、疑問與反例"></textarea><span class="saved"></span></div><label class="done"><input type="checkbox" data-done="s-penalty"> 讀完這節</label></div>
+</section>
+<section class="sec" id="s-results" data-short="分任務、分跨度，不混總分">
+<div class="sec-head"><span class="sec-num">07</span><h2>讀 Table 3：分任務、分跨度，不混總分</h2></div>
+<p class="readout"><span class="src src-abs">原文 §5、Table 3–4</span></p>
+<div class="explain"><div class="lv lv-kid"><p>把三項成績分開看，才知道代理是記得比較好、推得比較好，還是推薦比較好。</p></div><div class="lv lv-uni"><p>Table 3：A-Mem 的 Remembering 從週 71.82 降至季 40.78；MemoBase 從 43.60 降至 15.18。Reasoning 對大多數系統很難；LangMem 是週 30.00、月 14.00、季 11.00。推薦題不一定單調下降，例如 Gemini 3 Pro Preview 無推理版本是 45.12／45.94／52.56。Table 4 把同一任務的三個跨度分數相加，最大可到 300，不是單一準確率。</p></div><div class="lv lv-grad"><p>模型與記憶代理的回答骨幹不相同：直接模型使用 GPT-5.2 等四款模型；六個代理統一用 GPT-4o-mini 產生回答。因此 Table 3 的『代理 vs 直接模型』不是只改記憶模組的乾淨消融。可比較各組在共同評測上的觀察表現，不能把所有差距歸因於記憶方法。論文稱代理在 Remembering 有明顯優勢，但對其它任務的改善有限。</p></div></div>
+<div class="table-wrap"><table class="results"><caption>Table 3 摘錄：各任務、各跨度 FAMA（0–100；不能跨任務當同一指標）</caption><thead><tr><th>系統</th><th>任務</th><th class="num">週</th><th class="num">月</th><th class="num">季</th></tr></thead><tbody><tr><td>A-Mem</td><td>回想</td><td class="num">71.82</td><td class="num">41.90</td><td class="num">40.78</td></tr><tr><td>MemoBase</td><td>回想</td><td class="num">43.60</td><td class="num">20.08</td><td class="num">15.18</td></tr><tr><td>LangMem</td><td>推理</td><td class="num">30.00</td><td class="num">14.00</td><td class="num">11.00</td></tr><tr><td>Gemini 3 Pro Preview（無推理）</td><td>推薦</td><td class="num">45.12</td><td class="num">45.94</td><td class="num">52.56</td></tr></tbody></table></div>
+<div class="check"><span class="check-title">自我檢測</span><details><summary>Table 4 的 173.02 可以當 173.02% 準確率嗎？</summary><div><p>不行；它是三個 0–100 跨度分數相加，上限 300。</p></div></details></div>
+<div class="desk-foot"><div class="note"><label for="note-s-results">筆記</label><textarea id="note-s-results" data-note="s-results" placeholder="記下推導、疑問與反例"></textarea><span class="saved"></span></div><label class="done"><input type="checkbox" data-done="s-results"> 讀完這節</label></div>
+</section>
+<section class="sec" id="s-errors" data-short="三任務失敗的機制不同">
+<div class="sec-head"><span class="sec-num">08</span><h2>錯誤分析：三任務失敗的機制不同</h2></div>
+<p class="readout"><span class="src src-abs">原文 §6、75 個人工抽查錯誤</span></p>
+<div class="explain"><div class="lv lv-kid"><p>推薦錯不一定是『不會推薦』，有時是沿用舊喜好；推理錯也未必是算術差，可能少了關鍵資料。</p></div><div class="lv lv-uni"><p>作者從各跨度的錯誤中抽 75 例，每任務 25 例，分析該任務表現最好的長期記憶代理。推薦 25 錯中，16 例（64%）和未忘舊記憶有關、7 例（28%）是偏好只取回一部分；回想 18/25（72%）是部分取回；推理的 25 個錯誤全部涉及相關記憶取回不全。這些是條件於『已出錯』的人工分類比例，不是整個評測集的錯誤率，也不是每個代理都相同。</p></div><div class="lv lv-grad"><p>推薦容許近似偏好，所以在 Table 3 相對較穩；需要合併多筆的推理只要缺一項便可能失敗。作者把錯誤樣本的共同現象指向 partial retrieval 與 outdated memory。本站補充：若要比較兩個根因的因果貢獻，可對同一問題分別提供 oracle 有效記憶、oracle 更新決策，做 2×2 消融；論文的錯誤分析尚未做這個干預。</p></div></div>
+
+<div class="check"><span class="check-title">自我檢測</span><details><summary>『25/25 推理錯誤有部分取回』可推論所有推理題都失敗嗎？</summary><div><p>不能；分母是被抽中的錯誤案例，不是全部推理題。</p></div></details></div>
+<div class="desk-foot"><div class="note"><label for="note-s-errors">筆記</label><textarea id="note-s-errors" data-note="s-errors" placeholder="記下推導、疑問與反例"></textarea><span class="saved"></span></div><label class="done"><input type="checkbox" data-done="s-errors"> 讀完這節</label></div>
+</section>
+<section class="sec" id="s-critique" data-short="證據邊界與再實驗設計">
+<div class="sec-head"><span class="sec-num">09</span><h2>證據邊界與再實驗設計</h2></div>
+<p class="readout"><span class="src src-abs">原文 §6、Limitations、本站分析</span></p>
+<div class="explain"><div class="lv lv-kid"><p>考題先由規則寫好，系統卻仍答錯，這是有力的壓力測試；但不能說真實使用者一定會出現同樣比例的錯。</p></div><div class="lv lv-uni"><p>作者明列限制：合成對話、10 個 persona 與三類記憶，未涵蓋多使用者關係；評分主要靠 LLM 裁判；沒有完整報告延遲或成本。本站補充：跨度變長時多個因素同時變，缺少固定 session 數只增加 mutation 的對照；若要驗證真正的『遺忘』能力，還應把刪除與更新拆開報錯，對裁判意見不一致案例做人工錯誤分析。後兩項是研究建議，不是作者已做實驗。</p></div><div class="lv lv-grad"><p>可重現性分兩層：作者公開資料與 Table 3 評估程式可幫助重算已發布的分數；要重跑完整生成流程還須核對各階段 prompt、模型版本與服務時點。別把『有 repo』直接等同『所有實驗可重現』。對照 STALE、StateMemBench 時也不能把各自分數放在一條排行榜，題目與評分單位不同。</p></div></div>
+
+<div class="check"><span class="check-title">自我檢測</span><details><summary>哪項實驗最能分開『歷史太長』與『更新太多』？</summary><div><p>固定歷史長度，只控制更新／刪除次數，反向再固定 mutation、改變長度。</p></div></details></div>
+<div class="desk-foot"><div class="note"><label for="note-s-critique">筆記</label><textarea id="note-s-critique" data-note="s-critique" placeholder="記下推導、疑問與反例"></textarea><span class="saved"></span></div><label class="done"><input type="checkbox" data-done="s-critique"> 讀完這節</label></div>
+</section>
+<section class="sec sec-boss" id="s-boss" data-short="BOSS：綜合挑戰"><div class="sec-head"><span class="sec-num">B</span><h2>BOSS：跨章節綜合挑戰</h2></div><p>結合問題、方法、公式與證據作答。打完會顯示逐題理由和對應章節，可重試。</p><div class="boss-board" id="boss-board" aria-live="polite"></div><div class="desk-foot"><label class="done"><input type="checkbox" data-done="s-boss"> 擊敗 BOSS</label></div></section>
+<section class="sec sec-research" id="s-research" data-short="研究者進階分析"><div class="sec-head"><span class="sec-num">R</span><h2>研究者進階分析</h2></div><p class="research-lede">將論文主張拆成可重建的流程、可核對的證據與尚未驗證的假說。跨論文關係見<a href="../../compare/index.html">研究工作台</a>。</p>
+<details class="rblock" id="r-memora-a"><summary>A　方法重建</summary><div class="rbody"><p><span class="tag tag-orig">原文</span> 先模擬狀態軌跡、生成 session 對話、依軌跡出三類題、以 criterion 和三裁判評分。§3–4。</p><p><span class="tag tag-unknown">原文未提供</span> 完整重跑全部合成對話所需服務時點與端到端成本，須另查釋出物與版本。</p></div></details>
+<details class="rblock" id="r-memora-b"><summary>B　可重現性審查</summary><div class="rbody"><p>ACL 正式版與作者公開的 Memora 資料／Table 3 評估程式可供重算；模擬器、模型服務版本、裁判成本與完整生成流程仍應單獨核對。</p></div></details>
+<details class="rblock" id="r-memora-c"><summary>C　主張與證據</summary><div class="rbody"><p>受控長期軌跡和 Table 3 支持「現有系統常用到失效記憶」；由於合成資料、不同回答骨幹與 LLM 裁判，不能量化真實部署的錯誤率或單獨歸因於特定記憶架構。</p></div></details>
+<details class="rblock" id="r-memora-d"><summary>D　可否證的後續研究假說</summary><div class="rbody"><p><span class="tag tag-assume">本站提出，非作者結論</span> 若固定 session 數與總 token，只提高更新／刪除密度，FAMA 的下降仍存在；若不成立，現有下降可能主要來自長度。</p></div></details>
+<div class="desk-foot"><div class="note"><label for="note-research">研究筆記</label><textarea id="note-research" data-note="s-research"></textarea><span class="saved"></span></div><label class="done"><input type="checkbox" data-done="s-research"> 讀完這節</label></div></section>
+<section class="sec" id="s-glossary" data-short="術語表"><div class="sec-head"><span class="sec-num">附</span><h2>術語與符號</h2></div><dl class="glossary"><dt>memory consolidation</dt><dd>回答一題須跨多少歷史 session 整合有效資訊。</dd>
+<dt>memory mutation</dt><dd>記憶更新與刪除；不要與所有 add/update/delete 操作總數混淆。</dd>
+<dt>MPA／FAA</dt><dd>有效資訊出現率／失效資訊未出現率，均為 criterion 層級比例。</dd>
+<dt>FAMA</dt><dd>對每題扣除舊記憶使用的分數，再依任務與跨度平均。</dd></dl><div class="desk-foot"><label class="done"><input type="checkbox" data-done="s-glossary"> 讀完這節</label></div></section>
+<section class="sec" id="s-export" data-short="匯出筆記"><div class="sec-head"><span class="sec-num">附</span><h2>匯出我的筆記</h2></div><p>筆記保存在本機瀏覽器。可複製 Markdown 留存。</p><div class="btn-row"><button type="button" class="btn" id="export-notes">複製全部筆記</button><span class="toast" id="export-toast" role="status"></span></div><div class="note"><label for="export-box" class="sr-only">匯出內容</label><textarea id="export-box" rows="8" hidden readonly></textarea></div><p class="readout">來源：<a href="https://aclanthology.org/2026.findings-acl.1337/" target="_blank" rel="noopener">From Recall to Forgetting: Benchmarking Long-Term Memory for Personalized Agents</a>。</p></section>
+</main></div></div><script src="quiz.js?v=0700b93f6f"></script><script src="../../assets/battle.js?v=be9fa6c0d6"></script><script src="../../assets/site.js?v=a3294243c2"></script><script src="../../assets/anim.js?v=c5c6110c69"></script><script src="../../assets/reading-lab.js?v=134a96fd9e"></script><script src="../../assets/world-quests.js?v=73d57c3af5"></script><script src="lesson.js"></script></body></html>

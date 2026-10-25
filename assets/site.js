@@ -281,6 +281,8 @@
     { id:"2604.14362", total:16, job:"永恆之錨" },
     { id:"2605.06527", total:16, job:"破妄者" },
     { id:"2608.19652", total:17, job:"變界旅人" },
+    { id:"2604.20006", total:13, job:"長憶鑑定師" },
+    { id:"2610.09008", total:13, job:"範圍守護者" },
     { id:"2606.30306", total:16, job:"不眠守望" },
     { id:"dekleer-1986-atms", total:16, job:"真理之眼" }
   ];
@@ -472,6 +474,8 @@
     "2604.14362": { guide:"npc-dances-with-balrog", readers:{ kid:["hero-3","npc-knight-mihile","hero-6","npc-bowman"], uni:["hero-5","npc-knight-eckhart","hero-7"], grad:["npc-dances-with-balrog","npc-strategist","npc-hines","hero-4","npc-kyrin"] }, checks:["hero-1","npc-knight-irena","hero-2","npc-knight-hawkeye"], mobs:["mob-fire-boar", "mob-dark-wooden-mask", "mob-stone-golem"], boss:"boss-stumpy" },
     "2605.06527": { guide:"npc-dark-lord", readers:{ kid:["hero-2","hero-5","npc-knight-eckhart","hero-6"], uni:["hero-7","npc-strategist","npc-kyrin"], grad:["npc-dark-lord","npc-hines","npc-lucid","npc-knight-irena","hero-4"] }, checks:["hero-1","npc-knight-hawkeye","hero-3","npc-knight-oz"], mobs:["mob-octopus", "mob-crocodile", "mob-little-ghost"], boss:"boss-king-slime" },
     "2608.19652": { guide:"npc-gas-mask", readers:{ kid:["hero-4","npc-knight-oz","hero-6","npc-bowman"], uni:["hero-1","hero-7","npc-knight-mihile"], grad:["npc-lucid","npc-strategist","npc-dark-lord","npc-kyrin","npc-knight-hawkeye"] }, checks:["hero-2","npc-knight-irena","hero-3","npc-knight-eckhart"], mobs:["mob-dream-cleaner", "mob-paper-bag-resident", "mob-calina", "mob-angry-ballgoer"], boss:"boss-lucid" },
+    "2604.20006": { guide:"npc-tatamo", readers:{ kid:["hero-6","hero-4","npc-wind","npc-flame"], uni:["hero-5","hero-2","npc-thunder"], grad:["npc-tatamo","npc-hines","npc-night","hero-1","npc-strategist"] }, checks:["hero-3","npc-knight-irena","npc-knight-oz","npc-knight-eckhart"], mobs:["mob-beetle","mob-rash","mob-metal-beetle"], boss:"boss-damien" },
+    "2610.09008": { guide:"npc-kyrin", readers:{ kid:["hero-2","hero-5","npc-knight","npc-bowman"], uni:["hero-6","hero-1","npc-thunder"], grad:["npc-kyrin","npc-dark-lord","npc-flame","hero-4","npc-wind"] }, checks:["hero-3","npc-knight-hawkeye","npc-knight-mihile","npc-knight-eckhart"], mobs:["mob-snail","mob-slime","mob-pig"], boss:"boss-will" },
     "2606.30306": { guide:"npc-kriel", readers:{ kid:["hero-6","npc-knight-irena","hero-4","npc-bowman"], uni:["hero-2","npc-knight-hawkeye","hero-7"], grad:["npc-strategist","npc-hines","npc-kyrin","npc-knight-mihile","hero-5"] }, checks:["hero-1","npc-knight-oz","hero-3","npc-knight-eckhart"], mobs:["mob-jr-cellion", "mob-jr-cellion-blue", "mob-young-yellow-cellion"], boss:"boss-eliza" },
     "dekleer-1986-atms": { guide:"npc-elder-stan", readers:{ kid:["npc-bowman","hero-4","hero-6","npc-knight-oz"], uni:["hero-1","npc-knight-irena","hero-7"], grad:["npc-elder-stan","npc-hines","npc-strategist","npc-kyrin","npc-dark-lord"] }, checks:["hero-2","npc-knight-mihile","hero-3","npc-knight-eckhart"], mobs:["mob-baby-snail", "mob-blue-mushroom", "mob-ribbon-pig"], boss:"boss-mushmom" }
   };
@@ -1300,6 +1304,7 @@
     "2501.13956": ["ludibrium", "clocktower"], "2601.18642": ["ellinia-town"],
     "2604.14362": ["perion"], "2605.06527": ["kerning"],
     "2606.30306": ["orbis"], "2608.19652": ["lachelein"],
+    "2604.20006": ["leafre"], "2610.09008": ["nautilus"],
     "dekleer-1986-atms": ["henesys"]
   };
   var later = window.requestIdleCallback ? function (fn) { window.requestIdleCallback(fn, { timeout: 2000 }); } : function (fn) { setTimeout(fn, 600); };

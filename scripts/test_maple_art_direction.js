@@ -25,10 +25,22 @@ const familiarGuests = new Set([
   'npc-bowman','npc-hines','npc-strategist','npc-lucid','npc-dark-lord',
   'npc-kyrin','npc-dances-with-balrog','npc-elder-stan',
   'npc-knight-mihile','npc-knight-oz','npc-knight-irena',
-  'npc-knight-eckhart','npc-knight-hawkeye'
+  'npc-knight-eckhart','npc-knight-hawkeye',
+  'npc-tatamo','npc-knight','npc-wind','npc-flame','npc-night','npc-thunder'
 ]);
-assert.equal(places.length, 7);
+assert.equal(places.length, 9);
 assert.equal(Object.keys(cast).length, places.length);
+const originalIds = places.map(p => p.id).filter(id => !['2604.20006','2610.09008'].includes(id));
+const originalScenes = new Set(originalIds.map(id => scenes[id][0]));
+const originalGuides = new Set(originalIds.map(id => cast[id].guide));
+const originalBosses = new Set(originalIds.map(id => cast[id].boss));
+const originalMobs = new Set(originalIds.flatMap(id => cast[id].mobs));
+for (const id of ['2604.20006','2610.09008']) {
+  assert.ok(!originalScenes.has(scenes[id][0]), `${id} adds a new town`);
+  assert.ok(!originalGuides.has(cast[id].guide), `${id} adds a new lead NPC`);
+  assert.ok(!originalBosses.has(cast[id].boss), `${id} adds a new boss`);
+  assert.ok(cast[id].mobs.every(m => !originalMobs.has(m)), `${id} uses fresh chapter mobs`);
+}
 for (const place of places) {
   const region = cast[place.id];
   assert.ok(region, `${place.id} has an authored regional cast`);
@@ -92,4 +104,4 @@ for (const [paper, npcId, mapId] of [
     `${guide.label} is recorded in the selected town`);
 }
 assert.equal(cast['2608.19652'].boss, 'boss-lucid', 'Lucid appears as the Lachelein boss');
-console.log('Maple art direction: 7 town scenes, four reading roles, guest portraits and source locations match.');
+console.log('Maple art direction: 9 town scenes, four reading roles, guest portraits and source locations match.');

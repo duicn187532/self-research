@@ -33,8 +33,14 @@ python3 scripts/quiz/build.py
 | [2605.06527](papers/2605.06527/index.html) | STALE: Can LLM Agents Know When Their Memories Are No Longer Valid? | 已對照 v1 PDF 核對 |
 | [2606.30306](papers/2606.30306/index.html) | Always-On Agents: A Survey of Persistent Memory, State, and Governance in LLM Agents | 已對照 v1 PDF 核對 |
 | [2608.19652](papers/2608.19652/index.html) | Can Agent Memory Systems Track Evolving State? | 已對照 v1 PDF 核對 |
+| [Findings of ACL 2026](papers/2604.20006/index.html) | From Recall to Forgetting: Benchmarking Long-Term Memory for Personalized Agents（Memora） | 新增教材已對照 ACL 正式版；未獨立重跑實驗 |
+| [2610.09008](papers/2610.09008/index.html) | Whose Memory Is It? Scope-Aware Commit Rules for Long-Term LLM Memory（CASK） | 新增教材已對照 arXiv v1；workshop poster，未獨立重跑實驗 |
 | [2604.14362](papers/2604.14362/index.html) | APEX-MEM: Agentic Semi-Structured Memory with Temporal Reasoning for Long-Term Conversational AI | 已對照 v1 PDF 核對 |
 | [de Kleer 1986](papers/dekleer-1986-atms/index.html) | An Assumption-based TMS (Artificial Intelligence 28, 1986) | 已對照掃描 PDF 頁面影像核對 |
+
+新增的 Memora 與 CASK 各有 13 個可記錄進度的章節、26 道章節／BOSS 題、三層解釋、關鍵原文數值表，以及 FAMA 計算器／作用範圍提交模擬器。教材原始內容可由 `python scripts/research/build_new_papers.py` 重建；題庫原始碼在 `scripts/quiz/q_memora.py` 和 `scripts/quiz/q_cask.py`。來源與未完成驗證項目見 `scripts/research/source_manifest.json`。
+
+楓之谷主場與導師刻意避開原七篇：Memora 用神木村、村長塔塔曼與戴米安；CASK 用海盜船諾特勒斯號、卡伊琳與威爾。這些場景與角色已在既有 `assets/maple/` 素材庫中，新增頁不依賴遠端圖片。怪物也選用尚未分配給原七篇的素材，並在 `assets/site.js` 中逐篇配置。
 
 ## 怎麼看
 
@@ -108,7 +114,7 @@ python3 scripts/stamp_assets.py
 給研究生的部分，和閱讀進度分開，不影響已讀節數：
 
 - **每篇的「研究者進階分析」**（每頁術語表前的 R 節，四個可收合的區塊）：A 方法重建（輸入輸出、狀態、偽程式碼，每一步標「原文／推導／本站假設／原文未提供」）、B 可重現性審查（資料、程式碼、模型、提示詞、參數、指標、基線、統計、成本九項，標「已提供／部分提供／未提供／不適用／待核對」，並分開「重算論文表格」與「重跑原始實驗」）、C 主張與證據（證據、替代解釋、是否直接檢驗、未測邊界、支持強度與理由）、D 可否證的研究假說（研究構想，不是論文貢獻）。
-- **研究工作台** [`compare/index.html`](compare/index.html)（書架標題下的按鈕）：七篇並排的 13 維方法矩陣、同名評測的不同數字（只並排、不排名）、六個跨論文研究問題、分五類的研究缺口地圖。每一格都連回精讀頁的章節；「未提及」不等於「不支援」，缺口只在本站七篇的範圍內成立，不是新穎性主張。
+- **研究工作台** [`compare/index.html`](compare/index.html)（書架標題下的按鈕）：原七篇的 13 維方法矩陣、同名評測數字、六個跨論文研究問題、分五類的研究缺口地圖；新增 Memora／CASK 專題對照另列於頁首。每個判斷連回精讀頁；原有缺口只在原七篇範圍內成立，不是九篇共同的缺口或新穎性主張。
 
 內容的來源是 `scripts/research/` 裡的資料檔，改完重新產生：
 

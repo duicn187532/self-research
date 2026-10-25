@@ -1,4 +1,4 @@
-// Dependency-free DOM interaction smoke test for the seven reading labs.
+// Dependency-free DOM interaction smoke test for the nine reading labs.
 // Run: node scripts/test_reading_lab.js
 const fs = require("node:fs");
 const vm = require("node:vm");
@@ -6,7 +6,7 @@ const assert = require("node:assert/strict");
 const source = fs.readFileSync("assets/reading-lab.js", "utf8");
 const ids = [
   "2501.13956", "2601.18642", "2604.14362", "2605.06527",
-  "2606.30306", "2608.19652", "dekleer-1986-atms"
+  "2606.30306", "2608.19652", "2604.20006", "2610.09008", "dekleer-1986-atms"
 ];
 
 function makeNode(tag) {
@@ -58,7 +58,7 @@ for (const id of ids) {
   section.querySelector = () => heading;
   const document = {
     querySelector: selector => selector === "[data-paper]" ? { getAttribute: () => id } : null,
-    getElementById: name => name === "s-route" ? section : { getAttribute: () => name },
+    getElementById: name => name === "s-overview" ? ((id === "2604.20006" || id === "2610.09008") ? section : null) : name === "s-route" ? section : { getAttribute: () => name },
     createElement: makeNode,
     createTextNode: value => ({ tag: "#text", textContent: value, children: [] })
   };
@@ -101,4 +101,4 @@ for (const id of ids) {
   assert.match(feedback.textContent, /需要修正/, id + ": incorrect category feedback");
   console.log("PASS", id, "dimensions/flow/metric/fairness/feedback");
 }
-console.log("PASS seven stateless interaction smoke tests");
+console.log("PASS nine stateless interaction smoke tests");

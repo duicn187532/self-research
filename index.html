@@ -8,10 +8,10 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="論文精讀室">
 <title>論文精讀室</title>
-<meta name="description" content="七篇 Agent 記憶與狀態研究精讀：分章導讀、公式、互動圖、自我檢測與研究比較。">
+<meta name="description" content="九篇 Agent 記憶與狀態研究精讀：分章導讀、公式、互動圖、自我檢測與研究比較。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="論文精讀室">
-<meta property="og:description" content="七篇 Agent 記憶與狀態研究精讀：分章導讀、公式、互動圖、自我檢測與研究比較。">
+<meta property="og:description" content="九篇 Agent 記憶與狀態研究精讀：分章導讀、公式、互動圖、自我檢測與研究比較。">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="assets/site.css?v=17f192497a">
@@ -43,15 +43,15 @@
     <p><span class="skin-study">從七篇論文的原文、導讀與互動驗證逐步理解研究；閱讀、測驗與複習進度會接在一起。</span><span class="skin-maple">選一座城鎮、向研究夥伴接任務，從論文原文與互動驗證逐步理解研究。閱讀、戰鬥與複習進度會接在一起。</span></p>
     <div class="tally" aria-label="閱讀統計">
       <span><b id="tally-started">0</b>篇已開始</span>
-      <span><b id="tally-done">0 / 111</b>節已讀</span>
+      <span><b id="tally-done">0 / 137</b>節已讀</span>
     </div>
-    <p class="bench-entry"><a class="btn" href="compare/index.html">研究工作台</a><span>七篇並排：13 維方法矩陣、跨論文研究問題、研究缺口地圖</span></p>
+    <p class="bench-entry"><a class="btn" href="compare/index.html">研究工作台</a><span>九篇論文的研究問題、方法與證據對照</span></p>
   </div>
 
   <section class="world-map" id="world-map" aria-labelledby="world-map-title">
     <div class="world-map-head">
       <h2 id="world-map-title">研究世界地圖</h2>
-      <p>七座城鎮各有一篇論文和研究任務；也可以不接任務，直接進入教材。</p>
+      <p>九座城鎮各有一篇論文和研究任務；也可以不接任務，直接進入教材。</p>
     </div>
     <div class="world-map-layout">
       <div class="world-map-places" id="world-map-places" role="group" aria-label="選擇研究城鎮"></div>
@@ -72,10 +72,10 @@
   </section>
 
   <details class="shelf-groups" id="paper-catalog">
-    <summary>完整論文書架 · 7 篇</summary>
+    <summary>完整論文書架 · 9 篇</summary>
     <div class="shelf-group-list">
     <section class="shelf-group" aria-labelledby="g-0">
-      <h2 id="g-0">記憶系統設計<small>三種處理舊資訊的方式：標記失效、衰減遺忘、只增不刪</small></h2>
+      <h2 id="g-0">記憶系統設計<small>寫入授權、版本失效、衰減遺忘與歷史保留</small></h2>
       <ul class="shelf">
       <li>
         <a class="card" href="papers/2501.13956/index.html">
@@ -101,6 +101,14 @@
           <div class="meta"><span data-progress-for="2604.14362" data-total="16"></span><span class="src src-abs">已對照全文</span></div>
         </a>
       </li>
+      <li>
+        <a class="card" href="papers/2610.09008/index.html">
+          <div class="id"><span class="mono">arXiv 2610.09008</span><span>2026.10</span></div>
+          <h3>CASK：誰授權這段記憶成為事實？</h3>
+          <p class="gist">區分共享世界、計畫與信念；以因果錨定的雙 Gram key 決定哪些命題可寫入長期記憶。</p>
+          <div class="meta"><span data-progress-for="2610.09008" data-total="13"></span><span class="src src-abs">已對照 arXiv v1</span></div>
+        </a>
+      </li>
       </ul>
     </section>
     <section class="shelf-group" aria-labelledby="g-1">
@@ -120,6 +128,14 @@
           <h3>StateMem：Agent 記憶系統追得上不斷變動的狀態嗎？</h3>
           <p class="gist">找得到不等於用對版本。StateMemBench 用事件程式造出 234 個陷阱情境，StateMem 以依賴圖標記過期狀態；只改回答提示詞的包裝器就讓六個後端各進步 32–67 個百分點。</p>
           <div class="meta"><span data-progress-for="2608.19652" data-total="17"></span><span class="src src-abs">已對照全文</span></div>
+        </a>
+      </li>
+      <li>
+        <a class="card" href="papers/2604.20006/index.html">
+          <div class="id"><span class="mono">Findings of ACL 2026</span><span>2026.07</span></div>
+          <h3>Memora：從回想走向遺忘的長期記憶評測</h3>
+          <p class="gist">跨週到季度的個人化對話，測回想、推理與推薦；FAMA 對使用失效記憶扣分。</p>
+          <div class="meta"><span data-progress-for="2604.20006" data-total="13"></span><span class="src src-abs">已對照 ACL 正式版</span></div>
         </a>
       </li>
       </ul>
@@ -196,10 +212,10 @@
 </main>
 
 <script src="assets/battle.js?v=be9fa6c0d6"></script>
-<script src="assets/site.js?v=9f0d85a464"></script>
+<script src="assets/site.js?v=a3294243c2"></script>
 <script src="assets/quest.js?v=6103b7bed8"></script>
-<script src="assets/world-quests.js?v=3f4004bd98"></script>
-<script src="assets/reading-lab.js?v=ce81d69da4"></script>
-<script src="assets/world.js?v=ff80900a3e"></script>
+<script src="assets/world-quests.js?v=73d57c3af5"></script>
+<script src="assets/reading-lab.js?v=134a96fd9e"></script>
+<script src="assets/world.js?v=f140aa69fd"></script>
 </body>
 </html>

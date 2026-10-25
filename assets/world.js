@@ -7,6 +7,8 @@
     { id:'2604.14362', scene:'perion', name:'勇士之村', topic:'只增不刪的記憶' },
     { id:'2605.06527', scene:'kerning', name:'墮落城市', topic:'過期記憶診斷' },
     { id:'2608.19652', scene:'lachelein', name:'拉契爾恩', topic:'依賴與狀態更新' },
+    { id:'2604.20006', scene:'leafre', name:'神木村', topic:'長期記憶評測與遺忘' },
+    { id:'2610.09008', scene:'nautilus', name:'海盜船諾特勒斯號', topic:'記憶作用範圍與寫入' },
     { id:'2606.30306', scene:'orbis', name:'天空之城', topic:'持久代理綜述' },
     { id:'dekleer-1986-atms', scene:'henesys', name:'弓箭手村', topic:'假設與真值維護' }
   ];
