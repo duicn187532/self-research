@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "review_date": "2026-10-24",
+  "review_date": "2026-10-25",
   "scope": "本次新增互動導讀之來源稽核；不回溯推翻既有教材先前的核對紀錄",
   "rules": [
     "核對元資料（標題、作者、版本）不同於逐條全文核對",
@@ -63,6 +63,26 @@
       "metadata_status": "secondary_search_only_pending_primary",
       "fulltext_status": "legacy_site_claim_not_rechecked",
       "missing": "本次 arXiv 摘要頁讀取失敗；須恢復來源存取，取得 PDF、核實版本與所有數字"
+    },
+    "2604.20006": {
+      "title": "From Recall to Forgetting: Benchmarking Long-Term Memory for Personalized Agents",
+      "version": "Findings of ACL 2026, 26814–26841",
+      "authors": "Md Nayem Uddin; Kumar Shubham; Eduardo Blanco; Chitta Baral; Gengyu Wang",
+      "metadata_evidence": "https://aclanthology.org/2026.findings-acl.1337/",
+      "fulltext_evidence": "https://aclanthology.org/2026.findings-acl.1337.pdf",
+      "metadata_status": "acl_anthology_checked",
+      "fulltext_status": "new_lesson_source_checked",
+      "missing": "新增教材已核對正式版正文、公式、Tables 1–5、§6 錯誤分析與 Limitations；尚未獨立重跑資料生成與模型評估，網站互動數字為教學示例"
+    },
+    "2610.09008": {
+      "title": "Whose Memory Is It? Scope-Aware Commit Rules for Long-Term LLM Memory",
+      "version": "arXiv 2610.09008v1, 2026-10-06",
+      "authors": "Hongyu Gu; Xinchang Li",
+      "metadata_evidence": "https://arxiv.org/abs/2610.09008",
+      "fulltext_evidence": "https://arxiv.org/pdf/2610.09008v1",
+      "metadata_status": "arxiv_abstract_checked",
+      "fulltext_status": "new_lesson_source_checked",
+      "missing": "新增教材已核對 v1 正文、定理、Tables 1–3/5 與附錄 B–C；尚未取得可獨立重跑完整實驗的程式與權重，未驗證跨模型家族泛化"
     },
     "dekleer-1986-atms": {
       "title": "An assumption-based TMS",

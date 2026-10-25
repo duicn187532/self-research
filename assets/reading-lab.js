@@ -78,6 +78,30 @@
       flow: [["TurnEncoder 擷取", "將新對話寫入狀態單元及出處"], ["標記取代", "將可能失效的舊單元與新資訊關聯"], ["傳遞重檢需求", "沿已有依賴邊標記受影響的下游單元"], ["查詢時重算", "依有效單元與重算提示回答；傳播可能過多"]],
       method: "s-anim"
     },
+    "2604.20006": {
+      short: "Memora", version: "ACL Findings 2026", sourceUrl: "https://aclanthology.org/2026.findings-acl.1337.pdf", verified: true,
+      dims: [
+        ["Problem", "只考回想無法測出跨 session 整合與舊記憶失效的錯誤。", ["s-problem","s-scale"]],
+        ["Method", "先生成可追蹤狀態軌跡，再轉成對話與題目；FAMA 同時計入有效資訊及舊資訊排除。", ["s-data","s-tasks","s-fama"]],
+        ["Benchmark", "週、月、季三種跨度；Table 3 分任務報告，Table 5 顯示舊資訊扣分可改變系統排序。", ["s-scale","s-results","s-penalty","s-errors"]],
+        ["Contribution", "作者提出 Memora 與 FAMA，顯示多個現有系統在長軌跡中常重用失效記憶。", ["s-fama","s-results"]],
+        ["Gap", "本站研究疑問：固定歷史長度，只提高 mutation 密度，FAMA 是否仍下降？", ["s-critique","s-research"]]
+      ],
+      flow: [["模擬狀態", "為每個 persona 記錄新增、更新、刪除與每輪有效版本"], ["生成對話", "將狀態操作轉成多輪自然語言"], ["出題與準則", "標記應包含的有效資訊與應排除的舊資訊"], ["算 FAMA", "以三裁判判各 criterion，依任務與跨度彙總"]],
+      method: "s-fama"
+    },
+    "2610.09008": {
+      short: "CASK", version: "2610.09008v1", sourceUrl: "https://arxiv.org/pdf/2610.09008v1", verified: true,
+      dims: [
+        ["Problem", "相關句子若失去說話者或假設分支，會被誤當共享世界事實。", ["s-problem","s-formal"]],
+        ["Method", "以因果介入找到 ownership 子空間，再用雙 Gram block 與 logit 差形成 46 維附件 key。", ["s-route","s-key","s-proof"]],
+        ["Benchmark", "source-isolated 的附件分類、scope-only 因子控制、衝突檢索與工具 trace；不同資料單位須分讀。", ["s-factorial","s-evidence","s-critique"]],
+        ["Contribution", "作者報告在兩個 Qwen 規模上較佳的附件分類，並以介入與 scope-only 控制支持機制解釋。", ["s-route","s-evidence"]],
+        ["Gap", "本站研究疑問：跨模型家族或多層巢狀 owner 時，typed Gram 優勢能否保留？", ["s-proof","s-critique","s-research"]]
+      ],
+      flow: [["辨識候選", "抽出待提交的命題與原作用範圍"], ["六個診斷", "取得固定順序 hidden states 與四個 logit 差"], ["形成 typed key", "分別計算因果子空間和互補子空間的 Gram"], ["寫入與檢索", "門控 actual/scoped；查詢時按 owner 授權遮罩"]],
+      method: "s-key"
+    },
     "dekleer-1986-atms": {
       short: "ATMS", version: "Artificial Intelligence 28 (1986), 127–162",
       dims: [
@@ -97,7 +121,7 @@
   }));
   if (!host) return;
   var data = PAPERS[id];
-  var route = document.getElementById("s-route");
+  var route = document.getElementById("s-overview") || document.getElementById("s-route");
   if (!data || !route) return;
   var origin = route.querySelector(".sec-head");
   if (!origin) return;
@@ -127,16 +151,16 @@
   main.id = "reading-lab";
   quickStart.insertAdjacentElement("afterend", main);
   mount(main, "summary", "reading-lab-title", "展開進階導讀與練習（選用）");
-  mount(main, "p", "reading-lab-intro", "五維精讀導航：Problem／Method／Benchmark／Contribution／Gap。以下為本站對既有教材的濃縮導讀，不是新的論文原文查驗。");
+  mount(main, "p", "reading-lab-intro", "五維精讀導航：Problem／Method／Benchmark／Contribution／Gap。以下是本站濃縮導讀，完整論證與條件請讀對應章節。");
 
   var source = mount(main, "details", "reading-source");
   var sourceSummary = mount(source, "summary", "", "原文版本與新增導讀的核對狀態");
   var sourcePanel = mount(source, "div", "reading-source-body");
-  mount(sourcePanel, "p", "", "本站既有教材頁首有過往全文核對聲明；這次改版沒有重新取得並逐頁比對原始 PDF，因此新加入的五維摘要一律保留「本站整理／本次待覆核」標記。不可據此宣稱本次完成論文數字、公式或作者資訊複核。");
+  mount(sourcePanel, "p", "", data.verified ? "本篇新增教材已核對所列原文 PDF；導讀屬本站整理，推導與後續研究假說不代表作者結論。" : "本站既有教材頁首有過往全文核對聲明；這次改版沒有重新取得並逐頁比對原始 PDF，因此新加入的五維摘要一律保留「本站整理／本次待覆核」標記。不可據此宣稱本次完成論文數字、公式或作者資訊複核。");
   mount(sourcePanel, "p", "", "原文版本：" + data.version + "。核對時必須對照標題、作者、版本日期，並逐項核查公式、圖表與結果。來源若失效，保留原版本紀錄，將新版標為待核對。");
   if (id !== "dekleer-1986-atms") {
     var l = document.createElement("a");
-    l.href = "https://arxiv.org/pdf/" + data.version;
+    l.href = data.sourceUrl || "https://arxiv.org/pdf/" + data.version;
     l.target = "_blank"; l.rel = "noopener noreferrer";
     l.textContent = "開啟指定版本 PDF（外部連結，未保證目前可用）";
     sourcePanel.appendChild(l);
@@ -160,7 +184,7 @@
       if (j) refs.appendChild(document.createTextNode(" · "));
       refs.appendChild(link(ref, document.getElementById(ref)?.getAttribute("data-short") || ref));
     });
-    var status = i === 4 ? "本站推導／非作者結論" : i === 3 ? "作者主張／本次待覆核" : "本站摘述／本次待覆核";
+    var status = i === 4 ? "本站推導／非作者結論" : data.verified ? (i === 3 ? "作者主張／已核對原文" : "本站摘述／已核對原文") : i === 3 ? "作者主張／本次待覆核" : "本站摘述／本次待覆核";
     mount(card, "span", "reading-provenance", status);
   });
 
@@ -174,7 +198,7 @@
   var previous = mount(controls, "button", "btn", "上一步");
   var next = mount(controls, "button", "btn", "預測後揭示下一步");
   previous.type = next.type = "button";
-  var deep = link(data.method, "前往原有方法動畫／推導");
+  var deep = link(data.method, "前往方法與推導章節");
   controls.appendChild(deep);
   var step = 0;
   function drawFlow() {

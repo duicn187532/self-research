@@ -12,8 +12,8 @@ vm.runInNewContext(worldSource, {
   localStorage: { getItem() { throw new Error('map must be safe without storage'); } }
 });
 const places = Array.from(worldWindow.StudyWorld.places);
-assert.equal(places.length, 7);
-assert.equal(new Set(places.map(place => place.id)).size, 7);
+assert.equal(places.length, 9);
+assert.equal(new Set(places.map(place => place.id)).size, 9);
 assert.equal(places.filter(place => place.npc).length, 0);
 const shelf = fs.readFileSync('index.html', 'utf8');
 assert.match(shelf, /class="world-quest-host"/);
@@ -24,7 +24,7 @@ assert.match(shelf, /src="assets\/reading-lab\.js/);
 const dimensions = {};
 vm.runInNewContext(fs.readFileSync('assets/reading-lab.js','utf8'),
   {window:dimensions,document:{querySelector:()=>null}});
-assert.equal(Object.keys(dimensions.StudyResearchDimensions).length, 7);
+assert.equal(Object.keys(dimensions.StudyResearchDimensions).length, 9);
 for (const rows of Object.values(dimensions.StudyResearchDimensions)) assert.equal(rows.length, 5);
 for (const place of places) {
   assert.ok(fs.existsSync(path.join('assets/maple', `scene-${place.scene}-sm.jpg`)), `scene ${place.scene}`);
@@ -100,4 +100,4 @@ assert.equal(writes.filter(([key])=>key===progressCtx.COMPLETED_AT_KEY).length,1
 progressCtx.award();
 assert.equal(writes.filter(([key])=>key===progressCtx.COMPLETED_AT_KEY).length,1,
   'completion date is not overwritten by later rewards');
-console.log('World learning: seven valid scenes, derived records and mandatory sequence challenge passed.');
+console.log('World learning: nine valid scenes, derived records and mandatory sequence challenge passed.');

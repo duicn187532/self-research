@@ -12,6 +12,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 PAPERS = [
     "2501.13956", "2601.18642", "2604.14362",
+    "2604.20006", "2610.09008",
     "2605.06527", "2606.30306", "2608.19652",
     "dekleer-1986-atms",
 ]
@@ -51,9 +52,11 @@ def verify() -> list[str]:
             failures.append(prefix + ": missing JS")
         if "../../assets/reading-lab.css" not in p.styles:
             failures.append(prefix + ": missing CSS")
-        for section in ("s-route","s-research","s-critique"):
+        for section in ("s-research","s-critique"):
             if section not in p.sections:
                 failures.append(prefix + ": missing " + section)
+        if not ({"s-route", "s-overview"} & set(p.sections)):
+            failures.append(prefix + ": missing reading route")
         if not any(x == "s-boss" for x in p.sections):
             failures.append(prefix + ": existing battle missing")
         if len(p.done) != len(set(p.done)):
@@ -72,7 +75,7 @@ def verify() -> list[str]:
             failures.append("Missing five-dimension configuration for " + id)
     manifest = json.loads((ROOT / 'scripts/research/source_manifest.json').read_text(encoding='utf-8'))
     if set(manifest.get('papers', {})) != set(PAPERS):
-        failures.append('Source manifest must cover exactly seven papers')
+        failures.append('Source manifest must cover exactly the configured papers')
     for id in PAPERS:
         start = js.find('"' + id + '": {')
         if start < 0:
@@ -91,7 +94,7 @@ def verify() -> list[str]:
         if record.get('fulltext_status') in ('verified', 'fulltext_verified'):
             failures.append(id + ': unsupported fulltext verified claim in this change')
     for term in ('"Problem"', '"Method"', '"Benchmark"', '"Contribution"', '"Gap"'):
-        if js.count(term) != 7:
+        if js.count(term) != len(PAPERS):
             failures.append("Each paper must have exactly one " + term)
     for term in ("data-done", "localStorage.setItem", "StudyStore.set", "innerHTML"):
         if term in js:

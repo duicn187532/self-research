@@ -9,8 +9,8 @@ const localStorage = { getItem:key=>saved.get(key) ?? null };
 vm.runInNewContext(fs.readFileSync('assets/world-quests.js','utf8'),
   { window, document, localStorage, CustomEvent:function () {} });
 const quests = window.StudyWorldQuests.definitions;
-assert.equal(quests.length,6);
-assert.equal(new Set(quests.map(q=>q.paper)).size,6);
+assert.equal(quests.length,8);
+assert.equal(new Set(quests.map(q=>q.paper)).size,8);
 for (const quest of quests) {
   assert.equal(quest.chapters.length,6,`${quest.paper} has all six stages`);
   assert.equal(new Set(quest.chapters).size,6);
@@ -35,4 +35,4 @@ for (const quest of quests) {
   assert.equal(window.StudyWorldQuests.nextStage(quest),null);
   saved.delete(`study:${quest.paper}:battle`);
 }
-console.log('World quests: six NPCs have valid research stages, battle gates and recoverable state.');
+console.log('World quests: eight NPCs have valid research stages, battle gates and recoverable state.');
