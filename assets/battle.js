@@ -61,6 +61,7 @@
     elite: { label: "精英", hearts: 2 },
     boss: { label: "BOSS", hearts: 3 }
   };
+  function mapleMode() { return !document.documentElement || document.documentElement.getAttribute('data-skin') === 'maple'; }
   // titles for BOSSes beaten across all papers, on top of each paper's own
   var RANKS = [[1, "見習遠征者"], [3, "資深遠征者"], [5, "遠征隊長"], [7, "精讀室賢者"]];
 
@@ -136,6 +137,8 @@
     var box = el("div", "battle");
     box.setAttribute("data-tier", cfg.tier);
     var head = el("div", "bt-head");
+    head.appendChild(el("b", "bt-study-title", cfg.tier === "boss" ? "跨章節綜合測驗" : "章節測驗：" + cfg.name));
+    head.appendChild(el("span", "bt-study-rule", ask + " 題"));
     head.appendChild(el("span", "bt-tier", tier.label));
     var hero = el("span", "bt-hero");
     hero.setAttribute("aria-hidden", "true");
@@ -161,6 +164,8 @@
       '<p class="bt-say" aria-live="polite"></p><div class="btn-row"><button type="button" class="btn bt-next" hidden>下一題</button>' +
       '<button type="button" class="btn bt-quit">撤退</button></div>';
     box.appendChild(arena);
+    var progress = el("p", "bt-study-progress");
+    arena.insertBefore(progress, arena.firstChild);
     var result = el("div", "bt-result");
     result.hidden = true;
     box.appendChild(result);
@@ -169,16 +174,25 @@
     var hpBar = arena.querySelector(".bt-hp"), hpFill = hpBar.querySelector("i"), hearts = arena.querySelector(".bt-hearts");
     var facet = arena.querySelector(".bt-facet"), qEl = arena.querySelector(".bt-q"), opts = arena.querySelector(".bt-opts");
     var say = arena.querySelector(".bt-say"), next = arena.querySelector(".bt-next"), quit = arena.querySelector(".bt-quit");
-    var round = null;
+    var round = null, lastAnswer = null, outcome = null;
 
     function record() { return obj(obj(S.get("study:" + cfg.paper + ":battle", {}))[cfg.key]); }
     function paintStatus() {
       var r = record();
-      if (r.w) status.textContent = "已討伐 × " + r.w + "　最佳：一次答對 " + r.best + " / " + r.n + (r.l ? "　敗北 " + r.l + " 次" : "");
-      else if (r.l) status.textContent = "挑戰 " + r.l + " 次，還沒打倒。答錯的題目在戰後都有解答，複習後再來。";
-      else if (cfg.cleared && cfg.cleared()) status.textContent = "這一節已標記讀完（舊紀錄）。挑戰一次，熟練度才會算進去。";
-      else status.textContent = cfg.tier === "boss" ? "跨章節的綜合題，涵蓋方法、推理與實驗批判。" : "讀完這一節再來挑戰；答錯不會鎖住任何內容。";
-      go.textContent = r.w ? "再戰一次" : r.l ? "再挑戰" : "開始討伐";
+      if (mapleMode()) {
+        if (r.w) status.textContent = "已討伐 × " + r.w + "　最佳：一次答對 " + r.best + " / " + r.n + (r.l ? "　敗北 " + r.l + " 次" : "");
+        else if (r.l) status.textContent = "挑戰 " + r.l + " 次，還沒打倒。答錯的題目在戰後都有解答，複習後再來。";
+        else if (cfg.cleared && cfg.cleared()) status.textContent = "這一節已標記讀完（舊紀錄）。挑戰一次，熟練度才會算進去。";
+        else status.textContent = cfg.tier === "boss" ? "跨章節的綜合題，涵蓋方法、推理與實驗批判。" : "讀完這一節再來挑戰；答錯不會鎖住任何內容。";
+        go.textContent = r.w ? "再戰一次" : r.l ? "再挑戰" : "開始討伐";
+      } else {
+        if (r.w) status.textContent = "已完成 " + r.w + " 次　最佳：一次答對 " + r.best + " / " + r.n + (r.l ? "　未通過 " + r.l + " 次" : "");
+        else if (r.l) status.textContent = "已作答 " + r.l + " 次；可先看解析，複習後再試。";
+        else if (cfg.cleared && cfg.cleared()) status.textContent = "這一節已標記讀完；完成測驗後會更新熟練度。";
+        else status.textContent = cfg.tier === "boss" ? "跨章節的綜合題，涵蓋方法、推理與實驗批判。" : "讀完這一節即可作答；答錯不會鎖住內容。";
+        go.textContent = r.w || r.l ? "再做一次" : "開始測驗";
+      }
+      quit.textContent = mapleMode() ? "撤退" : "結束作答";
     }
     function linkTo(ids) {
       return list(ids).map(function (id) {
@@ -187,16 +201,40 @@
         return a;
       });
     }
+    function verdictText(value) {
+      return mapleMode() ? (!value.saved ?
+        "這次答題未能保存，任務和稱號不會推進。請先匯出備份、檢查儲存空間，再挑戰一次。" :
+        value.win ? "討伐成功！一次答對 " + value.right + " / " + value.total :
+        "被打倒了……一次答對 " + value.right + " / " + value.total + "。複習下面的解答後再挑戰。") : (!value.saved ?
+        "這次作答未能保存。請先匯出備份並檢查儲存空間，再試一次。" :
+        value.win ? "測驗完成：一次答對 " + value.right + " / " + value.total :
+        "這次未通過：一次答對 " + value.right + " / " + value.total + "。複習下面的解析後可再作答。");
+    }
+    function paintAnswer() {
+      if (!lastAnswer || !round) return;
+      say.textContent = "";
+      if (lastAnswer.right) say.appendChild(el("b", null, mapleMode() ? "命中！" : "答對！"));
+      else {
+        say.appendChild(el("b", null, mapleMode() ? "被反擊了！" : "尚未答對。"));
+        say.appendChild(document.createTextNode(round.hearts ? "這題稍後再來一次。回去看看：" : "回去看看："));
+        linkTo(lastAnswer.q.src || [cfg.key]).forEach(function (a, k) { if (k) say.appendChild(document.createTextNode("、")); say.appendChild(a); });
+      }
+      next.textContent = !round.hp || !round.hearts ?
+        (mapleMode() ? (round.hp ? "看戰況" : "收下戰利品") : "查看結果") : "下一題";
+      next.hidden = false;
+    }
     function paintBars() {
       hpFill.style.width = (100 * round.hp / round.n) + "%";
       hpBar.setAttribute("aria-label", "怪物剩餘 " + round.hp + " / " + round.n);
       hearts.textContent = "♥".repeat(round.hearts) + "♡".repeat(tier.hearts - round.hearts);
       hearts.setAttribute("aria-label", "剩下 " + round.hearts + " 顆心");
+      progress.textContent = "尚有 " + round.hp + " 題待答對，可再答錯 " + round.hearts + " 次";
     }
     function start() {
       var picked = shuffle(qs).slice(0, ask);
       round = { queue: picked, n: picked.length, hp: picked.length, hearts: tier.hearts,
         seen: {}, firstRight: 0, log: [], stats:qstat(cfg.paper), statsDirty:false };
+      lastAnswer = outcome = null;
       result.hidden = true;
       arena.hidden = false;
       go.hidden = true;
@@ -206,6 +244,7 @@
     }
     function show() {
       var q = round.queue[0];
+      lastAnswer = null;
       facet.textContent = (FACETS[q.facet] || "") + (q.kind === "sequence" ? " · 排列研究步驟" : "") +
         (cfg.tier === "boss" && q.src ? "　跨 " + list(q.src).length + " 節" : "");
       qEl.innerHTML = q.q;
@@ -265,25 +304,19 @@
         if (right) round.firstRight++;
         round.log.push({ q: q, first: right });
       }
-      say.textContent = "";
       if (right) {
         btn.classList.add("is-right");
         round.hp--;
         round.queue.shift();
-        say.appendChild(el("b", null, "命中！"));
         if (cfg.onHit) cfg.onHit();
       } else {
         btn.classList.add("is-wrong");
         round.hearts--;
         round.queue.push(round.queue.shift());
-        say.appendChild(el("b", null, "被反擊了！"));
-        say.appendChild(document.createTextNode(round.hearts ? "這題稍後再來一次。回去看看：" : "回去看看："));
-        linkTo(q.src || [cfg.key]).forEach(function (a, k) { if (k) say.appendChild(document.createTextNode("、")); say.appendChild(a); });
       }
+      lastAnswer = { q: q, right: right };
       paintBars();
-      if (!round.hp || !round.hearts) { next.textContent = round.hp ? "看戰況" : "收下戰利品"; }
-      else next.textContent = "下一題";
-      next.hidden = false;
+      paintAnswer();
       next.focus();
     }
     function finish() {
@@ -292,10 +325,8 @@
       arena.hidden = true;
       result.hidden = false;
       result.textContent = "";
-      var verdict = el("p", "bt-verdict", !saved ?
-        "這次答題未能保存，任務和稱號不會推進。請先匯出備份、檢查儲存空間，再挑戰一次。" :
-        win ? "討伐成功！一次答對 " + round.firstRight + " / " + round.n :
-        "被打倒了……一次答對 " + round.firstRight + " / " + round.n + "。複習下面的解答後再挑戰。");
+      outcome = { saved: saved, win: win, right: round.firstRight, total: round.n };
+      var verdict = el("p", "bt-verdict", verdictText(outcome));
       verdict.tabIndex = -1;
       result.appendChild(verdict);
       var ol = el("ol", "bt-review");
@@ -326,7 +357,7 @@
     }
     go.addEventListener("click", start);
     next.addEventListener("click", function () { if (!round.hp || !round.hearts) finish(); else show(); });
-    quit.addEventListener("click", function () { round = null; arena.hidden = true; go.hidden = false; paintStatus(); go.focus(); });
+    quit.addEventListener("click", function () { round = lastAnswer = null; arena.hidden = true; go.hidden = false; paintStatus(); go.focus(); });
     paintStatus();
     // site.js hands over the monster's name and picture once the game art has loaded
     function setFoe(name, node) {
@@ -335,7 +366,11 @@
       if (node) art.appendChild(node);
     }
     function setHero(node) { hero.textContent = ""; if (node) hero.appendChild(node); }
-    return { refresh: paintStatus, setFoe: setFoe, setHero: setHero, artHost: art,
+    return { refresh: function () {
+      paintStatus();
+      if (round) { paintBars(); paintAnswer(); }
+      if (outcome) { var verdict = result.querySelector(".bt-verdict"); if (verdict) verdict.textContent = verdictText(outcome); }
+    }, setFoe: setFoe, setHero: setHero, artHost: art,
       feedbackHost: say, resultHost: result };
   }
 

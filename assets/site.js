@@ -142,11 +142,26 @@
   var stamp = (cssHref.match(/[?&]v=(\w+)/) || [])[1];
   function mapleUrl(file) { return mapleBase + file + (stamp ? "?v=" + stamp : ""); }
   var mapleReady = false, mapleHooks = [];
-  function whenMaple(fn) { if (mapleReady && tableDone) fn(); else mapleHooks.push(fn); }
+  function whenMaple(fn) { if (skin === "maple" && mapleReady && tableDone) fn(); else mapleHooks.push(fn); }
   var hostTheme = root.hasAttribute("data-host-theme") ? root.getAttribute("data-host-theme") : root.getAttribute("data-theme");
   var skinHooks = [];
+  var catalog = document.getElementById("paper-catalog");
+  var catalogViews = { study: true, maple: false }, catalogView = null;
+  var codex = document.getElementById("research-codex");
+  var codexViews = { study: true, maple: false }, codexView = null;
   function applySkin(v) {
     if (v === "maple" && mapleReady) root.setAttribute("data-skin", "maple"); else root.removeAttribute("data-skin");
+    var view = root.hasAttribute("data-skin") ? "maple" : "study";
+    if (catalog && view !== catalogView) {
+      if (catalogView) catalogViews[catalogView] = catalog.open;
+      catalog.open = catalogViews[view];
+      catalogView = view;
+    }
+    if (codex && view !== codexView) {
+      if (codexView) codexViews[codexView] = codex.open;
+      codex.open = codexViews[view];
+      codexView = view;
+    }
     skinHooks.forEach(function (fn) { fn(); });
   }
   function applyMode(v) {
@@ -189,7 +204,7 @@
     openAppear = function (v) { panel.hidden = !v; btn.setAttribute("aria-expanded", String(v)); };
     btn.addEventListener("click", function () { openAppear(panel.hidden); });
     wrap.querySelectorAll("[data-skin-btn]").forEach(function (b) {
-      b.addEventListener("click", function () { skin = b.getAttribute("data-skin-btn"); applySkin(skin); store.set(SKIN_KEY, skin); sync(); });
+      b.addEventListener("click", function () { skin = b.getAttribute("data-skin-btn"); if (skin === "maple") loadTable(); applySkin(skin); runMaple(); store.set(SKIN_KEY, skin); sync(); });
     });
     wrap.querySelectorAll("[data-mode-btn]").forEach(function (b) {
       b.addEventListener("click", function () { mode = b.getAttribute("data-mode-btn"); applyMode(mode); store.set(MODE_KEY, mode); sync(); });
@@ -217,18 +232,20 @@
     table.src = mapleUrl("sprites.js");
     document.head.appendChild(table);
   }
-  function runMaple() { if (mapleReady && tableDone) mapleHooks.splice(0).forEach(function (fn) { fn(); }); }
+  function runMaple() { if (skin === "maple" && mapleReady && tableDone) mapleHooks.splice(0).forEach(function (fn) { fn(); }); }
   if (skin === "maple") loadTable();
   function setMapleReady(ok) {
     mapleReady = ok;
     applySkin(skin);
     if (skinRow) skinRow.hidden = !ok;
     if (!ok) return;
-    loadTable();
-    runMaple();
-    // fetch the hover, pressed and opened states now, so a button never blinks empty on first use
-    ["btnext-mouseOver", "btprev-normal", "btprev-mouseOver", "btclose-normal", "list3"]
-      .forEach(function (f) { new Image().src = mapleBase + f + ".png"; });
+    if (skin === "maple") {
+      loadTable();
+      runMaple();
+      // fetch the hover, pressed and opened states now, so a button never blinks empty on first use
+      ["btnext-mouseOver", "btprev-normal", "btprev-mouseOver", "btclose-normal", "list3"]
+        .forEach(function (f) { new Image().src = mapleBase + f + ".png"; });
+    }
   }
   if (mapleBase) {
     var probe = new Image();
@@ -1088,6 +1105,25 @@
       links[s.id] = { a: a, tick: tick };
     });
   }
+  var bossSection = document.querySelector(".sec-boss");
+  if (bossSection) {
+    var bossHeading = bossSection.querySelector(".sec-head h2");
+    var bossIntro = bossSection.querySelector(":scope > p");
+    var bossLabel = bossSection.querySelector(".desk-foot .done");
+    var bossLabelText = bossLabel && Array.prototype.find.call(bossLabel.childNodes, function (node) { return node.nodeType === 3; });
+    var bossOriginal = { heading: bossHeading.textContent, intro: bossIntro.textContent,
+      label: bossLabelText && bossLabelText.textContent };
+    function renderBossSkin() {
+      var game = root.getAttribute("data-skin") === "maple";
+      bossHeading.textContent = game ? bossOriginal.heading : "跨章節綜合測驗";
+      bossIntro.textContent = game ? bossOriginal.intro :
+        "這份測驗把方法、公式和實驗放在一起檢查。答錯的題目會指出該回看哪幾節；作答後每題都附解析與出處，可以重做。";
+      if (bossLabelText) bossLabelText.textContent = game ? bossOriginal.label : " 完成綜合測驗";
+      if (links[bossSection.id]) links[bossSection.id].a.lastChild.textContent = game ? "BOSS：綜合挑戰" : "綜合測驗";
+    }
+    skinHooks.push(renderBossSkin);
+    renderBossSkin();
+  }
 
   // ---------- finished sections ----------
   var DONE_KEY = "study:" + paper + ":done";
@@ -1490,7 +1526,8 @@
     var bar = document.getElementById("progress-bar");
     var txt = document.getElementById("progress-text");
     if (bar) bar.style.width = (countable ? (100 * n) / countable : 0) + "%";
-    if (txt) txt.textContent = "已完成 " + n + " / " + countable + " 任務";
+    if (txt) txt.textContent = root.getAttribute("data-skin") === "maple" ?
+      "已完成 " + n + " / " + countable + " 任務" : "已讀 " + n + " / " + countable + " 節";
     if (mapBtn) mapBtn.querySelector(".map-num").textContent = n + "/" + countable;
     if (mapBtn) mapBtn.setAttribute("aria-label", "章節地圖，已完成 " + n + " / " + countable + " 任務" + (current >= 0 ? "，目前第 " + (current + 1) + " / " + sections.length + " 節" : ""));
     hud(now);
@@ -1519,6 +1556,7 @@
     });
   });
   renderProgress();
+  skinHooks.push(renderProgress);
   // opening a self-check answer for the first time
   allDialogs.forEach(function (d, k) {
     d.addEventListener("toggle", function () {
@@ -1567,7 +1605,10 @@
   var grasp = store.get(GRASP_KEY, {});
   if (!grasp || typeof grasp !== "object" || Array.isArray(grasp)) grasp = {};
   var GRASP = { got: "理解", part: "部分理解", review: "需要複習" };
-  function shortOf(s) { return s.getAttribute("data-short") || (s.querySelector("h2") || {}).textContent || s.id; }
+  function shortOf(s) {
+    if (s.classList.contains("sec-boss") && root.getAttribute("data-skin") !== "maple") return "綜合測驗";
+    return s.getAttribute("data-short") || (s.querySelector("h2") || {}).textContent || s.id;
+  }
   function graspDays(g, streak) { return g === "review" ? 1 : g === "part" ? 3 : [7, 21, 60][Math.min(streak, 2)]; }
   function isDue(rec) { return !!rec && rec.due <= today(); }
   // the shelf lists the sections and their names, so this page leaves its table of contents behind
@@ -1747,7 +1788,7 @@
         }, 2200);
         drawBoard();
         window.dispatchEvent(new CustomEvent("study-progress-change", { detail: { paper: paper } }));
-        if (paper === "2601.18642" && window.StudyIntroQuest &&
+        if (root.getAttribute("data-skin") === "maple" && paper === "2601.18642" && window.StudyIntroQuest &&
             window.StudyIntroQuest.stages.some(function (stage) { return stage.id === s.id; })) {
           var nextQuest = window.StudyIntroQuest.nextStage();
           var questLink = document.createElement("a");
@@ -1774,6 +1815,7 @@
     });
   });
   drawBoard();
+  skinHooks.push(function () { Object.keys(battles).forEach(function (id) { if (battles[id]) battles[id].refresh(); }); });
 
   // A reader who keeps no notes sees a folded 筆記（選用）; one with a note sees it open.
   document.querySelectorAll(".desk-foot > .note").forEach(function (n) {
@@ -1832,7 +1874,7 @@
   var lastSeen = store.get(lastSeenKey, null);
   function rememberSection(s) {
     if (!s || lastSeen && lastSeen.id === s.id && Date.now() - lastSeen.at < 1500) return;
-    lastSeen = { id: s.id, title: s.getAttribute("data-short") || s.querySelector("h2").textContent.trim(), at: Date.now() };
+    lastSeen = { id: s.id, title: shortOf(s), at: Date.now() };
     store.set(lastSeenKey, lastSeen);
   }
   if ("IntersectionObserver" in window && outline) {

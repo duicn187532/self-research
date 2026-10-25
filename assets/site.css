@@ -825,6 +825,20 @@ table.bench-tbl th[scope="rowgroup"], table.bench-tbl th[scope="row"] { color: v
    both colour modes: dark mode turns the scene to night instead.
    ===================================================================== */
 .hud, .npc-portrait, .mini-names, .perch, .pager { display: none; }
+.skin-study, .bt-study-title, .bt-study-rule, .bt-study-progress { display: none; }
+:root:not([data-skin="maple"]) .skin-study { display: inline; }
+:root:not([data-skin="maple"]) .skin-maple { display: none; }
+/* The reading skin keeps the paper catalog, review reminders and quizzes, without game art. */
+:root:not([data-skin="maple"]) .world-map { padding: 0; border: 0; background: none; }
+:root:not([data-skin="maple"]) .world-map > :not(.research-codex),
+:root:not([data-skin="maple"]) .research-codex > :not(summary, .review-box),
+:root:not([data-skin="maple"]) :is(.intro-quest, .expedition-box, .boss-board, .row-hero, .row-pet),
+:root:not([data-skin="maple"]) .battle :is(.bt-tier, .bt-hero, .bt-art, .bt-foe, .bt-rule, .bt-bars, .bt-hit-scene, .fx-skill) { display: none !important; }
+:root:not([data-skin="maple"]) .world-map:has(.review-box[hidden]) { display: none; }
+:root:not([data-skin="maple"]) .research-codex { margin: 0; padding: .8rem 1rem; border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); }
+:root:not([data-skin="maple"]) .battle .bt-study-title { display: inline; font-size: 1.05rem; }
+:root:not([data-skin="maple"]) .battle .bt-study-rule { display: inline; margin-left: auto; color: var(--muted); font-size: var(--step--1); }
+:root:not([data-skin="maple"]) .battle .bt-study-progress { display: block; color: var(--muted); font-size: var(--step--1); }
 :root[data-skin="maple"] {
   --paper: #eeeedd; --surface: #ffffff; --ink: #2b2b2b; --muted: #555d66; --rule: #c9c9b8;
   --accent: #1d4f86; --accent-soft: #dde8f5; --mark: #f0d94e; --mark-soft: #fbf3c4; --mark-ink: #2b2b2b;
