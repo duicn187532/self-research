@@ -39,20 +39,22 @@ assert.equal(saved.get('study:2601.18642:battle')['s-boss'].w,1);
 assert.equal(saved.get('study:expedition')[0].win,true);
 
 const finishCode = segment('    function finish() {','    go.addEventListener("click", start);');
-function finishWith(writeSucceeded) {
+const verdictCode = segment('    function verdictText(value) {','    function paintAnswer() {');
+function finishWith(writeSucceeded, game = true) {
   let advanced = 0;
   const element = (tag,cls,text) => ({tag,cls,textContent:text || '',children:[],
     appendChild(child) { this.children.push(child); },focus() {}});
   const result = element('div');
   const view = {round:{hp:0,n:1,firstRight:1,log:[]},recordOutcome:()=>writeSucceeded,
     cfg:{onWin() { advanced++; }},arena:{hidden:false},result,go:{hidden:true},
-    el:element,paintStatus() {},tex() {}};
-  vm.runInNewContext(finishCode + '\nfinish();',view);
+    el:element,paintStatus() {},tex() {},mapleMode:()=>game,outcome:null};
+  vm.runInNewContext(verdictCode + finishCode + '\nfinish();',view);
   return {advanced,verdict:result.children[0].textContent};
 }
 assert.equal(finishWith(false).advanced,0,'unsaved victory must not advance the quest callback');
 assert.match(finishWith(false).verdict,/未能保存/);
 assert.equal(finishWith(true).advanced,1,'a durable win advances once');
+assert.match(finishWith(true,false).verdict,/測驗完成/,'reading skin uses study language');
 
 blocked.add('study:titles');
 assert.deepEqual(Array.from(ctx.grant(cfg.paper,'遺忘曲線馴服者')),[],
