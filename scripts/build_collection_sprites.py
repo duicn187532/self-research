@@ -78,7 +78,6 @@ SELECTION={
  'npc-roben':('npc','2020000','伯堅',{'stand':'stand','say':'say0'}),
  'npc-tatamo':('npc','2081000','村長塔塔曼',{'stand':'stand','say':'say'}),
  'npc-lucid':('npc','3003200','露希妲',{'stand':'stand','say':'say'}),
- 'npc-cleaner':('npc','3003249','淨化者',{'stand':'stand','say':'move'}),
  'npc-lina':('npc','1010100','麗娜',{'stand':'stand','say':'smile'}),
  'npc-elder-stan':('npc','1012003','長老斯坦',{'stand':'stand','say':'swing'}),
  'npc-conductor':('npc','2040000','車掌',{'stand':'stand','say':'talk'}),
@@ -98,7 +97,7 @@ prefix='window.MAPLE_SPRITES = '
 raw=table_path.read_text(encoding='utf-8').strip()
 start=raw.index(prefix)+len(prefix)
 table=json.loads(raw[start:].rstrip(';'))
-for obsolete in ('boss-lucid','boss-will','npc-lucas','mob-orange-mushroom','mob-green-shroom'):
+for obsolete in ('boss-lucid','boss-will','npc-lucas','npc-cleaner','mob-orange-mushroom','mob-green-shroom'):
     table.pop(obsolete,None)
 
 def strip(asset, action_name, target):
@@ -171,7 +170,7 @@ for key, ident, label, actions in (
 table['npc-clerk']['role']='彼特'
 table['npc-girl']['role']='內拉'
 table.pop('npc-chief',None)
-for key in ('npc-bowman','npc-wizard','npc-strategist','npc-knight','npc-flame','npc-wind','npc-night','npc-thunder','npc-lina','npc-elder-stan','npc-tatamo','npc-lucid','npc-cleaner','npc-girl'):
+for key in ('npc-bowman','npc-wizard','npc-strategist','npc-knight','npc-flame','npc-wind','npc-night','npc-thunder','npc-lina','npc-elder-stan','npc-tatamo','npc-lucid','npc-girl'):
     if key in table: table[key]['featured']=True
 for key,label in {
     'hero-1':'夜光','hero-2':'幻影俠盜','hero-3':'狂狼勇士','hero-4':'精靈遊俠',

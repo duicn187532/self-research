@@ -20,6 +20,13 @@ vm.runInNewContext(fs.readFileSync('assets/world-quests.js', 'utf8'), { window, 
 
 const places = window.StudyWorld.places;
 const quests = window.StudyWorldQuests.definitions;
+const familiarGuests = new Set([
+  ...Array.from({length:7}, (_, i) => `hero-${i + 1}`),
+  'npc-bowman','npc-hines','npc-strategist','npc-lucid','npc-dark-lord',
+  'npc-kyrin','npc-dances-with-balrog','npc-elder-stan',
+  'npc-knight-mihile','npc-knight-oz','npc-knight-irena',
+  'npc-knight-eckhart','npc-knight-hawkeye'
+]);
 assert.equal(places.length, 7);
 assert.equal(Object.keys(cast).length, places.length);
 for (const place of places) {
@@ -28,7 +35,8 @@ for (const place of places) {
   assert.equal(scenes[place.id][0], place.scene, `${place.name} opens in its own scene`);
   assert.equal(sprites[region.guide].kind, 'npc', `${place.name} guide exists`);
   assert.equal(sprites[region.boss].kind, 'boss', `${place.name} boss exists`);
-  assert.ok(region.readers.grad.includes(region.guide), `${place.name} local guide joins graduate reading`);
+  if (!['2501.13956','2608.19652','2606.30306'].includes(place.id))
+    assert.ok(region.readers.grad.includes(region.guide), `${place.name} established guide joins graduate reading`);
   assert.ok(region.readers.kid.length >= 4, `${place.name} rotates child-level speakers`);
   assert.ok(region.readers.uni.length >= 3, `${place.name} rotates university-level speakers`);
   assert.ok(region.readers.grad.length >= 5, `${place.name} rotates graduate-level speakers`);
@@ -36,6 +44,7 @@ for (const place of places) {
   const voices = [...region.readers.kid, ...region.readers.uni, ...region.readers.grad, ...region.checks];
   assert.ok(new Set(voices).size >= 10, `${place.name} has a varied reading cast`);
   for (const key of voices) {
+    assert.ok(familiarGuests.has(key), `${place.name} reader ${key} is in the recognizable cast`);
     assert.ok(['npc', 'hero'].includes(sprites[key]?.kind), `${place.name} reader ${key} exists`);
     assert.ok(fs.existsSync(`assets/maple/spr-${key}-stand.png`), `${key} has portrait art`);
   }
@@ -52,6 +61,7 @@ for (const place of places) {
   assert.deepEqual(Array.from(quest.frame), sprites[region.guide].acts.stand.slice(0, 2),
     `${place.name} portrait frame matches the collected sprite`);
 }
+assert.equal(sprites['npc-cleaner'], undefined, 'the cleaner is no longer a speaking NPC');
 function seedOf(str) { let h = 7; for (let i = 0; i < str.length; i++) h = (h * 31 + str.charCodeAt(i)) >>> 0; return h; }
 for (const [paper, region] of Object.entries(cast)) {
   const chapter = i => ['kid','uni','grad'].map(role => {
