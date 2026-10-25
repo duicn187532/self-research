@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "review_date": "2026-10-25",
-  "scope": "本次新增互動導讀之來源稽核；不回溯推翻既有教材先前的核對紀錄",
+  "scope": "2026-10-25 新增兩篇的全文核對，以及既有七篇指定版本 PDF 的方法與關鍵證據再審；既有教材先前的全文核對聲明保留為歷史紀錄",
   "rules": [
     "核對元資料（標題、作者、版本）不同於逐條全文核對",
     "檢索摘要僅供背景；不能據以生成或認定公式、表格、數字或限制",
@@ -16,8 +16,12 @@
       "authors": "Preston Rasmussen; Pavlo Paliychuk; Travis Beauvais; Jack Ryan; Daniel Chalef",
       "metadata_evidence": "https://arxiv.org/abs/2501.13956",
       "metadata_status": "arxiv_abstract_checked",
-      "fulltext_status": "legacy_site_claim_not_rechecked",
-      "missing": "本次未逐頁重查 PDF／HTML 的公式、評測數字和作者主張"
+      "fulltext_status": "primary_pdf_targeted_text_and_page_image_checked",
+      "missing": "未獨立重跑 Zep 服務、DMR 或 LongMemEval；非本次逐頁重查之內容仍沿用前次教材紀錄",
+      "fulltext_evidence": "https://arxiv.org/pdf/2501.13956v1",
+      "pdf_sha256": "d26f7eb599540e8b14d75e7efda58a07661abbb1b864e58323b5768475a15d42",
+      "pdf_pages": 12,
+      "current_audit_scope": "§2–4；PDF 第 3、7 頁方法與 Tables 2–3"
     },
     "2601.18642": {
       "title": "FadeMem: Biologically-Inspired Forgetting for Efficient Agent Memory",
@@ -25,8 +29,12 @@
       "authors": "Lei Wei; Xiao Peng; Xu Dong; Niantao Xie; Bin Wang",
       "metadata_evidence": "https://arxiv.org/abs/2601.18642",
       "metadata_status": "arxiv_abstract_checked",
-      "fulltext_status": "pdf_text_partially_checked_image_pending",
-      "missing": "本次可讀到指定版本 PDF 文字，但 PDF 頁面影像核對未成功；完整公式、表格與超參數尚未逐項覆核"
+      "fulltext_status": "primary_pdf_targeted_text_and_page_image_checked",
+      "missing": "未重跑三資料集；雙門檻灰區與部分超參數按教材明標推導或未提供",
+      "fulltext_evidence": "https://arxiv.org/pdf/2601.18642v2",
+      "pdf_sha256": "32fdb33b8ac77b5d93a14185003653cc5c5e014d36e136733c6e4ba7c13b4c8e",
+      "pdf_pages": 5,
+      "current_audit_scope": "§2 Eq. 1–14；PDF 第 2–4 頁 Fig. 1–2、Tables 1–3"
     },
     "2604.14362": {
       "title": "APEX-MEM: Agentic Semi-Structured Memory with Temporal Reasoning for Long-Term Conversational AI",
@@ -34,8 +42,12 @@
       "authors": "Pratyay Banerjee; Masud Moshtaghi; Shivashankar Subramanian; Amita Misra; Ankit Chadha",
       "metadata_evidence": "https://arxiv.org/abs/2604.14362",
       "metadata_status": "arxiv_abstract_checked",
-      "fulltext_status": "legacy_site_claim_not_rechecked",
-      "missing": "本次未逐頁重新核對完整 PDF、圖表與數據"
+      "fulltext_status": "primary_pdf_targeted_text_and_page_image_checked",
+      "missing": "未獨立重跑；原文表格 Overall 欄與分類加權重算的不一致維持雙列標示",
+      "fulltext_evidence": "https://arxiv.org/pdf/2604.14362v1",
+      "pdf_sha256": "4172e1d7958d8a02471085446c5c1abd6b19c84a3418d3931704977ca684d504",
+      "pdf_pages": 20,
+      "current_audit_scope": "§3–6；PDF 第 4、6、7、12 頁 Tables 1–3、6"
     },
     "2605.06527": {
       "title": "STALE: Can LLM Agents Know When Their Memories Are No Longer Valid?",
@@ -43,8 +55,12 @@
       "authors": "Hanxiang Chao; Yihan Bai; Rui Sheng; Tianle Li; Yushi Sun",
       "metadata_evidence": "https://arxiv.org/abs/2605.06527",
       "metadata_status": "arxiv_abstract_checked",
-      "fulltext_status": "legacy_site_claim_not_rechecked",
-      "missing": "本次未重查 PDF 附錄、統計表、評測題與內容限制"
+      "fulltext_status": "primary_pdf_targeted_text_and_page_image_checked",
+      "missing": "未獨立重跑受測模型與 CUPMem；受控情境不能直接代表真實部署故障率",
+      "fulltext_evidence": "https://arxiv.org/pdf/2605.06527v1",
+      "pdf_sha256": "388f71f1eb952e7d7e7b19c2f25bfc744c47efa8ee00a548093b949432495109",
+      "pdf_pages": 37,
+      "current_audit_scope": "§3–5；PDF 第 3、7 頁 Figure 1、Table 2"
     },
     "2606.30306": {
       "title": "Always-OnAgents:A Survey of Persistent Memory, State, and Governance in LLMAgents",
@@ -52,17 +68,25 @@
       "authors": "Tianyu Ding; Aditya Nannapaneni; Bingfan Liu; Ling Zhang",
       "metadata_evidence": "https://arxiv.org/abs/2606.30306",
       "metadata_status": "arxiv_abstract_checked",
-      "fulltext_status": "legacy_site_claim_not_rechecked",
-      "missing": "本次未逐條核對 PDF 綜述分類、統計與圖表"
+      "fulltext_status": "primary_pdf_targeted_text_and_page_image_checked",
+      "missing": "136 頁綜述的 435 篇引文未逐條重新核驗；pilot protocol 未作本站實驗",
+      "fulltext_evidence": "https://arxiv.org/pdf/2606.30306v1",
+      "pdf_sha256": "d4f1c08fd999f508ef610fe9779588ae9f3ce2c95c65eab359924b25b567f116",
+      "pdf_pages": 136,
+      "current_audit_scope": "§2–4、§9 AOEP-v0；PDF 第 11、33 頁 Figure 4"
     },
     "2608.19652": {
       "title": "Can Agent Memory Systems Track Evolving State?",
       "version": "v1",
       "authors": "Xinyi Fan; Miri Liu; Ruozhen Yang; Siru Ouyang; Jiawei Han",
       "metadata_evidence": "https://arxiv.org/abs/2608.19652",
-      "metadata_status": "secondary_search_only_pending_primary",
-      "fulltext_status": "legacy_site_claim_not_rechecked",
-      "missing": "本次 arXiv 摘要頁讀取失敗；須恢復來源存取，取得 PDF、核實版本與所有數字"
+      "metadata_status": "arxiv_abstract_checked",
+      "fulltext_status": "primary_pdf_targeted_text_and_page_image_checked",
+      "missing": "未獨立重跑 StateMemBench／StateMem；合成資料與 closed-pool 評分外推有限",
+      "fulltext_evidence": "https://arxiv.org/pdf/2608.19652v1",
+      "pdf_sha256": "fc03a3ae74997cbab8983118a05a19b573991846d3ef48774ebe7fc9e25811b5",
+      "pdf_pages": 23,
+      "current_audit_scope": "§3–6；PDF 第 5、6、19 頁 Table 10、附錄分母與限制"
     },
     "2604.20006": {
       "title": "From Recall to Forgetting: Benchmarking Long-Term Memory for Personalized Agents",
@@ -91,8 +115,12 @@
       "metadata_evidence": "https://doi.org/10.1016/0004-3702(86)90080-9",
       "alternate_author_pdf": "https://www.dekleer.org/Publications/An%20Assumption-Based%20TMS.pdf",
       "metadata_status": "publisher_doi_checked",
-      "fulltext_status": "author_pdf_first_page_image_checked_remainder_pending",
-      "missing": "作者公開 PDF 影像第 1 頁已查看，文字上下顛倒；其餘 35 頁、公式、圖表與既有使用者掃描來源尚未逐頁對照及比對雜湊"
+      "fulltext_status": "primary_pdf_targeted_text_and_page_image_checked",
+      "missing": "作者 PDF 第 1 頁倒置；未與先前使用者提供的掃描檔比對雜湊，舊教材自建引擎的全面比對屬先前紀錄",
+      "fulltext_evidence": "https://www.dekleer.org/Publications/An%20Assumption-Based%20TMS.pdf",
+      "pdf_sha256": "8536ada90472579a4ec0d0d1d604d358223e1acdca875625676c6b7c700b8535",
+      "pdf_pages": 36,
+      "current_audit_scope": "§4.1–4.7；作者 PDF 第 1、20、21 頁影像與節點／標籤定義"
     }
   }
 }

@@ -177,6 +177,20 @@ code { background: var(--paper); border: 1px solid var(--rule); border-radius: 3
 .links a:hover { border-color: var(--accent); color: var(--accent); }
 .links a::after { content: " ↗"; color: var(--muted); }
 .paper-head > .claim { border-left-color: var(--ok); font-size: 0.875rem; }
+.source-audit {
+  min-width: 0; border: 1px solid var(--rule); border-left: 4px solid var(--accent);
+  border-radius: var(--radius); background: var(--surface); padding: 1rem 1.15rem;
+  display: grid; gap: 0.7rem; font-size: 0.9375rem; line-height: 1.7;
+}
+.source-audit-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.4rem 1rem; }
+.source-audit-head h2 { font-size: var(--step-1); margin: 0; }
+.source-audit-head a { font-size: var(--step--1); }
+.source-audit p { margin: 0; }
+.source-audit-scope { color: var(--muted); }
+.source-audit .table-wrap { max-width: 100%; }
+.source-audit table { min-width: 36rem; }
+.source-audit th[scope="row"] { text-align: left; }
+.source-audit .math-inline { overflow-wrap: anywhere; }
 .notice {
   border: 1px solid var(--warn); background: var(--warn-soft); border-radius: var(--radius);
   padding: 0.85rem 1rem; font-size: 0.9375rem; display: grid; gap: 0.4rem;

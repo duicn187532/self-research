@@ -1,37 +1,37 @@
 {
   "2501.13956": {
-    "source_version": "2501.13956v1",
-    "existing_material": "既有教材頁首保留過往核對聲明",
-    "new_guides": "本次新增的五維導讀與練習尚未重新逐項對照原文"
+    "source_version": "arXiv 2501.13956v1",
+    "audit_status": "targeted_primary_pdf_review",
+    "note": "本次重查 §2–4 與 PDF 第 7 頁 Tables 2–3，並核對五維導讀的核心定位；沒有獨立重跑 Zep 服務。來源版本：arXiv 2501.13956v1。詳見上方逐項核對卡；教材示例與作者實驗結果分開標示。"
   },
   "2601.18642": {
-    "source_version": "2601.18642v2",
-    "existing_material": "既有教材頁首保留過往核對聲明",
-    "new_guides": "本次新增的五維導讀與練習尚未重新逐項對照原文"
+    "source_version": "arXiv 2601.18642v2",
+    "audit_status": "targeted_primary_pdf_review",
+    "note": "本次重查 §2 的 Eq. 1–14、§3 的 Tables 1–3 與 Fig. 2 原始頁面；未獨立重跑三個資料集。來源版本：arXiv 2601.18642v2。詳見上方逐項核對卡；教材示例與作者實驗結果分開標示。"
   },
   "2604.14362": {
-    "source_version": "2604.14362v1",
-    "existing_material": "既有教材頁首保留過往核對聲明",
-    "new_guides": "本次新增的五維導讀與練習尚未重新逐項對照原文"
+    "source_version": "arXiv 2604.14362v1",
+    "audit_status": "targeted_primary_pdf_review",
+    "note": "本次重查 §3–6、PDF 第 6–7 頁 Tables 1–3 與附錄 Table 6；修正頁首的 PDF 頁數。來源版本：arXiv 2604.14362v1。詳見上方逐項核對卡；教材示例與作者實驗結果分開標示。"
   },
   "2605.06527": {
-    "source_version": "2605.06527v1",
-    "existing_material": "既有教材頁首保留過往核對聲明",
-    "new_guides": "本次新增的五維導讀與練習尚未重新逐項對照原文"
+    "source_version": "arXiv 2605.06527v1",
+    "audit_status": "targeted_primary_pdf_review",
+    "note": "本次重查 §3–5、Figure 1、PDF 第 7 頁 Table 2 與附錄題目定義；未獨立重跑受測模型。來源版本：arXiv 2605.06527v1。詳見上方逐項核對卡；教材示例與作者實驗結果分開標示。"
   },
   "2606.30306": {
-    "source_version": "2606.30306v1",
-    "existing_material": "既有教材頁首保留過往核對聲明",
-    "new_guides": "本次新增的五維導讀與練習尚未重新逐項對照原文"
+    "source_version": "arXiv 2606.30306v1",
+    "audit_status": "targeted_primary_pdf_review",
+    "note": "本次重查 §2–4、Figure 4、§9 的 AOEP-v0 描述；136 頁綜述未逐條重新驗算所有參考文獻。來源版本：arXiv 2606.30306v1。詳見上方逐項核對卡；教材示例與作者實驗結果分開標示。"
   },
   "2608.19652": {
-    "source_version": "2608.19652v1",
-    "existing_material": "既有教材頁首保留過往核對聲明",
-    "new_guides": "本次新增的五維導讀與練習尚未重新逐項對照原文"
+    "source_version": "arXiv 2608.19652v1",
+    "audit_status": "targeted_primary_pdf_review",
+    "note": "本次重查 §3–6、PDF 第 19 頁 Table 10 與附錄的分母說明；原先無法取得的 arXiv 主來源現已核對。來源版本：arXiv 2608.19652v1。詳見上方逐項核對卡；教材示例與作者實驗結果分開標示。"
   },
   "dekleer-1986-atms": {
-    "source_version": "Artificial Intelligence 28 (1986), 127–162",
-    "existing_material": "既有教材頁首保留過往核對聲明",
-    "new_guides": "本次新增的五維導讀與練習尚未重新逐項對照原文"
+    "source_version": "Artificial Intelligence 28(2), 127–162 (1986)",
+    "audit_status": "targeted_primary_pdf_review",
+    "note": "本次對照作者公開的 36 頁掃描版，檢查 §4.4 標籤／節點定義及頁面影像；第 1 頁倒置，未比對舊教材所用掃描檔雜湊。來源版本：Artificial Intelligence 28(2), 127–162 (1986)。詳見上方逐項核對卡；教材示例與作者實驗結果分開標示。"
   }
 }

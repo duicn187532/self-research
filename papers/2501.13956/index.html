@@ -14,7 +14,7 @@
 <meta property="og:description" content="Zep 時序知識圖譜論文精讀：方法、實驗、限制與互動學習。">
 <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="../../assets/site.css?v=b139cbfac1">
+<link rel="stylesheet" href="../../assets/site.css?v=9a541d8f98">
 <script>try{var r=document.documentElement;r.setAttribute("data-host-theme",r.getAttribute("data-theme")||"");if(JSON.parse(localStorage.getItem("study:skin"))!=="study")r.setAttribute("data-skin","maple");var m=JSON.parse(localStorage.getItem("study:mode"));if(m==="light"||m==="dark")r.setAttribute("data-theme",m);}catch(e){}</script>
 
 <style>
@@ -86,10 +86,19 @@
         <a href="https://arxiv.org/pdf/2501.13956v1" target="_blank" rel="noopener">PDF</a>
         <a href="https://github.com/getzep/graphiti" target="_blank" rel="noopener">Graphiti（原文 [6]）</a>
       </div>
+      <!-- legacy-source-audit:start -->
+      <aside class="source-audit" aria-label="原文核對摘要">
+        <div class="source-audit-head"><h2>先讀原文：方法、結果與證據邊界</h2><a href="https://arxiv.org/pdf/2501.13956v1" target="_blank" rel="noopener">核對 arXiv 2501.13956v1 PDF ↗</a></div>
+        <p class="source-audit-scope">原文 12 頁。本次重查 §2–4 與 PDF 第 7 頁 Tables 2–3，並核對五維導讀的核心定位；沒有獨立重跑 Zep 服務。</p>
+        <p><span class='src src-abs'>原文 §2–3</span> Graphiti 把 episode、實體、事實與時間有效區間連在持續更新的圖上；查詢時由圖搜尋、重排與組裝提供代理可用的內容。這篇主要提出系統架構，圖的形式化記號多屬本站教學重建，不能誤當原文定理。</p>
+        <div class="table-wrap"><table class="results"><caption>本次原文核對：主張、原文單位與不能推出的結論</caption><thead><tr><th>主張</th><th>原文定位與結果</th><th>推論邊界</th></tr></thead><tbody><tr><th scope='row'>DMR</th><td>§4.2：Zep 94.8%，MemGPT 93.4%</td><td>同一 DMR 指標的觀察比較；不足以推出所有記憶任務都較佳。</td></tr><tr><th scope='row'>LongMemEvalₛ</th><td>Table 2：gpt-4o-mini 55.4→63.8%；gpt-4o 60.2→71.2%</td><td>基線為 full context；§4.3.1 未能成功納入 MemGPT，不可稱已擊敗它。</td></tr><tr><th scope='row'>原文 Delta</th><td>Table 3：81.8→75.0% 的原文欄寫下降 9.06%，以 81.8 為基線重算約下降 8.31%</td><td>本站保留原文欄並另列重算欄；不能將有疑義的百分比當精確增益。</td></tr></tbody></table></div>
+        <p><span class='src src-mine'>審核結論</span> Table 2 的分數和 Table 3 的表內數字已對照頁面影像。Zep 是商業服務，文中的提示詞、延遲與評分設定不足以單靠 PDF 重現端到端部署表現；教材應持續區分作者系統主張與已測對照。</p>
+      </aside>
+      <!-- legacy-source-audit:end -->
       <div class="claim" role="note">
         <span class="claim-label">核對狀態</span>
-        <p class="reading-verification-note">核對範圍：既有教材頁首保留過往核對聲明；本次新增的五維導讀與練習尚未重新逐項對照原文，標為待覆核。原文版本：2501.13956v1。</p>
-        <p>本頁已對照 arXiv v1 PDF 全文逐條核對。所有數字、定義、提示詞都標出在原文的位置。標「導讀補充」的是本頁的推導、背景知識、示範例子或評論。論文沒交代的細節一律寫「未說明」，不做猜測。</p>
+        <p class="reading-verification-note">本次重查 §2–4 與 PDF 第 7 頁 Tables 2–3，並核對五維導讀的核心定位；沒有獨立重跑 Zep 服務。來源版本：arXiv 2501.13956v1。詳見上方逐項核對卡；教材示例與作者實驗結果分開標示。</p>
+        <p>既有教材先前核對紀錄：本頁已對照 arXiv v1 PDF 全文逐條核對。所有數字、定義、提示詞都標出在原文的位置。標「導讀補充」的是本頁的推導、背景知識、示範例子或評論。論文沒交代的細節一律寫「未說明」，不做猜測。</p>
         <p>注意：PDF 本身有排版缺字。§2.2.1 開頭少了首字母（"ntity extraction"），<b>§2.2.2 Facts 第一段的開頭整句遺失</b>，直接從 "or each fact containing its key predicate" 開始；附錄 6.1.1 的第 6 條規則也在句中截斷。本頁不補寫這些缺漏，事實擷取的細節改以附錄 6.1.3 的提示詞為準。</p>
         <div class="legend">
           <span><span class="src src-abs">原文 §2.2.3</span> 出自論文，標明位置</span>
@@ -1036,7 +1045,7 @@ ENTITY_NAME: entity summary
   draw();
 })();
 </script>
-<script src="../../assets/reading-lab.js?v=541b5a5d21"></script>
+<script src="../../assets/reading-lab.js?v=b0f90b2552"></script>
 <script src="../../assets/world-quests.js?v=73d57c3af5"></script>
 </body>
 </html>

@@ -14,7 +14,7 @@
 <meta property="og:description" content="STALE 與 CUPMem 精讀：Agent 如何辨識過期記憶與隱性衝突。">
 <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="../../assets/site.css?v=b139cbfac1">
+<link rel="stylesheet" href="../../assets/site.css?v=9a541d8f98">
 <script>try{var r=document.documentElement;r.setAttribute("data-host-theme",r.getAttribute("data-theme")||"");if(JSON.parse(localStorage.getItem("study:skin"))!=="study")r.setAttribute("data-skin","maple");var m=JSON.parse(localStorage.getItem("study:mode"));if(m==="light"||m==="dark")r.setAttribute("data-theme",m);}catch(e){}</script>
 
 <style>
@@ -86,10 +86,19 @@
         <a href="https://github.com/icedreamc/STALE" target="_blank" rel="noopener">程式碼（原文附錄 G）</a>
         <a href="https://huggingface.co/datasets/STALEproj/STALE" target="_blank" rel="noopener">資料集</a>
       </div>
+      <!-- legacy-source-audit:start -->
+      <aside class="source-audit" aria-label="原文核對摘要">
+        <div class="source-audit-head"><h2>先讀原文：方法、結果與證據邊界</h2><a href="https://arxiv.org/pdf/2605.06527v1" target="_blank" rel="noopener">核對 arXiv 2605.06527v1 PDF ↗</a></div>
+        <p class="source-audit-scope">原文 37 頁。本次重查 §3–5、Figure 1、PDF 第 7 頁 Table 2 與附錄題目定義；未獨立重跑受測模型。</p>
+        <p><span class='src src-abs'>原文 §3、Figure 1</span> STALE 測的是後來觀察未明說否定舊記憶，卻使其不再有效的 implicit conflict。400 個專家確認情境各有 State Resolution、Premise Resistance、Implicit Policy Adaptation 三種探針，形成 1,200 個查詢；Type I 是同屬性共指更新，Type II 是跨相依屬性的傳播更新。</p>
+        <div class="table-wrap"><table class="results"><caption>本次原文核對：主張、原文單位與不能推出的結論</caption><thead><tr><th>主張</th><th>原文定位與結果</th><th>推論邊界</th></tr></thead><tbody><tr><th scope='row'>三種探針</th><td>§3.2–3.3：SR、PR、IPA 各問不同失敗機制</td><td>找回新證據不等於能抗拒帶有舊前提的問法。</td></tr><tr><th scope='row'>受測模型</th><td>Table 2：Gemini-3.1-pro Overall 55.2%</td><td>是該表 closed-source LLM 最佳列，不包含作者的 CUPMem 原型。</td></tr><tr><th scope='row'>作者原型</th><td>Table 2：CUPMem Overall 68.0%</td><td>和基礎模型不可混稱『最佳 LLM』；比較需保留方法類別。</td></tr></tbody></table></div>
+        <p><span class='src src-mine'>審核結論</span> Table 2 的 Overall 是六種 Type × probe 設定的平均；單列高 SR 不代表 PR 或 IPA 也高。資料由專家確認但情境仍是受控建構，不能用 55.2% 估計真實用戶個人化系統的故障率。</p>
+      </aside>
+      <!-- legacy-source-audit:end -->
       <div class="claim" role="note">
         <span class="claim-label">核對狀態</span>
-        <p class="reading-verification-note">核對範圍：既有教材頁首保留過往核對聲明；本次新增的五維導讀與練習尚未重新逐項對照原文，標為待覆核。原文版本：2605.06527v1。</p>
-        <p>本頁已對照 arXiv v1 PDF 全文（含附錄 A–H）逐條核對。所有數字、定義、提示詞都標出在原文的位置，Table 2 的 Overall 欄已逐列驗算。標「導讀補充」的是本頁的推導、背景知識或評論。</p>
+        <p class="reading-verification-note">本次重查 §3–5、Figure 1、PDF 第 7 頁 Table 2 與附錄題目定義；未獨立重跑受測模型。來源版本：arXiv 2605.06527v1。詳見上方逐項核對卡；教材示例與作者實驗結果分開標示。</p>
+        <p>既有教材先前核對紀錄：本頁已對照 arXiv v1 PDF 全文（含附錄 A–H）逐條核對。所有數字、定義、提示詞都標出在原文的位置，Table 2 的 Overall 欄已逐列驗算。標「導讀補充」的是本頁的推導、背景知識或評論。</p>
         <div class="legend">
           <span><span class="src src-abs">原文 §3.2</span> 出自論文，標明位置</span>
           <span><span class="src src-mine">導讀補充</span> 本頁的推導、背景或評論</span>
@@ -1067,7 +1076,7 @@
   draw();
 })();
 </script>
-<script src="../../assets/reading-lab.js?v=541b5a5d21"></script>
+<script src="../../assets/reading-lab.js?v=b0f90b2552"></script>
 <script src="../../assets/world-quests.js?v=73d57c3af5"></script>
 </body>
 </html>
