@@ -804,7 +804,7 @@
     "width": 768,
     "height": 365,
     "mode": "RGB",
-    "sha256": "1182640d7c16d764a326b86bd41580bb048c7720a31fa4e657c09a4a4aee72d8",
+    "sha256": "e98b69c6c77e3e04cb443ae8a9b79c30b5d645026182996f3208af2cb65f4e69",
     "decode": "pass",
     "new_asset": false,
     "rights_status": "not_reassessed"
@@ -814,7 +814,7 @@
     "width": 1600,
     "height": 760,
     "mode": "RGB",
-    "sha256": "2ed80d483cd616e158286ddb1c77866e7d16728d74213a217617551c6c29c7ce",
+    "sha256": "b57a153a27685de40f5d6b370691af563d4977e6531a87d83744ed701687c232",
     "decode": "pass",
     "new_asset": false,
     "rights_status": "not_reassessed"
@@ -904,7 +904,7 @@
     "width": 768,
     "height": 365,
     "mode": "RGB",
-    "sha256": "9471c42e2104a8d696aad425dc9108f6d75214ec118065bc4cc09b3ef16c7416",
+    "sha256": "1fa0942c5885d82930a79e766be78f6ecabc5f8a0aa27264687b43f6e3f4284f",
     "decode": "pass",
     "new_asset": false,
     "rights_status": "not_reassessed"
@@ -914,7 +914,7 @@
     "width": 1600,
     "height": 760,
     "mode": "RGB",
-    "sha256": "950846c1504d45bc4c67b58c42415101468631f998e7aa40f15f3271a39d76dd",
+    "sha256": "ce008aaaa352ae2c8f0b1f7658dc21cb07bff6203c770d4d9ea261c18f72bdd5",
     "decode": "pass",
     "new_asset": false,
     "rights_status": "not_reassessed"

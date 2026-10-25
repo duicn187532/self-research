@@ -6,6 +6,8 @@ source anchors, checks and progress controls cannot silently drift apart.
 from html import escape
 from pathlib import Path
 from new_paper_sources import CHAPTERS, OPENING
+from new_paper_expansions import EXPANSIONS, SOURCE_EXPANSIONS
+from new_paper_deepdives import DEEPDIVES
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -128,6 +130,23 @@ PAPERS = {
     },
 }
 
+# Place the extra worked and experimental chapters next to the evidence they explain.
+EXPANSION_AFTER = {
+    "2604.20006": {"s-data": "s-timeline", "s-tasks": "s-judges", "s-fama": "s-aggregate", "s-penalty": "s-baselines", "s-errors": "s-context"},
+    "2610.09008": {"s-formal": "s-owner-example", "s-route": "s-routing", "s-key": "s-ablation", "s-commit": "s-protocol", "s-factorial": "s-transfer"},
+}
+for paper_id, paper in PAPERS.items():
+    additions = {row[0]: row for row in EXPANSIONS[paper_id]}
+    ordered = []
+    for row in paper["sections"]:
+        ordered.append(row)
+        extra_id = EXPANSION_AFTER[paper_id].get(row[0])
+        if extra_id:
+            ordered.append(additions[extra_id])
+    assert len(ordered) == len(paper["sections"]) + len(additions)
+    paper["sections"] = ordered
+    CHAPTERS[paper_id].update(SOURCE_EXPANSIONS[paper_id])
+
 STYLE = """<style>
 .lesson-mini{border:1px solid var(--rule);border-radius:8px;padding:1rem;margin:1rem 0;background:var(--surface)}
 .lesson-mini label{display:inline-flex;gap:.35rem;align-items:center;margin:.3rem .8rem .3rem 0}
@@ -205,10 +224,10 @@ def build(pid, p):
 {sections}
 <section class="sec sec-boss" id="s-boss" data-short="BOSS：綜合挑戰"><div class="sec-head"><span class="sec-num">B</span><h2>BOSS：跨章節綜合挑戰</h2></div><p>結合問題、方法、公式與證據作答。打完會顯示逐題理由和對應章節，可重試。</p><div class="boss-board" id="boss-board" aria-live="polite"></div><div class="desk-foot"><label class="done"><input type="checkbox" data-done="s-boss"> 擊敗 BOSS</label></div></section>
 <section class="sec sec-research" id="s-research" data-short="研究者進階分析"><div class="sec-head"><span class="sec-num">R</span><h2>研究者進階分析</h2></div><p class="research-lede">將論文主張拆成可重建的流程、可核對的證據與尚未驗證的假說。跨論文關係見<a href="../../compare/index.html">研究工作台</a>。</p>
-<details class="rblock" id="r-{p['short'].lower()}-a"><summary>A　方法重建</summary><div class="rbody"><p><span class="tag tag-orig">原文</span> {('先模擬狀態軌跡、生成 session 對話、依軌跡出三類題、以 criterion 和三裁判評分。§3–4。' if pid=='2604.20006' else '從候選記錄取得六個診斷 hidden states 與四個 logit 差；形成 typed Gram key；標準化後用 logistic gate 決定 actual/scoped，檢索時套 owner mask。§4。')}</p><p><span class="tag tag-unknown">原文未提供</span> {('完整重跑全部合成對話所需服務時點與端到端成本，須另查釋出物與版本。' if pid=='2604.20006' else '跨任意模型更新與多層巢狀 owner 的穩定性保證；本文只驗證兩個同家族骨幹。')}</p></div></details>
-<details class="rblock" id="r-{p['short'].lower()}-b"><summary>B　可重現性審查</summary><div class="rbody"><p>{('ACL 正式版與作者公開的 Memora 資料／Table 3 評估程式可供重算；模擬器、模型服務版本、裁判成本與完整生成流程仍應單獨核對。' if pid=='2604.20006' else '附錄 B 列診斷提示、層與 rank、source-isolated folds、門檻選擇與 A100 測量；仍須完整程式、模型與 LoCoMo 資料授權才能獨立重跑。')}</p></div></details>
-<details class="rblock" id="r-{p['short'].lower()}-c"><summary>C　主張與證據</summary><div class="rbody"><p>{('受控長期軌跡和 Table 3 支持「現有系統常用到失效記憶」；由於合成資料、不同回答骨幹與 LLM 裁判，不能量化真實部署的錯誤率或單獨歸因於特定記憶架構。' if pid=='2604.20006' else '介入與 scope-only 控制支持內部 ownership route 對門控有因果作用；Table 2–3 支持在指定模型、資料與檢索器下的附件提升；未證明跨模型或開放世界的普遍安全。')}</p></div></details>
-<details class="rblock" id="r-{p['short'].lower()}-d"><summary>D　可否證的後續研究假說</summary><div class="rbody"><p><span class="tag tag-assume">本站提出，非作者結論</span> {('若固定 session 數與總 token，只提高更新／刪除密度，FAMA 的下降仍存在；若不成立，現有下降可能主要來自長度。' if pid=='2604.20006' else '若用相同 projector 與六個診斷重訓不同模型家族，typed Gram 的 scope-only 優勢仍大於 full Gram；若不成立，現有優勢可能依賴 Qwen 家族特性。')}</p></div></details>
+<details class="rblock" id="r-{p['short'].lower()}-a"><summary>A　方法重建：輸入、狀態、步驟與公式</summary><div class="rbody">{DEEPDIVES[pid]['a']}</div></details>
+<details class="rblock" id="r-{p['short'].lower()}-b"><summary>B　可重現性：資料、版本與評分單位</summary><div class="rbody">{DEEPDIVES[pid]['b']}</div></details>
+<details class="rblock" id="r-{p['short'].lower()}-c"><summary>C　主張與證據：哪些推論成立</summary><div class="rbody">{DEEPDIVES[pid]['c']}</div></details>
+<details class="rblock" id="r-{p['short'].lower()}-d"><summary>D　可否證的後續研究假說</summary><div class="rbody">{DEEPDIVES[pid]['d']}</div></details>
 <div class="desk-foot"><div class="note"><label for="note-research">研究筆記</label><textarea id="note-research" data-note="s-research"></textarea><span class="saved"></span></div><label class="done"><input type="checkbox" data-done="s-research"> 讀完這節</label></div></section>
 <section class="sec" id="s-glossary" data-short="術語表"><div class="sec-head"><span class="sec-num">附</span><h2>術語與符號</h2></div><dl class="glossary">{terms}</dl><div class="desk-foot"><label class="done"><input type="checkbox" data-done="s-glossary"> 讀完這節</label></div></section>
 <section class="sec" id="s-export" data-short="匯出筆記"><div class="sec-head"><span class="sec-num">附</span><h2>匯出我的筆記</h2></div><p>筆記保存在本機瀏覽器。可複製 Markdown 留存。</p><div class="btn-row"><button type="button" class="btn" id="export-notes">複製全部筆記</button><span class="toast" id="export-toast" role="status"></span></div><div class="note"><label for="export-box" class="sr-only">匯出內容</label><textarea id="export-box" rows="8" hidden readonly></textarea></div><p class="readout">來源：<a href="{p['source']}" target="_blank" rel="noopener">{escape(p['english'])}</a>。</p></section>

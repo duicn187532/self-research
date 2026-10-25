@@ -81,10 +81,10 @@
     "2604.20006": {
       short: "Memora", version: "ACL Findings 2026", sourceUrl: "https://aclanthology.org/2026.findings-acl.1337.pdf", verified: true,
       dims: [
-        ["Problem", "只考回想無法測出跨 session 整合與舊記憶失效的錯誤。", ["s-problem","s-scale"]],
-        ["Method", "先生成可追蹤狀態軌跡，再轉成對話與題目；FAMA 同時計入有效資訊及舊資訊排除。", ["s-data","s-tasks","s-fama"]],
-        ["Benchmark", "週、月、季三種跨度；Table 3 分任務報告，Table 5 顯示舊資訊扣分可改變系統排序。", ["s-scale","s-results","s-penalty","s-errors"]],
-        ["Contribution", "作者提出 Memora 與 FAMA，顯示多個現有系統在長軌跡中常重用失效記憶。", ["s-fama","s-results"]],
+        ["Problem", "只考回想無法測出跨 session 整合與舊記憶失效的錯誤。", ["s-problem","s-scale","s-context"]],
+        ["Method", "先生成可追蹤狀態軌跡，再轉成對話與題目；FAMA 同時計入有效資訊及舊資訊排除。", ["s-data","s-timeline","s-tasks","s-judges","s-fama","s-aggregate"]],
+        ["Benchmark", "週、月、季三種跨度；Table 3 分任務報告，Table 5 顯示舊資訊扣分可改變系統排序。", ["s-scale","s-baselines","s-results","s-penalty","s-errors"]],
+        ["Contribution", "作者提出 Memora 與 FAMA，顯示多個現有系統在長軌跡中常重用失效記憶。", ["s-fama","s-results","s-context"]],
         ["Gap", "本站研究疑問：固定歷史長度，只提高 mutation 密度，FAMA 是否仍下降？", ["s-critique","s-research"]]
       ],
       flow: [["模擬狀態", "為每個 persona 記錄新增、更新、刪除與每輪有效版本"], ["生成對話", "將狀態操作轉成多輪自然語言"], ["出題與準則", "標記應包含的有效資訊與應排除的舊資訊"], ["算 FAMA", "以三裁判判各 criterion，依任務與跨度彙總"]],
@@ -93,10 +93,10 @@
     "2610.09008": {
       short: "CASK", version: "2610.09008v1", sourceUrl: "https://arxiv.org/pdf/2610.09008v1", verified: true,
       dims: [
-        ["Problem", "相關句子若失去說話者或假設分支，會被誤當共享世界事實。", ["s-problem","s-formal"]],
-        ["Method", "以因果介入找到 ownership 子空間，再用雙 Gram block 與 logit 差形成 46 維附件 key。", ["s-route","s-key","s-proof"]],
-        ["Benchmark", "source-isolated 的附件分類、scope-only 因子控制、衝突檢索與工具 trace；不同資料單位須分讀。", ["s-factorial","s-evidence","s-critique"]],
-        ["Contribution", "作者報告在兩個 Qwen 規模上較佳的附件分類，並以介入與 scope-only 控制支持機制解釋。", ["s-route","s-evidence"]],
+        ["Problem", "相關句子若失去說話者或假設分支，會被誤當共享世界事實。", ["s-problem","s-formal","s-owner-example"]],
+        ["Method", "以因果介入找到 ownership 子空間，再用雙 Gram block 與 logit 差形成 46 維附件 key。", ["s-route","s-routing","s-key","s-ablation","s-proof"]],
+        ["Benchmark", "source-isolated 的附件分類、scope-only 因子控制、衝突檢索與工具 trace；不同資料單位須分讀。", ["s-protocol","s-factorial","s-evidence","s-transfer"]],
+        ["Contribution", "作者報告在兩個 Qwen 規模上較佳的附件分類，並以介入與 scope-only 控制支持機制解釋。", ["s-routing","s-evidence"]],
         ["Gap", "本站研究疑問：跨模型家族或多層巢狀 owner 時，typed Gram 優勢能否保留？", ["s-proof","s-critique","s-research"]]
       ],
       flow: [["辨識候選", "抽出待提交的命題與原作用範圍"], ["六個診斷", "取得固定順序 hidden states 與四個 logit 差"], ["形成 typed key", "分別計算因果子空間和互補子空間的 Gram"], ["寫入與檢索", "門控 actual/scoped；查詢時按 owner 授權遮罩"]],
