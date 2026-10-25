@@ -8,7 +8,7 @@ examples and implications are labeled as this site's analysis.
 OPENING = {
     "2604.20006": r'''
 <h2>先讀原文的研究核心</h2>
-<p><span class="src src-abs">原文 §3–4、Figure 2、公式 (1)</span> Memora 先模擬每次對話前後的記憶狀態，再生成對話與回想、推理、推薦題。答案同時要含有仍有效的資訊，並排除已更新或刪除的資訊。這是一個評測資料集與評分方法，並非新記憶代理。</p>
+<p><span class="src src-abs">原文 §3–4、Figure 2、§4.2 未編號 FAMA 公式</span> Memora 先模擬每次對話前後的記憶狀態，再生成對話與回想、推理、推薦題。答案同時要含有仍有效的資訊，並排除已更新或刪除的資訊。這是一個評測資料集與評分方法，並非新記憶代理。</p>
 <div class="math-block">\[\begin{aligned}
 \lambda_q&=\frac{N_{\mathrm{forget},q}}{N_{\mathrm{presence},q}+N_{\mathrm{forget},q}},\\
 \mathrm{FAMA}(q)&=\max\{0,\mathrm{MPA}(q)-\lambda_q[1-\mathrm{FAA}(q)]\}.
@@ -39,7 +39,7 @@ CHAPTERS = {
 <p><span class="src src-abs">Figure 1、§3.5、§4.2</span> 原文的回想題詢問待辦；推理題把兩筆雜貨支出與預算合算；推薦題須在偏好由某類電影轉移後給新建議。每題有 presence criteria（有效內容應出現）與 absence criteria（失效內容不應出現）。</p>
 <p><span class="src src-abs">§4.2、Appendix C</span> GPT-4.1、Claude Haiku 4.5 與 Gemini 2.5 Flash 對每個 criterion 給二元判定，採多數決。抽查的人類與裁判平均一致率 88.3%，人類標註者間 Cohen κ 為 0.86–0.90。這校驗判準可靠性，並非回答系統的任務成績。</p>''',
         "s-fama": r'''
-<p><span class="src src-abs">§4.2、公式 (1)</span> 對單題 \(q\)，令 \(P_q\) 為有效資訊 criteria 數，\(F_q\) 為排除失效資訊 criteria 數；通過數各為 \(p_q,f_q\)。原文的兩項準確率與權重可寫為：</p>
+<p><span class="src src-abs">§4.2、未編號 FAMA 公式</span> 對單題 \(q\)，令 \(P_q\) 為有效資訊 criteria 數，\(F_q\) 為排除失效資訊 criteria 數；通過數各為 \(p_q,f_q\)。原文的兩項準確率與權重可寫為：</p>
 <div class="math-block">\[\mathrm{MPA}_q=\frac{p_q}{P_q},\qquad \mathrm{FAA}_q=\frac{f_q}{F_q}.\]</div>
 <div class="math-block">\[\lambda_q=\frac{F_q}{P_q+F_q},\qquad
 \mathrm{FAMA}_q=\max\{0,\mathrm{MPA}_q-\lambda_q(1-\mathrm{FAA}_q)\}.\]</div>

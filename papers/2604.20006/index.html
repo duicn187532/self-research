@@ -28,7 +28,7 @@
 <div class="links"><a href="https://aclanthology.org/2026.findings-acl.1337/" target="_blank" rel="noopener">正式來源</a><a href="https://aclanthology.org/2026.findings-acl.1337.pdf" target="_blank" rel="noopener">原文 PDF</a></div>
 <div class="paper-source opening-source">
 <h2>先讀原文的研究核心</h2>
-<p><span class="src src-abs">原文 §3–4、Figure 2、公式 (1)</span> Memora 先模擬每次對話前後的記憶狀態，再生成對話與回想、推理、推薦題。答案同時要含有仍有效的資訊，並排除已更新或刪除的資訊。這是一個評測資料集與評分方法，並非新記憶代理。</p>
+<p><span class="src src-abs">原文 §3–4、Figure 2、§4.2 未編號 FAMA 公式</span> Memora 先模擬每次對話前後的記憶狀態，再生成對話與回想、推理、推薦題。答案同時要含有仍有效的資訊，並排除已更新或刪除的資訊。這是一個評測資料集與評分方法，並非新記憶代理。</p>
 <div class="math-block">\[\begin{aligned}
 \lambda_q&=\frac{N_{\mathrm{forget},q}}{N_{\mathrm{presence},q}+N_{\mathrm{forget},q}},\\
 \mathrm{FAMA}(q)&=\max\{0,\mathrm{MPA}(q)-\lambda_q[1-\mathrm{FAA}(q)]\}.
@@ -84,8 +84,8 @@
 </section>
 <section class="sec" id="s-fama" data-short="把『不該用的舊資訊』扣回來">
 <div class="sec-head"><span class="sec-num">05</span><h2>FAMA：把『不該用的舊資訊』扣回來</h2></div>
-<div class="paper-source"><div class="source-head"><span class="src src-abs">原文 §4.2、公式 (1)</span><a href="https://aclanthology.org/2026.findings-acl.1337.pdf" target="_blank" rel="noopener">核對原文 PDF ↗</a></div><h3>原文方法與證據</h3>
-<p><span class="src src-abs">§4.2、公式 (1)</span> 對單題 \(q\)，令 \(P_q\) 為有效資訊 criteria 數，\(F_q\) 為排除失效資訊 criteria 數；通過數各為 \(p_q,f_q\)。原文的兩項準確率與權重可寫為：</p>
+<div class="paper-source"><div class="source-head"><span class="src src-abs">原文 §4.2、未編號 FAMA 公式</span><a href="https://aclanthology.org/2026.findings-acl.1337.pdf" target="_blank" rel="noopener">核對原文 PDF ↗</a></div><h3>原文方法與證據</h3>
+<p><span class="src src-abs">§4.2、未編號 FAMA 公式</span> 對單題 \(q\)，令 \(P_q\) 為有效資訊 criteria 數，\(F_q\) 為排除失效資訊 criteria 數；通過數各為 \(p_q,f_q\)。原文的兩項準確率與權重可寫為：</p>
 <div class="math-block">\[\mathrm{MPA}_q=\frac{p_q}{P_q},\qquad \mathrm{FAA}_q=\frac{f_q}{F_q}.\]</div>
 <div class="math-block">\[\lambda_q=\frac{F_q}{P_q+F_q},\qquad
 \mathrm{FAMA}_q=\max\{0,\mathrm{MPA}_q-\lambda_q(1-\mathrm{FAA}_q)\}.\]</div>

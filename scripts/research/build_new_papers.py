@@ -40,7 +40,7 @@ PAPERS = {
              "Remembering 回想已知資訊；Reasoning 跨記憶推理；Recommending 根據有效偏好建議。每題配有應出現的 presence criteria 與應排除的 absence criteria。作者用自動 grounding 檢查、人類評估及三個 LLM 裁判多數決；裁判與人類標註的平均一致率為 88.3%，人類間 Cohen κ 為 0.86–0.90。",
              "88.3% 表示所抽查 criterion 的標註一致，不保證所有題目在三種跨度或所有錯誤類別都同樣可靠。criterion 的顆粒度和題目生成方式會影響 FAMA；評閱開放式回答時，『合理改寫』是否等於滿足 criterion 也取決於裁判。",
              "推薦題只要提到一個有效偏好就算完全正確嗎？", "不一定；分數由該題所有 presence 與 absence criteria 共同決定。"),
-            ("s-fama", "FAMA：把『不該用的舊資訊』扣回來", "§4.2、公式 (1)",
+            ("s-fama", "FAMA：把『不該用的舊資訊』扣回來", "§4.2、未編號 FAMA 公式",
              "回答一題，不能只算寫對幾項，也要看有沒有把過期資訊寫進去。下方計算器用簡化的二元 criterion 實例重現原文公式。",
              "對每題，MPA 是應包含有效記憶的 criterion 通過比例；FAA 是應排除舊記憶的 criterion 通過比例。λ 是 absence criteria 在兩類 criterion 中所占比例。FAMA = max(0, MPA − λ(1 − FAA))，所以漏掉有效內容會少得分，錯用舊內容會再扣分。三個任務分開把逐題 FAMA 平均並換成 0–100。",
              r"設 presence 通過 3/4、absence 通過 1/2，則 \(\lambda=2/(4+2)=1/3\)，\(\mathrm{FAMA}=\max(0,3/4-(1/3)(1-1/2))=7/12\approx0.583\)。\(\lambda\) 隨每題 criterion 數量而變，不是論文固定調好的超參數。當題目完全沒有其中一類 criterion 時，須先檢查資料規則；本文給出的公式未單獨討論零分母處理，本站互動示範要求兩類各至少一項。",
