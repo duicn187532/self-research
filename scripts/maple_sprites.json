@@ -29,7 +29,6 @@
   "hero-4": {"label": "精靈遊俠", "kind": "hero", "dir": "character/精靈遊俠", "acts": {"stand": "stand", "move": "move"}},
   "hero-5": {"label": "隱月", "kind": "hero", "dir": "character/隱月", "acts": {"stand": "stand", "move": "move"}},
   "hero-6": {"label": "龍魔導士", "kind": "hero", "dir": "character/龍魔導士", "acts": {"stand": "stand", "move": "move"}},
-  "hero-7": {"label": "凱內西斯", "kind": "hero", "dir": "character/凱內西斯", "acts": {"stand": "stand"}},
   "pet-husky": {"kind": "pet", "dir": "pet/5000006-Husky", "acts": {"stand": "stand0", "move": "move"}},
   "pet-dino": {"kind": "pet", "dir": "pet/5000009-Dino_Boy", "acts": {"stand": "stand0", "move": "move"}},
   "fx-levelup": {"kind": "fx", "palette": true, "dir": "effect/Effect.wz/BasicEff.img", "acts": {"stand": "LevelUp#0-9", "text": "LevelUp#12-20"}},

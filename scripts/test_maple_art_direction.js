@@ -28,10 +28,13 @@ for (const place of places) {
   assert.equal(scenes[place.id][0], place.scene, `${place.name} opens in its own scene`);
   assert.equal(sprites[region.guide].kind, 'npc', `${place.name} guide exists`);
   assert.equal(sprites[region.boss].kind, 'boss', `${place.name} boss exists`);
-  assert.equal(region.readers.grad, region.guide, `${place.name} local guide leads graduate reading`);
-  assert.equal(region.checks.length, 2, `${place.name} rotates self-check speakers`);
-  const voices = [region.readers.kid, region.readers.uni, region.readers.grad, ...region.checks];
-  assert.ok(new Set(voices).size >= 4, `${place.name} has a varied reading cast`);
+  assert.ok(region.readers.grad.includes(region.guide), `${place.name} local guide joins graduate reading`);
+  assert.ok(region.readers.kid.length >= 4, `${place.name} rotates child-level speakers`);
+  assert.ok(region.readers.uni.length >= 3, `${place.name} rotates university-level speakers`);
+  assert.ok(region.readers.grad.length >= 5, `${place.name} rotates graduate-level speakers`);
+  assert.ok(region.checks.length >= 4, `${place.name} rotates self-check speakers`);
+  const voices = [...region.readers.kid, ...region.readers.uni, ...region.readers.grad, ...region.checks];
+  assert.ok(new Set(voices).size >= 10, `${place.name} has a varied reading cast`);
   for (const key of voices) {
     assert.ok(['npc', 'hero'].includes(sprites[key]?.kind), `${place.name} reader ${key} exists`);
     assert.ok(fs.existsSync(`assets/maple/spr-${key}-stand.png`), `${key} has portrait art`);
@@ -49,9 +52,24 @@ for (const place of places) {
   assert.deepEqual(Array.from(quest.frame), sprites[region.guide].acts.stand.slice(0, 2),
     `${place.name} portrait frame matches the collected sprite`);
 }
+function seedOf(str) { let h = 7; for (let i = 0; i < str.length; i++) h = (h * 31 + str.charCodeAt(i)) >>> 0; return h; }
+for (const [paper, region] of Object.entries(cast)) {
+  const chapter = i => ['kid','uni','grad'].map(role => {
+    const pool = region.readers[role];
+    return pool[(i + seedOf(paper + ':' + role)) % pool.length];
+  });
+  const seen = new Set();
+  for (let i = 0; i < 15; i++) {
+    assert.equal(new Set(chapter(i)).size, 3, `${paper} chapter ${i} has distinct speakers`);
+    assert.notDeepEqual(chapter(i), chapter(i + 1), `${paper} adjacent chapters rotate speakers`);
+    const trio = chapter(i).join('|');
+    assert.ok(!seen.has(trio), `${paper} does not repeat an entire trio within 15 chapters`);
+    seen.add(trio);
+  }
+}
 assert.ok(Object.values(cast).some(region => region.checks.some(key => key.startsWith('npc-knight-'))),
   'Cygnus knights appear in self-checks');
-assert.ok(Object.values(cast).some(region => region.readers.uni.startsWith('hero-')),
+assert.ok(Object.values(cast).some(region => region.readers.uni.some(key => key.startsWith('hero-'))),
   'heroes appear in university reading');
 for (const [paper, npcId, mapId] of [
   ['2501.13956', '2041004', 220000000],

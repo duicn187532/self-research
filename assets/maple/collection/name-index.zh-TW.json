@@ -4216,6 +4216,20 @@
       "variant_label_zh_tw": null,
       "status": "source_twms",
       "github_path": "assets/maple/collection/bosses/orbis/8220000/TWMS-256"
+    },
+    {
+      "key": "npc/9400804/TWMS-256",
+      "type": "npc",
+      "id": "9400804",
+      "version": {
+        "region": "TWMS",
+        "version": "256"
+      },
+      "name_zh_tw": "凱內西斯",
+      "display_name_zh_tw": "凱內西斯",
+      "variant_label_zh_tw": null,
+      "status": "source_twms",
+      "github_path": "assets/maple/collection/npc/friends-world/9400804/TWMS-256"
     }
   ]
 }
