@@ -1,0 +1,39 @@
+"""Research-level method, audit, claim, and extension analyses.
+
+Evidence and independent proposals are labeled within every block.  These are
+deliberately separate from the three introductory explanation levels.
+"""
+
+DEEPDIVES = {
+"2604.20006": {
+"a": r'''<p><span class="tag tag-orig">原文 §3–4</span> <strong>輸入與真值。</strong>先選十種專業 persona 和三類記憶實體（偏好、活動、目標），再由 session simulator 產生 add、update、delete 或 memory-neutral 操作。每個 session 都有前後狀態快照；這條軌跡是題目所用有效版本的來源。多代理對話生成器把指定操作說成自然語言，grounding 檢查不容未追蹤資訊混入。最後按軌跡出 Remembering、Reasoning、Recommending 題，標明應出現的有效資訊與應避開的失效資訊。</p>
+<p><span class="tag tag-orig">原文 §4.1–4.2</span> <strong>被測系統與評分。</strong>直接模型按 context window 可容納的歷史作答；六個記憶代理增量攝入、查詢時檢索，並共用 GPT-4o-mini 回答。每題的 presence、absence criterion 由三裁判逐項二元判定，取多數決。令有效 criterion 數為 \(P\)、通過數為 \(p\)，失效 criterion 數為 \(F\)、成功排除數為 \(f\)：</p>
+<div class="math-block">\[\mathrm{FAMA}(q)=\max\left(0,\frac pP-\frac F{P+F}\left(1-\frac fF\right)\right).\]</div>
+<p><span class="tag tag-assume">本站重建</span> 若 \(P,F>0\)，未截零時可整理成 \(p/P-(F-f)/(P+F)\)：每個失效 criterion 違反都扣 \(1/(P+F)\)，但每個有效 criterion 命中增加 \(1/P\)。此式用來檢查分母與實作；原文沒有單獨規定 \(P=0\) 或 \(F=0\) 時的除零政策，重現評估需讀公開資料與程式處理方式，不可任意外推。</p>
+<p><span class="tag tag-orig">原文 Table 3–4</span> 同一任務、同一跨度先對逐題 FAMA 取平均並乘 100；跨三跨度相加才是 Table 4。答題可見歷史、逐題準則、裁判、任務彙總是不同階段；重算表格時每階段都需固定版本。</p>''',
+"b": r'''<p><span class="tag tag-orig">原文與公開物</span> ACL 正式版、作者釋出的資料及 Table 3 評估程式提供核對起點。研究者應分清 <em>重算發布分數</em> 與 <em>從 persona 種子重跑整套合成資料</em>：前者需要題目、答案、criterion、裁判設定與版本；後者還需要 session simulator、對話提示、生成服務版本、抽樣設定與品質退回規則。論文給出方法流程，但不能只因有 repo 就宣稱兩種重現工作已同等完成。</p>
+<div class="table-wrap"><table class="results"><caption>Memora 重現審查：可核對的單位與尚須固定的條件</caption><thead><tr><th>階段</th><th>原文可核對</th><th>獨立重跑須另外鎖定</th></tr></thead><tbody><tr><td>資料軌跡</td><td>persona、三類記憶、操作比例、前後狀態設計</td><td>生成種子、逐輪操作與完整提示版本</td></tr><tr><td>對話品質</td><td>grounding 三模型一致、每 persona 抽 5%</td><td>服務快照、重生次數與人工標註規範</td></tr><tr><td>回答</td><td>四直接模型、六代理、代理共用 GPT-4o-mini</td><td>context 截斷、API 版本、檢索與提示參數</td></tr><tr><td>評分</td><td>criterion 多數決與 FAMA 公式</td><td>裁判輸出快照、例外值、重新判分變異</td></tr></tbody></table></div>
+<p><span class="tag tag-assume">本站審查程序</span> 先以原始逐題分數重建 Table 3，再由 Table 3 相加核對 Table 4；對 Table 5 單列做 presence 減分核算。若數值僅因四捨五入差 0.02，記錄顯示精度即可。重跑資料生成時應報每階段淘汰與重生數、模型版本和成本，否則兩次生成的難度可能不同。</p>''',
+"c": r'''<p><span class="tag tag-orig">Table 1–5、§6</span> 本文最強的證據鏈是：Table 1–2 證明題目確實含長歷史與大量狀態變動；Table 3 顯示多數系統在回想、推理、推薦上的分數與跨度互動；Table 5 顯示只看應出現資訊會高估並可改變系統排序；§6 的人工錯誤樣本把部分取回與過期內容標為常見失敗模式。各步分母不同，不能將 16/25 的推薦錯誤樣本讀成全資料集 64% 的錯誤率。</p>
+<div class="table-wrap"><table class="results"><caption>主張—證據—不可推出的結論</caption><thead><tr><th>主張</th><th>直接證據</th><th>邊界</th></tr></thead><tbody><tr><td>題目施加較高狀態壓力</td><td>Table 1 的 consolidation／mutation</td><td>不是模型準確率，也不是現實頻率</td></tr><tr><td>失效記憶影響排序</td><td>Table 5 月度 A-Mem 與 Nemori</td><td>不表示所有任務、跨度都反轉</td></tr><tr><td>長歷史推理難</td><td>Table 3 的 task × duration 成績</td><td>長度、mutation、題目組成一起變</td></tr><tr><td>錯誤可由舊記憶造成</td><td>§6 條件於已出錯的 75 例</td><td>未作根因的互斥干預</td></tr></tbody></table></div>
+<p><span class="tag tag-assume">本站推論</span> 對比月度 A-Mem 的 112.0−29.5≈82.5 與 Nemori 的 105.4−15.4≈90.0，能具體支持「忽略舊資訊懲罰可改變排序」。但兩組回答骨幹不完全一致，且資料為合成；不能宣稱特定代理在真實用戶場景的部署錯誤率，也不能由週季差異識別「長度」和「更新」各自的因果份額。</p>''',
+"d": r'''<p><span class="tag tag-assume">本站提出的可否證假說，非原文結論</span> H₁：在固定 persona、session 數、總 token、題目模板與回答骨幹後，只增加相關 update/delete 密度，FAMA 與 FAA 仍下降。反證條件是多個種子與相同裁判下，受控高低 mutation 組的平均差接近零。H₂：在固定 mutation 數時，只拉長無關中性歷史，MPA 的下降大於 FAA 的下降；若兩者不變，則原有跨度趨勢可能主要來自狀態變動或題目組成。這兩個假說共同建立 2×2 的長度 × mutation 設計。</p>
+<p><strong>最小實驗。</strong>同一組狀態軌跡生成四個配對版本：短／長歷史與低／高 mutation。保持最終有效狀態、查詢和 presence criteria 不變；要改 mutation 時需插入可核對的中間版本，並重新定義其 absence criteria。用同一回答模型和相同 token 預算測外部記憶方法，逐題報 MPA、FAA、FAMA 與檢索命中；由 persona 聚類估區間。若只看 FAMA 總分，就無法辨識「想不起有效資訊」與「錯用舊資訊」。</p>
+<p><strong>失敗分類的干預。</strong>對同一錯題做兩個 oracle：只給正確檢索集合、只給正確有效版本判定，再組合兩者。四格結果可測「找不到」與「找到了但未判失效」的交互作用；這是本站設計，Memora 原文沒有執行。若 oracle 檢索仍錯，應檢查推理或 criterion 裁判，而非繼續把原因全歸給記憶。所有新實驗都應報成本與生成品質，避免把更難的合成文字誤判為純記憶壓力。</p>''',
+},
+"2610.09008": {
+"a": r'''<p><span class="tag tag-orig">原文 §3–4</span> <strong>候選與授權。</strong>每筆候選 \(c=(x,m,s)\) 包含上下文、內嵌命題與報告框架。gold attachment \(a(c)=1[\omega(c)=\omega_0]\) 問的是命題能否無條件作共享世界前提；scoped 不等於 false 或必須刪除。模型用六個固定 Yes/No 診斷取得有序 hidden states；3B 在先導階段固定 block 20、rank 16，1.5B 按相對深度取 block 16、沿用 rank 16。</p>
+<p><span class="tag tag-orig">原文公式 (2)–(4)</span> 把六個隱狀態投影到 ownership 子空間及其互補空間，分別計算 \(6\times6\) Gram。每個對稱 Gram 保留含對角上三角的 21 個獨立值，與前四個診斷的 Yes−No logit 差串成 46 維 key；標準化後由 logistic head 給 \(g_\theta(c)\)，閾值 \(\tau\) 產生二元附件。若只存 full Gram，就把兩塊相加而失去來源型別；若任意正交旋轉固定子空間內的座標，Gram 不變。</p>
+<div class="math-block">\[\phi(c)=\operatorname{vech}(G_{\parallel})\Vert\operatorname{vech}(G_{\perp})\Vert\ell,\quad \dim(\phi)=21+21+4=46.\]</div>
+<p><span class="tag tag-orig">原文 §4.3、§6.5–6.6</span> 寫入時保留 owner 邊；查詢以允許的 owner 遮罩同一 BM25 排名，再交給 reader。預設 \(\tau=0.5\) 與 development 校準的 CASK@R95 是同一 scorer 的兩個操作點。若有精確工具執行 provenance，部署策略先用日誌，缺失時才由 CASK 補。這套流程測二元 actual/scoped，不是一般巢狀 scope 解析器。</p>''',
+"b": r'''<p><span class="tag tag-orig">原文 §5、Appendix B</span> 研究者重現時須固定六個診斷的字串、順序、取層、投影器、標準化統計、分類 head、fold 和門檻。LoCoMo 十段對話產生 486 道 exact-span 問題；source-isolated fold 以完整對話劃分。替代答案僅從訓練對話取，且與 development／test 答案無 exact overlap。development 選 regularization 與 R95 門檻，test 不能事後調參。</p>
+<div class="table-wrap"><table class="results"><caption>CASK 實驗重現檢查：每階段的隔離與分母</caption><thead><tr><th>階段</th><th>固定條件</th><th>報告單位</th></tr></thead><tbody><tr><td>因果 route</td><td>凍結骨幹、layer、rank、配對 payload 與對照子空間</td><td>held-out 干預案例、按情境聚類</td></tr><tr><td>附件分類</td><td>conversation folds、訓練來源、同一 head 選擇規則</td><td>候選記錄</td></tr><tr><td>檢索與 reader</td><td>同一 BM25 排名、同一 reader、同一查詢</td><td>問題及最終回答</td></tr><tr><td>不確定性</td><td>保留十段對話內的相依性</td><td>conversation bootstrap</td></tr></tbody></table></div>
+<p><span class="tag tag-assume">本站審查</span> 先重現 Table 2 的 3B／1.5B 附件列，再核對 Table 3 的檢索、污染與回答；不可拿 83.33% attachment 充當 F1。Appendix B 的 A100 六診斷 32.10 ms 是批次診斷時延，不是含檢索與生成的完整代理時延。對完整重跑還須核對公開程式、骨幹權重、LoCoMo 使用條件與版本。</p>''',
+"c": r'''<p><span class="tag tag-orig">原文 §6、Table 1–3</span> 兩段因果證據先後不同：rank-16 介入改變 mental-space 路由；對六個診斷傳入 opposite-scope donor 狀態又改變下游 commit 機率。Table 1 的 \(\Delta p=0.715\) 與 75.8% flip 是指定 3B 凍結門的介入效果，不是附件分類準確率。Table 2 的 83.33%／79.82% 才是兩骨幹附件成績；Table 3 的 recall、污染、EM、F1、替代答案採納則是後續不同單位的結果。</p>
+<div class="table-wrap"><table class="results"><caption>證據鏈的支持範圍</caption><thead><tr><th>證據</th><th>支持</th><th>不支持</th></tr></thead><tbody><tr><td>payload 固定的 route 介入</td><td>指定內部路徑可改 owner 使用</td><td>所有模型具有同一 16 維路徑</td></tr><tr><td>scope-only 配對 78.70%</td><td>優勢不是只讀 payload 字面</td><td>所有自然語言框架都可泛化</td></tr><tr><td>Table 2 typed key</td><td>同 fold 附件高於列出的控制</td><td>固定同一 head 下每個特徵的純效應</td></tr><tr><td>Table 3、R95</td><td>安全與效用需要並列觀察</td><td>單一門檻對每種應用都最佳</td></tr></tbody></table></div>
+<p><span class="tag tag-assume">本站讀法</span> 預設 \(\tau=0.5\) 的 CASK 相對 full Gram 在 Table 3 降污染 0.20 個百分點、提升 F1 1.88 個百分點，而替代答案採納都為 1.03%。這組差值不能誇稱為「所有安全指標大幅提升」。R95 與 flat memory 的差異屬另一個 development 校準操作點。trace 的 91.10% 使用重新適配 head；直接轉移 31.66% 應一併揭露。</p>''',
+"d": r'''<p><span class="tag tag-assume">本站提出的可否證假說，非原文結論</span> H₁：保持候選命題與訓練樣本數，加入雙層引用（例如「甲認為乙計畫 P」）時，只靠二元 actual/scoped 的門控會在可回答的 owner 查詢上出現系統性錯誤。若多層標註下二元系統與顯式 owner 圖同樣準確，假說便不成立。H₂：固定六個診斷與資料切分，在不同家族骨幹各自學 projector，typed Gram 相對 full Gram 的 scope-only 優勢仍大於零；若跨家族優勢消失，現有結論便較依賴 Qwen 特性。</p>
+<p><strong>設計一：巢狀 owner。</strong>構造三元組 (外層說話事件、內層信念、內內層計畫)，每個問題明確標記可接受 owner 集。分開報 actual 事實查詢、引用內容查詢與反事實查詢，並檢查「存得下卻不能拿來答現況」的污染率。比較二元門、具型別 owner 圖、以及有執行日誌的混合政策；所有方法共用檢索器與 reader，避免把另一個生成模型的能力混入附件效果。</p>
+<p><strong>設計二：時間與家族轉移。</strong>以對話為單位隔離訓練與測試；在一個模型版本學好 projector/head 後，報完全凍結的零樣本轉移，以及只重訓 head、連 projector 都重訓兩種適配成本。診斷改寫、未見框架與兩者聯合留出應分開評估，因原文聯合留出已降至 70.16%。報附件準確率、actual admission、scoped rejection、retrieval recall、污染、reader F1 與延遲形成完整取捨曲線；只報最高一個數不足以決定部署門檻。</p>''',
+}
+}

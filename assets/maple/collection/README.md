@@ -33,6 +33,8 @@ P1 已開始收錄拉契爾恩 NPC／場景、露希妲、戴米安、威爾，�
 
 `batch-05-town-backgrounds.json` 補收弓箭手村、魔法森林、勇士之村與墮落城市的 TWMS/256 `Map.wz/Back` 資源集。`scripts/build_collection_sprites.py` 將這些資源與既有玩具城、時間塔、天空之城、拉契爾恩的 Back 畫布疊在透明場景前景後方，輸出網站用 1600×760 與 768×365 場景圖。這是靜態編排，未重現遊戲內背景視差座標。原始 PNG 與匯出 URL、SHA-256 分別保存在各 `resource-set.json`，合成的 JPEG 是衍生品。
 
+`batch-08-new-paper-backgrounds.json` 補收諾特勒斯號 TWMS/256 `Map.wz/Back/nautilusPort`；神木村使用已收錄的 `Map.wz/Back/minar`。兩張新論文地圖的衍生場景現在分別疊上海天雲島、漸層天空與遠山樹林，再覆蓋各自前景。此編排依素材畫布做靜態視覺重建，並非遊戲客戶端原始視差定位。`scripts/test_scene_backdrops.py` 會檢查桌面與手機尺寸的遠景區域是否仍有可見紋理，避免圖片存在但背景被平色取代。
+
 `batch-06-art-direction.json` 補收六個城鎮／周邊的任務導師、一般怪物與地區首領。任務導師與戰鬥素材仍對應論文所屬城鎮；文章的分層導讀與自我檢測則由英雄團、皇家騎士團與主要劇情人物輪替。淨化者的來源素材保留作蒐集紀錄與怪物用途，不再作導讀 NPC。馬賽爾的來源位置是玩具城（220000000）；拉契爾恩版防毒面具（3003202）的來源位置是市中心（450003000）。後者的來源 API 僅成功輸出站立影格，`partial` 狀態及缺漏影格保留在紀錄中；網站只使用已取得的站立圖。樹妖王有非網站使用的巢狀影格缺漏，網站所需的 stand／move／hit／die 已取得。
 
 `batch-07-kinesis.json` 以 TWMS/256 NPC 9400804 的站立圖修正誤標為凱內西斯的鳥形角色。來源的 condition 影格無法由 API 輸出，紀錄維持 `partial`；網站只使用已核對的站立圖。導讀角色改為每篇論文各有角色池，依章節穩定輪替，保留當地任務導師與跨地區來訪角色。
@@ -50,6 +52,7 @@ python assets/maple/collection/collect_nested_effects.py
 python assets/maple/collection/collect_maps.py assets/maple/collection/batch-04-maps.json
 python assets/maple/collection/collect_map_resource_batch.py assets/maple/collection/batch-04-map-resources.json
 python assets/maple/collection/collect_map_resource_batch.py assets/maple/collection/batch-05-town-backgrounds.json
+python assets/maple/collection/collect_map_resource_batch.py assets/maple/collection/batch-08-new-paper-backgrounds.json
 python assets/maple/collection/collect.py assets/maple/collection/batch-06-art-direction.json --acknowledge-unconfirmed-rights
 python assets/maple/collection/collect.py assets/maple/collection/batch-07-kinesis.json --acknowledge-unconfirmed-rights
 python assets/maple/collection/collect_pets.py --acknowledge-unconfirmed-rights

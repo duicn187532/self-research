@@ -42,15 +42,15 @@ with webdriver.Chrome(options=opts) as browser:
         """), pid + " background image failed to load"
         assert browser.find_element(By.CSS_SELECTOR, "[data-paper]").get_attribute("data-paper") == pid
         assert browser.find_element(By.CSS_SELECTOR, "body").get_attribute("data-map-scene") == scene
-        assert len(browser.find_elements(By.CSS_SELECTOR, ".paper-source")) == 10
+        assert len(browser.find_elements(By.CSS_SELECTOR, ".paper-source")) == 15
         assert browser.execute_script("""
             return [...document.querySelectorAll('section.sec:not(.sec-boss):not(.sec-research):not(#s-overview):not(#s-glossary):not(#s-export)')]
                 .every(section => section.querySelector('.paper-source') && section.querySelector('.paper-source').compareDocumentPosition(section.querySelector('.explain')) & Node.DOCUMENT_POSITION_FOLLOWING)
         """), pid + " lacks source-first chapter analysis"
-        assert len(browser.find_elements(By.CSS_SELECTOR, "section.sec input[data-done]")) == 13
+        assert len(browser.find_elements(By.CSS_SELECTOR, "section.sec input[data-done]")) == 18
         assert browser.find_element(By.ID, "boss-board")
         assert len(browser.find_elements(By.CSS_SELECTOR, "#reading-lab .reading-dim")) == 5
-        assert len(browser.find_elements(By.CSS_SELECTOR, "section.sec .battle")) == 10
+        assert len(browser.find_elements(By.CSS_SELECTOR, "section.sec .battle")) == 15
         core = "s-fama" if pid == "2604.20006" else "s-key"
         browser.execute_script("document.querySelector('#' + arguments[0] + ' .bt-go').click()", core)
         assert browser.execute_script("return document.querySelector('#' + arguments[0] + ' .bt-q').textContent.length > 3", core)

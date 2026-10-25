@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><title>這段記憶屬於誰？CASK 的作用範圍寫入規則 · 論文精讀室</title><meta name="description" content="這段記憶屬於誰？CASK 的作用範圍寫入規則：原文核對、分層解釋、互動推演與研究批判。"><link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/site.css?v=17f192497a"><link rel="stylesheet" href="../../assets/reading-lab.css?v=fb4f4fa023"><style>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><title>這段記憶屬於誰？CASK 的作用範圍寫入規則 · 論文精讀室</title><meta name="description" content="這段記憶屬於誰？CASK 的作用範圍寫入規則：原文核對、分層解釋、互動推演與研究批判。"><link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/site.css?v=b139cbfac1"><link rel="stylesheet" href="../../assets/reading-lab.css?v=fb4f4fa023"><style>
 .lesson-mini{border:1px solid var(--rule);border-radius:8px;padding:1rem;margin:1rem 0;background:var(--surface)}
 .lesson-mini label{display:inline-flex;gap:.35rem;align-items:center;margin:.3rem .8rem .3rem 0}
 .lesson-mini input,.lesson-mini select{font:inherit;max-width:7rem;background:var(--paper);color:var(--ink);border:1px solid var(--rule);border-radius:4px;padding:.25rem}
@@ -19,7 +19,7 @@
 <script>try{var r=document.documentElement;r.setAttribute("data-host-theme",r.getAttribute("data-theme")||"");if(JSON.parse(localStorage.getItem("study:skin"))!=="study")r.setAttribute("data-skin","maple");var m=JSON.parse(localStorage.getItem("study:mode"));if(m==="light"||m==="dark")r.setAttribute("data-theme",m)}catch(e){}</script>
 <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},svg:{fontCache:"global"}}</script><script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script></head>
 <body data-map-scene="nautilus"><div data-paper="2610.09008" data-scene="nautilus"><header class="toolbar gutter"><div class="toolbar-inner"><a class="home" href="../../index.html">論文精讀室</a><span class="crumb">CASK · 2610.09008</span><div class="levels" role="group" aria-label="解釋深度"><span class="levels-label">解釋深度</span><div class="seg"><button type="button" data-level-btn="kid" aria-pressed="false">五歲</button><button type="button" data-level-btn="uni" aria-pressed="true">大學生</button><button type="button" data-level-btn="grad" aria-pressed="false">研究生</button><button type="button" data-level-btn="all" aria-pressed="false">對照</button></div></div></div></header>
-<div class="desk gutter"><nav class="rail" aria-label="章節"><details open><summary>章節 <span class="progress-text" id="progress-text">0 / 13</span></summary><div class="progress"><span id="progress-bar"></span></div><ol id="outline"></ol></details></nav><main class="column">
+<div class="desk gutter"><nav class="rail" aria-label="章節"><details open><summary>章節 <span class="progress-text" id="progress-text">0 / 18</span></summary><div class="progress"><span id="progress-bar"></span></div><ol id="outline"></ol></details></nav><main class="column">
 <div class="paper-head">
 <div class="eyebrow"><span class="mono">arXiv:2610.09008v1 · 2026-10-06 · NeurIPS 2026 Workshop LP4FM Poster</span></div>
 <h1>這段記憶屬於誰？CASK 的作用範圍寫入規則</h1>
@@ -61,8 +61,17 @@ R(q)=\operatorname{rank}_{\rho(q,m)}\{c:\omega(c)\in A(q)\}.\]</div>
 <div class="check"><span class="check-title">自我檢測</span><details><summary>非 actual 的命題是否一定為假、一定要刪？</summary><div><p>都不是；它只不能無條件作共享世界前提，仍可在所屬範圍被查詢。</p></div></details></div>
 <div class="desk-foot"><div class="note"><label for="note-s-formal">筆記</label><textarea id="note-s-formal" data-note="s-formal" placeholder="記下推導、疑問與反例"></textarea><span class="saved"></span></div><label class="done"><input type="checkbox" data-done="s-formal"> 讀完這節</label></div>
 </section>
+<section class="sec" id="s-owner-example" data-short="事件與內嵌命題分開">
+<div class="sec-head"><span class="sec-num">03</span><h2>手推 owner：事件與內嵌命題分開</h2></div>
+<div class="paper-source"><div class="source-head"><span class="src src-abs">原文 §3、Figure 1；本站示例</span><a href="https://arxiv.org/pdf/2610.09008v1" target="_blank" rel="noopener">核對原文 PDF ↗</a></div><h3>原文方法與證據</h3><p><span class="src src-abs">§3、Figure 1</span> 原文區分實際發生的報告事件與被報告的 scoped proposition。內嵌命題未獲 shared world 授權，仍可在自己的範圍保存。</p><figure class="table-wrap"><table class="results"><caption>本站示例：相同話語拆成不同授權邊</caption><thead><tr><th>候選命題</th><th>owner</th><th>可作現況前提？</th></tr></thead><tbody><tr><td>助理提出過巴黎方案</td><td>shared world</td><td>可，作過程事實</td></tr><tr><td>使用者已搬到巴黎</td><td>計畫分支</td><td>不可</td></tr><tr><td>使用者最後決定雪梨</td><td>shared world</td><td>可</td></tr></tbody></table><figcaption>例子重建的是授權規則，不是 CASK 在該語句上的實際預測。</figcaption></figure></div>
+
+<h3 class="guide-heading">分層導讀</h3>
+<div class="explain"><div class="lv lv-kid"><p>『助理曾考慮巴黎』可以是真事，『使用者已搬到巴黎』卻不會因此成真。一句話裡可能有兩個要分開存的命題。</p></div><div class="lv lv-uni"><p>本站例子：對話真實發生了『助理提出巴黎方案』這個過程事件；巴黎搬遷是計畫分支的內嵌內容；使用者最後同意雪梨才形成共享現況。問『曾考慮何處』可引用巴黎，問『最後決定何處』則需取雪梨。CASK 的二元門控針對候選命題是否獲共享世界授權，不等於把整段過程永久刪除。</p></div><div class="lv lv-grad"><p>可將外層事件 e 與內層命題 m 分成兩筆候選：ω(e)=ω₀，ω(m)=ω_plan。若混成一個無型別摘要，日後只憑 relevance 取回巴黎時就容易造成 premise contamination。這是本站對 §3 授權邊界的教學形式化；論文主實驗尚未求解任意深度的巢狀 owner。</p></div></div>
+<div class="check"><span class="check-title">自我檢測</span><details><summary>『曾提出巴黎方案』為 actual，能推出『已搬到巴黎』為 actual 嗎？</summary><div><p>不能；外層事件與內嵌計畫有不同的 owner。</p></div></details></div>
+<div class="desk-foot"><div class="note"><label for="note-s-owner-example">筆記</label><textarea id="note-s-owner-example" data-note="s-owner-example" placeholder="記下推導、疑問與反例"></textarea><span class="saved"></span></div><label class="done"><input type="checkbox" data-done="s-owner-example"> 讀完這節</label></div>
+</section>
 <section class="sec" id="s-route" data-short="模型內部是否真的追蹤 owner">
-<div class="sec-head"><span class="sec-num">03</span><h2>因果錨點：模型內部是否真的追蹤 owner</h2></div>
+<div class="sec-head"><span class="sec-num">04</span><h2>因果錨點：模型內部是否真的追蹤 owner</h2></div>
 <div class="paper-source"><div class="source-head"><span class="src src-abs">原文 §4.1、§6.1、Table 1</span><a href="https://arxiv.org/pdf/2610.09008v1" target="_blank" rel="noopener">核對原文 PDF ↗</a></div><h3>原文方法與證據</h3>
 <p><span class="src src-abs">§4.1、§6.1、Table 1</span> 作者在凍結的 Qwen2.5-3B-Instruct 找到 rank-16 ownership 子空間，對保持命題內容的配對例子交換目標與相反 scope donor 的子空間狀態。若只換這段表徵而門控跟著轉向 donor，便比純相關性更接近因果介入。</p>
 <div class="table-wrap"><table class="results"><caption>CASK Table 1 摘錄：凍結寫入門的介入效果</caption><thead><tr><th>交換狀態</th><th class="num">朝 donor 的 Δp</th><th class="num">門控翻轉</th></tr></thead><tbody><tr><td>ownership 子空間，反向 scope</td><td class="num">0.715［0.656, 0.775］</td><td class="num">75.8%</td></tr><tr><td>互補子空間，反向 scope</td><td class="num">0.048［0.030, 0.069］</td><td class="num">6.6%</td></tr><tr><td>隨機 rank-16，範數匹配</td><td class="num">0.004［0.003, 0.005］</td><td class="num">0.6%</td></tr></tbody></table></div>
@@ -73,8 +82,17 @@ R(q)=\operatorname{rank}_{\rho(q,m)}\{c:\omega(c)\in A(q)\}.\]</div>
 <div class="check"><span class="check-title">自我檢測</span><details><summary>Table 1 的 0.715 是附件準確率嗎？</summary><div><p>不是；它是介入後，寫入門機率朝 donor scope 移動的幅度。</p></div></details></div>
 <div class="desk-foot"><div class="note"><label for="note-s-route">筆記</label><textarea id="note-s-route" data-note="s-route" placeholder="記下推導、疑問與反例"></textarea><span class="saved"></span></div><label class="done"><input type="checkbox" data-done="s-route"> 讀完這節</label></div>
 </section>
+<section class="sec" id="s-routing" data-short="空間路由與寫入門">
+<div class="sec-head"><span class="sec-num">05</span><h2>兩段因果證據：空間路由與寫入門</h2></div>
+<div class="paper-source"><div class="source-head"><span class="src src-abs">原文 §6.1、Table 1</span><a href="https://arxiv.org/pdf/2610.09008v1" target="_blank" rel="noopener">核對原文 PDF ↗</a></div><h3>原文方法與證據</h3><p><span class="src src-abs">§6.1、Table 1</span> 在 3B 模型，ownership route 介入使 134/146 個 held-out 案例指向目標 mental space（91.78%），匹配隨機 route 為 3.22%；1.5B 複驗為 86.30%／20.86%。對 3B 六個診斷路徑替換 opposite-scope 狀態，commit 機率朝 donor 移動 0.715，門控翻轉 75.8%。</p><p><span class="src src-mine">因果鏈</span> 前項是推理空間的路由，後項是寫入門決定；兩者一起支持同一 route 對指定凍結模型的 downstream commit 有作用，但量綱不可混用。</p></div>
+
+<h3 class="guide-heading">分層導讀</h3>
+<div class="explain"><div class="lv lv-kid"><p>先讓模型的推理轉向另一個可能世界，再看記憶寫入決定會不會跟著轉。兩步都固定原本的命題內容。</p></div><div class="lv lv-uni"><p>3B 的 rank-16 介入使 134/146 個 held-out 案例走向目標 mental space（91.78%），隨機子空間為 3.22%；1.5B 的對應路由率為 86.30% 與 20.86%。之後作者在六個診斷過程中替換 ownership 子空間狀態；3B 寫入機率朝 donor scope 移動 0.715，75.8% 的門控決策翻轉。前者是推理路由，後者是下游提交判定，不是同一個結果指標。</p></div><div class="lv lv-grad"><p>命題 payload 保持不變，有助排除只靠答案字面改變的解釋；匹配隨機子空間與互補子空間是干預控制。介入支持在指定凍結模型與資料中，此 route 對寫入門具因果影響；它不等於證明實際部署中每一次 scope 判斷都受同一子空間完全支配。</p></div></div>
+<div class="check"><span class="check-title">自我檢測</span><details><summary>91.78% 與 75.8% 是同一個準確率嗎？</summary><div><p>不是；前者是 mental-space 路由成功率，後者是寫入門翻轉率。</p></div></details></div>
+<div class="desk-foot"><div class="note"><label for="note-s-routing">筆記</label><textarea id="note-s-routing" data-note="s-routing" placeholder="記下推導、疑問與反例"></textarea><span class="saved"></span></div><label class="done"><input type="checkbox" data-done="s-routing"> 讀完這節</label></div>
+</section>
 <section class="sec" id="s-key" data-short="六個診斷、兩塊 Gram 與 46 維 key">
-<div class="sec-head"><span class="sec-num">04</span><h2>六個診斷、兩塊 Gram 與 46 維 key</h2></div>
+<div class="sec-head"><span class="sec-num">06</span><h2>六個診斷、兩塊 Gram 與 46 維 key</h2></div>
 <div class="paper-source"><div class="source-head"><span class="src src-abs">原文 §4.1–4.2、公式 (2)–(4)、附錄 B</span><a href="https://arxiv.org/pdf/2610.09008v1" target="_blank" rel="noopener">核對原文 PDF ↗</a></div><h3>原文方法與證據</h3>
 <p><span class="src src-abs">§4.1–4.2、公式 (2)–(4)</span> 六個固定 Yes/No 診斷產生有序隱狀態 \(H\in\mathbb R^{d\times6}\)。正交 ownership basis \(U\in\mathbb R^{d\times16}\) 與互補 basis \(U_\perp\) 將它分成兩塊；前四個診斷另取 Yes−No logit 差 \(\ell\in\mathbb R^4\)。</p>
 <div class="math-block">\[G_\parallel=(U^\top H)^\top(U^\top H),\quad
@@ -87,8 +105,17 @@ G_\perp=(U_\perp^\top H)^\top(U_\perp^\top H),\quad
 <div class="check"><span class="check-title">自我檢測</span><details><summary>為什麼六個 prompt、兩塊 6×6 Gram 最後不是 72 維？</summary><div><p>對稱矩陣各只有 6×7/2=21 個獨立上三角項；兩塊 42，加四個 logit 差，合計 46。</p></div></details></div>
 <div class="desk-foot"><div class="note"><label for="note-s-key">筆記</label><textarea id="note-s-key" data-note="s-key" placeholder="記下推導、疑問與反例"></textarea><span class="saved"></span></div><label class="done"><input type="checkbox" data-done="s-key"> 讀完這節</label></div>
 </section>
+<section class="sec" id="s-ablation" data-short="46 維特徵各自做了什麼">
+<div class="sec-head"><span class="sec-num">07</span><h2>Table 2 消融：46 維特徵各自做了什麼</h2></div>
+<div class="paper-source"><div class="source-head"><span class="src src-abs">原文 §6.2、Table 2</span><a href="https://arxiv.org/pdf/2610.09008v1" target="_blank" rel="noopener">核對原文 PDF ↗</a></div><h3>原文方法與證據</h3><p><span class="src src-abs">§6.2、Table 2</span> 下列數字均為 source-isolated 的每筆記錄附件分類準確率，不是最終回答。</p><div class="table-wrap"><table class="results"><caption>Table 2：拆掉或替換 key 組件後的附件準確率（%）</caption><thead><tr><th>表示</th><th class="num">3B</th><th class="num">1.5B</th></tr></thead><tbody><tr><td>Output logits</td><td class="num">78.19</td><td class="num">62.65</td></tr><tr><td>Typed Gram，無 logits</td><td class="num">72.94</td><td class="num">75.82</td></tr><tr><td>Random typed split + logits</td><td class="num">78.81</td><td class="num">73.35</td></tr><tr><td>CASK 完整 key</td><td class="num">83.33</td><td class="num">79.82</td></tr></tbody></table></div><p><span class="src src-mine">限制</span> 每列都重新訓練分類 head；差值是整體配置比較，不是每一特徵的獨立因果係數。</p></div>
+
+<h3 class="guide-heading">分層導讀</h3>
+<div class="explain"><div class="lv lv-kid"><p>把兩種關係圖分開保存，再附上四個明確判斷訊號，效果比只留其中一塊好；但分數只證明這個實驗設定。</p></div><div class="lv lv-uni"><p>3B 的 typed split Gram 不含 logits 為 72.94%；output logits 單獨為 78.19%；隨機 typed split 加 logits 為 78.81%；CASK 的指定兩塊 Gram 加 logits 為 83.33%。1.5B 對應為 75.82%、62.65%、73.35%、79.82%。完整設計在兩種骨幹上最高，顯示型別分解與顯式診斷訊號有互補性，但不能把各列差值當成獨立可加的貢獻。</p></div><div class="lv lv-grad"><p>表中每列都是同一 source-isolated 設定下的附件分類。3B 上 CASK 比 random typed split + logits 高 4.52 個百分點；這與『只要任意切 16 維就夠』不符。沒有 logits 的 typed split 仍保留部分訊息。消融變更的是輸入表徵與學到的 head，非在固定同一 head 下抽掉單一座標，因此因果解讀要限於整條配置。</p></div></div>
+<div class="check"><span class="check-title">自我檢測</span><details><summary>3B 的 83.33−78.81=4.52 個百分點能說成最終 QA 的增益嗎？</summary><div><p>不能；它是每筆記錄的附件分類差，非 reader F1。</p></div></details></div>
+<div class="desk-foot"><div class="note"><label for="note-s-ablation">筆記</label><textarea id="note-s-ablation" data-note="s-ablation" placeholder="記下推導、疑問與反例"></textarea><span class="saved"></span></div><label class="done"><input type="checkbox" data-done="s-ablation"> 讀完這節</label></div>
+</section>
 <section class="sec" id="s-proof" data-short="不變、完整與穩定的條件">
-<div class="sec-head"><span class="sec-num">05</span><h2>定理讀法：不變、完整與穩定的條件</h2></div>
+<div class="sec-head"><span class="sec-num">08</span><h2>定理讀法：不變、完整與穩定的條件</h2></div>
 <div class="paper-source"><div class="source-head"><span class="src src-abs">原文 §4.4、Appendix A</span><a href="https://arxiv.org/pdf/2610.09008v1" target="_blank" rel="noopener">核對原文 PDF ↗</a></div><h3>原文方法與證據</h3>
 <p><span class="src src-abs">§4.4、Theorem 1–3、Proposition 1</span> 在固定的 ownership 與 complement 子空間內各做正交換基 \(Q\)，有 \((QV)^\top(QV)=V^\top V\)，所以 key 不變。對有序點組，Gram 相等也意味兩組差一個正交映射；這是指定對稱下的完整性，不是跨任意模型重訓都可比較。</p>
 <div class="math-block">\[\|(V+E)^\top(V+E)-V^\top V\|_F
@@ -101,7 +128,7 @@ G_\perp=(U_\perp^\top H)^\top(U_\perp^\top H),\quad
 <div class="desk-foot"><div class="note"><label for="note-s-proof">筆記</label><textarea id="note-s-proof" data-note="s-proof" placeholder="記下推導、疑問與反例"></textarea><span class="saved"></span></div><label class="done"><input type="checkbox" data-done="s-proof"> 讀完這節</label></div>
 </section>
 <section class="sec" id="s-commit" data-short="寫入、檢索與 provenance 的分工">
-<div class="sec-head"><span class="sec-num">06</span><h2>寫入、檢索與 provenance 的分工</h2></div>
+<div class="sec-head"><span class="sec-num">09</span><h2>寫入、檢索與 provenance 的分工</h2></div>
 <div class="paper-source"><div class="source-head"><span class="src src-abs">原文 §4.3、§6.5–6.6</span><a href="https://arxiv.org/pdf/2610.09008v1" target="_blank" rel="noopener">核對原文 PDF ↗</a></div><h3>原文方法與證據</h3>
 <p><span class="src src-abs">§4.3、§5</span> 寫入時，候選命題先取得診斷 key 與 actual/scoped 附件；scoped 命題仍可存於其 owner 下。查詢時兩組使用同一 BM25 相關性，先按查詢可接受的 owner 篩除，再把可用記憶交給 reader。這使附件政策的效果不和檢索器變更混在一起。</p>
 <div class="math-block">\[\text{候選命題}\;\longrightarrow\;\text{owner 附件}\;\longrightarrow\;
@@ -117,8 +144,17 @@ G_\perp=(U_\perp^\top H)^\top(U_\perp^\top H),\quad
 <div class="check"><span class="check-title">自我檢測</span><details><summary>找得到且相關，就可直接寫入長期世界記憶嗎？</summary><div><p>不行；相關性排名後仍須檢查該命題的 owner 是否授權目前查詢。</p></div></details></div>
 <div class="desk-foot"><div class="note"><label for="note-s-commit">筆記</label><textarea id="note-s-commit" data-note="s-commit" placeholder="記下推導、疑問與反例"></textarea><span class="saved"></span></div><label class="done"><input type="checkbox" data-done="s-commit"> 讀完這節</label></div>
 </section>
+<section class="sec" id="s-protocol" data-short="十段長對話">
+<div class="sec-head"><span class="sec-num">10</span><h2>實驗單位與資料隔離：十段長對話</h2></div>
+<div class="paper-source"><div class="source-head"><span class="src src-abs">原文 §5、Table 2–3</span><a href="https://arxiv.org/pdf/2610.09008v1" target="_blank" rel="noopener">核對原文 PDF ↗</a></div><h3>原文方法與證據</h3><p><span class="src src-abs">§5</span> 486 道 exact-span 問題取自十段 LoCoMo 對話；答案衝突測試有 972 筆候選。fold 以對話隔離，替代答案只從訓練對話取，development 選超參數與 R95 門檻，test 保留供最後評估。95% 區間按 conversation 重抽樣。</p><p><span class="src src-mine">單位審查</span> 記錄、查詢、reader 答案是三個不同分母；十段來源對話造成同源相關性。不能用 972 筆當互相獨立樣本計算精確度。</p></div>
+
+<h3 class="guide-heading">分層導讀</h3>
+<div class="explain"><div class="lv lv-kid"><p>同一段長聊天會生出很多相似考題。若把這些題亂分到訓練和測試，模型可能認得原故事，分數會變好看。</p></div><div class="lv lv-uni"><p>作者用 LoCoMo 的 486 道 exact-span 問題，來自 10 段對話；衝突研究為 972 筆候選記錄。source-isolated folds 以整段 conversation 切分，替代答案只取自訓練對話。開發資料挑正則化與 R95 門檻，測試對話留到最後。區間也按 conversation 重抽樣，而不是把同對話的每筆記錄當獨立樣本。</p></div><div class="lv lv-grad"><p>附件分類以記錄為單位，recall@5 與 MRR 以問題為單位，EM／F1 以 reader 回答為單位；源對話才是聚類重抽樣單位。十個獨立來源的聚類區間比以 972 筆記錄當獨立樣本保守，但外推到其他對話分布仍受限。原文沒有測任意長度與任意領域的使用者對話。</p></div></div>
+<div class="check"><span class="check-title">自我檢測</span><details><summary>為何信賴區間按對話而非 972 筆記錄重抽樣？</summary><div><p>同一對話衍生的記錄與題目相關，不能當獨立樣本。</p></div></details></div>
+<div class="desk-foot"><div class="note"><label for="note-s-protocol">筆記</label><textarea id="note-s-protocol" data-note="s-protocol" placeholder="記下推導、疑問與反例"></textarea><span class="saved"></span></div><label class="done"><input type="checkbox" data-done="s-protocol"> 讀完這節</label></div>
+</section>
 <section class="sec" id="s-evidence" data-short="分類、污染與答案分開看">
-<div class="sec-head"><span class="sec-num">07</span><h2>實驗讀表：分類、污染與答案分開看</h2></div>
+<div class="sec-head"><span class="sec-num">11</span><h2>實驗讀表：分類、污染與答案分開看</h2></div>
 <div class="paper-source"><div class="source-head"><span class="src src-abs">原文 §5–6、Table 2–3、Figure 2</span><a href="https://arxiv.org/pdf/2610.09008v1" target="_blank" rel="noopener">核對原文 PDF ↗</a></div><h3>原文方法與證據</h3>
 <p><span class="src src-abs">§5–6、Table 2–3</span> source-isolated folds 以對話為切分單位；Table 2 先評每筆記錄的 attachment，CASK 在 3B／1.5B 分別為 83.33%／79.82%，full hidden probe 為 72.12%／77.47%。Table 3 才把附件接到問題檢索與最終回答：CASK 的 recall@5 44.86%、污染 7.41%、EM 26.75%、F1 37.31%。</p>
 <div class="table-wrap"><table class="results"><caption>CASK Table 2 摘錄：source-isolated attachment accuracy（%）</caption><thead><tr><th>表徵</th><th class="num">Qwen2.5-3B</th><th class="num">Qwen2.5-1.5B</th></tr></thead><tbody><tr><td>TF–IDF</td><td class="num">50.21</td><td class="num">50.21</td></tr><tr><td>Full hidden state</td><td class="num">72.12</td><td class="num">77.47</td></tr><tr><td>Random typed split + logits</td><td class="num">78.81</td><td class="num">73.35</td></tr><tr><td>CASK，τ=0.5</td><td class="num">83.33</td><td class="num">79.82</td></tr></tbody></table></div>
@@ -130,7 +166,7 @@ G_\perp=(U_\perp^\top H)^\top(U_\perp^\top H),\quad
 <div class="desk-foot"><div class="note"><label for="note-s-evidence">筆記</label><textarea id="note-s-evidence" data-note="s-evidence" placeholder="記下推導、疑問與反例"></textarea><span class="saved"></span></div><label class="done"><input type="checkbox" data-done="s-evidence"> 讀完這節</label></div>
 </section>
 <section class="sec" id="s-factorial" data-short="實驗隔離與門檻取捨">
-<div class="sec-head"><span class="sec-num">08</span><h2>實驗隔離與門檻取捨</h2></div>
+<div class="sec-head"><span class="sec-num">12</span><h2>實驗隔離與門檻取捨</h2></div>
 <div class="paper-source"><div class="source-head"><span class="src src-abs">原文 §5、§6.2–6.5、Figure 2、Appendix B</span><a href="https://arxiv.org/pdf/2610.09008v1" target="_blank" rel="noopener">核對原文 PDF ↗</a></div><h3>原文方法與證據</h3>
 <p><span class="src src-abs">§5、§6.2–6.5、Figure 2</span> scope-only 控制把配對的 evidence payload 保持逐位元相同，只改 reporting frame；payload-only 控制則固定 actual frame、改答案內容。各組 4860 筆記錄、2430 對。scope-only 中 CASK 附件準確率 78.70%，優勢集中在 owner 變化；固定 scope 後優勢消失。</p>
 <p><span class="src src-mine">推論層級</span> 這比一般測試準確率更能排除「其實只讀內容字面」的捷徑，但仍侷限於作者構造的 frame 與兩款 Qwen 骨幹。CASK@R95 的污染相對 flat memory 降 11.19 個百分點、替代答案採納降 1.17 個百分點，是經 development 門檻校準的另一操作點，不能與 τ=0.5 混報成同一列。</p></div>
@@ -140,8 +176,17 @@ G_\perp=(U_\perp^\top H)^\top(U_\perp^\top H),\quad
 <div class="check"><span class="check-title">自我檢測</span><details><summary>scope-only 中若 CASK 仍能分 actual/scoped，最直接排除哪種捷徑？</summary><div><p>只靠命題 payload 或答案字面內容分類的捷徑，因為成對 payload 完全相同。</p></div></details></div>
 <div class="desk-foot"><div class="note"><label for="note-s-factorial">筆記</label><textarea id="note-s-factorial" data-note="s-factorial" placeholder="記下推導、疑問與反例"></textarea><span class="saved"></span></div><label class="done"><input type="checkbox" data-done="s-factorial"> 讀完這節</label></div>
 </section>
+<section class="sec" id="s-transfer" data-short="跨提示、跨框架與自然工具軌跡">
+<div class="sec-head"><span class="sec-num">13</span><h2>跨提示、跨框架與自然工具軌跡</h2></div>
+<div class="paper-source"><div class="source-head"><span class="src src-abs">原文 §6.1、§6.6、Appendix B–C</span><a href="https://arxiv.org/pdf/2610.09008v1" target="_blank" rel="noopener">核對原文 PDF ↗</a></div><h3>原文方法與證據</h3><p><span class="src src-abs">§6.1、§6.6、Appendix B</span> 未見診斷改寫／未見報告框架分別為 90.94%／93.44%，兩者同時留出為 70.16%。生成工具 trace 有 75 個 episode、511 筆記錄。受控 head 直接轉 trace 為 31.66% balanced accuracy；trace-adapted fallback 為 91.10%，半數具精確 provenance 的 hybrid 為 95.02%。</p><p><span class="src src-mine">部署讀法</span> 單一擾動表現不保證聯合位移；重新適配結果也不等於零樣本泛化。完整 ledger 的 100% 為特權資訊上界。</p></div>
+
+<h3 class="guide-heading">分層導讀</h3>
+<div class="explain"><div class="lv lv-kid"><p>換個說法問同一件事、改用沒見過的引述框架，再把門衛放進工具使用紀錄；每種轉移都要單獨看。</p></div><div class="lv lv-uni"><p>未見過的診斷同義改寫達 90.94%，未見過的報告框架達 93.44%；兩種銀行同時保留作測試時降至 70.16%（二元機率基準 50%）。在 75 個生成工具 episode、511 筆記錄的 trace 中，受控資料 head 直接轉移只有 31.66% balanced accuracy；重新適配的 CASK fallback 為 91.10%，半數記錄可用精確 provenance 時混合策略為 95.02%。</p></div><div class="lv lv-grad"><p>單獨 prompt 或 frame 擾動的結果，不能推導 joint shift 仍一樣穩。trace 的 91.10% 需要重新適配 head；若宣稱零樣本部署，應報 31.66% 而非挑較高數字。完整 runtime ledger 的 100% 是 privileged upper bound。後續需以真實而非生成的工具事件、多模型家族與嵌套 scope 檢驗。</p></div></div>
+<div class="check"><span class="check-title">自我檢測</span><details><summary>trace 的 91.10% 是否代表受控資料 head 零樣本泛化？</summary><div><p>否；它是 trace-adapted fallback，直接轉移為 31.66%。</p></div></details></div>
+<div class="desk-foot"><div class="note"><label for="note-s-transfer">筆記</label><textarea id="note-s-transfer" data-note="s-transfer" placeholder="記下推導、疑問與反例"></textarea><span class="saved"></span></div><label class="done"><input type="checkbox" data-done="s-transfer"> 讀完這節</label></div>
+</section>
 <section class="sec" id="s-critique" data-short="外推、成本與研究缺口">
-<div class="sec-head"><span class="sec-num">09</span><h2>外推、成本與研究缺口</h2></div>
+<div class="sec-head"><span class="sec-num">14</span><h2>外推、成本與研究缺口</h2></div>
 <div class="paper-source"><div class="source-head"><span class="src src-abs">原文 §7、Appendix B–C、本站分析</span><a href="https://arxiv.org/pdf/2610.09008v1" target="_blank" rel="noopener">核對原文 PDF ↗</a></div><h3>原文方法與證據</h3>
 <p><span class="src src-abs">§6.6–7、Appendix B–C</span> 75 個生成 tool-agent episode 產生 511 筆記錄：92 actual、419 scoped。受控對話訓練的 head 直接轉到 trace 時 balanced accuracy 只有 31.66%；報告的 91.10% 是 trace-adapted fallback，50% provenance 混合政策為 95.02%。完整 runtime ledger 的 100% 是標籤可得時的特權上界。</p>
 <p><span class="src src-mine">外推與成本</span> 附錄的 A100 單診斷中位數 24.83 ms、六個批次 32.10 ms 只量診斷，不是完整代理延遲。本文主要驗證二元 owner 與同家族小模型；巢狀引用、不同家族模型、跨時間重訓與真實工具日誌仍需實驗。</p></div>
@@ -153,10 +198,19 @@ G_\perp=(U_\perp^\top H)^\top(U_\perp^\top H),\quad
 </section>
 <section class="sec sec-boss" id="s-boss" data-short="BOSS：綜合挑戰"><div class="sec-head"><span class="sec-num">B</span><h2>BOSS：跨章節綜合挑戰</h2></div><p>結合問題、方法、公式與證據作答。打完會顯示逐題理由和對應章節，可重試。</p><div class="boss-board" id="boss-board" aria-live="polite"></div><div class="desk-foot"><label class="done"><input type="checkbox" data-done="s-boss"> 擊敗 BOSS</label></div></section>
 <section class="sec sec-research" id="s-research" data-short="研究者進階分析"><div class="sec-head"><span class="sec-num">R</span><h2>研究者進階分析</h2></div><p class="research-lede">將論文主張拆成可重建的流程、可核對的證據與尚未驗證的假說。跨論文關係見<a href="../../compare/index.html">研究工作台</a>。</p>
-<details class="rblock" id="r-cask-a"><summary>A　方法重建</summary><div class="rbody"><p><span class="tag tag-orig">原文</span> 從候選記錄取得六個診斷 hidden states 與四個 logit 差；形成 typed Gram key；標準化後用 logistic gate 決定 actual/scoped，檢索時套 owner mask。§4。</p><p><span class="tag tag-unknown">原文未提供</span> 跨任意模型更新與多層巢狀 owner 的穩定性保證；本文只驗證兩個同家族骨幹。</p></div></details>
-<details class="rblock" id="r-cask-b"><summary>B　可重現性審查</summary><div class="rbody"><p>附錄 B 列診斷提示、層與 rank、source-isolated folds、門檻選擇與 A100 測量；仍須完整程式、模型與 LoCoMo 資料授權才能獨立重跑。</p></div></details>
-<details class="rblock" id="r-cask-c"><summary>C　主張與證據</summary><div class="rbody"><p>介入與 scope-only 控制支持內部 ownership route 對門控有因果作用；Table 2–3 支持在指定模型、資料與檢索器下的附件提升；未證明跨模型或開放世界的普遍安全。</p></div></details>
-<details class="rblock" id="r-cask-d"><summary>D　可否證的後續研究假說</summary><div class="rbody"><p><span class="tag tag-assume">本站提出，非作者結論</span> 若用相同 projector 與六個診斷重訓不同模型家族，typed Gram 的 scope-only 優勢仍大於 full Gram；若不成立，現有優勢可能依賴 Qwen 家族特性。</p></div></details>
+<details class="rblock" id="r-cask-a"><summary>A　方法重建：輸入、狀態、步驟與公式</summary><div class="rbody"><p><span class="tag tag-orig">原文 §3–4</span> <strong>候選與授權。</strong>每筆候選 \(c=(x,m,s)\) 包含上下文、內嵌命題與報告框架。gold attachment \(a(c)=1[\omega(c)=\omega_0]\) 問的是命題能否無條件作共享世界前提；scoped 不等於 false 或必須刪除。模型用六個固定 Yes/No 診斷取得有序 hidden states；3B 在先導階段固定 block 20、rank 16，1.5B 按相對深度取 block 16、沿用 rank 16。</p>
+<p><span class="tag tag-orig">原文公式 (2)–(4)</span> 把六個隱狀態投影到 ownership 子空間及其互補空間，分別計算 \(6\times6\) Gram。每個對稱 Gram 保留含對角上三角的 21 個獨立值，與前四個診斷的 Yes−No logit 差串成 46 維 key；標準化後由 logistic head 給 \(g_\theta(c)\)，閾值 \(\tau\) 產生二元附件。若只存 full Gram，就把兩塊相加而失去來源型別；若任意正交旋轉固定子空間內的座標，Gram 不變。</p>
+<div class="math-block">\[\phi(c)=\operatorname{vech}(G_{\parallel})\Vert\operatorname{vech}(G_{\perp})\Vert\ell,\quad \dim(\phi)=21+21+4=46.\]</div>
+<p><span class="tag tag-orig">原文 §4.3、§6.5–6.6</span> 寫入時保留 owner 邊；查詢以允許的 owner 遮罩同一 BM25 排名，再交給 reader。預設 \(\tau=0.5\) 與 development 校準的 CASK@R95 是同一 scorer 的兩個操作點。若有精確工具執行 provenance，部署策略先用日誌，缺失時才由 CASK 補。這套流程測二元 actual/scoped，不是一般巢狀 scope 解析器。</p></div></details>
+<details class="rblock" id="r-cask-b"><summary>B　可重現性：資料、版本與評分單位</summary><div class="rbody"><p><span class="tag tag-orig">原文 §5、Appendix B</span> 研究者重現時須固定六個診斷的字串、順序、取層、投影器、標準化統計、分類 head、fold 和門檻。LoCoMo 十段對話產生 486 道 exact-span 問題；source-isolated fold 以完整對話劃分。替代答案僅從訓練對話取，且與 development／test 答案無 exact overlap。development 選 regularization 與 R95 門檻，test 不能事後調參。</p>
+<div class="table-wrap"><table class="results"><caption>CASK 實驗重現檢查：每階段的隔離與分母</caption><thead><tr><th>階段</th><th>固定條件</th><th>報告單位</th></tr></thead><tbody><tr><td>因果 route</td><td>凍結骨幹、layer、rank、配對 payload 與對照子空間</td><td>held-out 干預案例、按情境聚類</td></tr><tr><td>附件分類</td><td>conversation folds、訓練來源、同一 head 選擇規則</td><td>候選記錄</td></tr><tr><td>檢索與 reader</td><td>同一 BM25 排名、同一 reader、同一查詢</td><td>問題及最終回答</td></tr><tr><td>不確定性</td><td>保留十段對話內的相依性</td><td>conversation bootstrap</td></tr></tbody></table></div>
+<p><span class="tag tag-assume">本站審查</span> 先重現 Table 2 的 3B／1.5B 附件列，再核對 Table 3 的檢索、污染與回答；不可拿 83.33% attachment 充當 F1。Appendix B 的 A100 六診斷 32.10 ms 是批次診斷時延，不是含檢索與生成的完整代理時延。對完整重跑還須核對公開程式、骨幹權重、LoCoMo 使用條件與版本。</p></div></details>
+<details class="rblock" id="r-cask-c"><summary>C　主張與證據：哪些推論成立</summary><div class="rbody"><p><span class="tag tag-orig">原文 §6、Table 1–3</span> 兩段因果證據先後不同：rank-16 介入改變 mental-space 路由；對六個診斷傳入 opposite-scope donor 狀態又改變下游 commit 機率。Table 1 的 \(\Delta p=0.715\) 與 75.8% flip 是指定 3B 凍結門的介入效果，不是附件分類準確率。Table 2 的 83.33%／79.82% 才是兩骨幹附件成績；Table 3 的 recall、污染、EM、F1、替代答案採納則是後續不同單位的結果。</p>
+<div class="table-wrap"><table class="results"><caption>證據鏈的支持範圍</caption><thead><tr><th>證據</th><th>支持</th><th>不支持</th></tr></thead><tbody><tr><td>payload 固定的 route 介入</td><td>指定內部路徑可改 owner 使用</td><td>所有模型具有同一 16 維路徑</td></tr><tr><td>scope-only 配對 78.70%</td><td>優勢不是只讀 payload 字面</td><td>所有自然語言框架都可泛化</td></tr><tr><td>Table 2 typed key</td><td>同 fold 附件高於列出的控制</td><td>固定同一 head 下每個特徵的純效應</td></tr><tr><td>Table 3、R95</td><td>安全與效用需要並列觀察</td><td>單一門檻對每種應用都最佳</td></tr></tbody></table></div>
+<p><span class="tag tag-assume">本站讀法</span> 預設 \(\tau=0.5\) 的 CASK 相對 full Gram 在 Table 3 降污染 0.20 個百分點、提升 F1 1.88 個百分點，而替代答案採納都為 1.03%。這組差值不能誇稱為「所有安全指標大幅提升」。R95 與 flat memory 的差異屬另一個 development 校準操作點。trace 的 91.10% 使用重新適配 head；直接轉移 31.66% 應一併揭露。</p></div></details>
+<details class="rblock" id="r-cask-d"><summary>D　可否證的後續研究假說</summary><div class="rbody"><p><span class="tag tag-assume">本站提出的可否證假說，非原文結論</span> H₁：保持候選命題與訓練樣本數，加入雙層引用（例如「甲認為乙計畫 P」）時，只靠二元 actual/scoped 的門控會在可回答的 owner 查詢上出現系統性錯誤。若多層標註下二元系統與顯式 owner 圖同樣準確，假說便不成立。H₂：固定六個診斷與資料切分，在不同家族骨幹各自學 projector，typed Gram 相對 full Gram 的 scope-only 優勢仍大於零；若跨家族優勢消失，現有結論便較依賴 Qwen 特性。</p>
+<p><strong>設計一：巢狀 owner。</strong>構造三元組 (外層說話事件、內層信念、內內層計畫)，每個問題明確標記可接受 owner 集。分開報 actual 事實查詢、引用內容查詢與反事實查詢，並檢查「存得下卻不能拿來答現況」的污染率。比較二元門、具型別 owner 圖、以及有執行日誌的混合政策；所有方法共用檢索器與 reader，避免把另一個生成模型的能力混入附件效果。</p>
+<p><strong>設計二：時間與家族轉移。</strong>以對話為單位隔離訓練與測試；在一個模型版本學好 projector/head 後，報完全凍結的零樣本轉移，以及只重訓 head、連 projector 都重訓兩種適配成本。診斷改寫、未見框架與兩者聯合留出應分開評估，因原文聯合留出已降至 70.16%。報附件準確率、actual admission、scoped rejection、retrieval recall、污染、reader F1 與延遲形成完整取捨曲線；只報最高一個數不足以決定部署門檻。</p></div></details>
 <div class="desk-foot"><div class="note"><label for="note-research">研究筆記</label><textarea id="note-research" data-note="s-research"></textarea><span class="saved"></span></div><label class="done"><input type="checkbox" data-done="s-research"> 讀完這節</label></div></section>
 <section class="sec" id="s-glossary" data-short="術語表"><div class="sec-head"><span class="sec-num">附</span><h2>術語與符號</h2></div><dl class="glossary"><dt>discourse owner</dt><dd>授權命題成立的共享世界、信念、計畫或假設分支。</dd>
 <dt>attachment</dt><dd>候選命題與 owner 的邊；本文主要評 actual/scoped。</dd>
@@ -164,4 +218,4 @@ G_\perp=(U_\perp^\top H)^\top(U_\perp^\top H),\quad
 <dt>provenance</dt><dd>工具是否執行、觀察是否真的返回等運行紀錄。</dd>
 <dt>balanced accuracy</dt><dd>actual admission 與 scoped rejection 兩率的平均。</dd></dl><div class="desk-foot"><label class="done"><input type="checkbox" data-done="s-glossary"> 讀完這節</label></div></section>
 <section class="sec" id="s-export" data-short="匯出筆記"><div class="sec-head"><span class="sec-num">附</span><h2>匯出我的筆記</h2></div><p>筆記保存在本機瀏覽器。可複製 Markdown 留存。</p><div class="btn-row"><button type="button" class="btn" id="export-notes">複製全部筆記</button><span class="toast" id="export-toast" role="status"></span></div><div class="note"><label for="export-box" class="sr-only">匯出內容</label><textarea id="export-box" rows="8" hidden readonly></textarea></div><p class="readout">來源：<a href="https://arxiv.org/abs/2610.09008" target="_blank" rel="noopener">Whose Memory Is It? Scope-Aware Commit Rules for Long-Term LLM Memory</a>。</p></section>
-</main></div></div><script src="quiz.js?v=36f1feb13f"></script><script src="../../assets/battle.js?v=be9fa6c0d6"></script><script src="../../assets/site.js?v=a3294243c2"></script><script src="../../assets/anim.js?v=c5c6110c69"></script><script src="../../assets/reading-lab.js?v=134a96fd9e"></script><script src="../../assets/world-quests.js?v=73d57c3af5"></script><script src="lesson.js"></script></body></html>
+</main></div></div><script src="quiz.js?v=a09aff8750"></script><script src="../../assets/battle.js?v=be9fa6c0d6"></script><script src="../../assets/site.js?v=2d6ea7a821"></script><script src="../../assets/anim.js?v=c5c6110c69"></script><script src="../../assets/reading-lab.js?v=541b5a5d21"></script><script src="../../assets/world-quests.js?v=73d57c3af5"></script><script src="lesson.js"></script></body></html>

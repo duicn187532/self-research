@@ -218,6 +218,8 @@ def authentic_backdrop(key):
       'clocktower':('ludibrium','toyCastleDungeon','back-0', []),
       'orbis':('orbis','skyStation','back-1', [('back-4',(95,45,450,387)),('back-4',(1080,110,420,361)),('back-19',(785,35,440,712))]),
       'lachelein':('lachelein','','back-2', [('back-4',(0,0,1600,760))]),
+      'leafre':('leafre','minar','back-1', [('back-6',(-80,255,940,342)),('back-6',(740,245,940,342)),('back-8',(40,390,730,400)),('back-10',(770,390,730,400))]),
+      'nautilus':('victoria','nautilusPort','back-24', []),
     }
     if key not in specs: return None
     region,name,base,overlays=specs[key]
