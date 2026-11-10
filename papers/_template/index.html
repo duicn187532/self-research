@@ -7,15 +7,23 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="論文精讀室">
-<title>PAPER_SHORT 精讀</title>
+<meta name="theme-color" content="#F6E7D6">
+<title>PAPER_SHORT 精讀 · HACHIMAN STUDIO</title>
 <meta name="description" content="論文精讀頁範本：章節、原文出處與互動學習。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="PAPER_SHORT 精讀">
 <meta property="og:description" content="論文精讀頁範本：章節、原文出處與互動學習。">
-<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="icon" href="../../assets/brand/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/brand/hachiman-icon-32.png">
+<link rel="apple-touch-icon" href="../../assets/brand/hachiman-icon-180.png">
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="../../assets/site.css?v=9a541d8f98">
-<script>try{var r=document.documentElement;r.setAttribute("data-host-theme",r.getAttribute("data-theme")||"");if(JSON.parse(localStorage.getItem("study:skin"))!=="study")r.setAttribute("data-skin","maple");var m=JSON.parse(localStorage.getItem("study:mode"));if(m==="light"||m==="dark")r.setAttribute("data-theme",m);}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Noto+Sans+TC:wght@400;700;900&display=swap">
+<link rel="stylesheet" href="../../assets/brand/tokens.css">
+<link rel="stylesheet" href="../../assets/brand/bundle.css">
+<link rel="stylesheet" href="../../assets/site.css?v=8ceb593dac">
+<script>try{var r=document.documentElement;r.setAttribute("data-host-theme",r.getAttribute("data-theme")||"");if(JSON.parse(localStorage.getItem("study:skin"))==="maple")r.setAttribute("data-skin","maple");var m=JSON.parse(localStorage.getItem("study:mode"));if(m==="light"||m==="dark")r.setAttribute("data-theme",m);}catch(e){}</script>
 
 <script>
   window.MathJax = {
@@ -24,7 +32,7 @@
   };
 </script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script>
-<link rel="stylesheet" href="../../assets/reading-lab.css?v=fb4f4fa023">
+<link rel="stylesheet" href="../../assets/reading-lab.css?v=c276f12677">
 </head>
 <body>
 <div data-paper="ARXIV_ID">
@@ -108,7 +116,17 @@
 </div>
 </div>
 
-<script src="../../assets/site.js?v=b670632855"></script>
-<script src="../../assets/reading-lab.js?v=b0f90b2552"></script>
+<footer class="hs-footer">
+  <div class="hs-footer__brand">
+    <span class="hs-footer__name">HACHIMAN STUDIO 八萬工作室</span>
+    <span class="hs-footer__tagline">靈感敏捷，作品有溫度。</span>
+  </div>
+  <nav class="hs-footer__links" aria-label="工作室連結">
+    <a href="https://duicn187532.github.io/HachimanStudio/works.html">所有作品</a>
+    <a href="https://github.com/duicn187532/self-research">GitHub</a>
+  </nav>
+</footer>
+<script src="../../assets/site.js?v=c2a30006e5"></script>
+<script src="../../assets/reading-lab.js?v=ea73806b56"></script>
 </body>
 </html>
