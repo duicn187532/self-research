@@ -257,7 +257,7 @@
   }
 
   // ---------- experience: one reader across every paper ----------
-  // EXP is worked out from what is stored (sections finished, answers opened, notes written, papers
+  // EXP is worked out from what is stored (sections finished, answers tried first, notes written, papers
   // opened), never added up click by click, so ticking a box on and off earns nothing and every
   // paper added later counts with no setup. Each paper page caches its own sum in study:<id>:exp;
   // the total is the sum of those. Levels start at 1 and never cap: the first section is LV.2,
@@ -868,7 +868,7 @@
       b.forEach(function (item) { if (!logs.some(function (x) { return JSON.stringify(x) === JSON.stringify(item); })) logs.push(item); });
       return JSON.stringify(logs.sort(function (x, y) { return String(y.at || "").localeCompare(String(x.at || "")); }).slice(0, 120));
     }
-    if (/:note-awards$/.test(k) && Array.isArray(a) && Array.isArray(b))
+    if (/:(note|ask)-awards$/.test(k) && Array.isArray(a) && Array.isArray(b))
       return JSON.stringify(a.concat(b.filter(function (x) { return a.indexOf(x) < 0; })));
     if (/:qstat$/.test(k) && a && b && typeof a === "object" && typeof b === "object") {
       var stats = Object.assign({}, a);
@@ -1136,7 +1136,7 @@
   var countable = document.querySelectorAll("input[data-done]").length;
   var crumb = document.querySelector(".toolbar .crumb");
   var shortName = crumb ? crumb.textContent.split("·")[0].trim() : paper;
-  var hud = makeHud("精讀中", shortName, "讀完一節、打開解答、寫筆記，都能獲得經驗值。");
+  var hud = makeHud("精讀中", shortName, "讀完一節、先作答再看解答、寫筆記，都能獲得經驗值。");
 
   // ---------- experience on this paper ----------
   var quests = sections.filter(function (s) { return s.querySelector("input[data-done]"); });
@@ -1153,6 +1153,27 @@
   } else noteAwards = noteAwards.filter(function (id, i) { return noteIds.indexOf(id) >= 0 && noteAwards.indexOf(id) === i; });
   var firstVisit = store.get(EXP_KEY, null) === null;
   var asked = store.get(ASK_KEY, []);
+  if (!Array.isArray(asked)) asked = [];
+  // Answer EXP goes only to a question answered in its box before its answer was first opened.
+  // Answers opened before that rule keep their EXP: the first load copies them into the award list.
+  var ASK_AWARDS_KEY = "study:" + paper + ":ask-awards";
+  var askAwards = store.get(ASK_AWARDS_KEY, null);
+  if (!Array.isArray(askAwards)) {
+    askAwards = asked.slice();
+    store.set(ASK_AWARDS_KEY, askAwards);
+  } else askAwards = askAwards.filter(function (k, i) { return askAwards.indexOf(k) === i; });
+  // the first opening of answer k: true when it earns EXP, false when it was opened unanswered,
+  // null when there is nothing new (opened before, already awarded, or the award could not be saved)
+  function openAnswer(k, wrote) {
+    if (asked.indexOf(k) >= 0) return null;
+    asked.push(k);
+    store.set(ASK_KEY, asked);
+    if (!wrote) return false;
+    if (askAwards.indexOf(k) >= 0) return null;
+    askAwards.push(k);
+    if (!store.set(ASK_AWARDS_KEY, askAwards)) { askAwards.pop(); return null; }
+    return true;
+  }
   var others = storedExp(paper);
   // ---------- chapter battles: papers/<id>/quiz.js holds the questions, assets/battle.js runs them ----------
   // With a question bank, a chapter's tier comes from the bank: no entry, no monster (閱讀路線 keeps its box);
@@ -1185,7 +1206,7 @@
     var e = EXP.visit;
     quests.forEach(function (s) { if (isDone(s)) e += EXP.section + bonusOf(s); });
     if (allDone()) e += EXP.paper;
-    e += asked.length * EXP.ask;
+    e += askAwards.length * EXP.ask;
     e += noteAwards.length * EXP.note;
     return e;
   }
@@ -1562,17 +1583,6 @@
   });
   renderProgress();
   skinHooks.push(renderProgress);
-  // opening a self-check answer for the first time
-  allDialogs.forEach(function (d, k) {
-    d.addEventListener("toggle", function () {
-      if (!d.open || asked.indexOf(k) >= 0) return;
-      asked.push(k);
-      store.set(ASK_KEY, asked);
-      var g = award();
-      if (g.gain > 0) { cheer(g.up); hud.chat(gainLines(g, "查看了解答").concat(here())); }
-    });
-  });
-
   // ---------- notes ----------
   function noteKey(id) { return "study:" + paper + ":note:" + id; }
   document.querySelectorAll("textarea[data-note]").forEach(function (ta) {
@@ -1685,6 +1695,7 @@
   var TRY_KEY = "study:" + paper + ":try";
   var tries = store.get(TRY_KEY, {});
   if (!tries || typeof tries !== "object" || Array.isArray(tries)) tries = {};
+  var peekTold = false;
   allDialogs.forEach(function (d, k) {
     // the question as written, TeX and all: this runs before MathJax and before the NPC joins the summary
     var sum = d.querySelector("summary").cloneNode(true);
@@ -1695,7 +1706,7 @@
     var id = "try-" + paper.replace(/\W/g, "") + "-" + k;
     var lab = document.createElement("label");
     lab.setAttribute("for", id);
-    lab.textContent = "先寫下你的答案（可略過）";
+    lab.textContent = "先寫下你的答案再看解答，可得經驗值（可略過）";
     var ta = document.createElement("textarea");
     ta.id = id;
     ta.rows = 1;
@@ -1721,7 +1732,20 @@
     wrap.appendChild(ta);
     wrap.appendChild(status);
     d.parentNode.insertBefore(wrap, d.nextSibling);
-    d.addEventListener("toggle", function () { lab.textContent = d.open ? "你的答案（和上面的參考答案對照）" : "先寫下你的答案（可略過）"; });
+    d.addEventListener("toggle", function () { lab.textContent = d.open ? "你的答案（和上面的參考答案對照）" : "先寫下你的答案再看解答，可得經驗值（可略過）"; });
+    // opening the answer for the first time: EXP only for an answer written here first
+    d.addEventListener("toggle", function () {
+      if (!d.open) return;
+      save();
+      var got = openAnswer(k, !!ta.value.trim());
+      if (got === false && !peekTold) {
+        peekTold = true;
+        hud.chat([["解答", "這題沒有先寫答案，看解答不計經驗值。下一題先在作答框寫下答案再打開，可得 +" + EXP.ask + " EXP。"]]);
+      }
+      if (!got) return;
+      var g = award();
+      if (g.gain > 0) { cheer(g.up); hud.chat(gainLines(g, "先作答再對照解答").concat(here())); }
+    });
   });
   // ---------- battles in the chapters' feet ----------
   // A win ticks the chapter's (now hidden) 讀完這節 box, so EXP, progress and the monster's fall run as

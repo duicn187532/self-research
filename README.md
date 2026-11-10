@@ -4,7 +4,7 @@
 
 書架上的漢斯會派出 FadeMem 示範任務：從 Problem、Method、Benchmark、Contribution、Gap 各完成一場對應的既有知識戰鬥，再通過跨章節 Boss 挑戰，回到書架或論文頁回報。卡片會指出下一關，戰勝後也可直接前往下一關；其餘章節仍可自由閱讀，不必先完成整篇才能回報。任務顯示未接取、進行中、可回報、已完成四種狀態；直接從論文進入並完成挑戰也會成為可回報。回報不重複發 EXP。短稱號仍依原規則在整篇 15 節完成後解鎖。
 
-進度欄位、備份與同步合併規則見 [進度契約](docs/progress-contract.md)。新增的回歸測試可用 `node scripts/test_intro_quest.js`、`node scripts/test_storage_failure.js`、`node scripts/test_backup_merge.js`、`node scripts/test_study_sync_recovery.js`、`node scripts/test_battle_persistence.js` 與 `node scripts/test_shelf_progress.js` 執行。
+進度欄位、備份與同步合併規則見 [進度契約](docs/progress-contract.md)。新增的回歸測試可用 `node scripts/test_intro_quest.js`、`node scripts/test_storage_failure.js`、`node scripts/test_backup_merge.js`、`node scripts/test_study_sync_recovery.js`、`node scripts/test_battle_persistence.js`、`node scripts/test_shelf_progress.js` 與 `node scripts/test_answer_awards.js` 執行。
 
 一個幫助精讀論文的靜態網站。每篇論文一頁，同一段內容提供三種解釋深度（五歲 / 大學生 / 研究生，依 [ELI5 skill](.claude/skills/eli5/SKILL.md)），公式逐符號拆解，每節附自我檢測、筆記欄與閱讀進度。
 
@@ -102,10 +102,10 @@ python3 scripts/stamp_assets.py
 | 第一次打開一篇論文 | +50 |
 | 讀完一節（討伐成功，或按「讀完這節」） | +100；精英章節 +200、BOSS 綜合挑戰 +300 |
 | 整篇每一節都讀完 | 再 +500 |
-| 第一次打開一題自我檢測的答案 | +20 |
+| 先在作答框寫下答案，再第一次打開該題的參考答案 | +20（沒作答就打開的題目之後補寫也不計；改版前已打開的答案保留原經驗值） |
 | 一節第一次寫筆記 | +30 |
 
-經驗值是從存下來的進度算出來的，不是按一次加一次：取消勾選、清空筆記會扣回，所以來回點不會多拿。升下一級需要的經驗值是 `round((45 × LV^1.5 + 55) / 10) × 10`：讀完第一節就到 LV.2，讀完一整篇大約 LV.7，十篇大約 LV.18，五十篇大約 LV.34。稱號在 LV.10、20、30、50 轉職：新手讀者、見習研究員、研究員、資深研究員、精讀大師。等級和稱號顯示在狀態列和小地圖上方，書架的聊天列會列出累積經驗值和離下一級還差多少。所有數字只存在這個瀏覽器（`study:<id>:exp`、`study:<id>:asked`；戰鬥是 `study:<id>:qstat`、`study:<id>:battle`、`study:<id>:quizsum`、`study:expedition`、`study:titles`，都包含在備份裡）。
+經驗值是從存下來的進度算出來的，不是按一次加一次：取消勾選會扣回，所以來回點不會多拿；筆記與作答的經驗值是一次性里程碑，之後清空也不扣。升下一級需要的經驗值是 `round((45 × LV^1.5 + 55) / 10) × 10`：讀完第一節就到 LV.2，讀完一整篇大約 LV.7，十篇大約 LV.18，五十篇大約 LV.34。稱號在 LV.10、20、30、50 轉職：新手讀者、見習研究員、研究員、資深研究員、精讀大師。等級和稱號顯示在狀態列和小地圖上方，書架的聊天列會列出累積經驗值和離下一級還差多少。所有數字只存在這個瀏覽器（`study:<id>:exp`、`study:<id>:asked`、`study:<id>:ask-awards`、`study:<id>:note-awards`；戰鬥是 `study:<id>:qstat`、`study:<id>:battle`、`study:<id>:quizsum`、`study:expedition`、`study:titles`，都包含在備份裡）。
 
 做法和素材對照寫在 [`.claude/skills/maple-skin/SKILL.md`](.claude/skills/maple-skin/SKILL.md)。用 `build_artifact.py` 內嵌成單一檔案的版本不帶圖片，所以只有淺色、深色可選。
 

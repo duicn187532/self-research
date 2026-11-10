@@ -25,7 +25,7 @@ const context = {
   document: { querySelectorAll: () => notes },
   Array, String,
   EXP: { visit: 50, section: 100, paper: 500, ask: 20, note: 30 },
-  quests: [], asked: [], allDone: () => false
+  quests: [], askAwards: [], allDone: () => false
 };
 vm.createContext(context);
 vm.runInContext(excerpt('  var NOTE_AWARDS_KEY =', '  var firstVisit ='), context);

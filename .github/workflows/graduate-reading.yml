@@ -52,6 +52,7 @@ jobs:
           node scripts/test_reading_lab.js
           node scripts/test_study_profile.js
           node scripts/test_note_awards.js
+          node scripts/test_answer_awards.js
           node scripts/test_math_typeset.js
           node scripts/test_study_sync_recovery.js
           node scripts/test_intro_quest.js
