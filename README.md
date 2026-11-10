@@ -1,4 +1,10 @@
+<p align="center"><img src="assets/brand/hachiman-lockup@2x.png" alt="HACHIMAN STUDIO 八萬工作室" height="64"></p>
+
 # self-research · 論文精讀室
+
+逐章精讀 Agent 記憶研究論文的網站：原文核對、分層解釋、互動圖與自我檢測。
+
+<sub>HACHIMAN STUDIO · 八萬工作室作品</sub>
 
 ## 魔法森林示範任務
 
