@@ -1,5 +1,11 @@
 <!doctype html>
-<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><title>這段記憶屬於誰？CASK 的作用範圍寫入規則 · 論文精讀室</title><meta name="description" content="這段記憶屬於誰？CASK 的作用範圍寫入規則：原文核對、分層解釋、互動推演與研究批判。"><link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/site.css?v=9a541d8f98"><link rel="stylesheet" href="../../assets/reading-lab.css?v=fb4f4fa023"><style>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><title>這段記憶屬於誰？CASK 的作用範圍寫入規則 · 論文精讀室</title><meta name="description" content="這段記憶屬於誰？CASK 的作用範圍寫入規則：原文核對、分層解釋、互動推演與研究批判。"><link rel="icon" type="image/png" sizes="32x32" href="../../assets/brand/hachiman-icon-32.png">
+<link rel="apple-touch-icon" href="../../assets/brand/hachiman-icon-180.png"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Noto+Sans+TC:wght@400;700;900&display=swap">
+<link rel="stylesheet" href="../../assets/brand/tokens.css">
+<link rel="stylesheet" href="../../assets/brand/components.css">
+<link rel="stylesheet" href="../../assets/site.css?v=8ceb593dac"><link rel="stylesheet" href="../../assets/reading-lab.css?v=c276f12677"><style>
 .lesson-mini{border:1px solid var(--rule);border-radius:8px;padding:1rem;margin:1rem 0;background:var(--surface)}
 .lesson-mini label{display:inline-flex;gap:.35rem;align-items:center;margin:.3rem .8rem .3rem 0}
 .lesson-mini input,.lesson-mini select{font:inherit;max-width:7rem;background:var(--paper);color:var(--ink);border:1px solid var(--rule);border-radius:4px;padding:.25rem}
@@ -16,7 +22,7 @@
 .paper-source .table-wrap{margin:.85rem 0}
 .guide-heading{margin:1.25rem 0 .4rem;font-size:1rem;color:var(--muted)}
 </style>
-<script>try{var r=document.documentElement;r.setAttribute("data-host-theme",r.getAttribute("data-theme")||"");if(JSON.parse(localStorage.getItem("study:skin"))!=="study")r.setAttribute("data-skin","maple");var m=JSON.parse(localStorage.getItem("study:mode"));if(m==="light"||m==="dark")r.setAttribute("data-theme",m)}catch(e){}</script>
+<script>try{var r=document.documentElement;r.setAttribute("data-host-theme",r.getAttribute("data-theme")||"");if(JSON.parse(localStorage.getItem("study:skin"))==="maple")r.setAttribute("data-skin","maple");var m=JSON.parse(localStorage.getItem("study:mode"));if(m==="light"||m==="dark")r.setAttribute("data-theme",m)}catch(e){}</script>
 <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},svg:{fontCache:"global"}}</script><script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script></head>
 <body data-map-scene="nautilus"><div data-paper="2610.09008" data-scene="nautilus"><header class="toolbar gutter"><div class="toolbar-inner"><a class="home" href="../../index.html">論文精讀室</a><span class="crumb">CASK · 2610.09008</span><div class="levels" role="group" aria-label="解釋深度"><span class="levels-label">解釋深度</span><div class="seg"><button type="button" data-level-btn="kid" aria-pressed="false">五歲</button><button type="button" data-level-btn="uni" aria-pressed="true">大學生</button><button type="button" data-level-btn="grad" aria-pressed="false">研究生</button><button type="button" data-level-btn="all" aria-pressed="false">對照</button></div></div></div></header>
 <div class="desk gutter"><nav class="rail" aria-label="章節"><details open><summary>章節 <span class="progress-text" id="progress-text">0 / 18</span></summary><div class="progress"><span id="progress-bar"></span></div><ol id="outline"></ol></details></nav><main class="column">
@@ -218,4 +224,14 @@ G_\perp=(U_\perp^\top H)^\top(U_\perp^\top H),\quad
 <dt>provenance</dt><dd>工具是否執行、觀察是否真的返回等運行紀錄。</dd>
 <dt>balanced accuracy</dt><dd>actual admission 與 scoped rejection 兩率的平均。</dd></dl><div class="desk-foot"><label class="done"><input type="checkbox" data-done="s-glossary"> 讀完這節</label></div></section>
 <section class="sec" id="s-export" data-short="匯出筆記"><div class="sec-head"><span class="sec-num">附</span><h2>匯出我的筆記</h2></div><p>筆記保存在本機瀏覽器。可複製 Markdown 留存。</p><div class="btn-row"><button type="button" class="btn" id="export-notes">複製全部筆記</button><span class="toast" id="export-toast" role="status"></span></div><div class="note"><label for="export-box" class="sr-only">匯出內容</label><textarea id="export-box" rows="8" hidden readonly></textarea></div><p class="readout">來源：<a href="https://arxiv.org/abs/2610.09008" target="_blank" rel="noopener">Whose Memory Is It? Scope-Aware Commit Rules for Long-Term LLM Memory</a>。</p></section>
-</main></div></div><script src="quiz.js?v=a09aff8750"></script><script src="../../assets/battle.js?v=be9fa6c0d6"></script><script src="../../assets/site.js?v=b670632855"></script><script src="../../assets/anim.js?v=c5c6110c69"></script><script src="../../assets/reading-lab.js?v=b0f90b2552"></script><script src="../../assets/world-quests.js?v=73d57c3af5"></script><script src="lesson.js"></script></body></html>
+</main></div></div><footer class="hs-footer">
+  <div class="hs-footer__brand">
+    <span class="hs-footer__name">HACHIMAN STUDIO 八萬工作室</span>
+    <span class="hs-footer__tagline">靈感敏捷，作品有溫度。</span>
+  </div>
+  <nav class="hs-footer__links" aria-label="工作室連結">
+    <a href="https://duicn187532.github.io/HachimanStudio/works.html">所有作品</a>
+    <a href="https://github.com/duicn187532/self-research">GitHub</a>
+  </nav>
+</footer>
+<script src="quiz.js?v=f6135931c9"></script><script src="../../assets/battle.js?v=4ef53e4149"></script><script src="../../assets/site.js?v=c2a30006e5"></script><script src="../../assets/anim.js?v=d2683fa386"></script><script src="../../assets/reading-lab.js?v=ea73806b56"></script><script src="../../assets/world-quests.js?v=4a26569d98"></script><script src="lesson.js"></script></body></html>

@@ -3,27 +3,28 @@
    tables follow academic booktabs rules, interactive figures are the only raised cards,
    and the reader's own voice (kid-level explanations, guesses, self-tests, notes) is set in a kai hand. */
 :root {
-  --paper: #eef0e9;
-  --surface: #f7f8f3;
-  --ink: #2c312e;
-  --muted: #5f6862;
-  --rule: #d4d9cf;
-  --accent: #3a6b62;
-  --accent-soft: #dde8e2;
-  --mark: #ead884;
-  --mark-soft: #f5efce;
-  --mark-ink: #2c312e;
-  --warn: #9a4f27;
-  --warn-soft: #f2e5da;
-  --ok: #3a6c45;
-  --ok-soft: #dfeadf;
-  --mine: #6a4f91;
-  --mine-soft: #eae4f1;
-  --sml: #a9552e;
-  --shadow: 0 1px 2px rgba(44, 49, 46, 0.05), 0 6px 18px -10px rgba(44, 49, 46, 0.16);
+  /* HACHIMAN STUDIO 八萬工作室設計系統（assets/brand/tokens.css）：精讀室外觀的顏色、字體都指向設計系統的 tokens。
+     --surface、--ink 與設計系統同名，直接沿用；楓葉冒險外觀在 :root[data-skin="maple"] 另有一組自己的值。 */
+  --paper: var(--cream);
+  --muted: var(--ink-muted);
+  --rule: var(--line);
+  --accent: var(--ginger-text);
+  --accent-soft: var(--ginger-soft);
+  --mark: var(--ginger-soft);
+  --mark-soft: var(--surface-2);
+  --mark-ink: var(--ink);
+  --warn: var(--danger-text);
+  --warn-soft: var(--danger-soft);
+  --ok: var(--sage-text);
+  --ok-soft: var(--sage-soft);
+  /* 讀者自己的聲音與第二條資料線：品牌圖表配色的石板藍（橘 vs 藍，不用紅綠） */
+  --mine: #4a6c8c;
+  --mine-soft: #e3eaf1;
+  --sml: #4a6c8c;
+  --shadow: none;
 
-  --font-display: "Songti TC", "PMingLiU", Georgia, serif;
-  --font-body: "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+  --font-display: var(--font-zh);
+  --font-body: var(--font-sans);
   --font-hand: "BiauKai", "DFKai-SB", "Kaiti TC", var(--font-display);
   --font-mono: ui-monospace, "SFMono-Regular", Menlo, monospace;
 
@@ -32,24 +33,17 @@
   --step-1: 1.1875rem;
   --step-2: 1.625rem;
   --step-3: 2.375rem;
-  --radius: 6px;
+  --radius: var(--radius-control);
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --paper: #1a1f1d; --surface: #212725; --ink: #d3d9d3; --muted: #97a199; --rule: #343d39;
-    --accent: #8dbfb2; --accent-soft: #22382f; --mark: #6a5c22; --mark-soft: #2b2918; --mark-ink: #f2ebcb;
-    --warn: #dea77f; --warn-soft: #382a1f; --ok: #8ecd9e; --ok-soft: #1f3226;
-    --mine: #c0aae4; --mine-soft: #2c2637; --sml: #e09a73;
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 8px 22px -12px rgba(0, 0, 0, 0.6);
+    --hachiman-ginger: #e08a4e; --cream: #241e1a; --charcoal: #3b312a; --orei-white: #fdfdfc; --sage: #9ba487; --surface: #2f2721; --surface-2: #3a3029; --cream-deep: #3a3029; --line: #4a3d33; --control-border: #c9b6a2; --ink: #f6e7d6; --ink-muted: #c9b6a2; --ginger-text: #f0a673; --action: #e08a4e; --on-action: #241e1a; --focus-ring: var(--hachiman-ginger); --ginger-soft: #4a3020; --sage-text: #b9c49f; --sage-soft: #343a2a; --danger-text: #f2a08f; --danger-soft: #4a2621;
+    --mine: #a9c1d9; --mine-soft: #2b3540; --sml: #a9c1d9;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --paper: #1a1f1d; --surface: #212725; --ink: #d3d9d3; --muted: #97a199; --rule: #343d39;
-    --accent: #8dbfb2; --accent-soft: #22382f; --mark: #6a5c22; --mark-soft: #2b2918; --mark-ink: #f2ebcb;
-    --warn: #dea77f; --warn-soft: #382a1f; --ok: #8ecd9e; --ok-soft: #1f3226;
-    --mine: #c0aae4; --mine-soft: #2c2637; --sml: #e09a73;
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 8px 22px -12px rgba(0, 0, 0, 0.6);
+  --mine: #a9c1d9; --mine-soft: #2b3540; --sml: #a9c1d9;
   color-scheme: dark;
 }
 
@@ -80,8 +74,8 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
   outline: 2px solid var(--accent); outline-offset: 2px;
 }
 h1, h2, h3 { font-family: var(--font-display); line-height: 1.35; text-wrap: balance; margin: 0; }
-h1 { font-size: var(--step-3); font-weight: 700; letter-spacing: -0.005em; }
-h2 { font-size: var(--step-2); font-weight: 700; }
+h1 { font-size: var(--step-3); font-weight: 900; letter-spacing: -0.005em; }
+h2 { font-size: var(--step-2); font-weight: 900; }
 h3 { font-size: var(--step-1); font-weight: 600; }
 p { margin: 0; }
 b, strong { font-weight: 700; }
@@ -103,15 +97,17 @@ code { background: var(--paper); border: 1px solid var(--rule); border-radius: 3
   display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1rem;
 }
 .toolbar .home {
-  font-family: var(--font-display); font-weight: 700; color: var(--ink); text-decoration: none;
-  display: inline-flex; align-items: center; gap: 0.5rem; letter-spacing: 0.04em;
+  font-family: var(--font-display); font-weight: 900; color: var(--ink); text-decoration: none;
+  display: inline-flex; align-items: center; gap: 0.625rem; letter-spacing: 0.04em;
 }
-/* a small square seal, the way readers stamp a book they own */
+/* 八萬工作室的組合字標，後面接專案名稱（設計系統 SiteHeader 的排法）；深色主題換反白版 */
 .toolbar .home::before {
-  content: "讀"; display: inline-grid; place-items: center; width: 1.6rem; height: 1.6rem;
-  background: var(--accent); color: var(--surface); border-radius: 3px;
-  font-size: 0.95rem; line-height: 1; letter-spacing: 0;
+  content: ""; display: inline-block; width: 103px; height: 35px; flex: none;
+  background: url("brand/hachiman-lockup.png") left center / contain no-repeat;
+  padding-right: 0.625rem; border-right: 2px solid var(--line); box-sizing: content-box;
 }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .toolbar .home::before { background-image: url("brand/hachiman-lockup-reverse.png"); } }
+:root[data-theme="dark"] .toolbar .home::before { background-image: url("brand/hachiman-lockup-reverse.png"); }
 .toolbar .crumb { color: var(--muted); font-size: var(--step--1); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1 1 8rem; }
 .levels { display: flex; align-items: center; gap: 0.5rem; }
 .levels-label { font-size: var(--step--1); color: var(--muted); letter-spacing: 0.04em; }
@@ -548,7 +544,7 @@ table.results tbody td:first-child { white-space: nowrap; }
   .toolbar-inner { flex-wrap: nowrap; padding-block: 0.45rem; gap: 0.5rem; }
   .toolbar .crumb, .levels-label { display: none; }
   .toolbar .home { font-size: 0.9375rem; white-space: nowrap; }
-  .toolbar .home::before { width: 1.45rem; height: 1.45rem; font-size: 0.85rem; }
+  .toolbar .home::before { width: 1.6rem; height: 1.6rem; padding-right: 0; border-right: 0; border-radius: 6px; background: url("brand/hachiman-icon-180.png") center / contain no-repeat; }
   .levels { margin-left: auto; }
   .seg button { padding: 0 0.55rem; min-height: 2.25rem; white-space: nowrap; }
 
@@ -859,7 +855,9 @@ table.bench-tbl th[scope="rowgroup"], table.bench-tbl th[scope="row"] { color: v
   --warn: #a8361a; --warn-soft: #fbe3da; --ok: #2f6f2a; --ok-soft: #e1f0d8; --mine: #6a3fa0; --mine-soft: #eee5f8; --sml: #b1501f;
   --shadow: none;
   --font-display: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+  --font-body: "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
   --font-hand: var(--font-display);
+  --radius: 6px;
   --outline: -1px 0 #1a2a44, 1px 0 #1a2a44, 0 -1px #1a2a44, 0 1px #1a2a44, 1px 1px #1a2a44;
   color-scheme: light;
 }
@@ -879,46 +877,46 @@ table.bench-tbl th[scope="rowgroup"], table.bench-tbl th[scope="row"] { color: v
    scene under a navy shade. */
 :root[data-skin="maple"] body::after {
   content: ""; position: fixed; left: 0; right: 0; top: 0; height: 100vh; height: 100lvh; z-index: 0; pointer-events: none;
-  background: url("maple/scene-day.jpg?v=f711d64d2a") center bottom / cover no-repeat;
+  background: url("maple/scene-day.jpg?v=9b97c153c1") center bottom / cover no-repeat;
 }
-:root[data-skin="maple"] body:has([data-scene="ellinia"])::after { background-image: url("maple/scene-ellinia.jpg?v=f711d64d2a"); }
-:root[data-skin="maple"] body[data-map-scene="ludibrium"]::after { background-image: url("maple/scene-ludibrium.jpg?v=f711d64d2a"); }
-:root[data-skin="maple"] body[data-map-scene="clocktower"]::after { background-image: url("maple/scene-clocktower.jpg?v=f711d64d2a"); }
-:root[data-skin="maple"] body[data-map-scene="orbis"]::after { background-image: url("maple/scene-orbis.jpg?v=f711d64d2a"); }
-:root[data-skin="maple"] body[data-map-scene="el-nath"]::after { background-image: url("maple/scene-el-nath.jpg?v=f711d64d2a"); }
-:root[data-skin="maple"] body[data-map-scene="leafre"]::after { background-image: url("maple/scene-leafre.jpg?v=f711d64d2a"); }
-:root[data-skin="maple"] body[data-map-scene="lachelein"]::after { background-image: url("maple/scene-lachelein.jpg?v=f711d64d2a"); }
-:root[data-skin="maple"] body[data-map-scene="henesys"]::after { background-image: url("maple/scene-henesys.jpg?v=f711d64d2a"); }
-:root[data-skin="maple"] body[data-map-scene="ellinia-town"]::after { background-image: url("maple/scene-ellinia-town.jpg?v=f711d64d2a"); }
-:root[data-skin="maple"] body[data-map-scene="perion"]::after { background-image: url("maple/scene-perion.jpg?v=f711d64d2a"); }
-:root[data-skin="maple"] body[data-map-scene="kerning"]::after { background-image: url("maple/scene-kerning.jpg?v=f711d64d2a"); }
-:root[data-skin="maple"] body[data-map-scene="lith-harbor"]::after { background-image: url("maple/scene-lith-harbor.jpg?v=f711d64d2a"); }
-:root[data-skin="maple"] body[data-map-scene="sleepywood"]::after { background-image: url("maple/scene-sleepywood.jpg?v=f711d64d2a"); }
-:root[data-skin="maple"] body[data-map-scene="nautilus"]::after { background-image: url("maple/scene-nautilus.jpg?v=f711d64d2a"); }
-:root[data-skin="maple"] body[data-map-scene="edelstein"]::after { background-image: url("maple/scene-edelstein.jpg?v=f711d64d2a"); }
-:root[data-skin="maple"] body[data-map-scene="mu-lung"]::after { background-image: url("maple/scene-mu-lung.jpg?v=f711d64d2a"); }
-:root[data-skin="maple"] body[data-map-scene="ariant"]::after { background-image: url("maple/scene-ariant.jpg?v=f711d64d2a"); }
-:root[data-skin="maple"] body:has(.shelf-page):not([data-map-scene])::after { background-image: url("maple/scene-login.jpg?v=f711d64d2a"); }
+:root[data-skin="maple"] body:has([data-scene="ellinia"])::after { background-image: url("maple/scene-ellinia.jpg?v=9b97c153c1"); }
+:root[data-skin="maple"] body[data-map-scene="ludibrium"]::after { background-image: url("maple/scene-ludibrium.jpg?v=9b97c153c1"); }
+:root[data-skin="maple"] body[data-map-scene="clocktower"]::after { background-image: url("maple/scene-clocktower.jpg?v=9b97c153c1"); }
+:root[data-skin="maple"] body[data-map-scene="orbis"]::after { background-image: url("maple/scene-orbis.jpg?v=9b97c153c1"); }
+:root[data-skin="maple"] body[data-map-scene="el-nath"]::after { background-image: url("maple/scene-el-nath.jpg?v=9b97c153c1"); }
+:root[data-skin="maple"] body[data-map-scene="leafre"]::after { background-image: url("maple/scene-leafre.jpg?v=9b97c153c1"); }
+:root[data-skin="maple"] body[data-map-scene="lachelein"]::after { background-image: url("maple/scene-lachelein.jpg?v=9b97c153c1"); }
+:root[data-skin="maple"] body[data-map-scene="henesys"]::after { background-image: url("maple/scene-henesys.jpg?v=9b97c153c1"); }
+:root[data-skin="maple"] body[data-map-scene="ellinia-town"]::after { background-image: url("maple/scene-ellinia-town.jpg?v=9b97c153c1"); }
+:root[data-skin="maple"] body[data-map-scene="perion"]::after { background-image: url("maple/scene-perion.jpg?v=9b97c153c1"); }
+:root[data-skin="maple"] body[data-map-scene="kerning"]::after { background-image: url("maple/scene-kerning.jpg?v=9b97c153c1"); }
+:root[data-skin="maple"] body[data-map-scene="lith-harbor"]::after { background-image: url("maple/scene-lith-harbor.jpg?v=9b97c153c1"); }
+:root[data-skin="maple"] body[data-map-scene="sleepywood"]::after { background-image: url("maple/scene-sleepywood.jpg?v=9b97c153c1"); }
+:root[data-skin="maple"] body[data-map-scene="nautilus"]::after { background-image: url("maple/scene-nautilus.jpg?v=9b97c153c1"); }
+:root[data-skin="maple"] body[data-map-scene="edelstein"]::after { background-image: url("maple/scene-edelstein.jpg?v=9b97c153c1"); }
+:root[data-skin="maple"] body[data-map-scene="mu-lung"]::after { background-image: url("maple/scene-mu-lung.jpg?v=9b97c153c1"); }
+:root[data-skin="maple"] body[data-map-scene="ariant"]::after { background-image: url("maple/scene-ariant.jpg?v=9b97c153c1"); }
+:root[data-skin="maple"] body:has(.shelf-page):not([data-map-scene])::after { background-image: url("maple/scene-login.jpg?v=9b97c153c1"); }
 @media (max-width: 600px) {
-  :root[data-skin="maple"] body::after { background-image: url("maple/scene-day-sm.jpg?v=f711d64d2a"); }
-  :root[data-skin="maple"] body:has([data-scene="ellinia"])::after { background-image: url("maple/scene-ellinia-sm.jpg?v=f711d64d2a"); }
-  :root[data-skin="maple"] body:has(.shelf-page):not([data-map-scene])::after { background-image: url("maple/scene-login-sm.jpg?v=f711d64d2a"); }
-  :root[data-skin="maple"] body[data-map-scene="ludibrium"]::after { background-image: url("maple/scene-ludibrium-sm.jpg?v=f711d64d2a"); }
-  :root[data-skin="maple"] body[data-map-scene="clocktower"]::after { background-image: url("maple/scene-clocktower-sm.jpg?v=f711d64d2a"); }
-  :root[data-skin="maple"] body[data-map-scene="orbis"]::after { background-image: url("maple/scene-orbis-sm.jpg?v=f711d64d2a"); }
-  :root[data-skin="maple"] body[data-map-scene="el-nath"]::after { background-image: url("maple/scene-el-nath-sm.jpg?v=f711d64d2a"); }
-  :root[data-skin="maple"] body[data-map-scene="leafre"]::after { background-image: url("maple/scene-leafre-sm.jpg?v=f711d64d2a"); }
-  :root[data-skin="maple"] body[data-map-scene="lachelein"]::after { background-image: url("maple/scene-lachelein-sm.jpg?v=f711d64d2a"); }
-  :root[data-skin="maple"] body[data-map-scene="henesys"]::after { background-image: url("maple/scene-henesys-sm.jpg?v=f711d64d2a"); }
-  :root[data-skin="maple"] body[data-map-scene="ellinia-town"]::after { background-image: url("maple/scene-ellinia-town-sm.jpg?v=f711d64d2a"); }
-  :root[data-skin="maple"] body[data-map-scene="perion"]::after { background-image: url("maple/scene-perion-sm.jpg?v=f711d64d2a"); }
-  :root[data-skin="maple"] body[data-map-scene="kerning"]::after { background-image: url("maple/scene-kerning-sm.jpg?v=f711d64d2a"); }
-  :root[data-skin="maple"] body[data-map-scene="lith-harbor"]::after { background-image: url("maple/scene-lith-harbor-sm.jpg?v=f711d64d2a"); }
-  :root[data-skin="maple"] body[data-map-scene="sleepywood"]::after { background-image: url("maple/scene-sleepywood-sm.jpg?v=f711d64d2a"); }
-  :root[data-skin="maple"] body[data-map-scene="nautilus"]::after { background-image: url("maple/scene-nautilus-sm.jpg?v=f711d64d2a"); }
-  :root[data-skin="maple"] body[data-map-scene="edelstein"]::after { background-image: url("maple/scene-edelstein-sm.jpg?v=f711d64d2a"); }
-  :root[data-skin="maple"] body[data-map-scene="mu-lung"]::after { background-image: url("maple/scene-mu-lung-sm.jpg?v=f711d64d2a"); }
-  :root[data-skin="maple"] body[data-map-scene="ariant"]::after { background-image: url("maple/scene-ariant-sm.jpg?v=f711d64d2a"); }
+  :root[data-skin="maple"] body::after { background-image: url("maple/scene-day-sm.jpg?v=9b97c153c1"); }
+  :root[data-skin="maple"] body:has([data-scene="ellinia"])::after { background-image: url("maple/scene-ellinia-sm.jpg?v=9b97c153c1"); }
+  :root[data-skin="maple"] body:has(.shelf-page):not([data-map-scene])::after { background-image: url("maple/scene-login-sm.jpg?v=9b97c153c1"); }
+  :root[data-skin="maple"] body[data-map-scene="ludibrium"]::after { background-image: url("maple/scene-ludibrium-sm.jpg?v=9b97c153c1"); }
+  :root[data-skin="maple"] body[data-map-scene="clocktower"]::after { background-image: url("maple/scene-clocktower-sm.jpg?v=9b97c153c1"); }
+  :root[data-skin="maple"] body[data-map-scene="orbis"]::after { background-image: url("maple/scene-orbis-sm.jpg?v=9b97c153c1"); }
+  :root[data-skin="maple"] body[data-map-scene="el-nath"]::after { background-image: url("maple/scene-el-nath-sm.jpg?v=9b97c153c1"); }
+  :root[data-skin="maple"] body[data-map-scene="leafre"]::after { background-image: url("maple/scene-leafre-sm.jpg?v=9b97c153c1"); }
+  :root[data-skin="maple"] body[data-map-scene="lachelein"]::after { background-image: url("maple/scene-lachelein-sm.jpg?v=9b97c153c1"); }
+  :root[data-skin="maple"] body[data-map-scene="henesys"]::after { background-image: url("maple/scene-henesys-sm.jpg?v=9b97c153c1"); }
+  :root[data-skin="maple"] body[data-map-scene="ellinia-town"]::after { background-image: url("maple/scene-ellinia-town-sm.jpg?v=9b97c153c1"); }
+  :root[data-skin="maple"] body[data-map-scene="perion"]::after { background-image: url("maple/scene-perion-sm.jpg?v=9b97c153c1"); }
+  :root[data-skin="maple"] body[data-map-scene="kerning"]::after { background-image: url("maple/scene-kerning-sm.jpg?v=9b97c153c1"); }
+  :root[data-skin="maple"] body[data-map-scene="lith-harbor"]::after { background-image: url("maple/scene-lith-harbor-sm.jpg?v=9b97c153c1"); }
+  :root[data-skin="maple"] body[data-map-scene="sleepywood"]::after { background-image: url("maple/scene-sleepywood-sm.jpg?v=9b97c153c1"); }
+  :root[data-skin="maple"] body[data-map-scene="nautilus"]::after { background-image: url("maple/scene-nautilus-sm.jpg?v=9b97c153c1"); }
+  :root[data-skin="maple"] body[data-map-scene="edelstein"]::after { background-image: url("maple/scene-edelstein-sm.jpg?v=9b97c153c1"); }
+  :root[data-skin="maple"] body[data-map-scene="mu-lung"]::after { background-image: url("maple/scene-mu-lung-sm.jpg?v=9b97c153c1"); }
+  :root[data-skin="maple"] body[data-map-scene="ariant"]::after { background-image: url("maple/scene-ariant-sm.jpg?v=9b97c153c1"); }
 }
 :root[data-skin="maple"][data-theme="dark"] body::after { box-shadow: inset 0 0 0 100vmax rgba(10, 16, 52, 0.68); }
 @media (prefers-color-scheme: dark) {
@@ -966,8 +964,8 @@ table.bench-tbl th[scope="rowgroup"], table.bench-tbl th[scope="row"] { color: v
 /* over-scrolling past the top shows more bar, not the page */
 :root[data-skin="maple"] .toolbar::before { content: ""; position: absolute; left: 0; right: 0; bottom: 100%; height: 200px; background: #ccdddd; }
 :root[data-skin="maple"] .toolbar .home { color: #1c2b44; font-weight: 900; }
-:root[data-skin="maple"] .toolbar .home::before {
-  content: ""; width: 30px; height: 30px; border: 0; border-radius: 0; background: url("maple/leaf.png") center / contain no-repeat;
+:root[data-skin="maple"] .toolbar .home::before, :root[data-skin="maple"][data-theme] .toolbar .home::before {
+  content: ""; width: 30px; height: 30px; padding: 0; border: 0; border-radius: 0; background: url("maple/leaf.png") center / contain no-repeat;
   filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.8));
 }
 :root[data-skin="maple"] .toolbar .crumb, :root[data-skin="maple"] .levels-label { color: #3b4b5e; }
@@ -1294,7 +1292,6 @@ table.bench-tbl th[scope="rowgroup"], table.bench-tbl th[scope="row"] { color: v
 @media (max-width: 440px) {
   /* keep the seal, drop the wordmark so the level switch and the appearance button fit on one row */
   .toolbar .home { font-size: 0; gap: 0; }
-  .toolbar .home::before { font-size: 0.85rem; }
   .seg button { padding: 0 0.5rem; }
   :root[data-skin="maple"] .seg button { padding: 0 6px; }
 }
@@ -1525,3 +1522,8 @@ table.bench-tbl th[scope="rowgroup"], table.bench-tbl th[scope="row"] { color: v
 .intro-quest-details li.is-done>a::before{content:"✓ ";color:#2b7352;font-weight:800}
 #study-save-warning{position:fixed;left:12px;right:12px;bottom:12px;z-index:10000;max-width:720px;margin:auto;padding:12px 16px;background:#7b2525;color:#fff;border:2px solid #fff;border-radius:8px;box-shadow:0 4px 24px #0006;overflow-wrap:anywhere}
 @media(max-width:450px){.intro-quest{gap:9px;padding:11px}.intro-quest-actions{display:grid;grid-template-columns:1fr}.intro-quest-actions .btn{width:100%}}
+
+/* ---------- HACHIMAN STUDIO 八萬工作室：頁尾（assets/brand/components.css 的 hs-footer） ---------- */
+.hs-footer { margin-top: 3rem; }
+.hs-footer a { text-decoration: none; }
+:root[data-skin="maple"] .hs-footer { position: relative; z-index: 1; margin-top: 2rem; }

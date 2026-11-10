@@ -131,7 +131,8 @@
 
   // ---------- appearance: style (study / maple) and colour mode (system / light / dark) ----------
   // The 楓葉冒險 skin is drawn with game art in assets/maple/ (scripts/setup_maple.py builds it).
-  // It is the default, and it is offered only when that art loads, so the inlined single-file
+  // It is opt-in (the default is the 精讀室 style in the HACHIMAN STUDIO 八萬工作室 look), and it is
+  // offered only when that art loads, so the inlined single-file
   // builds, which have no images, show the original style and just the colour modes.
   var SKIN_KEY = "study:skin", MODE_KEY = "study:mode";
   // The pages link site.css?v=<stamp> (scripts/stamp_assets.py), and the files this script builds
@@ -169,7 +170,7 @@
     else if (hostTheme) root.setAttribute("data-theme", hostTheme);
     else root.removeAttribute("data-theme");
   }
-  var skin = store.get(SKIN_KEY, "maple"), mode = store.get(MODE_KEY, "system");
+  var skin = store.get(SKIN_KEY, "study"), mode = store.get(MODE_KEY, "system");
   var focusReading = store.get("study:focus-reading", false) === true;
   root.classList.toggle("focus-reading", focusReading && !!paper);
   applyMode(mode);
@@ -2048,4 +2049,4 @@
 })();
 
 /* Optional study sync overlay: loaded after the existing page app. */
-(function(){var s=document.createElement('script');s.src=new URL('study-sync.js?v=4635f44d7c',document.currentScript.src).href;document.head.appendChild(s);})();
+(function(){var s=document.createElement('script');s.src=new URL('study-sync.js?v=229552fc32',document.currentScript.src).href;document.head.appendChild(s);})();
