@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "review_date": "2026-10-25",
-  "scope": "2026-10-25 新增兩篇的全文核對，以及既有七篇指定版本 PDF 的方法與關鍵證據再審；既有教材先前的全文核對聲明保留為歷史紀錄",
+  "review_date": "2026-11-12",
+  "scope": "2026-10-25 新增兩篇的全文核對，以及既有七篇指定版本 PDF 的方法與關鍵證據再審；既有教材先前的全文核對聲明保留為歷史紀錄；2026-11-12 補充 MixUA arXiv v1 原文對照與教材，既有核對歷史狀態不變",
   "rules": [
     "核對元資料（標題、作者、版本）不同於逐條全文核對",
     "檢索摘要僅供背景；不能據以生成或認定公式、表格、數字或限制",
@@ -121,6 +121,18 @@
       "pdf_sha256": "8536ada90472579a4ec0d0d1d604d358223e1acdca875625676c6b7c700b8535",
       "pdf_pages": 36,
       "current_audit_scope": "§4.1–4.7；作者 PDF 第 1、20、21 頁影像與節點／標籤定義"
+    },
+    "2611.10439": {
+      "title": "Who Remembers What? Multi-Granularity Memory Extraction for Multi-User, Multi-Agent Interaction",
+      "version": "arXiv 2611.10439v1, submitted 2026-11-07",
+      "authors": "Yunzhe Wang; Mesut Erhan Unal; Sheng Zhang; Shabnam Ghadar; Peng Tang",
+      "metadata_evidence": "https://arxiv.org/abs/2611.10439",
+      "fulltext_evidence": "https://arxiv.org/html/2611.10439v1",
+      "pdf_evidence": "https://arxiv.org/pdf/2611.10439v1",
+      "metadata_status": "arxiv_abstract_checked",
+      "fulltext_status": "targeted_primary_html_and_pdf_review",
+      "current_audit_scope": "§1–5, Eq. (1), Figures 3/6, Tables 2–4, Appendix C/H, Limitations",
+      "missing": "尚未獨立重跑任務、隱私探針與跨模型實驗；時間與情境失效是本站延伸假說；未全面逐頁核驗 PDF 所有圖表及附錄"
     }
   }
 }
