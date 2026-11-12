@@ -9,8 +9,8 @@ const localStorage = { getItem:key=>saved.get(key) ?? null };
 vm.runInNewContext(fs.readFileSync('assets/world-quests.js','utf8'),
   { window, document, localStorage, CustomEvent:function () {} });
 const quests = window.StudyWorldQuests.definitions;
-assert.equal(quests.length,8);
-assert.equal(new Set(quests.map(q=>q.paper)).size,8);
+assert.equal(quests.length,9);
+assert.equal(new Set(quests.map(q=>q.paper)).size,9);
 for (const quest of quests) {
   assert.equal(quest.chapters.length,6,`${quest.paper} has all six stages`);
   assert.equal(new Set(quest.chapters).size,6);
