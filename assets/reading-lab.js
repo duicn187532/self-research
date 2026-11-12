@@ -107,8 +107,8 @@
       dims: [
         ["Problem", "跨 User 與異質 Agent 分享經驗，需同時分辨效益與資訊揭露限制。", ["s-problem","s-formal"]],
         ["Method", "四種 Audience Scope、可重用／受保護雙流寫入、Store Review 重分配，以及授權後的 situation 相似檢索。", ["s-scopes","s-write","s-review","s-retrieval","s-lab"]],
-        ["Benchmark", "CrossLearnBench：任務通過率、偏好保留、隱私探針與單 Scope 消融；須分清 R3 與 Δ 的口徑。", ["s-bench","s-results","s-ablation"]],
-        ["Contribution", "作者提出多粒度 Audience 記憶擷取與混合讀者的共享方法；報告特定條件下轉移、偏好和私有資訊邊界的改善。", ["s-problem","s-results"]],
+        ["Benchmark", "CrossLearnBench：七個既有任務集加上植入的私人事實與只說一次的偏好；須分清 R3、Δ、Δcross 的口徑。", ["s-bench","s-results","s-ablation"]],
+        ["Contribution", "MixUA 逐條學習讀者範圍：R2–R3 增益 +16.3 pp（Global only +11.5）、偏好保留 89%（Global only 11%），3／4 變體零私人事實越界；對最強基線的效用差距約 3 pp。", ["s-overview","s-results","s-ablation"]],
         ["Gap", "本站研究疑問：Aud 授權不等於時間／情境有效性；固定 Audience 的 A→B→A 切換需另外檢驗。", ["s-critique","s-research"]]
       ],
       flow: [["標明來源配對", "獨立的 User–Agent 軌跡及 verifier outcome"], ["Privacy Splitter", "拆成 reusable 與 protected 兩條資料流"], ["寫入／重新分配", "限制 protected 只可 Pair/User；Review 重新分 Scope"], ["授權後檢索", "由 V(u,a) 中按 situation 相似度及每 Scope budget 選記憶"]],

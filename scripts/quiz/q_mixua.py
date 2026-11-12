@@ -39,6 +39,21 @@ BANK = json.loads(r'''{
           "src": [
             "s-scopes"
           ]
+        },
+        {
+          "id": "mix-scopes-2",
+          "facet": "reason",
+          "q": "只對某一題有用的修法放哪？",
+          "opts": [
+            "Global",
+            "Pair",
+            "Agent"
+          ],
+          "a": 0,
+          "why": "Appendix H：依讀者放，不依通用程度。",
+          "src": [
+            "s-scopes"
+          ]
         }
       ]
     },
@@ -199,6 +214,21 @@ BANK = json.loads(r'''{
           ],
           "a": 0,
           "why": "Figure 6：不同任務的經驗轉移。",
+          "src": [
+            "s-results"
+          ]
+        },
+        {
+          "id": "mix-results-4",
+          "facet": "critique",
+          "q": "Δcross 只計算哪些題？",
+          "opts": [
+            "只有不同 User 且不同 Agent 做過",
+            "只有同一個 User–Agent 配對做過",
+            "只有同 User 或同 Agent 的配對做過"
+          ],
+          "a": 0,
+          "why": "Table 2 註：Δcross 的定義。",
           "src": [
             "s-results"
           ]
