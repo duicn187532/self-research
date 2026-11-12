@@ -28,7 +28,7 @@ const familiarGuests = new Set([
   'npc-knight-eckhart','npc-knight-hawkeye',
   'npc-tatamo','npc-knight','npc-wind','npc-flame','npc-night','npc-thunder'
 ]);
-assert.equal(places.length, 9);
+assert.equal(places.length, 10);
 assert.equal(Object.keys(cast).length, places.length);
 const originalIds = places.map(p => p.id).filter(id => !['2604.20006','2610.09008'].includes(id));
 const originalScenes = new Set(originalIds.map(id => scenes[id][0]));
