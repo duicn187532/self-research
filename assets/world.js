@@ -9,6 +9,7 @@
     { id:'2608.19652', scene:'lachelein', name:'拉契爾恩', topic:'依賴與狀態更新' },
     { id:'2604.20006', scene:'leafre', name:'神木村', topic:'長期記憶評測與遺忘' },
     { id:'2610.09008', scene:'nautilus', name:'海盜船諾特勒斯號', topic:'記憶作用範圍與寫入' },
+    { id:'2611.10439', scene:'edelstein', name:'埃德爾斯坦', topic:'多 Agent／User 共享與隱私' },
     { id:'2606.30306', scene:'orbis', name:'天空之城', topic:'持久代理綜述' },
     { id:'dekleer-1986-atms', scene:'henesys', name:'弓箭手村', topic:'假設與真值維護' }
   ];
