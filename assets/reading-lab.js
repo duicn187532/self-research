@@ -102,6 +102,18 @@
       flow: [["辨識候選", "抽出待提交的命題與原作用範圍"], ["六個診斷", "取得固定順序 hidden states 與四個 logit 差"], ["形成 typed key", "分別計算因果子空間和互補子空間的 Gram"], ["寫入與檢索", "門控 actual/scoped；查詢時按 owner 授權遮罩"]],
       method: "s-key"
     },
+    "2611.10439": {
+      short: "MixUA", version: "2611.10439v1", sourceUrl: "https://arxiv.org/pdf/2611.10439v1", auditStatus: "targeted",
+      dims: [
+        ["Problem", "跨 User 與異質 Agent 分享經驗，需同時分辨效益與資訊揭露限制。", ["s-problem","s-formal"]],
+        ["Method", "四種 Audience Scope、可重用／受保護雙流寫入、Store Review 重分配，以及授權後的 situation 相似檢索。", ["s-scopes","s-write","s-review","s-retrieval","s-lab"]],
+        ["Benchmark", "CrossLearnBench：任務通過率、偏好保留、隱私探針與單 Scope 消融；須分清 R3 與 Δ 的口徑。", ["s-bench","s-results","s-ablation"]],
+        ["Contribution", "作者提出多粒度 Audience 記憶擷取與混合讀者的共享方法；報告特定條件下轉移、偏好和私有資訊邊界的改善。", ["s-problem","s-results"]],
+        ["Gap", "本站研究疑問：Aud 授權不等於時間／情境有效性；固定 Audience 的 A→B→A 切換需另外檢驗。", ["s-critique","s-research"]]
+      ],
+      flow: [["標明來源配對", "獨立的 User–Agent 軌跡及 verifier outcome"], ["Privacy Splitter", "拆成 reusable 與 protected 兩條資料流"], ["寫入／重新分配", "限制 protected 只可 Pair/User；Review 重新分 Scope"], ["授權後檢索", "由 V(u,a) 中按 situation 相似度及每 Scope budget 選記憶"]],
+      method: "s-lab"
+    },
     "dekleer-1986-atms": {
       short: "ATMS", version: "Artificial Intelligence 28 (1986), 127–162", auditStatus: "targeted",
       dims: [
